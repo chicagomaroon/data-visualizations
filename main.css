@@ -1,0 +1,254 @@
+/* ============================================================
+  CSS RESET
+============================================================ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+.text {
+    margin: 0;
+    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+}
+.credit {
+    position: relative;
+    left: 250px;
+    color: #BBBBBB;
+    font-size: .7rem;
+}
+.raymond {
+    left: 237px;
+}
+.marta {
+    left: 247px;
+}
+.navbar-header:after {
+    clear: none;
+}
+.nav {
+    /*opacity: 0;*/
+}
+.body-text:first-of-type {
+    padding-top: 20px;
+    color: #333333;
+    font-size: 1.0rem;
+    line-height: 1.45;
+}
+.fullscreen {
+    background: url(img/bagpipes.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 85vh;
+}
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+.cover-photo {
+    right: 100px;
+}
+h1,
+h2,
+h3 {
+    color: #FFFFFF;
+}
+h1 {
+    font-size: 3rem;
+    padding-top: 50px;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.3rem;
+}
+.interview-right-side {
+    padding-left: 30px;
+    vertical-align: top;
+}
+.interview:first-of-type {
+    padding-top: 30px;
+}
+.lightweight {
+    font-weight: 200;
+}
+.quotation {
+    font-style: italic;
+    font-weight: 600;
+    width: 300px;
+    padding-top: 10px;
+    font-size: .9rem;
+}
+[text-anchor="end"]>tspan {
+    cursor: default;
+}
+p {
+    padding-top: 13px;
+}
+.view-transcript {
+    margin-top: 15px;
+}
+.transcript {
+    display: none;
+}
+.author {
+    position: absolute;
+    bottom: 100px;
+    text-align: center;
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.produced {
+    bottom: 60px;
+}
+.chart {
+    height: 310px;
+}
+.visible {
+    opacity: 1;
+}
+.white {
+    color: white;
+}
+.video-title {
+    margin-top: 20px;
+}
+.right {
+    float: right;
+}
+.social-icon-container.fb {
+    margin-left: 10px;
+}
+.donate {
+    font-weight: bold;
+    color: #777;
+}
+.donate-container {
+    cursor: pointer;
+}
+.chart-2 {
+    padding-top: 100px;
+}
+.social-icon {
+    margin: 1%;
+    background: url(img/Flat-Social-Icons.svg);
+    background-size: 80em;
+    border-color: #9A9C9F;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+#left-of-graph-1 {
+    padding-top: 40px;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+#fb-icon {
+    background-position: 2089px 345px;
+}
+#twitter-icon {
+    background-position: 2027px 345px;
+}
+div.social-icon-container {
+    font-size: 1rem;
+}
+/* Highcharts CSS */
+footer {
+    padding-top: 50px;
+}
+#container {
+    height: 500px;
+    width: 800px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+.highcharts-tooltip>span {
+    padding: 10px;
+    white-space: normal !important;
+    width: 200px;
+}
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+.f32 .flag {
+    vertical-align: middle !important;
+}
