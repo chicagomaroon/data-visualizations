@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    $('#fb-icon').click(function(event) {
+        event.preventDefault();
+        FB.ui({
+  method: 'share',
+  href: 'http://chicagomaroon.github.io/',
+}, function(response){});
+    });
     $('.popup').click(function(event) {
     var width  = 575,
         height = 400,
@@ -298,8 +305,4 @@ $(document).ready(function () {
     });
                  
 });
-                 function fbShare(url, title, descr, image, winWidth, winHeight) {
-        var winTop = (screen.height / 2) - (winHeight / 2);
-        var winLeft = (screen.width / 2) - (winWidth / 2);
-        window.open('http://www.facebook.com/sharer.php?s=100&p[title]=' + title + '&p[summary]=' + descr + '&p[url]=' + url + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-    }
+                 

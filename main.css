@@ -76,6 +76,8 @@ body {
 .text {
     margin: 0;
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .credit {
     position: relative;
@@ -85,6 +87,9 @@ body {
 }
 .raymond {
     left: 237px;
+}
+.interviewee-face {
+    padding-left: 10px;
 }
 .marta {
     left: 247px;
@@ -129,7 +134,10 @@ h1 {
     padding-left: 20px;
 }
 .small {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+}
+.medium {
+    font-size: 1.5rem;
 }
 h2 {
     font-size: 2rem;
@@ -148,6 +156,10 @@ h4 {
 }
 .interview:first-of-type {
     padding-top: 30px;
+}
+.interview {
+    padding-left:10px;
+    padding-right:10px;
 }
 .lightweight {
     font-weight: 200;
