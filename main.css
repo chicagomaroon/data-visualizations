@@ -105,7 +105,10 @@ body {
     background: url(img/bagpipes.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 85vh;
-
+}
+.text-background {
+    background-color: rgba(50,50,50,.6);
+    height: 85vh;
 }
 .container {
     width: 100%;
