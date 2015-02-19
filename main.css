@@ -81,7 +81,7 @@ body {
 }
 .credit {
     position: relative;
-    left: 250px;
+    left: 150px;
     color: #BBBBBB;
     font-size: .7rem;
 }
@@ -132,6 +132,12 @@ h1 {
     font-size: 3rem;
     padding-top: 60px;
     padding-left: 20px;
+}
+.title-sm {
+    font-size: 2.5rem;
+}
+.produced.small {
+    bottom: 40px;
 }
 .small {
     font-size: 1.2rem;
