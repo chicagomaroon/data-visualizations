@@ -20,7 +20,7 @@ $(document).ready(function () {
                  ',top='    + top    +
                  ',left='   + left;
     
-    window.open(url, via, text, 'twitter', opts);
+    window.open(url, via, text, opts);
  
     return false;
   });
