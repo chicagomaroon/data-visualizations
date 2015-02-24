@@ -12,8 +12,7 @@ $(document).ready(function () {
         left   = ($(window).width()  - width)  / 2,
         top    = ($(window).height() - height) / 2,
         url    = this.href,
-        via = 'ChicagoMaroon',
-        text = 'International students make up one-fifth of University',
+        via = '@ChicagoMaroon',
         opts   = 'status=1' +
                  ',width='  + width  +
                  ',height=' + height +
