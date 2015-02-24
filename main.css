@@ -187,6 +187,9 @@ h4 {
 p {
     padding-top: 13px;
 }
+.navbar-brand > img {
+    height: 40px
+}
 .view-transcript {
     margin-top: 15px;
 }
