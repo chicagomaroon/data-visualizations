@@ -130,7 +130,8 @@ $(document).ready(function () {
                     hover: {
                         color: '#BADA55'
                     }
-                }
+                },
+                animation: false
             }],
             credits: {
                 enabled: true,
@@ -191,7 +192,8 @@ $(document).ready(function () {
         },
         series: [{
             name: 'Students',
-            data: [863, 389, 210, 209, 95, 91, 88, 73, 71, 69, 67]
+            data: [863, 389, 210, 209, 95, 91, 88, 73, 71, 69, 67],
+            animation: false,
             }]
     });
     $('.chart-2').highcharts({
