@@ -1,0 +1,333 @@
+/* ============================================================
+  CSS RESET
+============================================================ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+body {
+    padding-top:51px;
+    overflow-y: scroll; /* has to be scroll, not auto */
+  -webkit-overflow-scrolling: touch;
+}
+header {
+    height:51px;
+}
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.text {
+    margin: 0;
+    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.credit {
+    color: #BBBBBB;
+    font-size: .7rem;
+}
+.navbar-header:after {
+    clear: none;
+}
+.body-text {
+    padding-top: 20px;
+    color: #333333;
+    font-size: 1.0rem;
+    line-height: 1.45;
+}
+.small-media-credit {
+    max-width:250px;
+    margin: 0 auto;
+}
+.fullscreen {
+    background: url(img/bagpipes.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 85vh;
+    padding-left: 0;
+    padding-right: 0;
+}
+.text-background {
+    background-color: rgba(50, 50, 50, .6);
+    height: 85vh;
+}
+.container {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+}
+.cover-photo {
+    right: 100px;
+}
+h1,
+h2,
+h3 {
+    color: #FFFFFF;
+}
+h1 {
+    font-size: 2.5rem;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.produced.small {
+    bottom: 40px;
+}
+.small {
+    font-size: 1.2rem;
+}
+.medium {
+    font-size: 1.5rem;
+}
+h2 {
+    font-size: 2rem;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.3rem;
+}
+.interviewee-name {
+    padding-top: 10px;
+}
+.interview-right-side {
+    padding-left: 30px;
+    vertical-align: top;
+}
+.interview:first-of-type {
+    padding-top: 30px;
+}
+.interview {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.lightweight {
+    font-weight: 200;
+    padding-top: 0;
+}
+.quotation {
+    font-style: italic;
+    font-weight: 600;
+    width: 300px;
+    padding-top: 10px;
+    font-size: .9rem;
+}
+[text-anchor="end"]>tspan {
+    cursor: default;
+}
+p {
+    padding-top: 13px;
+}
+.navbar-brand > img {
+    height: 40px
+}
+.view-transcript {
+    margin-top: 15px;
+}
+.transcript {
+    display: none;
+}
+.author {
+    position: absolute;
+    bottom: 100px;
+    text-align: center;
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+.produced {
+    bottom: 60px;
+}
+p.first-paragraph:first-letter {
+    float: left;
+    font-size: 75px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+}
+.visible {
+    opacity: 1;
+}
+.white {
+    color: white;
+}
+.video-title {
+    margin-top: 20px;
+}
+.right {
+    float: right;
+}
+.social-icon-container.fb {
+    margin-left: 10px;
+}
+.navbar-default {
+    background-color: #FFFFFF;
+}
+.donate {
+    font-weight: bold;
+    color: #777;
+}
+.donate-container {
+    cursor: pointer;
+}
+.social-icon {
+    height: 20px;
+    width: 20px;
+}
+.social-icon > img {
+    height: 20px;
+    width: 20px;
+}
+#left-of-graph-1 {
+    padding-top: 40px;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+/*#fb-icon {
+    background-position: 2089px 345px;
+}
+#twitter-icon {
+    background-position: 2027px 345px;
+}*/
+
+div.social-icon-container {
+    font-size: 1rem;
+}
+.small-media {
+    display: block;
+    margin: 0 auto;
+}
+@media all and (min-width: 1200px) {
+    h1 {
+        font-size: 3rem;
+    }
+    body {
+        font-size: 1.4rem;
+    }
+}
+@media all and (max-width: 1199px) and (min-width: 992px) {
+    h1 {
+        font-size: 3rem;
+    }
+    body {
+        font-size: 1.2rem;
+    }
+}
+@media all and (max-width: 991px) and (min-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+}
+@media all and (max-width: 767px) and (min-width: 0px) {
+    body {
+        font-size: 1rem;
+    }
+}
+/* Highcharts CSS */
+
+footer {
+    text-align: center;
+    padding-top: 50px;
+    color: #BBBBBB;
+    font-size: .7rem;
+    padding-bottom: 10px;
+}
+footer > a, footer > a:hover, footer > a:focus {
+    color: inherit;
+}
+#container {
+    height: 500px;
+    width: 800px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+.highcharts-tooltip>span {
+    padding: 10px;
+    white-space: normal !important;
+    width: 200px;
+}
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+.f32 .flag {
+    vertical-align: middle !important;
+}
