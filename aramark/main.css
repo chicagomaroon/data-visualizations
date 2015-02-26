@@ -92,6 +92,7 @@ header {
 }
 .credit {
     color: #BBBBBB;
+    font-size: .7rem;
 }
 .navbar-header:after {
     clear: none;
@@ -260,7 +261,6 @@ p.first-paragraph:first-letter {
     background: #b70000;
     padding: 0.4em 1em;
     margin-bottom: 0.75em;
-    font-size: 0.7em;
     font-weight: 700;
 }
 .dining-art:after {
