@@ -17,7 +17,7 @@ $(document).ready(function () {
             height = 400,
             left = ($(window).width() - width) / 2,
             top = ($(window).height() - height) / 2,
-            url = this.href,
+            url = "http://chicagomaroon.github.io/aramark/",
             via = '@ChicagoMaroon',
             opts = 'status=1' +
             ',width=' + width +

@@ -112,6 +112,9 @@ li.ss-choice-item {
 .ss-navigate {
     padding-top: 20px;
 }
+.poll-border:last-of-type{
+    margin-bottom: 0;
+}
 .text {
     margin: 0;
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
