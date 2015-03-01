@@ -44,24 +44,24 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
     <div class="navbar nav navbar-default navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="http://www.chicagomaroon.com/">
-                            <img alt="The Chicago Maroon Logo" class='logo' src="img/logo.png">
-                        </a>
-                    </div>
-                    <div class="social-icon-container fb right">
-                        <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-                            <img class="logo" src="img/fb-logo.png" />
-                        </a>
-                    </div>
-                    <div class="social-icon-container twitter right">
-                        <a id="twitter-icon" class="social-icon right popup" target="_blank" href="https://twitter.com/share">
-                            <img class="logo" src="img/twitter-logo.png" />
-                        </a>
-                    </div>
-                </div>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
+                    <img alt="The Chicago Maroon Logo" class='logo' src="img/logo.png">
+                </a>
             </div>
+            <div class="social-icon-container fb right">
+                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
+                    <img class="logo" src="img/fb-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container twitter right">
+                <a id="twitter-icon" class="social-icon right popup" target="_blank" href="https://twitter.com/share">
+                    <img class="logo" src="img/twitter-logo.png" />
+                </a>
+            </div>
+        </div>
+    </div>
     <div class='container'>
         <div class='row'>
             <div class='col-xs-12 fullscreen'>
@@ -80,7 +80,7 @@
         <div class='row'>
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
                 <p class='text body-text first-paragraph'>
-                    The Life of the Mind has gone global in the last three decades, with international student presence doubling over thirty years to encompass one-fifth of the University’s overall student population. The College has also experienced a steady increase in multiculturalism, with the number of undergraduate international students growing tenfold since 1980, now coming to account for one in every 10 undergraduate students.
+                    The <strong>[800 words]</strong>Life of the Mind has gone global in the last three decades, with international student presence doubling over thirty years to encompass one-fifth of the University’s overall student population. The College has also experienced a steady increase in multiculturalism, with the number of undergraduate international students growing tenfold since 1980, now coming to account for one in every 10 undergraduate students.
                 </p>
             </div>
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
@@ -90,11 +90,13 @@
             </div>
 
         </div>
+
         <div class='row'>
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
                 <p class='text body-text'>“Now, the trend is that a lot of the ‘elite’ students from China are going to top-tier American universities. First of all, their families can afford that, and second, people are realizing that the quality of higher education in China is not quite satisfactory. Except for the top-tier schools in China…students’ lives are so laid-back and relaxed. They are not studying, and they cannot get much from their college experience. That’s why a lot of students are coming to the United States,” he added.</p>
             </div>
         </div>
+        <a id="submitted"></a>
         <div class='row'>
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
                 <p class='text body-text'>
@@ -103,20 +105,377 @@
             </div>
 
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
+                    <div class='poll-container'>
+                        <button class="btn btn-primary btn-lg take-poll-btn">Take the Maroon's dining poll</button>
+                    </div>
+                
+                <hr class='poll-border'>
+                <script type="text/javascript">
+                    var submitted = false;
+                </script>
+                <h4 class='poll-title text alert-title'>Dining Poll</h4>
+                <div class="alert alert-success" role="alert">Thanks for your response!</div>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)
+{window.location='http://localhost:8888/aramark#submitted';}"></iframe>
+                <form action="https://docs.google.com/forms/d/1jokelsHk7wrCQFPWuB2U2w7vsv95DidM1sIZQJL46R0/formResponse?embedded=true" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+                    <ol role="list" class="ss-question-list" style="padding-left: 0">
+                        <h4 class='poll-title text'>Dining Poll</h4>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-radio">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_859010937">
+                                        <div class="ss-q-title">What year are you?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+
+                                    <ul class="ss-choices" role="radiogroup" aria-label="What year are you?  ">
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="1st year" id="group_1286561099_1" role="radio" class="ss-q-radio" aria-label="1st year"></span>
+                                                <span class="ss-choice-label">1st year</span>
+                                            </label>
+                                        </li>
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="2nd year" id="group_1286561099_2" role="radio" class="ss-q-radio" aria-label="2nd year"></span>
+                                                <span class="ss-choice-label">2nd year</span>
+                                            </label>
+                                        </li>
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="3rd year" id="group_1286561099_3" role="radio" class="ss-q-radio" aria-label="3rd year"></span>
+                                                <span class="ss-choice-label">3rd year</span>
+                                            </label>
+                                        </li>
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="4th year" id="group_1286561099_4" role="radio" class="ss-q-radio" aria-label="4th year"></span>
+                                                <span class="ss-choice-label">4th year</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <div class="error-message" id="859010937_errorMessage"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-select">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_1167403716">
+                                        <div class="ss-q-title">Are you on a meal plan?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+                                    <select name="entry.1167403716" id="entry_1167403716" aria-label="Are you on a meal plan?  " class="valid">
+                                        <option value=""></option>
+                                        <option value="Yes, I'm on the unlimited meal plan">Yes, I'm on the unlimited meal plan</option>
+                                        <option value="Yes, I'm on the Phoenix meal plan">Yes, I'm on the Phoenix meal plan</option>
+                                        <option value="Yes, I'm on the apartment meal plan">Yes, I'm on the apartment meal plan</option>
+                                        <option value="I'm not on a meal plan">I'm not on a meal plan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-radio">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_1295481884">
+                                        <div class="ss-q-title">Which dining hall do you eat at more frequently?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+
+                                    <ul class="ss-choices" role="radiogroup" aria-label="Which dining hall do you eat at more frequently?  ">
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1273477477" value="Bartlett" id="group_1273477477_1" role="radio" class="ss-q-radio" aria-label="Bartlett"></span>
+                                                <span class="ss-choice-label">Bartlett</span>
+                                            </label>
+                                        </li>
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1273477477" value="Cathey" id="group_1273477477_2" role="radio" class="ss-q-radio" aria-label="Cathey"></span>
+                                                <span class="ss-choice-label">Cathey</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <div class="error-message" id="1295481884_errorMessage"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-scale">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_270370846">
+                                        <div class="ss-q-title">How would you rate the food in the dining hall that you more frequently visit this quarter?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+
+                                    <table border="0" cellpadding="5" cellspacing="0" id="entry_379602428">
+                                        <tbody>
+                                            <tr aria-hidden="true">
+                                                <td class="ss-scalenumbers"></td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_379602428_1">1</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_379602428_2">2</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_379602428_3">3</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_379602428_4">4</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_379602428_5">5</label>
+                                                </td>
+                                                <td class="ss-scalenumbers"></td>
+                                            </tr>
+                                            <tr role="radiogroup" aria-label="How would you rate the food in the dining hall that you more frequently visit this quarter?  Select a value from a range of 1,Terrible, to 5,Great,.">
+                                                <td class="ss-scalerow ss-leftlabel">
+                                                    <div aria-hidden="true" class="aria-todo">Terrible</div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.379602428" value="1" id="group_379602428_1" role="radio" class="ss-q-radio" aria-label="1">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.379602428" value="2" id="group_379602428_2" role="radio" class="ss-q-radio" aria-label="2">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.379602428" value="3" id="group_379602428_3" role="radio" class="ss-q-radio" aria-label="3">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.379602428" value="4" id="group_379602428_4" role="radio" class="ss-q-radio" aria-label="4">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.379602428" value="5" id="group_379602428_5" role="radio" class="ss-q-radio" aria-label="5">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow ss-rightlabel" aria-hidden="true">Great</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-scale">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_874376948">
+                                        <div class="ss-q-title">How would you rate the food in that dining hall last quarter?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+
+                                    <table border="0" cellpadding="5" cellspacing="0" id="entry_165893046">
+                                        <tbody>
+                                            <tr aria-hidden="true">
+                                                <td class="ss-scalenumbers"></td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_165893046_1">1</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_165893046_2">2</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_165893046_3">3</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_165893046_4">4</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_165893046_5">5</label>
+                                                </td>
+                                                <td class="ss-scalenumbers"></td>
+                                            </tr>
+                                            <tr role="radiogroup" aria-label="How would you rate the food in that dining hall last quarter?  Select a value from a range of 1,Terrible, to 5,Great,.">
+
+                                                <td class="ss-scalerow ss-leftlabel">
+                                                    <div aria-hidden="true" class="aria-todo">Terrible</div>
+                                                </td>
+
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.165893046" value="1" id="group_165893046_1" role="radio" class="ss-q-radio" aria-label="1">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.165893046" value="2" id="group_165893046_2" role="radio" class="ss-q-radio" aria-label="2">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.165893046" value="3" id="group_165893046_3" role="radio" class="ss-q-radio" aria-label="3">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.165893046" value="4" id="group_165893046_4" role="radio" class="ss-q-radio" aria-label="4">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.165893046" value="5" id="group_165893046_5" role="radio" class="ss-q-radio" aria-label="5">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow ss-rightlabel" aria-hidden="true">Great</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-radio">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_2107008274">
+                                        <div class="ss-q-title">In your opinion, has the quality of the food in the past quarter
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+
+                                    <ul class="ss-choices" role="radiogroup" aria-label="In your opinion, has the quality of the food in the past quarter  ">
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.227086885" value="Increased" id="group_227086885_1" role="radio" class="ss-q-radio" aria-label="Increased"></span>
+                                                <span class="ss-choice-label">Increased</span>
+                                            </label>
+                                        </li>
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.227086885" value="Decreased" id="group_227086885_2" role="radio" class="ss-q-radio" aria-label="Decreased"></span>
+                                                <span class="ss-choice-label">Decreased</span>
+                                            </label>
+                                        </li>
+                                        <li class="ss-choice-item">
+                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.227086885" value="Stayed the same" id="group_227086885_3" role="radio" class="ss-q-radio" aria-label="Stayed the same"></span>
+                                                <span class="ss-choice-label">Stayed the same</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                    <div class="error-message" id="2107008274_errorMessage"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-scale">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_1069173948">
+                                        <div class="ss-q-title">How difficult is it to find healthy food at the dining halls?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+
+                                    <table border="0" cellpadding="5" cellspacing="0" id="entry_1409277781">
+                                        <tbody>
+                                            <tr aria-hidden="true">
+                                                <td class="ss-scalenumbers"></td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_1409277781_1">1</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_1409277781_2">2</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_1409277781_3">3</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_1409277781_4">4</label>
+                                                </td>
+                                                <td class="ss-scalenumbers">
+                                                    <label class="ss-scalenumber" for="group_1409277781_5">5</label>
+                                                </td>
+                                                <td class="ss-scalenumbers"></td>
+                                            </tr>
+                                            <tr role="radiogroup" aria-label="How difficult is it to find healthy food at the dining halls?  Select a value from a range of 1,Very difficult, to 5,Very easy,.">
+                                                <td class="ss-scalerow ss-leftlabel">
+                                                    <div aria-hidden="true" class="aria-todo">Very difficult</div>
+                                                </td>
+                                                <td class="ss-scalerow" style="width: 22px;">
+                                                    <div class="ss-scalerow-fieldcell radio">
+                                                        <input type="radio" name="entry.1409277781" value="1" id="group_1409277781_1" role="radio" class="ss-q-radio" aria-label="1" style="position: relative;left: 20px;">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.1409277781" value="2" id="group_1409277781_2" role="radio" class="ss-q-radio" aria-label="2">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.1409277781" value="3" id="group_1409277781_3" role="radio" class="ss-q-radio" aria-label="3">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.1409277781" value="4" id="group_1409277781_4" role="radio" class="ss-q-radio" aria-label="4">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow">
+                                                    <div class="ss-scalerow-fieldcell">
+                                                        <input type="radio" name="entry.1409277781" value="5" id="group_1409277781_5" role="radio" class="ss-q-radio" aria-label="5">
+                                                    </div>
+                                                </td>
+                                                <td class="ss-scalerow ss-rightlabel" aria-hidden="true">Very easy</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ss-form-question errorbox-good" role="listitem">
+                            <div dir="ltr" class="ss-item  ss-paragraph-text">
+                                <div class="ss-form-entry">
+                                    <label class="ss-q-item-label" for="entry_715615998">
+                                        <div class="ss-q-title">Any comments?
+                                        </div>
+                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                                    </label>
+                                    <textarea name="entry.715615998" rows="2" cols="0" class="form-control ss-q-long" id="entry_715615998" dir="auto" aria-label="Any comments?  "></textarea>
+                                    <div class="error-message" id="538378308_errorMessage"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="draftResponse" value="[,,&quot;2277616912720973491&quot;]
+">
+                        <input type="hidden" name="pageHistory" value="0">
+
+
+                        <input type="hidden" name="fbzx" value="2277616912720973491">
+
+                        <div class="ss-item ss-navigate">
+                            <table id="navigation-table">
+                                <tbody>
+                                    <tr>
+                                        <td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+                                            <input type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-default jfk-button jfk-button-action ">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ol>
+                </form>
+                <hr class='poll-border'>
                 <p class='text body-text'>
                     Nikita Sachdeva, a fourth-year international student from India, indicated that the devaluation of Indian currency in recent years has made it more difficult for Indian students to study abroad. This may have contributed to the slight decrease in the percentage of international Indian students at UChicago.
                 </p>
                 <p class='text body-text'>
                     “If you look at what’s happened in the past one and a half years, Indian currency has devalued. When I started school, one USD was equal to around 50 Indian rupees. Now, one USD is equal to 62 Indian rupees. For any parent who’s paying a part of the tuition, or the full tuition, it’s a big change. It’s a big jump in how much you have to pay in four years. I don’t think it’s become any easier at the economic or financial level for the Indian student.”
                 </p>
-            </div>
 
-            <div class='chart chart-3 col-lg-offset-3 col-lg-4 col-md-offset-2 col-md-6 col-sm-offset-1 col-sm-10 col-xs-12'>
             </div>
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
                 <p class='text body-text'>However, Sachdeva was quick to add that UChicago’s focus on India, exemplified by its new Center in New Delhi, has spurred interest from Indian students to study abroad at UChicago.
                 </p>
                 <p class='text body-text'>“I think UChicago is actually one of the bigger reasons why there’s been an influx of Indian students. UChicago has been pretty invested in India--now they have a center in Delhi, which they opened last year—which is a big deal. Not many other big schools—your Ivy Leagues, your Stanford, MIT, have done that yet,” she said. “I think looking at India from a different perspective, UChicago’s really got that going for them. They see Indian students as a boon for the University, maybe. Maybe they come here, do well, and at the end of the day it reflects pretty well on UChicago.”</p>
+                <p class='text body-text'>“I think UChicago is actually one of the bigger reasons why there’s been an influx of Indian students. UChicago has been pretty invested in India--now they have a center in Delhi, which they opened last year—which is a big deal. Not many other big schools—your Ivy Leagues, your Stanford, MIT, have done that yet,” she said. “I think looking at India from a different perspective, UChicago’s really got that going for them. They see Indian students as a boon for the University, maybe. Maybe they come here, do well, and at the end of the day it reflects pretty well on UChicago.”</p>
+                <p class='text body-text'>“I think UChicago is actually one of the bigger reasons why there’s been an influx of Indian students. UChicago has been pretty invested in India--now they have a center in Delhi, which they opened last year—which is a big deal. Not many other big schools—your Ivy Leagues, your Stanford, MIT, have done that yet,” she said. “I think looking at.”</p>
                 <p class='text body-text'>Sachdeva also indicated that criticisms of the Indian system of education, which tends to focus on memorization and rote learning, have also driven interest in American education.
                 </p>
                 <p class='text body-text'>“I do think there is a growing urge among Indian students—especially in the big cities, Mumbai, Delhi—to step outside and just explore a new system of education which is very different from the Indian system of education. There is a lot of criticism of the Indian system of education,” she said. “It’s more based on the sciences, it’s more based on learning than understanding. In my high school...you could get by just by rote learning.”
@@ -135,6 +494,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
+<script src="jquery.cookie.js"></script>
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/maps/modules/map.js"></script>
 <script src="http://code.highcharts.com/mapdata/custom/world-highres.js"></script>
@@ -142,14 +502,20 @@
 <link rel="stylesheet" type="text/css" href="http://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
 <script src='main.js'></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-59818592-2', 'auto');
-  ga('send', 'pageview');
-
+    ga('create', 'UA-59818592-2', 'auto');
+    ga('send', 'pageview');
 </script>
 
 </html>

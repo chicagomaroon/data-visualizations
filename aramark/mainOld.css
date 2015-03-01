@@ -76,61 +76,19 @@ body {
 body {
     padding-top: 51px;
     overflow-y: scroll;
-    
+    /* has to be scroll, not auto */
     -webkit-overflow-scrolling: touch;
+}
+header {
+    height: 51px;
 }
 .row {
     margin-left: 0;
     margin-right: 0;
 }
-.ss-q-title, .ss-choice-label, .ss-scalenumber, .ss-scalerow {
-    font-size: 1rem;
-    font-weight: 500;
-}
-.ss-choice-label, .ss-scalenumber, .ss-scalerow {
-    font-weight: 300;
-}
-.ss-form-question {
-    padding-top: 30px;
-}
-.ss-form-question:first-of-type {
-    padding-top: 10px;
-}
-.ss-scalerow {
-    padding-left: 4px;
-    padding-right: 4px;
-}
-li.ss-choice-item {
-    list-style-type: none;
-}
-.ss-scalenumbers {
-    text-align: center;
-}
-.poll-title {
-    text-align: center;
-}
-.ss-navigate {
-    padding-top: 20px;
-}
 .text {
     margin: 0;
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
-}
-.alert-success {
-    font-size: 1rem;
-    font-weight: 300;
-}
-.alert-success,.alert-title {
-    display: none;
-}
-.alert-title {
-    padding-bottom: 10px;
-}
-.poll-container {
-    text-align: center;
-}
-#hidden-iframe,form,.poll-border {
-    display: none;
 }
 .credit {
     color: #BBBBBB;
@@ -237,9 +195,6 @@ p {
 }
 .transcript {
     display: none;
-}
-.take-poll-btn {
-    margin-top: 20px;
 }
 .author {
     position: absolute;
