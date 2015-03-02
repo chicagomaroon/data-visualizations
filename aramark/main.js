@@ -33,8 +33,7 @@ $(document).ready(function () {
     });
     $('#chart-1').highcharts({
         chart: {
-            type: 'bar',
-            zoomType: null
+            type: 'bar'
         },
         title: {
             text: 'Aramark Historical Performance'
@@ -56,9 +55,7 @@ $(document).ready(function () {
             }
         },
         tooltip: {
-            enabled: false,
-            followPointer: false,
-            followTouchMove: false,
+            enabled: false
         },
         plotOptions: {
             bar: {
@@ -112,7 +109,7 @@ $(document).ready(function () {
         }
     });
     $("a[data-slidesjs-item]").html('<svg height="14" width="14"><circle cx="7" cy="7" r="5" stroke="black" stroke-width="2" fill="none" />Sorry, your browser does not support inline SVG.</svg>'); //Creates code for circles for SlideJS pagination.
-
+$('#chart-1>div>svg').find('g.highcharts-data-labels').remove()
 });
 
 function voted() {
