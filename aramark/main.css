@@ -74,7 +74,7 @@ body {
     overflow-x: hidden;
 }
 body {
-    padding-top: 51px;
+    /*padding-top: 51px;*/
     overflow-y: scroll;
     height: 100%;
     -webkit-overflow-scrolling: touch;
