@@ -76,6 +76,7 @@ body {
 body {
     padding-top: 51px;
     overflow-y: scroll;
+    height: 100%;
     -webkit-overflow-scrolling: touch;
     -webkit-transform:translate3d(0,0,0);
 }
