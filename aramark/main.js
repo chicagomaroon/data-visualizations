@@ -1,9 +1,9 @@
 $(document).ready(function () {
-    $('.take-poll-btn').click(function(event) {
+    $('.take-poll-btn').click(function (event) {
         $(this).toggle();
         $('#hidden-iframe,form,.poll-border').toggle();
     });
-    if($.cookie('v') == 'true')
+    if ($.cookie('v') == 'true')
         voted();
     $('#fb-icon').click(function (event) {
         event.preventDefault();
@@ -12,27 +12,26 @@ $(document).ready(function () {
             href: 'http://chicagomaroon.github.io/aramark/',
         }, function (response) {});
     });
-    $('.popup').click(function (event) {
-        var width = 575,
-            height = 400,
-            left = ($(window).width() - width) / 2,
-            top = ($(window).height() - height) / 2,
-            url = "http://chicagomaroon.github.io/aramark/",
-            via = '@ChicagoMaroon',
-            opts = 'status=1' +
-            ',width=' + width +
-            ',height=' + height +
-            ',top=' + top +
-            ',left=' + left;
+    // We bind a new event to our link
+    $('a.tweet').click(function (e) {
 
-        window.open(url, via, text, opts);
+        //We tell our browser not to follow that link
+        e.preventDefault();
 
-        return false;
+        //We get the URL of the link
+        var loc = $(this).attr('href');
+
+        //We get the title of the link
+        var title = encodeURIComponent($(this).attr('title'));
+
+        //We trigger a new window with the Twitter dialog, in the middle of the page
+        window.open('http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+
     });
     $('#ss-submit').click(function (event) {
         voted();
     });
-     $('#chart-1').highcharts({
+    $('#chart-1').highcharts({
         chart: {
             type: 'bar'
         },
@@ -95,13 +94,16 @@ $(document).ready(function () {
             data: [107199, 70366, 149459],
             animation: false
         }],
-        
+
     });
 
 });
+
 function voted() {
     $('#hidden-iframe,form,.take-poll-btn').remove();
     $('.alert-success,.alert-title,.poll-border').toggle();
-    if($.cookie('v') !== 'true')
-        $.cookie('v','true',{expires: 365});
+    if ($.cookie('v') !== 'true')
+        $.cookie('v', 'true', {
+            expires: 365
+        });
 }
