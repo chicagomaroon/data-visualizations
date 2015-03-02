@@ -74,9 +74,8 @@ body {
     overflow-x: hidden;
 }
 body {
-    /*padding-top: 51px;*/
+    padding-top: 51px;
     overflow-y: scroll;
-    height: 100%;
     -webkit-overflow-scrolling: touch;
     -webkit-transform:translate3d(0,0,0);
 }
@@ -338,17 +337,31 @@ p.first-paragraph:first-letter {
     bottom: 0;
     margin: auto;
 }
+.dining-art-hr {
+    color: #FFFFFF;
+    width: 300px;
+    margin-top: 0;
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(255,255,255,0.75), rgba(0,0,0,0));
+    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(255,255,255,0.75), rgba(0,0,0,0));
+    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(255,255,255,0.75), rgba(0,0,0,0));
+    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(255,255,255,0.75), rgba(0,0,0,0));
+}
 .dining-art {
     font-size: 1em;
     color: #fff;
     position: relative;
     display: inline-block;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-    background: #b70000;
+    /*background: maroon;*/
     padding: 0.4em 1em;
-    margin-bottom: 0.75em;
+    padding-bottom: 0;
+    /*margin-bottom: 0.75em;*/
     font-weight: 700;
+    text-shadow: 0px 2px 3px maroon;
 }
+/*
 .dining-art:after {
     content: "";
     display: block;
@@ -361,6 +374,7 @@ p.first-paragraph:first-letter {
     background: transparent url("img/header-arrow.png") no-repeat center bottom;
     background-size: 100% 10px;
 }
+*/
 div.social-icon-container {
     font-size: 1rem;
 }
@@ -443,7 +457,6 @@ div.social-icon-container {
     }
     h2 {
         font-size: 1.3rem;
-        font-weight: 200;
     }
     h3 {
         font-size: 1.1rem;

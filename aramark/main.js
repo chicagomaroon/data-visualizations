@@ -108,7 +108,7 @@ $(document).ready(function () {
             effect: "slide"
         }
     });
-    $("a[data-slidesjs-item]").html('<svg height="14" width="14"><circle cx="7" cy="7" r="5" stroke="black" stroke-width="2" fill="none" />Sorry, your browser does not support inline SVG.</svg>'); //Creates code for circles for SlideJS pagination.
+    $("a[data-slidesjs-item]").html('<svg height="14" width="14"><circle cx="7" cy="7" r="5" stroke="#333333" stroke-width="2" fill="none" />Sorry, your browser does not support inline SVG.</svg>'); //Creates code for circles for SlideJS pagination.
     var mq = window.matchMedia('all and (max-width: 700px)');
 if(mq.matches) {
     // the width of browser is less then 700px
