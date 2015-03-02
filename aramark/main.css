@@ -72,11 +72,11 @@ body {
     margin: 0px;
     padding: 0px;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
 }
 body {
     padding-top: 51px;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 .row {
     margin-left: 0;
