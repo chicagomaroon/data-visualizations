@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('.take-poll-btn').click(function (event) {
         $(this).toggle();
-        $('#hidden-iframe,form,.poll-border').toggle();
+        $('#hidden-iframe,form,.poll-border').slideToggle();
     });
     if ($.cookie('v') == 'true')
         voted();
