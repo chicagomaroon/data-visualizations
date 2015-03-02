@@ -16,7 +16,7 @@
 
     <title>XXXXX - Interactive feature - ChicagoMaroon.com</title>
 
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
     <link href="main.css" rel="stylesheet" type='text/css'>
 
@@ -87,6 +87,7 @@
                 <p class='text body-text'>
                     last four academic years, growing from 19.49% of the international student population in fall 2011 to 25.76% in fall 2014. The percentages of the three next most-represented countries, India (12.28% to 11.61%), Canada (6.58% to 6.27%), and South Korea (7.53% to 6.24%), all remained stable or declined over the same time period. Data for specific countries were obtained from official University censuses.
                 </p>
+                <div id="chart-1" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
             </div>
 
         </div>
@@ -105,10 +106,10 @@
             </div>
 
             <div class='col-lg-offset-2 col-lg-6 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-10 col-xs-12'>
-                    <div class='poll-container'>
-                        <button class="btn btn-primary btn-lg take-poll-btn">Take the Maroon's dining poll</button>
-                    </div>
-                
+                <div class='poll-container'>
+                    <button class="btn btn-primary btn-lg take-poll-btn">Take the Maroon's dining poll</button>
+                </div>
+
                 <hr class='poll-border'>
                 <script type="text/javascript">
                     var submitted = false;
@@ -476,6 +477,17 @@
                 <p class='text body-text'>“I think UChicago is actually one of the bigger reasons why there’s been an influx of Indian students. UChicago has been pretty invested in India--now they have a center in Delhi, which they opened last year—which is a big deal. Not many other big schools—your Ivy Leagues, your Stanford, MIT, have done that yet,” she said. “I think looking at India from a different perspective, UChicago’s really got that going for them. They see Indian students as a boon for the University, maybe. Maybe they come here, do well, and at the end of the day it reflects pretty well on UChicago.”</p>
                 <p class='text body-text'>“I think UChicago is actually one of the bigger reasons why there’s been an influx of Indian students. UChicago has been pretty invested in India--now they have a center in Delhi, which they opened last year—which is a big deal. Not many other big schools—your Ivy Leagues, your Stanford, MIT, have done that yet,” she said. “I think looking at India from a different perspective, UChicago’s really got that going for them. They see Indian students as a boon for the University, maybe. Maybe they come here, do well, and at the end of the day it reflects pretty well on UChicago.”</p>
                 <p class='text body-text'>“I think UChicago is actually one of the bigger reasons why there’s been an influx of Indian students. UChicago has been pretty invested in India--now they have a center in Delhi, which they opened last year—which is a big deal. Not many other big schools—your Ivy Leagues, your Stanford, MIT, have done that yet,” she said. “I think looking at.”</p>
+                <div class="container slideshow-container">
+                    <div id="slides">
+                        <img src="http://placehold.it/940x528">
+                        <img src="http://placehold.it/940x528">
+                        <img src="http://placehold.it/940x528">
+                        <img src="http://placehold.it/940x528">
+                        <img src="http://placehold.it/940x528">
+                        <a href="#" class="slidesjs-previous slidesjs-navigation"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                        <a href="#" class="slidesjs-next slidesjs-navigation"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                    </div>
+                </div>
                 <p class='text body-text'>Sachdeva also indicated that criticisms of the Indian system of education, which tends to focus on memorization and rote learning, have also driven interest in American education.
                 </p>
                 <p class='text body-text'>“I do think there is a growing urge among Indian students—especially in the big cities, Mumbai, Delhi—to step outside and just explore a new system of education which is very different from the Indian system of education. There is a lot of criticism of the Indian system of education,” she said. “It’s more based on the sciences, it’s more based on learning than understanding. In my high school...you could get by just by rote learning.”
@@ -492,14 +504,11 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-<script src="http://getbootstrap.com/assets/js/docs.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="jquery.cookie.js"></script>
+<script src="jquery.slides.min.js"></script>
+    
 <script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/maps/modules/map.js"></script>
-<script src="http://code.highcharts.com/mapdata/custom/world-highres.js"></script>
-<!-- Flag sprites service provided by Martijn Lafeber, https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE -->
-<link rel="stylesheet" type="text/css" href="http://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
 <script src='main.js'></script>
 <script>
     (function (i, s, o, g, r, a, m) {
