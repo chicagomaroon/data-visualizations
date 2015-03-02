@@ -33,7 +33,8 @@ $(document).ready(function () {
     });
     $('#chart-1').highcharts({
         chart: {
-            type: 'bar'
+            type: 'bar',
+            zoomType: null
         },
         title: {
             text: 'Aramark Historical Performance'
@@ -55,7 +56,9 @@ $(document).ready(function () {
             }
         },
         tooltip: {
-            enabled: false
+            enabled: false,
+            followPointer: false,
+            followTouchMove: false,
         },
         plotOptions: {
             bar: {
