@@ -194,7 +194,7 @@ form,
 }
 .slideshow-credit {
     position: relative;
-    top: -50px;
+    top: -36px;
     left: 70px;
 }
 .navbar-header:after {
@@ -413,7 +413,7 @@ div.social-icon-container {
 }
 @media all and (max-height: 490px) and (min-height: 376px) {
     .push-down {
-        height: 35%;
+        height: 40%;
     }
     .text-background {
         height: 60%;
