@@ -110,7 +110,7 @@ $(document).ready(function () {
         },
         callback: {
             start: function (number) {
-                
+
             },
             complete: function (number) {
                 $('.caption').css('display', 'none');

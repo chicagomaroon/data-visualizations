@@ -84,7 +84,6 @@ body {
     text-align: center;
     font-size: .7rem;
     position: relative;
-    top: -30px
 }
 .row {
     margin-left: 0;
@@ -125,6 +124,9 @@ li.ss-choice-item {
     padding-top: 20px;
 }
 .poll-border:last-of-type {
+    margin-bottom: 0;
+}
+.no-margin-bottom {
     margin-bottom: 0;
 }
 .video-container {
@@ -190,10 +192,10 @@ form,
     color: #BBBBBB;
     font-size: .7rem;
 }
-.slideshow-credit{
+.slideshow-credit {
     position: relative;
-top: -50px;
-left: 70px;
+    top: -50px;
+    left: 70px;
 }
 .navbar-header:after {
     clear: none;
@@ -358,7 +360,7 @@ p.first-paragraph:first-letter {
 .dining-art-hr {
     color: #FFFFFF;
     width: 300px;
-    margin-top: 0;
+    margin-top: 5px;
     border: 0;
     height: 1px;
     background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
