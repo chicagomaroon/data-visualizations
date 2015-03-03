@@ -255,9 +255,9 @@ h1 {
 h2 {
     font-weight: 100;
     padding-top: 15px;
-    
 }
-h2, h3 {
+h2,
+h3 {
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -475,7 +475,7 @@ div.social-icon-container {
         font-size: 1rem;
     }
 }
-@media all and (max-width:767px) and (min-width:650px) {
+@media all and (max-width: 767px) and (min-width: 650px) {
     .push-down {
         height: 30%;
     }
