@@ -81,9 +81,9 @@ body {
 }
 .caption {
     display: none;
-    text-align: center;
-    font-size: .7rem;
+    font-size: .9rem;
     position: relative;
+    top: -20px;
 }
 .row {
     margin-left: 0;
