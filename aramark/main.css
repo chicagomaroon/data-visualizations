@@ -79,6 +79,11 @@ body {
     -webkit-overflow-scrolling: touch;
     -webkit-transform:translate3d(0,0,0);
 }
+.caption {
+    display: none;
+    text-align: center;
+    font-size: .7rem;
+}
 .row {
     margin-left: 0;
     margin-right: 0;
@@ -190,7 +195,7 @@ a[data-slidesjs-item] {
     margin: 0 auto;
 }
 .fullscreen {
-    background: url(img/bagpipes.jpg) no-repeat center center fixed;
+    background: url(img/cathey.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 85vh;
     padding-left: 0;

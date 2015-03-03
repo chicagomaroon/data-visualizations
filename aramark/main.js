@@ -28,6 +28,7 @@ $(document).ready(function () {
         window.open('http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
 
     });
+    $('.food-caption-1').toggle();
     $('#ss-submit').click(function (event) {
         voted();
     });
@@ -106,17 +107,26 @@ $(document).ready(function () {
         pagination: {
             active: true,
             effect: "slide"
+        },
+        callback: {
+            start: function (number) {
+                
+            },
+            complete: function (number) {
+                $('.caption').css('display', 'none');
+                $('.food-caption-' + number).toggle();
+            }
         }
     });
     $("a[data-slidesjs-item]").html('<svg height="14" width="14"><circle cx="7" cy="7" r="5" stroke="#333333" stroke-width="2" fill="none" />Sorry, your browser does not support inline SVG.</svg>'); //Creates code for circles for SlideJS pagination.
     var mq = window.matchMedia('all and (max-width: 700px)');
-if(mq.matches) {
-    // the width of browser is less then 700px
-    $('#chart-1>div>svg').find('g.highcharts-data-labels').remove()
-} else {
-    // the width of browser is more then 700px
-    
-}
+    if (mq.matches) {
+        // the width of browser is less then 700px
+        $('#chart-1>div>svg').find('g.highcharts-data-labels').remove()
+    } else {
+        // the width of browser is more then 700px
+
+    }
 
 });
 
