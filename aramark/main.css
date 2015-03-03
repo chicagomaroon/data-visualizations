@@ -413,7 +413,7 @@ div.social-icon-container {
 }
 @media all and (max-height: 490px) and (min-height: 376px) {
     .push-down {
-        height: 40%;
+        height: 35%;
     }
     .text-background {
         height: 60%;
