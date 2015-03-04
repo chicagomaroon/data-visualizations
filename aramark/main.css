@@ -353,6 +353,9 @@ p.first-paragraph:first-letter {
     height: 20px;
     width: 20px;
 }
+i.fa-comment {
+    color: #444444;
+}
 #left-of-graph-1 {
     padding-top: 40px;
 }
@@ -361,6 +364,9 @@ p.first-paragraph:first-letter {
     top: 0;
     bottom: 0;
     margin: auto;
+}
+#comments {
+    right: 75px;
 }
 .dining-art-hr {
     color: #FFFFFF;
