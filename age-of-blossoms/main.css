@@ -87,6 +87,9 @@ body {
     padding-right: 0;
     padding-top: 20px;
 }
+iframe {
+    padding-top: 10px;
+}
 .caption {
     display: none;
     font-size: .9rem;
