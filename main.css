@@ -74,6 +74,7 @@ body {
     overflow-x: hidden;
 }
 body {
+    -webkit-overflow-scrolling: touch;
     overflow-y: scroll;
 }
 .text {
