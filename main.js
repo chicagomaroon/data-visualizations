@@ -23,6 +23,7 @@ $(document).ready(function () {
 
         return false;
     });
+    /*
     $(".box").hover(
         function () {
             $('.box').not(this).fadeTo('fast', 0.5);
@@ -30,5 +31,6 @@ $(document).ready(function () {
             $('.box').fadeTo('fast', 1);
         }
     );
+    */
 
 });
