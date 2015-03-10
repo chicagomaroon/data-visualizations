@@ -223,11 +223,11 @@ form,
 }
 .text-background {
     background-color: rgba(50, 50, 50, .8);
-    height: 40%;
+    height: 45%;
     text-align: center;
 }
 .push-down {
-    height: 60%;
+    height: 55%;
 }
 .container {
     width: 100%;
@@ -428,18 +428,18 @@ div.social-icon-container {
 }
 @media all and (max-height: 490px) and (min-height: 376px) {
     .push-down {
-        height: 40%;
+        height: 30%;
     }
     .text-background {
-        height: 60%;
+        height: 70%;
     }
 }
 @media all and (max-height: 615px) and (min-height: 491px) {
     .push-down {
-        height: 50%;
+        height: 30%;
     }
     .text-background {
-        height: 50%;
+        height: 70%;
     }
 }
 @media all and (min-width: 1200px) {
@@ -448,7 +448,7 @@ div.social-icon-container {
         line-height: 3rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     h3 {
         font-size: 1.4rem;
@@ -462,7 +462,7 @@ div.social-icon-container {
         font-size: 3.4rem;
     }
     h2 {
-        font-size: 1.7rem;
+        font-size: 1.4rem;
     }
     h3 {
         font-size: 1.3rem;
@@ -476,7 +476,7 @@ div.social-icon-container {
         font-size: 3.2rem;
     }
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -516,7 +516,7 @@ div.social-icon-container {
         font-size: 2.0rem;
     }
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     h3 {
         font-size: 1.2rem;
