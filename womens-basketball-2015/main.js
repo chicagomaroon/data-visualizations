@@ -93,8 +93,8 @@ $(document).ready(function () {
 
     });
     $("#slides").slidesjs({
-        width: 940,
-        height: 528,
+        width: 528,
+        height: 940,
         navigation: {
             active: false,
             effect: "slide"
@@ -116,10 +116,10 @@ $(document).ready(function () {
     $("a[data-slidesjs-item]").html('<svg height="14" width="14"><circle cx="7" cy="7" r="5" stroke="#333333" stroke-width="2" fill="none" />Sorry, your browser does not support inline SVG.</svg>'); //Creates code for circles for SlideJS pagination.
     var mq = window.matchMedia('all and (max-width: 700px)');
     if (mq.matches) {
-        // the width of browser is less then 700px
+        // the width of browser is less than 700px
         $('#chart-1>div>svg').find('g.highcharts-data-labels').remove()
     } else {
-        // the width of browser is more then 700px
+        // the width of browser is more than 700px
 
     }
 

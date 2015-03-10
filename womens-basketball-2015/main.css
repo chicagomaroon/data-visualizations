@@ -153,12 +153,16 @@ a[data-slidesjs-item] {
 }
 .slidesjs-container {
     margin-bottom: 5px;
+    width: 529px;
+    height: 940px;
+    
 }
 .slidesjs-pagination-item {
     float: left;
 }
 #slides {
     display: none;
+    width: 528px;
 }
 /* */
 
