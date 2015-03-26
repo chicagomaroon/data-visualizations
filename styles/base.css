@@ -1,0 +1,32 @@
+/* ============================================================
+  BASE.CSS
+============================================================ */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+body {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+.text {
+    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+}
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+}
+h2 {
+    color:white;
+}
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
