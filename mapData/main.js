@@ -17,7 +17,7 @@ var latlons;
 $(document).ready(function () {
 
     /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
-    jsonData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () { //[DEV]
+    jsonData = $.getJSON('http://localhost:8888/dev-files/raw-data.json', function () { //[DEV]
         rawData = jsonData['responseJSON'];
         callback();
     })
@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     $('#graph-1').highcharts({
         chart: {
-            type: 'area'
+            type: 'column'
         },
         title: {
             text: 'Violent Crimes Near the University of Chicago'
@@ -48,6 +48,16 @@ $(document).ready(function () {
                 formatter: function () {
                     return this.value;
                 }
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                },
+                formatter: function() {
+                    return this.total.toString().replace(" ", ",");
+                }
             }
         },
         tooltip: {
@@ -64,14 +74,8 @@ $(document).ready(function () {
                     }
                 }
             },
-            area: {
-                stacking: 'normal',
-                lineColor: '#666666',
-                lineWidth: 1,
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#666666'
-                }
+            column: {
+                stacking: 'normal'
             }
         },
         credits: {
@@ -104,7 +108,7 @@ $(document).ready(function () {
 
     $('#graph-2').highcharts({
         chart: {
-            type: 'area'
+            type: 'column'
         },
         title: {
             text: 'Property Crimes Near the University of Chicago'
@@ -124,6 +128,16 @@ $(document).ready(function () {
                 formatter: function () {
                     return this.value;
                 }
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                },
+                formatter: function() {
+                    return this.total.toString().replace(" ", ",");
+                }
             }
         },
         tooltip: {
@@ -140,14 +154,8 @@ $(document).ready(function () {
                     }
                 }
             },
-            area: {
-                stacking: 'normal',
-                lineColor: '#666666',
-                lineWidth: 1,
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#666666'
-                }
+            column: {
+                stacking: 'normal'
             }
         },
         credits: {
@@ -176,7 +184,7 @@ $(document).ready(function () {
 
     $('#graph-3').highcharts({
         chart: {
-            type: 'area'
+            type: 'column'
         },
         title: {
             text: 'Drug Crimes Near the University of Chicago'
@@ -196,6 +204,16 @@ $(document).ready(function () {
                 formatter: function () {
                     return this.value;
                 }
+            },
+            stackLabels: {
+                enabled: true,
+                style: {
+                    fontWeight: 'bold',
+                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                },
+                formatter: function() {
+                    return this.total.toString().replace(" ", ",");
+                }
             }
         },
         tooltip: {
@@ -212,14 +230,8 @@ $(document).ready(function () {
                     }
                 }
             },
-            area: {
-                stacking: 'normal',
-                lineColor: '#666666',
-                lineWidth: 1,
-                marker: {
-                    lineWidth: 1,
-                    lineColor: '#666666'
-                }
+            column: {
+                stacking: 'normal'
             }
         },
         credits: {
