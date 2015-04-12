@@ -5,16 +5,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="[description]">
+    <meta name="description" content="Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?">
 
     <meta name="author" content="Forrest Sill">
     <link rel="shortcut icon" href="icon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
     <meta property="og:url" content="http://chicagomaroon.github.io/crime/" />
-    <meta property="og:title" content="[title]" />
-    <meta property="og:description" content="[description]" />
+    <meta property="og:title" content="Crime at U. of C." />
+    <meta property="og:description" content="Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?" />
     <meta property="og:image" content="[image]" />
 
-    <title>[title] - Interactive feature - ChicagoMaroon.com</title>
+    <title>Crime at U. of C. - Interactive feature - ChicagoMaroon.com</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
@@ -58,7 +59,7 @@
                 </a>
             </div>
             <div class="social-icon-container twitter right">
-                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/crime/" title="[title]">
+                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/crime/" title="Crime at U. of C.">
                     <img class="logo" src="img/twitter-logo.png" />
                 </a>
             </div>
@@ -74,152 +75,435 @@
             <div class='col-xs-12 fullscreen'>
                 <div class='push-down'></div>
                 <div class='text-background'>
-                    <div class='dining-art-container'>
-                        <span class='dining-art'>Crime at UChicago</span>
-                        <hr class='dining-art-hr'>
-                    </div>
-
-                    <h1 class='text'>[title]</h1>
-                    <h2 class='subtitle'>[Description]</h2>
+                    <div class=dining-art></div>
+                    <h1 class='text'>Crime at U. of C.</h1>
+                    <h2 class='subtitle sans-text'>Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?</h2>
                     <h3 class='author'>By Forrest Sill | March 30, 2015</h3>
                 </div>
 
             </div>
-            <div class='credit photo-credit cover-photo'>Courtesy University of Chicago Athletics
+            <div class='credit photo-credit cover-photo'>[photo credit]
             </div>
         </div>
         <div class='row'>
             <div class='col-xs-12'>
+                <h2 class='black map-headline sans-text'>Explore Crimes Reported Around the Universtiy from 2001 to the Present </h2>
+                <div class='graph-tip sans-text dots-tooltip'>Click dots to see details about each crime.</div>
+            </div>
+            <div class='col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-7 col-xs-12'>
+                <div id="map-canvas"></div>
+            </div>
+            <div class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
                 <div id="panel">
                     <label for=year-slider>2001</label>
-                    <input type=range min=2001 max=2015 value=2001 id=year-slider>
+                    <input type=range min=2001 list='years' max=2015 value=2001 id=year-slider>
+                    <datalist id="years">
+                        <option label="2001">2001</option>
+                        <option label="2002">2002</option>
+                        <option label="2003">2003</option>
+                        <option label="2004">2004</option>
+                        <option label="2005">2005</option>
+                        <option label="2006">2006</option>
+                        <option label="2007">2007</option>
+                        <option label="2008">2008</option>
+                        <option label="2009">2009</option>
+                        <option label="2010">2010</option>
+                        <option label="2011">2011</option>
+                        <option label="2012">2012</option>
+                        <option label="2013">2013</option>
+                        <option label="2014">2014</option>
+                        <option label="2015">2015</option>
+                    </datalist>
                     <br>
                     <table>
                         <tr>
+                            <td class='first-td'>
+                                <span class='category-name'>Violent</span><span class='crime-count category-count violent'></span>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
-                                Violent <span class='crime-count category-count violent'></span>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
+                                <input type="radio" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
+                            </td>
+                            <td>
                                 <div class='color-box homicide'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
+                            </td>
+                            <td>
                                 <div class='color-box sexual-assault'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
+                            </td>
+                            <td>
                                 <div class='color-box robbery'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
+                            </td>
+                            <td>
                                 <div class='color-box assault'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
+                            </td>
+                            <td>
                                 <div class='color-box battery'></div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Property <span class='crime-count category-count property'></span>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
+                                <span class='category-name'>Property</span>  <span class='crime-count category-count property'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
+                            </td>
+                            <td>
                                 <div class='color-box burglary'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
+                            </td>
+                            <td>
                                 <div class='color-box theft'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
+                            </td>
+                            <td>
                                 <div class='color-box motor-vehicle-theft'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
+                            </td>
+                            <td>
                                 <div class='color-box arson'></div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                Narcotics <span class='crime-count category-count narcotics'></span>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
-                                <div class='color-box cannabis'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
-                                <div class='color-box crack-cocaine'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
-                                <div class='color-box heroin'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
-                                <div class='color-box cocaine'></div>
-                                <br>
-                                <input type="checkbox" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
-                                <div class='color-box other-drug-crimes'></div>
-
+                                <span class='category-name'>Narcotics</span>  <span class='crime-count category-count narcotics'></span>
+                            </td>
+                            <td>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <span class='current-through'></span>
-                                <span clss='disclaimer' style='display:none'>Crime reports are updated daily from the City of Chicago data portal, which is current except for the most recent seven days.</span>
+                                <input type="radio" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
+                            </td>
+                            <td>
+                                <div class='color-box cannabis'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
+                            </td>
+                            <td>
+                                <div class='color-box crack-cocaine'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
+                            </td>
+                            <td>
+                                <div class='color-box heroin'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
+                            </td>
+                            <td>
+                                <div class='color-box cocaine'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
+                            </td>
+                            <td>
+                                <div class='color-box other-drug-crimes'></div>
+
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div id="map-canvas"></div>
+
+            </div>
+        </div>
+        <div class='row'>
+            <div class='sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <div class='map-faq-btn-div'>
+                    <button class='btn btn-default btn-lg text-hidden' id='map-faq-btn'>Show map FAQs</button>
+                </div>
+                <div class='map-faq-text'>
+                    <p><strong>What crimes are not included on this map?</strong> 
+                        <br>The only crimes on the map are violent, property, and drug crimes, which are about half of the about 70,000 crimes reported around the Unvierstiy since 2001. The vast majority of crimes not included on this map fall into one of the following categories: tresspassing, prostitution, weapons violations, criminal damage, deceptive practices, or peace violations.</p>
+                    <br>
+                    <p><strong>What is defined as “around the University?”</strong> 
+                        <br>47th Street on the north to 63rd Street on the south and Cottage Grove on the west to the Lake on the east.  This definition includes the southern part of the Kenwood neighborhood, the entirety of Hyde Park, and north Woodlawn.  The UCPD jurisdiction extends to 37th Street on the north and 64th Street to the south, but as the University community is concentrated between 47th and 63rd Streets, that is the area on which we have chosen to focus.
+    </p>
+                    <p><strong>What is the difference between robbery, burglary, and theft?</strong>
+                        <br>
+                        According to the FBI's Uniform Crime Reporting handbook, robbery is the taking or attempting to take anything of value from someone by force or threat of force or violence and/or by putting the victim in fear.  Burglary is defined as the unlawful entry of a structure to commit a felony or a theft.  The unlawful taking of property from the possession of another.
+                        </p>
+                    <p><strong>What is the difference between assault and battery?</strong>
+                        <br>
+                        According to Illinois law, assault is conduct which places another in reasonable apprehension of receiving a battery.  Battery is defined as conduct causing bodily harm to another person.
+                        </p>
+                    <p><strong>Does this data also include crimes to which the University of Chicago Police Department responded?</strong>
+                        <br>
+                        Yes, it includes all crimes reported to have occurred within the City, regardless of the responding agency.
+                        </p>
+                        <p><strong>Where is this data from?</strong>
+                            <br>
+                            This data comes directly from the City of Chicago’s <a href="https://data.cityofchicago.org/">data portal</a>, using the dataset “Crime - 2001 to present,” which includes all crimes reported to have occurred within the City from January 1, 2001 to the present, minus the past seven days.  <span class='current-through'></p>
+                    </p>
+                    <hr>
+                </div>
             </div>
         </div>
         <div class='row'>
             <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
                 <p class='text body-text first-paragraph'>
-                    At the beginning of winter quarter Aramark implemented a new winter menu, called the Purple Menu, in University dining halls and other locations across the Midwest, which reduced the variety of foods available and was intended to cut food costs. The menu has since been adjusted in response to student feedback.
+                    In 1958, Julian Levi, a former professor at the University and the first president of the University-backed South East Chicago Commission wrote in a letter, “The perpetual discussion of the joys of interracial activities will cause men and women of good will... to caution their daughters not to go to the University of Chicago lest they be raped on the streets."  The University, and it’s South Side home, experienced the full brunt of the decline of the American inner city and the simultaneous increase in crime in the 1970’s. During this time, out of concern for their safety, the University told students to stay off the Red and Green “L” lines and to never venture south of 61st Street. Today, the picture of crime is vastly improved. Homicides are down by 35% since 2001 and in 2014 the city experienced 432 homicides, the lowest number since 1965.
                 </p>
+                <p class='text body-text'>
+                    
+                </p>
+            </div>
+            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
+                <div id='graph-1'></div>
+                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
             </div>
             <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
                 <p class='text body-text'>
-                    The new menu means that the corporate side of Aramark has more control in setting the menu in Arley D. Cathey Dining Commons and Bartlett Dining Commons, rather than independent decisions being made by University officials. The Purple Menu includes more casseroles, more rice and pasta dishes and fewer protein and vegetable dishes. Additionally, individual packets of cream cheese and peanut butter were cut in favor of more cost-efficient large tubs, according to University spokesperson Mary Abowd and Kirsten Wiard-Bauer, a third-year and the Booth House student dining hall representative.
+                    The long, bloody summer of 2012 earned the City the controversial name “Chiraq,” as a result of the uptick in violent crime, especially between rival gang members, that the city experienced after several years of declining violent crime rates.
                 </p>
-
+                <p class='text body-text'>
+                    New York, Boston, LA, Seattle, St. Louis, UChicago may not always top the college rankings, but Chicago is consistently the most violent major American city home to a top-tier university. New York and Boston don’t even come close to Chicago’s violent crime rate. In 2014, Chicago had xx violent crimes per 100,00 residents, while New York had xx per 100,000 residents and Boston has just xx.
+                </p>
+                <p class='text body-text'>
+                    The murder of U. of C. graduate student Amadou Cisse in November of 2007 at the corner of 61st Street and Ellis Avenue, less than one block south of the entrance to the Renee Granville-Grossman Residential Commons, was a shock to the University community, which had not experienced a student death from a violent crime since July 1977, and prided itself on the declining violent crime rates around the University.
+                </p>
+            </div>
+            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
+                <div id='graph-2'></div>
+                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text'>
+                    Starting in 2011, there was a notable decline of all types of crime along Cottage Grove Avenue from 60th to 63rd Streets, likely as a result of the demolition of the distressed Section 8, low-income housing project known as Grove Parc Plaza and the subsequent rebuilding of new mixed-income housing by the nonprofit Preservation of Affordable Housing (POAH).
+                </p>
+                <p class='text body-text'>
+                    The CPD has faced allegations that the lower reported crime rates in the city, especially violent crimes, are a result of the reclassification of certain crimes as noncriminal incidents rather than as a result of fewer crimes being committed. This was first reported by <em>Chicago Magazine</em> in April of 2014 and was supported by an investigation by <em>The Economist</em> published in May of 2014. The allegations have been denied by the CPD and the Mayor’s Office.
+                </p>
+                <p class='text body-text'>
+                    Despite a historically cold February, the City of Chicago is on track to have another bloody year. The first three months of 2015 had 78 murders compared to 62 in the first three months of 2014 and 69 in the first three months of 2013.
+                </p>
+                <p class='text body-text'>
+                    The area around the University has not been immune this overall uptick in crime: from January 1st to March 31st of 2014, there were 48 violent crimes reported around the University. During that same time period this year, there have been 57 violent crimes. Nevertheless, violent crime is still down significantly from 2005, when there were 123 violent reported around the Unvierstiy during the first three months of the year.
+                </p>
+            </div>
+            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
+                <div id='graph-3'></div>
+                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text'>Reported drug crimes dropped precipitously from 2011 to 2013, possibly as a result of fewer committed drug crimes, but more likely as a result of Rahm Emanuel’s scaling down of the War on Drugs in Chicago. The South Side of Chicago is famous for being one of the places where the War was waged the fiercest, with Rahm Emanuel as one of its strongest supporters, according to Michelle Alexander in her book <em>The New Jim Crow</em>.
+                </p>
+                <p class='text body-text'>
+                    Drug crimes are unique as the only truly victimless crime. Reported drug crime numbers surely grossly underestimate the number of committed drug crimes, while violent and property crime numbers likely overestimate the number of crimes actually committed (with the exception of homicide, where there is never a question of whether the crime actually occurred).
+                </p>
+                <p class='text body-text'>
+                    The lack of reported drug crimes around the University can either be attributed to the fact that U. of C. students simply do not commit drug crimes, or a to lack of enforcement of drug crimes by the CPD and the UCPD on campus.
+                </p>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <div class='sans-text arrest-rates-container center-block'>
+                    <table class='arrest-rate-table'>
+                        <th>
+                            Arrest Rates for Crimes Near the University of Chicago, 2001-2014
+                            <br>
+                            <span class='crime-rate-source'>Source: City of Chicago</span>
+                        </th>
+                        <tbody>
+                            <tr class='arrest-category violent'>
+                                <td class='arrest-crime'>
+                                    Violent
+                                </td>
+                                <td>
+                                    19%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box homicide'></div>
+                                    Homicide
+                                </td>
+                                <td>
+                                    61%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box sexual-assault'></div>
+                                    Sexual assault
+                                </td>
+                                <td>
+                                    17%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box robbery'></div>
+                                    Robbery
+                                </td>
+                                <td>
+                                    14%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box assault'></div>
+                                    Assault
+                                </td>
+                                <td>
+                                    30%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box battery'></div>
+                                    Battery
+                                </td>
+                                <td>
+                                    26%
+                                </td>
+                            </tr>
+                            <tr class='arrest-category property'>
+                                <td class='arrest-crime'>
+                                    Property
+                                </td>
+                                <td>
+                                    10%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box burglary'></div>
+                                    Burglary
+                                </td>
+                                <td>
+                                    6%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box theft'></div>
+                                    Theft
+                                </td>
+                                <td>
+                                    10%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box motor-vehicle-theft'></div>
+                                    Motor vehicle theft
+                                </td>
+                                <td>
+                                    10%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box arson'></div>
+                                    Arson
+                                </td>
+                                <td>
+                                    20%
+                                </td>
+                            </tr>
+                            <tr class='arrest-category Narcotics'>
+                                <td class='arrest-crime'>
+                                    Narcotics
+                                </td>
+                                <td>
+                                    97%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box cannabis'></div>
+                                    Cannabis
+                                </td>
+                                <td>
+                                    97%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box crack-cocaine'></div>
+                                    Crack cocaine
+                                </td>
+                                <td>
+                                    99%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box heroin'></div>
+                                    Heroin
+                                </td>
+                                <td>
+                                    97%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box cocaine'></div>
+                                    Cocaine
+                                </td>
+                                <td>
+                                    100%
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class='arrest-crime'>
+                                    <div class='color-box other-drug-crimes'></div>
+                                    Other drug crimes
+                                </td>
+                                <td>
+                                    91%
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-
             <div class='row'>
-                <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                    <p class='text body-text'>"UChicago Dining and Aramark work together to create a new menu each quarter. The one which was developed for winter quarter was not particularly well received by students," Natalie David, a fourth-year and the president of Inter-House Council (IHC), wrote in an e-mail. "The ‘Purple Menu’ is simply a collection of food offerings/recipes developed by Aramark. It’s one of their many color-named menus (which are modified for the many university campuses Aramark serves)."</p>
-                </div>
-            </div>
-            <a id="submitted"></a>
-            <div class='row'>
-                <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                    <p class='text body-text'>
-                        IHC is a student representative body overseen by UChicago Housing that is composed of one representative from each House and an eight-member executive committee.
-                    </p>
-                </div>
-
-
-                <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                    <p class='text body-text'>
-                        According to Wiard-Bauer, the Purple Menu was never officially reported to the dining hall representative committee, but it did come up "casually" in discussion.
-                    </p>
-                    <p class='text body-text'>
-                        "We were all sitting in a really large table and the dining hall representatives were like, ‘My house members said this,’ and we bounced off of each other. And then at one point the Aramark representative [Eric Young] was like, ‘Well, a lot of these things are because of the new Purple Menu that corporate has introduced,’" Wiard-Bauer said.
-                    </p>
-                    <p class='text body-text'>Richard Mason, the executive director of UChicago Dining, attests that changes have been made since the initial rollout of the Purple Menu in response to student comments.
-                    </p>
-                    <hr class='no-margin-bottom'>
-                    <div class='quotation text'>"A lot of animals, a lot of produce aren’t great in the area right now because of the weather and it’s hard to make a menu that works around that."</div>
-                    <hr class='no-margin-bottom'>
-                    <p class='text body-text'>"UChicago Dining listened to some comments we received from students who did not like the changes, and we have re-adjusted the menu over the past few weeks in response. Dining committees and students have given us positive feedback about these changes," Mason wrote in a statement.</p>
-                    <p class='text body-text'>In addition to the responses from student committees, student feedback has also come in the form of comment cards written in the dining halls. The information on these cards is aggregated and analyzed on a regular basis in order to gauge student response to changes in services. However, this data is not made available to the public, according to Abowd.</p>
-                    <p class='text body-text'>Chamberlin House’s IHC representative and second-year Elizabeth Lipschultz put in a request for someone from UChicago Dining to talk to IHC about the general decline in food. In response, Mason attended a recent IHC meeting and urged students not to focus on the details of the Purple Menu. Instead, he explained decline in food quality by Aramark’s sustainability requirements, which requires the dining halls to purchase 35 percent of the food that it serves within a 130-mile radius of the University.</p>
-                </div>
-                <div class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'>
-                    <div id="chart-1" style="height: 400px; margin: 0 auto"></div>
-                </div>
-                <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                    <p class='text body-text'>"A lot of animals, a lot of produce aren’t great in the area right now because of the weather and it’s hard to make a menu that works around that. They tried to switch to things that were more like soups and casseroles and stuff like that. That didn’t go over well, obviously," Lipschultz said. "But they said that it’s not a financial thing, not a sustainability thing, or that’s what they claim. A lot of people are trying to figure out whether it’s been a financial decision. It seems like they try to deny or at least deflect from that."
-                    </p>
-                    <p class='text body-text'>Changes have already been made to the menu to bring back popular food items, such as spinach. Additionally, there will be a new menu for spring quarter that is expected to include larger amounts of locally sourced fruit. The color associated with the upcoming menu was not available.
-                    </p>
-                    <p class='text body-text'>
-                        "Sometimes the quality is a little underwhelming. Like I’ve come here before and not found anything that I wanted to eat because there’s only so many times you can have the same salad and sandwich. I understand that there’s not much they can do in terms of those options, but you know I’d love it if the quality of the food were a bit better," Caroline Newman, a first-year student recently eating at Bartlett Dining Commons, said.</p>
-                    <p class='text body-text'>Aramark Corporation was founded in 1959 and now operates in 22 countries, and supplies food and facilities to universities, federal and state prisons, businesses, sports facilities, and healthcare institutions. Last November, Aramark reported an approximately 10 percent increase in revenue, from approximately $13.5 million to $14.8 million and quarterly dividends have been increased by 15 percent. The new chair of the University Board of Trustees, Joseph Neubauer (MBA ’65), has been the chairman of the board of Aramark since 1984.</p>
-                </div>
                 <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
                 <script type="text/javascript">
                     /* * * CONFIGURATION VARIABLES * * */

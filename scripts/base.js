@@ -1,11 +1,10 @@
+/* ============================================================
+  BASE.JS
+============================================================ */
+
 $(document).ready(function () {
-    $('#fb-icon').click(function (event) {
-        event.preventDefault();
-        FB.ui({
-            method: 'share',
-            href: 'http://chicagomaroon.github.io/',
-        }, function (response) {});
-    });
+    
+    /* On click, Twitter share button opens popup window. */
     $('.popup').click(function (event) {
         var width = 575,
             height = 400,
@@ -23,14 +22,5 @@ $(document).ready(function () {
 
         return false;
     });
-    /*
-    $(".box").hover(
-        function () {
-            $('.box').not(this).fadeTo('fast', 0.5);
-        }, function () {
-            $('.box').fadeTo('fast', 1);
-        }
-    );
-    */
-
+    
 });
