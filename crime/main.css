@@ -110,6 +110,9 @@ body {
     border-color: #DDDDDD;
     border-radius: 5px;
 }
+#panel-container {
+    margin-left: 20px;
+}
 /* Font for highcharts graphs. */
 
 tspan {

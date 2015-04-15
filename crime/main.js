@@ -16,35 +16,44 @@ var duplicateLatLons;
 
 /* Beginning of document.ready function. */
 $(document).ready(function () {
-    /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
-    jsonData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () { 
-        rawData = jsonData['responseJSON'];
-        callback();
-    })
-    var dateJSONData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date&$limit=1&$order=date%20DESC&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () {
-            dateUpdated = dateJSONData['responseJSON'][0]['date'];
-            $('.current-through').text('Crime reports for 2015 are current though ' + formatDateNoTime(dateUpdated) + '.');
+    /* Only load map stuff if window width is big enough. */
+    if ($(window).width() >= 768) {
+        /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
+        jsonData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () { 
+            rawData = jsonData['responseJSON'];
+            callback();
         })
-        /* Loads the initialization code for the threee graphs, which are in the graphs.js file. */
-    $.getScript("graphs.js", function () {
-        $('tspan:contains("Near the University of Chicago")').css('font-weight', '600');
-    });
+        var dateJSONData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date&$limit=1&$order=date%20DESC&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () {
+                dateUpdated = dateJSONData['responseJSON'][0]['date'];
+                $('.current-through').text('Crime reports for 2015 are current though ' + formatDateNoTime(dateUpdated) + '.');
+            })
 
-    $('#map-faq-btn').click(function (event) {
-        if ($(this).hasClass('text-hidden')) {
-            $('.map-faq-text').show();
-            $('#map-faq-btn').text('Hide map FAQs');
-        } else {
-            $('.map-faq-text').hide();
-            $('#map-faq-btn').text('Show map FAQs');
-        }
-        $(this).toggleClass('text-hidden');
-        $(this).toggleClass('text-shown');
+        $('#map-faq-btn').click(function (event) {
+            if ($(this).hasClass('text-hidden')) {
+                $('.map-faq-text').show();
+                $('#map-faq-btn').text('Hide map FAQs');
+            } else {
+                $('.map-faq-text').hide();
+                $('#map-faq-btn').text('Show map FAQs');
+            }
+            $(this).toggleClass('text-hidden');
+            $(this).toggleClass('text-shown');
 
-    });
-    $('#map-faq-btn.text-shown').click(function (event) {
+        });
+        $('#map-faq-btn.text-shown').click(function (event) {
 
-    });
+        });
+        $(window).resize(function() {
+            if ($(window).width() < 768 && $('.map-related').is(':visible'))
+               $('.map-related').hide(); 
+        });
+    } else {
+        $('.map-related').hide();
+    }
+    /* Loads the initialization code for the threee graphs, which are in the graphs.js file. */
+        $.getScript("graphs.js", function () {
+            $('tspan:contains("Near the University of Chicago")').css('font-weight', '600');
+        });
 
 })
 /* End of document.ready function. */
