@@ -212,7 +212,10 @@ label[for="year-slider"] {
     margin: 0 auto;
 }
 .fullscreen {
+    /*
     background: url(img/huddle.jpg) no-repeat center center fixed;
+    */
+    background: url(img/huddle.jpg) no-repeat scroll center top transparent;
     background-size: cover;
     height: 85vh;
     padding-left: 0;
