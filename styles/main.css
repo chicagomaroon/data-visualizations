@@ -41,6 +41,10 @@ a.story-link:hover {
   z-index: 1;
 }
 
+footer {
+    padding-top: 10px;
+}
+
 /* Background for story tiles. */
 div.international-students {
     background-image: url('http://chicagomaroon.github.io/img/bagpipes.jpg');
