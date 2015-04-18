@@ -17,6 +17,12 @@ body {
 .text {
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
 }
+.body-text {
+    padding-top: 20px;
+    color: #333333;
+    font-size: 1.0rem;
+    line-height: 1.45;
+}
 h1 {
     font-size: 3rem;
     text-align: center;
