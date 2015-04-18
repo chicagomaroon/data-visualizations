@@ -1,3 +1,6 @@
+/* ============================================================
+  MAIN.JS for womens-basketball-2015
+============================================================ */
 $(document).ready(function () {
     $('.take-poll-btn').click(function (event) {
         $(this).toggle();

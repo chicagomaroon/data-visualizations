@@ -1,84 +1,6 @@
 /* ============================================================
-  CSS RESET
+  MAIN.CSS for womens-basketball-2015
 ============================================================ */
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-font,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-caption {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-}
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
-}
-body {
-    padding-top: 51px;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    -webkit-transform: translate3d(0, 0, 0);
-}
 .caption {
     display: none;
     font-size: .9rem;
@@ -88,43 +10,6 @@ body {
 .row {
     margin-left: 0;
     margin-right: 0;
-}
-.ss-q-title,
-.ss-choice-label,
-.ss-scalenumber,
-.ss-scalerow {
-    font-size: 1rem;
-    font-weight: 500;
-}
-.ss-choice-label,
-.ss-scalenumber,
-.ss-scalerow {
-    font-weight: 300;
-}
-.ss-form-question {
-    padding-top: 30px;
-}
-.ss-form-question:first-of-type {
-    padding-top: 10px;
-}
-.ss-scalerow {
-    padding-left: 4px;
-    padding-right: 4px;
-}
-li.ss-choice-item {
-    list-style-type: none;
-}
-.ss-scalenumbers {
-    text-align: center;
-}
-.poll-title {
-    text-align: center;
-}
-.ss-navigate {
-    padding-top: 20px;
-}
-.poll-border:last-of-type {
-    margin-bottom: 0;
 }
 .no-margin-bottom {
     margin-bottom: 0;
