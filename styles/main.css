@@ -39,9 +39,6 @@ a.story-link:hover {
   top:0;
   left: 0;
   z-index: 1;
-
-  /* Fixes overlap error in IE7/8. */
-  background-image: url('empty.gif');
 }
 
 /* Background for story tiles. */
