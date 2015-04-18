@@ -88,12 +88,6 @@ form,
 .navbar-header:after {
     clear: none;
 }
-.body-text {
-    padding-top: 20px;
-    color: #333333;
-    font-size: 1.0rem;
-    line-height: 1.45;
-}
 .small-media-credit {
     max-width: 250px;
     margin: 0 auto;

@@ -85,7 +85,7 @@ footer > a:focus {
         font-size: 1.4rem;
     }
     body {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
 }
 @media all and (max-width: 1199px) and (min-width: 992px) {
@@ -99,7 +99,7 @@ footer > a:focus {
         font-size: 1.3rem;
     }
     body {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
 }
 @media all and (max-width: 991px) and (min-width: 768px) {
@@ -113,7 +113,7 @@ footer > a:focus {
         font-size: 1.2rem;
     }
     body {
-        font-size: 1rem;
+        font-size: 1.6rem;
     }
 }
 @media all and (max-width: 767px) and (min-width: 650px) {
@@ -133,7 +133,7 @@ footer > a:focus {
         font-size: 1.2rem;
     }
     body {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 }
 @media all and (max-width: 649px) and (min-width: 0px) {
@@ -153,6 +153,6 @@ footer > a:focus {
         font-size: 1.2rem;
     }
     body {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 }
