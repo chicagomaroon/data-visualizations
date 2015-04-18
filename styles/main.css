@@ -46,14 +46,14 @@ a.story-link:hover {
 
 /* Background for story tiles. */
 div.international-students {
-    background-image: url(img/bagpipes.jpg);
+    background-image: url('http://chicagomaroon.github.io/img/bagpipes.jpg');
 }
 div.aramark {
-    background-image: url(img/cathey.jpg);
+    background-image: url('http://chicagomaroon.github.io/img/cathey.jpg');
 }
 div.age-of-blossoms {
-    background-image: url(img/man.jpg);
+    background-image: url('http://chicagomaroon.github.io/img/man.jpg');
 }
 div.womens-basketball-2015 {
-    background-image: url(img/huddle.jpg);
+    background-image: url('http://chicagomaroon.github.io/img/huddle.jpg');
 }

@@ -136,22 +136,6 @@ function initialize() {
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
-    var outlineCords = [
-        new google.maps.LatLng(41.809772, -87.606040),
-        new google.maps.LatLng(41.780286, -87.606040),
-        new google.maps.LatLng(41.780286, -87.568306),
-        new google.maps.LatLng(41.809772, -87.568306)
-    ];
-    outlinePoolygon = new google.maps.Polygon({
-        paths: outlineCords,
-        strokeColor: '#222222',
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#000000',
-        fillOpacity: 0
-    });
-
-    //outlinePoolygon.setMap(map);
 
 }
 
