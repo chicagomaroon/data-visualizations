@@ -30,3 +30,16 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
+footer {
+    text-align: center;
+    padding-top: 50px;
+    color: #BBBBBB;
+    font-size: .7rem;
+    padding-bottom: 10px;
+}
+
+footer > a,
+footer > a:hover,
+footer > a:focus {
+    color: inherit;
+}

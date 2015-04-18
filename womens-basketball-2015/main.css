@@ -525,20 +525,7 @@ div.social-icon-container {
         font-size: 1rem;
     }
 }
-footer {
-    text-align: center;
-    padding-top: 50px;
-    color: #BBBBBB;
-    font-size: .7rem;
-    padding-bottom: 10px;
-}
-/* Highcharts CSS */
 
-footer > a,
-footer > a:hover,
-footer > a:focus {
-    color: inherit;
-}
 #container {
     height: 500px;
     width: 800px;
