@@ -73,7 +73,7 @@ footer > a:focus {
 }
 @media all and (min-width: 1200px) {
     h1 {
-        font-size: 4rem;
+        font-size: 5rem;
         line-height: 3rem;
     }
     h2 {
@@ -88,10 +88,10 @@ footer > a:focus {
 }
 @media all and (max-width: 1199px) and (min-width: 992px) {
     h1 {
-        font-size: 3.4rem;
+        font-size: 5rem;
     }
     h2 {
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
     h3 {
         font-size: 1.3rem;
@@ -102,10 +102,10 @@ footer > a:focus {
 }
 @media all and (max-width: 991px) and (min-width: 768px) {
     h1 {
-        font-size: 3.2rem;
+        font-size: 5rem;
     }
     h2 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -122,10 +122,10 @@ footer > a:focus {
         height: 70%;
     }
     h1 {
-        font-size: 2.8rem;
+        font-size: 4rem;
     }
     h2 {
-        font-size: 1.4rem;
+        font-size: 2rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -142,10 +142,10 @@ footer > a:focus {
         height: 80%;
     }
     h1 {
-        font-size: 2.0rem;
+        font-size: 3.0rem;
     }
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
     h3 {
         font-size: 1.2rem;
