@@ -48,6 +48,11 @@ footer {
     padding-top: 10px;
 }
 
+h1 {
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
 /* Background for story tiles. */
 div.international-students {
     background-image: url('http://chicagomaroon.github.io/img/bagpipes.jpg');
