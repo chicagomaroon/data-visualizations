@@ -31,6 +31,9 @@ a[data-slidesjs-item] {
     padding-left: 1px;
     padding-right: 1px;
 }
+#chart-1 {
+    height: inherit;
+}
 .glyphicon {
     color: #333333;
     font-size: 1.6rem;
