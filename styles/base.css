@@ -20,8 +20,6 @@ body {
 .body-text {
     padding-top: 20px;
     color: #333333;
-    font-size: 1.0rem;
-    line-height: 1.45;
 }
 h1 {
     font-size: 3rem;
@@ -85,7 +83,7 @@ footer > a:focus {
         font-size: 1.4rem;
     }
     body {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 }
 @media all and (max-width: 1199px) and (min-width: 992px) {
@@ -99,7 +97,7 @@ footer > a:focus {
         font-size: 1.3rem;
     }
     body {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 }
 @media all and (max-width: 991px) and (min-width: 768px) {
@@ -113,7 +111,7 @@ footer > a:focus {
         font-size: 1.2rem;
     }
     body {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 }
 @media all and (max-width: 767px) and (min-width: 650px) {
@@ -133,7 +131,7 @@ footer > a:focus {
         font-size: 1.2rem;
     }
     body {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 }
 @media all and (max-width: 649px) and (min-width: 0px) {
