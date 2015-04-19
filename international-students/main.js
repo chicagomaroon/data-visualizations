@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#chart-1').css('height','');
     $('body').scroll(function(event){
         
     });
@@ -10,7 +11,6 @@ var navbarHeight = $('.navbar').outerHeight();
 
 $('body').scroll(function(event){
     didScroll = true;
-    console.log('scroll');
 });
 
 setInterval(function() {
