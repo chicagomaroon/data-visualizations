@@ -47,6 +47,15 @@ footer > a:hover,
 footer > a:focus {
     color: inherit;
 }
+i.fa-comment {
+    color: #444444;
+}
+.logo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
 @media all and (max-height: 375px) and (min-height: 0px) {
     .push-down {
         height: 0;

@@ -356,14 +356,14 @@ p.first-paragraph:first-letter {
 i.fa-comment {
     color: #444444;
 }
-#left-of-graph-1 {
-    padding-top: 40px;
-}
 .logo {
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
+}
+#left-of-graph-1 {
+    padding-top: 40px;
 }
 #comments {
     right: 75px;
