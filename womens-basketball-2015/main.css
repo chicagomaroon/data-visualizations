@@ -32,7 +32,7 @@ a[data-slidesjs-item] {
     padding-right: 1px;
 }
 #chart-1 {
-    height: inherit;
+    height: auto;
 }
 .glyphicon {
     color: #333333;
