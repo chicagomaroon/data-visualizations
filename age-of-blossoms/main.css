@@ -262,22 +262,7 @@ h3 {
 .medium {
     font-size: 1.5rem;
 }
-h1 {
-    line-height: 3rem;
-    font-weight: 800;
-}
-h2 {
-    font-weight: 100;
-    padding-top: 15px;
-}
-h2,
-h3 {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-h4 {
-    font-size: 1.3rem;
-}
+
 .interviewee-name {
     padding-top: 10px;
 }
