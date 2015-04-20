@@ -213,7 +213,7 @@ function refreshCrimeCounts(year) {
         }
     }
     /* Initizalize each specialized crime count based on the FBI code, except for drug crimes (which all have the FBI code of 18) -- initialize them using the HTML value attribute as the identifier instead. */
-    $('.crime-count:not(.category-count').each(function (i, val) {
+    $('.crime-count').not('.category-count').each(function (i, val) {
         if ($(val).attr('data-code') !== '18')
             $(val).text(' (' + crimeCounter[$(val).attr('data-code')] + ')');
         else
