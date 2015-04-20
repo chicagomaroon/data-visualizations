@@ -1,6 +1,0 @@
-https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date, primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code='01A' or fbi_code='02' or fbi_code='03' or fbi_code='04A' or fbi_code='04B' or fbi_code='05' or fbi_code='06' or fbi_code='07' or fbi_code='09' or fbi_code='18') AND (latitude > 41.780286 AND latitude < 41.809772) AND (longitude > -87.606040 and longitude < -87.568306)&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa
-https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa
-
-https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date&$limit=1&$order=date DESC&$$app_token=WAGToj317sbZqJNaVrNhejlqa
-
-https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date&$limit=1&$order=date%20DESC&$$app_token=WAGToj317sbZqJNaVrNhejlqa
