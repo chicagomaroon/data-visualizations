@@ -1,9 +1,3 @@
-/* TODO: remove this rule. */
-.dummy-figure-contianer {
-    margin-top: 20px;
-    height: 400px;
-    background-color: #CCCCCC;
-}
 .figure-caption {
     font-size: .7rem;
 }
@@ -13,7 +7,7 @@
     padding-top: 20px;
 }
 .fullscreen {
-    background: url(img/[image]) no-repeat center center fixed;
+    background: url(img/ucmc.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 85vh;
     padding-left: 0;
@@ -53,6 +47,9 @@ iframe {
     margin: 0;
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
 }
+.figure {
+    width: 600px;
+}
 .credit {
     color: #BBBBBB;
     font-size: .7rem;
@@ -65,14 +62,6 @@ iframe {
     color: #333333;
     font-size: 1.0rem;
     line-height: 1.45;
-}
-
-.fullscreen {
-    background: url(img/talking.jpg) no-repeat center center fixed;
-    background-size: cover;
-    height: 85vh;
-    padding-left: 0;
-    padding-right: 0;
 }
 .text-background {
     background-color: rgba(50, 50, 50, .8);
@@ -226,8 +215,7 @@ footer > a:focus {
 }
 @media all and (min-width: 1200px) {
     h1 {
-        font-size: 5rem;
-        line-height: 3rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 2rem;
@@ -241,7 +229,7 @@ footer > a:focus {
 }
 @media all and (max-width: 1199px) and (min-width: 992px) {
     h1 {
-        font-size: 5rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 2rem;
@@ -254,8 +242,14 @@ footer > a:focus {
     }
 }
 @media all and (max-width: 991px) and (min-width: 768px) {
+    .push-down {
+        height: 30%;
+    }
+    .text-background {
+        height: 70%;
+    }
     h1 {
-        font-size: 5rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 2rem;
@@ -275,7 +269,7 @@ footer > a:focus {
         height: 70%;
     }
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 2rem;
@@ -295,7 +289,7 @@ footer > a:focus {
         height: 80%;
     }
     h1 {
-        font-size: 3.0rem;
+        font-size: 2.5rem;
     }
     h2 {
         font-size: 1.5rem;
