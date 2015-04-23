@@ -40,4 +40,7 @@ $(document).ready(function () {
     $(window).scroll(function() {
         console.log('scroll');
     });
+    $('.to-top-a').click(function(event) {
+        console.log('to top');
+    });
 });

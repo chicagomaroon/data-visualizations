@@ -242,10 +242,13 @@ form,
 .cover-photo.credit {
     padding-left: 30px;
 }
-h1,
+h1.headline,
 h2,
 h3 {
     color: #FFFFFF;
+    text-align: center;
+}
+h1 {
     text-align: center;
 }
 .produced.small {
@@ -575,7 +578,7 @@ thead {
     bottom: 10px;
     width: 100%;
 }
-.tiles, .bios-container, .other-content-container {
+.tiles, .bios-container, .other-content-container, h1 {
     font-family: 'Roboto', sans-serif;
 }
 img {
@@ -601,25 +604,67 @@ img {
     background-image: url(img/moose-web.png);
 }
 
-#united-progress > div {
+.slate-name.united-progress {
     background-color: #DC2039;
 }
-#open-minds > div {
+.slate-name.open-minds {
     background-color: #5A8C8C;
 }
-#one-uchicago > div {
+.slate-name.one-uchicago {
     background-color: #F2D99D;
 }
-#very-good-slate > div {
+.slate-name.very-good-slate {
     background-color: #738585;
 }
-#tk-appreciation > div {
+.slate-name.tk-appreciation {
     background-color: #AB1111;
 }
+.slate-name.moose-party {
+    background-color: #000080;
+}
+.slate-name.united-progress {
+    background-color: #DC2039;
+}
+
+#united-progress > div {
+    border-color: #DC2039;
+    border-width: 15px;
+    border-style: solid;
+}
+#open-minds > div {
+    border-color: #5A8C8C;
+    border-width: 15px;
+    border-style: solid;
+}
+#one-uchicago > div {
+    border-color: #F2D99D;
+    border-width: 15px;
+    border-style: solid;
+}
+#very-good-slate > div {
+    border-color: #738585;
+    border-width: 15px;
+    border-style: solid;
+}
+#tk-appreciation > div {
+    border-color: #AB1111;
+    border-width: 15px;
+    border-style: solid;
+}
 #moose-party > div {
-    background-color: #CBE9FC;
+    border-color: #000080;
+    border-width: 15px;
+    border-style: solid;
 }
 .questions-table {
     border-collapse: separate;
     border-spacing: 15px 15px;
+}
+.to-top {
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
 }
