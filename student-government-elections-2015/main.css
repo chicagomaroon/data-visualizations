@@ -243,12 +243,11 @@ form,
     padding-left: 30px;
 }
 h1.headline,
-h2,
 h3 {
     color: #FFFFFF;
     text-align: center;
 }
-h1 {
+h1, h2 {
     text-align: center;
 }
 .produced.small {
@@ -418,7 +417,7 @@ footer > a:focus {
 .tile {
     padding: 0 0 0 0;
     background-position: center top;
-    height: calc(34vh - 93px);
+    height: calc(34vh - 95px);
 }
 @media all and (max-height: 375px) and (min-height: 0px) {
     .push-down {
@@ -587,29 +586,35 @@ img {
 }
 .tile.united-progress {
     background-image: url(img/united-progress-web.png);
+    background-size: cover;
 }
 .tile.open-minds {
     background-image: url();
+    background-size: cover;
 }
 .tile.one-uchicago {
     background-image: url();
+    background-size: cover;
 }
 .tile.very-good-slate {
-    background-image: url();
+    background-image: url(img/very-good-slate-web.png);
+    background-size: cover;
 }
 .tile.tk-appreciation {
-    background-image: url();
+    background-image: url(img/tk-appreciation-web.png);
+    background-size: cover;
 }
 .tile.moose-party {
     background-image: url(img/moose-web.png);
+    background-size: cover;
 }
-.tile.undergraduate-liason {
+.tile.undergraduate-liaison {
     background-color:#777777;
 }
-.tile.graduate-liason {
+.tile.graduate-liaison {
     background-color:#555555;
 }
-.tile.community-liason {
+.tile.community-liaison {
     background-color:#333333;
 }
 
@@ -666,22 +671,33 @@ img {
     border-style: solid;
 }
 
-#undergraduate-liason > div {
+#undergraduate-liaison > div {
     border-color:#777777;
     border-width: 15px;
     border-style: solid;
 }
-#graduate-liason > div {
+#graduate-liaison > div {
     border-color:#555555;
     border-width: 15px;
     border-style: solid;
 }
-#community-liason > div {
+#community-liaison > div {
     border-color:#333333;
     border-width: 15px;
     border-style: solid;
 }
+.slate-name.communiuty-liaison {
+    padding: 0 5px 15px 5px;
+}
 .questions-table {
     border-collapse: separate;
     border-spacing: 15px 15px;
+}
+.category-header {
+    font-weight: bold;
+}
+img.headshot {
+    width: 250px;
+    height: auto;
+    border-radius: 125px;
 }
