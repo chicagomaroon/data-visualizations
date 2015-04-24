@@ -418,7 +418,7 @@ footer > a:focus {
 .tile {
     padding: 0 0 0 0;
     background-position: center top;
-    height: calc(50vh - 136px);
+    height: calc(34vh - 93px);
 }
 @media all and (max-height: 375px) and (min-height: 0px) {
     .push-down {
@@ -603,6 +603,15 @@ img {
 .tile.moose-party {
     background-image: url(img/moose-web.png);
 }
+.tile.undergraduate-liason {
+    background-color:#777777;
+}
+.tile.graduate-liason {
+    background-color:#555555;
+}
+.tile.community-liason {
+    background-color:#333333;
+}
 
 .slate-name.united-progress {
     background-color: #DC2039;
@@ -656,15 +665,23 @@ img {
     border-width: 15px;
     border-style: solid;
 }
+
+#undergraduate-liason > div {
+    border-color:#777777;
+    border-width: 15px;
+    border-style: solid;
+}
+#graduate-liason > div {
+    border-color:#555555;
+    border-width: 15px;
+    border-style: solid;
+}
+#community-liason > div {
+    border-color:#333333;
+    border-width: 15px;
+    border-style: solid;
+}
 .questions-table {
     border-collapse: separate;
     border-spacing: 15px 15px;
-}
-.to-top {
-    width: 60px;
-    height: 60px;
-    background-color: black;
-    position: fixed;
-    bottom: 60px;
-    right: 60px;
 }
