@@ -72,4 +72,5 @@ div.ucmc-trauma-center {
 }
 div.student-government-elections-2015 {
     background-image: url('http://chicagomaroon.github.io/img/sg-logo.png');
+    background-size: contain;
 }
