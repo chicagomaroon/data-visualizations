@@ -682,17 +682,17 @@ img {
 }
 
 #undergraduate-liaison > div {
-    border-color:#777777;
+    border-color:orange;
     border-width: 15px;
     border-style: solid;
 }
 #graduate-liaison > div {
-    border-color:#555555;
+    border-color:purple;
     border-width: 15px;
     border-style: solid;
 }
 #community-liaison > div {
-    border-color:#333333;
+    border-color:lightblue;
     border-width: 15px;
     border-style: solid;
 }
