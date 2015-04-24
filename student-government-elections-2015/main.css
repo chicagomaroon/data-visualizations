@@ -589,11 +589,11 @@ img {
     background-size: cover;
 }
 .tile.open-minds {
-    background-image: url();
+    background-image: url(img/open-minds-web.png);
     background-size: cover;
 }
 .tile.one-uchicago {
-    background-image: url();
+    background-image: url(img/one-web.png);
     background-size: cover;
 }
 .tile.very-good-slate {
