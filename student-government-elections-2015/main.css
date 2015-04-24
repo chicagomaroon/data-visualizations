@@ -639,6 +639,16 @@ img {
 .slate-name.united-progress {
     background-color: #DC2039;
 }
+.slate-name.undergraduate-liason {
+    background-color: orange;
+}
+.slate-name.graduate-liason {
+    background-color: purple;
+}
+.slate-name.community-liason {
+    background-color: lightblue;
+}
+
 
 #united-progress > div {
     border-color: #DC2039;
