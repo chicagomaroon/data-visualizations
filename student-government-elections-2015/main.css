@@ -706,3 +706,7 @@ img.headshot {
     width: 90%;
     border: 3px solid #333333;
 }
+.pitch {
+    font-size: 1rem;
+    font-style: italic;
+}
