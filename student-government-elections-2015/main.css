@@ -700,4 +700,9 @@ img.headshot {
     width: 250px;
     height: auto;
     border-radius: 125px;
+    padding-bottom: 15px;
+}
+.thick-hr {
+    width: 90%;
+    border: 3px solid #333333;
 }
