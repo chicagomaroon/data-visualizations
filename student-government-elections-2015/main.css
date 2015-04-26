@@ -418,7 +418,7 @@ footer > a:focus {
     padding: 0 0 0 0;
     background-position: center top;
     height: calc(34vh - 58px);
-    min-height: 153px;
+    min-height: 200px;
 }
 @media all and (max-height: 375px) and (min-height: 0px) {
     .push-down {
