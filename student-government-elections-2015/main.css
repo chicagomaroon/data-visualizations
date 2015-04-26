@@ -417,7 +417,8 @@ footer > a:focus {
 .tile {
     padding: 0 0 0 0;
     background-position: center top;
-    height: calc(34vh - 95px);
+    height: calc(34vh - 58px);
+    min-height: 153px;
 }
 @media all and (max-height: 375px) and (min-height: 0px) {
     .push-down {
