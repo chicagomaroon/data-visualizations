@@ -3,7 +3,7 @@ $(document).ready(function () {
         event.preventDefault();
         FB.ui({
             method: 'share',
-            href: 'http://chicagomaroon.github.io/ucmc-trauma-center/',
+            href: 'http://chicagomaroon.github.io/ucmc-trauma-center-part-2/',
         }, function (response) {});
     });
     // We bind a new event to our link
