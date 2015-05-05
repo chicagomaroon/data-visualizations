@@ -317,8 +317,8 @@ p {
     bottom: 20px;
     text-align: center;
     font-weight: 200;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5px;
+    margin-right: 5px;
     left: 0;
     right: 0;
 }
