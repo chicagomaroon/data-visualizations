@@ -16,6 +16,13 @@ var duplicateLatLons;
 
 /* Beginning of document.ready function. */
 $(document).ready(function () {
+    $('#fb-icon').click(function (event) {
+        event.preventDefault();
+        FB.ui({
+            method: 'share',
+            href: 'http://chicagomaroon.github.io/security-alerts/',
+        }, function (response) {});
+    });
     /* Only load map stuff if window width is big enough. */
     if ($(window).width() >= 768) {
         /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
