@@ -318,7 +318,7 @@ function subFormatTime(hours, mins) {
     return ret;
 }
 
-/* Converts the ugly description from the City's website to how a human would describe the crime. */
+/* Converts the description from the City's website to how a human would describe the crime. */
 function prettifyDescription(original) {
     var ret;
     var dictionary = {
