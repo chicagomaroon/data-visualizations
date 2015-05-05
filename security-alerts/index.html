@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="What's behind security alerts?">
+
+    <meta name="author" content="Cairo Lewis">
+    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
+    <meta property="og:url" content="http://chicagomaroon.github.io/security-alerts/" />
+    <meta property="og:title" content="What's behind security alerts?" />
+    <meta property="og:description" content="An in-depth look into the University process" />
+    <meta property="og:image" content="http://chicagomaroon.github.io/security-alerts/img/woodlawn.jpg" />
+
+    <title>What's behind security alerts? - Interactive feature - ChicagoMaroon.com</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+    <link href="http://localhost:8888/styles/reset.css" rel="stylesheet" type='text/css'>
+    <link href="http://localhost:8888/styles/base.css" rel="stylesheet" type='text/css'>
+    <link href="main.css" rel="stylesheet" type='text/css'>
+
+</head>
+
+<body>
+    <!-- Hotjar Tracking Code for chicagomaroon.github.io -->
+<script>
+    (function(f,b){
+        var c;
+        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+        f._hjSettings={hjid:32132, hjsv:4};
+        c=b.createElement("script");c.async=1;
+        c.src="//static.hotjar.com/c/hotjar-"+f._hjSettings.hjid+".js?sv="+f._hjSettings.hjsv;
+        b.getElementsByTagName("head")[0].appendChild(c); 
+    })(window,document);
+</script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1584750855103746',
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="navbar nav navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
+                    <img alt="The Chicago Maroon Logo" class='logo' src="http://localhost:8888/img/maroon-logo.png">
+                </a>
+            </div>
+
+            <div class="social-icon-container fb right">
+                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
+                    <img class="logo" src="http://localhost:8888/img/fb-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container twitter right">
+                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/security-alerts/" title="What's behind security alerts?">
+                    <img class="logo" src="http://localhost:8888/img/twitter-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container comments right">
+                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
+                    <i class="fa fa-comment fa-lg logo"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-12 fullscreen'>
+                <div class='push-down'></div>
+                <div class='text-background'>
+                    <div class='section-art-container'>
+                        <span class='section-art'>Crime</span>
+                        <hr class='section-art-hr'>
+                    </div>
+
+                    <h1 class='text'>What's behind security alerts?</h1>
+                    <h2 class='subtitle'>An in-depth look into the University process</h2>
+                    <h3 class='author'>By Cairo Lewis | Produced by Forrest Sill | May 5, 2015</h3>
+                </div>
+
+            </div>
+            <div class='credit photo-credit cover-photo'>Marta Bakula/<em>Chicago Maroon</em>
+            </div>
+        </div>
+        <div class='row map-related'>
+            <div class='col-xs-12'>
+                <h2 class='black map-headline sans-text'>Explore Crimes Reported Around the University from 2001 to the Present </h2>
+                <div class='graph-tip sans-text dots-tooltip'>Click dots to see details about each crime.</div>
+            </div>
+            <div class='col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-7 col-xs-12'>
+                <div id="map-canvas"></div>
+            </div>
+            <div id='panel-container' class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
+                <div id="panel">
+                    <label for=year-slider>2001</label>
+                    <input type=range min=2001 list='years' max=2015 value=2001 id=year-slider>
+                    <datalist id="years">
+                        <option label="2001">2001</option>
+                        <option label="2002">2002</option>
+                        <option label="2003">2003</option>
+                        <option label="2004">2004</option>
+                        <option label="2005">2005</option>
+                        <option label="2006">2006</option>
+                        <option label="2007">2007</option>
+                        <option label="2008">2008</option>
+                        <option label="2009">2009</option>
+                        <option label="2010">2010</option>
+                        <option label="2011">2011</option>
+                        <option label="2012">2012</option>
+                        <option label="2013">2013</option>
+                        <option label="2014">2014</option>
+                        <option label="2015">2015</option>
+                    </datalist>
+                    <br>
+                    <table>
+                        <tr>
+                            <td class='first-td'>
+                                <span class='category-name'>Violent</span><span class='crime-count category-count violent'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
+                            </td>
+                            <td>
+                                <div class='color-box homicide'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
+                            </td>
+                            <td>
+                                <div class='color-box sexual-assault'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
+                            </td>
+                            <td>
+                                <div class='color-box robbery'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
+                            </td>
+                            <td>
+                                <div class='color-box assault'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
+                            </td>
+                            <td>
+                                <div class='color-box battery'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class='category-name'>Property</span>  <span class='crime-count category-count property'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
+                            </td>
+                            <td>
+                                <div class='color-box burglary'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
+                            </td>
+                            <td>
+                                <div class='color-box theft'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
+                            </td>
+                            <td>
+                                <div class='color-box motor-vehicle-theft'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
+                            </td>
+                            <td>
+                                <div class='color-box arson'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class='category-name'>Narcotics</span>  <span class='crime-count category-count narcotics'></span>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
+                            </td>
+                            <td>
+                                <div class='color-box cannabis'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
+                            </td>
+                            <td>
+                                <div class='color-box crack-cocaine'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
+                            </td>
+                            <td>
+                                <div class='color-box heroin'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
+                            </td>
+                            <td>
+                                <div class='color-box cocaine'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
+                            </td>
+                            <td>
+                                <div class='color-box other-drug-crimes'></div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class='row map-related'>
+            <div class='sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <div class='map-faq-btn-div'>
+                    <button class='btn btn-default btn-lg text-hidden' id='map-faq-btn'>Show map FAQs</button>
+                </div>
+                <div class='map-faq-text'>
+                    <p><strong>What crimes are not included on this map?</strong> 
+                        <br>The only crimes included on the map are violent, property, and drug crimes, which are about half of the about 70,000 crimes reported around the Unvierstiy since 2001. The vast majority of crimes not included on this map fall into one of the following categories: tresspassing, prostitution, weapons violations, criminal damage, deceptive practices, or peace violations.</p>
+                    
+                    <p><strong>What is defined as “around the University?”</strong> 
+                        <br>47th Street on the north to 63rd Street on the south and Cottage Grove on the west to the Lake on the east.  This definition includes the southern part of the Kenwood neighborhood, the entirety of Hyde Park, and north Woodlawn.
+    </p>
+                    <p><strong>What is the difference between robbery, burglary, and theft?</strong>
+                        <br>
+                        According to the FBI's Uniform Crime Reporting handbook, robbery is the taking or attempting to take anything of value from someone by force or threat of force or violence and/or by putting the victim in fear.  Burglary is defined as the unlawful entry of a structure to commit a felony or a theft.  Theft is the unlawful taking of property from the possession of another.
+                        </p>
+                    <p><strong>What is the difference between assault and battery?</strong>
+                        <br>
+                        According to Illinois law, assault is conduct which places another in reasonable apprehension of receiving a battery.  Battery is defined as conduct causing bodily harm to another person.
+                        </p>
+                    <p><strong>Does this data also include crimes to which the University of Chicago Police Department responded?</strong>
+                        <br>
+                        Yes, it includes all crimes reported to have occurred within the City, regardless of the responding agency.
+                        </p>
+                        <p><strong>Where is this data from?</strong>
+                            <br>
+                            This data comes directly from the City of Chicago’s <a href="https://data.cityofchicago.org/">data portal</a>, using the dataset “Crime - 2001 to present,” which includes all crimes reported to have occurred within the City from January 1, 2001 to the present, minus the past seven days.  <span class='current-through'></p>
+                    </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text first-paragraph'>
+                    Some University students and affiliates were shaken by the lagged posting of security alerts surrounding the Ross Jacobs’ attack on his roommate. Many reported first finding out through other news and social media outlets that the former University of Chicago student had stabbed his roommate at 3 a.m. on March 13 on the 5400 block of South Hyde Park Boulevard. A University security alert and update was issued the next day at 10:24 p.m.
+                </p>
+                <p class='text body-text'>
+                    However, the University and the UCPD have increased the number of security alerts by 59 percent compared to the seven-year average. The number of security alerts issued in 2014 was 17, roughly six more than the average number of alerts over the past seven years. The crime rate in Hyde Park, meanwhile, has decreased by 31 percent since 2009.
+                </p>
+                <p class='text body-text'>
+                    The violent crime rate from Hyde Park to the South Kenwood area has steadily decreased from 246 crimes in 2009 to 128 crimes in 2014—a 48 percent drop, according to the University of Chicago’s website. Areas within the UCPD jurisdiction—which includes Hyde Park, parts of Kenwood, and Woodlawn—also witnessed a decrease in crimes: 559 crimes in 2009 to 379 crimes in 2013, a 31 percent average change. However, as reported in a previous *Maroon* article, there has been a recent increase in crime rates in Hyde Park, with three people shot near campus in April.
+                </div>
+            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
+                <div id='graph-2'></div>
+                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text'>
+                    According to a statement released on Thursday, April 30 by Associate Vice President for Safety, Security and Civic Affairs and Chief of Police Marlon Lynch, there has been a 22 percent decrease in violent crime when compared with the previous five-year average throughout the University of Chicago Police Department’s (UCPD) patrol area. 
+                </p>
+                <p class='text body-text'>
+                    Some students still believe that more security alerts should be sent out and should be timelier. In a study conducted by *the Chicago Maroon*, 86 respondents shared their input on how they believe security alerts should be issued. Of the students, faculty, and staff who responded, 37 percent believe that that security alerts provide adequate information about crime in Hyde Park. When asked about the safety of the campus, 46 percent of respondents believe that the alerts help people stay safe. 27 percent of respondents believe that security alerts are sent out in a timely manner. 
+                </p>
+                <p class='text body-text'>
+                    More concerns indicated in the survey include a need for the UCPD to be more transparent with University students, faculty, and staff about crimes in the surrounding UCPD area: providing more details in regards to the location of the crime, what happened, the suspect’s appearance in alerts, and possibly sending these alerts to the rest of the Hyde Park community.
+                </p>
+                <p class='text body-text'>
+                    “I think that more security alerts should be sent out, especially if there are violent suspects at large around campus, even their crimes don’t involve university affiliated people. And while I do think that incident reports ought to come out as soon as possible, I also think that this needs to be balanced with accuracy and diligence in putting together the information they contain,” second-year Daniel Meagher said.
+                </p>
+                <p class='text body-text'>
+                    The University’s current objective is to send timely messages “to give members of the campus community information that will allow them to adjust their behavior to protect their personal safety.”
+                </p>
+                </div>
+            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
+                <div id='graph-1'></div>
+                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text'>
+                    University Communications Assistant Marielle Sainvilus said, “As soon as an incident that meets the criteria for consideration of an alert is reported, regardless of the time of day, there is an immediate conversation between members of University Communications, Campus and Student Life, and the UCPD. The team then follows the University’s Guidelines for Immediate security alerts, which are publicly available on the University’s website to determine whether or not to issue a security alert.”
+                </p>
+                <p class='text body-text'>
+                    As of July 15, 2014, the University and the UCPD have revised their policy to include the race of a suspect if UCPD decides that it is relevant. Lynch said race will be included if there is additional information, such as a tattoo or other noticeable body differences. Previously, race has been included in a number of security alerts, but not consistently.
+                </p>
+                <p class='text body-text'>
+                    Including race in the security alerts has also been a concern for students. “I wish that they provided more identifying information about perpetrators than ‘young adult black male.’ This is not enough information to correctly identify someone, but it is just enough to make being a young adult black male UChicago student difficult. I'm not saying they should take out the racial information if it is true, but they should provide more information if UCPD truly intends to give us enough information to find a suspect,” second-year Daphne McKee said.
+                </p>
+                <p class='text body-text'>
+                    Lynch said that there are strict guidelines about what to include in security alerts. Complete security alerts usually include the date, time, a description of the incident, and other information that may help find suspects. In the case where there is an arrest or if there is a risk of compromising law enforcement efforts, an alert does not have to be sent out. Any untimely alerts may be included in a security alert the next day or posted on the University's Community Safety website.
+                </p>
+                <p class='text body-text'>
+                    Crimes in accordance with the Jeanne Clery Disclosure of Campus Security Policy and Campus Crime Statistics Act (“Clery Act”) are sent out in security alerts. Clery Act crimes include: stalking, hate crimes, domestic violence, aggravated assault, dating violence, arson, burglary, motor vehicle theft, murder and non-negligent manslaughter, negligent manslaughter, robbery, and both forcible and non-forcible sex offenses. Clery Act jurisdiction surrounds campus and non-campus buildings or property and public property.
+                </p>
+                <p class='text body-text'>
+                    The University also issues timely security alerts in certain circumstances when non–Clery Act crimes occur and/or when crimes occur outside of Clery Act geography but within the UCPD’s jurisdiction, which extends from East 37th to East 64th Streets and South Cottage Grove Avenue to South Lake Shore Drive, and have the potential to threaten the campus and its surrounding community. 
+                </p>
+                <p class='text body-text'>
+                    Examples of circumstances that would require the University to send out a security alert include, but are not limited to, any violent crime that occurs within UCPD service area, any crimes involving children (and if the crime occurs near a school), whether an individual is killed due to violence in the UCPD service area, and whether a pattern can be established if a trail of crimes has been committed within a short timespan.
+                </p>
+                <p class='text body-text'>
+                    In terms of transparency and communication, Lynch said that he and University officials including University Communications, Campus and Student Life, members of Student Government, and the UCPD hold meetings every school year to discuss ways to improve alerts and to make frequent changes.
+                </p>
+                <p class='text body-text'>
+                    “The Security Alert policy is also reviewed on an as needed basis in certain situations. Last year, there was an as needed review which prompted minor changes to clarify language related to incidents which occur close to an off-campus residence hall, to assure compliance,” said Assistant Vice President and Assistant Chief of Police Services Gloria Graham.
+                </p>
+            </div>
+        </div>
+        
+        <div class='row'>
+            
+            <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'chicagomarooninteractive';
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function () {
+                    var dsq = document.createElement('script');
+                    dsq.type = 'text/javascript';
+                    dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+            </noscript>
+        </div>
+
+    </div>
+    <a id='comment'></a>
+    <footer>
+        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
+    </footer>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'chicagomarooninteractive';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src='main.js'></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-59818592-9', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</html>
