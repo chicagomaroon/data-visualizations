@@ -1,3 +1,10 @@
+div.col-xs-12 > img {
+    width: 100%;
+}
+.attribution {
+    font-style: normal;
+    font-weight: 300;
+}
 .fullscreen {
     background: url(img/dancing.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -50,7 +57,7 @@ iframe {
     padding-top: 20px;
     color: #333333;
     font-size: 1.0rem;
-    line-height: 1.45;
+    line-height: 1.75;
 }
 
 .fullscreen {
@@ -87,6 +94,7 @@ h3 {
     font-weight: 600;
     padding-top: 10px;
     margin: 0 auto;
+    font-size: smaller;
 }
 
 p {
