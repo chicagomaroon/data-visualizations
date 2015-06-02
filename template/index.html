@@ -1,0 +1,180 @@
+<!-- Seach for localhost URLs and brackets. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="[title]">
+
+    <meta name="author" content="[author]">
+    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
+    <meta property="og:url" content="http://chicagomaroon.github.io/[slug]/" />
+    <meta property="og:title" content="[title]" />
+    <meta property="og:description" content="[subhead]" />
+    <meta property="og:image" content="http://chicagomaroon.github.io/[slug]/img/[pick image].jpg" />
+
+    <title>[title] - Interactive feature - ChicagoMaroon.com</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://localhost:8888/styles/reset.css" rel="stylesheet" type='text/css'>
+    <link href="http://localhost:8888/styles/base.css" rel="stylesheet" type='text/css'>
+    <link href="main.css" rel="stylesheet" type='text/css'>
+
+</head>
+
+<body>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1584750855103746',
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="navbar nav navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
+                    <img alt="The Chicago Maroon Logo" class='logo' src="http://localhost:8888/img/maroon-logo.png">
+                </a>
+            </div>
+
+            <div class="social-icon-container fb right">
+                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
+                    <img class="logo" src="http://localhost:8888/img/fb-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container twitter right">
+                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/[slug]/" title="[title]">
+                    <img class="logo" src="http://localhost:8888/img/twitter-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container comments right">
+                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
+                    <i class="fa fa-comment fa-lg logo"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-12 fullscreen'>
+                <div class='push-down'></div>
+                <div class='text-background'>
+                    <div class='section-art-container'>
+                        <span class='section-art'>[section/category title]</span>
+                        <hr class='section-art-hr'>
+                    </div>
+
+                    <h1 class='text'>[title]</h1>
+                    <h2 class='subtitle'>[subhead]</h2>
+                    <h3 class='author'>By [author] | Produced by [producer] | [date]</h3>
+                </div>
+
+            </div>
+            <div class='credit photo-credit cover-photo'>[photo credit]/<em>Chicago Maroon</em>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text first-paragraph'>
+                    First paragraph.
+                </p>
+                <p class='text body-text'>
+                    Body paragrpah.
+                </p>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <p class='text body-text following-photo'>
+                    Body Text (add .following-photo to reduce top margin)
+                </p>
+                <hr class='no-margin-bottom'>
+                <div class='quotation text'>“[pull quote]”</div>
+                <hr class='no-margin-bottom'>
+            </div>
+
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <div class='video-container'>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ze8E6eo-lGI" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'chicagomarooninteractive';
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function () {
+                    var dsq = document.createElement('script');
+                    dsq.type = 'text/javascript';
+                    dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+            </noscript>
+        </div>
+
+    </div>
+    <a id='comment'></a>
+    <footer>
+        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
+    </footer>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'chicagomarooninteractive';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- Check that you're actually using fitvids.js. -->
+<script src="jquery.fitvids.js"></script>
+<script src='main.js'></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+//[DEV] insert GA id UA-59818592-6
+    ga('create', 'UA-59818592-4', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</html>
