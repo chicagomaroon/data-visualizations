@@ -1,5 +1,18 @@
+.figure {
+    padding-top: 15px;
+}
+.caption {
+    display: none;
+    font-size: .9rem;
+    position: relative;
+    top: -20px;
+}
+.figure-caption {
+    font-size: .7rem;
+}
 .section-heading {
     color:  #333;
+    padding-top: 20px;
 }
 div.col-xs-12 > img {
     width: 100%;
@@ -9,7 +22,7 @@ div.col-xs-12 > img {
     font-weight: 300;
 }
 .fullscreen {
-    background: url(img/dancing.jpg) no-repeat center center fixed;
+    background: url(img/shopping-cart.png) no-repeat center center fixed;
     background-size: cover;
     height: 85vh;
     padding-left: 0;
@@ -61,14 +74,6 @@ iframe {
     color: #333333;
     font-size: 1.0rem;
     line-height: 1.75;
-}
-
-.fullscreen {
-    background: url(img/talking.jpg) no-repeat center center fixed;
-    background-size: cover;
-    height: 85vh;
-    padding-left: 0;
-    padding-right: 0;
 }
 .text-background {
     background-color: rgba(50, 50, 50, .8);
