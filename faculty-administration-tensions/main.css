@@ -1,5 +1,5 @@
 .fullscreen {
-    background: url(img/dancing.jpg) no-repeat center center fixed;
+    background: url(img/apf7-01307-006r.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 85vh;
     padding-left: 0;
@@ -51,14 +51,6 @@ iframe {
     color: #333333;
     font-size: 1.0rem;
     line-height: 1.45;
-}
-
-.fullscreen {
-    background: url(img/talking.jpg) no-repeat center center fixed;
-    background-size: cover;
-    height: 85vh;
-    padding-left: 0;
-    padding-right: 0;
 }
 .text-background {
     background-color: rgba(50, 50, 50, .8);
