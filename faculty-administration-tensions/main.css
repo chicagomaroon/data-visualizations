@@ -186,10 +186,10 @@ footer > a:focus {
 }
 @media all and (max-height: 490px) and (min-height: 376px) {
     .push-down {
-        height: 40%;
+        height: 30%;
     }
     .text-background {
-        height: 60%;
+        height: 70%;
     }
 }
 @media all and (max-height: 615px) and (min-height: 491px) {
@@ -201,12 +201,17 @@ footer > a:focus {
     }
 }
 @media all and (min-width: 1200px) {
+    .push-down {
+        height: 50%;
+    }
+    .text-background {
+        height: 50%;
+    }
     h1 {
-        font-size: 5rem;
-        line-height: 3rem;
+        font-size: 3rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     h3 {
         font-size: 1.4rem;
@@ -216,11 +221,17 @@ footer > a:focus {
     }
 }
 @media all and (max-width: 1199px) and (min-width: 992px) {
+    .push-down {
+        height: 50%;
+    }
+    .text-background {
+        height: 50%;
+    }
     h1 {
-        font-size: 5rem;
+        font-size: 2.8rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     h3 {
         font-size: 1.3rem;
@@ -230,11 +241,17 @@ footer > a:focus {
     }
 }
 @media all and (max-width: 991px) and (min-width: 768px) {
+    .push-down {
+        height: 30%;
+    }
+    .text-background {
+        height: 70%;
+    }
     h1 {
-        font-size: 5rem;
+        font-size: 2.8rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.4rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -245,16 +262,16 @@ footer > a:focus {
 }
 @media all and (max-width: 767px) and (min-width: 650px) {
     .push-down {
-        height: 30%;
+        height: 20%;
     }
     .text-background {
-        height: 70%;
+        height: 80%;
     }
     h1 {
-        font-size: 4rem;
+        font-size: 2.5rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.2rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -271,10 +288,10 @@ footer > a:focus {
         height: 80%;
     }
     h1 {
-        font-size: 3.0rem;
+        font-size: 2.0rem;
     }
     h2 {
-        font-size: 1.5rem;
+        font-size: 0rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -284,6 +301,11 @@ footer > a:focus {
     }
 }
 
+
 h1 {
     padding-bottom: 20px;
+}
+h1, h2, h3 {
+    padding-left: 10px;
+    padding-right: 10px;
 }

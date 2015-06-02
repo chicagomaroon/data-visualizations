@@ -325,3 +325,7 @@ footer > a:focus {
 h1 {
     padding-bottom: 20px;
 }
+h1, h2, h3 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
