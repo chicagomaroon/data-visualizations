@@ -1,3 +1,10 @@
+.collapsible-body p {
+    padding-top: 13px;
+    padding-bottom: 13px;
+}
+strong {
+    font-weight: 600;
+}
 .bottom-logo-container {
     margin-top: 20px;
     height: 40px;
