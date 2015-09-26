@@ -67,6 +67,7 @@ a.modal-trigger:focus,a.modal-trigger:hover,a.modal-trigger {
 }
 .subcard {
     display:none;
+    height: 400px;
 }
 .card-title {
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
