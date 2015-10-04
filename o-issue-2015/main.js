@@ -3,7 +3,7 @@ $(document).ready(function () {
         event.preventDefault();
         FB.ui({
             method: 'share',
-            href: 'http://chicagomaroon.github.io/student-government-elections-2015/',
+            href: 'http://chicagomaroon.github.io/o-issue-2015/',
         }, function (response) {});
     });
     // We bind a new event to our link
