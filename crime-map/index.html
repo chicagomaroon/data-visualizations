@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="What's behind security alerts?">
+
+    <meta name="author" content="Forrest Sill">
+    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
+    <meta property="og:url" content="http://chicagomaroon.github.io/security-alerts/" />
+    <meta property="og:title" content="What's behind security alerts?" />
+    <meta property="og:description" content="An in-depth look into the University process" />
+    <meta property="og:image" content="http://chicagomaroon.github.io/security-alerts/img/woodlawn.jpg" />
+
+    <title>Explore Recent Crime in Hyde Park - The Chicago Maroon</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
+    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
+    <link href="main.css" rel="stylesheet" type='text/css'>
+<!-- Hotjar Tracking Code for chicagomaroon.github.io -->
+<script>
+    (function(f,b){
+        var c;
+        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+        f._hjSettings={hjid:32132, hjsv:4};
+        c=b.createElement("script");c.async=1;
+        c.src="//static.hotjar.com/c/hotjar-"+f._hjSettings.hjid+".js?sv="+f._hjSettings.hjsv;
+        b.getElementsByTagName("head")[0].appendChild(c); 
+    })(window,document);
+</script>
+
+</head>
+
+<body>
+    <!-- Hotjar Tracking Code for chicagomaroon.github.io -->
+<script>
+    (function(f,b){
+        var c;
+        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+        f._hjSettings={hjid:32132, hjsv:4};
+        c=b.createElement("script");c.async=1;
+        c.src="//static.hotjar.com/c/hotjar-"+f._hjSettings.hjid+".js?sv="+f._hjSettings.hjsv;
+        b.getElementsByTagName("head")[0].appendChild(c); 
+    })(window,document);
+</script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1584750855103746',
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="navbar nav navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
+                    <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
+                </a>
+            </div>
+
+            <div class="social-icon-container fb right">
+                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
+                    <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container twitter right">
+                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/security-alerts/" title="What's behind security alerts?">
+                    <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container comments right">
+                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
+                    <i class="fa fa-comment fa-lg logo"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class='container'>
+        <div class='row map-related'>
+            <div class='col-xs-12'>
+                <h2 class='black map-headline sans-text'>Explore Crimes Reported Around the University from 2001 to the Present </h2>
+                <div class='graph-tip sans-text dots-tooltip'>Click dots on map to see details about each crime.</div>
+            </div>
+            <div class='col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-7 col-xs-12'>
+                <div id="map-canvas"></div>
+            </div>
+            <div id='panel-container' class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
+                <div id="panel">
+                    <label for=year-slider>2001</label>
+                    <input type=range min=2001 list='years' max=2015 value=2001 id=year-slider>
+                    <datalist id="years">
+                        <option label="2001">2001</option>
+                        <option label="2002">2002</option>
+                        <option label="2003">2003</option>
+                        <option label="2004">2004</option>
+                        <option label="2005">2005</option>
+                        <option label="2006">2006</option>
+                        <option label="2007">2007</option>
+                        <option label="2008">2008</option>
+                        <option label="2009">2009</option>
+                        <option label="2010">2010</option>
+                        <option label="2011">2011</option>
+                        <option label="2012">2012</option>
+                        <option label="2013">2013</option>
+                        <option label="2014">2014</option>
+                        <option label="2015">2015</option>
+                    </datalist>
+                    <br>
+                    <table>
+                        <tr>
+                            <td class='first-td'>
+                                <span class='category-name'>Violent</span><span class='crime-count category-count violent'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
+                            </td>
+                            <td>
+                                <div class='color-box homicide'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
+                            </td>
+                            <td>
+                                <div class='color-box sexual-assault'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
+                            </td>
+                            <td>
+                                <div class='color-box robbery'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
+                            </td>
+                            <td>
+                                <div class='color-box assault'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
+                            </td>
+                            <td>
+                                <div class='color-box battery'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class='category-name'>Property</span>  <span class='crime-count category-count property'></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
+                            </td>
+                            <td>
+                                <div class='color-box burglary'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
+                            </td>
+                            <td>
+                                <div class='color-box theft'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
+                            </td>
+                            <td>
+                                <div class='color-box motor-vehicle-theft'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
+                            </td>
+                            <td>
+                                <div class='color-box arson'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class='category-name'>Narcotics</span>  <span class='crime-count category-count narcotics'></span>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
+                            </td>
+                            <td>
+                                <div class='color-box cannabis'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
+                            </td>
+                            <td>
+                                <div class='color-box crack-cocaine'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
+                            </td>
+                            <td>
+                                <div class='color-box heroin'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
+                            </td>
+                            <td>
+                                <div class='color-box cocaine'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
+                            </td>
+                            <td>
+                                <div class='color-box other-drug-crimes'></div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <div class='row map-related'>
+            <div class='sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+                <div class='map-faq-btn-div'>
+                    <button class='btn btn-default btn-lg text-hidden' id='map-faq-btn'>Show map FAQs</button>
+                </div>
+                <div class='map-faq-text'>
+                    <p><strong>What crimes are not included on this map?</strong> 
+                        <br>The only crimes included on the map are violent, property, and drug crimes, which are about half of the about 70,000 crimes reported around the Unvierstiy since 2001. The vast majority of crimes not included on this map fall into one of the following categories: tresspassing, prostitution, weapons violations, criminal damage, deceptive practices, or peace violations.</p>
+                    
+                    <p><strong>What is defined as “around the University?”</strong> 
+                        <br>47th Street on the north to 63rd Street on the south and Cottage Grove on the west to the Lake on the east.  This definition includes the southern part of the Kenwood neighborhood, the entirety of Hyde Park, and north Woodlawn.
+    </p>
+                    <p><strong>What is the difference between robbery, burglary, and theft?</strong>
+                        <br>
+                        According to the <a href="http://www2.fbi.gov/ucr/handbook/ucrhandbook04.pdf">FBI's Uniform Crime Reporting Handbook</a>, robbery is the taking or attempting to take anything of value from someone by force or threat of force or violence and/or by putting the victim in fear.  Burglary is defined as the unlawful entry of a structure to commit a felony or a theft.  Theft is the unlawful taking of property from the possession of another.
+                        </p>
+                    <p><strong>What is the difference between assault and battery?</strong>
+                        <br>
+                        According to <a href="http://www.ilga.gov/legislation/ilcs/ilcs4.asp?ActID=1876&ChapterID=53&SeqStart=21100000&SeqEnd=23000000">Illinois law</a>, assault is conduct which places another in reasonable apprehension of receiving a battery.  Battery is defined as conduct causing bodily harm to another person.
+                        </p>
+                    <p><strong>Does this data also include crimes to which the University of Chicago Police Department responded?</strong>
+                        <br>
+                        Yes, it includes all crimes reported to have occurred within the City, regardless of the responding agency.
+                        </p>
+                        <p><strong>Where is this data from?</strong>
+                            <br>
+                            This data comes directly from the City of Chicago’s <a href="https://data.cityofchicago.org/">data portal</a>, using the dataset “Crime - 2001 to present,” which includes all crimes reported to have occurred within the City from January 1, 2001 to the present, minus the past seven days.  <span class='current-through'></p>
+                    </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <a id='comment'></a>
+    <footer>
+        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
+    </footer>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'chicagomarooninteractive';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src='main.js'></script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-59818592-9', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</html>
