@@ -371,7 +371,8 @@ function prettifyDescription(original) {
         'attempt non-aggravated': 'attempted, non-aggravated',
         'agg po hands etc serious inj': 'aggravated police officer hands etc serious inj',
         'attempt: armed-other firearm': 'attempted, armed-other firearm',
-        'aggravated domestic battery: other firearm': 'aggravated domestic battery, other firearm'
+        'aggravated domestic battery: other firearm': 'aggravated domestic battery, other firearm',
+        'Manu/deliver:amphetamines': 'Manufacture/deliver amphetamines'
     };
     if (dictionary[original] == undefined) {
         return original;
