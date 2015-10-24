@@ -443,7 +443,6 @@ h2.black {
 .graph-tip {
     position: relative;
     top: -20px;
-    left: 39%;
     background-color: rgba(200, 200, 200, .5);
     width: 257px;
     border-radius: 5px;
@@ -557,7 +556,7 @@ tr.arrest-category > td {
         font-size: 1rem;
     }
     #map-canvas {
-        width: 384px;
+        /*width: 384px;*/
     }
 }
 @media all and (max-width: 767px) and (min-width: 650px) {
