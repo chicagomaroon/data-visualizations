@@ -440,6 +440,9 @@ h2.black {
 .sans-text {
     font-family: 'Roboto Condensed', sans-serif;
 }
+body {
+    padding-top: 10px!important;
+}
 .graph-tip {
     position: relative;
     top: -20px;
