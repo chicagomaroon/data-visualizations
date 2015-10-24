@@ -16,17 +16,10 @@ var duplicateLatLons;
 
 /* Beginning of document.ready function. */
 $(document).ready(function () {
-    $('#fb-icon').click(function (event) {
-        event.preventDefault();
-        FB.ui({
-            method: 'share',
-            href: 'http://chicagomaroon.github.io/security-alerts/',
-        }, function (response) {});
-    });
     /* Only load map stuff if window width is big enough. */
-    if ($(window).width() >= 768) {
+    if ($(window).width() >= 10) {
         /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
-        jsonData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () { 
+        jsonData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)%20AND%20year=2015&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () { 
             rawData = jsonData['responseJSON'];
             callback();
         })
@@ -51,7 +44,7 @@ $(document).ready(function () {
 
         });
         $(window).resize(function() {
-            if ($(window).width() < 768 && $('.map-related').is(':visible'))
+            if ($(window).width() < 10 && $('.map-related').is(':visible'))
                $('.map-related').hide(); 
         });
     } else {
@@ -67,7 +60,7 @@ $(document).ready(function () {
 
 function callback() {
     initialize();
-    refreshCrimeCounts(2001);
+    refreshCrimeCounts(2015);
 
     $('input[name="crime-category"][value="homicide"]').prop('checked', true);
     $('input[name="crime-category"]').trigger('change');
@@ -94,40 +87,11 @@ function callback() {
         $('input[name="crime-category"]').trigger('change');
     });
 
-    /* Update map and crime counts on year change. */
-    $('#year-slider').on('change', function () {
-        var selectedYear = $(this).val();
-        refresh(selectedYear);
-        refreshCrimeCounts(selectedYear);
-    })
-
-    /* Update year label in response to year change OR mousemove, meaning that the year will cahnge with the mouse even if that year is never selected. (This is what differentiates this function from the one above and is why these two functions cannot be consolidated. */
-    $('#year-slider').on('change mousemove', function () {
-        var selectedYear = $(this).val();
-        $('label[for="year-slider"]').text(selectedYear);
-        var yearsToLeftPixels = {
-            2001: "0",
-            2002: "9px",
-            2003: "24px",
-            2004: "39px",
-            2005: "54px",
-            2006: "69px",
-            2007: "84px",
-            2008: "99px",
-            2009: "114px",
-            2010: "131px",
-            2011: "145px",
-            2012: "161px",
-            2013: "177px",
-            2014: "192px",
-            2015: "200px"
-        }
-        $('label[for="year-slider"]').css('left', yearsToLeftPixels[selectedYear])
-    })
+    
 
     /* Update map (but not crime counts) on crime checkboxes selection change. */
     $('input[name="crime-category"]').change(function () {
-        var selectedYear = $('#year-slider').val();
+        var selectedYear = 2015;
         refresh(selectedYear);
     })
 
