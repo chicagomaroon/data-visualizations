@@ -293,10 +293,11 @@ function formatDateNoTime(string) {
 
 /* Formats time from 24-hour to 12-hour.  (Not included with JS.) */
 function subFormatTime(hours, mins) {
-    var convertHours = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+    var convertHours = [5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4];
     var convertMins = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09']
     if (mins < 10) //Minutes need two zeros, so must convert mins to string.
         mins = convertMins[mins];
+    console.log(hours);
     var ret = convertHours[hours] + ':' + mins;
     var ampm;
     if (hours < 12)
@@ -390,7 +391,7 @@ function prettifyDescription(original) {
         'agg po hands etc serious inj': 'aggravated police officer hands etc serious inj',
         'attempt: armed-other firearm': 'attempted, armed-other firearm',
         'aggravated domestic battery: other firearm': 'aggravated domestic battery, other firearm',
-        'manu/deliver:amphetamines': 'manufacture/deliver amphetamines'
+        'manu/deliver:amphetamines': 'manufacture/delivery, amphetamines'
     };
     if (dictionary[original] == undefined) {
         return original;
