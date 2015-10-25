@@ -22,7 +22,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
     <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
     <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
-    <link href="http://chicagomaroon.github.io/crime-map/main.css" rel="stylesheet" type='text/css'>
+    <link href="main.css" rel="stylesheet" type='text/css'>
 
 </head>
 
@@ -69,6 +69,12 @@
             </div>
             <div id='panel-container' class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
                 <div id="panel">
+                    <p class='no-top-padding'>View crimes that were reported:</p>
+                    <div id="week-year-btns" class='btn-group' role='group' aria-label='year-week-selector'>
+                       <button type='button' class="week-year-btn btn btn-default this-week">Past Two Weeks</button>
+                        <button type='button' class="week-year-btn btn btn-default all-2015 active">All of 2015</button>
+                    </div>
+                    <hr>
                     <table>
                         <tr>
                             <td class='first-td'>
@@ -77,7 +83,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
+                                <input type="checkbox" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
                             </td>
                             <td>
                                 <div class='color-box homicide'></div>
@@ -85,7 +91,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
+                                <input type="checkbox" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
                             </td>
                             <td>
                                 <div class='color-box sexual-assault'></div>
@@ -93,7 +99,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
+                                <input type="checkbox" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
                             </td>
                             <td>
                                 <div class='color-box robbery'></div>
@@ -101,7 +107,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
+                                <input type="checkbox" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
                             </td>
                             <td>
                                 <div class='color-box assault'></div>
@@ -109,7 +115,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
+                                <input type="checkbox" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
                             </td>
                             <td>
                                 <div class='color-box battery'></div>
@@ -122,7 +128,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
+                                <input type="checkbox" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
                             </td>
                             <td>
                                 <div class='color-box burglary'></div>
@@ -130,7 +136,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
+                                <input type="checkbox" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
                             </td>
                             <td>
                                 <div class='color-box theft'></div>
@@ -138,7 +144,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
+                                <input type="checkbox" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
                             </td>
                             <td>
                                 <div class='color-box motor-vehicle-theft'></div>
@@ -146,7 +152,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
+                                <input type="checkbox" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
                             </td>
                             <td>
                                 <div class='color-box arson'></div>
@@ -161,7 +167,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
+                                <input type="checkbox" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
                             </td>
                             <td>
                                 <div class='color-box cannabis'></div>
@@ -169,7 +175,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
+                                <input type="checkbox" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
                             </td>
                             <td>
                                 <div class='color-box crack-cocaine'></div>
@@ -177,7 +183,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
+                                <input type="checkbox" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
                             </td>
                             <td>
                                 <div class='color-box heroin'></div>
@@ -185,7 +191,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
+                                <input type="checkbox" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
                             </td>
                             <td>
                                 <div class='color-box cocaine'></div>
@@ -193,7 +199,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <input type="radio" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
+                                <input type="checkbox" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
                             </td>
                             <td>
                                 <div class='color-box other-drug-crimes'></div>
@@ -240,9 +246,9 @@
 
     </div>
     <a id='comment'></a>
-    <footer>
+    <!--<footer>
         © 2015 The Chicago Maroon |  Produced by Forrest Sill
-    </footer>
+    </footer>-->
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
         var disqus_shortname = 'chicagomarooninteractive';

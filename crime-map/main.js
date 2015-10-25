@@ -16,6 +16,7 @@ var duplicateLatLons;
 
 /* Beginning of document.ready function. */
 $(document).ready(function () {
+    
     /* Only load map stuff if window width is big enough. */
     if ($(window).width() >= 10) {
         /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
@@ -54,6 +55,12 @@ $(document).ready(function () {
         $.getScript("graphs.js", function () {
             $('tspan:contains("Violent Crimes")').css('font-weight', '600');
         });
+    $('.week-year-btn').click(function() {
+        $('.week-year-btn').removeClass('active');
+        $(this).addClass('active');
+        refreshCrimeCounts(2015);
+        refresh(2015);
+    })
 
 })
 /* End of document.ready function. */
@@ -163,9 +170,13 @@ function zeroCrimeCounter() {
 
 /* Refresh the crime counts */
 function refreshCrimeCounts(year) {
+    var weekAgoDate = new Date()
+    weekAgoDate.setDate(weekAgoDate.getDate() - 14)
     zeroCrimeCounter();
     for (var i = 0; i < rawData.length; i++) {
-        if ((new Date(rawData[i]['date'])).getFullYear() == year) {
+        var isDate = (new Date(rawData[i]['date']));
+        if (isDate.getFullYear() == year) {
+            if (((isDate > weekAgoDate) && $('button.this-week').hasClass('active')) || $('button.all-2015').hasClass('active')) {
             if (rawData[i]['fbi_code'] !== '18')
                 crimeCounter[rawData[i]['fbi_code']]++;
             else {
@@ -180,7 +191,7 @@ function refreshCrimeCounts(year) {
                 else
                     crimeCounter['other-drug-crimes']++;
             }
-
+            }
         }
     }
     /* Initizalize each specialized crime count based on the FBI code, except for drug crimes (which all have the FBI code of 18) -- initialize them using the HTML value attribute as the identifier instead. */
@@ -200,13 +211,20 @@ function refreshCrimeCounts(year) {
 /* Main (huge) function.  Processes raw data and refreshes map. */
 function refresh(year) {
     getDuplicateLatLons(year);
+    var weekAgoDate = new Date()
+    weekAgoDate.setDate(weekAgoDate.getDate() - 14)
+    //console.log(weekAgoDate)
     var counter1 = 0;
     clearMarkers();
     var currentCrimeCodes = determineCurrentCrimeCodes();
     data = [];
     crimesCounter = 0;
     for (var i = 0; i < rawData.length; i++) {
-        if ((new Date(rawData[i]['date'])).getFullYear() == year) { //Only continue with crimes committed in the currently-selected year.
+        var isDate = (new Date(rawData[i]['date']));
+        if (isDate.getFullYear() == year) { //Only continue with crimes committed in the currently-selected year.
+            if (((isDate > weekAgoDate) && $('button.this-week').hasClass('active')) || $('button.all-2015').hasClass('active'))
+            
+            
             currentCode = rawData[i]['fbi_code'];
             if (currentCode == '18') {
                 if (rawData[i]['description'].indexOf('CANNABIS') > -1)
@@ -254,8 +272,8 @@ function refresh(year) {
                 crimesCounter++;
             }
         }
+            }
     }
-}
 
 /* Format numerical date to month name, date, and full year, with time. (Not included with JS.) */
 function formatDate(string) {

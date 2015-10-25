@@ -79,6 +79,16 @@ body {
     -webkit-overflow-scrolling: touch;
     -webkit-transform: translate3d(0, 0, 0);
 }
+button.week-year-btn.btn {
+    width: 50%;
+}
+#week-year-btns {
+    width: 100%;
+    margin-top: 10px;
+}
+.no-top-padding {
+    padding-top: 0!important;
+}
 /* Formatting for loading modal. */
 
 .modal {
