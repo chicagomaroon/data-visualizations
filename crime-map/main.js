@@ -18,7 +18,7 @@ var duplicateLatLons;
 $(document).ready(function () {
     
     /* Only load map stuff if window width is big enough. */
-    if ($(window).width() >= 10) {
+    if ($(window).width() >= 100) {
         /* Get raw JSON data from the City of Chicago's data portal.  This is by far the slowest step of the loading process. Variable jsonData to rawData conversion is necessary because JSON comes back as one array.  Variable rawData is that single array unpacked. Lastly, turn off the modal (loading indicator) that has been on because the page has now finished loading. Of course, it hasn't techincally finished loading, but the overwhelming majority of loading time is taken up by this one task, (JSON data retrieval from the City's website) and the remaining loading tasks take a fraction of a second. */
         jsonData = $.getJSON('https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=date,%20primary_type,description,fbi_code,latitude,longitude&$where=(fbi_code=%2701A%27%20or%20fbi_code=%2702%27%20or%20fbi_code=%2703%27%20or%20fbi_code=%2704A%27%20or%20fbi_code=%2704B%27%20or%20fbi_code=%2705%27%20or%20fbi_code=%2706%27%20or%20fbi_code=%2707%27%20or%20fbi_code=%2709%27%20or%20fbi_code=%2718%27)%20AND%20(latitude%20%3E%2041.780286%20AND%20latitude%20%3C%2041.809772)%20AND%20(longitude%20%3E%20-87.606040%20and%20longitude%20%3C%20-87.568306)%20AND%20year=2015&$limit=50000&$$app_token=WAGToj317sbZqJNaVrNhejlqa', function () { 
             rawData = jsonData['responseJSON'];
@@ -68,10 +68,16 @@ $(document).ready(function () {
 function callback() {
     initialize();
     refreshCrimeCounts(2015);
-
-    $('input[name="crime-category"][value="homicide"]').prop('checked', true);
+    if ($(window).width() <= 767) {
+        $('input[name="crime-category"]').prop('checked', true); //.not('input[name="crime-category"][value="theft"], input[name="crime-category"][value="robbery"]')
+        $('.all-2015').removeClass('active');
+        $('.this-week').addClass('active');
+        $('#panel-container').css('display', 'none');
+    } else {
+        $('input[name="crime-category"][value="homicide"]').prop('checked', true);
+        
+    }
     $('input[name="crime-category"]').trigger('change');
-
     $('.modal').toggle();
     /* Initizalize each specialized crime count based on the FBI code, except for drug crimes (which all have the FBI code of 18) -- initialize them using the HTML value attribute as the identifier instead. */
     $('.crime-count').not('.category-count').each(function (i, val) {
@@ -297,7 +303,6 @@ function subFormatTime(hours, mins) {
     var convertMins = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09']
     if (mins < 10) //Minutes need two zeros, so must convert mins to string.
         mins = convertMins[mins];
-    console.log(hours);
     var ret = convertHours[hours] + ':' + mins;
     var ampm;
     if (hours < 12)
