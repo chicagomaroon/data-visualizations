@@ -32,10 +32,10 @@ $(document).ready(function () {
         $('#map-faq-btn').click(function (event) {
             if ($(this).hasClass('text-hidden')) {
                 $('.map-faq-text').show();
-                $('#map-faq-btn').text('Hide map FAQs');
+                $('#map-faq-btn').text('Less info');
             } else {
                 $('.map-faq-text').hide();
-                $('#map-faq-btn').text('Show map FAQs');
+                $('#map-faq-btn').text('More info');
             }
             $(this).toggleClass('text-hidden');
             $(this).toggleClass('text-shown');
