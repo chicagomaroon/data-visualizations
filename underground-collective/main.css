@@ -55,11 +55,11 @@ iframe {
 }
 .text-background {
     background-color: rgba(50, 50, 50, .8);
-    height: 40%;
+    height: 50%;
     text-align: center;
 }
 .push-down {
-    height: 60%;
+    height: 50%;
 }
 .container {
     width: 100%;
@@ -195,19 +195,19 @@ footer > a:focus {
 }
 @media all and (max-height: 615px) and (min-height: 491px) {
     .push-down {
-        height: 50%;
+        height: 40%;
     }
     .text-background {
-        height: 50%;
+        height: 60%;
     }
 }
 @media all and (min-width: 1200px) {
     h1 {
-        font-size: 5rem;
+        font-size: 4rem;
         line-height: 3rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
     h3 {
         font-size: 1.4rem;
@@ -218,10 +218,10 @@ footer > a:focus {
 }
 @media all and (max-width: 1199px) and (min-width: 992px) {
     h1 {
-        font-size: 5rem;
+        font-size: 4rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
     h3 {
         font-size: 1.3rem;
@@ -232,10 +232,10 @@ footer > a:focus {
 }
 @media all and (max-width: 991px) and (min-width: 768px) {
     h1 {
-        font-size: 5rem;
+        font-size: 4rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
     h3 {
         font-size: 1.2rem;
@@ -252,10 +252,10 @@ footer > a:focus {
         height: 70%;
     }
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     h3 {
         font-size: 1.2rem;
