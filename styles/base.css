@@ -13,20 +13,27 @@ body {
     overflow-y: scroll;
 }
 .text {
+    margin: 0;
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
 }
 .body-text {
     padding-top: 20px;
     color: #333333;
 }
+
+h1,
+h2,
+h3 {
+    color: #FFFFFF;
+    text-align: center;
+}
+
 h1 {
     font-size: 3rem;
     text-align: center;
     font-weight: bold;
 }
-h2 {
-    color:white;
-}
+
 img.center {
     display: block;
     margin-left: auto;
@@ -45,6 +52,22 @@ footer > a:hover,
 footer > a:focus {
     color: inherit;
 }
+
+.social-icon-container.fb {
+    margin-left: 10px;
+}
+.navbar-default {
+    background-color: #FFFFFF;
+}
+.social-icon {
+    height: 20px;
+    width: 20px;
+}
+.social-icon > img {
+    height: 20px;
+    width: 20px;
+}
+
 i.fa-comment {
     color: #444444;
 }
