@@ -30,7 +30,15 @@
     { "d":"A", "n":47, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
     { "d":"A", "n":48, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
     { "d":"A", "n":51, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
-    { "d":"A", "n":51, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":54, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":55, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":56, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":58, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":62, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":63, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":67, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+    { "d":"A", "n":68, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
+     { "d":"A", "n":68, "x":0, "y":11, "a":"RIDICULOUS", "c":"Cockamamy" },
     
     
     { "d":"D", "n":1, "x":3, "y":0, "a":"APOLOGIZES", "c":"Makes amends" },
