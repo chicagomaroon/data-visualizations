@@ -60,7 +60,7 @@
     { "d":"D", "n":22, "x":0, "y":4, "a":"SCAPE", "c":"___goat" },
     { "d":"D", "n":23, "x":1, "y":4, "a":"HABER", "c":"Chemist who studied ammonia" },
     { "d":"D", "n":24, "x":2, "y":4, "a":"IBSEN", "c":"\"A Doll's House\" playwright" },
-    { "d":"D", "n":26, "x":8, "y":4, "a":"ONECAN", "c":"Recipe amount" }
+    { "d":"D", "n":26, "x":8, "y":4, "a":"ONECAN", "c":"Recipe amount" },
     { "d":"D", "n":27, "x":9, "y":4, "a":"INSITU", "c":"Undisturbed" },
     { "d":"D", "n":30, "x":4, "y":5, "a":"ECONO", "c":"Commercial prefix with Lodge" },
     { "d":"D", "n":31, "x":5, "y":5, "a":"CHROME", "c":"Google browser" },
