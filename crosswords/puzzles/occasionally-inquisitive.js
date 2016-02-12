@@ -83,5 +83,5 @@
     { "d":"D", "n":64, "x":12, "y":12, "a":"YAY", "c":"'Huzzah!'" },
     { "d":"D", "n":65, "x":13, "y":12, "a":"PTO", "c":"Local school assoc." },
     { "d":"D", "n":66, "x":14, "y":12, "a":"EMU", "c":"Aussie bird" }
-
+  ]
 }
