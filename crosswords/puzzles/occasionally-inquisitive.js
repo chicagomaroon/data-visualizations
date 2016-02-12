@@ -7,7 +7,7 @@
     { "d":"A", "n":9, "x":11, "y":0, "a":"STRIP", "c":"Get closer to a birthday suit" },
     { "d":"A", "n":14, "x":0, "y":1, "a":"FAX", "c":"Common office machine" },
     { "d":"A", "n":15, "x":4, "y":1, "a":"GOFAR", "c":"Succeed (2 words)" },
-    { "d":"A", "n":16, "x":11, "y":1, "a":"ERIKA", "c":"Christensen of 'Parenthood'" },
+    { "d":"A", "n":16, "x":11, "y":1, "a":"ERIKA", "c":"Christensen of \"Parenthood\"" },
     { "d":"A", "n":17, "x":0, "y":2, "a":"GOODGRADE", "c":"*Nerd's objective" },
     { "d":"A", "n":19, "x":11, "y":2, "a":"CANER", "c":"Chair craftsperson" },
     { "d":"A", "n":20, "x":3, "y":3, "a":"ASTRA", "c":"'Ad -- per aspera' (Kansas' motto)" },
@@ -42,7 +42,6 @@
     { "d":"A", "n":70, "x":0, "y":14, "a":"NSYNC", "c":"Justin's boy band" },
     { "d":"A", "n":71, "x":6, "y":14, "a":"SEATS", "c":"Acts as an usher" },
     { "d":"A", "n":72, "x":12, "y":14, "a":"YOU", "c":"It finishes the sequence that 17,29,48, and 63-across reference" },
-    
     
     { "d":"D", "n":1, "x":0, "y":0, "a":"AFG", "c":"Kabul's loc." },
     { "d":"D", "n":2, "x":1, "y":0, "a":"TAO", "c":"\"Way\" of some Asians" },
@@ -83,6 +82,6 @@
     { "d":"D", "n":63, "x":6, "y":12, "a":"BCS", "c":"Chemist's deg." },
     { "d":"D", "n":64, "x":12, "y":12, "a":"YAY", "c":"'Huzzah!'" },
     { "d":"D", "n":65, "x":13, "y":12, "a":"PTO", "c":"Local school assoc." },
-    { "d":"D", "n":66, "x":14, "y":12, "a":"EMU", "c":"Aussie bird" },
+    { "d":"D", "n":66, "x":14, "y":12, "a":"EMU", "c":"Aussie bird" }
 
 }
