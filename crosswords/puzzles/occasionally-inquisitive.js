@@ -1,5 +1,5 @@
 {
-  "title": "Sample Puzzle",
+  "title": "Occasionally Inquisitive",
   "by": "By Line",
   "clues": [
     { "d":"A", "n":1, "x":0, "y":0, "a":"ATE", "c":"Consumed" },
