@@ -1,1 +1,256 @@
-foo.txt
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
+    <meta name="description" content="[title]">
+    <meta name="author" content="[author]">
+    <meta property="og:url" content="http://chicagomaroon.github.io/[slug]/" />
+    <meta property="og:title" content="[title]" />
+    <meta property="og:description" content="[subhead]" />
+    <!-- Background Image -->
+    <meta property="og:image" content="http://chicagomaroon.github.io/[slug]/img/[pick image].jpg" />
+    <title>[title] - Interactive feature - ChicagoMaroon.com</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
+    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
+    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
+    <link href="main.css" rel="stylesheet" type='text/css'>
+  </head>
+  <body>
+    <script>
+      <!-- Enables Facebook SDK, more FB scripts in main.js -->
+      window.fbAsyncInit = function() {
+         FB.init({
+            appId: '1584750855103746',
+            xfbml: true,
+            version: 'v2.2'
+         });
+      };
+
+      (function(d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {
+            return;
+         }
+         js = d.createElement(s);
+         js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- Sets the header on left as Chicago Maroon -->
+          <a class="navbar-brand" href="http://www.chicagomaroon.com/">
+          <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
+          </a>
+        </div>
+        <!-- Facebook Share Icon  -->
+        <div class="social-icon-container fb right">
+          <a id="fb-icon" class="social-icon right" target="_blank" href="#">
+          <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
+          </a>
+        </div>
+        <!-- Twitter Share Icon -->
+        <div class="social-icon-container twitter right">
+          <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="[link]" title="[title]">
+          <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
+          </a>
+        </div>
+        <!-- Jumps to comment section -->
+        <div class="social-icon-container comments right">
+          <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
+          <i class="fa fa-comment fa-lg logo"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='col-xs-12 sidebar'>
+        <nav>
+          <ul>
+            <li><a href="#section1">Opening Paragraphs</a>
+            </li>
+            <li><a href="#section2">Second Picture/Paragraphs</a>
+            </li>
+            <li><a href="#section3">Third Picture/Paragraphs</a>
+            </li>
+            <li><a href="#section4">Fourth Picture/Paragraphs</a>
+            </li>
+            <li><a href="#section5">Fifth Picture/Paragraphs</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-xs-12 fullscreen-picture'>
+            <div class='push-down'>
+              <div class='col-xs-12 text-background'>
+                <!-- specified height for WINDOW ADD IT -->
+                <div class='col-xs-12 section-container'>
+                  <span class='section-link'><a href="[section link]" target="new">[section]</a></span>
+                </div>
+                <h1 class='title'>[title]</h1>
+                <h2 class='subtitle'>[subtitle]</h2>
+                <h3 class='authors'>Written by
+                  <span class="name"><a href="[writer link]" target="new">Grace Hauck</a></span> | Produced by
+                  <span class="name"><a href="[producer link]" target="new">Juliette Hainline</a></span> | [date]
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='credit photo-credit cover-photo'>Name/<em>Chicago Maroon</em>
+        </div>
+        <div class='row'>
+          <section id="section1" class="head tail">
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text first-paragraph'>
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+                Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+              </p>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text'>
+                Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+              </p>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text'>
+                Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+              </p>
+            </div>
+            </section>
+          <section id="section2" class="head tail">
+            <div class='col-xs-12 body-image-div'>
+              <img class='body-image' alt='Stillframe of movie' src="http://math.bu.edu/DYSYS/chaos-game/sierp-det.GIF">
+              <div class="credit photo-credit cover-photo body-photo-credit">Grace Hauck/<em>Chicago Maroon</em>
+              </div>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text following-photo'>
+                Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+              </p>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text following-photo'>
+                Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+              </p>
+            </div>
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text following-photo'>
+                Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+              </p>
+            </div>
+          </section>
+            <div class='col-xs-12 body-image-div'>
+              <img class='body-image' alt='Stillframe of movie' src="http://math.bu.edu/DYSYS/chaos-game/sierp-det.GIF">
+              <div class="credit photo-credit cover-photo body-photo-credit">Grace Hauck/<em>Chicago Maroon</em>
+              </div>
+            </div>
+          <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+            <hr class='no-margin-bottom'>
+            <p class='quotation-text'>
+              "Forrest Sill is so hot, is he single?"
+            </p>
+            <hr class='no-margin-bottom'>
+          </div>
+          <section id="section4" class="head tail">
+            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+              <p class='text body-text following-photo'>
+                Here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,
+                or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+                All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
+                The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'chicagomarooninteractive';
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+         var dsq = document.createElement('script');
+         dsq.type = 'text/javascript';
+         dsq.async = true;
+         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+    </noscript>
+    </div>
+    </div>
+    <!-- Commenting Section -->
+    <a id='comment'></a>
+    <footer>
+      <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
+    </footer>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES * * */
+      var disqus_shortname = 'chicagomarooninteractive';
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+         var s = document.createElement('script');
+         s.async = true;
+         s.type = 'text/javascript';
+         s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+      }());
+    </script>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src='main.js'></script>
+  <script>
+    // Enables Google Analytics //
+    (function(i, s, o, g, r, a, m) {
+       i['GoogleAnalyticsObject'] = r;
+       i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+       }, i[r].l = 1 * new Date();
+       a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+       a.async = 1;
+       a.src = g;
+       m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+    //[DEV] insert GA id UA-59818592-6
+    ga('create', 'UA-59818592-4', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>
