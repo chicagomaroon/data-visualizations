@@ -49,7 +49,7 @@
     { "d":"D", "n":8, "x":8, "y":0, "a":"DUSK", "c":"Dawn's opposite" },
     { "d":"D", "n":9, "x":9, "y":0, "a":"ENOL", "c":"Alkene containing a hydroxyl group" },
     { "d":"D", "n":10, "x":10, "y":0, "a":"BASEMENTS", "c":"Stories that dig deep?" },
-    { "d":"D", "n":11, "x":11, "y":0, "a":"ALCEA", "c":"Flower commonly called \"hollyhocks\""" },
+    { "d":"D", "n":11, "x":11, "y":0, "a":"ALCEA", "c":"Flower commonly called \"hollyhocks\""},
     { "d":"D", "n":12, "x":12, "y":0, "a":"TEA", "c":"Coffee alternative" },
     { "d":"D", "n":13, "x":13, "y":0, "a":"ERR", "c":"\"To ___ is human\"" },
     { "d":"D", "n":14, "x":14, "y":0, "a":"STY", "c":"Pig pen" },
