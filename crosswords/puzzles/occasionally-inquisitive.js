@@ -1,6 +1,6 @@
 {
-  "title": "Journey to the Center of the Earth",
-  "by": "By Line",
+  "title": "Occasionally-inquisitive",
+  "by": "Daniel Ruttenberg",
   "clues": [
     { "d":"A", "n":1, "x":0, "y":0, "a":"ATE", "c":"Consumed" },
     { "d":"A", "n":4, "x":4, "y":0, "a":"ENAMI", "c":"As a friend, in French" },
