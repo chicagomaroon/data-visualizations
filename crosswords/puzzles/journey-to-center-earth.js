@@ -78,7 +78,7 @@
     { "d":"D", "n":60, "x":14, "y":11, "a":"OSSA", "c":"Greek peak near Olympus" },
     { "d":"D", "n":61, "x":0, "y":12, "a":"HEW", "c":"Cut down" },
     { "d":"D", "n":62, "x":1, "y":12, "a":"UMA", "c":"Thurman of \"Pulp Fiction\"" },
-    { "d":"D", "n":63, "x":2, "y":12, "a":"MAN", "c":"Measure of all things, to Protagoras" }
+    { "d":"D", "n":63, "x":2, "y":12, "a":"MAN", "c":"Measure of all things, to Protagoras" },
     { "d":"D", "n":65, "x":11, "y":12, "a":"ETC", "c":"\"And so on\"" }
   ]
 }
