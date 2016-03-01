@@ -4,7 +4,7 @@
     position: relative;
     top: -20px;
 }
-nav a:link {
+/*nav a:link {
     color: rgba(128, 0, 0, 0.9);
 }
 nav a:visited {
@@ -30,7 +30,7 @@ li {
     width: 200px;
     margin-top: 440px;
     position: fixed;
-}
+}*/
 .row {
     margin-left: 0;
     margin-right: 0;
@@ -83,7 +83,7 @@ h3 a:active {
     margin: 0 auto;
 }
 .fullscreen-picture {
-    background: url(http://cdn.playbuzz.com/cdn/7a7a5814-ed79-410c-b748-db6a24f73f0b/4d71c010-f930-4334-ba62-79d87a7ddef4.jpg) no-repeat center center fixed;
+    background: url(img/spreadarms.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 30%;
     padding-top: 45px;
@@ -139,6 +139,14 @@ h3 a:active {
     /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
     text-shadow: 0px 2px 3px maroon;*/
 }
+
+.section-container a:visited {
+    color: #fff;
+    background-color: transparent !important;
+    /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 2px 3px maroon;*/
+}
+
 .cover-photo.credit {
     padding-left: 25px;
 }
@@ -169,6 +177,7 @@ p {
     left: 0;
     right: 0;
 }
+
 p.first-paragraph:first-letter {
     font-size: 75px;
     line-height: 60px;
