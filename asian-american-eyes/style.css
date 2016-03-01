@@ -40,8 +40,10 @@ li {
 }
 .title {
     padding-top: 10px;
+    font-size: 1.5em !important;
     margin: 0;
     font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    padding-bottom: 5px;
 }
 .subtitle {
     padding-top: 10px;
