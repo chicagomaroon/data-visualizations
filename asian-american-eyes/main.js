@@ -3,7 +3,7 @@ $(document).ready(function () {
         event.preventDefault();
         FB.ui({
             method: 'share',
-            href: 'http://chicagomaroon.github.io/age-of-blossoms/',
+            href: 'http://chicagomaroon.github.io/asian-american-eyes',
         }, function (response) {});
     });
     // We bind a new event to our link
@@ -22,4 +22,4 @@ $(document).ready(function () {
         window.open('http://twitter.com/share?url=' + loc + '&text=' + title + '&', 'twitterwindow', 'height=450, width=550, top=' + ($(window).height() / 2 - 225) + ', left=' + $(window).width() / 2 + ', toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
 
     });
-});    
+});
