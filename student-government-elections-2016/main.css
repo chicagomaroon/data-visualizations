@@ -575,9 +575,10 @@ thead {
     color: #FFFFFF;
     font-size: 2rem;
     font-weight: bold;
+    padding-top: 45px;
 }
+
 .slate-name-container {
-    position: absolute;
     width: 100%;
 }
 .tiles, .bios-container, .other-content-container, h1 {
@@ -592,24 +593,25 @@ img {
     border-style: solid;
     border-color: #33cc33;
     border-width: 5px;
-    background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/UnitedProgress2.jpg";
-    background-size: cover;
-    background-repeat: no-repeat;
+    /*background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/UnitedProgress.jpg");
+    background-size: 550px 400px;
+    background-position: top 90%;
+    background-repeat: no-repeat;*/
     background-color: #33cc33;
 }
 .tile.unite-and-support {
     border-style: solid;
     border-color: #ffcc00;
     border-width: 5px;
-    background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/Unite&Support2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    /*background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/Unite&Support.jpg");
+    background-size: 450px 460px;
+    background-repeat: no-repeat;*/
     background-color: #ffcc00;
 }
 .tile.our-campus{
-    background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/OurCampus2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    /*background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/OurCampus.jpg");
+    background-size: 350px 250px;
+    background-repeat: no-repeat;*/
     border-style: solid;
     border-color: #AB1111;
     border-width: 5px;
@@ -619,25 +621,25 @@ img {
     border-style: solid;
     border-color: #996633;
     border-width: 5px;
-    background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/MooseParty2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+    /*background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/MooseParty.jpg");
+    background-size: 550px 625px;
+    background-repeat: no-repeat;*/
     background-color: #996633;
 }
 .tile.undergraduate-liaison {
-    background-color:#FFFFFF;
+    background-color:#0000cc;
     border-style: solid;
     border-color: #0000cc;
     border-width: 5px;
 }
 .tile.graduate-liaison {
-    background-color:#FFFFFF;
+    background-color:purple;
     border-style: solid;
     border-color: purple;
     border-width: 5px;
 }
 .tile.community-liaison {
-    background-color:#FFFFFF;
+    background-color:#e6005c;
     border-style: solid;
     border-color: #e6005c;
     border-width: 5px;
