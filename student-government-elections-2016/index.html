@@ -1,1 +1,643 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Candidate Profiles">
+
+    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
+    <meta property="og:url" content="http://chicagomaroon.github.io/student-government-elections-2016/" />
+    <meta property="og:title" content="Candidate Profiles" />
+    <meta property="og:description" content="An overview of the candidates running for election to UChicago Student Government in 2015." />
+    <meta property="og:image" content="http://chicagomaroon.github.io/student-government-elections-2015/img/sg-elections-logo-fb.png" />
+
+    <title>Candidate Profiles - Interactive feature - ChicagoMaroon.com</title>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
+    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
+    <link href="main.css" rel="stylesheet" type='text/css'>
+
+</head>
+
+<body>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1584750855103746',
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="navbar nav navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="http://www.chicagomaroon.com/features/">
+                    <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
+                </a>
+            </div>
+
+            <div class="social-icon-container fb right">
+                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
+                    <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container twitter right">
+                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/student-government-elections-2016/" title="Candidate Profiles">
+                    <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
+                </a>
+            </div>
+            <div class="social-icon-container comments right">
+                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://chicagomaroon.github.io/student-government-elections-2016/" href='#comment'>
+                    <i class="fa fa-comment fa-lg logo"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-12 fullscreen'>
+                <div class='text-background'>
+                    <div class='dining-art-container'>
+                        <span class='dining-art'>Student Goverment Elections 2016</span>
+                        <hr class='dining-art-hr'>
+                    </div>
+                    <h3 class='author'>Produced by Juliette Hainline | April 25, 2016</h3>
+                </div>
+
+            </div>
+        </div>
+        <div class='row tiles'>
+            <a href='#united-progress'>
+                <div class='tile united-progress col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name united-progress'>United Progress</div>
+                    </div>
+                </div>
+            </a>
+            <a href='#our-campus'>
+                <div class='tile our-campus col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name our-campus'>Our Campus</div>
+                    </div>
+                </div>
+            </a>
+            <a href='#unite-and-support'>
+                <div class='tile unite-and-support col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name unite-and-support'>Unite & Support</div>
+                    </div>
+                </div>
+            </a>
+            <div id='blank-tile'>
+                <div class='tile blank-tile col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                </div>
+            </div>
+            <a href='#moose-party'>
+                <div class='tile moose-party col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name moose-party'>Moose Party</div>
+                    </div>
+                </div>
+            </a>
+            <div id='blank-tile'>
+                <div class='tile blank-tile col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                </div>
+            </div>
+            <a href='#undergraduate-liaison'>
+                <div class='tile undergraduate-liaison liaison col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name undergraduate-liaison'>Undergraduate Liaison to the Board of Trustees</div>
+                    </div>
+                </div>
+            </a>
+            <a href='#graduate-liaison'>
+                <div class='tile graduate-liaison liaison col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name graduate-liaison'>Graduate Liaison to the Board of Trustees</div>
+                    </div>
+                </div>
+            </a>
+            <a href='#community-liaison'>
+                <div class='tile community-liaison liaison col-lg-4 col-md-4 col-sm-12 col-xs-12'>
+                    <div class='slate-name-container'>
+                        <div class='slate-name community-liaison'>Community and Government Liaison to the Board of Trustees</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class='row' id='united-progress'>
+            <div class='col-xs-12'>
+                <h1>United Progress</h1>
+                <img class='headshot' alt='United Progress.' src="http://chicagomaroon.github.io/student-government-elections-2016/img/UnitedProgress.jpg">
+                <div class='bios-container'>
+                    <div class='candiate-1 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Salma Elkhaoudi</p>
+                            <p class='candidate-position'>Vice President of Administration</p>
+                        </div>
+                    </div>
+                    <div class='candiate-2 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Eric Holmberg</p>
+                            <p class='candidate-position'>President</p>
+                        </div>
+                    </div>
+                    <div class='candiate-3 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Cody Jones</p>
+                            <p class='candidate-position'>Vice President of Student Affairs</p>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“The overarching vision for our platform is a student government that is strong, and an advocate for all students at the University of Chicago, graduate and undergraduate.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“Yes.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“Yes.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“The area where there’s a lot of improvement for growth is including survivors in the process, changing the policy moving forward, releasing more accurate aggregate data about reports of sexual assault and sexual misconduct on campus…and improving the University’s Title IX compliance, not just meeting the letter of the law but also the spirit.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“The affirmation of values, say, free speech, while important, also fails to address a lot of concerns regarding how that affects a lot of groups. What people want in those instances is not only affirmation of what values the school is looking for, or endorsing, but rather, the people that don’t get included of what the scope of those values includes.”</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row' id='our-campus'>
+            <div class='col-xs-12'>
+                <h1>Our Campus</h1>
+                <img class='headshot' alt='Our Campus.' src="img/anthony-downer-web.png">
+                <div class='bios-container'>
+                    <div class='candiate-1 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Paul K. Drexler</p>
+                            <p class='candidate-position'>Vice President of Administration</p>
+                        </div>
+                    </div>
+                    <div class='candiate-2 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Chase Woods</p>
+                            <p class='candidate-position'>President</p>
+                        </div>
+                    </div>
+                    <div class='candiate-3 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Victoria Monteiro</p>
+                            <p class='candidate-position'>Vice President of Student Affairs</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“Our platform is looking to do things that are reasonable and within our reach. We’re not asking for big things out of the school, we don’t want to make empty promises, so we want to do things like increase the amount of art classes available…dining, we could look into that, we’re not going to promise a huge project.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“I’d love a trauma center, I want to emphasize a trauma center would be great for Hyde Park, but I don’t think student government of an undergrad university can bring a trauma center.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“Indifferent.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“I think every undergraduate institution needs to look into how they’re handling sexual assault on campus, and so I think that’s something that needs to be looked into.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“I think every undergraduate institution needs to be scrutinizing their administration, there’s obviously a lot of things, nothing’s perfect, nothing’s ideal, everything needs to be looked into. More transparency, obviously.”</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row' id='unite-and-support'>
+            <div class='col-xs-12'>
+                <h1>Unite & Support</h1>
+                <img class='headshot' alt='Unite & Support.' src="http://chicagomaroon.github.io/student-government-elections-2016/img/Unite&Support.jpg">
+                <div class='bios-container'>
+                    <div class='candiate-1 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Kennedy Green</p>
+                            <p class='candidate-position'>Vice President of Administration</p>
+                        </div>
+                    </div>
+                    <div class='candiate-2 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Michael Meng</p>
+                            <p class='candidate-position'>President</p>
+                        </div>
+                    </div>
+                    <div class='candiate-3 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Sara Zubi</p>
+                            <p class='candidate-position'>Vice President of Student Affairs</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“We really want to focus on increasing affordability for students, increasing transparency of the executive slate, dramatically improving RSO support, and to be a very open community-building organization that responds actively to student concerns.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“Our stance is that there has not been a widespread referendum, so it’s hard to actually get a grasp on the student position. I think that yes, we de preliminarily support the trauma center, however we would like to investigate with the administration the real financial cost of that.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“We do support the idea, but a more succinct resolution, like “should we divest or not,” and we believe that would probably pass, in which case it would be our task to represent the needs of the student body.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“The University does not handle it in a way that people are happy with...we really believe that student government’s role is to make everyone else’s role easier, in terms of RSO’s, so if we do our job right, the groups who are devoted to that can do their jobs better, ultimately for a better result.</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“It’s unclear how the University can always respond…I would say that the University’s options are insufficient or poorly presented to the student body.”</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row' id='moose-party'>
+            <div class='col-xs-12'>
+                <h1>Moose Party</h1>
+                <img class='headshot' alt='Moose Party' src="http://chicagomaroon.github.io/student-government-elections-2016/img/MooseParty.jpg">
+                <div class='bios-container'>
+                    <div class='candiate-1 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Stephen Moreland</p>
+                            <p class='candidate-position'>Vice President of Administration</p>
+                        </div>
+                    </div>
+                    <div class='candiate-2 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Nathan Decety</p>
+                            <p class='candidate-position'>President</p>
+                        </div>
+                    </div>
+                    <div class='candiate-3 candidate col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                        <div class='text-info'>
+                            <p class='candidate-name'>Ryan Golding</p>
+                            <p class='candidate-position'>Vice President of Student Affairs</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“The biggest thing is that we’ve had enough with democracy. We propose to secede from the Union and reform Hyde Park into the People’s Republic of Hyde Park. We will have an absolute monarch.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Why this year?</strong>
+                            </p>
+                            <p>“You miss 100% of the shots you don’t take”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>On Climate</strong>
+                            </p>
+                            <p>“It’s hot one day, it’s cold the next. We’re just going to expand Mansueto across the quad. It’s always nice and temperate so we can just expand that bubble all over campus.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Current Presidential Race</strong>
+                            </p>
+                            <p>“Hillary Clinton lies, Bernie Sanders is completely unrealistic and a communist, and Donald
+                            Trump is nuts. Clearly democracy has failed us, so clearly we believe monarchy is better.</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Other plans</strong>
+                            </p>
+                            <p>“We’re going to replace the TVs in Jimmy’s. We are going to lower the drinking age for the Pub. We want to return to our religious roots, so we want UChicago to become a Jesuit University.
+                            Saieh Hall will now be named ‘Money Church.’ And we’ve had it with the bagpipes. We’re just
+                            going to play Kygo during the graduation procession.”</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row' id='undergraduate-liaison'>
+            <div class='col-xs-12'>
+                <h1>Undergraduate Liaison to the Board of Trustees</h1>
+
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <h4>Alvina (Nina) Katemauswa</h4>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“I am a low-income student, first-generation student of color. I think that those students are not getting enough voice to the Board of Trustees, and cooperation with the other voices that usually get to talk to the board of trustees. I think that’s unacceptable, so I want to increase the amount of students who get to talk through me to the board of trustees. I also want to increase contact between the board of trustees and students through more luncheons and meetings, and more contact information from that limited subcommittee that the liaison sits on.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“I’m in favor. I think that personally, I’m in favor of it, and I think it’s something that our students are talking about, so the board deserves to know what some of the efforts are, and hopefully will push forward for it.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“I’m also in favor of that. I joined the [UCAN] march on Friday, and we walked backwards—which was a little hard to do in shoes that have heels on them—we walked backwards for that, so I’m in favor of that. I think that there should at least be a meeting between at least one member of the board of trustees and the student groups pushing for divestment.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“I think that, since we’re going under investigation and we have our campus climate survey out, the University has to do better, and I think they realize that. I would hopefully want to see where student resources can be consolidated with the resources they get administratively to make sure the board and the administration of the University know that this is a big problem, and it needs to be addressed further.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“As a student of color, it really pains me to see my fellow students so uncomfortable on campus. That’s something I’ve gone through personally, I have definitely gone through those incidents myself—currently, with the one about the poster that was hanging up in South Campus [dining hall] that was a caricature of an African-American woman. Those hurt. So I think that when the administration deals with those, they need to respond quickly, and in the right way. They’re getting better at it, it’s really reactive, but they need to continue to engage with those students on campus.”</p>
+                        </div>
+
+                    </div>
+                    <hr class='thick-hr'>
+                </div>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <h4>Alvina (Nina) Katemauswa</h4>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“Increasing communication, accessibility, and transparency with the Board of Trustees to better foster relationships on campus and to be able to relay the ideas, thoughts, and concerns of the student body to the board to better inform their decisions.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“My personal opinion on the trauma center is yes, I support the trauma center coalition’s efforts, I think they’ve already won, I think the issue’s over. But I do personally support it. Again, if I’m giving the trauma center coalition a platform to speak to the board of trustees, then in that way, I am advocating on their behalf. But I’m not advocating, I’m not pushing the agenda for getting a Level 1 trauma center, I’m letting them speak to the board. I’m giving them a platform to speak, to interact with the board of trustees.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“As I said, I am personally supportive of divestment, and I would give UCAN a chance to meet with people like Michael Polski and Daniel Doctoroff, and I would give them a platform to speak.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“I met with the head of Phoenix Survivor’s Alliance. Here’s one where I can give a real answer: I think the University’s handling it very poorly because I don’t think that the question is one of advisory when it comes to the University keeping its Title IX obligations, which it’s failed to do. I’m not supportive of how the University has handled sexual assault.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“I think we are improving, I think the University has largely not been very communicative on the issues, I think I am supportive of the campus climate survey, I think that was a good first step. I don’t think the University has been very productive on that.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='row' id='graduate-liaison'>
+            <div class='col-xs-12'>
+                <h1>Graduate Liaison to the Board of Trustees</h1>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <h4>Alvina (Nina) Katemauswa</h4>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“I would like the University to be accountable for the increasing financial burden of graduate education, and to ensure that the University continues to be viable as an option for independent, politically conscious action.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“Yes.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“Yes.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“Inadequate, as of now.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“Inadequate, as of now.”</p>
+                        </div>
+                    </div>
+                    <hr class='thick-hr'>
+                </div>
+                <div class='other-content-container text body-text'>
+                    <div class='row'>
+                        <h4>Alvina (Nina) Katemauswa</h4>
+                        <hr>
+
+                        <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                            <p class='pitch'>“So my platform consists of three main ideas. First, is a closer and more horizontal relation between students and the board of trustees. The second one is related to sustainable investment, which is kind of my professional direction in life, so that has to do a lot with my career. The third one is about how to articulate different initiatives between the graduate students and the board of trustees.”</p>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <hr>
+                        <h2 class='category-header'>Issues</h2>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Trauma Center</strong>
+                            </p>
+                            <p>“I don’t know if it’s my role as a graduate student to have [an opinion] on this. I don’t know how well [connected], really, is the board of trustees with the hospital.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>Divestment from Fossil Fuels</strong>
+                            </p>
+                            <p>“I think it’s a really interesting initiative. I think it’ll be hard, given the composition of the board of trustees, taking a stance on that could have an impact on their business strategies. In a way, we are established by the Rockefellers, who used oil, but it’s a hard topic. It’s definitely one I’m very interested in, and I believe that the University of Chicago can send a clear message by taking a stance in divestment, but I’m not really sure about the overall effects, so that’s why it needs to be discussed inside the board of trustees. I’m really excited that the march on Friday got the attention it did, and we will meet with the board of trustees, and I think that’s really important, and we need that kind of dialogue.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Sexual Assault</strong>
+                            </p>
+                            <p>“I have no position on that. It’s something that I have been following, since I got there, but I really don’t have a clear position on that, and I expect to talk with the graduate students about this issue, which I can tell you, is not necessarily a priority among the graduate students. It’s not something we are discussing.”</p>
+                        </div>
+                        <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                            <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                            </p>
+                            <p>“I cannot talk about the University as a whole, as a student of a certain school, which kind of isolates me from whatever happens outside the Harris School, since you live in there, we are 170 students, we have our own administration. But I do think there is much to be done in how students understand bias. We have had minor incidents inside the school, and we have engaged in discussions between students and the perceptions that we have are totally different. For international students, it’s especially hard, because first it’s not speaking in your own language, and then when you come from a different culture, how do you understand race, how do you understand gender roles, and it’s completely different, so I do think that there needs to be a super-huge push from the University as a whole to better engage the situation.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class='row' id='community-liaison'>
+                <div class='col-xs-12'>
+                    <h1>Community and Government Liaison to the Board of Trustees</h1>
+                    <div class='other-content-container text body-text'>
+                        <div class='row'>
+                            <h4>Alvina (Nina) Katemauswa</h4>
+                            <hr>
+                            <div class='col-lg-offset-4 col-lg-4 col-md-offset-3 col-md-6 col-sm-offset-2 col-sm-8 col-xs-12'>
+                                <p class='pitch'>“Administrative accountability and transparency in matters dealing with the University’s relationship with the South Side community.”</p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <hr>
+                            <h2 class='category-header'>Issues</h2>
+                            <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                                <p><strong>Trauma Center</strong>
+                                </p>
+                                <p>“I think the University of Chicago is a very powerful institution and has a lot of resources, and that it should extend those resources in order to benefit people on the South Side who need urgent trauma care in whatever capacity the University is capable of doing.”</p>
+                            </div>
+                            <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                                <p><strong>Divestment from Fossil Fuels</strong>
+                                </p>
+                                <p>“I think that the University has a responsibility to be ethical and conscientious about the way it allocates its resources, and I think that divestment is a very sensible thing for the University to do, as well as the morally correct thing for it to do.”</p>
+                            </div>
+                            <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                                <p><strong>University's Handling of Sexual Assault</strong>
+                                </p>
+                                <p>“The University has recently been called into question for violating Title IX, and I think that in order for them to show they are compliant, they need to act on the concerns and demands of sexual assault survivors on campus.”</p>
+                            </div>
+                            <div class='col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+                                <p><strong>University's Handling of Bias Incidents and Racial Discrimination</strong>
+                                </p>
+                                <p>“The University needs to follow up and be held accountable for the promises it makes, so I think it’s a step in the right direction that the University has initiated the climate survey, both for sexual assault and racial discrimination, but I think we should critically examine the results of that data, and make policies that implement whatever the findings are.”</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='row'>
+                <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'chicagomarooninteractive';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+                </noscript>
+            </div>
+
+        </div>
+        <a id='comment'></a>
+        <footer>
+            <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
+        </footer>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'chicagomarooninteractive';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
+<script src="jquery.fitvids.js"></script>
+<script src='main.js'></script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-59818592-6', 'auto');
+    ga('send', 'pageview');
+</script>
+
+</html>
