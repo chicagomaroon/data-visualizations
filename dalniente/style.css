@@ -211,6 +211,34 @@ p.first-paragraph:first-letter {
 div.social-icon-container {
     font-size: 1rem;
 }
+/* Slides */
+
+.slidesjs-pagination {
+    position: relative;
+    float: right;
+    list-style-type: none;
+    /*Removes bullet points that come with ul element by default. */
+}
+a.active[data-slidesjs-item] > svg > circle {
+    fill: #333333;
+}
+a[data-slidesjs-item] {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.glyphicon {
+    color: #333333;
+    font-size: 1.6rem;
+}
+.slidesjs-container {
+    margin-bottom: 5px;
+}
+.slidesjs-pagination-item {
+    float: left;
+}
+#slides {
+    display: none;
+}
 @media all and (max-width: 1000px) and (min-width: 0px) {
     ul,
     li {
