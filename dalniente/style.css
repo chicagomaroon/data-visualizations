@@ -1,0 +1,219 @@
+.caption {
+    display: none;
+    font-size: .9rem;
+    position: relative;
+    top: -20px;
+}
+/*nav a:link {
+    color: rgba(128, 0, 0, 0.9);
+}
+nav a:visited {
+    color: rgba(128, 0, 0, 0.9);
+}
+nav a:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+nav a:active {
+    color: rgba(128, 0, 0, 0.9)
+}
+ul,
+li {
+    list-style: none;
+    font-size: 0.9em;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 1.5px;
+}
+.sidebar {
+    float: right;
+    right: 70px;
+    width: 200px;
+    margin-top: 440px;
+    position: fixed;
+}*/
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+#disqus_thread {
+    padding-top: 20px;
+}
+.title {
+    padding-top: 10px;
+    font-size: 1.5em !important;
+    margin: 0;
+    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    padding-bottom: 5px;
+}
+.subtitle {
+    padding-top: 10px;
+}
+h3 a:link {
+    color: white !important;
+}
+h3 a:visited {
+    color: white !important;
+}
+h3 a:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 0.6;
+}
+h3 a:active {
+    color: white !important;
+}
+.credit {
+    color: #BBBBBB;
+    font-size: .7rem;
+}
+.navbar-header:after {
+    clear: none;
+}
+.text-background {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 325px;
+}
+.container {
+    width: 100%;
+    padding: 0px;
+    padding-bottom: 0px;
+    margin: 0 auto;
+}
+.fullscreen-picture {
+    background: url("http://chicagomaroon.github.io/dalniente/img/Cover.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 30%;
+    padding-top: 45px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.push-down {
+    height: 50%
+}
+.section-link {
+    color: #FFFFFF;
+    width: 150px;
+    border: 0;
+    height: 1px;
+    /*background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));*/
+}
+.section-container {
+    font-size: 1em;
+    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    color: #fff;
+    position: relative;
+    /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);*/
+    /*background: maroon;*/
+
+    padding: 0.4em 1em;
+    padding-bottom: 0;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    text-shadow: 0px 2px 3px maroon;
+    text-align: center;
+    background-color: transparent !important;
+}
+.section-container a:link {
+    color: #fff;
+    background-color: transparent !important;
+    /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 2px 3px maroon;*/
+}
+.section-container a:hover {
+    color: #fff;
+    background-color: transparent !important;
+    /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 2px 3px maroon;*/
+    text-decoration: none;
+    opacity: 0.4;
+}
+.section-container a:active {
+    color: #fff;
+    background-color: transparent !important;
+    /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 2px 3px maroon;*/
+}
+
+.section-container a:visited {
+    color: #fff;
+    background-color: transparent !important;
+    /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    text-shadow: 0px 2px 3px maroon;*/
+}
+
+.cover-photo.credit {
+    padding-left: 25px;
+}
+.quotation-text {
+    font-style: italic;
+    font-weight: 600;
+    padding-top: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+.body-text {
+    font-size: 1.0rem;
+    line-height: 1.45;
+}
+p {
+    text-align: left
+}
+.navbar-brand > img {
+    height: 40px
+}
+.author {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-weight: 100;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+p.first-paragraph:first-letter {
+    font-size: 75px;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+}
+.body-image {
+    width: 100%;
+}
+.body-image-div {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
+}
+
+.body-image-special-div {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 20px;
+}
+
+.right {
+    float: right;
+}
+#comments {
+    right: 75px;
+}
+div.social-icon-container {
+    font-size: 1rem;
+}
+@media all and (max-width: 1000px) and (min-width: 0px) {
+    ul,
+    li {
+        visibility: hidden;
+    }
+}
