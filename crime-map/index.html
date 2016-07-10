@@ -2,242 +2,248 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Crime Map">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crime Map">
 
-    <meta name="author" content="Forrest Sill">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <meta property="og:url" content="http://chicagomaroon.github.io/security-alerts/" />
-    <meta property="og:title" content="Crime Map" />
-    <meta property="og:description" content="Explore crimes reported around the University from 2001 to the present" />
-    <meta property="og:image" content="http://chicagomaroon.github.io/security-alerts/img/woodlawn.jpg" />
+  <meta name="author" content="Forrest Sill">
+  <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
+  <meta property="og:url" content="http://chicagomaroon.github.io/security-alerts/" />
+  <meta property="og:title" content="Crime Map" />
+  <meta property="og:description" content="Explore crimes reported around the University this year. This map includes violent, property, and drug crimes that occurred around the University and were reported to the Chicago Police Department." />
+  <meta property="og:image" content="http://chicagomaroon.github.io/security-alerts/img/woodlawn.jpg" />
 
-    <title>Explore Recent Crime in Hyde Park - The Chicago Maroon</title>
+  <title>Explore Recent Crime in Hyde Park - The Chicago Maroon</title>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
-    <link href="main.css" rel="stylesheet" type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+  <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
+  <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
+  <link href="main.css" rel="stylesheet" type='text/css'>
 
 </head>
 
 <body>
-    <!-- Hotjar Tracking Code for chicagomaroon.github.io -->
-<script>
-    (function(f,b){
-        var c;
-        f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
-        f._hjSettings={hjid:32132, hjsv:4};
-        c=b.createElement("script");c.async=1;
-        c.src="//static.hotjar.com/c/hotjar-"+f._hjSettings.hjid+".js?sv="+f._hjSettings.hjsv;
-        b.getElementsByTagName("head")[0].appendChild(c); 
-    })(window,document);
-</script>
+  <!-- Hotjar Tracking Code for chicagomaroon.github.io -->
+  <script>
+    (function(f, b) {
+      var c;
+      f.hj = f.hj || function() {
+        (f.hj.q = f.hj.q || []).push(arguments)
+      };
+      f._hjSettings = {
+        hjid: 32132,
+        hjsv: 4
+      };
+      c = b.createElement("script");
+      c.async = 1;
+      c.src = "//static.hotjar.com/c/hotjar-" + f._hjSettings.hjid + ".js?sv=" + f._hjSettings.hjsv;
+      b.getElementsByTagName("head")[0].appendChild(c);
+    })(window, document);
+  </script>
 
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1584750855103746',
-                xfbml: true,
-                version: 'v2.2'
-            });
-        };
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '1584750855103746',
+        xfbml: true,
+        version: 'v2.2'
+      });
+    };
 
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class='container'>
-        <div class='row map-related'>
-            <div class='col-xs-12'>
-                <div class='graph-tip sans-text dots-tooltip'>Click dots on map to see details about each crime.</div>
-            </div>
-            <div class='col-lg-6 col-md-6 col-sm-8 col-xs-12'>
-                <div id="map-canvas"></div>
-            </div>
-            <div id='panel-container' class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
-                <div id="panel">
-                    <p class='no-top-padding'>Show crimes that were reported:</p>
-                    <div id="week-year-btns" class='btn-group' role='group' aria-label='year-week-selector'>
-                       <button type='button' class="week-year-btn btn btn-default this-week">Past Two Weeks</button>
-                        <button type='button' class="week-year-btn btn btn-default all-2016 active">All of 2016</button>
-                    </div>
-                    <hr>
-                    <table>
-                        <tr>
-                            <td class='first-td'>
-                                <span class='category-name'>Violent</span><span class='crime-count category-count violent'></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
-                            </td>
-                            <td>
-                                <div class='color-box homicide'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
-                            </td>
-                            <td>
-                                <div class='color-box sexual-assault'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
-                            </td>
-                            <td>
-                                <div class='color-box robbery'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
-                            </td>
-                            <td>
-                                <div class='color-box assault'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
-                            </td>
-                            <td>
-                                <div class='color-box battery'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class='category-name'>Property</span>  <span class='crime-count category-count property'></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
-                            </td>
-                            <td>
-                                <div class='color-box burglary'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
-                            </td>
-                            <td>
-                                <div class='color-box theft'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
-                            </td>
-                            <td>
-                                <div class='color-box motor-vehicle-theft'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
-                            </td>
-                            <td>
-                                <div class='color-box arson'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class='category-name'>Narcotics</span>  <span class='crime-count category-count narcotics'></span>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
-                            </td>
-                            <td>
-                                <div class='color-box cannabis'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
-                            </td>
-                            <td>
-                                <div class='color-box crack-cocaine'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
-                            </td>
-                            <td>
-                                <div class='color-box heroin'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
-                            </td>
-                            <td>
-                                <div class='color-box cocaine'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
-                            </td>
-                            <td>
-                                <div class='color-box other-drug-crimes'></div>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+  <div class='container'>
+    <div class='row map-related'>
+      <div class='col-xs-12'>
+        <div class='graph-tip sans-text dots-tooltip'>Click dots on map to see details about each crime.</div>
+      </div>
+      <div class='col-lg-6 col-md-6 col-sm-8 col-xs-12'>
+        <div id="map-canvas"></div>
+      </div>
+      <div id='panel-container' class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
+        <div id="panel">
+          <p class='no-top-padding'>Show crimes that were reported:</p>
+          <div id="week-year-btns" class='btn-group' role='group' aria-label='year-week-selector'>
+            <button type='button' class="week-year-btn btn btn-default this-week">Past Two Weeks</button>
+            <button type='button' class="week-year-btn btn btn-default all-2016 active">All of 2016</button>
+          </div>
+          <hr>
+          <table>
+            <tr>
+              <td class='first-td'>
+                <span class='category-name'>Violent</span><span class='crime-count category-count violent'></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
+              </td>
+              <td>
+                <div class='color-box homicide'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
+              </td>
+              <td>
+                <div class='color-box sexual-assault'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
+              </td>
+              <td>
+                <div class='color-box robbery'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
+              </td>
+              <td>
+                <div class='color-box assault'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
+              </td>
+              <td>
+                <div class='color-box battery'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class='category-name'>Property</span> <span class='crime-count category-count property'></span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
+              </td>
+              <td>
+                <div class='color-box burglary'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
+              </td>
+              <td>
+                <div class='color-box theft'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
+              </td>
+              <td>
+                <div class='color-box motor-vehicle-theft'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
+              </td>
+              <td>
+                <div class='color-box arson'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class='category-name'>Narcotics</span> <span class='crime-count category-count narcotics'></span>
+              </td>
+              <td>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
+              </td>
+              <td>
+                <div class='color-box cannabis'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
+              </td>
+              <td>
+                <div class='color-box crack-cocaine'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
+              </td>
+              <td>
+                <div class='color-box heroin'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
+              </td>
+              <td>
+                <div class='color-box cocaine'></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
+              </td>
+              <td>
+                <div class='color-box other-drug-crimes'></div>
 
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-            </div>
+              </td>
+            </tr>
+          </table>
         </div>
-        <div class='row map-related'>
-            <div class='sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <div class='map-faq-btn-div'>
-                    <button class='btn btn-default btn-lg text-hidden' id='map-faq-btn'>More info</button>
-                </div>
-                <div class='map-faq-text'>
-                    <p><strong>What crimes are not included on this map?</strong> 
-                        <br>The only crimes included on the map are violent, property, and drug crimes, which are about half of the about 70,000 crimes reported around the University since 2001. The vast majority of crimes not included on this map fall into one of the following categories: trespassing, prostitution, weapons violations, criminal damage, deceptive practices, or peace violations.</p>
-                    
-                    <p><strong>What is defined as “around the University?”</strong> 
-                        <br>47th Street on the north to 63rd Street on the south and Cottage Grove on the west to the Lake on the east.  This definition includes the southern part of the Kenwood neighborhood, the entirety of Hyde Park, and north Woodlawn.
-    </p>
-                    <p><strong>What is the difference between robbery, burglary, and theft?</strong>
-                        <br>
-                        According to the <a href="http://www2.fbi.gov/ucr/handbook/ucrhandbook04.pdf">FBI's Uniform Crime Reporting Handbook</a>, robbery is the taking or attempting to take anything of value from someone by force or threat of force or violence and/or by putting the victim in fear.  Burglary is defined as the unlawful entry of a structure to commit a felony or a theft.  Theft is the unlawful taking of property from the possession of another.
-                        </p>
-                    <p><strong>What is the difference between assault and battery?</strong>
-                        <br>
-                        According to <a href="http://www.ilga.gov/legislation/ilcs/ilcs4.asp?ActID=1876&ChapterID=53&SeqStart=21100000&SeqEnd=23000000">Illinois law</a>, assault is conduct which places another in reasonable apprehension of receiving a battery.  Battery is defined as conduct causing bodily harm to another person.
-                        </p>
-                    <p><strong>Does this data also include crimes to which the University of Chicago Police Department responded?</strong>
-                        <br>
-                        Yes, it includes all crimes reported to have occurred within the City, regardless of the responding agency.
-                        </p>
-                        <p><strong>Where is this data from?</strong>
-                            <br>
-                            This data comes directly from the City of Chicago’s <a href="https://data.cityofchicago.org/">data portal</a>, using the dataset “Crime - 2001 to present,” which includes all crimes reported to have occurred within the City from January 1, 2001 to the present, minus the past seven days.  <span class='current-through'></p>
+
+      </div>
+    </div>
+    <div class='row map-related'>
+      <div class='sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
+        <div class='map-faq-btn-div'>
+          <button class='btn btn-default btn-lg text-hidden' id='map-faq-btn'>More info</button>
+        </div>
+        <div class='map-faq-text'>
+          <p><strong>What crimes are not included on this map?</strong>
+            <br>The only crimes included on the map are violent, property, and drug crimes, which are about half of the about 70,000 crimes reported around the University since 2001. The vast majority of crimes not included on this map fall into one of the
+            following categories: trespassing, prostitution, weapons violations, criminal damage, deceptive practices, or peace violations.</p>
+
+          <p><strong>What is defined as “around the University?”</strong>
+            <br>47th Street on the north to 63rd Street on the south and Cottage Grove on the west to the Lake on the east. This definition includes the southern part of the Kenwood neighborhood, the entirety of Hyde Park, and north Woodlawn.
+          </p>
+          <p><strong>What is the difference between robbery, burglary, and theft?</strong>
+            <br> According to the <a href="http://www2.fbi.gov/ucr/handbook/ucrhandbook04.pdf">FBI's Uniform Crime Reporting Handbook</a>, robbery is the taking or attempting to take anything of value from someone by force or threat of force or violence and/or
+            by putting the victim in fear. Burglary is defined as the unlawful entry of a structure to commit a felony or a theft. Theft is the unlawful taking of property from the possession of another.
+          </p>
+          <p><strong>What is the difference between assault and battery?</strong>
+            <br> According to <a href="http://www.ilga.gov/legislation/ilcs/ilcs4.asp?ActID=1876&ChapterID=53&SeqStart=21100000&SeqEnd=23000000">Illinois law</a>, assault is conduct which places another in reasonable apprehension of receiving a battery. Battery
+            is defined as conduct causing bodily harm to another person.
+          </p>
+          <p><strong>Does this data also include crimes to which the University of Chicago Police Department responded?</strong>
+            <br> Yes, it includes all crimes reported to have occurred within the City, regardless of the responding agency.
+          </p>
+          <p><strong>Where is this data from?</strong>
+            <br> This data comes directly from the City of Chicago’s <a href="https://data.cityofchicago.org/">data portal</a>, using the dataset “Crime - 2001 to present,” which includes all crimes reported to have occurred within the City from January 1,
+            2001 to the present, minus the past seven days. <span class='current-through'></p>
                     </p>
                     <hr>
                 </div>
