@@ -130,6 +130,17 @@ var chart = AmCharts.makeChart("chartdiv", {
         "theft" : 763,
         "motor vehicle theft" : 153,
         "arson": 3
+    },{
+        "year": 2016,
+        "homicide": 4,
+        "sexual assault": 19,
+        "robbery": 155,
+        "assault": 45,
+        "battery" : 42,
+        "burglary" 262: ,
+        "theft" : 849,
+        "motor vehicle theft" : 125,
+        "arson": 2 
     },],
     "valueAxes": [{
         "stackType": "regular",
