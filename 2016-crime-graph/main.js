@@ -137,7 +137,7 @@ var chart = AmCharts.makeChart("chartdiv", {
         "robbery": 155,
         "assault": 45,
         "battery" : 42,
-        "burglary" 262: ,
+        "burglary" 262,
         "theft" : 849,
         "motor vehicle theft" : 125,
         "arson": 2 
