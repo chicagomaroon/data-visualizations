@@ -18,5 +18,8 @@
   "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
   "dependencies": {
     "grunt": "^1.5.3"
+  },
+  "devDependencies": {
+    "grunt-processhtml": "^0.4.3"
   }
 }
