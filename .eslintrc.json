@@ -1,0 +1,8 @@
+{
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "ignorePatterns": ["*.min.js"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
