@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
   "dependencies": {
-    "grunt": "^1.5.3"
+    "eslint-plugin-prettier": "^4.2.1",
+    "grunt": "^1.5.3",
+    "prettier": "^2.8.3"
   },
   "devDependencies": {
     "grunt-processhtml": "^0.4.3"
