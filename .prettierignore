@@ -1,5 +1,7 @@
 # File types to ignore
 *.min.js
 jquery*
+*bootstrap*
+README.md
 
 # Directories to ignore
