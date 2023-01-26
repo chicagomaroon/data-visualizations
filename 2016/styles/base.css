@@ -14,7 +14,8 @@ body {
 }
 .text {
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
 .body-text {
     padding-top: 20px;
@@ -24,7 +25,7 @@ body {
 h1,
 h2,
 h3 {
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -42,8 +43,8 @@ img.center {
 footer {
     text-align: center;
     padding-top: 50px;
-    color: #BBBBBB;
-    font-size: .9rem;
+    color: #bbbbbb;
+    font-size: 0.9rem;
     padding-bottom: 10px;
 }
 
@@ -57,7 +58,7 @@ footer > a:focus {
     margin-left: 10px;
 }
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .social-icon {
     height: 20px;
@@ -172,7 +173,7 @@ i.fa-comment {
         height: 80%;
     }
     h1 {
-        font-size: 3.0rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 1.5rem;

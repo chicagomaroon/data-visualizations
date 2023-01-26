@@ -93,7 +93,7 @@ iframe {
 }
 .caption {
     display: none;
-    font-size: .9rem;
+    font-size: 0.9rem;
     position: relative;
     top: -20px;
 }
@@ -179,7 +179,8 @@ a[data-slidesjs-item] {
 }
 .text {
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
 .alert-success {
     font-size: 1rem;
@@ -201,8 +202,8 @@ form,
     display: none;
 }
 .credit {
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
 }
 .slideshow-credit {
     position: relative;
@@ -215,7 +216,7 @@ form,
 .body-text {
     padding-top: 20px;
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 .small-media-credit {
@@ -227,7 +228,7 @@ form,
     padding-right: 0;
 }
 .text-background {
-    background-color: rgba(50, 50, 50, .8);
+    background-color: rgba(50, 50, 50, 0.8);
     height: 40%;
     text-align: center;
 }
@@ -244,10 +245,11 @@ form,
 }
 h1.headline,
 h3 {
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
 }
-h1, h2 {
+h1,
+h2 {
     text-align: center;
 }
 .produced.small {
@@ -284,14 +286,14 @@ h1, h2 {
     padding-top: 10px;
     margin: 0 auto;
 }
-[text-anchor="end"]>tspan {
+[text-anchor='end'] > tspan {
     cursor: default;
 }
 p {
     padding-top: 13px;
 }
 .navbar-brand > img {
-    height: 40px
+    height: 40px;
 }
 .view-transcript {
     margin-top: 15px;
@@ -307,8 +309,8 @@ p {
     font-weight: 200;
     margin-left: auto;
     margin-right: auto;
-      padding-top: 10px;
-  padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .produced {
     bottom: 60px;
@@ -337,7 +339,7 @@ p.first-paragraph:first-letter {
     margin-left: 10px;
 }
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .social-icon {
     height: 20px;
@@ -363,15 +365,35 @@ i.fa-comment {
     right: 75px;
 }
 .dining-art-hr {
-    color: #FFFFFF;
+    color: #ffffff;
     width: 150px;
     margin-top: 5px;
     border: 0;
     height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -ms-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -o-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
 }
 .dining-art {
     font-size: 1em;
@@ -398,8 +420,8 @@ div.social-icon-container {
 footer {
     text-align: center;
     padding-top: 25px;
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
     padding-bottom: 10px;
 }
 footer > a,
@@ -517,7 +539,7 @@ footer > a:focus {
         height: 80%;
     }
     h1 {
-        font-size: 3.0rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 1.5rem;
@@ -546,7 +568,7 @@ h1 {
     font-style: italic;
 }
 .candidate-name {
-    font-weight:800;
+    font-weight: 800;
 }
 .other-content-container > div {
     padding-top: 15px;
@@ -564,7 +586,7 @@ thead {
 }
 .text-info {
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 .yes-no-question {
@@ -572,7 +594,7 @@ thead {
 }
 .slate-name {
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 2rem;
     font-weight: bold;
     padding-top: 45px;
@@ -581,7 +603,10 @@ thead {
 .slate-name-container {
     width: 100%;
 }
-.tiles, .bios-container, .other-content-container, h1 {
+.tiles,
+.bios-container,
+.other-content-container,
+h1 {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
 }
@@ -608,14 +633,14 @@ img {
     background-repeat: no-repeat;*/
     background-color: #ffcc00;
 }
-.tile.our-campus{
+.tile.our-campus {
     /*background-image: url("http://chicagomaroon.github.io/student-government-elections-2016/img/OurCampus.jpg");
     background-size: 350px 250px;
     background-repeat: no-repeat;*/
     border-style: solid;
-    border-color: #AB1111;
+    border-color: #ab1111;
     border-width: 5px;
-    background-color: #AB1111;
+    background-color: #ab1111;
 }
 .tile.moose-party {
     border-style: solid;
@@ -627,19 +652,19 @@ img {
     background-color: #996633;
 }
 .tile.undergraduate-liaison {
-    background-color:#0000cc;
+    background-color: #0000cc;
     border-style: solid;
     border-color: #0000cc;
     border-width: 5px;
 }
 .tile.graduate-liaison {
-    background-color:purple;
+    background-color: purple;
     border-style: solid;
     border-color: purple;
     border-width: 5px;
 }
 .tile.community-liaison {
-    background-color:#e6005c;
+    background-color: #e6005c;
     border-style: solid;
     border-color: #e6005c;
     border-width: 5px;
@@ -649,7 +674,7 @@ img {
     background-color: #ffcc00;
 }
 .slate-name.our-campus {
-    background-color: #AB1111;
+    background-color: #ab1111;
 }
 .slate-name.moose-party {
     background-color: #996633;
@@ -678,7 +703,7 @@ img {
     border-style: solid;
 }
 #our-campus > div {
-    border-color: #AB1111;
+    border-color: #ab1111;
     border-width: 15px;
     border-style: solid;
 }
@@ -694,7 +719,7 @@ img {
     border-style: solid;
 }
 #graduate-liaison > div {
-    border-color:purple;
+    border-color: purple;
     border-width: 15px;
     border-style: solid;
 }
@@ -732,8 +757,8 @@ img.headshot {
 }
 
 h4 {
-  text-align: center;
-  font-size: 25px;
-  padding-bottom: 15px;
-  font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 15px;
+    font-weight: bold;
 }

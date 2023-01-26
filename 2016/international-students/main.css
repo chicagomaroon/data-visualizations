@@ -74,12 +74,12 @@ body {
     overflow-x: hidden;
 }
 body {
-    padding-top:51px;
+    padding-top: 51px;
     overflow-y: scroll; /* has to be scroll, not auto */
-  -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 }
 header {
-    height:51px;
+    height: 51px;
 }
 .row {
     margin-left: 0;
@@ -87,13 +87,14 @@ header {
 }
 .text {
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
     padding-left: 10px;
     padding-right: 10px;
 }
 .credit {
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
 }
 .navbar-header:after {
     clear: none;
@@ -101,11 +102,11 @@ header {
 .body-text {
     padding-top: 20px;
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 .small-media-credit {
-    max-width:250px;
+    max-width: 250px;
     margin: 0 auto;
 }
 .fullscreen {
@@ -116,7 +117,7 @@ header {
     padding-right: 0;
 }
 .text-background {
-    background-color: rgba(50, 50, 50, .6);
+    background-color: rgba(50, 50, 50, 0.6);
     height: 85vh;
 }
 .container {
@@ -130,7 +131,7 @@ header {
 h1,
 h2,
 h3 {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 h1 {
     font-size: 2.5rem;
@@ -180,16 +181,16 @@ h4 {
     font-weight: 600;
     width: 300px;
     padding-top: 10px;
-    font-size: .9rem;
+    font-size: 0.9rem;
 }
-[text-anchor="end"]>tspan {
+[text-anchor='end'] > tspan {
     cursor: default;
 }
 p {
     padding-top: 13px;
 }
 .navbar-brand > img {
-    height: 40px
+    height: 40px;
 }
 .view-transcript {
     margin-top: 15px;
@@ -234,7 +235,7 @@ p.first-paragraph:first-letter {
     margin-left: 10px;
 }
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .donate {
     font-weight: bold;
@@ -305,11 +306,13 @@ div.social-icon-container {
 footer {
     text-align: center;
     padding-top: 50px;
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
     padding-bottom: 10px;
 }
-footer > a, footer > a:hover, footer > a:focus {
+footer > a,
+footer > a:hover,
+footer > a:focus {
     color: inherit;
 }
 #container {
@@ -318,7 +321,7 @@ footer > a, footer > a:hover, footer > a:focus {
     margin: 0 auto;
     padding-bottom: 15px;
 }
-.highcharts-tooltip>span {
+.highcharts-tooltip > span {
     padding: 10px;
     white-space: normal !important;
     width: 200px;

@@ -93,7 +93,7 @@ iframe {
 }
 .caption {
     display: none;
-    font-size: .9rem;
+    font-size: 0.9rem;
     position: relative;
     top: -20px;
 }
@@ -179,7 +179,8 @@ a[data-slidesjs-item] {
 }
 .text {
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
 .alert-success {
     font-size: 1rem;
@@ -201,8 +202,8 @@ form,
     display: none;
 }
 .credit {
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
 }
 .slideshow-credit {
     position: relative;
@@ -215,7 +216,7 @@ form,
 .body-text {
     padding-top: 20px;
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 .small-media-credit {
@@ -227,7 +228,7 @@ form,
     padding-right: 0;
 }
 .text-background {
-    background-color: rgba(50, 50, 50, .8);
+    background-color: rgba(50, 50, 50, 0.8);
     height: 40%;
     text-align: center;
 }
@@ -244,10 +245,11 @@ form,
 }
 h1.headline,
 h3 {
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
 }
-h1, h2 {
+h1,
+h2 {
     text-align: center;
 }
 .produced.small {
@@ -284,14 +286,14 @@ h1, h2 {
     padding-top: 10px;
     margin: 0 auto;
 }
-[text-anchor="end"]>tspan {
+[text-anchor='end'] > tspan {
     cursor: default;
 }
 p {
     padding-top: 13px;
 }
 .navbar-brand > img {
-    height: 40px
+    height: 40px;
 }
 .view-transcript {
     margin-top: 15px;
@@ -307,8 +309,8 @@ p {
     font-weight: 200;
     margin-left: auto;
     margin-right: auto;
-      padding-top: 10px;
-  padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .produced {
     bottom: 60px;
@@ -337,7 +339,7 @@ p.first-paragraph:first-letter {
     margin-left: 10px;
 }
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .social-icon {
     height: 20px;
@@ -363,15 +365,35 @@ i.fa-comment {
     right: 75px;
 }
 .dining-art-hr {
-    color: #FFFFFF;
+    color: #ffffff;
     width: 150px;
     margin-top: 5px;
     border: 0;
     height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -ms-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -o-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
 }
 .dining-art {
     font-size: 1em;
@@ -398,8 +420,8 @@ div.social-icon-container {
 footer {
     text-align: center;
     padding-top: 50px;
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
     padding-bottom: 10px;
 }
 footer > a,
@@ -517,7 +539,7 @@ footer > a:focus {
         height: 80%;
     }
     h1 {
-        font-size: 3.0rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 1.5rem;
@@ -561,7 +583,7 @@ thead {
 }
 .text-info {
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 .yes-no-question {
@@ -569,7 +591,7 @@ thead {
 }
 .slate-name {
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 2rem;
     font-weight: bold;
 }
@@ -578,7 +600,10 @@ thead {
     bottom: 10px;
     width: 100%;
 }
-.tiles, .bios-container, .other-content-container, h1 {
+.tiles,
+.bios-container,
+.other-content-container,
+h1 {
     font-family: 'Roboto', sans-serif;
 }
 img {
@@ -610,35 +635,35 @@ img {
     background-size: cover;
 }
 .tile.undergraduate-liaison {
-    background-color:#777777;
+    background-color: #777777;
 }
 .tile.graduate-liaison {
-    background-color:#555555;
+    background-color: #555555;
 }
 .tile.community-liaison {
-    background-color:#333333;
+    background-color: #333333;
 }
 
 .slate-name.united-progress {
-    background-color: #DC2039;
+    background-color: #dc2039;
 }
 .slate-name.open-minds {
-    background-color: #5A8C8C;
+    background-color: #5a8c8c;
 }
 .slate-name.one-uchicago {
-    background-color: #F2D99D;
+    background-color: #f2d99d;
 }
 .slate-name.very-good-slate {
     background-color: #738585;
 }
 .slate-name.tk-appreciation {
-    background-color: #AB1111;
+    background-color: #ab1111;
 }
 .slate-name.moose-party {
     background-color: #000080;
 }
 .slate-name.united-progress {
-    background-color: #DC2039;
+    background-color: #dc2039;
 }
 .slate-name.undergraduate-liaison {
     background-color: orange;
@@ -650,19 +675,18 @@ img {
     background-color: lightblue;
 }
 
-
 #united-progress > div {
-    border-color: #DC2039;
+    border-color: #dc2039;
     border-width: 15px;
     border-style: solid;
 }
 #open-minds > div {
-    border-color: #5A8C8C;
+    border-color: #5a8c8c;
     border-width: 15px;
     border-style: solid;
 }
 #one-uchicago > div {
-    border-color: #F2D99D;
+    border-color: #f2d99d;
     border-width: 15px;
     border-style: solid;
 }
@@ -672,7 +696,7 @@ img {
     border-style: solid;
 }
 #tk-appreciation > div {
-    border-color: #AB1111;
+    border-color: #ab1111;
     border-width: 15px;
     border-style: solid;
 }
@@ -683,17 +707,17 @@ img {
 }
 
 #undergraduate-liaison > div {
-    border-color:orange;
+    border-color: orange;
     border-width: 15px;
     border-style: solid;
 }
 #graduate-liaison > div {
-    border-color:purple;
+    border-color: purple;
     border-width: 15px;
     border-style: solid;
 }
 #community-liaison > div {
-    border-color:lightblue;
+    border-color: lightblue;
     border-width: 15px;
     border-style: solid;
 }

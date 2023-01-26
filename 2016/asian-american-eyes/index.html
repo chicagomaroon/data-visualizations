@@ -1,288 +1,680 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <meta name="description" content="Uncommon Fund Project Draws Upon Asian-American Experience">
-    <meta name="author" content="Grace Hauck">
-    <meta property="og:url" content="http://chicagomaroon.github.io/asian-american-eyes/" />
-    <meta property="og:title" content="Uncommon Fund Project Draws Upon Asian-American Experience" />
-    <!--<meta property="og:description" content="You can’t ask people to understand, but you can at least let them see what your story is." />-->
-    <!-- Background Image -->
-    <meta property="og:image" content="http://chicagomaroon.github.io/asian-american-eyes/img/spreadarms.jpg" />
-    <title>Uncommon Fund Project Draws Upon Asian-American Experience - Interactive feature - ChicagoMaroon.com</title>
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
-    <link href="style.css" rel="stylesheet" type='text/css'>
-  </head>
-  <body>
-    <script>
-      <!-- Enables Facebook SDK, more FB scripts in main.js -->
-      window.fbAsyncInit = function() {
-         FB.init({
-            appId: '1584750855103746',
-            xfbml: true,
-            version: 'v2.2'
-         });
-      };
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            href="http://chicagomaroon.github.io/img/favicon.png"
+        />
+        <meta
+            name="description"
+            content="Uncommon Fund Project Draws Upon Asian-American Experience"
+        />
+        <meta name="author" content="Grace Hauck" />
+        <meta
+            property="og:url"
+            content="http://chicagomaroon.github.io/asian-american-eyes/"
+        />
+        <meta
+            property="og:title"
+            content="Uncommon Fund Project Draws Upon Asian-American Experience"
+        />
+        <!--<meta property="og:description" content="You can’t ask people to understand, but you can at least let them see what your story is." />-->
+        <!-- Background Image -->
+        <meta
+            property="og:image"
+            content="http://chicagomaroon.github.io/asian-american-eyes/img/spreadarms.jpg"
+        />
+        <title>
+            Uncommon Fund Project Draws Upon Asian-American Experience -
+            Interactive feature - ChicagoMaroon.com
+        </title>
+        <link
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link
+            href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Josefin+Sans:600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/reset.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/base.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <script>
+            <!-- Enables Facebook SDK, more FB scripts in main.js -->
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1584750855103746',
+                    xfbml: true,
+                    version: 'v2.2'
+                });
+            };
 
-      (function(d, s, id) {
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {
-            return;
-         }
-         js = d.createElement(s);
-         js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- Sets the header on left as Chicago Maroon -->
-          <a class="navbar-brand" href="http://www.chicagomaroon.com/">
-          <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
-          </a>
-        </div>
-        <!-- Facebook Share Icon  -->
-        <div class="social-icon-container fb right">
-          <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-          <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
-          </a>
-        </div>
-        <!-- Twitter Share Icon -->
-        <div class="social-icon-container twitter right">
-          <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/asian-american-eyes/" title="Uncommon Fund Project Draws Upon Asian-American Experience">
-          <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
-          </a>
-        </div>
-        <!-- Jumps to comment section -->
-        <div class="social-icon-container comments right">
-          <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
-          <i class="fa fa-comment fa-lg logo"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class='container'>
-      <!--<div class='col-xs-12 sidebar'>-->
-      <!--  <nav>-->
-      <!--    <ul>-->
-      <!--      <li><a href="#section1">Opening Paragraphs</a>-->
-      <!--      </li>-->
-      <!--      <li><a href="#section2">Second Picture/Paragraphs</a>-->
-      <!--      </li>-->
-      <!--      <li><a href="#section3">Third Picture/Paragraphs</a>-->
-      <!--      </li>-->
-      <!--      <li><a href="#section4">Fourth Picture/Paragraphs</a>-->
-      <!--      </li>-->
-      <!--      <li><a href="#section5">Fifth Picture/Paragraphs</a>-->
-      <!--      </li>-->
-      <!--    </ul>-->
-      <!--  </nav>-->
-      <!--</div>-->
-      <div class='container'>
-        <div class='row'>
-          <div class='col-xs-12 fullscreen-picture'>
-            <div class='push-down'>
-              <div class='col-xs-12 text-background'>
-                <!-- specified height for WINDOW ADD IT -->
-                <div class='col-xs-12 section-container'>
-                  <span class='section-link'><a href="http://chicagomaroon.com/category/arts/" target="new">Arts</a></span>
+            (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <!-- Sets the header on left as Chicago Maroon -->
+                    <a
+                        class="navbar-brand"
+                        href="http://www.chicagomaroon.com/"
+                    >
+                        <img
+                            alt="The Chicago Maroon Logo"
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/maroon-logo.png"
+                        />
+                    </a>
                 </div>
-                <h1 class='title'>Uncommon Fund Project Draws Upon Asian-American Experience</h1>
-                <!-- <h2 class='subtitle'>[subtitle]</h2> -->
-                <h3 class='authors'>Written by
-                  <span class="name"><a href="http://chicagomaroon.com/author/grace-hauck/" target="new">Grace Hauck</a></span> | Produced by
-                  <span class="name"><a href="[producer link]" target="new">Juliette Hainline</a></span> | March 1, 2016
-                </h3>
-              </div>
+                <!-- Facebook Share Icon  -->
+                <div class="social-icon-container fb right">
+                    <a
+                        id="fb-icon"
+                        class="social-icon right"
+                        target="_blank"
+                        href="#"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/fb-logo.png"
+                        />
+                    </a>
+                </div>
+                <!-- Twitter Share Icon -->
+                <div class="social-icon-container twitter right">
+                    <a
+                        id="twitter-icon"
+                        class="social-icon right tweet"
+                        target="_blank"
+                        href="http://chicagomaroon.github.io/asian-american-eyes/"
+                        title="Uncommon Fund Project Draws Upon Asian-American Experience"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/twitter-logo.png"
+                        />
+                    </a>
+                </div>
+                <!-- Jumps to comment section -->
+                <div class="social-icon-container comments right">
+                    <a
+                        id="comments"
+                        class="disqus-comment-count social-icon right logo"
+                        data-disqus-url="http://example.com/article1.html"
+                        href="#comment"
+                    >
+                        <i class="fa fa-comment fa-lg logo"></i>
+                    </a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class='credit photo-credit cover-photo'>Grace Hauck/<em>Chicago Maroon</em>
-        </div>
-        <div class='row'>
-          <section id="section1" class="head tail">
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text first-paragraph'>
-                Mid-forkful at a Cathey dining table last year, Vo Ram Yoon was struck by an idea: pioneer a two-part initiative consisting of online photo narratives and campus galleries’ displays to address the severe lack of dialogue on the Asian-American experience at UChicago.
-              </p>
+        <div class="container">
+            <!--<div class='col-xs-12 sidebar'>-->
+            <!--  <nav>-->
+            <!--    <ul>-->
+            <!--      <li><a href="#section1">Opening Paragraphs</a>-->
+            <!--      </li>-->
+            <!--      <li><a href="#section2">Second Picture/Paragraphs</a>-->
+            <!--      </li>-->
+            <!--      <li><a href="#section3">Third Picture/Paragraphs</a>-->
+            <!--      </li>-->
+            <!--      <li><a href="#section4">Fourth Picture/Paragraphs</a>-->
+            <!--      </li>-->
+            <!--      <li><a href="#section5">Fifth Picture/Paragraphs</a>-->
+            <!--      </li>-->
+            <!--    </ul>-->
+            <!--  </nav>-->
+            <!--</div>-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 fullscreen-picture">
+                        <div class="push-down">
+                            <div class="col-xs-12 text-background">
+                                <!-- specified height for WINDOW ADD IT -->
+                                <div class="col-xs-12 section-container">
+                                    <span class="section-link"
+                                        ><a
+                                            href="http://chicagomaroon.com/category/arts/"
+                                            target="new"
+                                            >Arts</a
+                                        ></span
+                                    >
+                                </div>
+                                <h1 class="title">
+                                    Uncommon Fund Project Draws Upon
+                                    Asian-American Experience
+                                </h1>
+                                <!-- <h2 class='subtitle'>[subtitle]</h2> -->
+                                <h3 class="authors">
+                                    Written by
+                                    <span class="name"
+                                        ><a
+                                            href="http://chicagomaroon.com/author/grace-hauck/"
+                                            target="new"
+                                            >Grace Hauck</a
+                                        ></span
+                                    >
+                                    | Produced by
+                                    <span class="name"
+                                        ><a href="[producer link]" target="new"
+                                            >Juliette Hainline</a
+                                        ></span
+                                    >
+                                    | March 1, 2016
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="credit photo-credit cover-photo">
+                    Grace Hauck/<em>Chicago Maroon</em>
+                </div>
+                <div class="row">
+                    <section id="section1" class="head tail">
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text first-paragraph">
+                                Mid-forkful at a Cathey dining table last year,
+                                Vo Ram Yoon was struck by an idea: pioneer a
+                                two-part initiative consisting of online photo
+                                narratives and campus galleries’ displays to
+                                address the severe lack of dialogue on the
+                                Asian-American experience at UChicago.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Now, just days after voting closed for the 2016
+                                Uncommon Fund candidates, I sat down with the
+                                minds behind this past year’s Through My Asian
+                                American Eyes project to reflect on the fantasy
+                                turned national campaign.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Last year, third-years William Rhee and Raymond
+                                Fang, along with Yoon, now a fourth-year,
+                                applied to and successfully received sponsorship
+                                from the Uncommon Fund. Midway through spring
+                                quarter, they put their proposal into action by
+                                launching a Humans of New York–style photo essay
+                                on Facebook to feature Asian-American students—a
+                                page that now boasts 645 likes from students
+                                across the country. Part two of this project, a
+                                collection of visual artworks created by six
+                                Asian Americans, currently shows in both the
+                                east and west second-floor stairwells of Harper
+                                and will conclude its seven-week run this
+                                Friday.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “We realized that being political about
+                                Asian-American identity isn’t something that a
+                                lot of people here are comfortable with yet, so
+                                it was easier to create a safe space where
+                                people could explore their Asian-American
+                                identity and think about their stories without
+                                reframing it as this activist-y, political
+                                thing. We want people to think about it in that
+                                way, but that’s not something that we want to
+                                pressure them to do,” Yoon said.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section2" class="head tail">
+                        <div class="col-xs-12 body-image-div">
+                            <img class='body-image' alt='Stillframe of movie'
+                            src=img/faces.jpg>
+                            <div
+                                class="credit photo-credit cover-photo body-photo-credit"
+                            >
+                                Grace Hauck/<em>Chicago Maroon</em>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text following-photo">
+                                <a
+                                    href="https://www.facebook.com/media/set/?set=a.357328707803787.1073741828.357263687810289&type=3"
+                                    target="_blank"
+                                    >The Through My Asian American Eyes photo
+                                    narrative</a
+                                >
+                                has already featured over 30 students of varying
+                                years and origins as well as a campus Resident
+                                Head. Beyond showcasing personal student
+                                testimonies, the site remains an active
+                                interface that connects students to similar
+                                projects like those at the University of
+                                Illinois at Chicago that inspired efforts here.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text following-photo">
+                                “UIC has very active Malaysian, Vietnamese, and
+                                Thai organizations,” Yoon said.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “When we were accepted and we were going through
+                                with this process, we were actually talking with
+                                students from UIC,” Rhee added. “In a way, it’s
+                                just another step in seeing where the influence
+                                might go.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                It didn’t take long for the movement to branch
+                                out of the Midwest; just last month, students at
+                                Cornell University took up the baton. Asian
+                                Pacific Americans for Action (APAA), a student
+                                group at Cornell, recently launched its own
+                                version of the UChicago–inspired project,
+                                shortening the name to
+                                <a
+                                    href="https://www.facebook.com/media/set/?set=a.10154029213387446.1073741830.356134492445&type=3"
+                                    target="_blank"
+                                    >"Through My Eyes"</a
+                                >
+                                to encompass Pacific Islanders.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “We were trying to bring out the diversity
+                                that’s in the Asian-American community to
+                                showcase the experiences that people have gone
+                                through,” said Xiao Yin Ma, a second-year at
+                                Cornell who recently conducted APAA’s first
+                                round of photo-narrative interviews. “We make up
+                                20–30 percent of [Cornell’s student] population,
+                                but I feel like there is a lot of apathy on
+                                campus in the Asian community. And I don’t think
+                                that’s just Cornell; I think that’s everywhere
+                                in general.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                As the movement spreads, Through My Asian
+                                American Eyes continues to take root here on
+                                campus, where the works of undergraduates
+                                Michelle Huang, Catherine Chen, Lindsey Jay,
+                                Sean Whang, Helen Zhang, and Lavina Li don our
+                                gray stone walls. Over the summer, these six
+                                artists received emails from Rhe, through the
+                                PanAsia and InterVarsity listhost, calling for
+                                visual pieces reflecting on Asian-American
+                                identity. While several students were already
+                                following the project’s Facebook page, others
+                                received a pleasant surprise.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section3" class="head tail">
+                        <div class="col-xs-12 body-image-div">
+                            <img class='body-image' alt='Stillframe of movie'
+                            src=img/selfie.jpg>
+                            <div
+                                class="credit photo-credit cover-photo body-photo-credit"
+                            >
+                                Grace Hauck/<em>Chicago Maroon</em>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text following-photo">
+                                Huang, or perhaps better known as Instagram’s
+                                <a
+                                    href="https://www.instagram.com/michellethewise/"
+                                    target="_blank"
+                                    >@michellethewise,</a
+                                >
+                                is a second-year from a large majority-minority
+                                town in California. While both of her parents
+                                are Chinese, she recently returned from a trip
+                                to Korea, which inspired her contribution to
+                                this showcase. Her untitled black-and-white
+                                marker drawing depicts the face of an indistinct
+                                Asian girl. Peonies caress her cheeks—a
+                                nurturing gesture that Huang translates as the
+                                implicit love, loyalty, and respect that Asians,
+                                particularly Asian families, share for one
+                                another.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “I think the discourse on the Asian-American
+                                experience right now is on things like model
+                                minority stuff or the mental health problems
+                                that are going on, or the opposition that we
+                                have with the white hegemony,” Huang said. “But
+                                I feel like we don’t talk about very key,
+                                central aspects of our culture—this tactic
+                                compassion.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <hr class="no-margin-bottom" />
+                            <p class="quotation-text">
+                                "I feel like we don’t talk about very key,
+                                central aspects of our culture—this tactic
+                                compassion."
+                            </p>
+                            <hr class="no-margin-bottom" />
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Fourth-year Sean Whang, a soft-spoken biology
+                                major and visual arts minor descending from an
+                                unusual legacy of both doctors and artists,
+                                approached this assignment through a different
+                                lens. Rather than execute outward explanation,
+                                Whang chose to embark on an inward journey of
+                                acceptance. In *Lonely at the Top*, drawn on his
+                                tablet using Photoshop CS2, Whang addresses the
+                                pressures—culturally exacerbated and
+                                self-wrought—that drive him to compete with his
+                                peers.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “It’s always going to be like this,” Whang said.
+                                “But even in this reality, it’s still possible
+                                to find freedom and still find peace despite all
+                                of the pressures and comparisons.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                This work marks one of Whang’s first attempts to
+                                break from his formal training as a realist
+                                portraitist to digital sketching. The risk was
+                                an indubitable success: Whang’s combination of
+                                unnatural color and digital mapping achieves a
+                                supremely magical realist effect. He
+                                crystallizes the ephemeral aura of his piece
+                                with an accompanying C. S. Lewis quote: “If I
+                                find in myself a desire which no experience in
+                                this world can satisfy, the most probable
+                                explanation is that I was made for another
+                                world.”
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section4" class="head tail">
+                        <div class="col-xs-12 body-image-div">
+                            <img class='body-image' alt='Stillframe of movie'
+                            src=img/characters.jpg>
+                            <div
+                                class="credit photo-credit cover-photo body-photo-credit"
+                            >
+                                Grace Hauck/<em>Chicago Maroon</em>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text following-photo">
+                                “You belong at an intermediary,” said third-year
+                                Catherine Chen, summarizing her perception of
+                                the Asian-American experience. This
+                                American-born economics major was raised by her
+                                grandparents in China until the age of seven,
+                                when she returned to the United States. Her
+                                project, a large acrylic canvas painting of
+                                Chinese calligraphy, serves two functions.
+                                First, it depicts the sentiments of three
+                                successive generations of her family, beginning
+                                with those of her grandparents when they first
+                                immigrated to the U.S. Second, it reflects
+                                Chen’s own understanding of how people perceive
+                                her.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “Growing up in China and then here, it’s made me
+                                aware of how I feel like I could be a part of
+                                both places but not really either. For example,
+                                in the U.S. we’re considered Asian, but in
+                                China, when people find out I’m from America,
+                                they call me American,” Chen said.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <hr class="no-margin-bottom" />
+                            <p class="quotation-text">
+                                "In the U.S. we’re considered Asian, but in
+                                China, when people find out I’m from America,
+                                they call me American."
+                            </p>
+                            <hr class="no-margin-bottom" />
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Chen explained how her close friends would
+                                commend her for her work, admiring her skillful
+                                knack for writing Chinese characters. Chen’s
+                                sister, on the other hand, chided Chen for her
+                                sloppy costuming of culture—she didn’t even
+                                write out the characters. She had to trace them
+                                out and then fill them in with paint. While
+                                those half-blind to Asian identity assumed her
+                                to be foreign, those who can read Chen’s words
+                                can see through the façade.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                The Lindsey Jay’s diptych, a favorite of Yoon’s,
+                                placed alongside Whang’s massive printed
+                                drawing, reflects on this same theme of duality.
+                                Meanwhile, second-year Helen Zhang’s
+                                illustration-board cutout, titled *Exercise in
+                                Cultural Exploration and Egotism,* combines the
+                                ancient Chinese paper-cutting art of *Jianzhi *
+                                with a nod to stereotypically Western
+                                Renaissance portraiture. Yet amidst a sea of
+                                drawings and paintings, the work of second-year
+                                Lavina Li stands out as the only photography
+                                series in the exhibit.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section5" class="head tail">
+                        <div class="col-xs-12 body-image-div">
+                            <img class='body-image' alt='Stillframe of movie'
+                            src=img/pictures.jpg>
+                            <div
+                                class="credit photo-credit cover-photo body-photo-credit"
+                            >
+                                Grace Hauck/<em>Chicago Maroon</em>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text following-photo">
+                                “Cockroaches are among the hardiest insects
+                                found in Hong Kong,” Li explained in her work’s
+                                accompanying artist statement. “Though commonly
+                                viewed as pests, few survive in extreme
+                                conditions. This photo exhibition documents and
+                                celebrates ‘cockroach’ moments and
+                                places—instances where something has managed
+                                either to escape from or thrive in the cold
+                                intensity of Hong Kong.” Crawling across the
+                                inter-floor landing, the images are bleak and
+                                industrial like the crawlers themselves.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                While the success of this Cathey lightbulb
+                                moment proves clear in the emerging Cornell
+                                campaign, Yoon and Rhee acknowledge their
+                                project’s shortcomings: five out of six artists
+                                are female, and all of the artists—even most of
+                                the individuals featured in the photo
+                                narrative—are of East Asian descent. Cue APAA’s
+                                amendment to the campaign name.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <hr class="no-margin-bottom" />
+                            <p class="quotation-text">
+                                "You can’t ask people to understand, but you can
+                                at least let them see what your story is.”
+                            </p>
+                            <hr class="no-margin-bottom" />
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                These shortcomings are, however, excusable. Far
+                                from the authority on Asian-American identity
+                                politics, the Uncommon Fund’s Through My Asian
+                                American Eyes project is merely the next natural
+                                link in an evolving campus dialogue. While Rhee,
+                                Yoon, and Fang will lift the exhibition pieces
+                                off of their hooks this coming Friday, new
+                                groups like the UChicago’s Confucius Society,
+                                which received official RSO status two weeks
+                                ago, will step in to preserve this momentum.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “I think a lot of times when there are
+                                conversations about identity—with racial and
+                                national tensions—they can end in frustration,”
+                                Chen said. “It’s hard for me to explain to my
+                                friends that have never experienced this, how I
+                                feel. And it’s frustrating because it’s so
+                                personal… You can’t ask people to understand,
+                                but you can at least let them see what your
+                                story is.”
+                            </p>
+                        </div>
+                    </section>
+                </div>
+                <div
+                    class="col-lg-offset-2 col-lg-9 col-md-offset-2 col-md-7 col-sm-offset-3 col-sm-7 col-xs-offset-2 col-xs-9"
+                >
+                    <style>
+                        .embed-container {
+                            position: relative;
+                            margin-top: 30px;
+                            padding-bottom: 56.25%;
+                            height: 0;
+                            overflow: hidden;
+                            max-width: 100%;
+                        }
+                        .embed-container iframe,
+                        .embed-container object,
+                        .embed-container embed {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+                    <div class="embed-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/3fhsPCyXNuc"
+                            frameborder="0"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                </div>
             </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Now, just days after voting closed for the 2016 Uncommon Fund candidates, I sat down with the minds behind this past year’s Through My Asian American Eyes project to reflect on the fantasy turned national campaign.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Last year, third-years William Rhee and Raymond Fang, along with Yoon, now a fourth-year, applied to and successfully received sponsorship from the Uncommon Fund. Midway through spring quarter, they put their proposal into action by launching a Humans of New York–style photo essay on Facebook to feature Asian-American students—a page that now boasts 645 likes from students across the country. Part two of this project, a collection of visual artworks created by six Asian Americans, currently shows in both the east and west second-floor stairwells of Harper and will conclude its seven-week run this Friday.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “We realized that being political about Asian-American identity isn’t something that a lot of people here are comfortable with yet, so it was easier to create a safe space where people could explore their Asian-American identity and think about their stories without reframing it as this activist-y, political thing. We want people to think about it in that way, but that’s not something that we want to pressure them to do,” Yoon said.
-              </p>
-            </div>
-            </section>
-          <section id="section2" class="head tail">
-            <div class='col-xs-12 body-image-div'>
-              <img class='body-image' alt='Stillframe of movie' src=img/faces.jpg>
-              <div class="credit photo-credit cover-photo body-photo-credit">Grace Hauck/<em>Chicago Maroon</em>
-              </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text following-photo'>
-                <a href="https://www.facebook.com/media/set/?set=a.357328707803787.1073741828.357263687810289&type=3" target = "_blank">The Through My Asian American Eyes photo narrative</a> has already featured over 30 students of varying years and origins as well as a campus Resident Head. Beyond showcasing personal student testimonies, the site remains an active interface that connects students to similar projects like those at the University of Illinois at Chicago that inspired efforts here.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text following-photo'>
-                “UIC has very active Malaysian, Vietnamese, and Thai organizations,” Yoon said.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “When we were accepted and we were going through with this process, we were actually talking with students from UIC,” Rhee added. “In a way, it’s just another step in seeing where the influence might go.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                It didn’t take long for the movement to branch out of the Midwest; just last month, students at Cornell University took up the baton. Asian Pacific Americans for Action (APAA), a student group at Cornell, recently launched its own version of the UChicago–inspired project, shortening the name to <a href="https://www.facebook.com/media/set/?set=a.10154029213387446.1073741830.356134492445&type=3" target="_blank">"Through My Eyes"</a> to encompass Pacific Islanders.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “We were trying to bring out the diversity that’s in the Asian-American community to showcase the experiences that people have gone through,” said Xiao Yin Ma, a second-year at Cornell who recently conducted APAA’s first round of photo-narrative interviews. “We make up 20–30 percent of [Cornell’s student] population, but I feel like there is a lot of apathy on campus in the Asian community. And I don’t think that’s just Cornell; I think that’s everywhere in general.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                As the movement spreads, Through My Asian American Eyes continues to take root here on campus, where the works of undergraduates Michelle Huang, Catherine Chen, Lindsey Jay, Sean Whang, Helen Zhang, and Lavina Li don our gray stone walls. Over the summer, these six artists received emails from Rhe, through the PanAsia and InterVarsity listhost, calling for visual pieces reflecting on Asian-American identity. While several students were already following the project’s Facebook page, others received a pleasant surprise.
-              </p>
-            </div>
-          </section>
-          <section id="section3" class="head tail">
-            <div class='col-xs-12 body-image-div'>
-              <img class='body-image' alt='Stillframe of movie' src=img/selfie.jpg>
-              <div class="credit photo-credit cover-photo body-photo-credit">Grace Hauck/<em>Chicago Maroon</em>
-              </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text following-photo'>
-                Huang, or perhaps better known as Instagram’s <a href="https://www.instagram.com/michellethewise/" target="_blank">@michellethewise,</a> is a second-year from a large majority-minority town in California. While both of her parents are Chinese, she recently returned from a trip to Korea, which inspired her contribution to this showcase. Her untitled black-and-white marker drawing depicts the face of an indistinct Asian girl. Peonies caress her cheeks—a nurturing gesture that Huang translates as the implicit love, loyalty, and respect that Asians, particularly Asian families, share for one another.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “I think the discourse on the Asian-American experience right now is on things like model minority stuff or the mental health problems that are going on, or the opposition that we have with the white hegemony,” Huang said. “But I feel like we don’t talk about very key, central aspects of our culture—this tactic compassion.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <hr class='no-margin-bottom'>
-              <p class='quotation-text'>
-                "I feel like we don’t talk about very key, central aspects of our culture—this tactic compassion."
-              </p>
-              <hr class='no-margin-bottom'>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Fourth-year Sean Whang, a soft-spoken biology major and visual arts minor descending from an unusual legacy of both doctors and artists, approached this assignment through a different lens. Rather than execute outward explanation, Whang chose to embark on an inward journey of acceptance. In *Lonely at the Top*, drawn on his tablet using Photoshop CS2, Whang addresses the pressures—culturally exacerbated and self-wrought—that drive him to compete with his peers.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “It’s always going to be like this,” Whang said. “But even in this reality, it’s still possible to find freedom and still find peace despite all of the pressures and comparisons.”              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                This work marks one of Whang’s first attempts to break from his formal training as a realist portraitist to digital sketching. The risk was an indubitable success: Whang’s combination of unnatural color and digital mapping achieves a supremely magical realist effect. He crystallizes the ephemeral aura of his piece with an accompanying C. S. Lewis quote: “If I find in myself a desire which no experience in this world can satisfy, the most probable explanation is that I was made for another world.”            </div>
-          </section>
-          <section id="section4" class="head tail">
-            <div class='col-xs-12 body-image-div'>
-              <img class='body-image' alt='Stillframe of movie' src=img/characters.jpg>
-              <div class="credit photo-credit cover-photo body-photo-credit">Grace Hauck/<em>Chicago Maroon</em>
-              </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text following-photo'>
-                “You belong at an intermediary,” said third-year Catherine Chen, summarizing her perception of the Asian-American experience. This American-born economics major was raised by her grandparents in China until the age of seven, when she returned to the United States. Her project, a large acrylic canvas painting of Chinese calligraphy, serves two functions. First, it depicts the sentiments of three successive generations of her family, beginning with those of her grandparents when they first immigrated to the U.S. Second, it reflects Chen’s own understanding of how people perceive her.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “Growing up in China and then here, it’s made me aware of how I feel like I could be a part of both places but not really either. For example, in the U.S. we’re considered Asian, but in China, when people find out I’m from America, they call me American,” Chen said.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <hr class='no-margin-bottom'>
-              <p class='quotation-text'>
-                "In the U.S. we’re considered Asian, but in China, when people find out I’m from America, they call me American."
-              </p>
-              <hr class='no-margin-bottom'>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Chen explained how her close friends would commend her for her work, admiring her skillful knack for writing Chinese characters. Chen’s sister, on the other hand, chided Chen for her sloppy costuming of culture—she didn’t even write out the characters. She had to trace them out and then fill them in with paint. While those half-blind to Asian identity assumed her to be foreign, those who can read Chen’s words can see through the façade.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                The Lindsey Jay’s diptych, a favorite of Yoon’s, placed alongside Whang’s massive printed drawing, reflects on this same theme of duality. Meanwhile, second-year Helen Zhang’s illustration-board cutout, titled *Exercise in Cultural Exploration and Egotism,* combines the ancient Chinese paper-cutting art of *Jianzhi * with a nod to stereotypically Western Renaissance portraiture. Yet amidst a sea of drawings and paintings, the work of second-year Lavina Li stands out as the only photography series in the exhibit.
-              </p>
-            </div>
-          </section>
-          <section id="section5" class="head tail">
-            <div class='col-xs-12 body-image-div'>
-              <img class='body-image' alt='Stillframe of movie' src=img/pictures.jpg>
-              <div class="credit photo-credit cover-photo body-photo-credit">Grace Hauck/<em>Chicago Maroon</em>
-              </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text following-photo'>
-                “Cockroaches are among the hardiest insects found in Hong Kong,” Li explained in her work’s accompanying artist statement. “Though commonly viewed as pests, few survive in extreme conditions. This photo exhibition documents and celebrates ‘cockroach’ moments and places—instances where something has managed either to escape from or thrive in the cold intensity of Hong Kong.” Crawling across the inter-floor landing, the images are bleak and industrial like the crawlers themselves.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                While the success of this Cathey lightbulb moment proves clear in the emerging Cornell campaign, Yoon and Rhee acknowledge their project’s shortcomings: five out of six artists are female, and all of the artists—even most of the individuals featured in the photo narrative—are of East Asian descent. Cue APAA’s amendment to the campaign name.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <hr class='no-margin-bottom'>
-              <p class='quotation-text'>
-                "You can’t ask people to understand, but you can at least let them see what your story is.”
-              </p>
-              <hr class='no-margin-bottom'>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                These shortcomings are, however, excusable. Far from the authority on Asian-American identity politics, the Uncommon Fund’s Through My Asian American Eyes project is merely the next natural link in an evolving campus dialogue. While Rhee, Yoon, and Fang will lift the exhibition pieces off of their hooks this coming Friday, new groups like the UChicago’s Confucius Society, which received official RSO status two weeks ago, will step in to preserve this momentum.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “I think a lot of times when there are conversations about identity—with racial and national tensions—they can end in frustration,” Chen said. “It’s hard for me to explain to my friends that have never experienced this, how I feel. And it’s frustrating because it’s so personal… You can’t ask people to understand, but you can at least let them see what your story is.”
-              </p>
-            </div>
-          </section>
-      </div>
-      <div class='col-lg-offset-2 col-lg-9 col-md-offset-2 col-md-7 col-sm-offset-3 col-sm-7 col-xs-offset-2 col-xs-9'>
-      <style>
-      .embed-container { position: relative; margin-top: 30px; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; }
-      .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-      </style>
-      <div class='embed-container'><iframe src='https://www.youtube.com/embed/3fhsPCyXNuc' frameborder='0' allowfullscreen></iframe></div>
-    </div>
-    </div>
-    <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
+            <div
+                id="disqus_thread"
+                class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+            ></div>
             <script type="text/javascript">
                 /* * * CONFIGURATION VARIABLES * * */
                 var disqus_shortname = 'chicagomarooninteractive';
@@ -293,50 +685,68 @@
                     dsq.type = 'text/javascript';
                     dsq.async = true;
                     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    (
+                        document.getElementsByTagName('head')[0] ||
+                        document.getElementsByTagName('body')[0]
+                    ).appendChild(dsq);
                 })();
             </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+            <noscript
+                >Please enable JavaScript to view the
+                <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+                    >comments powered by Disqus.</a
+                >
             </noscript>
         </div>
+        <a id="comment"></a>
+        <footer>
+            <a href="http://www.chicagomaroon.com/"
+                >© 2015 The Chicago Maroon</a
+            >
+        </footer>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'chicagomarooninteractive';
 
-    </div>
-    <a id='comment'></a>
-    <footer>
-        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
-    </footer>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'chicagomarooninteractive';
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (
+                    document.getElementsByTagName('HEAD')[0] ||
+                    document.getElementsByTagName('BODY')[0]
+                ).appendChild(s);
+            })();
+        </script>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="jquery.fitvids.js"></script>
+    <script src="main.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            'script',
+            '//www.google-analytics.com/analytics.js',
+            'ga'
+        );
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
+        ga('create', 'UA-59818592-4', 'auto');
+        ga('send', 'pageview');
     </script>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="jquery.fitvids.js"></script>
-<script src='main.js'></script>
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-59818592-4', 'auto');
-    ga('send', 'pageview');
-</script>
 </html>

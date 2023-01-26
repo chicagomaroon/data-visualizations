@@ -13,7 +13,8 @@ a.story-link:hover {
     color: white;
 }
 
-.author, .date-published {
+.author,
+.date-published {
     font-size: 1.5rem;
     font-weight: 200;
 }
@@ -23,25 +24,25 @@ a.story-link:hover {
     height: 300px;
     background-size: cover;
     background-position: center;
-    padding-left:0;
+    padding-left: 0;
     padding-right: 0;
 }
 
 /* Gray translucent background so white text is easier to read. */
 .text-background {
-    background-color: rgba(50, 50, 50, .8);
+    background-color: rgba(50, 50, 50, 0.8);
     padding-left: 10px;
     padding-right: 10px;
 }
 
 /* Makes whole tile clickable by overlaying an empty span on top of the whole div. */
 .empty-span {
-    position:absolute; 
-  width:100%;
-  height:100%;
-  top:0;
-  left: 0;
-  z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 footer {

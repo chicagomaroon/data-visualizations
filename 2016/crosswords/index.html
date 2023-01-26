@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Crossword</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/jquery.hotkeys.js"></script>
-    <script type="text/javascript" src="lib/jquery.cookie.js"></script>
-    <script type="text/javascript" src="crossword.js"></script>
-    <script type="text/javascript">
-    var crossw1rd1;
-    //var crossw1rd2;
-    $(document).ready(function() {
-        crossw1rd1 = new Crossw1rd('container1');
-        crossw1rd1.init('puzzle'); // the name of the puzzle file goes here
-    });
-    </script>
-    <meta charset="UTF-8">
-</head>
-<body>
-<div id="container1"></div>
-<br/>
-<div id="container2"></div>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Crossword</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script type="text/javascript" src="lib/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.hotkeys.js"></script>
+        <script type="text/javascript" src="lib/jquery.cookie.js"></script>
+        <script type="text/javascript" src="crossword.js"></script>
+        <script type="text/javascript">
+            var crossw1rd1;
+            //var crossw1rd2;
+            $(document).ready(function () {
+                crossw1rd1 = new Crossw1rd('container1');
+                crossw1rd1.init('puzzle'); // the name of the puzzle file goes here
+            });
+        </script>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div id="container1"></div>
+        <br />
+        <div id="container2"></div>
+    </body>
 </html>

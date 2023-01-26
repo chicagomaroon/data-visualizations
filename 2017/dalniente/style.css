@@ -1,12 +1,11 @@
 .caption {
     display: none;
-    font-size: .9rem;
+    font-size: 0.9rem;
     position: relative;
     top: -20px;
 }
 .slideshow-container {
-    margin-top:30px;
-}
+    margin-top: 30px;
 }
 /*nav a:link {
     color: rgba(128, 0, 0, 0.9);
@@ -46,7 +45,8 @@ li {
     padding-top: 10px;
     font-size: 1.5em !important;
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
     padding-bottom: 5px;
 }
 .subtitle {
@@ -67,8 +67,8 @@ h3 a:active {
     color: white !important;
 }
 .credit {
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
 }
 .navbar-header:after {
     clear: none;
@@ -89,7 +89,8 @@ h3 a:active {
     margin: 0 auto;
 }
 .fullscreen-picture {
-    background: url("http://chicagomaroon.github.io/dalniente/img/Cover.jpg") no-repeat center center fixed;
+    background: url('http://chicagomaroon.github.io/dalniente/img/Cover.jpg')
+        no-repeat center center fixed;
     background-size: cover;
     height: 30%;
     padding-top: 45px;
@@ -97,10 +98,10 @@ h3 a:active {
     padding-right: 0;
 }
 .push-down {
-    height: 50%
+    height: 50%;
 }
 .section-link {
-    color: #FFFFFF;
+    color: #ffffff;
     width: 150px;
     border: 0;
     height: 1px;
@@ -111,7 +112,8 @@ h3 a:active {
 }
 .section-container {
     font-size: 1em;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
     color: #fff;
     position: relative;
     /*text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);*/
@@ -164,14 +166,14 @@ h3 a:active {
     text-align: center;
 }
 .body-text {
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 p {
-    text-align: left
+    text-align: left;
 }
 .navbar-brand > img {
-    height: 40px
+    height: 40px;
 }
 .author {
     position: absolute;
@@ -201,9 +203,9 @@ p.first-paragraph:first-letter {
 }
 
 .body-image-special-div {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 20px;
 }
 
 .right {

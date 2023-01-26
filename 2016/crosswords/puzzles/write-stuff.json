@@ -1,0 +1,554 @@
+{
+    "title": "Write Stuff",
+    "by": "Daniel Ruttenberg",
+    "clues": [
+        {
+            "d": "A",
+            "n": 1,
+            "x": 0,
+            "y": 0,
+            "a": "WRING",
+            "c": "Twist, as a wet cloth"
+        },
+        {
+            "d": "A",
+            "n": 6,
+            "x": 6,
+            "y": 0,
+            "a": "HAFF",
+            "c": "Spiritual journey, to a practicer of 36-across"
+        },
+        { "d": "A", "n": 10, "x": 11, "y": 0, "a": "VET", "c": "Dog doc" },
+        {
+            "d": "A",
+            "n": 13,
+            "x": 0,
+            "y": 1,
+            "a": "INTER",
+            "c": "Prefix with \"active\" or \"state\""
+        },
+        {
+            "d": "A",
+            "n": 14,
+            "x": 6,
+            "y": 1,
+            "a": "UVEA",
+            "c": "Region of the eye"
+        },
+        {
+            "d": "A",
+            "n": 15,
+            "x": 11,
+            "y": 1,
+            "a": "IRON",
+            "c": "Mineral lacked by anemics"
+        },
+        {
+            "d": "A",
+            "n": 17,
+            "x": 0,
+            "y": 2,
+            "a": "MASTERMIND",
+            "c": "Pawn mover?"
+        },
+        {
+            "d": "A",
+            "n": 19,
+            "x": 11,
+            "y": 2,
+            "a": "SAGE",
+            "c": "\"Parsley, ___, Rosemary, and Thyme\" (1966 Simon & Garfunkel hit)"
+        },
+        {
+            "d": "A",
+            "n": 20,
+            "x": 0,
+            "y": 3,
+            "a": "PSA",
+            "c": "\"Say no to drugs\" spot"
+        },
+        { "d": "A", "n": 21, "x": 4, "y": 3, "a": "APED", "c": "Mimicked" },
+        {
+            "d": "A",
+            "n": 22,
+            "x": 9,
+            "y": 3,
+            "a": "ECOSOC",
+            "c": "Body of UN focusing on human rights and money"
+        },
+        {
+            "d": "A",
+            "n": 24,
+            "x": 3,
+            "y": 4,
+            "a": "ATMS",
+            "c": "Citibank features"
+        },
+        {
+            "d": "A",
+            "n": 25,
+            "x": 8,
+            "y": 4,
+            "a": "DIOR",
+            "c": "Fashionable Christian"
+        },
+        {
+            "d": "A",
+            "n": 26,
+            "x": 0,
+            "y": 5,
+            "a": "SPITES",
+            "c": "Treats maliciously"
+        },
+        {
+            "d": "A",
+            "n": 29,
+            "x": 7,
+            "y": 5,
+            "a": "TUTU",
+            "c": "Costume frequently worn by Michells on 'Full House'"
+        },
+        {
+            "d": "A",
+            "n": 30,
+            "x": 12,
+            "y": 5,
+            "a": "GAG",
+            "c": "Comedian's segment"
+        },
+        {
+            "d": "A",
+            "n": 33,
+            "x": 0,
+            "y": 6,
+            "a": "LASER",
+            "c": "Weapon often found in an evil lair"
+        },
+        {
+            "d": "A",
+            "n": 34,
+            "x": 6,
+            "y": 6,
+            "a": "QUEENSIZE",
+            "c": "Capable of serving two"
+        },
+        {
+            "d": "A",
+            "n": 36,
+            "x": 0,
+            "y": 7,
+            "a": "ISLAM",
+            "c": "Imam's faith"
+        },
+        {
+            "d": "A",
+            "n": 37,
+            "x": 6,
+            "y": 7,
+            "a": "ILL",
+            "c": "Really good, as a rapper"
+        },
+        { "d": "A", "n": 38, "x": 10, "y": 7, "a": "TILTS", "c": "Inclines" },
+        {
+            "d": "A",
+            "n": 39,
+            "x": 0,
+            "y": 8,
+            "a": "CHEMICALS",
+            "c": "Locavore's fear"
+        },
+        {
+            "d": "A",
+            "n": 41,
+            "x": 10,
+            "y": 8,
+            "a": "ERLES",
+            "c": "Author Gardner, offensive lineman Ladson, et. al"
+        },
+        {
+            "d": "A",
+            "n": 42,
+            "x": 0,
+            "y": 9,
+            "a": "EAT",
+            "c": "Chef's cry, perhaps"
+        },
+        {
+            "d": "A",
+            "n": 43,
+            "x": 4,
+            "y": 9,
+            "a": "AONE",
+            "c": "Cream of the crop"
+        },
+        {
+            "d": "A",
+            "n": 44,
+            "x": 9,
+            "y": 9,
+            "a": "FRESCO",
+            "c": "Renaissance wall decor"
+        },
+        { "d": "A", "n": 45, "x": 3, "y": 10, "a": "SMUG", "c": "Cocky" },
+        {
+            "d": "A",
+            "n": 46,
+            "x": 8,
+            "y": 10,
+            "a": "TAME",
+            "c": "Like a good pet"
+        },
+        {
+            "d": "A",
+            "n": 47,
+            "x": 0,
+            "y": 11,
+            "a": "AFFAIR",
+            "c": "Undercover action?"
+        },
+        {
+            "d": "A",
+            "n": 50,
+            "x": 7,
+            "y": 11,
+            "a": "SARA",
+            "c": "\"Love Song\" Bareilles"
+        },
+        { "d": "A", "n": 51, "x": 12, "y": 11, "a": "TAU", "c": "2π" },
+        {
+            "d": "A",
+            "n": 54,
+            "x": 0,
+            "y": 12,
+            "a": "MOIL",
+            "c": "Counterpart to 'Toil'"
+        },
+        {
+            "d": "A",
+            "n": 55,
+            "x": 5,
+            "y": 12,
+            "a": "BUTTERMILK",
+            "c": "Ingredient on a pancake recipe"
+        },
+        {
+            "d": "A",
+            "n": 58,
+            "x": 0,
+            "y": 13,
+            "a": "BAJA",
+            "c": "Peninsula bordering California"
+        },
+        {
+            "d": "A",
+            "n": 59,
+            "x": 5,
+            "y": 13,
+            "a": "ESAU",
+            "c": "Jacob's hairy brother"
+        },
+        {
+            "d": "A",
+            "n": 60,
+            "x": 10,
+            "y": 13,
+            "a": "CANOE",
+            "c": "River vessel"
+        },
+        {
+            "d": "A",
+            "n": 61,
+            "x": 1,
+            "y": 14,
+            "a": "MID",
+            "c": "With 62-across, checkpoint exam, or a clue to 17-across, 55-across, 5-down, and 23-down?"
+        },
+        {
+            "d": "A",
+            "n": 62,
+            "x": 5,
+            "y": 14,
+            "a": "TERM",
+            "c": "See 61 across"
+        },
+        {
+            "d": "A",
+            "n": 63,
+            "x": 10,
+            "y": 14,
+            "a": "HOSTS",
+            "c": "People, to a parasite"
+        },
+
+        {
+            "d": "D",
+            "n": 1,
+            "x": 0,
+            "y": 0,
+            "a": "WIMP",
+            "c": "Typical bully target"
+        },
+        {
+            "d": "D",
+            "n": 2,
+            "x": 1,
+            "y": 0,
+            "a": "RNAS",
+            "c": "Protein-building polymers"
+        },
+        {
+            "d": "D",
+            "n": 3,
+            "x": 2,
+            "y": 0,
+            "a": "ITSA",
+            "c": "\"___ boy!\" (Doctor declaration) "
+        },
+        { "d": "D", "n": 4, "x": 3, "y": 0, "a": "NET", "c": "Web" },
+        {
+            "d": "D",
+            "n": 5,
+            "x": 4,
+            "y": 0,
+            "a": "GREATERMIAMI",
+            "c": "Home to 32.4% of Floridans"
+        },
+        {
+            "d": "D",
+            "n": 6,
+            "x": 6,
+            "y": 0,
+            "a": "HUMES",
+            "c": "Philosopher David and others"
+        },
+        {
+            "d": "D",
+            "n": 7,
+            "x": 7,
+            "y": 0,
+            "a": "AVID",
+            "c": "Like a devotee"
+        },
+        {
+            "d": "D",
+            "n": 8,
+            "x": 8,
+            "y": 0,
+            "a": "JEN",
+            "c": "\"Dawson's Creed\" girl"
+        },
+        {
+            "d": "D",
+            "n": 9,
+            "x": 9,
+            "y": 0,
+            "a": "JADEITE",
+            "c": "Green stone"
+        },
+        {
+            "d": "D",
+            "n": 10,
+            "x": 11,
+            "y": 0,
+            "a": "VISOR",
+            "c": "Golf course headwear"
+        },
+        { "d": "D", "n": 11, "x": 12, "y": 0, "a": "ERAS", "c": "Periods" },
+        {
+            "d": "D",
+            "n": 12,
+            "x": 13,
+            "y": 0,
+            "a": "TOGO",
+            "c": "Sign at a drive-thru"
+        },
+        {
+            "d": "D",
+            "n": 16,
+            "x": 14,
+            "y": 1,
+            "a": "NEC",
+            "c": "Tokyo electronics giant"
+        },
+        {
+            "d": "D",
+            "n": 18,
+            "x": 5,
+            "y": 2,
+            "a": "RPMS",
+            "c": "33 1/3 and others"
+        },
+        {
+            "d": "D",
+            "n": 23,
+            "x": 10,
+            "y": 3,
+            "a": "COUNTERMARCH",
+            "c": "Response, in war"
+        },
+        {
+            "d": "D",
+            "n": 24,
+            "x": 3,
+            "y": 4,
+            "a": "ATEAM",
+            "c": "TV group featuring Mr. T"
+        },
+        {
+            "d": "D",
+            "n": 25,
+            "x": 8,
+            "y": 4,
+            "a": "DUELS",
+            "c": "Events which end in fire?"
+        },
+        {
+            "d": "D",
+            "n": 26,
+            "x": 0,
+            "y": 5,
+            "a": "SLICE",
+            "c": "One sixth of a pizza, perhaps"
+        },
+        {
+            "d": "D",
+            "n": 27,
+            "x": 1,
+            "y": 5,
+            "a": "PASHA",
+            "c": "Turkish rank of honor, once"
+        },
+        { "d": "D", "n": 28, "x": 2, "y": 5, "a": "ISLET", "c": "Little Key" },
+        {
+            "d": "D",
+            "n": 29,
+            "x": 7,
+            "y": 5,
+            "a": "TULLE",
+            "c": "Veil materia"
+        },
+        {
+            "d": "D",
+            "n": 30,
+            "x": 12,
+            "y": 5,
+            "a": "GILLS",
+            "c": "Extractors of O from H2O"
+        },
+        {
+            "d": "D",
+            "n": 31,
+            "x": 13,
+            "y": 5,
+            "a": "AZTEC",
+            "c": "Mexican pyramid builder"
+        },
+        {
+            "d": "D",
+            "n": 32,
+            "x": 14,
+            "y": 5,
+            "a": "GESSO",
+            "c": "Plaster painting surface"
+        },
+        {
+            "d": "D",
+            "n": 34,
+            "x": 6,
+            "y": 6,
+            "a": "QIANG",
+            "c": "17th to 20th century dynasty"
+        },
+        {
+            "d": "D",
+            "n": 35,
+            "x": 11,
+            "y": 6,
+            "a": "SIREE",
+            "c": "\"Yes, ___\" (enthusiastic approval)"
+        },
+        {
+            "d": "D",
+            "n": 40,
+            "x": 5,
+            "y": 8,
+            "a": "COURBET",
+            "c": "French realist painter"
+        },
+        {
+            "d": "D",
+            "n": 44,
+            "x": 9,
+            "y": 9,
+            "a": "FARE",
+            "c": "Cost for a cab"
+        },
+        {
+            "d": "D",
+            "n": 45,
+            "x": 3,
+            "y": 10,
+            "a": "SALAD",
+            "c": "Green lunch"
+        },
+        {
+            "d": "D",
+            "n": 46,
+            "x": 8,
+            "y": 10,
+            "a": "TATUM",
+            "c": "O'Neal who won an Oscar at age 10"
+        },
+        { "d": "D", "n": 47, "x": 0, "y": 11, "a": "AMB", "c": "U.N. fig." },
+        {
+            "d": "D",
+            "n": 48,
+            "x": 1,
+            "y": 11,
+            "a": "FOAM",
+            "c": "Sign of rabies"
+        },
+        {
+            "d": "D",
+            "n": 49,
+            "x": 2,
+            "y": 11,
+            "a": "FIJI",
+            "c": "332 island nation"
+        },
+        {
+            "d": "D",
+            "n": 50,
+            "x": 7,
+            "y": 11,
+            "a": "STAR",
+            "c": "Exceptional actor"
+        },
+        {
+            "d": "D",
+            "n": 51,
+            "x": 12,
+            "y": 11,
+            "a": "TINS",
+            "c": "Cookie containers"
+        },
+        { "d": "D", "n": 52, "x": 13, "y": 11, "a": "ALOT", "c": "Plenty" },
+        {
+            "d": "D",
+            "n": 53,
+            "x": 14,
+            "y": 11,
+            "a": "UKES",
+            "c": "Hawaiian strings, informally"
+        },
+        { "d": "D", "n": 56, "x": 6, "y": 12, "a": "USE", "c": "Purpose" },
+        {
+            "d": "D",
+            "n": 57,
+            "x": 11,
+            "y": 12,
+            "a": "MAO",
+            "c": "Chinese chairman"
+        }
+    ]
+}
