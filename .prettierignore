@@ -1,0 +1,6 @@
+# File types to ignore
+*.min.js
+jquery*
+
+# Directories to ignore
+node_modules/
