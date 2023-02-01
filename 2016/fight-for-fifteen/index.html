@@ -1,185 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content='What "Fight for Fifteen" means for Hyde Park business owners'
+        />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content='What "Fight for Fifteen" means for Hyde Park business owners'>
+        <meta name="author" content="Sonia Schlesinger" />
+        <link
+            rel="shortcut icon"
+            href="http://chicagomaroon.github.io/img/favicon.png"
+        />
+        <meta
+            property="og:url"
+            content="http://chicagomaroon.github.io/fight-for-fifteen/"
+        />
+        <meta
+            property="og:title"
+            content="What &ldquo;Fight for Fifteen&rdquo; means for Hyde Park business owners"
+        />
+        <meta
+            property="og:description"
+            content="Business owners in Hyde Park expressed support for minimum wage increases but worry about their economic effects"
+        />
+        <meta
+            property="og:image"
+            content="http://chicagomaroon.github.io/fight-for-fifteen/img/hyde-park-records-marta-bakula-cropped.jpg"
+        />
 
-    <meta name="author" content="Sonia Schlesinger">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <meta property="og:url" content="http://chicagomaroon.github.io/fight-for-fifteen/" />
-    <meta property="og:title" content='What &ldquo;Fight for Fifteen&rdquo; means for Hyde Park business owners' />
-    <meta property="og:description" content="Business owners in Hyde Park expressed support for minimum wage increases but worry about their economic effects" />
-    <meta property="og:image" content="http://chicagomaroon.github.io/fight-for-fifteen/img/hyde-park-records-marta-bakula-cropped.jpg" />
+        <title>
+            What "Fight for Fifteen" means for Hyde Park business owners -
+            Interactive feature - ChicagoMaroon.com
+        </title>
 
-    <title>What "Fight for Fifteen" means for Hyde Park business owners - Interactive feature - ChicagoMaroon.com</title>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/reset.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/base.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
-    <link href="main.css" rel="stylesheet" type='text/css'>
+    <body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1584750855103746',
+                    xfbml: true,
+                    version: 'v2.2'
+                });
+            };
 
-</head>
-
-<body>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1584750855103746',
-                xfbml: true,
-                version: 'v2.2'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="navbar nav navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
-                    <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
-                </a>
-            </div>
-
-            <div class="social-icon-container fb right">
-                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-                    <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container twitter right">
-                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/fight-for-fifteen/" title='What "Fight for Fifteen" means for Hyde Park business owners'>
-                    <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container comments right">
-                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
-                    <i class="fa fa-comment fa-lg logo"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class='container'>
-        <div class='row'>
-            <div class='col-xs-12 fullscreen'>
-                <div class='push-down'></div>
-                <div class='text-background'>
-                    <div class='section-art-container'>
-                        <span class='section-art'>News</span>
-                        <hr class='section-art-hr'>
-                    </div>
-
-                    <h1 class='text'>What “Fight for Fifteen” means for Hyde Park business owners</h1>
-                    <h2 class='subtitle'>Business owners in Hyde Park expressed support for minimum wage increases but worry about their economic effects</h2>
-                    <h3 class='author'>By Sonia Schlesinger | Produced by Forrest Sill | June 2, 2015</h3>
+            (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div class="navbar nav navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a
+                        class="navbar-brand"
+                        href="http://www.chicagomaroon.com/"
+                    >
+                        <img
+                            alt="The Chicago Maroon Logo"
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/maroon-logo.png"
+                        />
+                    </a>
                 </div>
 
-            </div>
-            <div class='credit photo-credit cover-photo'>Marta Bakula/<em>Chicago Maroon</em>
+                <div class="social-icon-container fb right">
+                    <a
+                        id="fb-icon"
+                        class="social-icon right"
+                        target="_blank"
+                        href="#"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/fb-logo.png"
+                        />
+                    </a>
+                </div>
+                <div class="social-icon-container twitter right">
+                    <a
+                        id="twitter-icon"
+                        class="social-icon right tweet"
+                        target="_blank"
+                        href="http://chicagomaroon.github.io/fight-for-fifteen/"
+                        title='What "Fight for Fifteen" means for Hyde Park business owners'
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/twitter-logo.png"
+                        />
+                    </a>
+                </div>
+                <div class="social-icon-container comments right">
+                    <a
+                        id="comments"
+                        class="disqus-comment-count social-icon right logo"
+                        data-disqus-url="http://example.com/article1.html"
+                        href="#comment"
+                    >
+                        <i class="fa fa-comment fa-lg logo"></i>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text first-paragraph'>
-                    On April 15, a group of UChicago students from groups such as Students Organizing United with Labor (SOUL), South Side Solidarity Network (SSN), and IIRON Students Network (ISN) joined fast food and retail workers in downtown Chicago at a “Fight for $15” rally. The group marched to demand an increase in Chicago’s minimum wage to $15 per hour.
-                </p>
-                <p class='text body-text'>
-                    Fight for $15, as the national movement is called, is not just a hot-button issue on campus. Similar rallies took place across the country. This movement comes in light of increases to the minimum wage to $15 per hour in Seattle last June and more recently in Los Angeles.</p>
-                <p class='text body-text'>While much of the talk surrounding the minimum wage issue at these rallies and in the media involves McDonald’s and other large corporations, small businesses are heavily affected by proposed wage increases. While many small business managers in Hyde Park and Woodlawn support the concept of minimum wage increases, several are concerned with the effects on their businesses and the changes that they would have to make should Chicago’s minimum wage increase to $15 an hour.</p>
-                <p class='text body-text'>These managers are already dealing with recent wage increases in Chicago: Last December the city council voted to raise the Chicago’s minimum wage to $13 per hour. This will be put into effect incrementally, increasing from the current $8.25 to $10 per hour by July, with the increase to $13 by 2019.</p>
-                <hr class='no-margin-bottom'>
-                <div class='quotation text'>“Unskilled workers are going to be replaced by people like University of Chicago anthropology students looking for part-time or entry-level work with a higher skill level.” &mdash;Allen Sanderson</div>
-                <hr class='no-margin-bottom'>
-                <p class='text body-text'>Local managers will respond to current and potential future wage increases by making significant changes in their stores, either affecting their employees or their customers.</p>
-                <p class='text body-text'>Trushar Patel—manager of Rajun Cajun, an Indian restaurant—currently pays his eight employees within a $10–$12 per hour range. He explains that he would raise costs of his food, but would not change management practices. “You can’t change the hours because Indian restaurants require a lot of preparation,” he said. “I wouldn’t look for different employees because they already need to be skilled, so we would have to raise our food’s prices.”</p>
-                <p class='text body-text'>Other managers worry that the size of their stores will be a hindrance if such changes are to take effect. “As an independent business like mine we are going to be walking a thin line,” said Bader El-Shareif, owner of Harper Foods. El-Shareif currently employs only one person, and pays him more than $10 per hour, yet he’s concerned that if the minimum wage is increased to $15 per hour, “we already can’t compete with other stores, because they’re so big. We’ll just have to eat the extra cost.”</p>
-                <p class='text body-text'>Opponents of increasing the minimum wage to $15 argue that while it may benefit those able to obtain the higher pay, it increases unemployment for less skilled workers.</p>
-                <p class='text body-text'>Allen Sanderson, a senior lecturer in economics who has publicly opposed minimum wage increases, says that large corporations are more likely to automate in the face of minimum wage increases, replacing workers with machines and thus increasing unemployment. He says that the concern is similar in small businesses: “unskilled workers are going to be replaced by people like University of Chicago anthropology students looking for part-time or entry-level work with a higher skill level.”</p>
-                <p class='text body-text'>Alexis Bouteville, manager of Hyde Park Records, confirmed this assessment in the case of his store, which employs three full-time employees and pays more than the current minimum wage but less than $15. “If the minimum wage were $15, I would certainly consider higher standards for hiring,” he said. “I wouldn’t change the way the business itself works,” he said of raising prices on the store’s items. “But in terms of management, I would cut employees’ hours and try to get the best deal on who I hired.”</p>
-                <p class='text body-text'>Activists involved in the Fight for $15 disagree with predictions of negative economic effects. Second-year Psalm Brown, head of SOUL, argues that “while it’s always economists’ concern that once you raise the cost of labor fewer people are employed, that’s not the case. In places with significant wage increases there hasn’t been a corresponding drop in people employed.” Some past studies support this, such as a 1990 UC Berkeley study on fast food chains before and after minimum wage increases, which found that effects on unemployment are minimal.</p>
-                <p class='text body-text'>Calculations based on the current number of minimum wage workers in Chicago and the number of those marginally below the poverty line indicate that the most recent increase will affect 410,000 minimum wage workers and pull 70,000 out of poverty, according to the Chicago Tribune. Yet Brown and other organizers argue that it’s not enough. Brianna Tong (A.B. ’15), head of ISN, said, “I think it’s messed up that people make what they do working full time and are still in poverty, not having enough to feed themselves and their kids.”</p>
-                <p class='text body-text'>Local business managers and employees support raising the minimum wage in principle, arguing as Tong does that current wages are not high enough, but out of concern for their businesses, and because they aren’t sure what the effects will be, they support alternatives to raising the minimum wage.</p>
-                <hr class='no-margin-bottom'>
-                <div class='quotation text'>“While an increase to $15 might change things, I don’t think it would put us out of business.”</div>
-                <hr class='no-margin-bottom'>
-                <p class='text body-text'>Dylan Harris, who graduated from UChicago last year and now works full-time at Hyde Park Records, earns $14 an hour. He said that although “I can live pretty comfortably on what I’m making right now…if I have even a [single] kid it wouldn’t be enough at all. I think the minimum wage is way too low.” Still, he agreed with his manager that “for small businesses like these, it would be a tight squeeze…. Maybe we could have a lower minimum wage for someone younger without a lot of dependence…more of a need-based system.” El-Sharief from Harper Foods agreed that “we all know that you can’t live on $9 or even $11 an hour if you have a family, but you know, that’s the system. It cannot go unbalanced.”</p>
-                <p class='text body-text'>Still, some local business managers are not too concerned about the wage increase. In fact, in some cases, the smaller sizes of these stores may help. Chris Willard, a manager at Blackstone Bicycle Works in Woodlawn, explained that most minimum wage increases, even to $15 per hour, would not be drastically harmful. “We only have five employees,” he says, “so while an increase to $15 might change things, I don’t think it would put us out of business.”</p>
-                <p class='text body-text'>The incremental increases will make the transition to $13 an hour easier as well, and many hope a potential increase to $15 would come about the same way. “We’re going to have to sit down and crunch some numbers to offset cost if it happens but if it’s incremental it will be much easier to absorb,” explained Chris Salmon, a manager at Powell’s independent bookstore, who pays most of the store’s eight employees the current minimum wage. “If it’s going to go up slowly each year there probably won’t be a lot of major changes at the store,” he said. 
-                </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 fullscreen">
+                    <div class="push-down"></div>
+                    <div class="text-background">
+                        <div class="section-art-container">
+                            <span class="section-art">News</span>
+                            <hr class="section-art-hr" />
+                        </div>
+
+                        <h1 class="text">
+                            What “Fight for Fifteen” means for Hyde Park
+                            business owners
+                        </h1>
+                        <h2 class="subtitle">
+                            Business owners in Hyde Park expressed support for
+                            minimum wage increases but worry about their
+                            economic effects
+                        </h2>
+                        <h3 class="author">
+                            By Sonia Schlesinger | Produced by Forrest Sill |
+                            June 2, 2015
+                        </h3>
+                    </div>
+                </div>
+                <div class="credit photo-credit cover-photo">
+                    Marta Bakula/<em>Chicago Maroon</em>
+                </div>
+            </div>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text first-paragraph">
+                        On April 15, a group of UChicago students from groups
+                        such as Students Organizing United with Labor (SOUL),
+                        South Side Solidarity Network (SSN), and IIRON Students
+                        Network (ISN) joined fast food and retail workers in
+                        downtown Chicago at a “Fight for $15” rally. The group
+                        marched to demand an increase in Chicago’s minimum wage
+                        to $15 per hour.
+                    </p>
+                    <p class="text body-text">
+                        Fight for $15, as the national movement is called, is
+                        not just a hot-button issue on campus. Similar rallies
+                        took place across the country. This movement comes in
+                        light of increases to the minimum wage to $15 per hour
+                        in Seattle last June and more recently in Los Angeles.
+                    </p>
+                    <p class="text body-text">
+                        While much of the talk surrounding the minimum wage
+                        issue at these rallies and in the media involves
+                        McDonald’s and other large corporations, small
+                        businesses are heavily affected by proposed wage
+                        increases. While many small business managers in Hyde
+                        Park and Woodlawn support the concept of minimum wage
+                        increases, several are concerned with the effects on
+                        their businesses and the changes that they would have to
+                        make should Chicago’s minimum wage increase to $15 an
+                        hour.
+                    </p>
+                    <p class="text body-text">
+                        These managers are already dealing with recent wage
+                        increases in Chicago: Last December the city council
+                        voted to raise the Chicago’s minimum wage to $13 per
+                        hour. This will be put into effect incrementally,
+                        increasing from the current $8.25 to $10 per hour by
+                        July, with the increase to $13 by 2019.
+                    </p>
+                    <hr class="no-margin-bottom" />
+                    <div class="quotation text">
+                        “Unskilled workers are going to be replaced by people
+                        like University of Chicago anthropology students looking
+                        for part-time or entry-level work with a higher skill
+                        level.” &mdash;Allen Sanderson
+                    </div>
+                    <hr class="no-margin-bottom" />
+                    <p class="text body-text">
+                        Local managers will respond to current and potential
+                        future wage increases by making significant changes in
+                        their stores, either affecting their employees or their
+                        customers.
+                    </p>
+                    <p class="text body-text">
+                        Trushar Patel—manager of Rajun Cajun, an Indian
+                        restaurant—currently pays his eight employees within a
+                        $10–$12 per hour range. He explains that he would raise
+                        costs of his food, but would not change management
+                        practices. “You can’t change the hours because Indian
+                        restaurants require a lot of preparation,” he said. “I
+                        wouldn’t look for different employees because they
+                        already need to be skilled, so we would have to raise
+                        our food’s prices.”
+                    </p>
+                    <p class="text body-text">
+                        Other managers worry that the size of their stores will
+                        be a hindrance if such changes are to take effect. “As
+                        an independent business like mine we are going to be
+                        walking a thin line,” said Bader El-Shareif, owner of
+                        Harper Foods. El-Shareif currently employs only one
+                        person, and pays him more than $10 per hour, yet he’s
+                        concerned that if the minimum wage is increased to $15
+                        per hour, “we already can’t compete with other stores,
+                        because they’re so big. We’ll just have to eat the extra
+                        cost.”
+                    </p>
+                    <p class="text body-text">
+                        Opponents of increasing the minimum wage to $15 argue
+                        that while it may benefit those able to obtain the
+                        higher pay, it increases unemployment for less skilled
+                        workers.
+                    </p>
+                    <p class="text body-text">
+                        Allen Sanderson, a senior lecturer in economics who has
+                        publicly opposed minimum wage increases, says that large
+                        corporations are more likely to automate in the face of
+                        minimum wage increases, replacing workers with machines
+                        and thus increasing unemployment. He says that the
+                        concern is similar in small businesses: “unskilled
+                        workers are going to be replaced by people like
+                        University of Chicago anthropology students looking for
+                        part-time or entry-level work with a higher skill
+                        level.”
+                    </p>
+                    <p class="text body-text">
+                        Alexis Bouteville, manager of Hyde Park Records,
+                        confirmed this assessment in the case of his store,
+                        which employs three full-time employees and pays more
+                        than the current minimum wage but less than $15. “If the
+                        minimum wage were $15, I would certainly consider higher
+                        standards for hiring,” he said. “I wouldn’t change the
+                        way the business itself works,” he said of raising
+                        prices on the store’s items. “But in terms of
+                        management, I would cut employees’ hours and try to get
+                        the best deal on who I hired.”
+                    </p>
+                    <p class="text body-text">
+                        Activists involved in the Fight for $15 disagree with
+                        predictions of negative economic effects. Second-year
+                        Psalm Brown, head of SOUL, argues that “while it’s
+                        always economists’ concern that once you raise the cost
+                        of labor fewer people are employed, that’s not the case.
+                        In places with significant wage increases there hasn’t
+                        been a corresponding drop in people employed.” Some past
+                        studies support this, such as a 1990 UC Berkeley study
+                        on fast food chains before and after minimum wage
+                        increases, which found that effects on unemployment are
+                        minimal.
+                    </p>
+                    <p class="text body-text">
+                        Calculations based on the current number of minimum wage
+                        workers in Chicago and the number of those marginally
+                        below the poverty line indicate that the most recent
+                        increase will affect 410,000 minimum wage workers and
+                        pull 70,000 out of poverty, according to the Chicago
+                        Tribune. Yet Brown and other organizers argue that it’s
+                        not enough. Brianna Tong (A.B. ’15), head of ISN, said,
+                        “I think it’s messed up that people make what they do
+                        working full time and are still in poverty, not having
+                        enough to feed themselves and their kids.”
+                    </p>
+                    <p class="text body-text">
+                        Local business managers and employees support raising
+                        the minimum wage in principle, arguing as Tong does that
+                        current wages are not high enough, but out of concern
+                        for their businesses, and because they aren’t sure what
+                        the effects will be, they support alternatives to
+                        raising the minimum wage.
+                    </p>
+                    <hr class="no-margin-bottom" />
+                    <div class="quotation text">
+                        “While an increase to $15 might change things, I don’t
+                        think it would put us out of business.”
+                    </div>
+                    <hr class="no-margin-bottom" />
+                    <p class="text body-text">
+                        Dylan Harris, who graduated from UChicago last year and
+                        now works full-time at Hyde Park Records, earns $14 an
+                        hour. He said that although “I can live pretty
+                        comfortably on what I’m making right now…if I have even
+                        a [single] kid it wouldn’t be enough at all. I think the
+                        minimum wage is way too low.” Still, he agreed with his
+                        manager that “for small businesses like these, it would
+                        be a tight squeeze…. Maybe we could have a lower minimum
+                        wage for someone younger without a lot of
+                        dependence…more of a need-based system.” El-Sharief from
+                        Harper Foods agreed that “we all know that you can’t
+                        live on $9 or even $11 an hour if you have a family, but
+                        you know, that’s the system. It cannot go unbalanced.”
+                    </p>
+                    <p class="text body-text">
+                        Still, some local business managers are not too
+                        concerned about the wage increase. In fact, in some
+                        cases, the smaller sizes of these stores may help. Chris
+                        Willard, a manager at Blackstone Bicycle Works in
+                        Woodlawn, explained that most minimum wage increases,
+                        even to $15 per hour, would not be drastically harmful.
+                        “We only have five employees,” he says, “so while an
+                        increase to $15 might change things, I don’t think it
+                        would put us out of business.”
+                    </p>
+                    <p class="text body-text">
+                        The incremental increases will make the transition to
+                        $13 an hour easier as well, and many hope a potential
+                        increase to $15 would come about the same way. “We’re
+                        going to have to sit down and crunch some numbers to
+                        offset cost if it happens but if it’s incremental it
+                        will be much easier to absorb,” explained Chris Salmon,
+                        a manager at Powell’s independent bookstore, who pays
+                        most of the store’s eight employees the current minimum
+                        wage. “If it’s going to go up slowly each year there
+                        probably won’t be a lot of major changes at the store,”
+                        he said.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                ></div>
+                <div
+                    id="disqus_thread"
+                    class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+                ></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'chicagomarooninteractive';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src =
+                            '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (
+                            document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]
+                        ).appendChild(dsq);
+                    })();
+                </script>
+                <noscript
+                    >Please enable JavaScript to view the
+                    <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+                        >comments powered by Disqus.</a
+                    >
+                </noscript>
             </div>
         </div>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                
-            </div>
-            <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES * * */
-                var disqus_shortname = 'chicagomarooninteractive';
+        <a id="comment"></a>
+        <footer>
+            <a href="http://www.chicagomaroon.com/"
+                >© 2015 The Chicago Maroon</a
+            >
+        </footer>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'chicagomarooninteractive';
 
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function () {
-                    var dsq = document.createElement('script');
-                    dsq.type = 'text/javascript';
-                    dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-            </noscript>
-        </div>
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (
+                    document.getElementsByTagName('HEAD')[0] ||
+                    document.getElementsByTagName('BODY')[0]
+                ).appendChild(s);
+            })();
+        </script>
+    </body>
 
-    </div>
-    <a id='comment'></a>
-    <footer>
-        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
-    </footer>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'chicagomarooninteractive';
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            'script',
+            '//www.google-analytics.com/analytics.js',
+            'ga'
+        );
+        ga('create', 'UA-59818592-13', 'auto');
+        ga('send', 'pageview');
     </script>
-</body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src='main.js'></script>
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-59818592-13', 'auto');
-    ga('send', 'pageview');
-
-</script>
-
 </html>

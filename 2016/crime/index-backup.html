@@ -1,567 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?"
+        />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?">
+        <meta name="author" content="Forrest Sill" />
+        <link
+            rel="shortcut icon"
+            href="http://chicagomaroon.github.io/img/favicon.png"
+        />
+        <link
+            href="http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <meta
+            property="og:url"
+            content="http://chicagomaroon.github.io/crime/"
+        />
+        <meta property="og:title" content="Crime at U. of C." />
+        <meta
+            property="og:description"
+            content="Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?"
+        />
+        <meta property="og:image" content="[image]" />
 
-    <meta name="author" content="Forrest Sill">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
-    <meta property="og:url" content="http://chicagomaroon.github.io/crime/" />
-    <meta property="og:title" content="Crime at U. of C." />
-    <meta property="og:description" content="Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?" />
-    <meta property="og:image" content="[image]" />
+        <title>
+            Crime at U. of C. - Interactive feature - ChicagoMaroon.com
+        </title>
 
-    <title>Crime at U. of C. - Interactive feature - ChicagoMaroon.com</title>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet" type='text/css'>
+    <body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1584750855103746',
+                    xfbml: true,
+                    version: 'v2.2'
+                });
+            };
 
-</head>
-
-<body>
-    <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1584750855103746',
-                xfbml: true,
-                version: 'v2.2'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="navbar nav navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
-                    <img alt="The Chicago Maroon Logo" class='logo' src="img/logo.png">
-                </a>
-            </div>
-
-            <div class="social-icon-container fb right">
-                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-                    <img class="logo" src="img/fb-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container twitter right">
-                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/crime/" title="Crime at U. of C.">
-                    <img class="logo" src="img/twitter-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container comments right">
-                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
-                    <i class="fa fa-comment fa-lg logo"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class='container'>
-        <div class='row'>
-            <div class='col-xs-12 fullscreen'>
-                <div class='push-down'></div>
-                <div class='text-background'>
-                    <div class=dining-art></div>
-                    <h1 class='text'>Crime at U. of C.</h1>
-                    <h2 class='subtitle sans-text'>Crime rates have dropped significantly throughout American inner cities over the past 15 years.  Does the University of Chicago still deserve its reputation for high crime?</h2>
-                    <h3 class='author'>By Forrest Sill | March 30, 2015</h3>
-                </div>
-
-            </div>
-            <div class='credit photo-credit cover-photo'>[photo credit]
-            </div>
-        </div>
-        <div class='row map-related'>
-            <div class='col-xs-12'>
-                <h2 class='black map-headline sans-text'>Explore Crimes Reported Around the Universtiy from 2001 to the Present </h2>
-                <div class='graph-tip sans-text dots-tooltip'>Click dots to see details about each crime.</div>
-            </div>
-            <div class='col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-7 col-xs-12'>
-                <div id="map-canvas"></div>
-            </div>
-            <div id='panel-container' class='col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6'>
-                <div id="panel">
-                    <label for=year-slider>2001</label>
-                    <input type=range min=2001 list='years' max=2015 value=2001 id=year-slider>
-                    <datalist id="years">
-                        <option label="2001">2001</option>
-                        <option label="2002">2002</option>
-                        <option label="2003">2003</option>
-                        <option label="2004">2004</option>
-                        <option label="2005">2005</option>
-                        <option label="2006">2006</option>
-                        <option label="2007">2007</option>
-                        <option label="2008">2008</option>
-                        <option label="2009">2009</option>
-                        <option label="2010">2010</option>
-                        <option label="2011">2011</option>
-                        <option label="2012">2012</option>
-                        <option label="2013">2013</option>
-                        <option label="2014">2014</option>
-                        <option label="2015">2015</option>
-                    </datalist>
-                    <br>
-                    <table>
-                        <tr>
-                            <td class='first-td'>
-                                <span class='category-name'>Violent</span><span class='crime-count category-count violent'></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='homicide' data-code='01A' data-crime-type='violent'>Homicide<span class='crime-count' data-code='01A'></span>
-                            </td>
-                            <td>
-                                <div class='color-box homicide'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='sexual-assault' data-code='02' data-crime-type='violent'>Sexual assault<span class='crime-count' data-code='02'></span>
-                            </td>
-                            <td>
-                                <div class='color-box sexual-assault'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='robbery' data-code='03' data-crime-type='violent'>Robbery<span class='crime-count' data-code='03'></span>
-                            </td>
-                            <td>
-                                <div class='color-box robbery'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='assault' data-code='04A' data-crime-type='violent'>Assault<span class='crime-count' data-code='04A'></span>
-                            </td>
-                            <td>
-                                <div class='color-box assault'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='battery' data-code='04B' data-crime-type='violent'>Battery<span class='crime-count' data-code='04B'></span>
-                            </td>
-                            <td>
-                                <div class='color-box battery'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class='category-name'>Property</span>  <span class='crime-count category-count property'></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='burglary' data-code='05' data-crime-type='property'>Burglary<span class='crime-count' data-code='05'></span>
-                            </td>
-                            <td>
-                                <div class='color-box burglary'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='theft' data-code='06' data-crime-type='property'>Theft<span class='crime-count' data-code='06'></span>
-                            </td>
-                            <td>
-                                <div class='color-box theft'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='motor-vehicle-theft' data-code='07' data-crime-type='property' data-code='07'>Motor vehicle theft<span class='crime-count' data-code='07'></span>
-                            </td>
-                            <td>
-                                <div class='color-box motor-vehicle-theft'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='arson' data-code='09' data-crime-type='property'>Arson<span class='crime-count' data-code='09'></span>
-                            </td>
-                            <td>
-                                <div class='color-box arson'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class='category-name'>Narcotics</span>  <span class='crime-count category-count narcotics'></span>
-                            </td>
-                            <td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='cannabis' data-code='18' data-crime-type='drugs'>Cannabis<span class='crime-count' data-code='18' value='cannabis'></span>
-                            </td>
-                            <td>
-                                <div class='color-box cannabis'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='crack-cocaine' data-code='18' data-crime-type='drugs'>Crack cocaine<span class='crime-count' data-code='18' value='crack-cocaine'></span>
-                            </td>
-                            <td>
-                                <div class='color-box crack-cocaine'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='heroin' data-code='18' data-crime-type='drugs'>Heroin<span class='crime-count' data-code='18' value='heroin'></span>
-                            </td>
-                            <td>
-                                <div class='color-box heroin'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='cocaine' data-code='18' data-crime-type='drugs'>Cocaine<span class='crime-count' data-code='18' value='cocaine'></span>
-                            </td>
-                            <td>
-                                <div class='color-box cocaine'></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="radio" name='crime-category' value='other-drug-crimes' data-code='18' data-crime-type='drugs'>Other drug crimes<span class='crime-count' data-code='18' value='other-drug-crimes'></span>
-                            </td>
-                            <td>
-                                <div class='color-box other-drug-crimes'></div>
-
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-            </div>
-        </div>
-        <div class='row map-related'>
-            <div class='sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <div class='map-faq-btn-div'>
-                    <button class='btn btn-default btn-lg text-hidden' id='map-faq-btn'>Show map FAQs</button>
-                </div>
-                <div class='map-faq-text'>
-                    <p><strong>What crimes are not included on this map?</strong> 
-                        <br>The only crimes on the map are violent, property, and drug crimes, which are about half of the about 70,000 crimes reported around the Unvierstiy since 2001. The vast majority of crimes not included on this map fall into one of the following categories: tresspassing, prostitution, weapons violations, criminal damage, deceptive practices, or peace violations.</p>
-                    <br>
-                    <p><strong>What is defined as “around the University?”</strong> 
-                        <br>47th Street on the north to 63rd Street on the south and Cottage Grove on the west to the Lake on the east.  This definition includes the southern part of the Kenwood neighborhood, the entirety of Hyde Park, and north Woodlawn.  The UCPD jurisdiction extends to 37th Street on the north and 64th Street to the south, but as the University community is concentrated between 47th and 63rd Streets, that is the area on which we have chosen to focus.
-    </p>
-                    <p><strong>What is the difference between robbery, burglary, and theft?</strong>
-                        <br>
-                        According to the FBI's Uniform Crime Reporting handbook, robbery is the taking or attempting to take anything of value from someone by force or threat of force or violence and/or by putting the victim in fear.  Burglary is defined as the unlawful entry of a structure to commit a felony or a theft.  Theft is the unlawful taking of property from the possession of another.
-                        </p>
-                    <p><strong>What is the difference between assault and battery?</strong>
-                        <br>
-                        According to Illinois law, assault is conduct which places another in reasonable apprehension of receiving a battery.  Battery is defined as conduct causing bodily harm to another person.
-                        </p>
-                    <p><strong>Does this data also include crimes to which the University of Chicago Police Department responded?</strong>
-                        <br>
-                        Yes, it includes all crimes reported to have occurred within the City, regardless of the responding agency.
-                        </p>
-                        <p><strong>Where is this data from?</strong>
-                            <br>
-                            This data comes directly from the City of Chicago’s <a href="https://data.cityofchicago.org/">data portal</a>, using the dataset “Crime - 2001 to present,” which includes all crimes reported to have occurred within the City from January 1, 2001 to the present, minus the past seven days.  <span class='current-through'></p>
-                    </p>
-                    <hr>
-                </div>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text first-paragraph'>
-                    In 1958, Julian Levi, a former professor at the University and the first president of the University-backed South East Chicago Commission wrote in a letter, “The perpetual discussion of the joys of interracial activities will cause men and women of good will... to caution their daughters not to go to the University of Chicago lest they be raped on the streets."  The University, and it’s South Side home, experienced the full brunt of the decline of the American inner city and the simultaneous increase in crime in the 1970’s. During this time, out of concern for their safety, the University told students to stay off the Red and Green “L” lines and to never venture south of 61st Street. Today, the picture of crime is vastly improved. Homicides are down by 35% since 2001 and in 2014 the city experienced 432 homicides, the lowest number since 1965.
-                </p>
-                <p class='text body-text'>
-                    
-                </p>
-            </div>
-            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
-                <div id='graph-1'></div>
-                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>
-                    The long, bloody summer of 2012 earned the City the controversial name “Chiraq,” as a result of the uptick in violent crime, especially between rival gang members, that the city experienced after several years of declining violent crime rates.
-                </p>
-                <p class='text body-text'>
-                    New York, Boston, LA, Seattle, St. Louis, UChicago may not always top the college rankings, but Chicago is consistently the most violent major American city home to a top-tier university. New York and Boston don’t even come close to Chicago’s violent crime rate. In 2014, Chicago had xx violent crimes per 100,00 residents, while New York had xx per 100,000 residents and Boston has just xx.
-                </p>
-                <p class='text body-text'>
-                    The murder of U. of C. graduate student Amadou Cisse in November of 2007 at the corner of 61st Street and Ellis Avenue, less than one block south of the entrance to the Renee Granville-Grossman Residential Commons, was a shock to the University community, which had not experienced a student death from a violent crime since July 1977, and prided itself on the declining violent crime rates around the University.
-                </p>
-            </div>
-            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
-                <div id='graph-2'></div>
-                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>
-                    Starting in 2011, there was a notable decline of all types of crime along Cottage Grove Avenue from 60th to 63rd Streets, likely as a result of the demolition of the distressed Section 8, low-income housing project known as Grove Parc Plaza and the subsequent rebuilding of new mixed-income housing by the nonprofit Preservation of Affordable Housing (POAH).
-                </p>
-                <p class='text body-text'>
-                    The CPD has faced allegations that the lower reported crime rates in the city, especially violent crimes, are a result of the reclassification of certain crimes as noncriminal incidents rather than as a result of fewer crimes being committed. This was first reported by <em>Chicago Magazine</em> in April of 2014 and was supported by an investigation by <em>The Economist</em> published in May of 2014. The allegations have been denied by the CPD and the Mayor’s Office.
-                </p>
-                <p class='text body-text'>
-                    Despite a historically cold February, the City of Chicago is on track to have another bloody year. The first three months of 2015 had 78 murders compared to 62 in the first three months of 2014 and 69 in the first three months of 2013.
-                </p>
-                <p class='text body-text'>
-                    The area around the University has not been immune this overall uptick in crime: from January 1st to March 31st of 2014, there were 48 violent crimes reported around the University. During that same time period this year, there have been 57 violent crimes. Nevertheless, violent crime is still down significantly from 2005, when there were 123 violent reported around the Unvierstiy during the first three months of the year.
-                </p>
-            </div>
-            <div class='col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12'>
-                <div id='graph-3'></div>
-                <div class='graph-tip sans-text'>Click labels to toggle crime categories.</div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>Reported drug crimes dropped precipitously from 2011 to 2013, possibly as a result of fewer committed drug crimes, but more likely as a result of Rahm Emanuel’s scaling down of the War on Drugs in Chicago. The South Side of Chicago is famous for being one of the places where the War was waged the fiercest, with Rahm Emanuel as one of its strongest supporters, according to Michelle Alexander in her book <em>The New Jim Crow</em>.
-                </p>
-                <p class='text body-text'>
-                    Drug crimes are unique as the only truly victimless crime. Reported drug crime numbers surely grossly underestimate the number of committed drug crimes, while violent and property crime numbers likely overestimate the number of crimes actually committed (with the exception of homicide, where there is never a question of whether the crime actually occurred).
-                </p>
-                <p class='text body-text'>
-                    The lack of reported drug crimes around the University can either be attributed to the fact that U. of C. students simply do not commit drug crimes, or a to lack of enforcement of drug crimes by the CPD and the UCPD on campus.
-                </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <div class='sans-text arrest-rates-container center-block'>
-                    <table class='arrest-rate-table'>
-                        <th>
-                            Arrest Rates for Crimes Near the University of Chicago, 2001-2014
-                            <br>
-                            <span class='crime-rate-source'>Source: City of Chicago</span>
-                        </th>
-                        <tbody>
-                            <tr class='arrest-category violent'>
-                                <td class='arrest-crime'>
-                                    Violent
-                                </td>
-                                <td>
-                                    19%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box homicide'></div>
-                                    Homicide
-                                </td>
-                                <td>
-                                    61%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box sexual-assault'></div>
-                                    Sexual assault
-                                </td>
-                                <td>
-                                    17%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box robbery'></div>
-                                    Robbery
-                                </td>
-                                <td>
-                                    14%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box assault'></div>
-                                    Assault
-                                </td>
-                                <td>
-                                    30%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box battery'></div>
-                                    Battery
-                                </td>
-                                <td>
-                                    26%
-                                </td>
-                            </tr>
-                            <tr class='arrest-category property'>
-                                <td class='arrest-crime'>
-                                    Property
-                                </td>
-                                <td>
-                                    10%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box burglary'></div>
-                                    Burglary
-                                </td>
-                                <td>
-                                    6%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box theft'></div>
-                                    Theft
-                                </td>
-                                <td>
-                                    10%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box motor-vehicle-theft'></div>
-                                    Motor vehicle theft
-                                </td>
-                                <td>
-                                    10%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box arson'></div>
-                                    Arson
-                                </td>
-                                <td>
-                                    20%
-                                </td>
-                            </tr>
-                            <tr class='arrest-category Narcotics'>
-                                <td class='arrest-crime'>
-                                    Narcotics
-                                </td>
-                                <td>
-                                    97%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box cannabis'></div>
-                                    Cannabis
-                                </td>
-                                <td>
-                                    97%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box crack-cocaine'></div>
-                                    Crack cocaine
-                                </td>
-                                <td>
-                                    99%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box heroin'></div>
-                                    Heroin
-                                </td>
-                                <td>
-                                    97%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box cocaine'></div>
-                                    Cocaine
-                                </td>
-                                <td>
-                                    100%
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class='arrest-crime'>
-                                    <div class='color-box other-drug-crimes'></div>
-                                    Other drug crimes
-                                </td>
-                                <td>
-                                    91%
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class='row'>
-                <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
-                <script type="text/javascript">
-                    /* * * CONFIGURATION VARIABLES * * */
-                    var disqus_shortname = 'chicagomarooninteractive';
-
-                    /* * * DON'T EDIT BELOW THIS LINE * * */
-                    (function () {
-                        var dsq = document.createElement('script');
-                        dsq.type = 'text/javascript';
-                        dsq.async = true;
-                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-                </noscript>
-            </div>
-
-        </div>
-        <a id='comment'></a>
-        <footer>
-            <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
-        </footer>
-        <script type="text/javascript">
-            /* * * CONFIGURATION VARIABLES * * */
-            var disqus_shortname = 'chicagomarooninteractive';
-
-            /* * * DON'T EDIT BELOW THIS LINE * * */
-            (function () {
-                var s = document.createElement('script');
-                s.async = true;
-                s.type = 'text/javascript';
-                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-                (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-            }());
+            (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'facebook-jssdk');
         </script>
-</body>
+        <div class="navbar nav navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a
+                        class="navbar-brand"
+                        href="http://www.chicagomaroon.com/"
+                    >
+                        <img
+                            alt="The Chicago Maroon Logo"
+                            class="logo"
+                            src="img/logo.png"
+                        />
+                    </a>
+                </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src='main.js'></script>
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+                <div class="social-icon-container fb right">
+                    <a
+                        id="fb-icon"
+                        class="social-icon right"
+                        target="_blank"
+                        href="#"
+                    >
+                        <img class="logo" src="img/fb-logo.png" />
+                    </a>
+                </div>
+                <div class="social-icon-container twitter right">
+                    <a
+                        id="twitter-icon"
+                        class="social-icon right tweet"
+                        target="_blank"
+                        href="http://chicagomaroon.github.io/crime/"
+                        title="Crime at U. of C."
+                    >
+                        <img class="logo" src="img/twitter-logo.png" />
+                    </a>
+                </div>
+                <div class="social-icon-container comments right">
+                    <a
+                        id="comments"
+                        class="disqus-comment-count social-icon right logo"
+                        data-disqus-url="http://example.com/article1.html"
+                        href="#comment"
+                    >
+                        <i class="fa fa-comment fa-lg logo"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 fullscreen">
+                    <div class="push-down"></div>
+                    <div class="text-background">
+                        <div class="dining-art"></div>
+                        <h1 class="text">Crime at U. of C.</h1>
+                        <h2 class="subtitle sans-text">
+                            Crime rates have dropped significantly throughout
+                            American inner cities over the past 15 years. Does
+                            the University of Chicago still deserve its
+                            reputation for high crime?
+                        </h2>
+                        <h3 class="author">By Forrest Sill | March 30, 2015</h3>
+                    </div>
+                </div>
+                <div class="credit photo-credit cover-photo">
+                    [photo credit]
+                </div>
+            </div>
+            <div class="row map-related">
+                <div class="col-xs-12">
+                    <h2 class="black map-headline sans-text">
+                        Explore Crimes Reported Around the Universtiy from 2001
+                        to the Present
+                    </h2>
+                    <div class="graph-tip sans-text dots-tooltip">
+                        Click dots to see details about each crime.
+                    </div>
+                </div>
+                <div
+                    class="col-lg-offset-1 col-lg-6 col-md-offset-1 col-md-6 col-sm-offset-1 col-sm-7 col-xs-12"
+                >
+                    <div id="map-canvas"></div>
+                </div>
+                <div
+                    id="panel-container"
+                    class="col-lg-3 col-md-3 col-sm-3 col-xs-offset-4 col-xs-6"
+                >
+                    <div id="panel">
+                        <label for="year-slider">2001</label>
+                        <input
+                            type="range"
+                            min="2001"
+                            list="years"
+                            max="2015"
+                            value="2001"
+                            id="year-slider"
+                        />
+                        <datalist id="years">
+                            <option label="2001">2001</option>
+                            <option label="2002">2002</option>
+                            <option label="2003">2003</option>
+                            <option label="2004">2004</option>
+                            <option label="2005">2005</option>
+                            <option label="2006">2006</option>
+                            <option label="2007">2007</option>
+                            <option label="2008">2008</option>
+                            <option label="2009">2009</option>
+                            <option label="2010">2010</option>
+                            <option label="2011">2011</option>
+                            <option label="2012">2012</option>
+                            <option label="2013">2013</option>
+                            <option label="2014">2014</option>
+                            <option label="2015">2015</option>
+                        </datalist>
+                        <br />
+                        <table>
+                            <tr>
+                                <td class="first-td">
+                                    <span class="category-name">Violent</span
+                                    ><span
+                                        class="crime-count category-count violent"
+                                    ></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="homicide"
+                                        data-code="01A"
+                                        data-crime-type="violent"
+                                    />Homicide<span
+                                        class="crime-count"
+                                        data-code="01A"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box homicide"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="sexual-assault"
+                                        data-code="02"
+                                        data-crime-type="violent"
+                                    />Sexual assault<span
+                                        class="crime-count"
+                                        data-code="02"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box sexual-assault"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="robbery"
+                                        data-code="03"
+                                        data-crime-type="violent"
+                                    />Robbery<span
+                                        class="crime-count"
+                                        data-code="03"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box robbery"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="assault"
+                                        data-code="04A"
+                                        data-crime-type="violent"
+                                    />Assault<span
+                                        class="crime-count"
+                                        data-code="04A"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box assault"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="battery"
+                                        data-code="04B"
+                                        data-crime-type="violent"
+                                    />Battery<span
+                                        class="crime-count"
+                                        data-code="04B"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box battery"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="category-name">Property</span>
+                                    <span
+                                        class="crime-count category-count property"
+                                    ></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="burglary"
+                                        data-code="05"
+                                        data-crime-type="property"
+                                    />Burglary<span
+                                        class="crime-count"
+                                        data-code="05"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box burglary"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="theft"
+                                        data-code="06"
+                                        data-crime-type="property"
+                                    />Theft<span
+                                        class="crime-count"
+                                        data-code="06"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box theft"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="motor-vehicle-theft"
+                                        data-code="07"
+                                        data-crime-type="property"
+                                        data-code="07"
+                                    />Motor vehicle theft<span
+                                        class="crime-count"
+                                        data-code="07"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div
+                                        class="color-box motor-vehicle-theft"
+                                    ></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="arson"
+                                        data-code="09"
+                                        data-crime-type="property"
+                                    />Arson<span
+                                        class="crime-count"
+                                        data-code="09"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box arson"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="category-name">Narcotics</span>
+                                    <span
+                                        class="crime-count category-count narcotics"
+                                    ></span>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="cannabis"
+                                        data-code="18"
+                                        data-crime-type="drugs"
+                                    />Cannabis<span
+                                        class="crime-count"
+                                        data-code="18"
+                                        value="cannabis"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box cannabis"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="crack-cocaine"
+                                        data-code="18"
+                                        data-crime-type="drugs"
+                                    />Crack cocaine<span
+                                        class="crime-count"
+                                        data-code="18"
+                                        value="crack-cocaine"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box crack-cocaine"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="heroin"
+                                        data-code="18"
+                                        data-crime-type="drugs"
+                                    />Heroin<span
+                                        class="crime-count"
+                                        data-code="18"
+                                        value="heroin"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box heroin"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="cocaine"
+                                        data-code="18"
+                                        data-crime-type="drugs"
+                                    />Cocaine<span
+                                        class="crime-count"
+                                        data-code="18"
+                                        value="cocaine"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div class="color-box cocaine"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        name="crime-category"
+                                        value="other-drug-crimes"
+                                        data-code="18"
+                                        data-crime-type="drugs"
+                                    />Other drug crimes<span
+                                        class="crime-count"
+                                        data-code="18"
+                                        value="other-drug-crimes"
+                                    ></span>
+                                </td>
+                                <td>
+                                    <div
+                                        class="color-box other-drug-crimes"
+                                    ></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row map-related">
+                <div
+                    class="sans-text col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <div class="map-faq-btn-div">
+                        <button
+                            class="btn btn-default btn-lg text-hidden"
+                            id="map-faq-btn"
+                        >
+                            Show map FAQs
+                        </button>
+                    </div>
+                    <div class="map-faq-text">
+                        <p>
+                            <strong
+                                >What crimes are not included on this
+                                map?</strong
+                            >
+                            <br />The only crimes on the map are violent,
+                            property, and drug crimes, which are about half of
+                            the about 70,000 crimes reported around the
+                            Unvierstiy since 2001. The vast majority of crimes
+                            not included on this map fall into one of the
+                            following categories: tresspassing, prostitution,
+                            weapons violations, criminal damage, deceptive
+                            practices, or peace violations.
+                        </p>
+                        <br />
+                        <p>
+                            <strong
+                                >What is defined as “around the
+                                University?”</strong
+                            >
+                            <br />47th Street on the north to 63rd Street on the
+                            south and Cottage Grove on the west to the Lake on
+                            the east. This definition includes the southern part
+                            of the Kenwood neighborhood, the entirety of Hyde
+                            Park, and north Woodlawn. The UCPD jurisdiction
+                            extends to 37th Street on the north and 64th Street
+                            to the south, but as the University community is
+                            concentrated between 47th and 63rd Streets, that is
+                            the area on which we have chosen to focus.
+                        </p>
+                        <p>
+                            <strong
+                                >What is the difference between robbery,
+                                burglary, and theft?</strong
+                            >
+                            <br />
+                            According to the FBI's Uniform Crime Reporting
+                            handbook, robbery is the taking or attempting to
+                            take anything of value from someone by force or
+                            threat of force or violence and/or by putting the
+                            victim in fear. Burglary is defined as the unlawful
+                            entry of a structure to commit a felony or a theft.
+                            Theft is the unlawful taking of property from the
+                            possession of another.
+                        </p>
+                        <p>
+                            <strong
+                                >What is the difference between assault and
+                                battery?</strong
+                            >
+                            <br />
+                            According to Illinois law, assault is conduct which
+                            places another in reasonable apprehension of
+                            receiving a battery. Battery is defined as conduct
+                            causing bodily harm to another person.
+                        </p>
+                        <p>
+                            <strong
+                                >Does this data also include crimes to which the
+                                University of Chicago Police Department
+                                responded?</strong
+                            >
+                            <br />
+                            Yes, it includes all crimes reported to have
+                            occurred within the City, regardless of the
+                            responding agency.
+                        </p>
+                        <p>
+                            <strong>Where is this data from?</strong>
+                            <br />
+                            This data comes directly from the City of Chicago’s
+                            <a href="https://data.cityofchicago.org/"
+                                >data portal</a
+                            >, using the dataset “Crime - 2001 to present,”
+                            which includes all crimes reported to have occurred
+                            within the City from January 1, 2001 to the present,
+                            minus the past seven days.
+                            <span class="current-through" />
+                        </p>
+                        <hr />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text first-paragraph">
+                        In 1958, Julian Levi, a former professor at the
+                        University and the first president of the
+                        University-backed South East Chicago Commission wrote in
+                        a letter, “The perpetual discussion of the joys of
+                        interracial activities will cause men and women of good
+                        will... to caution their daughters not to go to the
+                        University of Chicago lest they be raped on the
+                        streets." The University, and it’s South Side home,
+                        experienced the full brunt of the decline of the
+                        American inner city and the simultaneous increase in
+                        crime in the 1970’s. During this time, out of concern
+                        for their safety, the University told students to stay
+                        off the Red and Green “L” lines and to never venture
+                        south of 61st Street. Today, the picture of crime is
+                        vastly improved. Homicides are down by 35% since 2001
+                        and in 2014 the city experienced 432 homicides, the
+                        lowest number since 1965.
+                    </p>
+                    <p class="text body-text"></p>
+                </div>
+                <div
+                    class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12"
+                >
+                    <div id="graph-1"></div>
+                    <div class="graph-tip sans-text">
+                        Click labels to toggle crime categories.
+                    </div>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        The long, bloody summer of 2012 earned the City the
+                        controversial name “Chiraq,” as a result of the uptick
+                        in violent crime, especially between rival gang members,
+                        that the city experienced after several years of
+                        declining violent crime rates.
+                    </p>
+                    <p class="text body-text">
+                        New York, Boston, LA, Seattle, St. Louis, UChicago may
+                        not always top the college rankings, but Chicago is
+                        consistently the most violent major American city home
+                        to a top-tier university. New York and Boston don’t even
+                        come close to Chicago’s violent crime rate. In 2014,
+                        Chicago had xx violent crimes per 100,00 residents,
+                        while New York had xx per 100,000 residents and Boston
+                        has just xx.
+                    </p>
+                    <p class="text body-text">
+                        The murder of U. of C. graduate student Amadou Cisse in
+                        November of 2007 at the corner of 61st Street and Ellis
+                        Avenue, less than one block south of the entrance to the
+                        Renee Granville-Grossman Residential Commons, was a
+                        shock to the University community, which had not
+                        experienced a student death from a violent crime since
+                        July 1977, and prided itself on the declining violent
+                        crime rates around the University.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12"
+                >
+                    <div id="graph-2"></div>
+                    <div class="graph-tip sans-text">
+                        Click labels to toggle crime categories.
+                    </div>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        Starting in 2011, there was a notable decline of all
+                        types of crime along Cottage Grove Avenue from 60th to
+                        63rd Streets, likely as a result of the demolition of
+                        the distressed Section 8, low-income housing project
+                        known as Grove Parc Plaza and the subsequent rebuilding
+                        of new mixed-income housing by the nonprofit
+                        Preservation of Affordable Housing (POAH).
+                    </p>
+                    <p class="text body-text">
+                        The CPD has faced allegations that the lower reported
+                        crime rates in the city, especially violent crimes, are
+                        a result of the reclassification of certain crimes as
+                        noncriminal incidents rather than as a result of fewer
+                        crimes being committed. This was first reported by
+                        <em>Chicago Magazine</em> in April of 2014 and was
+                        supported by an investigation by
+                        <em>The Economist</em> published in May of 2014. The
+                        allegations have been denied by the CPD and the Mayor’s
+                        Office.
+                    </p>
+                    <p class="text body-text">
+                        Despite a historically cold February, the City of
+                        Chicago is on track to have another bloody year. The
+                        first three months of 2015 had 78 murders compared to 62
+                        in the first three months of 2014 and 69 in the first
+                        three months of 2013.
+                    </p>
+                    <p class="text body-text">
+                        The area around the University has not been immune this
+                        overall uptick in crime: from January 1st to March 31st
+                        of 2014, there were 48 violent crimes reported around
+                        the University. During that same time period this year,
+                        there have been 57 violent crimes. Nevertheless, violent
+                        crime is still down significantly from 2005, when there
+                        were 123 violent reported around the Unvierstiy during
+                        the first three months of the year.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-12"
+                >
+                    <div id="graph-3"></div>
+                    <div class="graph-tip sans-text">
+                        Click labels to toggle crime categories.
+                    </div>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        Reported drug crimes dropped precipitously from 2011 to
+                        2013, possibly as a result of fewer committed drug
+                        crimes, but more likely as a result of Rahm Emanuel’s
+                        scaling down of the War on Drugs in Chicago. The South
+                        Side of Chicago is famous for being one of the places
+                        where the War was waged the fiercest, with Rahm Emanuel
+                        as one of its strongest supporters, according to
+                        Michelle Alexander in her book
+                        <em>The New Jim Crow</em>.
+                    </p>
+                    <p class="text body-text">
+                        Drug crimes are unique as the only truly victimless
+                        crime. Reported drug crime numbers surely grossly
+                        underestimate the number of committed drug crimes, while
+                        violent and property crime numbers likely overestimate
+                        the number of crimes actually committed (with the
+                        exception of homicide, where there is never a question
+                        of whether the crime actually occurred).
+                    </p>
+                    <p class="text body-text">
+                        The lack of reported drug crimes around the University
+                        can either be attributed to the fact that U. of C.
+                        students simply do not commit drug crimes, or a to lack
+                        of enforcement of drug crimes by the CPD and the UCPD on
+                        campus.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <div class="sans-text arrest-rates-container center-block">
+                        <table class="arrest-rate-table">
+                            <th>
+                                Arrest Rates for Crimes Near the University of
+                                Chicago, 2001-2014
+                                <br />
+                                <span class="crime-rate-source"
+                                    >Source: City of Chicago</span
+                                >
+                            </th>
+                            <tbody>
+                                <tr class="arrest-category violent">
+                                    <td class="arrest-crime">Violent</td>
+                                    <td>19%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box homicide"></div>
+                                        Homicide
+                                    </td>
+                                    <td>61%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div
+                                            class="color-box sexual-assault"
+                                        ></div>
+                                        Sexual assault
+                                    </td>
+                                    <td>17%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box robbery"></div>
+                                        Robbery
+                                    </td>
+                                    <td>14%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box assault"></div>
+                                        Assault
+                                    </td>
+                                    <td>30%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box battery"></div>
+                                        Battery
+                                    </td>
+                                    <td>26%</td>
+                                </tr>
+                                <tr class="arrest-category property">
+                                    <td class="arrest-crime">Property</td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box burglary"></div>
+                                        Burglary
+                                    </td>
+                                    <td>6%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box theft"></div>
+                                        Theft
+                                    </td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div
+                                            class="color-box motor-vehicle-theft"
+                                        ></div>
+                                        Motor vehicle theft
+                                    </td>
+                                    <td>10%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box arson"></div>
+                                        Arson
+                                    </td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr class="arrest-category Narcotics">
+                                    <td class="arrest-crime">Narcotics</td>
+                                    <td>97%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box cannabis"></div>
+                                        Cannabis
+                                    </td>
+                                    <td>97%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div
+                                            class="color-box crack-cocaine"
+                                        ></div>
+                                        Crack cocaine
+                                    </td>
+                                    <td>99%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box heroin"></div>
+                                        Heroin
+                                    </td>
+                                    <td>97%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div class="color-box cocaine"></div>
+                                        Cocaine
+                                    </td>
+                                    <td>100%</td>
+                                </tr>
+                                <tr>
+                                    <td class="arrest-crime">
+                                        <div
+                                            class="color-box other-drug-crimes"
+                                        ></div>
+                                        Other drug crimes
+                                    </td>
+                                    <td>91%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-    ga('create', 'UA-59818592-5', 'auto');
-    ga('send', 'pageview');
-</script>
+                <div class="row">
+                    <div
+                        id="disqus_thread"
+                        class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+                    ></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES * * */
+                        var disqus_shortname = 'chicagomarooninteractive';
 
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function () {
+                            var dsq = document.createElement('script');
+                            dsq.type = 'text/javascript';
+                            dsq.async = true;
+                            dsq.src =
+                                '//' +
+                                disqus_shortname +
+                                '.disqus.com/embed.js';
+                            (
+                                document.getElementsByTagName('head')[0] ||
+                                document.getElementsByTagName('body')[0]
+                            ).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript
+                        >Please enable JavaScript to view the
+                        <a
+                            href="https://disqus.com/?ref_noscript"
+                            rel="nofollow"
+                            >comments powered by Disqus.</a
+                        >
+                    </noscript>
+                </div>
+            </div>
+            <a id="comment"></a>
+            <footer>
+                <a href="http://www.chicagomaroon.com/"
+                    >© 2015 The Chicago Maroon</a
+                >
+            </footer>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'chicagomarooninteractive';
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function () {
+                    var s = document.createElement('script');
+                    s.async = true;
+                    s.type = 'text/javascript';
+                    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                    (
+                        document.getElementsByTagName('HEAD')[0] ||
+                        document.getElementsByTagName('BODY')[0]
+                    ).appendChild(s);
+                })();
+            </script>
+        </div>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="main.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            'script',
+            '//www.google-analytics.com/analytics.js',
+            'ga'
+        );
+
+        ga('create', 'UA-59818592-5', 'auto');
+        ga('send', 'pageview');
+    </script>
 </html>

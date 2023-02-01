@@ -9,7 +9,8 @@ strong {
     margin-top: 20px;
     height: 40px;
     width: 100%;
-    background:url(http://chicagomaroon.github.io/img/maroon-logo.png) no-repeat center center;
+    background: url(http://chicagomaroon.github.io/img/maroon-logo.png)
+        no-repeat center center;
     background-size: contain;
 }
 .capitalize {
@@ -19,21 +20,26 @@ strong {
     text-transform: lowercase;
 }
 .modal {
-    width: 60%
+    width: 60%;
 }
-.modal-content > .text, .modal-content > ul > li > .text, .modal-content > ul > li > div > .text {
+.modal-content > .text,
+.modal-content > ul > li > .text,
+.modal-content > ul > li > div > .text {
     font-size: 1.2rem;
     line-height: 1.5;
 }
 .collapsible-header {
-    font-size: 1.5rem!important;
-    line-height: 1.5!important;
+    font-size: 1.5rem !important;
+    line-height: 1.5 !important;
     font-weight: 600;
 }
 .modal-content > h4 {
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
-a.modal-trigger:focus,a.modal-trigger:hover,a.modal-trigger {
+a.modal-trigger:focus,
+a.modal-trigger:hover,
+a.modal-trigger {
     color: black;
 }
 .no-photo {
@@ -41,7 +47,7 @@ a.modal-trigger:focus,a.modal-trigger:hover,a.modal-trigger {
     background-color: #444444;
 }
 .article-photo {
-    font-size: .6rem;
+    font-size: 0.6rem;
     margin-left: 20px;
     margin-right: 10px;
     color: #222222;
@@ -49,31 +55,32 @@ a.modal-trigger:focus,a.modal-trigger:hover,a.modal-trigger {
 .article-author {
     font-weight: 200;
     text-transform: uppercase;
-    font-size: .9rem;
-    margin-top:20px;
+    font-size: 0.9rem;
+    margin-top: 20px;
     margin-left: 20px;
     margin-right: 10px;
-    padding-bottom:0;
+    padding-bottom: 0;
 }
 .modal-content > .article-author {
     margin-top: 0;
     margin-left: 0;
 }
 .card-content {
-    font-size: .8rem;
+    font-size: 0.8rem;
     margin-left: 10px;
     margin-right: 10px;
-    padding-top:0!important;
+    padding-top: 0 !important;
 }
 .subcard {
-    display:none;
+    display: none;
     height: 400px;
 }
 .card-title {
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
     font-size: 1.3rem;
-    background-color:rgba(0,0,0,.2);
-        padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
     height: 100%;
     width: 100%;
 }
@@ -82,14 +89,15 @@ a.modal-trigger:focus,a.modal-trigger:hover,a.modal-trigger {
     margin-right: 10px;
     font-size: 2rem;
     font-weight: 800;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
 .subcard > .card-text {
     font-size: 1rem;
 }
 .card {
     /*height: 100px;*/
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
 }
 .fullscreen {
     background: url(img/ivy.jpg) no-repeat center center fixed;
@@ -111,7 +119,7 @@ iframe {
 }
 .caption {
     display: none;
-    font-size: .9rem;
+    font-size: 0.9rem;
     position: relative;
     top: -20px;
 }
@@ -130,11 +138,12 @@ iframe {
 }
 .text {
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
 .credit {
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
 }
 .navbar-header:after {
     clear: none;
@@ -142,7 +151,7 @@ iframe {
 .body-text {
     padding-top: 20px;
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
 }
 .text-background {
@@ -163,10 +172,10 @@ iframe {
 h1,
 h2,
 h3 {
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
-    margin-left:10px!important;
-    margin-right:10px!important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
 }
 .quotation {
     font-style: italic;
@@ -179,7 +188,7 @@ p {
     padding-top: 13px;
 }
 .navbar-brand > img {
-    height: 40px
+    height: 40px;
 }
 .author {
     position: absolute;
@@ -206,7 +215,7 @@ p.first-paragraph:first-letter {
     margin-left: 10px;
 }
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .social-icon {
     height: 20px;
@@ -229,15 +238,35 @@ i.fa-comment {
     right: 75px;
 }
 .section-art-hr {
-    color: #FFFFFF;
+    color: #ffffff;
     width: 150px;
     margin-top: 5px;
     border: 0;
     height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -ms-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -o-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
 }
 .section-art {
     font-size: 1em;
@@ -258,8 +287,8 @@ div.social-icon-container {
 footer {
     text-align: center;
     padding-top: 50px;
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
     padding-bottom: 10px;
 }
 footer > a,
@@ -365,7 +394,7 @@ footer > a:focus {
         height: 80%;
     }
     h1 {
-        font-size: 3.0rem;
+        font-size: 3rem;
     }
     h2 {
         font-size: 1.5rem;
@@ -377,8 +406,8 @@ footer > a:focus {
         font-size: 1.4rem;
     }
     .modal {
-    width: 100%
-}
+        width: 100%;
+    }
 }
 
 h1 {

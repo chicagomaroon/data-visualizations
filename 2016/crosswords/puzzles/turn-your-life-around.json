@@ -1,0 +1,563 @@
+{
+    "title": "Turn Your Life Around",
+    "by": "Daniel Ruttenberg",
+    "clues": [
+        { "d": "A", "n": 1, "x": 0, "y": 0, "a": "BUGS", "c": "Jobs concern" },
+        {
+            "d": "A",
+            "n": 5,
+            "x": 5,
+            "y": 0,
+            "a": "JIMMY",
+            "c": "Animated nerd Neutron"
+        },
+        {
+            "d": "A",
+            "n": 10,
+            "x": 11,
+            "y": 0,
+            "a": "MINI",
+            "c": "Short, as a skirt"
+        },
+        { "d": "A", "n": 14, "x": 0, "y": 1, "a": "ASEA", "c": "Aboard" },
+        {
+            "d": "A",
+            "n": 15,
+            "x": 5,
+            "y": 1,
+            "a": "ADIEU",
+            "c": "Nice finisher?"
+        },
+        {
+            "d": "A",
+            "n": 16,
+            "x": 11,
+            "y": 1,
+            "a": "OWEN",
+            "c": "Wilson who works with Wes Anderson"
+        },
+        {
+            "d": "A",
+            "n": 17,
+            "x": 0,
+            "y": 2,
+            "a": "NUTS",
+            "c": "Pecans, for instance"
+        },
+        {
+            "d": "A",
+            "n": 18,
+            "x": 5,
+            "y": 2,
+            "a": "HANDMEDOWN",
+            "c": "Worn-again item"
+        },
+        {
+            "d": "A",
+            "n": 20,
+            "x": 0,
+            "y": 3,
+            "a": "TRUST",
+            "c": "Faith in another"
+        },
+        {
+            "d": "A",
+            "n": 22,
+            "x": 9,
+            "y": 3,
+            "a": "APE",
+            "c": "Jungle primate"
+        },
+        {
+            "d": "A",
+            "n": 23,
+            "x": 0,
+            "y": 4,
+            "a": "UPPERHAND",
+            "c": "Postition of control"
+        },
+        { "d": "A", "n": 28, "x": 10, "y": 4, "a": "AROSE", "c": "Came about" },
+        {
+            "d": "A",
+            "n": 32,
+            "x": 3,
+            "y": 5,
+            "a": "DEADAIR",
+            "c": "Disc jockey's nightmare"
+        },
+        {
+            "d": "A",
+            "n": 34,
+            "x": 11,
+            "y": 5,
+            "a": "ARAL",
+            "c": "Shrinking Asian sea"
+        },
+        {
+            "d": "A",
+            "n": 35,
+            "x": 0,
+            "y": 6,
+            "a": "MOD",
+            "c": "Admin. of forum"
+        },
+        {
+            "d": "A",
+            "n": 38,
+            "x": 4,
+            "y": 6,
+            "a": "ENZYME",
+            "c": "Digestion aid"
+        },
+        {
+            "d": "A",
+            "n": 39,
+            "x": 11,
+            "y": 6,
+            "a": "TAXI",
+            "c": "Comedy starring Judd Hirsch and Danny DeVito"
+        },
+        {
+            "d": "A",
+            "n": 40,
+            "x": 0,
+            "y": 7,
+            "a": "ACROSS",
+            "c": "Like half of these clues"
+        },
+        {
+            "d": "A",
+            "n": 42,
+            "x": 9,
+            "y": 7,
+            "a": "SCENES",
+            "c": "Play segments"
+        },
+        {
+            "d": "A",
+            "n": 44,
+            "x": 0,
+            "y": 8,
+            "a": "THOU",
+            "c": "You, to Shakespeare"
+        },
+        {
+            "d": "A",
+            "n": 45,
+            "x": 5,
+            "y": 8,
+            "a": "ORATOR",
+            "c": "Eloquent one"
+        },
+        {
+            "d": "A",
+            "n": 49,
+            "x": 12,
+            "y": 8,
+            "a": "GSA",
+            "c": "After school gp."
+        },
+        { "d": "A", "n": 50, "x": 0, "y": 9, "a": "HOOT", "c": "Owl's cry" },
+        {
+            "d": "A",
+            "n": 51,
+            "x": 5,
+            "y": 9,
+            "a": "MENORAH",
+            "c": "You might spin a dreidel in front of it"
+        },
+        {
+            "d": "A",
+            "n": 53,
+            "x": 0,
+            "y": 10,
+            "a": "SALSA",
+            "c": "Cinco de Mayo dip"
+        },
+        {
+            "d": "A",
+            "n": 55,
+            "x": 6,
+            "y": 10,
+            "a": "FOOTNOTES",
+            "c": "Research paper numbers"
+        },
+        {
+            "d": "A",
+            "n": 59,
+            "x": 3,
+            "y": 11,
+            "a": "IRA",
+            "c": "Glass of \"This American Life\""
+        },
+        {
+            "d": "A",
+            "n": 61,
+            "x": 10,
+            "y": 11,
+            "a": "KORDA",
+            "c": "Zoltan, director of \"Cry, the Beloved Country\""
+        },
+        {
+            "d": "A",
+            "n": 62,
+            "x": 0,
+            "y": 12,
+            "a": "TENDERFOOT",
+            "c": "Newbie"
+        },
+        {
+            "d": "A",
+            "n": 69,
+            "x": 11,
+            "y": 12,
+            "a": "KIEV",
+            "c": "Ukraine capital"
+        },
+        {
+            "d": "A",
+            "n": 70,
+            "x": 0,
+            "y": 13,
+            "a": "ABIE",
+            "c": "\"___ Baby\" (song from \"Hair\")"
+        },
+        {
+            "d": "A",
+            "n": 71,
+            "x": 5,
+            "y": 13,
+            "a": "TABLE",
+            "c": "Save for later"
+        },
+        {
+            "d": "A",
+            "n": 72,
+            "x": 11,
+            "y": 13,
+            "a": "ATME",
+            "c": "\"Why are you looking ___?\""
+        },
+        { "d": "A", "n": 73, "x": 0, "y": 14, "a": "TBAR", "c": "Alpine lift" },
+        {
+            "d": "A",
+            "n": 74,
+            "x": 5,
+            "y": 14,
+            "a": "SNIDE",
+            "c": "Sarcastic, as a comment"
+        },
+        {
+            "d": "A",
+            "n": 75,
+            "x": 11,
+            "y": 14,
+            "a": "HEAD",
+            "c": "Boss, of the finisher of the patter established by 18-across, 23-across, 55-across, and 62-across?"
+        },
+
+        {
+            "d": "D",
+            "n": 1,
+            "x": 0,
+            "y": 0,
+            "a": "BANTU",
+            "c": "Swahili's language group"
+        },
+        {
+            "d": "D",
+            "n": 2,
+            "x": 1,
+            "y": 0,
+            "a": "USURP",
+            "c": "Come to power by force"
+        },
+        { "d": "D", "n": 3, "x": 2, "y": 0, "a": "GETUP", "c": "Attire" },
+        {
+            "d": "D",
+            "n": 4,
+            "x": 3,
+            "y": 0,
+            "a": "SASSED",
+            "c": "Acted freshly to"
+        },
+        {
+            "d": "D",
+            "n": 5,
+            "x": 5,
+            "y": 0,
+            "a": "JAH",
+            "c": "Bob Marley's god"
+        },
+        {
+            "d": "D",
+            "n": 6,
+            "x": 6,
+            "y": 0,
+            "a": "IDA",
+            "c": "___ Noyes (UChicago buliding)"
+        },
+        {
+            "d": "D",
+            "n": 7,
+            "x": 7,
+            "y": 0,
+            "a": "MIN",
+            "c": "The lowest number in a gp."
+        },
+        {
+            "d": "D",
+            "n": 8,
+            "x": 8,
+            "y": 0,
+            "a": "MED",
+            "c": "School for bio majors"
+        },
+        {
+            "d": "D",
+            "n": 9,
+            "x": 9,
+            "y": 0,
+            "a": "YUMA",
+            "c": "\"3:10 to ___\" (Glenn Ford western)"
+        },
+        {
+            "d": "D",
+            "n": 10,
+            "x": 11,
+            "y": 0,
+            "a": "MODERATE",
+            "c": "Unlike Bernie or Donald"
+        },
+        {
+            "d": "D",
+            "n": 11,
+            "x": 12,
+            "y": 0,
+            "a": "IWO",
+            "c": "___ Jima Memorial"
+        },
+        { "d": "D", "n": 12, "x": 13, "y": 0, "a": "NEW", "c": "Unused" },
+        {
+            "d": "D",
+            "n": 13,
+            "x": 14,
+            "y": 0,
+            "a": "INN",
+            "c": "Way to end a holiday?"
+        },
+        {
+            "d": "D",
+            "n": 19,
+            "x": 10,
+            "y": 2,
+            "a": "EPA",
+            "c": "Antipollution org."
+        },
+        {
+            "d": "D",
+            "n": 21,
+            "x": 4,
+            "y": 3,
+            "a": "TREES",
+            "c": "Trippy subreddit name"
+        },
+        {
+            "d": "D",
+            "n": 24,
+            "x": 5,
+            "y": 4,
+            "a": "HANSOM",
+            "c": "Cab's ancestor"
+        },
+        {
+            "d": "D",
+            "n": 25,
+            "x": 6,
+            "y": 4,
+            "a": "ADZ",
+            "c": "Sufjan Stevens'\"The Age of ___\""
+        },
+        {
+            "d": "D",
+            "n": 26,
+            "x": 7,
+            "y": 4,
+            "a": "NAY",
+            "c": "Rhode Island's vote on whether to ratify the constitution"
+        },
+        {
+            "d": "D",
+            "n": 27,
+            "x": 8,
+            "y": 4,
+            "a": "DIM",
+            "c": "Lit only by candle, for instance"
+        },
+        {
+            "d": "D",
+            "n": 29,
+            "x": 12,
+            "y": 4,
+            "a": "ORANG",
+            "c": "Large 22-across"
+        },
+        {
+            "d": "D",
+            "n": 30,
+            "x": 13,
+            "y": 4,
+            "a": "SAXES",
+            "c": "Kenny G instruments"
+        },
+        {
+            "d": "D",
+            "n": 31,
+            "x": 14,
+            "y": 4,
+            "a": "ELISA",
+            "c": "Donovan who played Amber on \"Clueless\""
+        },
+        {
+            "d": "D",
+            "n": 33,
+            "x": 9,
+            "y": 5,
+            "a": "RESORT",
+            "c": "Fancy 13-down"
+        },
+        {
+            "d": "D",
+            "n": 35,
+            "x": 0,
+            "y": 6,
+            "a": "MATHS",
+            "c": "Class at Oxford"
+        },
+        {
+            "d": "D",
+            "n": 36,
+            "x": 1,
+            "y": 6,
+            "a": "OCHOA",
+            "c": "Mexican goalkeeper Guillermo"
+        },
+        {
+            "d": "D",
+            "n": 37,
+            "x": 2,
+            "y": 6,
+            "a": "DROOL",
+            "c": "Act like Pavlov's dog"
+        },
+        {
+            "d": "D",
+            "n": 41,
+            "x": 3,
+            "y": 7,
+            "a": "OUTSIDER",
+            "c": "One looking in"
+        },
+        {
+            "d": "D",
+            "n": 43,
+            "x": 10,
+            "y": 7,
+            "a": "CRANK",
+            "c": "With \"that\", Soulja Boy's most famous song."
+        },
+        {
+            "d": "D",
+            "n": 46,
+            "x": 6,
+            "y": 8,
+            "a": "REF",
+            "c": "B-ball official"
+        },
+        {
+            "d": "D",
+            "n": 47,
+            "x": 7,
+            "y": 8,
+            "a": "ANO",
+            "c": "\"It's ___ from me\" (Simon Cowell quip)"
+        },
+        { "d": "D", "n": 48, "x": 8, "y": 8, "a": "TOO", "c": "As well" },
+        {
+            "d": "D",
+            "n": 52,
+            "x": 11,
+            "y": 9,
+            "a": "HOOKAH",
+            "c": "Pipe in some bars"
+        },
+        {
+            "d": "D",
+            "n": 54,
+            "x": 4,
+            "y": 10,
+            "a": "ARE",
+            "c": "Small 2nd person verb"
+        },
+        { "d": "D", "n": 56, "x": 12, "y": 10, "a": "TRITE", "c": "Cliché" },
+        {
+            "d": "D",
+            "n": 57,
+            "x": 13,
+            "y": 10,
+            "a": "EDEMA",
+            "c": "Plant malady"
+        },
+        {
+            "d": "D",
+            "n": 58,
+            "x": 14,
+            "y": 10,
+            "a": "SAVED",
+            "c": "Like a born-again Christian"
+        },
+        {
+            "d": "D",
+            "n": 60,
+            "x": 5,
+            "y": 11,
+            "a": "ARTS",
+            "c": "Crafts partner"
+        },
+        { "d": "D", "n": 62, "x": 0, "y": 12, "a": "TAT", "c": "Tit for ___" },
+        {
+            "d": "D",
+            "n": 63,
+            "x": 1,
+            "y": 12,
+            "a": "EBB",
+            "c": "Flow, like the sea"
+        },
+        {
+            "d": "D",
+            "n": 64,
+            "x": 2,
+            "y": 12,
+            "a": "NIA",
+            "c": "Vardalos of \"My Big Fat Greek Wedding\""
+        },
+        {
+            "d": "D",
+            "n": 65,
+            "x": 6,
+            "y": 12,
+            "a": "FAN",
+            "c": "One in the club?"
+        },
+        {
+            "d": "D",
+            "n": 66,
+            "x": 7,
+            "y": 12,
+            "a": "OBI",
+            "c": "Part of a geisha's attire"
+        },
+        { "d": "D", "n": 67, "x": 8, "y": 12, "a": "OLD", "c": "Now 12-down" },
+        { "d": "D", "n": 68, "x": 9, "y": 12, "a": "TEE", "c": "Golfer's tool" }
+    ]
+}

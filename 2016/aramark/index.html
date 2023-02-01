@@ -1,619 +1,1487 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="What does Aramark's Purple Menu mean for the University of Chicago's dining halls?"
+        />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="What does Aramark's Purple Menu mean for the University of Chicago's dining halls?">
+        <meta name="author" content="Natalie Friedberg" />
+        <link
+            rel="shortcut icon"
+            href="http://chicagomaroon.github.io/img/favicon.png"
+        />
+        <meta
+            property="og:url"
+            content="http://chicagomaroon.github.io/aramark/"
+        />
+        <meta property="og:title" content="UChicago Dining Goes Purple" />
+        <meta
+            property="og:description"
+            content="What does Aramark's Purple Menu mean for the University of Chicago's dining halls?"
+        />
+        <meta
+            property="og:image"
+            content="http://chicagomaroon.github.io/aramark/img/cathey.jpg"
+        />
 
-    <meta name="author" content="Natalie Friedberg">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <meta property="og:url" content="http://chicagomaroon.github.io/aramark/" />
-    <meta property="og:title" content="UChicago Dining Goes Purple" />
-    <meta property="og:description" content="What does Aramark's Purple Menu mean for the University of Chicago's dining halls?" />
-    <meta property="og:image" content="http://chicagomaroon.github.io/aramark/img/cathey.jpg" />
+        <title>
+            UChicago Dining Goes Purple - Interactive feature -
+            ChicagoMaroon.com
+        </title>
 
-    <title>UChicago Dining Goes Purple - Interactive feature - ChicagoMaroon.com</title>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="main.css" rel="stylesheet" type='text/css'>
+    <body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1584750855103746',
+                    xfbml: true,
+                    version: 'v2.2'
+                });
+            };
 
-</head>
-
-<body>
-    <script>
-    
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1584750855103746',
-                xfbml: true,
-                version: 'v2.2'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="navbar nav navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="http://www.chicagomaroon.com/features/">
-                    <img alt="The Chicago Maroon Logo" class='logo' src="img/logo.png">
-                </a>
-            </div>
-            
-            <div class="social-icon-container fb right">
-                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-                    <img class="logo" src="img/fb-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container twitter right">
-                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/aramark/" title="UChicago Dining Goes Purple">
-                    <img class="logo" src="img/twitter-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container comments right">
-                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
-                    <i class="fa fa-comment fa-lg logo"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class='container'>
-        <div class='row'>
-            <div class='col-xs-12 fullscreen'>
-                <div class='push-down'></div>
-                <div class='text-background'>
-                    <div class='dining-art-container'>
-                        <span class='dining-art'>UChicago Dining</span>
-                        <hr class='dining-art-hr'>
-                    </div>
-
-                    <h1 class='text'>UChicago Dining Goes Purple</h1>
-                    <h2 class='subtitle'>What does Aramark's Purple Menu mean for the University of Chicago's dining halls?</h2>
-                    <h3 class='author'>By Natalie Friedberg | Produced by Ryan McDowell and Forrest Sill | March 2, 2015</h3>
+            (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div class="navbar nav navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a
+                        class="navbar-brand"
+                        href="http://www.chicagomaroon.com/features/"
+                    >
+                        <img
+                            alt="The Chicago Maroon Logo"
+                            class="logo"
+                            src="img/logo.png"
+                        />
+                    </a>
                 </div>
 
-            </div>
-            <div class='credit photo-credit cover-photo'>Carol Lee/<em>Chicago Maroon</em>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text first-paragraph'>
-                    At the beginning of winter quarter Aramark implemented a new winter menu, called the Purple Menu, in University dining halls and other locations across the Midwest, which reduced the variety of foods available and was intended to cut food costs. The menu has since been adjusted in response to student feedback.
-                </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>
-                    The new menu means that the corporate side of Aramark has more control in setting the menu in Arley D. Cathey Dining Commons and Bartlett Dining Commons, rather than independent decisions being made by University officials. The Purple Menu includes more casseroles, more rice and pasta dishes and fewer protein and vegetable dishes, according to University spokesperson Mary Abowd. Additionally, Kirsten Wiard-Bauer, a third-year and the Booth House student dining hall representative, was told by an Aramark representative at a committee meeting that individual packets of cream cheese and peanut butter were cut in favor of large tubs for cost-cutting purposes. However, UC Dining has asserted that this statement is not correct.
-                </p>
-
-            </div>
-            <div class='col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12'>
-                <div class="slideshow-container">
-                    <div id="slides">
-                        <img src="img/chicken.JPG">
-                        <img src="img/fries.JPG">
-                        <img src="img/honeydew.JPG">
-                        <img src="img/pizza.JPG">
-                        <img src="img/sandwich.JPG">
-                        <img src="img/salad.JPG">
-                        <a href="#" class="slidesjs-previous slidesjs-navigation"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-                        <a href="#" class="slidesjs-next slidesjs-navigation"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-
-                    </div>
-                    <div class='credit slideshow-credit'>Marta Bakula/<em>Chicago Maroon</em>
-                    </div>
-                    <div class='caption food-caption-1'><b>What do you think of the dining hall?</b>
-                        <br>"I definitely see that they’re really trying. That makes it taste better, I guess, sometimes." -<em>Victor Jiao, 1st year, Bartlett</em>
-                    </div>
-                    <div class='caption food-caption-2'><b>What do you think about the dining hall?</b>
-                        <br>"I do get quite tired of eating the same stuff all the time, that’s my main opinion on the dining hall."
-                        <br>
-                        <b>Have you noticed any change in food quality from this quarter to last quarter?</b>
-                        <br>"Yeah, it’s deteriorated but personally I’m less happy about the utensil cleanliness issue that’s pretty prominent this quarter" -<em>Kishin Kato, 1st year, Cathey.</em>
-                    </div>
-                    <div class='caption food-caption-3'><b>Do you think it’s easy or difficult to find healthy food at the dining hall?</b>
-                        <br>I guess it depends on what you consider healthy and what kind of diet you have. I have a pretty flexible diet so I just eat whatever. Usually I always eat a bowl of fruit." -<em>Sarah, 3rd year, Cathey</em>
-                    </div>
-                    <div class='caption food-caption-4'><b>Can you tell me about what you’re eating?</b>
-                        <br>"I am eating a slice of pepperoni pizza and two little slices of ambiguous pizza and I also got soup that is back at the house table that was actually pretty good, I was a fan of the soup."
-                        <br>
-                        <b>What do you think of the dining hall?</b>
-                        <br>"Not exactly up to par, I would say that the staff is very lovely. I usually go for the things where I can see them making it right in front of me…I somehow trust it when I can see what’s being done. But, I’m lazy today, so I got pizza." -<em>Grace McLeod, 1st year, Cathey</em>
-                    </div>
-                    <div class='caption food-caption-5'><b>How does your sandwich look?</b>
-                        <br>It looks pretty good, I get a similar thing usually when I come here and it’s usually pretty good.
-                        <br><b>Would you say it’s difficult or easy to find healthy food at the dining halls?</b>
-                        <br>I would say it’s pretty easy as long as you don’t require too much variety. -<em>Matt Watts, 2nd year, Bartlett</em>
-                    </div>
-                    <div class='caption food-caption-6'><b>How does your food look?</b>
-                        <br>"The salad looks a little depressing, but that’s fine."
-                        <br>
-                        <b>What do you think of the dining hall?</b>
-                        <br>"Sometimes the quality is a little underwhelming. Like I’ve come here before and not found anything that I wanted to eat because there’s only so many times you can have the same salad and sandwich. I understand that there’s not much they can do in terms of those options, but you know I’d love it if the quality of the food were a bit better." -<em>Caroline Newman, 1st year, Bartlett</em>
-                    </div>
-
+                <div class="social-icon-container fb right">
+                    <a
+                        id="fb-icon"
+                        class="social-icon right"
+                        target="_blank"
+                        href="#"
+                    >
+                        <img class="logo" src="img/fb-logo.png" />
+                    </a>
+                </div>
+                <div class="social-icon-container twitter right">
+                    <a
+                        id="twitter-icon"
+                        class="social-icon right tweet"
+                        target="_blank"
+                        href="http://chicagomaroon.github.io/aramark/"
+                        title="UChicago Dining Goes Purple"
+                    >
+                        <img class="logo" src="img/twitter-logo.png" />
+                    </a>
+                </div>
+                <div class="social-icon-container comments right">
+                    <a
+                        id="comments"
+                        class="disqus-comment-count social-icon right logo"
+                        data-disqus-url="http://example.com/article1.html"
+                        href="#comment"
+                    >
+                        <i class="fa fa-comment fa-lg logo"></i>
+                    </a>
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 fullscreen">
+                    <div class="push-down"></div>
+                    <div class="text-background">
+                        <div class="dining-art-container">
+                            <span class="dining-art">UChicago Dining</span>
+                            <hr class="dining-art-hr" />
+                        </div>
 
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>"UChicago Dining and Aramark work together to create a new menu each quarter. The one which was developed for winter quarter was not particularly well received by students," Natalie David, a fourth-year and the president of Inter-House Council (IHC), wrote in an e-mail. "The ‘Purple Menu’ is simply a collection of food offerings/recipes developed by Aramark. It’s one of their many color-named menus (which are modified for the many university campuses Aramark serves)."</p>
+                        <h1 class="text">UChicago Dining Goes Purple</h1>
+                        <h2 class="subtitle">
+                            What does Aramark's Purple Menu mean for the
+                            University of Chicago's dining halls?
+                        </h2>
+                        <h3 class="author">
+                            By Natalie Friedberg | Produced by Ryan McDowell and
+                            Forrest Sill | March 2, 2015
+                        </h3>
+                    </div>
+                </div>
+                <div class="credit photo-credit cover-photo">
+                    Carol Lee/<em>Chicago Maroon</em>
+                </div>
             </div>
-        </div>
-        <a id="submitted"></a>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>
-                    IHC is a student representative body overseen by UChicago Housing that is composed of one representative from each House and an eight-member executive committee.
-                </p>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text first-paragraph">
+                        At the beginning of winter quarter Aramark implemented a
+                        new winter menu, called the Purple Menu, in University
+                        dining halls and other locations across the Midwest,
+                        which reduced the variety of foods available and was
+                        intended to cut food costs. The menu has since been
+                        adjusted in response to student feedback.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        The new menu means that the corporate side of Aramark
+                        has more control in setting the menu in Arley D. Cathey
+                        Dining Commons and Bartlett Dining Commons, rather than
+                        independent decisions being made by University
+                        officials. The Purple Menu includes more casseroles,
+                        more rice and pasta dishes and fewer protein and
+                        vegetable dishes, according to University spokesperson
+                        Mary Abowd. Additionally, Kirsten Wiard-Bauer, a
+                        third-year and the Booth House student dining hall
+                        representative, was told by an Aramark representative at
+                        a committee meeting that individual packets of cream
+                        cheese and peanut butter were cut in favor of large tubs
+                        for cost-cutting purposes. However, UC Dining has
+                        asserted that this statement is not correct.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12"
+                >
+                    <div class="slideshow-container">
+                        <div id="slides">
+                            <img src="img/chicken.JPG" />
+                            <img src="img/fries.JPG" />
+                            <img src="img/honeydew.JPG" />
+                            <img src="img/pizza.JPG" />
+                            <img src="img/sandwich.JPG" />
+                            <img src="img/salad.JPG" />
+                            <a
+                                href="#"
+                                class="slidesjs-previous slidesjs-navigation"
+                                ><span
+                                    class="glyphicon glyphicon-chevron-left"
+                                    aria-hidden="true"
+                                ></span
+                            ></a>
+                            <a
+                                href="#"
+                                class="slidesjs-next slidesjs-navigation"
+                                ><span
+                                    class="glyphicon glyphicon-chevron-right"
+                                    aria-hidden="true"
+                                ></span
+                            ></a>
+                        </div>
+                        <div class="credit slideshow-credit">
+                            Marta Bakula/<em>Chicago Maroon</em>
+                        </div>
+                        <div class="caption food-caption-1">
+                            <b>What do you think of the dining hall?</b>
+                            <br />"I definitely see that they’re really trying.
+                            That makes it taste better, I guess, sometimes."
+                            -<em>Victor Jiao, 1st year, Bartlett</em>
+                        </div>
+                        <div class="caption food-caption-2">
+                            <b>What do you think about the dining hall?</b>
+                            <br />"I do get quite tired of eating the same stuff
+                            all the time, that’s my main opinion on the dining
+                            hall."
+                            <br />
+                            <b
+                                >Have you noticed any change in food quality
+                                from this quarter to last quarter?</b
+                            >
+                            <br />"Yeah, it’s deteriorated but personally I’m
+                            less happy about the utensil cleanliness issue
+                            that’s pretty prominent this quarter" -<em
+                                >Kishin Kato, 1st year, Cathey.</em
+                            >
+                        </div>
+                        <div class="caption food-caption-3">
+                            <b
+                                >Do you think it’s easy or difficult to find
+                                healthy food at the dining hall?</b
+                            >
+                            <br />I guess it depends on what you consider
+                            healthy and what kind of diet you have. I have a
+                            pretty flexible diet so I just eat whatever. Usually
+                            I always eat a bowl of fruit." -<em
+                                >Sarah, 3rd year, Cathey</em
+                            >
+                        </div>
+                        <div class="caption food-caption-4">
+                            <b>Can you tell me about what you’re eating?</b>
+                            <br />"I am eating a slice of pepperoni pizza and
+                            two little slices of ambiguous pizza and I also got
+                            soup that is back at the house table that was
+                            actually pretty good, I was a fan of the soup."
+                            <br />
+                            <b>What do you think of the dining hall?</b>
+                            <br />"Not exactly up to par, I would say that the
+                            staff is very lovely. I usually go for the things
+                            where I can see them making it right in front of
+                            me…I somehow trust it when I can see what’s being
+                            done. But, I’m lazy today, so I got pizza." -<em
+                                >Grace McLeod, 1st year, Cathey</em
+                            >
+                        </div>
+                        <div class="caption food-caption-5">
+                            <b>How does your sandwich look?</b> <br />It looks
+                            pretty good, I get a similar thing usually when I
+                            come here and it’s usually pretty good. <br /><b
+                                >Would you say it’s difficult or easy to find
+                                healthy food at the dining halls?</b
+                            >
+                            <br />I would say it’s pretty easy as long as you
+                            don’t require too much variety. -<em
+                                >Matt Watts, 2nd year, Bartlett</em
+                            >
+                        </div>
+                        <div class="caption food-caption-6">
+                            <b>How does your food look?</b> <br />"The salad
+                            looks a little depressing, but that’s fine."
+                            <br />
+                            <b>What do you think of the dining hall?</b>
+                            <br />"Sometimes the quality is a little
+                            underwhelming. Like I’ve come here before and not
+                            found anything that I wanted to eat because there’s
+                            only so many times you can have the same salad and
+                            sandwich. I understand that there’s not much they
+                            can do in terms of those options, but you know I’d
+                            love it if the quality of the food were a bit
+                            better." -<em
+                                >Caroline Newman, 1st year, Bartlett</em
+                            >
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'>
-                <div class='poll-container'>
-                    <button class="btn btn-primary btn-lg take-poll-btn">Take <em>The Maroon</em>'s dining poll</button>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        "UChicago Dining and Aramark work together to create a
+                        new menu each quarter. The one which was developed for
+                        winter quarter was not particularly well received by
+                        students," Natalie David, a fourth-year and the
+                        president of Inter-House Council (IHC), wrote in an
+                        e-mail. "The ‘Purple Menu’ is simply a collection of
+                        food offerings/recipes developed by Aramark. It’s one of
+                        their many color-named menus (which are modified for the
+                        many university campuses Aramark serves)."
+                    </p>
+                </div>
+            </div>
+            <a id="submitted"></a>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        IHC is a student representative body overseen by
+                        UChicago Housing that is composed of one representative
+                        from each House and an eight-member executive committee.
+                    </p>
                 </div>
 
-                <hr class='poll-border'>
+                <div
+                    class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+                >
+                    <div class="poll-container">
+                        <button class="btn btn-primary btn-lg take-poll-btn">
+                            Take <em>The Maroon</em>'s dining poll
+                        </button>
+                    </div>
+
+                    <hr class="poll-border" />
+                    <script type="text/javascript">
+                        var submitted = false;
+                    </script>
+                    <h4 class="poll-title text alert-title">Dining Poll</h4>
+                    <div class="alert alert-success" role="alert">
+                        Thanks for your response!
+                    </div>
+                    <iframe
+                        name="hidden_iframe"
+                        id="hidden_iframe"
+                        style="display: none"
+                        onload="if(submitted)
+{window.location='/#submitted';}"
+                    ></iframe>
+                    <form
+                        action="https://docs.google.com/forms/d/1jokelsHk7wrCQFPWuB2U2w7vsv95DidM1sIZQJL46R0/formResponse?embedded=true"
+                        method="post"
+                        target="hidden_iframe"
+                        onsubmit="submitted=true;"
+                    >
+                        <ol
+                            role="list"
+                            class="ss-question-list"
+                            style="padding-left: 0"
+                        >
+                            <h4 class="poll-title text">Dining Poll</h4>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-radio">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_859010937"
+                                        >
+                                            <div class="ss-q-title">
+                                                What year are you?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+
+                                        <ul
+                                            class="ss-choices"
+                                            role="radiogroup"
+                                            aria-label="What year are you?  "
+                                        >
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.1286561099"
+                                                            value="1st year"
+                                                            id="group_1286561099_1"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="1st year"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >1st year</span
+                                                    >
+                                                </label>
+                                            </li>
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.1286561099"
+                                                            value="2nd year"
+                                                            id="group_1286561099_2"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="2nd year"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >2nd year</span
+                                                    >
+                                                </label>
+                                            </li>
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.1286561099"
+                                                            value="3rd year"
+                                                            id="group_1286561099_3"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="3rd year"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >3rd year</span
+                                                    >
+                                                </label>
+                                            </li>
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.1286561099"
+                                                            value="4th year"
+                                                            id="group_1286561099_4"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="4th year"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >4th year</span
+                                                    >
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div
+                                            class="error-message"
+                                            id="859010937_errorMessage"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-select">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_1167403716"
+                                        >
+                                            <div class="ss-q-title">
+                                                Are you on a meal plan?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+                                        <select
+                                            name="entry.1167403716"
+                                            id="entry_1167403716"
+                                            aria-label="Are you on a meal plan?  "
+                                            class="valid"
+                                        >
+                                            <option value=""></option>
+                                            <option
+                                                value="Yes, I'm on the unlimited meal plan"
+                                            >
+                                                Yes, I'm on the unlimited meal
+                                                plan
+                                            </option>
+                                            <option
+                                                value="Yes, I'm on the Phoenix meal plan"
+                                            >
+                                                Yes, I'm on the Phoenix meal
+                                                plan
+                                            </option>
+                                            <option
+                                                value="Yes, I'm on the apartment meal plan"
+                                            >
+                                                Yes, I'm on the apartment meal
+                                                plan
+                                            </option>
+                                            <option
+                                                value="I'm not on a meal plan"
+                                            >
+                                                I'm not on a meal plan
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-radio">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_1295481884"
+                                        >
+                                            <div class="ss-q-title">
+                                                Which dining hall do you eat at
+                                                more frequently?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+
+                                        <ul
+                                            class="ss-choices"
+                                            role="radiogroup"
+                                            aria-label="Which dining hall do you eat at more frequently?  "
+                                        >
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.1273477477"
+                                                            value="Bartlett"
+                                                            id="group_1273477477_1"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="Bartlett"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >Bartlett</span
+                                                    >
+                                                </label>
+                                            </li>
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.1273477477"
+                                                            value="Cathey"
+                                                            id="group_1273477477_2"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="Cathey"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >Cathey</span
+                                                    >
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div
+                                            class="error-message"
+                                            id="1295481884_errorMessage"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-scale">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_270370846"
+                                        >
+                                            <div class="ss-q-title">
+                                                How would you rate the food in
+                                                the dining hall that you more
+                                                frequently visit this quarter?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+
+                                        <table
+                                            border="0"
+                                            cellpadding="5"
+                                            cellspacing="0"
+                                            id="entry_379602428"
+                                        >
+                                            <tbody>
+                                                <tr aria-hidden="true">
+                                                    <td
+                                                        class="ss-scalenumbers"
+                                                    ></td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_379602428_1"
+                                                            >1</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_379602428_2"
+                                                            >2</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_379602428_3"
+                                                            >3</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_379602428_4"
+                                                            >4</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_379602428_5"
+                                                            >5</label
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalenumbers"
+                                                    ></td>
+                                                </tr>
+                                                <tr
+                                                    role="radiogroup"
+                                                    aria-label="How would you rate the food in the dining hall that you more frequently visit this quarter?  Select a value from a range of 1,Terrible, to 5,Great,."
+                                                >
+                                                    <td
+                                                        class="ss-scalerow ss-leftlabel"
+                                                    >
+                                                        <div
+                                                            aria-hidden="true"
+                                                            class="aria-todo"
+                                                        >
+                                                            Terrible
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.379602428"
+                                                                value="1"
+                                                                id="group_379602428_1"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="1"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.379602428"
+                                                                value="2"
+                                                                id="group_379602428_2"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="2"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.379602428"
+                                                                value="3"
+                                                                id="group_379602428_3"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="3"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.379602428"
+                                                                value="4"
+                                                                id="group_379602428_4"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="4"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.379602428"
+                                                                value="5"
+                                                                id="group_379602428_5"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="5"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalerow ss-rightlabel"
+                                                        aria-hidden="true"
+                                                    >
+                                                        Great
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-scale">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_874376948"
+                                        >
+                                            <div class="ss-q-title">
+                                                How would you rate the food in
+                                                that dining hall last quarter?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+
+                                        <table
+                                            border="0"
+                                            cellpadding="5"
+                                            cellspacing="0"
+                                            id="entry_165893046"
+                                        >
+                                            <tbody>
+                                                <tr aria-hidden="true">
+                                                    <td
+                                                        class="ss-scalenumbers"
+                                                    ></td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_165893046_1"
+                                                            >1</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_165893046_2"
+                                                            >2</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_165893046_3"
+                                                            >3</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_165893046_4"
+                                                            >4</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_165893046_5"
+                                                            >5</label
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalenumbers"
+                                                    ></td>
+                                                </tr>
+                                                <tr
+                                                    role="radiogroup"
+                                                    aria-label="How would you rate the food in that dining hall last quarter?  Select a value from a range of 1,Terrible, to 5,Great,."
+                                                >
+                                                    <td
+                                                        class="ss-scalerow ss-leftlabel"
+                                                    >
+                                                        <div
+                                                            aria-hidden="true"
+                                                            class="aria-todo"
+                                                        >
+                                                            Terrible
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.165893046"
+                                                                value="1"
+                                                                id="group_165893046_1"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="1"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.165893046"
+                                                                value="2"
+                                                                id="group_165893046_2"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="2"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.165893046"
+                                                                value="3"
+                                                                id="group_165893046_3"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="3"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.165893046"
+                                                                value="4"
+                                                                id="group_165893046_4"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="4"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.165893046"
+                                                                value="5"
+                                                                id="group_165893046_5"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="5"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalerow ss-rightlabel"
+                                                        aria-hidden="true"
+                                                    >
+                                                        Great
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-radio">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_2107008274"
+                                        >
+                                            <div class="ss-q-title">
+                                                In your opinion, has the quality
+                                                of the food in the past quarter
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+
+                                        <ul
+                                            class="ss-choices"
+                                            role="radiogroup"
+                                            aria-label="In your opinion, has the quality of the food in the past quarter  "
+                                        >
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.227086885"
+                                                            value="Increased"
+                                                            id="group_227086885_1"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="Increased"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >Increased</span
+                                                    >
+                                                </label>
+                                            </li>
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.227086885"
+                                                            value="Decreased"
+                                                            id="group_227086885_2"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="Decreased"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >Decreased</span
+                                                    >
+                                                </label>
+                                            </li>
+                                            <li class="ss-choice-item">
+                                                <label
+                                                    ><span
+                                                        class="ss-choice-item-control goog-inline-block"
+                                                        ><input
+                                                            type="radio"
+                                                            name="entry.227086885"
+                                                            value="Stayed the same"
+                                                            id="group_227086885_3"
+                                                            role="radio"
+                                                            class="ss-q-radio"
+                                                            aria-label="Stayed the same"
+                                                    /></span>
+                                                    <span
+                                                        class="ss-choice-label"
+                                                        >Stayed the same</span
+                                                    >
+                                                </label>
+                                            </li>
+                                        </ul>
+                                        <div
+                                            class="error-message"
+                                            id="2107008274_errorMessage"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div dir="ltr" class="ss-item ss-scale">
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_1069173948"
+                                        >
+                                            <div class="ss-q-title">
+                                                How difficult is it to find
+                                                healthy food at the dining
+                                                halls?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+
+                                        <table
+                                            border="0"
+                                            cellpadding="5"
+                                            cellspacing="0"
+                                            id="entry_1409277781"
+                                        >
+                                            <tbody>
+                                                <tr aria-hidden="true">
+                                                    <td
+                                                        class="ss-scalenumbers"
+                                                    ></td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_1409277781_1"
+                                                            >1</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_1409277781_2"
+                                                            >2</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_1409277781_3"
+                                                            >3</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_1409277781_4"
+                                                            >4</label
+                                                        >
+                                                    </td>
+                                                    <td class="ss-scalenumbers">
+                                                        <label
+                                                            class="ss-scalenumber"
+                                                            for="group_1409277781_5"
+                                                            >5</label
+                                                        >
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalenumbers"
+                                                    ></td>
+                                                </tr>
+                                                <tr
+                                                    role="radiogroup"
+                                                    aria-label="How difficult is it to find healthy food at the dining halls?  Select a value from a range of 1,Very difficult, to 5,Very easy,."
+                                                >
+                                                    <td
+                                                        class="ss-scalerow ss-leftlabel"
+                                                    >
+                                                        <div
+                                                            aria-hidden="true"
+                                                            class="aria-todo"
+                                                        >
+                                                            Very difficult
+                                                        </div>
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalerow"
+                                                        style="width: 22px"
+                                                    >
+                                                        <div
+                                                            class="ss-scalerow-fieldcell radio"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.1409277781"
+                                                                value="1"
+                                                                id="group_1409277781_1"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="1"
+                                                                style="
+                                                                    position: relative;
+                                                                    left: 20px;
+                                                                "
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.1409277781"
+                                                                value="2"
+                                                                id="group_1409277781_2"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="2"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.1409277781"
+                                                                value="3"
+                                                                id="group_1409277781_3"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="3"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.1409277781"
+                                                                value="4"
+                                                                id="group_1409277781_4"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="4"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td class="ss-scalerow">
+                                                        <div
+                                                            class="ss-scalerow-fieldcell"
+                                                        >
+                                                            <input
+                                                                type="radio"
+                                                                name="entry.1409277781"
+                                                                value="5"
+                                                                id="group_1409277781_5"
+                                                                role="radio"
+                                                                class="ss-q-radio"
+                                                                aria-label="5"
+                                                            />
+                                                        </div>
+                                                    </td>
+                                                    <td
+                                                        class="ss-scalerow ss-rightlabel"
+                                                        aria-hidden="true"
+                                                    >
+                                                        Very easy
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="ss-form-question errorbox-good"
+                                role="listitem"
+                            >
+                                <div
+                                    dir="ltr"
+                                    class="ss-item ss-paragraph-text"
+                                >
+                                    <div class="ss-form-entry">
+                                        <label
+                                            class="ss-q-item-label"
+                                            for="entry_715615998"
+                                        >
+                                            <div class="ss-q-title">
+                                                Any comments?
+                                            </div>
+                                            <div
+                                                class="ss-q-help ss-secondary-text"
+                                                dir="ltr"
+                                            ></div>
+                                        </label>
+                                        <textarea
+                                            name="entry.715615998"
+                                            rows="2"
+                                            cols="0"
+                                            class="form-control ss-q-long"
+                                            id="entry_715615998"
+                                            dir="auto"
+                                            aria-label="Any comments?  "
+                                        ></textarea>
+                                        <div
+                                            class="error-message"
+                                            id="538378308_errorMessage"
+                                        ></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input
+                                type="hidden"
+                                name="draftResponse"
+                                value='[,,"2277616912720973491"]
+'
+                            />
+                            <input type="hidden" name="pageHistory" value="0" />
+
+                            <input
+                                type="hidden"
+                                name="fbzx"
+                                value="2277616912720973491"
+                            />
+
+                            <div class="ss-item ss-navigate">
+                                <table id="navigation-table">
+                                    <tbody>
+                                        <tr>
+                                            <td
+                                                class="ss-form-entry goog-inline-block"
+                                                id="navigation-buttons"
+                                                dir="ltr"
+                                            >
+                                                <input
+                                                    type="submit"
+                                                    name="submit"
+                                                    value="Submit"
+                                                    id="ss-submit"
+                                                    class="btn btn-default jfk-button jfk-button-action"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </ol>
+                    </form>
+                    <hr class="poll-border" />
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        According to Wiard-Bauer, the Purple Menu was never
+                        officially reported to the dining hall representative
+                        committee, but it did come up "casually" in discussion.
+                    </p>
+                    <p class="text body-text">
+                        "We were all sitting in a really large table and the
+                        dining hall representatives were like, ‘My house members
+                        said this,’ and we bounced off of each other. And then
+                        at one point the Aramark representative [Eric Young] was
+                        like, ‘Well, a lot of these things are because of the
+                        new Purple Menu that corporate has introduced,’"
+                        Wiard-Bauer said.
+                    </p>
+                    <p class="text body-text">
+                        Richard Mason, the executive director of UChicago
+                        Dining, attests that changes have been made since the
+                        initial rollout of the Purple Menu in response to
+                        student comments.
+                    </p>
+                    <hr class="no-margin-bottom" />
+                    <div class="quotation text">
+                        "A lot of animals, a lot of produce aren’t great in the
+                        area right now because of the weather and it’s hard to
+                        make a menu that works around that."
+                    </div>
+                    <hr class="no-margin-bottom" />
+                    <p class="text body-text">
+                        "UChicago Dining listened to some comments we received
+                        from students who did not like the changes, and we have
+                        re-adjusted the menu over the past few weeks in
+                        response. Dining committees and students have given us
+                        positive feedback about these changes," Mason wrote in a
+                        statement.
+                    </p>
+                    <p class="text body-text">
+                        In addition to the responses from student committees,
+                        student feedback has also come in the form of comment
+                        cards written in the dining halls. The information on
+                        these cards is aggregated and analyzed on a regular
+                        basis in order to gauge student response to changes in
+                        services. However, this data is not made available to
+                        the public, according to Abowd.
+                    </p>
+                    <p class="text body-text">
+                        Chamberlin House’s IHC representative and second-year
+                        Elizabeth Lipschultz put in a request for someone from
+                        UChicago Dining to talk to IHC about the general decline
+                        in food. In response, Mason attended a recent IHC
+                        meeting and urged students not to focus on the details
+                        of the Purple Menu. Instead, he explained decline in
+                        food quality by Aramark’s sustainability requirements,
+                        which requires the dining halls to purchase 35 percent
+                        of the food that it serves within a 130-mile radius of
+                        the University.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+                >
+                    <div
+                        id="chart-1"
+                        style="height: 400px; margin: 0 auto"
+                    ></div>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        "A lot of animals, a lot of produce aren’t great in the
+                        area right now because of the weather and it’s hard to
+                        make a menu that works around that. They tried to switch
+                        to things that were more like soups and casseroles and
+                        stuff like that. That didn’t go over well, obviously,"
+                        Lipschultz said. "But they said that it’s not a
+                        financial thing, not a sustainability thing, or that’s
+                        what they claim. A lot of people are trying to figure
+                        out whether it’s been a financial decision. It seems
+                        like they try to deny or at least deflect from that."
+                    </p>
+                    <p class="text body-text">
+                        Changes have already been made to the menu to bring back
+                        popular food items, such as spinach. Additionally, there
+                        will be a new menu for spring quarter that is expected
+                        to include larger amounts of locally sourced fruit. The
+                        color associated with the upcoming menu was not
+                        available.
+                    </p>
+                    <p class="text body-text">
+                        "Sometimes the quality is a little underwhelming. Like
+                        I’ve come here before and not found anything that I
+                        wanted to eat because there’s only so many times you can
+                        have the same salad and sandwich. I understand that
+                        there’s not much they can do in terms of those options,
+                        but you know I’d love it if the quality of the food were
+                        a bit better," Caroline Newman, a first-year student
+                        recently eating at Bartlett Dining Commons, said.
+                    </p>
+                    <p class="text body-text">
+                        Aramark Corporation was founded in 1959 and now operates
+                        in 22 countries, and supplies food and facilities to
+                        universities, federal and state prisons, businesses,
+                        sports facilities, and healthcare institutions. Last
+                        November, Aramark reported an approximately 10 percent
+                        increase in revenue, from approximately $13.5 million to
+                        $14.8 million and quarterly dividends have been
+                        increased by 15 percent. The new chair of the University
+                        Board of Trustees, Joseph Neubauer (MBA ’65), has been
+                        the chairman of the board of Aramark since 1984.
+                    </p>
+                    <p class="text body-text correction">
+                        <strong>Correction - March 9 2015:</strong> The original
+                        article was ambiguous in its attribution of the
+                        statement that individual cream cheese packets were cut
+                        in favor of large tubs for cost-cutting purposes. This
+                        information was provided by Kirsten Wiard-Bauer, not
+                        University spokesperson Mary Abowd. UC Dining submitted
+                        a statement to the contrary after the initial
+                        publication of this article.
+                    </p>
+                </div>
+                <div
+                    id="disqus_thread"
+                    class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+                ></div>
                 <script type="text/javascript">
-                    var submitted = false;
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'chicagomarooninteractive';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src =
+                            '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (
+                            document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]
+                        ).appendChild(dsq);
+                    })();
                 </script>
-                <h4 class='poll-title text alert-title'>Dining Poll</h4>
-                <div class="alert alert-success" role="alert">Thanks for your response!</div>
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)
-{window.location='/#submitted';}"></iframe>
-                <form action="https://docs.google.com/forms/d/1jokelsHk7wrCQFPWuB2U2w7vsv95DidM1sIZQJL46R0/formResponse?embedded=true" method="post" target="hidden_iframe" onsubmit="submitted=true;">
-                    <ol role="list" class="ss-question-list" style="padding-left: 0">
-                        <h4 class='poll-title text'>Dining Poll</h4>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-radio">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_859010937">
-                                        <div class="ss-q-title">What year are you?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-
-                                    <ul class="ss-choices" role="radiogroup" aria-label="What year are you?  ">
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="1st year" id="group_1286561099_1" role="radio" class="ss-q-radio" aria-label="1st year"></span>
-                                                <span class="ss-choice-label">1st year</span>
-                                            </label>
-                                        </li>
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="2nd year" id="group_1286561099_2" role="radio" class="ss-q-radio" aria-label="2nd year"></span>
-                                                <span class="ss-choice-label">2nd year</span>
-                                            </label>
-                                        </li>
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="3rd year" id="group_1286561099_3" role="radio" class="ss-q-radio" aria-label="3rd year"></span>
-                                                <span class="ss-choice-label">3rd year</span>
-                                            </label>
-                                        </li>
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1286561099" value="4th year" id="group_1286561099_4" role="radio" class="ss-q-radio" aria-label="4th year"></span>
-                                                <span class="ss-choice-label">4th year</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                    <div class="error-message" id="859010937_errorMessage"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-select">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_1167403716">
-                                        <div class="ss-q-title">Are you on a meal plan?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-                                    <select name="entry.1167403716" id="entry_1167403716" aria-label="Are you on a meal plan?  " class="valid">
-                                        <option value=""></option>
-                                        <option value="Yes, I'm on the unlimited meal plan">Yes, I'm on the unlimited meal plan</option>
-                                        <option value="Yes, I'm on the Phoenix meal plan">Yes, I'm on the Phoenix meal plan</option>
-                                        <option value="Yes, I'm on the apartment meal plan">Yes, I'm on the apartment meal plan</option>
-                                        <option value="I'm not on a meal plan">I'm not on a meal plan</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-radio">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_1295481884">
-                                        <div class="ss-q-title">Which dining hall do you eat at more frequently?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-
-                                    <ul class="ss-choices" role="radiogroup" aria-label="Which dining hall do you eat at more frequently?  ">
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1273477477" value="Bartlett" id="group_1273477477_1" role="radio" class="ss-q-radio" aria-label="Bartlett"></span>
-                                                <span class="ss-choice-label">Bartlett</span>
-                                            </label>
-                                        </li>
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1273477477" value="Cathey" id="group_1273477477_2" role="radio" class="ss-q-radio" aria-label="Cathey"></span>
-                                                <span class="ss-choice-label">Cathey</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                    <div class="error-message" id="1295481884_errorMessage"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-scale">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_270370846">
-                                        <div class="ss-q-title">How would you rate the food in the dining hall that you more frequently visit this quarter?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-
-                                    <table border="0" cellpadding="5" cellspacing="0" id="entry_379602428">
-                                        <tbody>
-                                            <tr aria-hidden="true">
-                                                <td class="ss-scalenumbers"></td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_379602428_1">1</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_379602428_2">2</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_379602428_3">3</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_379602428_4">4</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_379602428_5">5</label>
-                                                </td>
-                                                <td class="ss-scalenumbers"></td>
-                                            </tr>
-                                            <tr role="radiogroup" aria-label="How would you rate the food in the dining hall that you more frequently visit this quarter?  Select a value from a range of 1,Terrible, to 5,Great,.">
-                                                <td class="ss-scalerow ss-leftlabel">
-                                                    <div aria-hidden="true" class="aria-todo">Terrible</div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.379602428" value="1" id="group_379602428_1" role="radio" class="ss-q-radio" aria-label="1">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.379602428" value="2" id="group_379602428_2" role="radio" class="ss-q-radio" aria-label="2">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.379602428" value="3" id="group_379602428_3" role="radio" class="ss-q-radio" aria-label="3">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.379602428" value="4" id="group_379602428_4" role="radio" class="ss-q-radio" aria-label="4">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.379602428" value="5" id="group_379602428_5" role="radio" class="ss-q-radio" aria-label="5">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow ss-rightlabel" aria-hidden="true">Great</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-scale">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_874376948">
-                                        <div class="ss-q-title">How would you rate the food in that dining hall last quarter?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-
-                                    <table border="0" cellpadding="5" cellspacing="0" id="entry_165893046">
-                                        <tbody>
-                                            <tr aria-hidden="true">
-                                                <td class="ss-scalenumbers"></td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_165893046_1">1</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_165893046_2">2</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_165893046_3">3</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_165893046_4">4</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_165893046_5">5</label>
-                                                </td>
-                                                <td class="ss-scalenumbers"></td>
-                                            </tr>
-                                            <tr role="radiogroup" aria-label="How would you rate the food in that dining hall last quarter?  Select a value from a range of 1,Terrible, to 5,Great,.">
-
-                                                <td class="ss-scalerow ss-leftlabel">
-                                                    <div aria-hidden="true" class="aria-todo">Terrible</div>
-                                                </td>
-
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.165893046" value="1" id="group_165893046_1" role="radio" class="ss-q-radio" aria-label="1">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.165893046" value="2" id="group_165893046_2" role="radio" class="ss-q-radio" aria-label="2">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.165893046" value="3" id="group_165893046_3" role="radio" class="ss-q-radio" aria-label="3">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.165893046" value="4" id="group_165893046_4" role="radio" class="ss-q-radio" aria-label="4">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.165893046" value="5" id="group_165893046_5" role="radio" class="ss-q-radio" aria-label="5">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow ss-rightlabel" aria-hidden="true">Great</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-radio">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_2107008274">
-                                        <div class="ss-q-title">In your opinion, has the quality of the food in the past quarter
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-
-                                    <ul class="ss-choices" role="radiogroup" aria-label="In your opinion, has the quality of the food in the past quarter  ">
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.227086885" value="Increased" id="group_227086885_1" role="radio" class="ss-q-radio" aria-label="Increased"></span>
-                                                <span class="ss-choice-label">Increased</span>
-                                            </label>
-                                        </li>
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.227086885" value="Decreased" id="group_227086885_2" role="radio" class="ss-q-radio" aria-label="Decreased"></span>
-                                                <span class="ss-choice-label">Decreased</span>
-                                            </label>
-                                        </li>
-                                        <li class="ss-choice-item">
-                                            <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.227086885" value="Stayed the same" id="group_227086885_3" role="radio" class="ss-q-radio" aria-label="Stayed the same"></span>
-                                                <span class="ss-choice-label">Stayed the same</span>
-                                            </label>
-                                        </li>
-                                    </ul>
-                                    <div class="error-message" id="2107008274_errorMessage"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-scale">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_1069173948">
-                                        <div class="ss-q-title">How difficult is it to find healthy food at the dining halls?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-
-                                    <table border="0" cellpadding="5" cellspacing="0" id="entry_1409277781">
-                                        <tbody>
-                                            <tr aria-hidden="true">
-                                                <td class="ss-scalenumbers"></td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_1409277781_1">1</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_1409277781_2">2</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_1409277781_3">3</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_1409277781_4">4</label>
-                                                </td>
-                                                <td class="ss-scalenumbers">
-                                                    <label class="ss-scalenumber" for="group_1409277781_5">5</label>
-                                                </td>
-                                                <td class="ss-scalenumbers"></td>
-                                            </tr>
-                                            <tr role="radiogroup" aria-label="How difficult is it to find healthy food at the dining halls?  Select a value from a range of 1,Very difficult, to 5,Very easy,.">
-                                                <td class="ss-scalerow ss-leftlabel">
-                                                    <div aria-hidden="true" class="aria-todo">Very difficult</div>
-                                                </td>
-                                                <td class="ss-scalerow" style="width: 22px;">
-                                                    <div class="ss-scalerow-fieldcell radio">
-                                                        <input type="radio" name="entry.1409277781" value="1" id="group_1409277781_1" role="radio" class="ss-q-radio" aria-label="1" style="position: relative;left: 20px;">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.1409277781" value="2" id="group_1409277781_2" role="radio" class="ss-q-radio" aria-label="2">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.1409277781" value="3" id="group_1409277781_3" role="radio" class="ss-q-radio" aria-label="3">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.1409277781" value="4" id="group_1409277781_4" role="radio" class="ss-q-radio" aria-label="4">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow">
-                                                    <div class="ss-scalerow-fieldcell">
-                                                        <input type="radio" name="entry.1409277781" value="5" id="group_1409277781_5" role="radio" class="ss-q-radio" aria-label="5">
-                                                    </div>
-                                                </td>
-                                                <td class="ss-scalerow ss-rightlabel" aria-hidden="true">Very easy</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ss-form-question errorbox-good" role="listitem">
-                            <div dir="ltr" class="ss-item  ss-paragraph-text">
-                                <div class="ss-form-entry">
-                                    <label class="ss-q-item-label" for="entry_715615998">
-                                        <div class="ss-q-title">Any comments?
-                                        </div>
-                                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
-                                    </label>
-                                    <textarea name="entry.715615998" rows="2" cols="0" class="form-control ss-q-long" id="entry_715615998" dir="auto" aria-label="Any comments?  "></textarea>
-                                    <div class="error-message" id="538378308_errorMessage"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="draftResponse" value="[,,&quot;2277616912720973491&quot;]
-">
-                        <input type="hidden" name="pageHistory" value="0">
-
-
-                        <input type="hidden" name="fbzx" value="2277616912720973491">
-
-                        <div class="ss-item ss-navigate">
-                            <table id="navigation-table">
-                                <tbody>
-                                    <tr>
-                                        <td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
-                                            <input type="submit" name="submit" value="Submit" id="ss-submit" class="btn btn-default jfk-button jfk-button-action ">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </ol>
-                </form>
-                <hr class='poll-border'>
-
-
+                <noscript
+                    >Please enable JavaScript to view the
+                    <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+                        >comments powered by Disqus.</a
+                    >
+                </noscript>
             </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>
-                    According to Wiard-Bauer, the Purple Menu was never officially reported to the dining hall representative committee, but it did come up "casually" in discussion.
-                </p>
-                <p class='text body-text'>
-                    "We were all sitting in a really large table and the dining hall representatives were like, ‘My house members said this,’ and we bounced off of each other. And then at one point the Aramark representative [Eric Young] was like, ‘Well, a lot of these things are because of the new Purple Menu that corporate has introduced,’" Wiard-Bauer said.
-                </p>
-                <p class='text body-text'>Richard Mason, the executive director of UChicago Dining, attests that changes have been made since the initial rollout of the Purple Menu in response to student comments.
-                </p>
-                <hr class='no-margin-bottom'>
-                <div class='quotation text'>"A lot of animals, a lot of produce aren’t great in the area right now because of the weather and it’s hard to make a menu that works around that."</div>
-                <hr class='no-margin-bottom'>
-                <p class='text body-text'>"UChicago Dining listened to some comments we received from students who did not like the changes, and we have re-adjusted the menu over the past few weeks in response. Dining committees and students have given us positive feedback about these changes," Mason wrote in a statement.</p>
-                <p class='text body-text'>In addition to the responses from student committees, student feedback has also come in the form of comment cards written in the dining halls. The information on these cards is aggregated and analyzed on a regular basis in order to gauge student response to changes in services. However, this data is not made available to the public, according to Abowd.</p>
-                <p class='text body-text'>Chamberlin House’s IHC representative and second-year Elizabeth Lipschultz put in a request for someone from UChicago Dining to talk to IHC about the general decline in food. In response, Mason attended a recent IHC meeting and urged students not to focus on the details of the Purple Menu. Instead, he explained decline in food quality by Aramark’s sustainability requirements, which requires the dining halls to purchase 35 percent of the food that it serves within a 130-mile radius of the University.</p>
-            </div>
-            <div class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'>
-                <div id="chart-1" style="height: 400px; margin: 0 auto"></div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>"A lot of animals, a lot of produce aren’t great in the area right now because of the weather and it’s hard to make a menu that works around that. They tried to switch to things that were more like soups and casseroles and stuff like that. That didn’t go over well, obviously," Lipschultz said. "But they said that it’s not a financial thing, not a sustainability thing, or that’s what they claim. A lot of people are trying to figure out whether it’s been a financial decision. It seems like they try to deny or at least deflect from that."
-                </p>
-                <p class='text body-text'>Changes have already been made to the menu to bring back popular food items, such as spinach. Additionally, there will be a new menu for spring quarter that is expected to include larger amounts of locally sourced fruit. The color associated with the upcoming menu was not available.
-                </p>
-                <p class='text body-text'>
-                    "Sometimes the quality is a little underwhelming. Like I’ve come here before and not found anything that I wanted to eat because there’s only so many times you can have the same salad and sandwich. I understand that there’s not much they can do in terms of those options, but you know I’d love it if the quality of the food were a bit better," Caroline Newman, a first-year student recently eating at Bartlett Dining Commons, said.</p>
-                <p class='text body-text'>Aramark Corporation was founded in 1959 and now operates in 22 countries, and supplies food and facilities to universities, federal and state prisons, businesses, sports facilities, and healthcare institutions. Last November, Aramark reported an approximately 10 percent increase in revenue, from approximately $13.5 million to $14.8 million and quarterly dividends have been increased by 15 percent. The new chair of the University Board of Trustees, Joseph Neubauer (MBA ’65), has been the chairman of the board of Aramark since 1984.</p>
-                <p class='text body-text correction'><strong>Correction - March 9 2015:</strong>
-The original article was ambiguous in its attribution of the statement that individual cream cheese packets were cut in favor of large tubs for cost-cutting purposes. This information was provided by Kirsten Wiard-Bauer, not University spokesperson Mary Abowd. UC Dining submitted a statement to the contrary after the initial publication of this article. </p>
-            </div>
-            <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES * * */
-                var disqus_shortname = 'chicagomarooninteractive';
-
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function () {
-                    var dsq = document.createElement('script');
-                    dsq.type = 'text/javascript';
-                    dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-            </noscript>
         </div>
+        <a id="comment"></a>
+        <footer>
+            <a href="http://www.chicagomaroon.com/"
+                >© 2015 The Chicago Maroon</a
+            >
+        </footer>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'chicagomarooninteractive';
 
-    </div>
-    <a id='comment'></a>
-    <footer>
-        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
-    </footer>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'chicagomarooninteractive';
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (
+                    document.getElementsByTagName('HEAD')[0] ||
+                    document.getElementsByTagName('BODY')[0]
+                ).appendChild(s);
+            })();
+        </script>
+    </body>
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <script src="jquery.slides.min.js"></script>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="main.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            'script',
+            '//www.google-analytics.com/analytics.js',
+            'ga'
+        );
+
+        ga('create', 'UA-59818592-2', 'auto');
+        ga('send', 'pageview');
     </script>
-</body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="jquery.cookie.js"></script>
-<script src="jquery.slides.min.js"></script>
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src='main.js'></script>
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-59818592-2', 'auto');
-    ga('send', 'pageview');
-</script>
-
 </html>

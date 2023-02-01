@@ -1,0 +1,27 @@
+{
+    "name": "chicagomaroon.github.io",
+    "version": "1.0.0",
+    "description": "Feature stories by The Chicago Maroon grouped by year into corresponding folders.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/chicagomaroon/chicagomaroon.github.io.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/chicagomaroon/chicagomaroon.github.io/issues"
+    },
+    "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
+    "dependencies": {
+        "eslint-config-prettier": "^8.6.0",
+        "grunt": "^1.5.3"
+    },
+    "devDependencies": {
+        "eslint-plugin-prettier": "4.2.1",
+        "prettier": "2.8.3"
+    }
+}

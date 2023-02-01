@@ -1,264 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="The writing on the wall" />
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The writing on the wall">
+        <meta name="author" content="Grace Hauck" />
+        <link
+            rel="shortcut icon"
+            href="http://chicagomaroon.github.io/img/favicon.png"
+        />
+        <meta
+            property="og:url"
+            content="http://chicagomaroon.github.io/maclean-2015/"
+        />
+        <meta property="og:title" content="The writing on the wall" />
+        <meta
+            property="og:description"
+            content="Will Maclean art survive the jump?"
+        />
+        <meta
+            property="og:image"
+            content="http://chicagomaroon.github.io/maclean-2015/img/cover.jpg"
+        />
 
-    <meta name="author" content="Grace Hauck">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <meta property="og:url" content="http://chicagomaroon.github.io/maclean-2015/" />
-    <meta property="og:title" content="The writing on the wall" />
-    <meta property="og:description" content="Will Maclean art survive the jump?" />
-    <meta property="og:image" content="http://chicagomaroon.github.io/maclean-2015/img/cover.jpg" />
+        <title>
+            The writing on the wall - Interactive feature - ChicagoMaroon.com
+        </title>
 
-    <title>The writing on the wall - Interactive feature - ChicagoMaroon.com</title>
+        <link
+            href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/reset.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/base.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
 
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cinzel:900|Lora|Fjalla+One' rel='stylesheet' type='text/css'>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
-    <link href="main.css" rel="stylesheet" type='text/css'>
+    <body>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1584750855103746',
+                    xfbml: true,
+                    version: 'v2.2'
+                });
+            };
 
-</head>
+            (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div class="navbar nav navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a
+                        class="navbar-brand"
+                        href="http://www.chicagomaroon.com/"
+                    >
+                        <img
+                            alt="The Chicago Maroon Logo"
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/maroon-logo.png"
+                        />
+                    </a>
+                </div>
 
-<body>
+                <div class="social-icon-container fb right">
+                    <a
+                        id="fb-icon"
+                        class="social-icon right"
+                        target="_blank"
+                        href="#"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/fb-logo.png"
+                        />
+                    </a>
+                </div>
+                <div class="social-icon-container twitter right">
+                    <a
+                        id="twitter-icon"
+                        class="social-icon right tweet"
+                        target="_blank"
+                        href="http://chicagomaroon.github.io/maclean-2015/"
+                        title="The writing on the wall"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/twitter-logo.png"
+                        />
+                    </a>
+                </div>
+                <div class="social-icon-container comments right">
+                    <a
+                        id="comments"
+                        class="disqus-comment-count social-icon right logo"
+                        data-disqus-url="http://example.com/article1.html"
+                        href="#comment"
+                    >
+                        <i class="fa fa-comment fa-lg logo"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 fullscreen">
+                    <div class="push-down"></div>
+                    <div class="text-background">
+                        <div class="section-art-container">
+                            <span class="section-art">Arts</span>
+                            <hr class="section-art-hr" />
+                        </div>
+
+                        <h1 class="text">The writing on the wall</h1>
+                        <h2 class="subtitle">
+                            Will Maclean art survive the jump?
+                        </h2>
+                        <h3 class="author">
+                            By Grace Hauck | Produced by Forrest Sill | May 5,
+                            2015
+                        </h3>
+                    </div>
+                </div>
+                <div class="credit photo-credit cover-photo">
+                    Grace Hauck/<em>Chicago Maroon</em>
+                </div>
+            </div>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text first-paragraph">
+                        In the past couple weeks, you’ve probably read and heard
+                        a lot about the recent housing decision. Some students
+                        finally feel liberated from the distant, isolated dregs
+                        of an outdated UChicago regime; others seem to be arming
+                        themselves for a coming apocalypse. But a great many
+                        students take the optimistic middle road: It’s about the
+                        community, not the building or the names. In the case of
+                        Maclean, however, UChicago’s northernmost and
+                        westernmost dorm of only one house, the community is
+                        characterized by and centered on the physical building.
+                        It’s embedded in its very walls.
+                    </p>
+                    <p class="text body-text">
+                        Maclean House celebrates a tradition unique among all
+                        other dorms. As a member of this small community, I have
+                        had the rare chance to live in the midst of it. Simply
+                        take the short walk a block past Ratner, step inside,
+                        and you’ll notice it from the get-go. The walls of
+                        Maclean are covered in quotes. Every floor, from
+                        stairwells to ceiling braces to elevator doors: quotes,
+                        quotes, and more quotes. They range from the inspiring
+                        and familiar to the silly and obscure, yet each is
+                        expertly executed.
+                    </p>
+                    <p class="text body-text">
+                        “I think that it’s a great conversation piece for those
+                        who come here that have never been here before,” Maclean
+                        House Resident Head Ali Jackson said. “I love watching
+                        their initial reaction where they go around and see the
+                        various quotes that we have on the walls because they’re
+                        just completely fascinated. And you could literally
+                        spend all day studying each quote.... It seems like
+                        every day I read something new on the wall that I had
+                        never taken the time to read before.”
+                    </p>
+                    <p class="text body-text">
+                        Most of the quotes throughout Maclean are written in
+                        English while others are in Arabic, Spanish, Latin, and
+                        Chinese. Some highlight imagery more than phrase, but
+                        almost all are physically painted onto the wall, with
+                        the exception of the digital message board plugged into
+                        the doorframe of the second-floor solarium. Far beyond
+                        simple lettering, these quotes are works of art, and
+                        Maclean’s first floor is proof.
+                    </p>
+                </div>
+                <div
+                    class="col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12"
+                >
+                    <div class="slideshow-container">
+                        <div id="slides">
+                            <img src="img/IMG_7210.png" />
+                            <img src="img/IMG_7220.png" />
+                            <img src="img/IMG_7223.png" />
+                            <img src="img/IMG_7226.png" />
+                            <img src="img/IMG_7228.png" />
+                            <img src="img/IMG_7231.png" />
+                            <img src="img/IMG_7246.png" />
+                            <img src="img/IMG_7250.png" />
+                            <img src="img/IMG_7254.png" />
+                            <img src="img/IMG_7262.png" />
+                            <img src="img/IMG_7270.png" />
+                            <img src="img/IMG_7274.png" />
+                            <img src="img/IMG_7280.png" />
+                            <img src="img/IMG_7292.png" />
+                            <img src="img/IMG_7297.png" />
+                            <img src="img/IMG_7301.png" />
+                            <img src="img/IMG_7306.png" />
+                            <img src="img/IMG_7314.png" />
+                            <img src="img/IMG_7322.png" />
+                            <img src="img/IMG_7327.png" />
+                            <img src="img/IMG_7329.png" />
+                            <img src="img/IMG_7331.png" />
+                            <img src="img/IMG_7341.png" />
+                            <img src="img/IMG_7351.png" />
+                            <img src="img/IMG_7361.png" />
+                            <img src="img/IMG_7369.png" />
+                            <a
+                                href="#"
+                                class="slidesjs-previous slidesjs-navigation"
+                                ><span
+                                    class="glyphicon glyphicon-chevron-left"
+                                    aria-hidden="true"
+                                ></span
+                            ></a>
+                            <a
+                                href="#"
+                                class="slidesjs-next slidesjs-navigation"
+                                ><span
+                                    class="glyphicon glyphicon-chevron-right"
+                                    aria-hidden="true"
+                                ></span
+                            ></a>
+                        </div>
+                        <div class="credit slideshow-credit">
+                            Grace Hauck/<em>Chicago Maroon</em>
+                        </div>
+                        <div class="caption food-caption-1"></div>
+                    </div>
+                </div>
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <p class="text body-text">
+                        The south wall of Maclean’s first-floor living room
+                        (“HQ”) brandishes an intricately carved world map,
+                        realized in sheer black paint. The elegant calligraphy
+                        centered above the painting quotes Tolkien: “Not all
+                        those who wander are lost.” Resting in the background of
+                        the heart of house life, this quote harkens back to a
+                        commonly beloved fantastical journey and acts, as most
+                        quotes do, as subtle reassurance to the young college
+                        everyman. The nearby dining room also exhibits
+                        large-scale works: two pictorial comic strips featuring,
+                        on the left, God’s sacred gift of bacon and, on the
+                        right, a play on the theory of statistical correlation—a
+                        natural combo.
+                    </p>
+                    <p class="text body-text">
+                        Certain artworks verge on full-on murals, from the
+                        massive rays of sunlight shining down on the encouraging
+                        sentiments of Yolanda Adams to the grand lettering of
+                        Douglas Adams’s humorous “UNIVERSE.” An erratic
+                        profusion of color and splintered lettering across an
+                        entire section of second-floor hallway lends playful
+                        distortion to the lyrical words of Lewis Carroll. At the
+                        same time, Maclean’s smaller illustrations demonstrate
+                        diligent attention to detail, such as the depictions of
+                        quotes of Nick Gatsby and Dwight Schrute. The great Dean
+                        Boyer himself even makes an appearance on the walls of
+                        Maclean: “The only way to beat a party is to throw a
+                        bigger party.”
+                    </p>
+                    <p class="text body-text">
+                        A well-loved house favorite is the parody painted on the
+                        central ground-floor stairwell. As a Macleaner, it
+                        starts your day and welcomes you home, reminding you to
+                        “Play like a nerd today.” Notre Dame fans will recognize
+                        this spin-off immediately, and Macleaners embrace its
+                        all-too-typical UChicago humor. This tradition, however,
+                        is not about glorifying flashy, recognizable phrases.
+                    </p>
+                    <p class="text body-text">
+                        “A lot of these quotes are anonymous,” second-year Cairo
+                        Lewis said. “You don't even know where they came from,
+                        so it’s really interesting to go and have to research
+                        where exactly the quotes came from, what influenced the
+                        person to put that on the wall. I think there’s a bigger
+                        story behind the quotes.”
+                    </p>
+                    <p class="text body-text">
+                        This story starts with Maclean House orientation aides
+                        and orientation leaders, who arrive on campus early each
+                        fall to prepare for incoming first-years and, more
+                        importantly, to immortalize their chosen words on the
+                        walls of Maclean. The process itself is quite complex.
+                    </p>
+                    <p class="text body-text">
+                        First, students spend months agonizing over the choice:
+                        the single quote they will forever embed on the walls of
+                        their home for future generations to behold. The one
+                        quote that emerges victorious from this inner struggle
+                        must then be transformed into artistic reality. Most
+                        students design their quote in Microsoft Word to test
+                        out font, style, and layout. This design is then
+                        printed, projected onto the wall, traced, and painted
+                        not once, but three times over. Despite the massive
+                        scale of some designs, each one demonstrates a keen
+                        attention to detail. Edges are clean. Fonts are
+                        consistent. Colors are vibrant. These are not silly wall
+                        doodles; these are artistic feats.
+                    </p>
+                    <p class="text body-text">
+                        Of course, some more adventurous students still opt for
+                        the free-hand approach, such as third-year and Maclean
+                        House R.A. Madeline Klinger. “It’s kind of like getting
+                        a tattoo,” Klinger said, “not on your body but on your
+                        home, which is still very much a part of you.” Klinger
+                        purposefully positioned her E.E. Cummings quote directly
+                        across from her room so that it greets her every time
+                        she steps out her door. She expressed deep emotional
+                        attachment to both the quote and her own material
+                        interpretation of it—a design in which she literally
+                        left her thumbprints behind.
+                    </p>
+                    <p class="text body-text">
+                        Mohamed Hammoud, a third-year in Maclean and one of this
+                        year’s orientation aides, explained the rationale behind
+                        his quote selection: “I am personally Moroccan, and I am
+                        very proud of my culture…. I wanted to add yet another
+                        language to the list of languages.” Like Klinger,
+                        Hammoud chose to paint his quote across from his room.
+                        He even incorporated the red and green colors of the
+                        Moroccan flag into the Moroccan Arabic script of his
+                        proverb, which encourages any passerby to live life
+                        without regrets.
+                    </p>
+                    <p class="text body-text">
+                        This living record of Maclean history allows students
+                        and alumni alike to engage in a continual dialogue—a
+                        mutable mélange of culture, experience, and intellectual
+                        thought. One can witness this very process take place on
+                        the walls, for certain adjacent quotes directly
+                        reference and sometimes contradict one another. Klinger
+                        discussed one of her experiences conversing with the
+                        past: “There’s a Camus quote over there. Cummings and
+                        Camus are both my two favorite dudes. It’s just kind of
+                        cool to see that someone else had read that quote and
+                        felt a similar way to the way that I connected to
+                        Camus…. They’ve graduated, they’ve moved on, they're
+                        doing things with their lives, and if they got through
+                        it, I can get through it. It’s like having all of these
+                        invisible ancestors.”
+                    </p>
+                    <p class="text body-text">
+                        The irretrievable artistic legacy of the quotes and
+                        students’ genuine attachment to the physical structure
+                        of Maclean have made the recent housing decision all the
+                        more difficult for some Macleaners. Hammoud reflected,
+                        “I won't be able to come with my kids and be like, ‘See
+                        that building over there? That’s where I used to live
+                        when I went to college here.’”
+                    </p>
+                    <p class="text body-text">
+                        Klinger, who used to live in Max Palevsky Residential
+                        Commons, explained her experience living in a larger
+                        dorm: “It still felt homey. There was a good community
+                        within the house, and the RHs were great. But you, you
+                        didn’t <em>draw on the walls</em>. You couldn't see
+                        things from years past on the walls all around and
+                        wonder what those people were like, and why they chose
+                        that quote—what they were going through.”
+                    </p>
+                    <p class="text body-text">
+                        Despite the unavoidable demolition of the quotes now
+                        adorning the walls of Maclean, there is still hope for
+                        the survival of this house tradition and even for the
+                        quotes themselves. Lewis, Klinger, and Hammoud all
+                        expressed interest in documenting the current quotes and
+                        perhaps recreating them in the new Campus North
+                        Residence Hall. Yet the heart of the issue still rests
+                        with the nature of the building itself.
+                    </p>
+                    <p class="text body-text">
+                        “I’m sure people would get into painting on walls in
+                        other dorms,” Klinger said, “but because they’re such
+                        big dorms, and they have so many other houses, it
+                        wouldn’t have quite the same effect. It would be just
+                        kind of like, ‘Oh this is a fun art project,’ rather
+                        than like, ‘Yeah, this is my home.’”
+                    </p>
+                    <p class="text body-text">
+                        Nonetheless, Maclean House Resident Heads Ali and James
+                        Jackson remain optimistic about carrying over this
+                        tradition. “That’s something that my husband and I are
+                        definitely going to try to champion and try to have a
+                        conversation with housing. Hopefully they allow us to
+                        carry this special tradition over because it is so
+                        special and it really means a lot to our students,” Ali
+                        Jackson said. “I think having the ability to keep
+                        something like this going is only going to help that
+                        transition be that much smoother and help us carry a
+                        part of our culture.”
+                    </p>
+                    <p class="text body-text">
+                        Until that time comes, students will continue to paint
+                        quotes on the walls of Maclean, whatever the future may
+                        hold for them
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div
+                    class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                >
+                    <div class="video-container">
+                        <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/POs2tXJLxx8"
+                            frameborder="0"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                    <div class="photo-credit credit">
+                        Amber Love and Hansol Park/<em>Chicago Maroon</em>
+                    </div>
+                </div>
+                <div
+                    id="disqus_thread"
+                    class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+                ></div>
+                <script>
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'chicagomarooninteractive';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function () {
+                        var dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src =
+                            '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (
+                            document.getElementsByTagName('head')[0] ||
+                            document.getElementsByTagName('body')[0]
+                        ).appendChild(dsq);
+                    })();
+                </script>
+                <noscript
+                    >Please enable JavaScript to view the
+                    <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+                        >comments powered by Disqus.</a
+                    >
+                </noscript>
+            </div>
+        </div>
+        <a id="comment"></a>
+        <footer>
+            <a href="http://www.chicagomaroon.com/"
+                >© 2015 The Chicago Maroon</a
+            >
+        </footer>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'chicagomarooninteractive';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (
+                    document.getElementsByTagName('HEAD')[0] ||
+                    document.getElementsByTagName('BODY')[0]
+                ).appendChild(s);
+            })();
+        </script>
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="jquery.fitvids.js"></script>
+    <script src="jquery.slides.min.js"></script>
+    <script src="main.js"></script>
     <script>
-        window.fbAsyncInit = function () {
-            FB.init({
-                appId: '1584750855103746',
-                xfbml: true,
-                version: 'v2.2'
-            });
-        };
-
-        (function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            'script',
+            '//www.google-analytics.com/analytics.js',
+            'ga'
+        );
+        ga('create', 'UA-59818592-10', 'auto');
+        ga('send', 'pageview');
     </script>
-    <div class="navbar nav navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="http://www.chicagomaroon.com/">
-                    <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
-                </a>
-            </div>
-
-            <div class="social-icon-container fb right">
-                <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-                    <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container twitter right">
-                <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/maclean-2015/" title="The writing on the wall">
-                    <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
-                </a>
-            </div>
-            <div class="social-icon-container comments right">
-                <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
-                    <i class="fa fa-comment fa-lg logo"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class='container'>
-        <div class='row'>
-            <div class='col-xs-12 fullscreen'>
-                <div class='push-down'></div>
-                <div class='text-background'>
-                    <div class='section-art-container'>
-                        <span class='section-art'>Arts</span>
-                        <hr class='section-art-hr'>
-                    </div>
-
-                    <h1 class='text'>The writing on the wall</h1>
-                    <h2 class='subtitle'>Will Maclean art survive the jump?</h2>
-                    <h3 class='author'>By Grace Hauck | Produced by Forrest Sill | May 5, 2015</h3>
-                </div>
-
-            </div>
-            <div class='credit photo-credit cover-photo'>Grace Hauck/<em>Chicago Maroon</em>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text first-paragraph'>
-                    In the past couple weeks, you’ve probably read and heard a lot about the recent housing decision. Some students finally feel liberated from the distant, isolated dregs of an outdated UChicago regime; others seem to be arming themselves for a coming apocalypse. But a great many students take the optimistic middle road: It’s about the community, not the building or the names. In the case of Maclean, however, UChicago’s northernmost and westernmost dorm of only one house, the community is characterized by and centered on the physical building. It’s embedded in its very walls.
-                </p>
-                <p class='text body-text'>
-                    Maclean House celebrates a tradition unique among all other dorms. As a member of this small community, I have had the rare chance to live in the midst of it. Simply take the short walk a block past Ratner, step inside, and you’ll notice it from the get-go. The walls of Maclean are covered in quotes. Every floor, from stairwells to ceiling braces to elevator doors: quotes, quotes, and more quotes. They range from the inspiring and familiar to the silly and obscure, yet each is expertly executed.
-                </p>
-                <p class='text body-text'>
-                    “I think that it’s a great conversation piece for those who come here that have never been here before,” Maclean House Resident Head Ali Jackson said. “I love watching their initial reaction where they go around and see the various quotes that we have on the walls because they’re just completely fascinated. And you could literally spend all day studying each quote.... It seems like every day I read something new on the wall that I had never taken the time to read before.”
-                </p>
-                <p class='text body-text'>
-                    Most of the quotes throughout Maclean are written in English while others are in Arabic, Spanish, Latin, and Chinese. Some highlight imagery more than phrase, but almost all are physically painted onto the wall, with the exception of the digital message board plugged into the doorframe of the second-floor solarium. Far beyond simple lettering, these quotes are works of art, and Maclean’s first floor is proof.
-                </p>
-            </div>
-            <div class='col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12'>
-                <div class="slideshow-container">
-                    <div id="slides">
-                        <img src="img/IMG_7210.png">
-                        <img src="img/IMG_7220.png">
-                        <img src="img/IMG_7223.png">
-                        <img src="img/IMG_7226.png">
-                        <img src="img/IMG_7228.png">
-                        <img src="img/IMG_7231.png">
-                        <img src="img/IMG_7246.png">
-                        <img src="img/IMG_7250.png">
-                        <img src="img/IMG_7254.png">
-                        <img src="img/IMG_7262.png">
-                        <img src="img/IMG_7270.png">
-                        <img src="img/IMG_7274.png">
-                        <img src="img/IMG_7280.png">
-                        <img src="img/IMG_7292.png">
-                        <img src="img/IMG_7297.png">
-                        <img src="img/IMG_7301.png">
-                        <img src="img/IMG_7306.png">
-                        <img src="img/IMG_7314.png">
-                        <img src="img/IMG_7322.png">
-                        <img src="img/IMG_7327.png">
-                        <img src="img/IMG_7329.png">
-                        <img src="img/IMG_7331.png">
-                        <img src="img/IMG_7341.png">
-                        <img src="img/IMG_7351.png">
-                        <img src="img/IMG_7361.png">
-                        <img src="img/IMG_7369.png">
-                        <a href="#" class="slidesjs-previous slidesjs-navigation"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-                        <a href="#" class="slidesjs-next slidesjs-navigation"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-
-                    </div>
-                    <div class='credit slideshow-credit'>
-                        Grace Hauck/<em>Chicago Maroon</em>
-                    </div>
-                    <div class='caption food-caption-1'>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <p class='text body-text'>
-                    The south wall of Maclean’s first-floor living room (“HQ”) brandishes an intricately carved world map, realized in sheer black paint. The elegant calligraphy centered above the painting quotes Tolkien: “Not all those who wander are lost.” Resting in the background of the heart of house life, this quote harkens back to a commonly beloved fantastical journey and acts, as most quotes do, as subtle reassurance to the young college everyman. The nearby dining room also exhibits large-scale works: two pictorial comic strips featuring, on the left, God’s sacred gift of bacon and, on the right, a play on the theory of statistical correlation—a natural combo.
-                </p>
-                <p class='text body-text'>
-                    Certain artworks verge on full-on murals, from the massive rays of sunlight shining down on the encouraging sentiments of Yolanda Adams to the grand lettering of Douglas Adams’s humorous “UNIVERSE.” An erratic profusion of color and splintered lettering across an entire section of second-floor hallway lends playful distortion to the lyrical words of Lewis Carroll. At the same time, Maclean’s smaller illustrations demonstrate diligent attention to detail, such as the depictions of quotes of Nick Gatsby and Dwight Schrute. The great Dean Boyer himself even makes an appearance on the walls of Maclean: “The only way to beat a party is to throw a bigger party.”
-                </p>
-                <p class='text body-text'>
-                    A well-loved house favorite is the parody painted on the central ground-floor stairwell. As a Macleaner, it starts your day and welcomes you home, reminding you to “Play like a nerd today.” Notre Dame fans will recognize this spin-off immediately, and Macleaners embrace its all-too-typical UChicago humor. This tradition, however, is not about glorifying flashy, recognizable phrases.
-                </p>
-                <p class='text body-text'>
-                    “A lot of these quotes are anonymous,” second-year Cairo Lewis said. “You don't even know where they came from, so it’s really interesting to go and have to research where exactly the quotes came from, what influenced the person to put that on the wall. I think there’s a bigger story behind the quotes.”
-                </p>
-                <p class='text body-text'>
-                    This story starts with Maclean House orientation aides and orientation leaders, who arrive on campus early each fall to prepare for incoming first-years and, more importantly, to immortalize their chosen words on the walls of Maclean. The process itself is quite complex.
-                </p>
-                <p class='text body-text'>
-                    First, students spend months agonizing over the choice: the single quote they will forever embed on the walls of their home for future generations to behold. The one quote that emerges victorious from this inner struggle must then be transformed into artistic reality. Most students design their quote in Microsoft Word to test out font, style, and layout. This design is then printed, projected onto the wall, traced, and painted not once, but three times over. Despite the massive scale of some designs, each one demonstrates a keen attention to detail. Edges are clean. Fonts are consistent. Colors are vibrant. These are not silly wall doodles; these are artistic feats.
-                </p>
-                <p class='text body-text'>
-                    Of course, some more adventurous students still opt for the free-hand approach, such as third-year and Maclean House R.A. Madeline Klinger. “It’s kind of like getting a tattoo,” Klinger said, “not on your body but on your home, which is still very much a part of you.” Klinger purposefully positioned her E.E. Cummings quote directly across from her room so that it greets her every time she steps out her door. She expressed deep emotional attachment to both the quote and her own material interpretation of it—a design in which she literally left her thumbprints behind.
-                </p>
-                <p class='text body-text'>
-                    Mohamed Hammoud, a third-year in Maclean and one of this year’s orientation aides, explained the rationale behind his quote selection: “I am personally Moroccan, and I am very proud of my culture…. I wanted to add yet another language to the list of languages.” Like Klinger, Hammoud chose to paint his quote across from his room. He even incorporated the red and green colors of the Moroccan flag into the Moroccan Arabic script of his proverb, which encourages any passerby to live life without regrets.
-                </p>
-                <p class='text body-text'>
-                    This living record of Maclean history allows students and alumni alike to engage in a continual dialogue—a mutable mélange of culture, experience, and intellectual thought. One can witness this very process take place on the walls, for certain adjacent quotes directly reference and sometimes contradict one another. Klinger discussed one of her experiences conversing with the past: “There’s a Camus quote over there. Cummings and Camus are both my two favorite dudes. It’s just kind of cool to see that someone else had read that quote and felt a similar way to the way that I connected to Camus…. They’ve graduated, they’ve moved on, they're doing things with their lives, and if they got through it, I can get through it. It’s like having all of these invisible ancestors.”
-                </p>
-                <p class='text body-text'>
-                    The irretrievable artistic legacy of the quotes and students’ genuine attachment to the physical structure of Maclean have made the recent housing decision all the more difficult for some Macleaners. Hammoud reflected, “I won't be able to come with my kids and be like, ‘See that building over there? That’s where I used to live when I went to college here.’”
-                </p>
-                <p class='text body-text'>
-                    Klinger, who used to live in Max Palevsky Residential Commons, explained her experience living in a larger dorm: “It still felt homey. There was a good community within the house, and the RHs were great. But you, you didn’t <em>draw on the walls</em>. You couldn't see things from years past on the walls all around and wonder what those people were like, and why they chose that quote—what they were going through.”
-                </p>
-                <p class='text body-text'>
-                    Despite the unavoidable demolition of the quotes now adorning the walls of Maclean, there is still hope for the survival of this house tradition and even for the quotes themselves. Lewis, Klinger, and Hammoud all expressed interest in documenting the current quotes and perhaps recreating them in the new Campus North Residence Hall. Yet the heart of the issue still rests with the nature of the building itself.
-                </p>
-                <p class='text body-text'>
-                    “I’m sure people would get into painting on walls in other dorms,” Klinger said, “but because they’re such big dorms, and they have so many other houses, it wouldn’t have quite the same effect. It would be just kind of like, ‘Oh this is a fun art project,’ rather than like, ‘Yeah, this is my home.’”
-                </p>
-                <p class='text body-text'>
-                    Nonetheless, Maclean House Resident Heads Ali and James Jackson remain optimistic about carrying over this tradition. “That’s something that my husband and I are definitely going to try to champion and try to have a conversation with housing. Hopefully they allow us to carry this special tradition over because it is so special and it really means a lot to our students,” Ali Jackson said. “I think having the ability to keep something like this going is only going to help that transition be that much smoother and help us carry a part of our culture.”
-                </p>
-                <p class='text body-text'>
-                    Until that time comes, students will continue to paint quotes on the walls of Maclean, whatever the future may hold for them
-                </p>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-                <div class='video-container'>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/POs2tXJLxx8" frameborder="0" allowfullscreen></iframe>
-                </div>
-                <div class='photo-credit credit'>Amber Love and Hansol Park/<em>Chicago Maroon</em>
-                </div>
-            </div>
-            <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
-            <script>
-                /* * * CONFIGURATION VARIABLES * * */
-                var disqus_shortname = 'chicagomarooninteractive';
-
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function () {
-                    var dsq = document.createElement('script');
-                    dsq.type = 'text/javascript';
-                    dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-            </noscript>
-        </div>
-
-    </div>
-    <a id='comment'></a>
-    <footer>
-        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
-    </footer>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'chicagomarooninteractive';
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-    </script>
-</body>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="jquery.fitvids.js"></script>
-<script src="jquery.slides.min.js"></script>
-<script src='main.js'></script>
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-59818592-10', 'auto');
-    ga('send', 'pageview');
-</script>
-
 </html>

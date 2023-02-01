@@ -88,14 +88,14 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, .8) url('loading.gif') 50% 50% no-repeat;
+    background: rgba(255, 255, 255, 0.8) url('loading.gif') 50% 50% no-repeat;
 }
 /* Formatting for crime map canvas. */
 
 #map-canvas {
     height: 600px;
     margin: 0px;
-    padding: 0px
+    padding: 0px;
 }
 /* Formatting for crime map panel. */
 
@@ -107,7 +107,7 @@ body {
     background-color: #fff;
     padding: 5px;
     border: 1px solid #999;
-    border-color: #DDDDDD;
+    border-color: #dddddd;
     border-radius: 5px;
 }
 #panel-container {
@@ -118,7 +118,7 @@ body {
 tspan {
     font-family: 'Roboto Condensed';
 }
-label[for="year-slider"] {
+label[for='year-slider'] {
     position: relative;
     font-weight: bold;
 }
@@ -172,27 +172,28 @@ label[for="year-slider"] {
     background-color: aqua;
 }
 .crack-cocaine {
-    background-color: #FF69B4;
+    background-color: #ff69b4;
 }
 .heroin {
-    background-color: #3EB278;
+    background-color: #3eb278;
 }
 .cocaine {
-    background-color: #FFA07A;
+    background-color: #ffa07a;
 }
 .other-drug-crimes {
-    background-color: #E500FF;
+    background-color: #e500ff;
 }
 #slides {
     padding-top: 20px;
 }
 .text {
     margin: 0;
-    font-family: "Crimson Text", "Georgia", Cambria, Times New Roman, Times, serif;
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
+        serif;
 }
 .credit {
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
 }
 .slideshow-credit {
     position: relative;
@@ -205,7 +206,7 @@ label[for="year-slider"] {
 .body-text {
     padding-top: 20px;
     color: #333333;
-    font-size: 1.0rem;
+    font-size: 1rem;
     line-height: 1.45;
     padding-left: 5px;
     padding-right: 5px;
@@ -225,7 +226,7 @@ label[for="year-slider"] {
     padding-right: 0;
 }
 .text-background {
-    background-color: rgba(50, 50, 50, .8);
+    background-color: rgba(50, 50, 50, 0.8);
     height: 40%;
     text-align: center;
 }
@@ -243,7 +244,7 @@ label[for="year-slider"] {
 h1,
 h2,
 h3 {
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: center;
     padding-left: 5px;
     padding-right: 5px;
@@ -297,14 +298,14 @@ h4 {
     padding-top: 10px;
     margin: 0 auto;
 }
-[text-anchor="end"]>tspan {
+[text-anchor='end'] > tspan {
     cursor: default;
 }
 p {
     padding-top: 13px;
 }
 .navbar-brand > img {
-    height: 40px
+    height: 40px;
 }
 .view-transcript {
     margin-top: 15px;
@@ -352,7 +353,7 @@ p.first-paragraph:first-letter {
     margin-left: 10px;
 }
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
 }
 .social-icon {
     height: 20px;
@@ -378,15 +379,35 @@ i.fa-comment {
     right: 75px;
 }
 .dining-art-hr {
-    color: #FFFFFF;
+    color: #ffffff;
     width: 300px;
     margin-top: 5px;
     border: 0;
     height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -moz-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -ms-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
+    background-image: -o-linear-gradient(
+        left,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+    );
 }
 .dining-art {
     font-size: 1em;
@@ -426,8 +447,8 @@ div.social-icon-container {
 footer {
     text-align: center;
     padding-top: 50px;
-    color: #BBBBBB;
-    font-size: .7rem;
+    color: #bbbbbb;
+    font-size: 0.7rem;
     padding-bottom: 10px;
 }
 footer > a,
@@ -461,7 +482,7 @@ h2.black {
     position: relative;
     top: -20px;
     left: 39%;
-    background-color: rgba(200, 200, 200, .5);
+    background-color: rgba(200, 200, 200, 0.5);
     width: 257px;
     border-radius: 5px;
     padding-left: 5px;
@@ -498,7 +519,7 @@ th {
 .crime-rate-source {
     font-weight: 100;
     color: gray;
-    font-size: .7rem;
+    font-size: 0.7rem;
 }
 .arrest-rate-table {
     margin-left: 5px;
@@ -605,7 +626,7 @@ tr.arrest-category > td {
         height: 80%;
     }
     h1 {
-        font-size: 2.0rem;
+        font-size: 2rem;
     }
     h2 {
         font-size: 1.4rem;
@@ -618,10 +639,10 @@ tr.arrest-category > td {
     }
     .graph-tip {
         left: 10%;
-        font-size: .9rem;
+        font-size: 0.9rem;
         width: 228px;
     }
     .dots-tooltip {
-        width: 252px
+        width: 252px;
     }
 }

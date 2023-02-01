@@ -1,370 +1,785 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="http://chicagomaroon.github.io/img/favicon.png">
-    <meta name="description" content="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking">
-    <meta name="author" content="Hannah Edgar">
-    <meta property="og:url" content="http://chicagomaroon.github.io/dalniente/" />
-    <meta property="og:title" content="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking" />
-    <meta property="og:description" content="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking" />
-    <meta property="og:image" content="http://chicagomaroon.github.io/dalniente/img/Cover.jpg" />
-    <title>Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking</title>
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/reset.css" rel="stylesheet" type='text/css'>
-    <link href="http://chicagomaroon.github.io/styles/base.css" rel="stylesheet" type='text/css'>
-    <link href="style.css" rel="stylesheet" type='text/css'>
-  </head>
-  <body>
-    <script>
-      <!-- Enables Facebook SDK, more FB scripts in main.js -->
-      window.fbAsyncInit = function() {
-         FB.init({
-            appId: '1584750855103746',
-            xfbml: true,
-            version: 'v2.2'
-         });
-      };
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="shortcut icon"
+            href="http://chicagomaroon.github.io/img/favicon.png"
+        />
+        <meta
+            name="description"
+            content="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking"
+        />
+        <meta name="author" content="Hannah Edgar" />
+        <meta
+            property="og:url"
+            content="http://chicagomaroon.github.io/dalniente/"
+        />
+        <meta
+            property="og:title"
+            content="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking"
+        />
+        <meta
+            property="og:description"
+            content="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking"
+        />
+        <meta
+            property="og:image"
+            content="http://chicagomaroon.github.io/dalniente/img/Cover.jpg"
+        />
+        <title>
+            Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box
+            Musicmaking
+        </title>
+        <link
+            href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <link
+            href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Josefin+Sans:600"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/reset.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="http://chicagomaroon.github.io/styles/base.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link href="style.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <script>
+            <!-- Enables Facebook SDK, more FB scripts in main.js -->
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1584750855103746',
+                    xfbml: true,
+                    version: 'v2.2'
+                });
+            };
 
-      (function(d, s, id) {
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {
-            return;
-         }
-         js = d.createElement(s);
-         js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- Sets the header on left as Chicago Maroon -->
-          <a class="navbar-brand" href="http://www.chicagomaroon.com/">
-          <img alt="The Chicago Maroon Logo" class='logo' src="http://chicagomaroon.github.io/img/maroon-logo.png">
-          </a>
-        </div>
-        <!-- Facebook Share Icon  -->
-        <div class="social-icon-container fb right">
-          <a id="fb-icon" class="social-icon right" target="_blank" href="#">
-          <img class="logo" src="http://chicagomaroon.github.io/img/fb-logo.png" />
-          </a>
-        </div>
-        <!-- Twitter Share Icon -->
-        <div class="social-icon-container twitter right">
-          <a id="twitter-icon" class="social-icon right tweet" target="_blank" href="http://chicagomaroon.github.io/whpk" title="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking">
-          <img class="logo" src="http://chicagomaroon.github.io/img/twitter-logo.png" />
-          </a>
-        </div>
-        <!-- Jumps to comment section -->
-        <div class="social-icon-container comments right">
-          <a id='comments' class="disqus-comment-count social-icon right logo" data-disqus-url="http://example.com/article1.html" href='#comment'>
-          <i class="fa fa-comment fa-lg logo"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class='container'>
-      <div class='container'>
-        <div class='row'>
-          <div class='col-xs-12 fullscreen-picture'>
-            <div class='push-down'>
-              <div class='col-xs-12 text-background'>
-                <!-- specified height for WINDOW ADD IT -->
-                <div class='col-xs-12 section-container'>
-                  <span class='section-link'><a href="http://chicagomaroon.com/category/arts/" target="new">Arts</a></span>
+            (function (d, s, id) {
+                var js,
+                    fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = '//connect.facebook.net/en_US/sdk.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <!-- Sets the header on left as Chicago Maroon -->
+                    <a
+                        class="navbar-brand"
+                        href="http://www.chicagomaroon.com/"
+                    >
+                        <img
+                            alt="The Chicago Maroon Logo"
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/maroon-logo.png"
+                        />
+                    </a>
                 </div>
-                <h1 class='title'>Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking</h1>
-                <!-- <h2 class='subtitle'>[subtitle]</h2> -->
-                <h3 class='authors'>Written by
-                  <span class="name"><a href="http://chicagomaroon.com/author/hannah-edgar/" target="new">Hannah Edgar</a></span> | Produced by
-                  <span class="name"><a href="[producer link]" target="new">Juliette Hainline</a></span> | May 9, 2016
-                </h3>
-              </div>
+                <!-- Facebook Share Icon  -->
+                <div class="social-icon-container fb right">
+                    <a
+                        id="fb-icon"
+                        class="social-icon right"
+                        target="_blank"
+                        href="#"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/fb-logo.png"
+                        />
+                    </a>
+                </div>
+                <!-- Twitter Share Icon -->
+                <div class="social-icon-container twitter right">
+                    <a
+                        id="twitter-icon"
+                        class="social-icon right tweet"
+                        target="_blank"
+                        href="http://chicagomaroon.github.io/whpk"
+                        title="Ensemble Dal Niente Celebrates 10 Years of Out-of-the-Box Musicmaking"
+                    >
+                        <img
+                            class="logo"
+                            src="http://chicagomaroon.github.io/img/twitter-logo.png"
+                        />
+                    </a>
+                </div>
+                <!-- Jumps to comment section -->
+                <div class="social-icon-container comments right">
+                    <a
+                        id="comments"
+                        class="disqus-comment-count social-icon right logo"
+                        data-disqus-url="http://example.com/article1.html"
+                        href="#comment"
+                    >
+                        <i class="fa fa-comment fa-lg logo"></i>
+                    </a>
+                </div>
             </div>
-          </div>
         </div>
-        <div class='credit photo-credit cover-photo'>Hannah Edgar//<em>Chicago Maroon</em>
+        <div class="container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 fullscreen-picture">
+                        <div class="push-down">
+                            <div class="col-xs-12 text-background">
+                                <!-- specified height for WINDOW ADD IT -->
+                                <div class="col-xs-12 section-container">
+                                    <span class="section-link"
+                                        ><a
+                                            href="http://chicagomaroon.com/category/arts/"
+                                            target="new"
+                                            >Arts</a
+                                        ></span
+                                    >
+                                </div>
+                                <h1 class="title">
+                                    Ensemble Dal Niente Celebrates 10 Years of
+                                    Out-of-the-Box Musicmaking
+                                </h1>
+                                <!-- <h2 class='subtitle'>[subtitle]</h2> -->
+                                <h3 class="authors">
+                                    Written by
+                                    <span class="name"
+                                        ><a
+                                            href="http://chicagomaroon.com/author/hannah-edgar/"
+                                            target="new"
+                                            >Hannah Edgar</a
+                                        ></span
+                                    >
+                                    | Produced by
+                                    <span class="name"
+                                        ><a href="[producer link]" target="new"
+                                            >Juliette Hainline</a
+                                        ></span
+                                    >
+                                    | May 9, 2016
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="credit photo-credit cover-photo">
+                    Hannah Edgar//<em>Chicago Maroon</em>
+                </div>
+                <div class="row">
+                    <section id="section1" class="head tail">
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text first-paragraph">
+                                If you were to wander into 4045 N. Rockwell
+                                Street somewhere between the hours of five and
+                                six on April 30th, you’d stumble upon what was
+                                perhaps the most eclectic pre-game in history.
+                                The pre-concert hour of Ensemble Dal Niente’s
+                                Party 2016 kicked off with live performances of
+                                works by Erik Satie and Esa-Pekka Salonen (with
+                                an arrangement of Daft Punk’s “Get Lucky”)
+                                thrown in the mix) before segueing into a
+                                faux-Dating Game segment featuring members of
+                                the audience.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Then, hardly pausing for breath, the game show
+                                “host” broke into a rendition of Stephen
+                                Sondheim’s “Losing My Mind” from <i>Follies</i>,
+                                an accompanist springing out of nowhere to take
+                                a seat behind the piano.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “I have no idea what’s going on,” someone near
+                                me whispered.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Whatever you do, don’t tell Ensemble Dal Niente
+                                to focus. Embarking on everything from
+                                audiovisual projects to cultural exchanges with
+                                Latin American composers to its latest venture—a
+                                CD produced in collaboration with the indie rock
+                                band Deerhoof—the Chicago-based music collective
+                                traverses contemporary music’s far-flung worlds
+                                with giddy ease.
+                                <br />
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section2" class="head tail">
+                        <div
+                            class="col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12"
+                        >
+                            <div class="slideshow-container">
+                                <div id="slides">
+                                    <img src="img/1.jpg" />
+                                    <img src="img/2.jpg" />
+                                    <img src="img/3.jpg" />
+                                    <img src="img/4.jpg" />
+                                    <img src="img/5.jpg" />
+                                    <img src="img/6.jpg" />
+                                    <img src="img/7.jpg" />
+                                    <img src="img/8.jpg" />
+                                    <img src="img/9.jpg" />
+                                    <img src="img/10.jpg" />
+                                    <img src="img/11.jpg" />
+                                    <a
+                                        href="#"
+                                        class="slidesjs-previous slidesjs-navigation"
+                                        ><span
+                                            class="glyphicon glyphicon-chevron-left"
+                                            aria-hidden="true"
+                                        ></span
+                                    ></a>
+                                    <a
+                                        href="#"
+                                        class="slidesjs-next slidesjs-navigation"
+                                        ><span
+                                            class="glyphicon glyphicon-chevron-right"
+                                            aria-hidden="true"
+                                        ></span
+                                    ></a>
+                                </div>
+                                <div class="credit slideshow-credit">
+                                    Hannah Edgar/<em>Chicago Maroon</em>
+                                </div>
+                                <div class="caption food-caption-1"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text first-paragraph">
+                                As it should, says Michael Lewanski. Since 2007,
+                                he has been Dal Niente’s conductor and one of
+                                its artistic coordinators, along with cellist
+                                Chris Wild.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “Our diversity in practical and aesthetic scope
+                                is very broad—so broad you might even criticize
+                                us for it,” he admitted. “But my impulse is to
+                                embrace that aspect of what it’s like to live in
+                                this country in 2016, where everyone’s looking
+                                at their phones all the time.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                This season, Dal Niente reached a milestone that
+                                few contemporary music groups of its kind reach:
+                                its tenth anniversary season.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “Many of these ventures fail, but this one…”
+                                Lewanski paused. “Well, I guess it could still
+                                fail, couldn’t it?”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Possible, perhaps, but not likely: Dal Niente
+                                has carved a niche for itself in Chicago’s
+                                vibrant contemporary music scene, standing
+                                alongside ensembles like the International
+                                Contemporary Ensemble (ICE), eighth blackbird,
+                                Fifth House Ensemble, and Fulcrum Point.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                But founders Kirsten Broberg, Robert Reinhart,
+                                and Marcos Balter encountered a far different
+                                state of affairs when they first conceived Dal
+                                Niente in 2004. Then composition students at
+                                Northwestern’s Bienen School of Music, the three
+                                were frustrated by the “practically nonexistent”
+                                contemporary music scene in the Chicagoland
+                                area.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “We had some groups that played music by older,
+                                established composers; the [Chicago Symphony
+                                Orchestra’s] MusicNow series, which had just
+                                started, was more focused on the prominent
+                                contemporary composers of our time,” Balter
+                                remembered. “But there was nothing serving the
+                                young generation of composers.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                When the time came to name their hypothetical
+                                group, the three pitched and nixed plenty of
+                                suggestions (Zeitgeist, Pantonal, Soundbat,
+                                among others) before Balter suggested Dal
+                                Niente, after the 1970 piece by German composer
+                                Helmut Lachenmann. The name was a nod to the
+                                repertoire the group sought to defend, and
+                                <i>dal niente</i>—Italian for “from nothing”—was
+                                also an apt description of the group’s genesis,
+                                springing from a void they sought to fill. The
+                                group dubbed itself a “contemporary classical
+                                music collective,” with “collective” being the
+                                operative word.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “I want to de-emphasize my role a little bit.
+                                Normally, ‘conductor’ is synonymous with ‘music
+                                director,’ and I’m not that; I’m not Riccardo
+                                Muti,” Lewanski stressed. “Everyone has input,
+                                and everyone is genuinely, desperately
+                                sought-out and valued.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Though Dal Niente’s mission was established
+                                early on, the ensemble itself took longer to
+                                crystallize. When Lewanski came on board as the
+                                ensemble’s first permanent conductor, Dal Niente
+                                was primarily a side-project for its members,
+                                most of whom were still students.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section3" class="head tail">
+                        <div class="col-xs-12 body-image-div">
+                            <img
+                                class="body-image"
+                                alt="Stillframe of movie"
+                                src="http://chicagomaroon.github.io/dalniente/img/Pic1.jpg"
+                            />
+                            <div
+                                class="credit photo-credit cover-photo body-photo-credit"
+                            >
+                                From a 2008 rehearsal in Ganz Hall at Roosevelt
+                                University. (PC: Chris Wild)
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text first-paragraph">
+                                “For the first few years, Dal Niente was just
+                                kids running around trying to make concerts
+                                happen; no one was getting paid.” he remembered.
+                                “It was sort of like, ‘Let’s program what we
+                                wanna program, and how do we do that?’”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                But with time, Dal Niente became more
+                                organized—and busier. Broberg went on to become
+                                the ensemble’s first executive director in 2009,
+                                and in 2010, the group made an award-winning
+                                appearance at International Festival for New
+                                Music in Darmstadt, which has long been
+                                associated with the most celebrated names in new
+                                music. (They have since returned twice.) In
+                                2014, they released their first full-length CD;
+                                four others followed in quick succession.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Dal Niente concludes its season with its annual
+                                Parties, usually held in art galleries. But this
+                                year, Dal Niente moved Party 2016 to its
+                                rehearsal space on Rockwell Street, in Irving
+                                Park—essentially a studio space in a warehouse.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “I can’t think of anybody who has [had this
+                                idea] of a five- or six-hour event where you
+                                have no idea what you’re going to hear,” former
+                                Dal Niente executive director Reba Cafarelli
+                                said. “It’s about enjoying the people around you
+                                and having a space to talk things over as they
+                                come at you.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                The event was organized in collaboration with
+                                Parlour Tapes+, a contemporary classical
+                                cassette label, as known for high-quality
+                                recordings as for its quirky “happenings”
+                                throughout the city, which unite performance art
+                                with new music.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “Their involvement seemed like a way to shake up
+                                the party this year, for sure,” Cafarelli said.
+                                “It’s good to have that match: Dal Niente is
+                                like the serious uncle, and Parlour Tapes+ is
+                                the fun cousin.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                However, Dal Niente doesn’t always feel
+                                obligated to take itself seriously. Hijinks
+                                abounded at Party 2016, beginning with the
+                                aforementioned pre-concert game show. In
+                                response to the question, “Why do you want to be
+                                a composer?”, one contestant answered, to much
+                                laughter, “’Cause I want to be rich and famous.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                As the characteristically-animated Lewanski gave
+                                opening remarks for the performance portion of
+                                the evening, three members of Parlour Tapes+
+                                mischievously mirrored his gesticulations behind
+                                him.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “We want this party to be like your life,”
+                                Lewanski said, his whirling hands multiplied
+                                threefold. “Don’t like to sit? Stand! Don’t like
+                                to stand? We have some nice chairs! Want to sit,
+                                but confusingly, don’t want to do it in a chair?
+                                We have a nice floor for you.” He gestured to
+                                the air mattress and cushions laid out near a
+                                sofa in the back of the space.
+                            </p>
+                        </div>
+                    </section>
+                    <section id="section3" class="head tail">
+                        <div class="col-xs-12 body-image-special-div">
+                            <img
+                                class="body-image"
+                                alt="Stillframe of movie"
+                                src="http://chicagomaroon.github.io/dalniente/img/static1.squarespace.jpg"
+                            />
+                            <div
+                                class="credit photo-credit cover-photo body-photo-credit"
+                            >
+                                Ensemble Dal Niente's ranks today. (PC: Drew
+                                Reynolds)
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text first-paragraph">
+                                As promised, the audience—which included
+                                everyone from retirees to UChicago faculty to
+                                slouchy college students—decided what they
+                                wanted to get out of Party 2016. The venue’s
+                                shoebox-shaped layout was arranged so that those
+                                farther from the stage could continue
+                                socializing quietly or move to a separate room
+                                on the lower floor, while those who wanted to
+                                listen to the music uninhibited were encouraged
+                                to move closer to the stage.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                For certain pieces, the definition of said
+                                “stage” was blurred, to great effect. I plopped
+                                down on the air mattress for James Tenney’s
+                                “Critical Band,” which stationed musicians in
+                                different positions around the room. The piece
+                                begins on a unison concert A, diverging by
+                                fractions of a tone and passing through grating
+                                dissonances before returning to an overtone-rich
+                                reiteration of the original pitch. The effect
+                                was hypnotic and acoustically sublime.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                The evening’s repertoire also challenged the
+                                definition of “music,” at least in the absolute
+                                sense. Parlor Tapes+’s world-premiere
+                                contribution “Inside-Outside Rave Pyramid”
+                                resembled an avant-garde theater piece more than
+                                anything, “scored” for four amplified
+                                performers. Other works, like Natacha Diels’
+                                “Elpis” and Jessie Marino’s “Witford Rimley and
+                                his Robotic Dog Seize Burger King in a Bloodless
+                                Coup” (worth mentioning by merit of its name
+                                alone) were similarly performative.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Receiving its North American premiere, Stefan
+                                Prins’ “Generation Kill” (2012) was easily the
+                                most ambitious undertaking of the evening, and
+                                perhaps the most representative of Dal Niente’s
+                                try-anything ethos. The piece calls for eight
+                                musicians, four playing instruments and four
+                                operating PlayStation controllers. The “gamers”
+                                manipulate pre-recorded audiovisuals of the
+                                musicians as the actual musicians perform behind
+                                projection screens in real-time.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “Kill” seems at first to be a relentless sensory
+                                assault—the violinist bowing her instrument with
+                                a hairbrush, the guitarist whirring a milk
+                                frother over his. Then, aerial images with
+                                crosshairs are projected on the screen, coupled
+                                with an eerie, pregnant silence. Confronted by
+                                images of drone bombers, “Kill’s” blithe
+                                button-mashers take on a whole new meaning.
+                                Image contextualized sound, and performance met
+                                political statement in a disarming one-two
+                                punch.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “What music feels like the music of its time and
+                                place? I feel like we ask ourselves that
+                                question a lot,” Lewanski said. “I’d much rather
+                                have someone come to our concert and be like,
+                                ‘Fuck that!’ than assume they don’t understand
+                                new music. I don’t want people to think they’re
+                                supposed to like because it’s supposed to be
+                                ‘important,’ for some reason they don’t
+                                understand. It’s important because it’s about
+                                their lives.”
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Because the involved set-up for “Kill” delayed
+                                the rest of Party by a half-hour, Dal Niente had
+                                to cram in its last few pieces; someone bellowed
+                                something about city ordinances requiring that
+                                the crowd vacate the building no later than
+                                midnight. The ensemble hurriedly set up for its
+                                final set, ending the evening with Deerhoof
+                                drummer Greg Saunier’s smartly-orchestrated
+                                “Deerhoof Chamber Variations” from Balter /
+                                Saunier, the collab album celebrating its launch
+                                that night.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                The piece was met with an enthusiastic ovation
+                                by all those who remained. While trying to
+                                beeline offstage, Lewanski was stopped short by
+                                a cry: <i>“Speech!”</i>
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                “Thanks!” was all he chirped. Then he zipped
+                                away to join the rest of Dal Niente on cleanup
+                                duty.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                Lewanski’s promise rang true: where the concert
+                                hall prescribes escapism as entertainment, Party
+                                2016 held up a mirror to our media-saturated
+                                lives, without cushioning nor pretense. It was
+                                eclectic, it was accessible, it was honest—and
+                                yes, sometimes it was a little chaotic. In
+                                short, it was the kind of birthday bash only Dal
+                                Niente could pull off.
+                            </p>
+                        </div>
+                        <div
+                            class="col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12"
+                        >
+                            <p class="text body-text">
+                                As for what the next ten years in have in store?
+                                “It’s not gonna get any more in-the-box,”
+                                Lewanski predicted. “I suspect that it’ll only
+                                get weirder.”
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-        <div class='row'>
-          <section id="section1" class="head tail">
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text first-paragraph'>
-                If you were to wander into 4045 N. Rockwell Street somewhere between the hours of five and six on April 30th, you’d stumble upon what was perhaps the most eclectic pre-game in history. The pre-concert hour of Ensemble Dal Niente’s Party 2016 kicked off with live performances of works by Erik Satie and Esa-Pekka Salonen (with an arrangement of Daft Punk’s “Get Lucky”) thrown in the mix) before segueing into a faux-Dating Game segment featuring members of the audience.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Then, hardly pausing for breath, the game show “host” broke into a rendition of Stephen Sondheim’s “Losing My Mind” from <i>Follies</i>, an accompanist springing out of nowhere to take a seat behind the piano.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “I have no idea what’s going on,” someone near me whispered.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Whatever you do, don’t tell Ensemble Dal Niente to focus. Embarking on everything from audiovisual projects to cultural exchanges with Latin American composers to its latest venture—a CD produced in collaboration with the indie rock band Deerhoof—the Chicago-based music collective traverses contemporary music’s far-flung worlds with giddy ease.
-              <br></p>
-            </div>
-          </section>
-          <section id="section2" class="head tail">
-            <div class='col-lg-offset-1 col-lg-9 col-md-offset-1 col-md-9 col-sm-offset-1 col-sm-11 col-xs-12'>
-                  <div class="slideshow-container">
-                      <div id="slides">
-                          <img src="img/1.jpg">
-                          <img src="img/2.jpg">
-                          <img src="img/3.jpg">
-                          <img src="img/4.jpg">
-                          <img src="img/5.jpg">
-                          <img src="img/6.jpg">
-                          <img src="img/7.jpg">
-                          <img src="img/8.jpg">
-                          <img src="img/9.jpg">
-                          <img src="img/10.jpg">
-                          <img src="img/11.jpg">
-                          <a href="#" class="slidesjs-previous slidesjs-navigation"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-                          <a href="#" class="slidesjs-next slidesjs-navigation"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+        <div
+            id="disqus_thread"
+            class="col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12"
+        ></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'chicagomarooninteractive';
 
-                      </div>
-                      <div class='credit slideshow-credit'>
-                          Hannah Edgar/<em>Chicago Maroon</em>
-                      </div>
-                      <div class='caption food-caption-1'>
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (
+                    document.getElementsByTagName('head')[0] ||
+                    document.getElementsByTagName('body')[0]
+                ).appendChild(dsq);
+            })();
+        </script>
+        <noscript
+            >Please enable JavaScript to view the
+            <a href="https://disqus.com/?ref_noscript" rel="nofollow"
+                >comments powered by Disqus.</a
+            >
+        </noscript>
+        <a id="comment"></a>
+        <footer>
+            <a href="http://www.chicagomaroon.com/"
+                >© 2015 The Chicago Maroon</a
+            >
+        </footer>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'chicagomarooninteractive';
 
-                      </div>
-                  </div>
-              </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text first-paragraph'>
-                As it should, says Michael Lewanski. Since 2007, he has been Dal Niente’s conductor and one of its artistic coordinators, along with cellist Chris Wild.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “Our diversity in practical and aesthetic scope is very broad—so broad you might even criticize us for it,” he admitted. “But my impulse is to embrace that aspect of what it’s like to live in this country in 2016, where everyone’s looking at their phones all the time.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                This season, Dal Niente reached a milestone that few contemporary music groups of its kind reach: its tenth anniversary season.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “Many of these ventures fail, but this one…” Lewanski paused. “Well, I guess it could still fail, couldn’t it?”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Possible, perhaps, but not likely: Dal Niente has carved a niche for itself in Chicago’s vibrant contemporary music scene, standing alongside ensembles like the International Contemporary Ensemble (ICE), eighth blackbird, Fifth House Ensemble, and Fulcrum Point.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                But founders Kirsten Broberg, Robert Reinhart, and Marcos Balter encountered a far different state of affairs when they first conceived Dal Niente in 2004. Then composition students at Northwestern’s Bienen School of Music, the three were frustrated by the “practically nonexistent” contemporary music scene in the Chicagoland area.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “We had some groups that played music by older, established composers; the [Chicago Symphony Orchestra’s] MusicNow series, which had just started, was more focused on the prominent contemporary composers of our time,” Balter remembered. “But there was nothing serving the young generation of composers.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                When the time came to name their hypothetical group, the three pitched and nixed plenty of suggestions (Zeitgeist, Pantonal, Soundbat, among others) before Balter suggested Dal Niente, after the 1970 piece by German composer Helmut Lachenmann. The name was a nod to the repertoire the group sought to defend, and <i>dal niente</i>—Italian for “from nothing”—was also an apt description of the group’s genesis, springing from a void they sought to fill. The group dubbed itself a “contemporary classical music collective,” with “collective” being the operative word.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “I want to de-emphasize my role a little bit. Normally, ‘conductor’ is synonymous with ‘music director,’ and I’m not that; I’m not Riccardo Muti,” Lewanski stressed. “Everyone has input, and everyone is genuinely, desperately sought-out and valued.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Though Dal Niente’s mission was established early on, the ensemble itself took longer to crystallize. When Lewanski came on board as the ensemble’s first permanent conductor, Dal Niente was primarily a side-project for its members, most of whom were still students.
-              </p>
-            </div>
-          </section>
-          <section id="section3" class="head tail">
-            <div class='col-xs-12 body-image-div'>
-              <img class='body-image' alt='Stillframe of movie' src="http://chicagomaroon.github.io/dalniente/img/Pic1.jpg">
-              <div class="credit photo-credit cover-photo body-photo-credit">From a 2008 rehearsal in Ganz Hall at Roosevelt University. (PC: Chris Wild)
-              </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text first-paragraph'>
-                “For the first few years, Dal Niente was just kids running around trying to make concerts happen; no one was getting paid.” he remembered. “It was sort of like, ‘Let’s program what we wanna program, and how do we do that?’”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                But with time, Dal Niente became more organized—and busier. Broberg went on to become the ensemble’s first executive director in 2009, and in 2010, the group made an award-winning appearance at International Festival for New Music in Darmstadt, which has long been associated with the most celebrated names in new music. (They have since returned twice.) In 2014, they released their first full-length CD; four others followed in quick succession.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Dal Niente concludes its season with its annual Parties, usually held in art galleries. But this year, Dal Niente moved Party 2016 to its rehearsal space on Rockwell Street, in Irving Park—essentially a studio space in a warehouse.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “I can’t think of anybody who has [had this idea] of a five- or six-hour event where you have no idea what you’re going to hear,” former Dal Niente executive director Reba Cafarelli said. “It’s about enjoying the people around you and having a space to talk things over as they come at you.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                The event was organized in collaboration with Parlour Tapes+, a contemporary classical cassette label, as known for high-quality recordings as for its quirky “happenings” throughout the city, which unite performance art with new music.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “Their involvement seemed like a way to shake up the party this year, for sure,” Cafarelli said. “It’s good to have that match: Dal Niente is like the serious uncle, and Parlour Tapes+ is the fun cousin.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                However, Dal Niente doesn’t always feel obligated to take itself seriously. Hijinks abounded at Party 2016, beginning with the aforementioned pre-concert game show. In response to the question, “Why do you want to be a composer?”, one contestant answered, to much laughter, “’Cause I want to be rich and famous.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                As the characteristically-animated Lewanski gave opening remarks for the performance portion of the evening, three members of Parlour Tapes+ mischievously mirrored his gesticulations behind him.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “We want this party to be like your life,” Lewanski said, his whirling hands multiplied threefold. “Don’t like to sit? Stand! Don’t like to stand? We have some nice chairs! Want to sit, but confusingly, don’t want to do it in a chair? We have a nice floor for you.” He gestured to the air mattress and cushions laid out near a sofa in the back of the space.
-              </p>
-            </div>
-          </section>
-          <section id="section3" class="head tail">
-            <div class='col-xs-12 body-image-special-div'>
-              <img class='body-image' alt='Stillframe of movie' src="http://chicagomaroon.github.io/dalniente/img/static1.squarespace.jpg">
-              <div class="credit photo-credit cover-photo body-photo-credit">Ensemble Dal Niente's ranks today. (PC: Drew Reynolds)
-              </div>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text first-paragraph'>
-                As promised, the audience—which included everyone from retirees to UChicago faculty to slouchy college students—decided what they wanted to get out of Party 2016. The venue’s shoebox-shaped layout was arranged so that those farther from the stage could continue socializing quietly or move to a separate room on the lower floor, while those who wanted to listen to the music uninhibited were encouraged to move closer to the stage.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                For certain pieces, the definition of said “stage” was blurred, to great effect. I plopped down on the air mattress for James Tenney’s “Critical Band,” which stationed musicians in different positions around the room. The piece begins on a unison concert A, diverging by fractions of a tone and passing through grating dissonances before returning to an overtone-rich reiteration of the original pitch. The effect was hypnotic and acoustically sublime.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                The evening’s repertoire also challenged the definition of “music,” at least in the absolute sense. Parlor Tapes+’s world-premiere contribution “Inside-Outside Rave Pyramid” resembled an avant-garde theater piece more than anything, “scored” for four amplified performers. Other works, like Natacha Diels’ “Elpis” and Jessie Marino’s “Witford Rimley and his Robotic Dog Seize Burger King in a Bloodless Coup” (worth mentioning by merit of its name alone) were similarly performative.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Receiving its North American premiere, Stefan Prins’ “Generation Kill” (2012) was easily the most ambitious undertaking of the evening, and perhaps the most representative of Dal Niente’s try-anything ethos. The piece calls for eight musicians, four playing instruments and four operating PlayStation controllers. The “gamers” manipulate pre-recorded audiovisuals of the musicians as the actual musicians perform behind projection screens in real-time.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “Kill” seems at first to be a relentless sensory assault—the violinist bowing her instrument with a hairbrush, the guitarist whirring a milk frother over his. Then, aerial images with crosshairs are projected on the screen, coupled with an eerie, pregnant silence. Confronted by images of drone bombers, “Kill’s” blithe button-mashers take on a whole new meaning. Image contextualized sound, and performance met political statement in a disarming one-two punch.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “What music feels like the music of its time and place? I feel like we ask ourselves that question a lot,” Lewanski said. “I’d much rather have someone come to our concert and be like, ‘Fuck that!’ than assume they don’t understand new music. I don’t want people to think they’re supposed to like because it’s supposed to be ‘important,’ for some reason they don’t understand. It’s important because it’s about their lives.”
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Because the involved set-up for “Kill” delayed the rest of Party by a half-hour, Dal Niente had to cram in its last few pieces; someone bellowed something about city ordinances requiring that the crowd vacate the building no later than midnight. The ensemble hurriedly set up for its final set, ending the evening with Deerhoof drummer Greg Saunier’s smartly-orchestrated “Deerhoof Chamber Variations” from Balter / Saunier, the collab album celebrating its launch that night.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                The piece was met with an enthusiastic ovation by all those who remained. While trying to beeline offstage, Lewanski was stopped short by a cry: <i>“Speech!”</i>
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                “Thanks!” was all he chirped. Then he zipped away to join the rest of Dal Niente on cleanup duty.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                Lewanski’s promise rang true: where the concert hall prescribes escapism as entertainment, Party 2016 held up a mirror to our media-saturated lives, without cushioning nor pretense. It was eclectic, it was accessible, it was honest—and yes, sometimes it was a little chaotic. In short, it was the kind of birthday bash only Dal Niente could pull off.
-              </p>
-            </div>
-            <div class='col-lg-offset-3 col-lg-5 col-md-offset-2 col-md-6 col-sm-offset-3 col-sm-7 col-xs-12'>
-              <p class='text body-text'>
-                As for what the next ten years in have in store? “It’s not gonna get any more in-the-box,” Lewanski predicted. “I suspect that it’ll only get weirder.”
-              </p>
-            </div>
-          </section>
-      </div>
-    </div>
-    </div>
-    <div id="disqus_thread" class='col-lg-offset-2 col-lg-7 col-md-offset-2 col-md-7 col-sm-offset-2 col-sm-9 col-xs-12'></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES * * */
-                var disqus_shortname = 'chicagomarooninteractive';
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.type = 'text/javascript';
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (
+                    document.getElementsByTagName('HEAD')[0] ||
+                    document.getElementsByTagName('BODY')[0]
+                ).appendChild(s);
+            })();
+        </script>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="../../2016/aramark/jquery.slides.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            (i[r] =
+                i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments);
+                }),
+                (i[r].l = 1 * new Date());
+            (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(
+            window,
+            document,
+            'script',
+            '//www.google-analytics.com/analytics.js',
+            'ga'
+        );
 
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function () {
-                    var dsq = document.createElement('script');
-                    dsq.type = 'text/javascript';
-                    dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
-            </noscript>
-        </div>
-
-    </div>
-    <a id='comment'></a>
-    <footer>
-        <a href="http://www.chicagomaroon.com/">© 2015 The Chicago Maroon</a>
-    </footer>
-    <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES * * */
-        var disqus_shortname = 'chicagomarooninteractive';
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function () {
-            var s = document.createElement('script');
-            s.async = true;
-            s.type = 'text/javascript';
-            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
+        ga('create', 'UA-59818592-4', 'auto');
+        ga('send', 'pageview');
     </script>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="../../2016/aramark/jquery.slides.min.js"></script>
-<script src='main.js'></script>
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-59818592-4', 'auto');
-    ga('send', 'pageview');
-</script>
 </html>
