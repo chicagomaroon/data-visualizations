@@ -2,8 +2,10 @@
 
 Feature stories by The Chicago Maroon grouped by year into corresponding folders.
 
-## Tools needed
+## Technical necessities
 1. [npm](https://www.npmjs.com/) v7.20.3
+2. The environment variables `CHICAGO_MAROON_USER_NAME` and `CHICAGO_MAROON_PASSWORD` saved in your [.zshrc](https://osxdaily.com/2021/11/18/where-the-zshrc-file-is-located-on-mac) file.
+   - The two variables should contain the credentials you use to sign on to the Maroon's WordPress site.
 
 ## Libraries to read when creating visuals
 1. `node-htmlprocessor`: https://github.com/dciccale/node-htmlprocessor
@@ -20,10 +22,19 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 3. Create your visual in a file called `index.html`.
    - Look to the documentation [here](https://github.com/dciccale/grunt-processhtml#readme) for how to write your processed HTML.
    - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
-4. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
-5. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=2023 --name=[kebab-case-story-name]`
+4. Create a `meta_data.json` file similar to the one in the `example-visual` folder.
+   ```json
+   {
+     "title": "Example Visual",
+     "author": "FirstName LastName",
+     "caption": "Here is some information about the visual.",
+     "description": "Describe your visual"
+   }
+   ```
+5. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
+6. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=2023 --name=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --name=example-visual`
-6. After you have run the command you should see a file named `index.min.html` in your specified directory which can be passed into the website storage bin and used within an [iframe](https://www.w3schools.com/tags/tag_iframe.ASP) to display your story.
+7. After you have run the command you should see a file named `index.min.html` in your specified directory which can be passed into the website storage bin and used within an [iframe](https://www.w3schools.com/tags/tag_iframe.ASP) to display your story.
    - This process allows you to editorial an HTML file contains all the data necessary for the display of an interactive visual.
 
 ## Commands
