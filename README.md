@@ -12,5 +12,5 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 
 ## Notable commands
 
--   `npx prettier --write .` - This will format the JavaScript inside the repository
--   `npx eslint .` Runs the linter in the repository and will let you know if any JavaScript faux pas were made in your code
+-   `npm run format` - This will format the JavaScript inside the repository
+-   `npm run lint` Runs the linter in the repository and will let you know if any JavaScript faux pas were made in your code
