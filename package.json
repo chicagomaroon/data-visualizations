@@ -6,7 +6,7 @@
     "scripts": {
         "format": "npx prettier --write .",
         "lint": "npx eslint .",
-        "process-visual": "npx htmlprocessor .$npm_config_dir/index.html -o .$npm_config_dir/index.proc.html && npx minify .$npm_config_dir/index.proc.html > .$npm_config_dir/index.min.html"
+        "process-visual": "npx htmlprocessor .$npm_config_dir/index.html -o .$npm_config_dir/index.proc.html && npx minify .$npm_config_dir/index.proc.html > .$npm_config_dir/index.min.html && rm .$npm_config_dir/index.proc.html"
     },
     "repository": {
         "type": "git",
