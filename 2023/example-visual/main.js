@@ -1,4 +1,4 @@
-var chart = AmCharts.makeChart('chartdiv', {
+var chart = AmCharts.makeChart('chart-div', {
     type: 'serial',
     theme: 'light',
     marginRight: 30,
