@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "format": "npx prettier --write .",
-        "lint": "npx eslint ."
+        "lint": "npx eslint .",
+        "process-visual": "npx htmlprocessor .$npm_config_dir/index.html -o .$npm_config_dir/index.proc.html && npx minify .$npm_config_dir/index.proc.html > .$npm_config_dir/index.min.html"
     },
     "repository": {
         "type": "git",
@@ -20,7 +21,7 @@
     "dependencies": {
         "eslint-config-prettier": "^8.6.0",
         "grunt": "^1.5.3",
-        "grunt-processhtml": "^0.4.3",
+        "htmlprocessor": "^0.3.2",
         "minify": "^9.2.0"
     },
     "devDependencies": {
