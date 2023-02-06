@@ -15,7 +15,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 
 1. Go into the main directory `./chicagomaroon.github.io` and run the command `npm install`
 2. Create your HTML with the visualization inside its respective year and feature folder.
-    - If it is the year `2023` and your story is called `Example Visual` then go to the folder `2023` and your story's folder `example-visual`.
+    - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual`.
     - If either of those folders do not exist yet, please create them. Please use [kebab](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case) case when creating folder names.
 3. Create your visual in a file called `index.html`.
    - Look to the documentation [here](https://github.com/dciccale/grunt-processhtml#readme) for how to write your processed HTML.
