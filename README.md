@@ -20,9 +20,10 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 3. Create your visual in a file called `index.html`.
    - Look to the documentation [here](https://github.com/dciccale/grunt-processhtml#readme) for how to write your processed HTML.
    - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
-4. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --dir=[/story/directory]`
+4. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
+5. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --dir=[/story/directory]`
    - Example: `npm run process-visual --dir=/2089/test_story`
-5. After you have run the command you should see a file named `index.min.html` in your specified directory which can be passed into the website storage bin and used within an [iframe](https://www.w3schools.com/tags/tag_iframe.ASP) to display your story.
+6. After you have run the command you should see a file named `index.min.html` in your specified directory which can be passed into the website storage bin and used within an [iframe](https://www.w3schools.com/tags/tag_iframe.ASP) to display your story.
    - This process allows you to editorial an HTML file contains all the data necessary for the display of an interactive visual.
 
 ## Commands
