@@ -10,6 +10,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
      export CHICAGO_MAROON_USER_NAME=your_user_name@uchicago.edu
      export CHICAGO_MAROON_PASSWORD=your_password
      ```
+   - Feature for exporting the visual to WordPress is in progress.
 
 ## Libraries to read when creating visuals
 1. `node-htmlprocessor`: https://github.com/dciccale/node-htmlprocessor

@@ -6,7 +6,7 @@
     "scripts": {
         "format": "npx prettier --write .",
         "lint": "npx eslint .",
-        "process-visual": "npx htmlprocessor ./$npm_config_year/$npm_config_name/index.html -o ./$npm_config_year/$npm_config_name/index.proc.html && npx minify ./$npm_config_year/$npm_config_name/index.proc.html > ./$npm_config_year/$npm_config_name/$npm_config_name.min.html && rm ./$npm_config_year/$npm_config_name/index.proc.html"
+        "process-visual": "npx htmlprocessor ./$npm_config_year/$npm_config_story/index.html -o ./$npm_config_year/$npm_config_story/index.proc.html && npx minify ./$npm_config_year/$npm_config_story/index.proc.html > ./$npm_config_year/$npm_config_story/$npm_config_story.min.html && rm ./$npm_config_year/$npm_config_story/index.proc.html"
     },
     "repository": {
         "type": "git",
