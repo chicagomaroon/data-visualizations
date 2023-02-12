@@ -5,4 +5,5 @@ jquery*
 README.md
 *.min.html
 
-# Directories to ignore
+# Directories and files to ignore
+2015/dev-files/raw-data.json
