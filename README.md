@@ -4,13 +4,12 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 
 ## Technical necessities
 1. [npm](https://www.npmjs.com/) v7.20.3
-2. The environment variables `CHICAGO_MAROON_USER_NAME`, `CHICAGO_MAROON_PASSWORD`, and `FULL_NAME` variables need to be saved in your [.env](https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj) file.
+2. The environment variables `CHICAGO_MAROON_USER_NAME` and `CHICAGO_MAROON_PASSWORD` variables need to be saved in your [.env](https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj) file.
    - An example of a `.env` file can be found in the `.env_template` file, please follow the directions there.
    - The two variables should contain the credentials you use to sign on to the Maroon's WordPress site.
    - ```
      CHICAGO_MAROON_USER_NAME=your_user_name@uchicago.edu
      CHICAGO_MAROON_PASSWORD=your_password
-     FULL_NAME="FirstName LastName"
      ```
 
 ## Libraries to read when creating visuals

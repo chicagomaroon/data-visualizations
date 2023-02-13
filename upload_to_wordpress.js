@@ -15,18 +15,17 @@ const wp = new WPAPI({
 wp.media()
     .file(`${args.a}/${args.b}`)
     .create({
-        author: process.env.FULL_NAME,
         caption: data.caption,
         title: data.title,
-        description: data.description
+        description: data.description,
+        media_type: 'file',
+        mime_type: 'text/html'
     })
-    .then((r) => {
-        if (r.status == 200)
-            console.log(
-                `Your visualization file, ${args.b} has been uploaded successfully!`
-            );
-        else
-            console.log(
-                `Your visualization did not upload successfully and you got this response: ${r.status}`
-            );
+    .then((media_item) => {
+        console.log(
+            `Your visualization file, ${args.b}, has been uploaded successfully as media item: ${media_item.id}`
+        );
+    })
+    .catch((err) => {
+        console.log(err);
     });
