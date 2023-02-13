@@ -1,8 +1,10 @@
 #!/usr/bin/node
 require('dotenv').config();
 
-const argv = require('minimist')(process.argv.slice(2));
-const WPAPI = require("wpapi");
+const args = require('minimist')(process.argv.slice(2));
+const fs = require('fs');
+const data = JSON.parse(fs.readFileSync(`${args.a}/meta_data.json`, 'utf8'));
+const WPAPI = require('wpapi');
 
 const wp = new WPAPI({
     endpoint: 'https://chicagomaroon.com/wp-json',
@@ -11,10 +13,20 @@ const wp = new WPAPI({
 });
 
 wp.media()
-  .file(`${argv.a}/${argv.b}`)
-  .create()
-  .then(r => {
-    // Your media is now uploaded: let's associate it with a post
-    //console.log(r)
-})
-
+    .file(`${args.a}/${args.b}`)
+    .create({
+        author: process.env.FULL_NAME,
+        caption: data.caption,
+        title: data.title,
+        description: data.description
+    })
+    .then((r) => {
+        if (r.status == 200)
+            console.log(
+                `Your visualization file, ${args.b} has been uploaded successfully!`
+            );
+        else
+            console.log(
+                `Your visualization did not upload successfully and you got this response: ${r.status}`
+            );
+    });
