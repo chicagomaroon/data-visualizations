@@ -4,12 +4,13 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 
 ## Technical necessities
 1. [npm](https://www.npmjs.com/) v7.20.3
-2. The environment variables `CHICAGO_MAROON_USER_NAME` and `CHICAGO_MAROON_PASSWORD` need to be saved in your [.env](https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj) file.
+2. The environment variables `CHICAGO_MAROON_USER_NAME`, `CHICAGO_MAROON_PASSWORD`, and `FULL_NAME` variables need to be saved in your [.env](https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj) file.
    - An example of a `.env` file can be found in the `.env_template` file, please follow the directions there.
    - The two variables should contain the credentials you use to sign on to the Maroon's WordPress site.
    - ```
-     export CHICAGO_MAROON_USER_NAME=your_user_name@uchicago.edu
-     export CHICAGO_MAROON_PASSWORD=your_password
+     CHICAGO_MAROON_USER_NAME=your_user_name@uchicago.edu
+     CHICAGO_MAROON_PASSWORD=your_password
+     FULL_NAME="FirstName LastName"
      ```
 
 ## Libraries to read when creating visuals
@@ -30,15 +31,14 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    ```json
    {
      "title": "Example Visual",
-     "author": "FirstName LastName",
      "caption": "Here is some information about the visual.",
      "description": "Describe your visual"
    }
    ```
 5. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
-6. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=2023 --story=[kebab-case-story-name]`
+6. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
-7. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=2023 --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
+7. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
    - Example: `npm run wordpress-upload --year=2023 --story=example-visual`
 
 ## Commands
