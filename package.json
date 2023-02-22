@@ -4,6 +4,7 @@
     "description": "Feature stories by The Chicago Maroon grouped by year into corresponding folders.",
     "main": "index.js",
     "scripts": {
+        "create-visual": "mkdir -p ./$npm_config_year/$npm_config_story && cp ./template_visual/* ./$npm_config_year/$npm_config_story",
         "format": "npx prettier --write .",
         "lint": "npx eslint .",
         "process-visual": "npx htmlprocessor ./$npm_config_year/$npm_config_story/index.html -o ./$npm_config_year/$npm_config_story/index.proc.html && npx minify ./$npm_config_year/$npm_config_story/index.proc.html > ./$npm_config_year/$npm_config_story/$npm_config_story.min.html && rm ./$npm_config_year/$npm_config_story/index.proc.html",
@@ -20,6 +21,7 @@
     },
     "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
     "devDependencies": {
+        "@amcharts/amcharts5": "^5.3.4",
         "dotenv": "^16.0.3",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "4.2.1",

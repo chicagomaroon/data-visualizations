@@ -1,0 +1,1 @@
+{"version":3,"file":"plugins/json.js","mappings":"2QACO,MAAMA,EAAkB,C","sources":["webpack://@amcharts/amcharts5/./tmp/webpack/plugins/json.js"],"sourcesContent":["import * as m from \"./../../../dist/es2015/plugins/json.js\";\nexport const am5plugins_json = m;"],"names":["am5plugins_json"],"sourceRoot":""}

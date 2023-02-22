@@ -1,0 +1,1 @@
+{"version":3,"file":"locales/en.js","mappings":"qJACO,MAAMA,E,QAAgB,C","sources":["webpack://@amcharts/amcharts5/./tmp/webpack/locales/en.js"],"sourcesContent":["import m from \"./../../../dist/es2015/locales/en.js\";\nexport const am5locales_en = m;"],"names":["am5locales_en"],"sourceRoot":""}

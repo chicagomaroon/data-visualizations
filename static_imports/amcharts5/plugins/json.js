@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunk_am5=self.webpackChunk_am5||[]).push([[513],{2469:function(n,e,r){r.r(e),r.d(e,{am5plugins_json:function(){return t}});var u={};r.r(u),r.d(u,{JsonParser:function(){return o.z},Serializer:function(){return s.e}});var o=r(3360),s=r(6890);const t=u}},function(n){var e=(2469,n(n.s=2469)),r=window;for(var u in e)r[u]=e[u];e.__esModule&&Object.defineProperty(r,"__esModule",{value:!0})}]);
+//# sourceMappingURL=json.js.map

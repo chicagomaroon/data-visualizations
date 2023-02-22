@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    src: url('./HCo_Verlag/OpenType/Verlag-Book.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-style: italic;
+    src: url('./HCo_Verlag/OpenType/Verlag-BookItalic.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 200;
+    src: url('./HCo_Verlag/OpenType/Verlag-XLight.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    src: url('./HCo_Verlag/OpenType/Verlag-XLightItalic.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 300;
+    src: url('./HCo_Verlag/OpenType/Verlag-Light.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    src: url('./HCo_Verlag/OpenType/Verlag-LightItalic.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 700;
+    src: url('./HCo_Verlag/OpenType/Verlag-Bold.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    src: url('./HCo_Verlag/OpenType/Verlag-BoldItalic.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 900;
+    src: url('./HCo_Verlag/OpenType/Verlag-Black.otf')
+    format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    src: url('./HCo_Verlag/OpenType/Verlag-BlackItalic.otf')
+    format('opentype');
+}
+
+body {
+    font-family: 'HCo_Verlag', sans-serif;
+}

@@ -562,7 +562,6 @@
                     var ceaseAnimation = function () {
                         if (_animateToInterval) {
                             clearInterval(_animateToInterval);
-                            delete _animateToPosition;
                         }
                     };
                     var scrollTo = function (pos, preventAni) {
