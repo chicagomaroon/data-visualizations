@@ -1,7 +1,7 @@
 {
     "extends": ["prettier"],
     "plugins": ["prettier"],
-    "ignorePatterns": ["*.min.js", "*bootstrap*"],
+    "ignorePatterns": ["*.min.js", "*bootstrap*", "/static_imports/*"],
     "rules": {
         "prettier/prettier": "error"
     },
