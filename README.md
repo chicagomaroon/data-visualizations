@@ -20,11 +20,11 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    - If any questions come from the `amCharts` or `UChicago` legal department regarding this license, please reference this `amCharts` support request number: `75825`
 
 ## Build process for a visualization
-1. Go into the main directory `./chicagomaroon.github.io` and run the command `npm install`
+1. Go into the main folder `./chicagomaroon.github.io` and run the command `npm install`
 2. Create your HTML with the visualization inside its respective year and story folder via the `npm run create-visual` command.
-    - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case]((https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
+    - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
-3. Start creating your visual that will be housed in the `./$year/$story/` directory.
+3. Start creating your visual that will be housed in the `./$year/$story/` folder.
    - Look to the documentation [here](https://github.com/dciccale/grunt-processhtml#readme) for how to write your processed HTML.
    - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
 4. Update the `meta_data.json` in your story's folder, which will look something like this:
@@ -36,7 +36,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    }
    ```
 5. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
-6. Go to the base directory of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
+6. Go to the base folder of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
 7. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
    - Example: `npm run wordpress-upload --year=2023 --story=example-visual`
@@ -44,6 +44,6 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 ## Commands
 - `npm run format`: This will format the JavaScript inside the repository
 - `npm run lint`: Runs the linter in the repository and will let you know if any JavaScript faux pas were made in your code
-- `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the files in `./template_visual` in the `/$year/$story` directory, which will serve as the basis of your new Chicago Maroon visual
-- `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` directory and outputs the processed version as `$story.min.html`
+- `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the files in `./template_visual` in the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
+- `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` folder and outputs the processed version as `$story.min.html`
 - `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]`: Runs a JavaScript file that exports the `$story.min.html` file to the WordPress `media` folder 
