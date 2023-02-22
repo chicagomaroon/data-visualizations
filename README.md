@@ -44,5 +44,6 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 ## Commands
 - `npm run format`: This will format the JavaScript inside the repository
 - `npm run lint`: Runs the linter in the repository and will let you know if any JavaScript faux pas were made in your code
-- `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/year/story-name` directory and outputs the processed version as `story-name.min.html`
-- `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]`: Runs a JavaScript file that exports the `story-name.min.html` file to the WordPress `media` folder 
+- `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the files in `./template_visual` in the `/$year/$story` directory, which will serve as the basis of your new Chicago Maroon visual
+- `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` directory and outputs the processed version as `$story.min.html`
+- `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]`: Runs a JavaScript file that exports the `$story.min.html` file to the WordPress `media` folder 
