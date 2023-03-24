@@ -2,6 +2,10 @@
 
 Feature stories by The Chicago Maroon grouped by year into corresponding folders.
 
+## GitHub concepts and processes to know
+- [GitHub Feature Branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
+- [GitHub Pull Requests](https://www.atlassian.com/git/tutorials/making-a-pull-request)
+
 ## Technical necessities
 1. [npm](https://www.npmjs.com/) v7.20.3
 2. The environment variables `CHICAGO_MAROON_USER_NAME` and `CHICAGO_MAROON_PASSWORD` variables need to be saved in your [.env](https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj) file.
@@ -16,7 +20,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
 2. `amCharts`: [Link](https://www.amcharts.com/)
    - We are currently using the non-profit license that requires that the `amCharts` logo be displayed on the chart.
-   - We are using version `5.3.4`, which is hosted in the `./static_imports/amcharts5/` folder.
+   - We are using version `5.3.4`, which is hosted externally.
    - If any questions come from the `amCharts` or `UChicago` legal department regarding this license, please reference this `amCharts` support request number: `75825`
 
 ## Build process for a visualization
