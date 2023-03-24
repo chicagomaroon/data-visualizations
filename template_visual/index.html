@@ -10,24 +10,29 @@
     <body>
         <div id="chart-div">We have some text</div>
 
-        <!-- PLACE ALL REPOSITORY JS FILES IN A BRACKET LIKE THIS -->
-        <!-- build:js inline -->
+        <!-- EXTERNAL JS FILES -->
         <script
-            src="../../static_imports/amcharts5/index.js"
+            src="https://cdn.amcharts.com/lib/version/5.3.8/index.js"
             type="text/javascript"
         ></script>
         <!-- YOU NEED TO FIND THE FILE FOR THE CHART TYPE YOU WANT AND REPLACE
         THE [CHART_TYPE] STRING HERE. CHART TYPES CAN BE FOUND IN THIS FOLDER:
-         static_imports/amcharts5/-->
+         https://www.amcharts.com/demos/
+         FIND THE CHART DEMO FROM THE LINK ABOVE AND USE THE IMPORT THAT IT USES
+         FOR ITS CHART -->
+        <!-- EXAMPLE: For this chart, https://www.amcharts.com/demos/column-with-rotated-series/,
+        use xy in place of [CHART_TYPE]. -->
         <script
-            src="../../static_imports/amcharts5/[CHART_TYPE].js"
+            src="https://cdn.amcharts.com/lib/version/5.3.8/[CHART_TYPE].js"
             type="text/javascript"
         ></script>
         <script
-            src="../../static_imports/amcharts5/themes/Animated.js"
+            src="https://cdn.amcharts.com/lib/version/5.3.8/Animated.js"
             type="text/javascript"
         ></script>
 
+        <!-- PLACE ALL REPOSITORY JS FILES IN A BRACKET LIKE THIS -->
+        <!-- build:js inline -->
         <script src="main.js" type="text/javascript"></script>
         <!-- /build -->
     </body>
