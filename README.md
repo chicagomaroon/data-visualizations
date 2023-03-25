@@ -24,7 +24,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    - If any questions come from the `amCharts` or `UChicago` legal department regarding this license, please reference this `amCharts` support request number: `75825`
 
 ## Build process for a visualization
-1. Go into the main folder `./chicagomaroon.github.io` and run the command `npm install`
+1. Go to the base folder of the `data-visualizations` repository and run the command `npm install`
 2. Create your HTML with the visualization inside its respective year and story folder via the `npm run create-visual` command.
     - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
@@ -40,7 +40,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    }
    ```
 5. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
-6. Go to the base folder of the `chicagomaroon.github.io` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
+6. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
 7. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
    - Example: `npm run wordpress-upload --year=2023 --story=example-visual`
