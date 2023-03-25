@@ -20,7 +20,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
 2. `amCharts`: [Link](https://www.amcharts.com/)
    - We are currently using the non-profit license that requires that the `amCharts` logo be displayed on the chart.
-   - We are using version `5.3.4`, which is hosted externally.
+   - We are using version `5.3.8`, which is hosted externally.
    - If any questions come from the `amCharts` or `UChicago` legal department regarding this license, please reference this `amCharts` support request number: `75825`
 
 ## Build process for a visualization
