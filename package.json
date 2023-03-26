@@ -21,7 +21,6 @@
     },
     "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
     "devDependencies": {
-        "@amcharts/amcharts5": "^5.3.4",
         "dotenv": "^16.0.3",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "4.2.1",
