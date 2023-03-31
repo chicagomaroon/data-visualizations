@@ -24,14 +24,15 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    - If any questions come from the `amCharts` or `UChicago` legal department regarding this license, please reference this `amCharts` support request number: `75825`
 
 ## Build process for a visualization
-1. Go to the base folder of the `data-visualizations` repository and run the command `npm install`
-2. Create your HTML with the visualization inside its respective year and story folder via the `npm run create-visual` command.
+1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [repository](https://github.com/chicagomaroon/data-visualizations) from GitHub if you have not already.
+2. Go to the base folder of the `data-visualizations` repository and run the command `npm install`
+3. Create the HTML file that will serve as the basis for your visualization inside its respective year and story folder via the `npm run create-visual` command.
     - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
-3. Start creating your visual that will be housed in the `./$year/$story/` folder.
+4. Start creating your visual that will be housed in the `./$year/$story/` folder.
    - Look to the documentation [here](https://github.com/dciccale/grunt-processhtml#readme) for how to write your processed HTML.
    - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
-4. Update the `meta_data.json` in your story's folder, which will look something like this:
+5. Update the `meta_data.json` in your story's folder, which will look something like this:
    ```json
    {
      "title": "Example Visual",
@@ -39,10 +40,10 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
      "description": "Describe your visual"
    }
    ```
-5. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
-6. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
+6. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
+7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
-7. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
+8. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
    - Example: `npm run wordpress-upload --year=2023 --story=example-visual`
 
 ## Commands
