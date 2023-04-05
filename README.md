@@ -41,7 +41,7 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    }
    ```
 6. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
-7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-html --year=[year] --story=[kebab-case-story-name]`
+7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
 8. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
    - Example: `npm run wordpress-upload --year=2023 --story=example-visual`
