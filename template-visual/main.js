@@ -5,6 +5,8 @@ am5.ready(function () {
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new('chart-div');
 
+    root.setThemes([am5themes_Animated.new(root)]);
+
     root.defaultTheme
         .rule('ColorSet')
         .set('colors', [
