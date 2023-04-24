@@ -5,9 +5,18 @@ am5.ready(function () {
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new('chart-div');
 
-    // Set themes
-    // https://www.amcharts.com/docs/v5/concepts/themes/
-    root.setThemes([am5themes_Animated.new(root)]);
+    root.defaultTheme
+        .rule('ColorSet')
+        .set('colors', [
+            am5.color('#C76363'),
+            am5.color('#C04A49'),
+            am5.color('#A42323'),
+            am5.color('#7F1416'),
+            am5.color('#571612'),
+            am5.color('#3D3D3D'),
+            am5.color('#392F83'),
+            am5.color('#184F26')
+        ]);
 
     // All code for your chart goes here
 });
