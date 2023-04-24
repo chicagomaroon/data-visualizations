@@ -5,9 +5,9 @@ am5.ready(function () {
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
     var root = am5.Root.new('chart-div');
 
-    root.setThemes([am5themes_Animated.new(root)]);
-
-    root.defaultTheme
+    // Setting themes and default colors
+    var maroonTheme = am5.Theme.new(root);
+    maroonTheme
         .rule('ColorSet')
         .set('colors', [
             am5.color('#C76363'),
@@ -19,6 +19,8 @@ am5.ready(function () {
             am5.color('#392F83'),
             am5.color('#184F26')
         ]);
+
+    root.setThemes([am5themes_Animated.new(root), maroonTheme]);
 
     // All code for your chart goes here
 });
