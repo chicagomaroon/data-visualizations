@@ -3,6 +3,7 @@
 jquery*
 *bootstrap*
 README.md
+.github
 *.min.html
 
 # Directories and files to ignore
