@@ -3,10 +3,10 @@
 am5.ready(function () {
     // Create root element
     // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-    var root = am5.Root.new('chart-div');
+    const root = am5.Root.new('chart-div');
 
     // Setting themes and default colors
-    var maroonTheme = am5.Theme.new(root);
+    const maroonTheme = am5.Theme.new(root);
     maroonTheme
         .rule('ColorSet')
         .set('colors', [
@@ -36,8 +36,8 @@ am5.ready(function () {
     });
 
     // All code for your chart goes here
-    let chart = root.container.children.push(
-        am5xy.XYChart.new(root, {
+    const chart = root.container.children.push(
+        am5xy.LineSeries.new(root, {
             panX: true,
             panY: true,
             wheelX: 'panX',
@@ -48,7 +48,7 @@ am5.ready(function () {
 
     // Create axes
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    var xAxis = chart.xAxes.push(
+    const xAxis = chart.xAxes.push(
         am5xy.DateAxis.new(root, {
             baseInterval: {
                 timeUnit: 'year',
@@ -59,13 +59,13 @@ am5.ready(function () {
         })
     );
 
-    var yAxis = chart.yAxes.push(
+    const yAxis = chart.yAxes.push(
         am5xy.ValueAxis.new(root, {
             renderer: am5xy.AxisRendererY.new(root, {})
         })
     );
 
-    var series = chart.series.push(
+    const series = chart.series.push(
         am5xy.LineSeries.new(root, {
             name: 'Admittance Rate by Graduation Year',
             xAxis: xAxis,
@@ -78,7 +78,7 @@ am5.ready(function () {
         })
     );
 
-    series.data.setAll([
+    xAxis.data.setAll([
         { admissionRate: 8.8, graduationYear: 2017 },
         { admissionRate: 8.4, graduationYear: 2018 },
         { admissionRate: 7.8, graduationYear: 2019 },
