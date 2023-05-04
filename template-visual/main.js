@@ -2,7 +2,7 @@
 // https://www.highcharts.com/demo
 am5.ready(function () {
     // Setting themes and default colors
-    Highcharts.theme = {
+    Highcharts.chart('chart-div', {
         colors: [
             '#C76363',
             '#C04A49',
@@ -12,12 +12,9 @@ am5.ready(function () {
             '#3D3D3D',
             '#392F83',
             '#184F26'
-        ]
-    };
-    Highcharts.setOptions(Highcharts.theme);
+        ],
 
-    // All code for your chart goes here
-    Highcharts.chart('chart-div', {
+        // All code for your chart goes here
         title: {
             text: '[TITLE]',
             align: 'center'
@@ -33,6 +30,9 @@ am5.ready(function () {
         series: [
             {
                 name: '[DATA FIELD NAME]',
+                label: {
+                    enabled: false
+                },
                 data: []
             }
         ]
