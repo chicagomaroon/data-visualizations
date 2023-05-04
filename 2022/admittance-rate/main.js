@@ -18,10 +18,6 @@ Highcharts.chart('chart-div', {
         text: 'Admittance Rate by Graduation Year'
     },
 
-    legend: {
-        enabled: false
-    },
-
     yAxis: {
         title: {
             text: 'Admission Rate (%)'
