@@ -1,6 +1,5 @@
 {
     "_comment": "The title, caption, and description fields will be edited to fit your story. This _comment property can can be removed or left as it is, as it will not be included in the fields sent to the server.",
     "title": "Example Visual",
-    "caption": "Here is some information about the visual.",
     "description": "Describe your visual"
 }
