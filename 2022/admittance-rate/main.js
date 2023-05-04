@@ -36,68 +36,103 @@ am5.ready(function () {
     });
 
     // All code for your chart goes here
-    const chart = root.container.children.push(
-        am5xy.LineSeries.new(root, {
-            panX: true,
-            panY: true,
-            wheelX: 'panX',
-            wheelY: 'zoomX',
-            pinchZoomX: true
+    var chart = root.container.children.push(
+        am5xy.XYChart.new(root, {
+            panX: false,
+            panY: false,
+            wheelY: 'none'
         })
     );
 
-    // Create axes
+    chart.zoomOutButton.set('forceHidden', true);
+
+    chart.get('colors').set('step', 2);
+
+    // Create x axis
     // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-    const xAxis = chart.xAxes.push(
+    var xAxis = chart.xAxes.push(
         am5xy.DateAxis.new(root, {
-            baseInterval: {
-                timeUnit: 'year',
-                count: 1
-            },
-            renderer: am5xy.AxisRendererX.new(root, {}),
-            tooltip: am5.Tooltip.new(root, {})
+            baseInterval: { timeUnit: 'year', count: 1 },
+            renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 })
         })
     );
 
-    const yAxis = chart.yAxes.push(
+    // Create y axis
+    let durationAxis = chart.yAxes.push(
         am5xy.ValueAxis.new(root, {
+            min: 5.0,
+            max: 9.0,
             renderer: am5xy.AxisRendererY.new(root, {})
         })
     );
 
-    const series = chart.series.push(
+    var durationSeries = chart.series.push(
         am5xy.LineSeries.new(root, {
-            name: 'Admittance Rate by Graduation Year',
             xAxis: xAxis,
-            yAxis: yAxis,
+            yAxis: durationAxis,
             valueYField: 'admissionRate',
             valueXField: 'graduationYear',
             tooltip: am5.Tooltip.new(root, {
-                labelText: '{valueY}'
+                labelText:
+                    "Admission rate for {valueX.formatDate('yyyy')}: {valueY}%"
             })
         })
     );
 
-    xAxis.data.setAll([
-        { admissionRate: 8.8, graduationYear: 2017 },
-        { admissionRate: 8.4, graduationYear: 2018 },
-        { admissionRate: 7.8, graduationYear: 2019 },
-        { admissionRate: 7.9, graduationYear: 2020 },
-        { admissionRate: 8.7, graduationYear: 2021 },
-        { admissionRate: 7.2, graduationYear: 2022 },
-        { admissionRate: 5.9, graduationYear: 2023 },
-        { admissionRate: 7.3, graduationYear: 2024 },
-        { admissionRate: 6.5, graduationYear: 2025 },
-        { admissionRate: 5.4, graduationYear: 2026 }
-    ]);
+    durationSeries.strokes.template.setAll({ strokeWidth: 2 });
 
+    // Add circle bullet
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/series/#Bullets
+    durationSeries.bullets.push(function () {
+        var graphics = am5.Rectangle.new(root, {
+            width: 10,
+            height: 10,
+            centerX: am5.p50,
+            centerY: am5.p50,
+            fill: durationSeries.get('stroke')
+        });
+
+        return am5.Bullet.new(root, {
+            sprite: graphics
+        });
+    });
+
+    // Add cursor
+    // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
     chart.set(
-        'scrollbarX',
-        am5.Scrollbar.new(root, {
-            orientation: 'horizontal'
+        'cursor',
+        am5xy.XYCursor.new(root, {
+            xAxis: xAxis
         })
     );
 
-    series.appear(1000);
+    // Set title
+    // https://www.amcharts.com/docs/v5/concepts/common-elements/labels/#creating-labels
+    chart.children.unshift(am5.Label.new(root, {
+        text: "This is a chart title",
+        fontSize: 25,
+        fontWeight: "500",
+        textAlign: "center",
+        x: am5.percent(50),
+        centerX: am5.percent(50),
+        paddingTop: 0,
+        paddingBottom: 0
+      }));
+
+    durationSeries.data.setAll([
+        { admissionRate: 8.8, graduationYear: new Date(2017, 0, 1).getTime() },
+        { admissionRate: 8.4, graduationYear: new Date(2018, 0, 1).getTime() },
+        { admissionRate: 7.8, graduationYear: new Date(2019, 0, 1).getTime() },
+        { admissionRate: 7.9, graduationYear: new Date(2020, 0, 1).getTime() },
+        { admissionRate: 8.7, graduationYear: new Date(2021, 0, 1).getTime() },
+        { admissionRate: 7.2, graduationYear: new Date(2022, 0, 1).getTime() },
+        { admissionRate: 5.9, graduationYear: new Date(2023, 0, 1).getTime() },
+        { admissionRate: 7.3, graduationYear: new Date(2024, 0, 1).getTime() },
+        { admissionRate: 6.5, graduationYear: new Date(2025, 0, 1).getTime() },
+        { admissionRate: 5.4, graduationYear: new Date(2026, 0, 1).getTime() }
+    ]);
+
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
     chart.appear(1000, 100);
 });
