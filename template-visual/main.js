@@ -17,4 +17,24 @@ am5.ready(function () {
     Highcharts.setOptions(Highcharts.theme);
 
     // All code for your chart goes here
+    Highcharts.chart('chart-div', {
+        title: {
+            text: '[TITLE]',
+            align: 'center'
+        },
+
+        plotOptions: {
+            series: {
+                // PUT STARTING SPACE FOR YOUR DATA
+                pointStart: 2010
+            }
+        },
+
+        series: [
+            {
+                name: '[DATA FIELD NAME]',
+                data: []
+            }
+        ]
+    });
 });
