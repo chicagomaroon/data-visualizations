@@ -21,14 +21,16 @@ Highcharts.chart('chart-div', {
 
     plotOptions: {
         series: {
-            // PUT STARTING SPACE FOR YOUR DATA
-            pointStart: 2010
+            // PUT PLOT CONFIG OPTIONS HERE SPACE FOR YOUR DATA
         }
     },
 
     series: [
         {
             name: '[DATA FIELD NAME]',
+            label: {
+                enabled: false
+            },
             data: []
         }
     ]
