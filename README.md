@@ -21,7 +21,6 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 2. `HighCharts`: [Link](https://www.highcharts.com/)
    - We are currently using the non-profit license that requires that the `HighCharts` logo be displayed on the chart.
    - We are using version `11.0.0`, which is hosted externally.
-   - This `HighCharts` license is valid for non-commercial usage provided we keep the watermark on the bottom right of the visuals.
 
 ## Build process for a visualization
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [repository](https://github.com/chicagomaroon/data-visualizations) from GitHub if you have not already.
