@@ -35,7 +35,6 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
    ```json
    {
      "title": "Example Visual",
-     "caption": "Here is some information about the visual.",
      "description": "Describe your visual"
    }
    ```
