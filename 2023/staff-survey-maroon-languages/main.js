@@ -1,48 +1,20 @@
 // For API and chart documentation please look here:
 // https://www.highcharts.com/demo
-const data = [
+const languageData = [
     {
-        name: 'Hindi',
-        weight: 2
+        name: 'Cantonese',
+        weight: 1
     },
     {
         name: 'Japanese',
         weight: 1
     },
     {
-        name: 'German',
-        weight: 3
-    },
-    {
-        name: 'Hungarian',
-        weight: 1
-    },
-    {
-        name: 'Swahili',
-        weight: 1
-    },
-    {
-        name: 'English',
-        weight: 37
-    },
-    {
         name: 'Bengali',
         weight: 1
     },
     {
-        name: 'Spanish',
-        weight: 9
-    },
-    {
-        name: 'Mandarin',
-        weight: 5
-    },
-    {
-        name: 'French',
-        weight: 3
-    },
-    {
-        name: 'Korean',
+        name: 'Hindi',
         weight: 2
     },
     {
@@ -50,12 +22,36 @@ const data = [
         weight: 1
     },
     {
-        name: 'Cantonese',
+        name: 'French',
+        weight: 3
+    },
+    {
+        name: 'German',
+        weight: 3
+    },
+    {
+        name: 'Spanish',
+        weight: 9
+    },
+    {
+        name: 'Swahili',
         weight: 1
+    },
+    {
+        name: 'Hungarian',
+        weight: 1
+    },
+    {
+        name: 'Korean',
+        weight: 2
     },
     {
         name: 'Greek',
         weight: 1
+    },
+    {
+        name: 'Mandarin',
+        weight: 5
     }
 ];
 
@@ -82,12 +78,16 @@ Highcharts.chart('chart-div', {
     series: [
         {
             type: 'wordcloud',
-            data,
+            data: languageData,
             name: 'Occurrences'
         }
     ],
     title: {
         text: 'The Maroon Staff Survey 2023: Spoken Languages',
+        align: 'center'
+    },
+    subtitle: {
+        text: 'Other than English',
         align: 'center'
     },
     tooltip: {
