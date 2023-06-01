@@ -81,3 +81,13 @@ body {
     width: 100%;
     height: 400px;
 }
+
+.grid-container-element {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    width: 100%;
+}
+.grid-child-element {
+    margin: 10px;
+}
