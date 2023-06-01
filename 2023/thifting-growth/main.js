@@ -6,7 +6,9 @@ const defaultColors = [
     '#8A9045',
     '#58593F',
     '#155F83',
-    '#350E20'
+    '#350E20',
+    '#47B5FF',
+    '#FF3399'
 ];
 
 // For API and chart documentation please look here:
