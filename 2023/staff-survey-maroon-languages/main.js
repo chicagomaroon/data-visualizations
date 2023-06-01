@@ -1,60 +1,5 @@
 // For API and chart documentation please look here:
 // https://www.highcharts.com/demo
-const languageData = [
-    {
-        name: 'Cantonese',
-        weight: 1
-    },
-    {
-        name: 'Japanese',
-        weight: 1
-    },
-    {
-        name: 'Bengali',
-        weight: 1
-    },
-    {
-        name: 'Hindi',
-        weight: 2
-    },
-    {
-        name: 'Italian',
-        weight: 1
-    },
-    {
-        name: 'French',
-        weight: 3
-    },
-    {
-        name: 'German',
-        weight: 3
-    },
-    {
-        name: 'Spanish',
-        weight: 9
-    },
-    {
-        name: 'Swahili',
-        weight: 1
-    },
-    {
-        name: 'Hungarian',
-        weight: 1
-    },
-    {
-        name: 'Korean',
-        weight: 2
-    },
-    {
-        name: 'Greek',
-        weight: 1
-    },
-    {
-        name: 'Mandarin',
-        weight: 5
-    }
-];
-
 Highcharts.chart('chart-div', {
     // Setting default colors
     colors: [
@@ -80,7 +25,60 @@ Highcharts.chart('chart-div', {
     series: [
         {
             type: 'wordcloud',
-            data: languageData,
+            data: [
+                {
+                    name: 'Cantonese',
+                    weight: 1
+                },
+                {
+                    name: 'Japanese',
+                    weight: 1
+                },
+                {
+                    name: 'Bengali',
+                    weight: 1
+                },
+                {
+                    name: 'Hindi',
+                    weight: 2
+                },
+                {
+                    name: 'Italian',
+                    weight: 1
+                },
+                {
+                    name: 'French',
+                    weight: 3
+                },
+                {
+                    name: 'German',
+                    weight: 3
+                },
+                {
+                    name: 'Spanish',
+                    weight: 9
+                },
+                {
+                    name: 'Swahili',
+                    weight: 1
+                },
+                {
+                    name: 'Hungarian',
+                    weight: 1
+                },
+                {
+                    name: 'Korean',
+                    weight: 2
+                },
+                {
+                    name: 'Greek',
+                    weight: 1
+                },
+                {
+                    name: 'Mandarin',
+                    weight: 5
+                }
+            ],
             name: 'Occurrences'
         }
     ],
