@@ -4,9 +4,9 @@ Highcharts.chart('chart-div', {
     // Setting default colors
     colors: [
         '#800000',
+        '#FFA319',
         '#58593F',
         '#8A9045',
-        '#FFA319',
         '#8F3931',
         '#155F83',
         '#350E20',
