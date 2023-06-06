@@ -1,5 +1,4 @@
 # The Chicago Maroon's Data Visualizations
-
 Feature stories by The Chicago Maroon grouped by year into corresponding folders.
 
 ## GitHub concepts and processes to know
@@ -50,3 +49,10 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 - `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the files in `./template_visual` in the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
 - `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` folder and outputs the processed version as `$story.min.html`
 - `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]`: Runs a JavaScript file that exports the `$story.min.html` file to the WordPress `media` folder 
+
+## HTML Segment using the iframe
+Here is the template to for putting minified HTML files into the WordPress site using an iframe:
+```html
+<iframe style="height: 425px; width: 100%; border: none;" src="[PATH TO MINIFIED HTML FILE]"></iframe>
+<div style="font-size: 14px !important; margin-bottom: 20px;" align="center">[DESCRIPTION OF CHART] (Chart: [AUTHOR OF CHART])</div>
+```

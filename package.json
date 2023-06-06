@@ -6,7 +6,7 @@
     "scripts": {
         "create-visual": "mkdir -p ./$npm_config_year/$npm_config_story && cp ./template-visual/* ./$npm_config_year/$npm_config_story",
         "format": "npx prettier --write .",
-        "lint": "npx eslint .",
+        "lint": "npx eslint --fix .",
         "process-visual": "npx htmlprocessor ./$npm_config_year/$npm_config_story/index.html -o ./$npm_config_year/$npm_config_story/index.proc.html && npx minify ./$npm_config_year/$npm_config_story/index.proc.html > ./$npm_config_year/$npm_config_story/$npm_config_story.min.html && rm ./$npm_config_year/$npm_config_story/index.proc.html",
         "wordpress-upload": "export PWD=`pwd` && node ./upload_to_wordpress.js -a=$PWD/$npm_config_year/$npm_config_story -b=$npm_config_story.min.html"
     },
