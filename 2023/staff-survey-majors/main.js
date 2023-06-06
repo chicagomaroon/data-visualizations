@@ -95,18 +95,27 @@ Highcharts.chart('chart-div', {
     chart: {
         type: 'column'
     },
-    title: {
-        text: 'The Maroon Staff Survey 2023: Represented Majors',
-        align: 'center'
-    },
-    subtitle: {
-        text: 'Click The Divisions To See The Individual Majors',
-        align: 'center'
-    },
     accessibility: {
         announceNewData: {
             enabled: true
         }
+    },
+    legend: {
+        enabled: false
+    },
+    title: {
+        text: 'The Maroon Staff Survey 2023: Represented Majors',
+        align: 'center'
+    },
+    tooltip: {
+        headerFormat:
+            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
+        pointFormat:
+            '<span style="color:{point.color}">{point.name}</span>: {point.y:.1f}% of majors in the Maroon'
+    },
+    subtitle: {
+        text: 'Click The Divisions To See The Individual Majors',
+        align: 'center'
     },
     xAxis: {
         type: 'category'
@@ -115,9 +124,6 @@ Highcharts.chart('chart-div', {
         title: {
             text: 'Percentage of Represented Majors'
         }
-    },
-    legend: {
-        enabled: false
     },
 
     plotOptions: {
@@ -128,13 +134,6 @@ Highcharts.chart('chart-div', {
                 format: '{point.y:.1f}%'
             }
         }
-    },
-
-    tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
-        pointFormat:
-            '<span style="color:{point.color}">{point.name}</span>: {point.y:.1f}% of majors in the Maroon'
     },
 
     series: [

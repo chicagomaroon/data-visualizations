@@ -11,6 +11,10 @@ Highcharts.chart('chart-div', {
                 '<h5>{chartTitle}</h5>' + '<div>{viewTableButton}</div>'
         }
     },
+    title: {
+        text: 'The Maroon Staff Survey 2023: Spoken Languages',
+        align: 'center'
+    },
     series: [
         {
             type: 'wordcloud',
@@ -71,10 +75,6 @@ Highcharts.chart('chart-div', {
             name: 'Occurrences'
         }
     ],
-    title: {
-        text: 'The Maroon Staff Survey 2023: Spoken Languages',
-        align: 'center'
-    },
     subtitle: {
         text: 'Other than English',
         align: 'center'
