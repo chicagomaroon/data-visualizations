@@ -1,142 +1,3 @@
-const majorsData = [
-    {
-        major: 'Romance Language and Literature',
-        weight: 1
-    },
-    {
-        major: 'Astrophysics',
-        weight: 1
-    },
-    {
-        major: 'Law Letters and Society',
-        weight: 4
-    },
-    {
-        major: 'Critical Race and Ethnic Studies',
-        weight: 1
-    },
-    {
-        major: 'Public Policy',
-        weight: 4
-    },
-    {
-        major: 'Economics',
-        weight: 12
-    },
-    {
-        major: 'Undecided',
-        weight: 1
-    },
-    {
-        major: 'Music',
-        weight: 1
-    },
-    {
-        major: 'Comparative Literature',
-        weight: 1
-    },
-    {
-        major: 'Spanish',
-        weight: 1
-    },
-    {
-        major: 'Biological Sciences',
-        weight: 1
-    },
-    {
-        major: 'Biochemistry',
-        weight: 1
-    },
-    {
-        major: 'Cinema and Media Studies',
-        weight: 1
-    },
-    {
-        major: 'Physics',
-        weight: 1
-    },
-    {
-        major: 'Linguistics',
-        weight: 1
-    },
-    {
-        major: 'Mathematics',
-        weight: 1
-    },
-    {
-        major: 'Environmental Science',
-        weight: 2
-    },
-    {
-        major: 'Fundamentals',
-        weight: 1
-    },
-    {
-        major: 'Urban Studies',
-        weight: 1
-    },
-    {
-        major: 'Psychology',
-        weight: 1
-    },
-    {
-        major: 'English and Creative Writing',
-        weight: 2
-    },
-    {
-        major: 'Global Studies',
-        weight: 3
-    },
-    {
-        major: 'Statistics',
-        weight: 1
-    },
-    {
-        major: 'English',
-        weight: 6
-    },
-    {
-        major: 'English Literature and Language',
-        weight: 1
-    },
-    {
-        major: 'Sociology',
-        weight: 4
-    },
-    {
-        major: 'Data Science',
-        weight: 1
-    },
-    {
-        major: 'Human Rights',
-        weight: 2
-    },
-    {
-        major: 'Political Science',
-        weight: 4
-    },
-    {
-        major: 'Visual Art',
-        weight: 1
-    },
-    {
-        major: 'Computer Science',
-        weight: 4
-    },
-    {
-        major: 'History',
-        weight: 5
-    },
-    {
-        major: 'Russian and East European Studies',
-        weight: 1
-    },
-    {
-        major: 'Chemistry',
-        weight: 1
-    }
-];
-
 // For API and chart documentation please look here:
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
@@ -155,24 +16,140 @@ Highcharts.chart('chart-div', {
     ],
 
     // All code for your chart goes here
+    chart: {
+        type: 'column'
+    },
     title: {
         text: 'The Maroon Staff Survey 2023: Represented Majors',
         align: 'center'
     },
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        }
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Total Students with Major'
+        }
+    },
+    legend: {
+        enabled: false
+    },
 
     plotOptions: {
         series: {
-            // PUT PLOT CONFIG OPTIONS HERE SPACE FOR YOUR DATA
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y}'
+            }
         }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat:
+            '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br/>'
     },
 
     series: [
         {
-            name: '[DATA FIELD NAME]',
-            label: {
-                enabled: false
-            },
-            data: []
+            name: 'Collegiate Divisions',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Social Sciences',
+                    y: 41,
+                    drilldown: 'Social Sciences'
+                },
+                {
+                    name: 'Humanities',
+                    y: 20,
+                    drilldown: 'Humanities'
+                },
+                {
+                    name: 'Physical Sciences',
+                    y: 13,
+                    drilldown: 'Physical Sciences'
+                },
+                {
+                    name: 'Biological Sciences',
+                    y: 1,
+                    drilldown: 'Biological Sciences'
+                },
+                {
+                    name: 'Undecided',
+                    y: 1,
+                    drilldown: null
+                }
+            ]
         }
-    ]
+    ],
+
+    drilldown: {
+        breadcrumbs: {
+            position: {
+                align: 'right'
+            }
+        },
+        series: [
+            {
+                name: 'Biological Sciences',
+                id: 'Biological Sciences',
+                data: [['Biological Sciences', 1]]
+            },
+            {
+                name: 'Humanities',
+                id: 'Humanities',
+                data: [
+                    ['Cinema and Media Studies', 1],
+                    ['Comparative Literature', 1],
+                    ['Creative Writing', 2],
+                    ['English Literature and Language', 9],
+                    ['Fundamentals: Issues and Texts', 1],
+                    ['Linguistics', 1],
+                    ['Music', 1],
+                    ['Romance Languages and Literatures', 2],
+                    ['Russian and East European Studies', 1],
+                    ['Visual Arts', 1]
+                ]
+            },
+            {
+                name: 'Physical Sciences',
+                id: 'Physical Sciences',
+                data: [
+                    ['Astrophysics', 1],
+                    ['Biological Chemistry', 1],
+                    ['Chemistry', 1],
+                    ['Computer Science', 4],
+                    ['Data Science', 1],
+                    ['Environmental Science', 2],
+                    ['Mathematics', 1],
+                    ['Physics', 1],
+                    ['Statistics', 1]
+                ]
+            },
+            {
+                name: 'Social Sciences',
+                id: 'Social Sciences',
+                data: [
+                    ['Critical Race and Ethnic Studies', 1],
+                    ['Economics', 12],
+                    ['Global Studies', 3],
+                    ['History', 5],
+                    ['Human Rights', 2],
+                    ['Law, Letters, and Society', 4],
+                    ['Political Science', 4],
+                    ['Psychology', 1],
+                    ['Public Policy Studies', 4],
+                    ['Sociology', 4],
+                    ['Urban Studies', 1]
+                ]
+            }
+        ]
+    }
 });
