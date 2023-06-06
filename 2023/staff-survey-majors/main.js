@@ -51,9 +51,10 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        headerFormat:
+            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
         pointFormat:
-            '<span style="color:{point.color}">{point.name}</span>: <b>{point.y}</b> of total<br/>'
+            '<span style="color:{point.color}">{point.name}</span>: {point.y} of 76 majors'
     },
 
     series: [
