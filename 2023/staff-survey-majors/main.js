@@ -89,18 +89,7 @@ socialSciences = socialSciences.map(calculatePercentagesForDivisions);
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: [
-        '#800000',
-        '#FFA319',
-        '#C16622',
-        '#8F3931',
-        '#8A9045',
-        '#58593F',
-        '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
-    ],
+    colors: ['#800000', '#FD4C4C', '#FC0000', '#7D2525', '#C90000'],
 
     // All code for your chart goes here
     chart: {
