@@ -113,7 +113,7 @@ Highcharts.chart('chart-div', {
     },
     yAxis: {
         title: {
-            text: 'Total Students with Major'
+            text: 'Percentage of Represented Majors'
         }
     },
     legend: {
@@ -144,8 +144,6 @@ Highcharts.chart('chart-div', {
             data: collegeDivisions
         }
     ],
-
-    // Total represented majors
 
     drilldown: {
         breadcrumbs: {
