@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2 # Check out the repository first.
-      - uses: actionsx/prettier@v2.8.3
+      - uses: actionsx/prettier@v2
         with:
           # prettier CLI arguments.
           args: --check --config /.prettierrc.json --ignore-path /.prettierignore
