@@ -14,7 +14,7 @@ jobs:
       - uses: actionsx/prettier@v2
         with:
           # prettier CLI arguments.
-          args: --check --config /.prettierrc.json --ignore-path /.prettierignore
+          args: --check --config .prettierrc.json --ignore-path .prettierignore
   eslint:
     runs-on: ubuntu-latest
     steps:
