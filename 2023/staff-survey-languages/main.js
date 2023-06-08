@@ -85,4 +85,4 @@ Highcharts.chart('chart-div', {
     }
 });
 
-var str_things_things = 'strannng';;
+var str_things_things = 'strannng';
