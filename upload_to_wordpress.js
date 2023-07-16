@@ -15,6 +15,7 @@ const wp = new WPAPI({
 wp.media()
     .file(`${args.a}/${args.b}`)
     .create({
+        author: data.author,
         title: data.title,
         description: data.description,
         media_type: 'file',
