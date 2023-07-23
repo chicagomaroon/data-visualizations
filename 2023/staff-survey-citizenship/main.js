@@ -43,8 +43,7 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Citizen Of Another Country',
-                    y: 4.0,
-                    selected: true
+                    y: 4.0
                 },
                 {
                     name: 'U.S. Dual Citizenship',
@@ -52,8 +51,7 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'Only U.S. Citizenship',
-                    y: 69.0,
-                    selected: true
+                    y: 69.0
                 }
             ]
         }

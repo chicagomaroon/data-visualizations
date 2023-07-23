@@ -44,8 +44,7 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Both Hispanic and Latino',
-                    y: 9.0,
-                    selected: true
+                    y: 9.0
                 },
                 {
                     name: 'Hispanic, Not Latino',
@@ -53,8 +52,7 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'Latino, Not Hispanic',
-                    y: 2.0,
-                    selected: true
+                    y: 2.0
                 },
                 {
                     name: 'Neither Hispanic Nor Latino',
