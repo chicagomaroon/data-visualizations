@@ -2,7 +2,7 @@
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: ['#800000', '#FD4C4C', '#FFA319', '#FC0000', '#7D2525', '#C90000'],
+    colors: ['#800000', '#FD4C4C', '#FC0000', '#7D2525', '#C90000'],
 
     // All code for your chart goes here
     chart: {
@@ -42,16 +42,16 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Eligible',
-                    y: 69.0
+                    name: 'Prefer Not To Disclose',
+                    y: 4.0
                 },
                 {
                     name: 'Not Eligible',
                     y: 27.0
                 },
                 {
-                    name: 'Prefer Not To Disclose',
-                    y: 4.0
+                    name: 'Eligible',
+                    y: 69.0
                 }
             ]
         }
