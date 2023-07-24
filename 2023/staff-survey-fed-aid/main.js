@@ -40,7 +40,7 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Amount of Financial Aid Received',
+            name: 'Amount of Federal Aid Received',
             colorByPoint: true,
             data: [
                 {
@@ -64,7 +64,7 @@ Highcharts.chart('chart-div', {
                     y: 2.0
                 },
                 {
-                    name: 'Do Not Receive Financial Aid',
+                    name: 'Do Not Receive Federal Aid',
                     y: 75.0
                 }
             ]
