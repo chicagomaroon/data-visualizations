@@ -42,7 +42,7 @@ Highcharts.chart('chart-cohort', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
             }
         }
     },
@@ -94,7 +94,7 @@ Highcharts.chart('chart-generation', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
             }
         }
     },
