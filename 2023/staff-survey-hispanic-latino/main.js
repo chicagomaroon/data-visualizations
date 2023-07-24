@@ -2,7 +2,6 @@
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    // Setting default colors
     colors: ['#800000', '#FD4C4C', '#FFA319', '#FC0000', '#7D2525', '#C90000'],
 
     // All code for your chart goes here
