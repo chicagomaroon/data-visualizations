@@ -1,4 +1,4 @@
-const colors = ['#800000', '#FD4C4C', '#FC0000', '#7D2525', '#C90000'];
+const colors = ['#800000', '#FFA319', '#C90000'];
 
 // For API and chart documentation please look here:
 // https://www.highcharts.com/demo
