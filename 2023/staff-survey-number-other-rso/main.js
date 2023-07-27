@@ -1,0 +1,67 @@
+// For API and chart documentation please look here:
+// https://www.highcharts.com/demo
+Highcharts.chart('chart-div', {
+    // Setting default colors
+    colors: ['#800000', '#FD4C4C', '#FFA319', '#FC0000', '#7D2525'],
+
+    // All code for your chart goes here
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'The Maroon Staff Survey 2023: Recognized Student Organization Membership',
+        align: 'center'
+    },
+    tooltip: {
+        headerFormat:
+            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
+        pointFormat:
+            '<span>{point.name}</span>: {point.y:.1f}% of Maroon members'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+            }
+        }
+    },
+    series: [
+        {
+            name: 'RSO Memberships or Commitments',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Only the Maroon',
+                    y: 9.0
+                },
+                {
+                    name: '1 RSO or Commitment',
+                    y: 20.0
+                },
+                {
+                    name: '2 RSO or Commitments',
+                    y: 33.0
+                },
+                {
+                    name: '3 RSOs or Commitments',
+                    y: 24.0
+                },
+                {
+                    name: '4 RSOs or Commitments',
+                    y: 14.0
+                }
+            ]
+        }
+    ]
+});
