@@ -2,7 +2,7 @@
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: ['#800000', '#FD4C4C', '#FFA319', '#FC0000', '#7D2525'],
+    colors: ['#800000', '#FD4C4C', '#FFA319', '#7D2525', '#FC0000'],
 
     // All code for your chart goes here
     chart: {
@@ -46,19 +46,19 @@ Highcharts.chart('chart-div', {
                     y: 9.0
                 },
                 {
-                    name: '1 RSO or Commitment',
+                    name: '1 Other RSO or Commitment',
                     y: 20.0
                 },
                 {
-                    name: '2 RSO or Commitments',
+                    name: '2 Other RSO or Commitments',
                     y: 33.0
                 },
                 {
-                    name: '3 RSOs or Commitments',
+                    name: '3 Other RSOs or Commitments',
                     y: 24.0
                 },
                 {
-                    name: '4 RSOs or Commitments',
+                    name: '4 Other RSOs or Commitments',
                     y: 14.0
                 }
             ]
