@@ -84,5 +84,3 @@ Highcharts.chart('chart-div', {
             '<span style="font-size: 16px"><b>{point.key}</b></span><br>'
     }
 });
-
-var str_things_things = 'strannng';
