@@ -1,27 +1,25 @@
-# The Chicago Maroon's Data Visualizations
+# The Chicago Maroon’s Data Visualizations
 Feature stories by The Chicago Maroon grouped by year into corresponding folders.
 
-## GitHub concepts and processes to know
+## The Visuals are served via this URL template
+URL Template: `http://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
+
+URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-growth/thifting-growth.min.html`
+
+## GitHub Concepts and Processes To Know
 - [GitHub Feature Branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
 - [GitHub Pull Requests](https://www.atlassian.com/git/tutorials/making-a-pull-request)
 
-## Technical necessities
+## Technical Necessities
 1. [npm](https://www.npmjs.com/) v7.20.3
-2. The environment variables `CHICAGO_MAROON_USER_NAME` and `CHICAGO_MAROON_PASSWORD` variables need to be saved in your [.env](https://www.codementor.io/@parthibakumarmurugesan/what-is-env-how-to-set-up-and-run-a-env-file-in-node-1pnyxw9yxj) file.
-   - An example of a `.env` file can be found in the `.env_template` file, please follow the directions there.
-   - The two variables should contain the credentials you use to sign on to the Maroon's WordPress site.
-   - ```
-     CHICAGO_MAROON_USER_NAME=your_user_name@uchicago.edu
-     CHICAGO_MAROON_PASSWORD=your_password
-     ```
 
-## Libraries to read when creating visuals
+## Libraries To Read When Creating Visuals
 1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
 2. `HighCharts`: [Link](https://www.highcharts.com/)
    - We are currently using the non-profit license that requires that the `HighCharts` logo be displayed on the chart.
    - We are using version `11.0.0`, which is hosted externally.
 
-## Build process for a visualization
+## Build Process for a Visualization
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [repository](https://github.com/chicagomaroon/data-visualizations) from GitHub if you have not already.
 2. Go to the base folder of the `data-visualizations` repository and run the command `npm install`
 3. Create the HTML file that will serve as the basis for your visualization inside its respective year and story folder via the `npm run create-visual` command.
@@ -40,17 +38,14 @@ Feature stories by The Chicago Maroon grouped by year into corresponding folders
 6. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
 7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
-8. You should now have a file named `[story].min.html` in your story's folder. Run the command `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]` and your `[story].min.html` file will be uploaded to the `media` folder on the Chicago Maroon WordPress site.
-   - Example: `npm run wordpress-upload --year=2023 --story=example-visual`
 
 ## Commands
 - `npm run format`: This will format the JavaScript inside the repository
 - `npm run lint`: Runs the linter in the repository and will let you know if any JavaScript faux pas were made in your code
 - `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the files in `./template_visual` in the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
 - `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` folder and outputs the processed version as `$story.min.html`
-- `npm run wordpress-upload --year=[year] --story=[kebab-case-story-name]`: Runs a JavaScript file that exports the `$story.min.html` file to the WordPress `media` folder 
 
-## HTML Segment using the iframe
+## HTML Segment Using the iframe
 Here is the template to for putting minified HTML files into the WordPress site using an iframe:
 ```html
 <iframe style="height: 425px; width: 100%; border: none;" src="[PATH TO MINIFIED HTML FILE]"></iframe>
