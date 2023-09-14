@@ -6,7 +6,7 @@
         "prettier/prettier": "error"
     },
     "env": {
-        "es2024": true
+        "es6": true
     },
     "parserOptions": {
         "sourceType": "module"
