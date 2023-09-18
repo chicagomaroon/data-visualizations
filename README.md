@@ -35,13 +35,12 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
      "description": "Describe your visual"
    }
    ```
-6. Run `npm run lint` and `npm run format` and make the changes that the output of those commands recommend, if they recommend anything.
+6. Run `npm run lint` and make the changes that the output recommends.
 7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
 
 ## Commands
-- `npm run format`: This will format the JavaScript inside the repository
-- `npm run lint`: Runs the linter in the repository and will let you know if any JavaScript faux pas were made in your code
+- `npm run lint`: Runs the formatter and linter in the repository and will let you know if any JavaScript faux pas were made in your code
 - `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the files in `./template_visual` in the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
 - `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` folder and outputs the processed version as `$story.min.html`
 

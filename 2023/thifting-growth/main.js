@@ -25,7 +25,7 @@ Highcharts.chart('chart-cohort', {
         type: 'pie'
     },
     title: {
-        text: 'Secondhand Growth by Shopping Cohort through 2027',
+        text: 'Secondhand Growth by Shopping Cohort Through 2027',
         align: 'center'
     },
     tooltip: {
@@ -42,7 +42,7 @@ Highcharts.chart('chart-cohort', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
             }
         }
     },
@@ -77,7 +77,7 @@ Highcharts.chart('chart-generation', {
         type: 'pie'
     },
     title: {
-        text: 'Secondhand Growth by Generation through 2027',
+        text: 'Secondhand Growth by Generation Through 2027',
         align: 'center'
     },
     tooltip: {
@@ -94,7 +94,7 @@ Highcharts.chart('chart-generation', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
             }
         }
     },
