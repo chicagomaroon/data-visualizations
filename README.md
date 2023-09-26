@@ -21,7 +21,7 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
 
 ## Build Process for a Visualization
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [repository](https://github.com/chicagomaroon/data-visualizations) from GitHub if you have not already.
-2. Go to the base folder of the `data-visualizations` repository and run the command `npm install`
+2. Go to the base folder of the `data-visualizations` repository and run the command `npm ci`
 3. Create the HTML file that will serve as the basis for your visualization inside its respective year and story folder via the `npm run create-visual` command.
     - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
@@ -47,6 +47,6 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
 ## HTML Segment Using the iframe
 Here is the template to for putting minified HTML files into the WordPress site using an iframe:
 ```html
-<iframe style="height: 425px; width: 100%; border: none;" src="[PATH TO MINIFIED HTML FILE]"></iframe>
+<iframe style="height: 420px; width: 100%; border: none;" src="[PATH TO MINIFIED HTML FILE]"></iframe>
 <div style="font-size: 14px !important; margin-bottom: 20px;" align="center">[DESCRIPTION OF CHART] (Chart: [AUTHOR OF CHART])</div>
 ```
