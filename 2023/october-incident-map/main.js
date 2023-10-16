@@ -1,10 +1,78 @@
 let map;
 
+const mapStyles = [
+    {
+        featureType: 'poi.attraction',
+        stylers: [
+            {
+                visibility: 'off'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.business',
+        stylers: [
+            {
+                visibility: 'off'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.government',
+        stylers: [
+            {
+                visibility: 'simplified'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.medical',
+        stylers: [
+            {
+                visibility: 'simplified'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.park',
+        stylers: [
+            {
+                visibility: 'simplified'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.place_of_worship',
+        stylers: [
+            {
+                visibility: 'off'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.school',
+        stylers: [
+            {
+                visibility: 'simplified'
+            }
+        ]
+    },
+    {
+        featureType: 'poi.sports_complex',
+        stylers: [
+            {
+                visibility: 'off'
+            }
+        ]
+    }
+];
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 15,
         center: new google.maps.LatLng(41.794295, -87.590701),
-        mapTypeId: 'terrain'
+        mapTypeId: 'terrain',
+        styles: mapStyles
     });
 
     // Create a <script> tag and set the USGS URL as the source.
