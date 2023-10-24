@@ -42,7 +42,7 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Prefer Not To Disclose',
+                    name: 'Prefer Not to Disclose',
                     y: 2.0
                 },
                 {

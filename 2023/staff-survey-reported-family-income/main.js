@@ -47,35 +47,35 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: '< $65,000',
+                    name: '< $65K',
                     y: 2.0
                 },
                 {
-                    name: '$65,000 To $100,000',
+                    name: '$65K to $100K',
                     y: 4.0
                 },
                 {
-                    name: '$100,000 To $150,000',
+                    name: '$100K to $150K',
                     y: 2.0
                 },
                 {
-                    name: '$150,000 To $200,000',
+                    name: '$150K to $200K',
                     y: 12.0
                 },
                 {
-                    name: '$200,000 To $250,000',
+                    name: '$200K to $250K',
                     y: 7.0
                 },
                 {
-                    name: '$250,000 To $500,000',
+                    name: '$250K to $500K',
                     y: 19.0
                 },
                 {
-                    name: 'More Than $500,000',
+                    name: 'More than $500K',
                     y: 19.0
                 },
                 {
-                    name: 'Prefer Not To Disclose',
+                    name: 'Prefer Not to Disclose',
                     y: 35.0
                 }
             ]
