@@ -268,7 +268,9 @@ function createMap() {
                 )}</p>
                 <p style="margin:0; margin-bottom: 2px;">${
                     incident.occurred
-                } </div>
+                }</p>
+                 <p style="margin:0; margin-bottom: 2px;"><b>UCPD ID:</b> ${incident.ucpd_id}
+                 </div>
         `;
 
         const infoWindow = new google.maps.InfoWindow({
