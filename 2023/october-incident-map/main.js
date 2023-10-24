@@ -269,7 +269,9 @@ function createMap() {
                 <p style="margin:0; margin-bottom: 2px;">${
                     incident.occurred
                 }</p>
-                 <p style="margin:0; margin-bottom: 2px;"><b>UCPD ID:</b> ${incident.ucpd_id}
+                 <p style="margin:0; margin-bottom: 2px;"><b>UCPD ID:</b> ${
+                     incident.ucpd_id
+                 }
                  </div>
         `;
 
