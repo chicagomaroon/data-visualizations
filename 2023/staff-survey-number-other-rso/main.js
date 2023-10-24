@@ -46,19 +46,19 @@ Highcharts.chart('chart-div', {
                     y: 9.0
                 },
                 {
-                    name: '1 Other RSO or Commitment',
+                    name: '1 Other RSO',
                     y: 20.0
                 },
                 {
-                    name: '2 Other RSO or Commitments',
+                    name: '2 Other RSOs',
                     y: 33.0
                 },
                 {
-                    name: '3 Other RSOs or Commitments',
+                    name: '3 Other RSOs',
                     y: 24.0
                 },
                 {
-                    name: '4 Other RSOs or Commitments',
+                    name: '4 Other RSOs',
                     y: 14.0
                 }
             ]
