@@ -3,8 +3,8 @@
 Highcharts.chart('chart-div', {
     // Setting default colors
     colors: [
-        '#800000',
         '#FFA319',
+        '#800000',
         '#C16622',
         '#8F3931',
         '#8A9045',
@@ -49,13 +49,13 @@ Highcharts.chart('chart-div', {
         enabled: true
     },
     legend: {
-        align: 'left',
-        x: 70,
+        align: 'right',
         verticalAlign: 'top',
         y: 70,
         floating: true
     },
     plotOptions: {
+        
         column: {
             stacking: 'normal',
             dataLabels: {
@@ -69,6 +69,7 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
+            color: '#FFA319' ,
             data: [5, 2, 7, 4, 1, 1, 2, 1, 0]
         },
         {
@@ -76,6 +77,7 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
+            color: '#800000', 
             data: [231, 227, 213, 125, 123, 90, 86, 66, 40]
         }
     ]
