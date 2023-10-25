@@ -6,5 +6,5 @@
 ## How was the functionality tested and verified?
 - [ ] The visual was approved by the story's stakeholders.
 
-<!-- Replace this comment with a screenshot of your visual.
+<!-- Replace this comment with a screenshot of your visual. -->
 
