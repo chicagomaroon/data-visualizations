@@ -54,7 +54,7 @@ Highcharts.chart('chart-div', {
         enabled: true
     },
     legend: {
-        enabled: false,
+        enabled: false
     },
     plotOptions: {
         column: {
