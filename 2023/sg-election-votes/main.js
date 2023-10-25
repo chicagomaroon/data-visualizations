@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
         type: 'column'
     },
     title: {
-        text: '2023 Student Government Election Results',
+        text: 'Student Government Election Results: 2023',
         align: 'left'
     },
     xAxis: {
@@ -64,7 +64,7 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Write In Votes',
+            name: 'Write-in Votes',
             label: {
                 enabled: false
             },
