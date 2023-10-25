@@ -55,7 +55,6 @@ Highcharts.chart('chart-div', {
         floating: true
     },
     plotOptions: {
-        
         column: {
             stacking: 'normal',
             dataLabels: {
@@ -69,7 +68,7 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
-            color: '#FFA319' ,
+            color: '#FFA319',
             data: [5, 2, 7, 4, 1, 1, 2, 1, 0]
         },
         {
@@ -77,7 +76,7 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
-            color: '#800000', 
+            color: '#800000',
             data: [231, 227, 213, 125, 123, 90, 86, 66, 40]
         }
     ]
