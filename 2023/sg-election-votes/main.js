@@ -36,7 +36,7 @@ Highcharts.chart('chart-div', {
         align: 'left'
     },
     subtitle: {
-        text: 'The top 5 candidates are elected.',
+        text: 'The top five candidates were elected.',
         align: 'left'
     },
     xAxis: {
