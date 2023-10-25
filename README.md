@@ -11,7 +11,7 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
 - [GitHub Pull Requests](https://www.atlassian.com/git/tutorials/making-a-pull-request)
 
 ## Technical Necessities
-1. [node.js](https://nodejs.org/en) `v20.9.0`
+- [node.js](https://nodejs.org/en) `v20.9.0`
    - To manage the versions of node.js I use on my computer, I use the Node Version Manager program: [Link](https://github.com/nvm-sh/nvm)
 
 ## Libraries To Read When Creating Visuals
