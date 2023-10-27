@@ -281,7 +281,7 @@ function createMap() {
         });
 
         let marker = new google.maps.Marker({
-            title: `${incident.type} @ ${incident.occurred}`,
+            title: `${incident.incident} @ ${incident.occurred}`,
             position: new google.maps.LatLng(
                 incident.coords[0],
                 incident.coords[1]
