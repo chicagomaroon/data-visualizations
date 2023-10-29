@@ -25,7 +25,7 @@ Highcharts.chart('chart-div', {
         title: {
             text: 'Number of Candidates'
         },
-        max: 20, 
+        max: 20,
         min: 0
     },
 
@@ -53,25 +53,29 @@ Highcharts.chart('chart-div', {
         }
     },
 
-    series: [{
-        data: [19, 18, 15, 9],
-        name: "Number of candidates",
-        label: {enabled: false},
-        showInLegend: false
-    }],
+    series: [
+        {
+            data: [19, 18, 15, 9],
+            name: 'Number of candidates',
+            label: { enabled: false },
+            showInLegend: false
+        }
+    ],
 
     responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
+        rules: [
+            {
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
                 }
             }
-        }]
+        ]
     }
 });
