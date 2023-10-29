@@ -34,7 +34,7 @@ Highcharts.chart('chart-div', {
             rangeDescription: 'Range: 2020 to 2023'
         },
         tickPositioner: function () {
-            return [2020, 2021, 2022, 2023];
+            return [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
         }
     },
 
@@ -49,13 +49,13 @@ Highcharts.chart('chart-div', {
             label: {
                 connectorAllowed: false
             },
-            pointStart: 2020
+            pointStart: 2016
         }
     },
 
     series: [
         {
-            data: [19, 18, 15, 9],
+            data: [18, 18, 13, 14, 19, 18, 15, 9],
             name: 'Number of candidates',
             label: { enabled: false },
             showInLegend: false
