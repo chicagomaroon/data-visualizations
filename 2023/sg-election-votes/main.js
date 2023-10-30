@@ -28,12 +28,17 @@ Highcharts.chart('chart-div', {
         text: 'The top five candidates are elected to office.',
         align: 'center'
     },
+    caption: {
+        text: '<b>Note</b>: Candidates with asterisks (*) received a three percent vote deduction. This reduction has been included in the vote totals.',
+        align: 'left'
+    },
+    // add asterisk to candidates with 3% votes deductions
     xAxis: {
         categories: [
             'Kevin Guo',
-            'Demetrius Daniel',
+            'Demetrius Daniel*',
             'Alex Fuentes',
-            'Trinity Bledsoe',
+            'Trinity Bledsoe*',
             'Andrea Pita Medez',
             'Adan Betancourt',
             'Elena-Alexandra Balan',
@@ -79,7 +84,8 @@ Highcharts.chart('chart-div', {
                 enabled: false
             },
             color: '#800000',
-            data: [231, 227, 213, 125, 123, 90, 86, 66, 40]
+            data: [231, 220, 213, 121, 123, 90, 86, 66, 40]
+            // subtracted vote deduction (4 votes from Trinity) and (7 votes from Demetrius)
         }
     ]
 });
