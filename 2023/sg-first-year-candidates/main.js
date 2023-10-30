@@ -17,8 +17,8 @@ Highcharts.chart('chart-div', {
 
     // All code for your chart goes here
     title: {
-        text: 'First-Year Candidates for College Council by Year',
-        align: 'left'
+        text: 'First-Year Candidates Running for College Council: 2016 to 2023',
+        align: 'center'
     },
 
     yAxis: {
@@ -31,7 +31,7 @@ Highcharts.chart('chart-div', {
 
     xAxis: {
         accessibility: {
-            rangeDescription: 'Range: 2020 to 2023'
+            rangeDescription: 'Range: 2016 to 2023'
         },
         tickPositioner: function () {
             return [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023];
