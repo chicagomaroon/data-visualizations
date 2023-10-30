@@ -29,7 +29,8 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     caption: {
-        text: 'Note: Candidates with asterisks (*) received a three percent vote deduction. This reduction has been included in the vote totals.'
+        text: '<b>Note</b>: Candidates with asterisks (*) received a three percent vote deduction. This reduction has been included in the vote totals.',
+        align: 'left'
     },
     // add asterisk to candidates with 3% votes deductions
     xAxis: {
