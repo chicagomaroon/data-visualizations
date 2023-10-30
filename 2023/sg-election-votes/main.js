@@ -28,6 +28,9 @@ Highcharts.chart('chart-div', {
         text: 'The top five candidates are elected to office.',
         align: 'center'
     },
+    caption: {
+        text: 'Note: Candidates with asterisks (*) received a three percent vote deduction. This reduction has been included in the vote totals.'
+    },
     // add asterisk to candidates with 3% votes deductions
     xAxis: {
         categories: [
