@@ -258,7 +258,7 @@ const mapStyles = [
 
 function createMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
+        zoom: 14,
         center: new google.maps.LatLng(41.794295, -87.590701),
         mapTypeId: 'terrain',
         styles: mapStyles
