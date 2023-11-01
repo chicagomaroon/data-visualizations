@@ -48,6 +48,6 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
 ## HTML Segment Using the iframe
 Here is the template to for putting minified HTML files into the WordPress site using an iframe:
 ```html
-<iframe class="data-viz-container" src="[PATH TO MINIFIED HTML FILE]"></iframe>
+<div class="iframe-container"><iframe class="data-viz-container" src="[PATH TO MINIFIED HTML FILE]"></iframe></div>
 <div class="data-viz-description">[DESCRIPTION OF CHART] (Credit: [AUTHOR OF CHART])</div>
 ```
