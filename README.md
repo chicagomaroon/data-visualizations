@@ -49,5 +49,10 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
 Here is the template to for putting minified HTML files into the WordPress site using an iframe:
 ```html
 <div class="iframe-container"><iframe class="data-viz-container" src="[PATH TO MINIFIED HTML FILE]"></iframe></div>
-<div class="data-viz-description">[DESCRIPTION OF CHART] (Credit: [AUTHOR OF CHART])</div>
+<div class="data-viz-description-container">
+   <div class="data-viz-credit">
+      <a href="https://chicagomaroon.com/staff_name/[FIRST NAME]-[LAST NAME]/">[AUTHOR OF CHART]</a>
+   </div>
+   <div class="data-viz-description">[DESCRIPTION OF CHART]</div>
+</div>
 ```
