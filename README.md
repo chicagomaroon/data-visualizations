@@ -2,9 +2,9 @@
 Feature stories by The Chicago Maroon grouped by year into corresponding folders.
 
 ## The Visuals are served via this URL template
-URL Template: `http://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
+URL Template: `https://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
 
-URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-growth/thifting-growth.min.html`
+URL Example: `https://chicagomaroon.github.io/data-visualizations/2023/thifting-growth/thifting-growth.min.html`
 
 ## GitHub Concepts and Processes To Know
 - [GitHub Feature Branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
@@ -48,6 +48,13 @@ URL Example: `http://chicagomaroon.github.io/data-visualizations/2023/thifting-g
 ## HTML Segment Using the iframe
 Here is the template to for putting minified HTML files into the WordPress site using an iframe:
 ```html
-<div class="iframe-container"><iframe class="data-viz-container" src="[PATH TO MINIFIED HTML FILE]"></iframe></div>
-<div class="data-viz-description">[DESCRIPTION OF CHART] (Credit: [AUTHOR OF CHART])</div>
+<div class="iframe-container">
+   <iframe class="data-viz-container" src="https://chicagomaroon.github.io/data-visualizations/[PATH TO MINIFIED HTML FILE]"></iframe>
+</div>
+<div class="data-viz-description-container">
+   <div class="data-viz-credit">
+      <a href="https://chicagomaroon.com/staff_name/[FIRST NAME]-[LAST NAME]/">[AUTHOR OF CHART]</a>
+   </div>
+   <div class="data-viz-description">[DESCRIPTION OF CHART]</div>
+</div>
 ```
