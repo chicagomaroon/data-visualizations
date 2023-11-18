@@ -26,7 +26,7 @@ URL Example: `https://chicagomaroon.github.io/data-visualizations/2023/thifting-
 3. Create the HTML file that will serve as the basis for your visualization inside its respective year and story folder via the `npm run create-visual` command.
     - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
-      - If you would rather use the D3 library, [d3plus](https://github.com/d3plus/d3plus), use this command: `npm run create-visual-d3 --year=2023 --story=example-visual`
+      - If you would rather use the [D3](https://d3js.org/) library, [d3plus](https://github.com/d3plus/d3plus), use this command: `npm run create-visual-d3 --year=2023 --story=example-visual`
 4. Start creating your visual that will be housed in the `./$year/$story/` folder.
    - Look to the documentation [here](https://github.com/dciccale/grunt-processhtml#readme) for how to write your processed HTML.
    - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
