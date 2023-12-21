@@ -3,7 +3,11 @@ Highcharts.chart('chart-div', {
     colors: ['#800000', '#FFA319'],
 
     title: {
-        text: 'Undergraduates Taught by Instructor Types for the 2020 Academic Year',
+        text: 'Undergraduates Taught by Types of Instructor',
+        align: 'center'
+    },
+    subtitle: {
+        text: 'For the the Academic Year of 2020 ',
         align: 'center'
     },
     chart: {
