@@ -3,7 +3,7 @@ Highcharts.chart('chart-div', {
     colors: ['#800000', '#FFA319'],
 
     title: {
-        text: 'Undergraduates Taught by Types of Instructor',
+        text: 'Undergraduates Taught by Type of Instructor',
         align: 'center'
     },
     subtitle: {
