@@ -1,13 +1,10 @@
 // For API and chart documentation please look here:
 // https://d3plus.org/?path=/docs/introduction--documentation
 var drawGraph = function () {
-    //number of circles to color in to visualize percent
-    var percentNumber = 92;
-
     //variables for the font family, and some colors
     var fontFamily = 'helvetica';
-    var dem_square = '#155F83';
-    var rep_square = '#800000';
+    var demSquare = '#155F83';
+    var repSquare = '#800000';
     var svgBackgroundColor = '#ffffff';
 
     //width and height of the SVG
@@ -40,10 +37,10 @@ var drawGraph = function () {
 
     var repData = d3.range(repNumRows * repNumCols);
 
-    const dem_translate = 'translate(' + width * 0.5 + ',' + height * 0.3 + ')';
+    const demTranslate = 'translate(' + width * 0.5 + ',' + height * 0.3 + ')';
 
     //container to hold the grid
-    var dem_container = svg.append('g').attr('transform', dem_translate);
+    var dem_container = svg.append('g').attr('transform', demTranslate);
 
     dem_container
         .selectAll('square')
@@ -62,13 +59,12 @@ var drawGraph = function () {
         })
         .attr('height', 15)
         .attr('width', 15)
-        .attr('fill', dem_square)
-        .style('stroke', dem_square);
+        .attr('fill', demSquare)
+        .style('stroke', demSquare);
 
-    const rep_translate =
-        'translate(' + width * 0.3 + ',' + height * 0.61 + ')';
+    const repTranslate = 'translate(' + width * 0.3 + ',' + height * 0.61 + ')';
 
-    var rep_container = svg.append('g').attr('transform', rep_translate);
+    var rep_container = svg.append('g').attr('transform', repTranslate);
 
     rep_container
         .selectAll('square')
@@ -87,8 +83,8 @@ var drawGraph = function () {
         })
         .attr('height', 15)
         .attr('width', 15)
-        .attr('fill', rep_square)
-        .style('stroke', rep_square);
+        .attr('fill', repSquare)
+        .style('stroke', repSsquare);
 
     var title = svg
         .append('text')
@@ -107,7 +103,7 @@ var drawGraph = function () {
         .attr('y', 380)
         .attr('font-weight', 700)
         .attr('text-anchor', 'middle')
-        .style('fill', rep_square)
+        .style('fill', repSquare)
         .text('$63,000')
         .append('tspan')
         .attr('font-weight', 500)
@@ -129,7 +125,7 @@ var drawGraph = function () {
         .attr('y', 380)
         .attr('text-anchor', 'middle')
         .attr('font-weight', 700)
-        .style('fill', dem_square)
+        .style('fill', demSquare)
         .text('$2,000,000')
         .append('tspan')
         .attr('font-weight', 500)

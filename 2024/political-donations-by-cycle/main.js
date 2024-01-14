@@ -346,10 +346,16 @@ Highcharts.chart('chart-div1', {
         type: 'spline'
     },
     title: {
-        text: 'Cumulative Donations per Cycle from 2016-2022',
+        text: 'Cumulative Donations by Cycle from 2016-2022',
         align: 'center'
     },
-
+    subtitle: {
+        text: 'The 2020 Election saw record breaking donations by UChicago professors and nationwide.',
+        align: 'center',
+        style: {
+            fontSize: '15px'
+        }
+    },
     xAxis: {
         type: 'datetime',
         labels: {

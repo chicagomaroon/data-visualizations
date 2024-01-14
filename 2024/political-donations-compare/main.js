@@ -1,6 +1,7 @@
 // For API and chart documentation please look here:
 
-const data_2020 = [
+// series labels instead of legend
+const data2020 = [
     195, 247, 308, 487, 548, 655, 795, 872, 933, 933, 994, 994, 994, 994, 994,
     1025, 1649, 1663, 1669, 1700, 1822, 1852, 1932, 1993, 2290, 2324, 2482,
     2529, 2915, 3084, 3529, 3602, 3691, 3813, 4003, 4228, 4269, 4396, 4488,
@@ -31,7 +32,7 @@ const data_2020 = [
     132297, 132930, 133056, 133239, 133879, 134156, 134317, 135474, 136620
 ];
 
-const data_2024 = [
+const data2024 = [
     659, 796, 868, 925, 1040, 1205, 1437, 1468, 1898, 2114, 2160, 2181, 2251,
     2335, 2415, 2446, 2491, 2511, 2638, 2690, 2690, 2818, 2956, 3013, 3140,
     9566, 10204, 10279, 10744, 10784, 11090, 11163, 11270, 11383, 11501, 11574,
@@ -62,6 +63,8 @@ const data_2024 = [
     100129, 100209, 100209, 100234, 100619, 100659, 100741
 ];
 
+const xAxisLabels = [0, 100, 200];
+
 Highcharts.setOptions({
     lang: {
         thousandsSep: ','
@@ -74,8 +77,15 @@ Highcharts.chart('chart-div', {
 
     // All code for your chart goes here
     title: {
-        text: '2024 Election Donations are matching the pace of the 2020 Election',
+        text: '2020 and 2024 Presidential Election Donations By UChicago Professors',
         align: 'center'
+    },
+    subtitle: {
+        text: '2024 Election donations are matching the pace of the 2020 Election.',
+        align: 'center',
+        style: {
+            fontSize: '15px'
+        }
     },
     yAxis: {
         title: {
@@ -83,26 +93,26 @@ Highcharts.chart('chart-div', {
         },
         labels: {
             format: '${value:,.0f}'
-        }
+        },
+        tickInterval: 50000
     },
     xAxis: {
-        type: 'datetime',
-        labels: {
-            format: '{value:%b}'
+        title: {
+            text: 'Days Until Election'
         },
-        tickInterval: 2.628e9, // 3 months
+        reversed: true,
+        tickInterval: 50,
         accessibility: {
             description: 'Months of the year'
         }
     },
     tooltip: {
         valuePrefix: '$',
-        split: true,
+        headerFormat: '<b>{point.x}</b> Days Until Election<br/>',
+        shared: true,
         distance: 30,
-        padding: 5,
-        xDateFormat: '%b %d'
+        Padding: 5
     },
-
     plotOptions: {
         series: {
             lineWidth: 4,
@@ -110,30 +120,41 @@ Highcharts.chart('chart-div', {
                 hover: {
                     lineWidth: 5
                 }
-            },
-            animation: {
-                duration: 9000
             }
+            //animation: {
+            //    duration: 5000
+            //}
         }
+    },
+    legend: {
+        enabled: false
     },
     series: [
         {
-            name: '2020 Cycle Cumulative Donations',
+            name: '2020 Election',
             label: {
-                enabled: false
+                enabled: true,
+                style: {
+                    fontSize: '17px'
+                }
             },
-            data: data_2020,
-            pointStart: Date.UTC(2019, 0, 1),
-            pointIntervalUnit: 'day'
+            data: data2020,
+            pointStart: 672,
+            pointInterval: -1,
+            relativeXValue: true
         },
         {
-            name: '2024 Cycle Cumulative Donations',
+            name: '2024 Election',
             label: {
-                enabled: false
+                enabled: true,
+                style: {
+                    fontSize: '17px'
+                }
             },
-            data: data_2024,
-            pointStart: Date.UTC(2019, 0, 1),
-            pointIntervalUnit: 'day'
+            data: data2024,
+            pointStart: 674,
+            pointInterval: -1,
+            relativeXValue: true
         }
     ]
 });

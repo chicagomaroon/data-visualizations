@@ -1,0 +1,90 @@
+/* This set of statements sets the font-face */
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-Book.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-style: italic;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-BookItalic.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 200;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-XLight.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 200;
+    font-style: italic;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-XLightItalic.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 300;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-Light.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-LightItalic.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 700;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-Bold.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-BoldItalic.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 900;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-Black.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'HCo_Verlag', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    src: url('https://chicagomaroon.com/wp-content/uploads/2023/04/Verlag-BlackItalic.otf')
+        format('opentype');
+}
+
+body {
+    font-family: 'HCo_Verlag', sans-serif;
+}
+
+/* This sets the size of the main `div` the chart is held in. The values below should not need to be adjusted. */
+#chart-div1 {
+    min-width: 320px;
+    max-width: 800px;
+    height: 100%;
+}
+
+#chart-div2 {
+    min-width: 320px;
+    max-width: 800px;
+    height: 100%;
+}
