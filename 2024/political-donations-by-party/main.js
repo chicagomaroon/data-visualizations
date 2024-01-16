@@ -40,9 +40,9 @@ var drawGraph = function () {
     const demTranslate = 'translate(' + width * 0.5 + ',' + height * 0.3 + ')';
 
     //container to hold the grid
-    var dem_container = svg.append('g').attr('transform', demTranslate);
+    var demContainer = svg.append('g').attr('transform', demTranslate);
 
-    dem_container
+    demContainer
         .selectAll('square')
         .data(demData)
         .enter()
@@ -64,9 +64,9 @@ var drawGraph = function () {
 
     const repTranslate = 'translate(' + width * 0.3 + ',' + height * 0.61 + ')';
 
-    var rep_container = svg.append('g').attr('transform', repTranslate);
+    var repContainer = svg.append('g').attr('transform', repTranslate);
 
-    rep_container
+    repContainer
         .selectAll('square')
         .data(repData)
         .enter()
@@ -84,7 +84,7 @@ var drawGraph = function () {
         .attr('height', 15)
         .attr('width', 15)
         .attr('fill', repSquare)
-        .style('stroke', repSsquare);
+        .style('stroke', repSquare);
 
     var title = svg
         .append('text')
