@@ -24,7 +24,6 @@
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "4.2.1",
         "fs": "^0.0.1-security",
-        "grunt-processhtml": "^0.4.4",
         "htmlprocessor": "^0.3.2",
         "minify": "^9.2.0",
         "minimist": "^1.2.8",
