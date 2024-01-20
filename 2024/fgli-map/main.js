@@ -4,14 +4,14 @@
     ).then((response) => response.json());
 
     // Create the chart
-    Highcharts.mapChart('container', {
+    Highcharts.mapChart('chart-div', {
         chart: {
             map: topology,
             margin: 1
         },
 
         title: {
-            text: 'Hometowns',
+            text: 'Hometowns of FGLI and non-FGLI Students',
             floating: true,
             style: {
                 textOutline: '5px contrast'
@@ -27,12 +27,14 @@
         },
 
         mapView: {
-            padding: [0, 0, 0, 0]
+            padding: [50, 50, 50, 50]
         },
 
         legend: {
-            floating: true,
-            backgroundColor: '#ffffffcc'
+            // floating: true,
+            margin: 100,
+            backgroundColor: '#ffffffcc',
+            align: 'right'
         },
 
         plotOptions: {
@@ -103,7 +105,7 @@
                 type: 'mappoint'
             },
             {
-                name: 'Non-FGLI',
+                name: 'Non-FGLI Students',
                 color: 'rgb(71, 157, 214)',
                 data: [
                     ['us-nj', 40.03, -74.52, 'New Jersey', -5],
