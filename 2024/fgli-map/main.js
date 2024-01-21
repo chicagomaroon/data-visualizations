@@ -47,7 +47,11 @@
                     radius: 8
                 },
                 dataLabels: {
-                    enabled: false
+                    enabled: true,
+                    formatter: function () {
+                        return this.point.name;
+                    },
+                    y: -23
                 }
             }
         },
@@ -92,8 +96,8 @@
                 borderColor: 'rgba(0, 0, 0, 0.25)'
             },
             {
-                name: 'FGLI Students',
-                color: 'rgb(0, 113, 189)',
+                name: 'FGLI Student',
+                color: 'rgb(255,163,25)',
                 data: [
                     ['us-ca', 34.05, -118.33, 'Los Angeles, CA', -6],
                     ['us-ut', 40.75, -111.91, 'Salt Lake City, UT', 1],
@@ -105,8 +109,8 @@
                 type: 'mappoint'
             },
             {
-                name: 'Non-FGLI Students',
-                color: 'rgb(71, 157, 214)',
+                name: 'Non-FGLI Student',
+                color: 'rgb(128,0,0)',
                 data: [
                     ['us-nj', 40.03, -74.52, 'New Jersey', -5],
                     ['us-dc', 38.92, -76.98, 'Washington, DC', -3],
@@ -126,7 +130,9 @@
                     ['us-ny', 42.89, -78.89, 'Buffalo, NY', 0],
                     ['us-dc', 38.92, -77.18, 'Washington, DC', 2],
                     ['us-ny', 40.66, -73.9, 'Brooklyn, NY', 0],
-                    ['us-tx', 32.85, -97.04, 'Dallas Fort-Worth, TX', 0]
+                    ['us-tx', 32.85, -97.04, 'Dallas Fort-Worth, TX', 0],
+                    ['us-fl', 26.67, -78.43, 'Mexico', 0],
+                    ['us-fl', 26.36, -76, 'Hong Kong', 0]
                 ],
                 type: 'mappoint'
             }
