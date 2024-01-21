@@ -131,8 +131,9 @@
                     ['us-dc', 38.92, -77.18, 'Washington, DC', 2],
                     ['us-ny', 40.66, -73.9, 'Brooklyn, NY', 0],
                     ['us-tx', 32.85, -97.04, 'Dallas Fort-Worth, TX', 0],
-                    ['us-fl', 26.67, -78.43, 'Mexico', 0],
-                    ['us-fl', 26.36, -76, 'Hong Kong', 0]
+                    ['us-fl', 26.7, -78, 'Mexico', 0],
+                    ['us-fl', 26.15, -75, 'Hong Kong', 0],
+                    ['us-fl', 25.6, -72, 'France', 0]
                 ],
                 type: 'mappoint'
             }
