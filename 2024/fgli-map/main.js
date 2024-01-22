@@ -1,8 +1,11 @@
-(async () => {
+async function getTopolgy() {
     const topology = await fetch(
         'https://code.highcharts.com/mapdata/countries/us/us-all.topo.json'
-    ).then((response) => response.json());
+    );
+    return topology.json();
+}
 
+getTopolgy().then((topology) => {
     // Create the chart
     Highcharts.mapChart('chart-div', {
         chart: {
@@ -143,4 +146,4 @@
             }
         ]
     });
-})();
+});
