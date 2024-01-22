@@ -108,6 +108,7 @@
                     ['us-dc', 38.92, -76.98, 'Washington, DC', -3],
                     ['us-va', 38.85, -77.31, 'Fairfax, VA', -3],
                     ['us-ct', 41.76, -72.74, 'West Hartford, CT', -10],
+                    ['us-ct', 41.96, -72.74, 'West Hartford, CT', 0],
                     ['us-nj', 40.03, -74.52, 'New Jersey', -1],
                     ['us-md', 38.98, -77.12, 'Bethesda, MD', -2],
                     ['us-ny', 40.71, -74.01, 'New York, NY', -3],
@@ -123,7 +124,8 @@
                     ['us-ca', 36.64, -119.65, 'California', -3],
                     ['us-ca', 36.44, -119.45, 'California', -2],
                     ['us-ca', 37.81, -122.28, 'Oakland, CA', 4],
-                    ['us-ca', 37.04, -120.05, 'California', 0]
+                    ['us-ca', 37.04, -120.05, 'California', 0],
+                    ['us-ca', 37.91, -122.07, 'Walnut Creek, CA', 4]
                 ],
                 type: 'mappoint'
             },
@@ -137,7 +139,8 @@
                     ['us-ky', 37.36, -85.01, 'Kentucky', -8],
                     ['us-il', 41.87, -88.11, 'Wheaton, IL', -4],
                     ['us-dc', 38.92, -76.78, 'Washington, DC', -4],
-                    ['us-il', 41.86, -87.7, 'Chicago, IL', -4]
+                    ['us-il', 41.86, -87.7, 'Chicago, IL', -4],
+                    ['us-sc', 34.85, -82.4, 'Greenville, SC', -4]
                 ],
                 type: 'mappoint'
             }
