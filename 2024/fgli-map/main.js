@@ -66,7 +66,7 @@ getTopolgy().then((topology) => {
 
         tooltip: {
             headerFormat:
-                '<span style="color:{point.color}">⚫</span> {point.key}<br/>',
+                '<span style="color:{point.color}">\u25CF</span> {point.key}<br/>',
             pointFormat: '{series.name}'
         },
 
