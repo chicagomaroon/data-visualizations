@@ -141,7 +141,7 @@ getTopolgy().then((topology) => {
                     ['us-dc', 38.92, -76.78, 'Washington, DC', -4],
                     ['us-il', 41.86, -87.7, 'Chicago, IL', -4],
                     ['us-sc', 34.85, -82.4, 'Greenville, SC', -4],
-                    ['us-fl', 28.54, -81.30, 'Orlando, FL', 4],
+                    ['us-fl', 28.54, -81.3, 'Orlando, FL', 4],
                     ['us-ky', 38.25, -85.76, 'Louisville, KY', 4]
                 ],
                 type: 'mappoint'
