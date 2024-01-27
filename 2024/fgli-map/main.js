@@ -13,9 +13,15 @@ getTopolgy().then((topology) => {
             margin: 1
         },
 
+        subtitle: {
+            text: 'unique locations, n=33',
+            style: {
+                textOutline: '5px contrast'
+            }
+        },
+
         title: {
-            text: 'Hometowns of Surveyed FGLI and non-FGLI Students From the U.S.',
-            floating: true,
+            text: 'Hometowns of Surveyed Students From the U.S.',
             style: {
                 textOutline: '5px contrast'
             }
@@ -25,7 +31,7 @@ getTopolgy().then((topology) => {
             enabled: true,
             buttonOptions: {
                 alignTo: 'spacingBox',
-                verticalAlign: 'bottom'
+                verticalAlign: 'middle'
             }
         },
 
@@ -37,9 +43,8 @@ getTopolgy().then((topology) => {
             // floating: true,
             margin: 100,
             backgroundColor: '#ffffffcc',
-            align: 'right',
-            borderWidth: 1,
-            x: -150
+            align: 'center',
+            borderWidth: 1
         },
 
         plotOptions: {
@@ -57,7 +62,7 @@ getTopolgy().then((topology) => {
                         return this.point.name;
                     },
                     style: {
-                        fontSize: 7
+                        fontSize: 10
                     },
                     y: -23
                 }
@@ -65,9 +70,7 @@ getTopolgy().then((topology) => {
         },
 
         tooltip: {
-            headerFormat:
-                '<span style="color:{point.color}">\u25CF</span> {point.key}<br/>',
-            pointFormat: '{series.name}'
+            enabled: false
         },
 
         series: [
@@ -111,23 +114,17 @@ getTopolgy().then((topology) => {
                     ['us-dc', 38.92, -76.98, 'Washington, DC', -3],
                     ['us-va', 38.85, -77.31, 'Fairfax, VA', -3],
                     ['us-ct', 41.76, -72.74, 'West Hartford, CT', -10],
-                    ['us-ct', 41.96, -72.74, 'West Hartford, CT', 0],
                     ['us-nj', 40.03, -74.52, 'New Jersey', -1],
                     ['us-md', 38.98, -77.12, 'Bethesda, MD', -2],
                     ['us-ny', 40.71, -74.01, 'New York, NY', -3],
                     ['us-wa', 47.6, -122.33, 'Seattle, WA', -1],
                     ['us-mi', 42.39, -82.91, 'Detroit, MI', 0],
-                    ['us-ny', 40.91, -74.01, 'New York, NY', -1],
                     ['us-ct', 41.67, -72.82, 'Connecticut', -1],
                     ['us-ny', 42.89, -78.89, 'Buffalo, NY', 0],
-                    ['us-dc', 38.92, -77.18, 'Washington, DC', 2],
                     ['us-ny', 40.66, -73.9, 'Brooklyn, NY', 0],
                     ['us-tx', 32.85, -97.04, 'Dallas Fort-Worth, TX', 0],
                     ['us-ca', 36.84, -119.85, 'California', -5],
-                    ['us-ca', 36.64, -119.65, 'California', -3],
-                    ['us-ca', 36.44, -119.45, 'California', -2],
                     ['us-ca', 37.81, -122.28, 'Oakland, CA', 4],
-                    ['us-ca', 37.04, -120.05, 'California', 0],
                     ['us-ca', 37.91, -122.07, 'Walnut Creek, CA', 4]
                 ],
                 type: 'mappoint'
@@ -143,7 +140,9 @@ getTopolgy().then((topology) => {
                     ['us-il', 41.87, -88.11, 'Wheaton, IL', -4],
                     ['us-dc', 38.92, -76.78, 'Washington, DC', -4],
                     ['us-il', 41.86, -87.7, 'Chicago, IL', -4],
-                    ['us-sc', 34.85, -82.4, 'Greenville, SC', -4]
+                    ['us-sc', 34.85, -82.4, 'Greenville, SC', -4],
+                    ['us-fl', 28.54, -81.30, 'Orlando, FL', 4],
+                    ['us-ky', 38.25, -85.76, 'Louisville, KY', 4]
                 ],
                 type: 'mappoint'
             }
