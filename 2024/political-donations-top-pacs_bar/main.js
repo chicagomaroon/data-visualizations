@@ -1,6 +1,3 @@
-// For API and chart documentation please look here:
-// https://www.highcharts.com/demo
-
 topPACs = [
     { name: 'Biden For President/<br/>Biden Victory Fund', y: 367971 },
     { name: 'ActBlue', y: 308475 },

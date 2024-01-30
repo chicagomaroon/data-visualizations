@@ -72,7 +72,7 @@ const byDay2016 = [
     293128, 293205, 293216, 293261, 293898, 293976, 294077, 294112, 294188,
     294303, 294303, 294303, 294315, 294488, 294632, 294829, 294891, 295038
 ];
-const start2016 = Date.UTC(2015, 0, 2); // index at 0
+const start2016 = new Date(2015, 0, 2).getTime(); // index at 0
 
 const byDay2018 = [
     15, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 66, 193, 193, 193,
@@ -151,7 +151,7 @@ const byDay2018 = [
     382052, 382065, 382079, 382085, 382146, 382249, 382249, 382324, 382324,
     382324, 382419, 382799, 383029, 383091, 383809, 384179
 ];
-const start2018 = Date.UTC(2016, 11, 15);
+const start2018 = new Date(2016, 11, 15).getTime();
 
 const byDay2020 = [
     55, 55, 111, 134, 134, 134, 134, 134, 134, 134, 134, 134, 134, 134, 134,
@@ -237,7 +237,7 @@ const byDay2020 = [
     1278002, 1278808, 1280136, 1280499, 1281387, 1282092, 1283432, 1284248,
     1284316, 1284652, 1284812, 1285374, 1285802, 1287017, 1287540, 1289469
 ];
-const start2020 = Date.UTC(2018, 9, 12);
+const start2020 = new Date(2018, 9, 12).getTime();
 
 const byDay2022 = [
     236, 236, 236, 354, 354, 366, 366, 369, 372, 372, 372, 372, 372, 372, 372,
@@ -322,7 +322,7 @@ const byDay2022 = [
     450871, 450881, 451166, 451244, 451268, 451346, 451527, 451631, 451733,
     452005, 452248, 452373, 452893, 453517, 453972
 ];
-const start2022 = Date.UTC(2020, 9, 27);
+const start2022 = new Date(2020, 9, 27).getTime();
 
 yAxisLabels = [0, 295038, 384179, 453972, 1289469];
 
@@ -337,11 +337,10 @@ Highcharts.setOptions({
     }
 });
 
-Highcharts.chart('chart-div1', {
+Highcharts.chart('chart-div', {
     // Setting default colors
     colors: ['#C16622', '#800000', '#155F83', '#8A9045'],
 
-    // All code for your chart goes here
     chart: {
         type: 'spline'
     },
@@ -365,14 +364,13 @@ Highcharts.chart('chart-div1', {
     },
     yAxis: {
         title: {
-            text: ''
+            enabled: false
         },
         labels: {
             enabled: false
         },
         tickPositions: yAxisLabels,
         endOnTick: false
-        //maxPadding: .5
     },
     plotOptions: {
         spline: {
@@ -411,7 +409,7 @@ Highcharts.chart('chart-div1', {
                     point: {
                         xAxis: 0,
                         yAxis: 0,
-                        x: Date.UTC(2016, 11, 1),
+                        x: new Date(2016, 11, 1).getTime(),
                         y: 350000
                     },
                     style: {
@@ -423,7 +421,7 @@ Highcharts.chart('chart-div1', {
                     point: {
                         xAxis: 0,
                         yAxis: 0,
-                        x: Date.UTC(2018, 9, 1),
+                        x: new Date(2018, 9, 1).getTime(),
                         y: 350000
                     },
                     style: {
@@ -435,7 +433,7 @@ Highcharts.chart('chart-div1', {
                     point: {
                         xAxis: 0,
                         yAxis: 0,
-                        x: Date.UTC(2020, 3, 1),
+                        x: new Date(2020, 3, 1).getTime(),
                         y: 800000
                     },
                     style: {
@@ -447,7 +445,7 @@ Highcharts.chart('chart-div1', {
                     point: {
                         xAxis: 0,
                         yAxis: 0,
-                        x: Date.UTC(2022, 8, 1),
+                        x: new Date(2022, 8, 1).getTime(),
                         y: 350000
                     },
                     style: {

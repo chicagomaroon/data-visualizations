@@ -1,6 +1,3 @@
-// For API and chart documentation please look here:
-
-// series labels instead of legend
 const data2020 = [
     195, 247, 308, 487, 548, 655, 795, 872, 933, 933, 994, 994, 994, 994, 994,
     1025, 1649, 1663, 1669, 1700, 1822, 1852, 1932, 1993, 2290, 2324, 2482,
@@ -75,7 +72,6 @@ Highcharts.chart('chart-div', {
     // Setting default colors
     colors: ['#800000', '#FFA319'],
 
-    // All code for your chart goes here
     title: {
         text: '2020 and 2024 Presidential Election Donations By UChicago Professors',
         align: 'center'

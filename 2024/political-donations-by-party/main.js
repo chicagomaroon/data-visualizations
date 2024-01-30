@@ -1,5 +1,3 @@
-// For API and chart documentation please look here:
-// https://d3plus.org/?path=/docs/introduction--documentation
 var drawGraph = function () {
     //variables for the font family, and some colors
     var fontFamily = 'helvetica';
@@ -23,7 +21,7 @@ var drawGraph = function () {
     var demNumRows = 13;
     var demNumCols = 20;
 
-    //dem_data
+    //rep_data
     var repNumRows = 2;
     var repNumCols = 4;
 
