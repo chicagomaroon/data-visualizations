@@ -66,10 +66,11 @@ Highcharts.chart('chart-div', {
             dataLabels: {
                 enabled: true,
                 format: '${y:,.0f}',
-                x: -90,
+                align: 'left',
+                inside: true,
                 color: 'white',
                 style: {
-                    fontSize: '18px'
+                    fontSize: '20px'
                 }
             }
         },

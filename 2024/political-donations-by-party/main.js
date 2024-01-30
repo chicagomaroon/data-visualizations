@@ -20,15 +20,15 @@ var drawGraph = function () {
         .style('background-color', svgBackgroundColor);
 
     //dem_data
-    var demNumRows = 10;
+    var demNumRows = 13;
     var demNumCols = 20;
 
     //dem_data
     var repNumRows = 2;
-    var repNumCols = 3;
+    var repNumCols = 4;
 
     //x and y axis scales
-    var y = d3.scaleBand().range([0, 190]).domain(d3.range(demNumRows));
+    var y = d3.scaleBand().range([0, 200]).domain(d3.range(demNumRows));
 
     var x = d3.scaleBand().range([0, 360]).domain(d3.range(demNumCols));
 
@@ -57,12 +57,13 @@ var drawGraph = function () {
         .attr('y', function (d) {
             return y(Math.floor(d / demNumCols));
         })
-        .attr('height', 15)
-        .attr('width', 15)
+        .attr('height', 13)
+        .attr('width', 13)
         .attr('fill', demSquare)
         .style('stroke', demSquare);
 
-    const repTranslate = 'translate(' + width * 0.3 + ',' + height * 0.61 + ')';
+    const repTranslate =
+        'translate(' + width * 0.3 + ',' + height * 0.6413 + ')';
 
     var repContainer = svg.append('g').attr('transform', repTranslate);
 
@@ -81,8 +82,8 @@ var drawGraph = function () {
         .attr('y', function (d) {
             return y(Math.floor(d / repNumCols));
         })
-        .attr('height', 15)
-        .attr('width', 15)
+        .attr('height', 13)
+        .attr('width', 13)
         .attr('fill', repSquare)
         .style('stroke', repSquare);
 
@@ -94,17 +95,19 @@ var drawGraph = function () {
         .attr('text-anchor', 'start')
         .attr('font-weight', 700)
         .attr('font-size', 20)
-        .text('Since 2016, University of Chicago professors have donated...');
+        .text(
+            'Between 2015 and 2023, University of Chicago professors have donated...'
+        );
 
     var title = svg
         .append('text')
         .attr('class', 'rep-text')
-        .attr('x', 290)
+        .attr('x', 305)
         .attr('y', 380)
         .attr('font-weight', 700)
         .attr('text-anchor', 'middle')
         .style('fill', repSquare)
-        .text('$63,000')
+        .text('$80,000')
         .append('tspan')
         .attr('font-weight', 500)
         .style('fill', 'black')
@@ -113,7 +116,7 @@ var drawGraph = function () {
     var title = svg
         .append('text')
         .attr('class', 'rep-text')
-        .attr('x', 290)
+        .attr('x', 305)
         .attr('y', 400)
         .attr('text-anchor', 'middle')
         .text('candidates and PACs');
@@ -126,7 +129,7 @@ var drawGraph = function () {
         .attr('text-anchor', 'middle')
         .attr('font-weight', 700)
         .style('fill', demSquare)
-        .text('$2,000,000')
+        .text('$2,600,000')
         .append('tspan')
         .attr('font-weight', 500)
         .style('fill', 'black')
