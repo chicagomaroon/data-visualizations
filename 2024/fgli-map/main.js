@@ -13,15 +13,8 @@ getTopolgy().then((topology) => {
             margin: 1
         },
 
-        subtitle: {
-            text: 'unique locations, n=33',
-            style: {
-                textOutline: '5px contrast'
-            }
-        },
-
         title: {
-            text: 'Hometowns of Surveyed Students From the U.S.',
+            text: 'Hometowns of 33 Surveyed Students From the U.S.',
             style: {
                 textOutline: '5px contrast'
             }
