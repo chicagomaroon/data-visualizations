@@ -18,7 +18,7 @@ var drawGraph = function () {
         .style('background-color', svgBackgroundColor);
 
     //dem_data
-    var demNumRows = 13;
+    var demNumRows = 12;
     var demNumCols = 20;
 
     //rep_data
@@ -105,7 +105,7 @@ var drawGraph = function () {
         .attr('font-weight', 700)
         .attr('text-anchor', 'middle')
         .style('fill', repSquare)
-        .text('$80,000')
+        .text('~$80,000')
         .append('tspan')
         .attr('font-weight', 500)
         .style('fill', 'black')
@@ -127,7 +127,7 @@ var drawGraph = function () {
         .attr('text-anchor', 'middle')
         .attr('font-weight', 700)
         .style('fill', demSquare)
-        .text('$2,600,000')
+        .text('~$2,400,000')
         .append('tspan')
         .attr('font-weight', 500)
         .style('fill', 'black')
