@@ -1,16 +1,5 @@
 Highcharts.chart('chart-div', {
-    colors: [
-        '#800000',
-        '#FFA319',
-        '#C16622',
-        '#8F3931',
-        '#8A9045',
-        '#58593F',
-        '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
-    ],
+    colors: ['#767676', '#FFA319', '#800000'],
     chart: {
         type: 'column'
     },
@@ -23,7 +12,10 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     xAxis: {
-        categories: ['2013', '2018', '2023']
+        categories: ['2013', '2018', '2023'],
+        title: {
+            text: "All Women's Sports Compared Against Women's Cross Country for a Given Year"
+        }
     },
     yAxis: {
         allowDecimals: false,
@@ -33,44 +25,60 @@ Highcharts.chart('chart-div', {
             text: 'Athlete Demographics (%)'
         }
     },
+    legend: {
+        enabled: false
+    },
     plotOptions: {
         column: {
             stacking: 'normal'
         }
     },
     tooltip: {
-        valueSuffix: '%'
-    },
+        formatter: function () {
+            const stackName = this.series.userOptions.stack;
 
+            return (
+                '<b>' +
+                stackName +
+                ' in ' +
+                this.x +
+                '</b><br/><b>' +
+                this.series.name +
+                '</b>: ' +
+                this.y +
+                '%'
+            );
+        }
+    },
     series: [
         {
             name: 'Other',
-            data: [16, 16, 17],
+            data: [16, 20, 23],
             stack: 'All Sports'
         },
         {
             name: 'Black',
-            data: [16, 16, 17],
+            data: [11, 11, 10],
             stack: 'All Sports'
         },
         {
             name: 'White',
-            data: [16, 16, 17],
+            data: [73, 69, 67],
             stack: 'All Sports'
         },
         {
             name: 'Other',
-            data: [16, 16, 17],
+            data: [16, 19, 20],
             stack: 'Cross Country'
         },
         {
             name: 'Black',
-            data: [16, 16, 17],
+            data: [8, 8, 7],
             stack: 'Cross Country'
         },
         {
             name: 'White',
-            data: [16, 16, 17],
+            data: [76, 74, 73],
             stack: 'Cross Country'
         }
     ]
