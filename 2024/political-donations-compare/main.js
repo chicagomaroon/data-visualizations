@@ -85,7 +85,7 @@ Highcharts.chart('chart-div', {
     colors: ['#800000', '#FFA319'],
 
     title: {
-        text: '2020 and 2024 Election Donations By UChicago Faculty',
+        text: 'Cumulative Donations By UChicago Faculty in the 2020 and 2024 Election',
         align: 'center'
     },
     subtitle: {

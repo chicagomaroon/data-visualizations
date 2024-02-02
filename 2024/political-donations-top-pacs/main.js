@@ -50,7 +50,7 @@ Highcharts.chart('chart-div', {
             }
         },
         tickPositions: yAxisLabels,
-        title: ''
+        enabled: false
     },
     tooltip: {
         enabled: false
