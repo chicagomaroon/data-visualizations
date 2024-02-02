@@ -345,11 +345,11 @@ Highcharts.chart('chart-div', {
         type: 'spline'
     },
     title: {
-        text: 'Cumulative Donations by Cycle from 2016-2022',
+        text: 'Cumulative Donations from Faculty by Cycle from 2016-2022',
         align: 'center'
     },
     subtitle: {
-        text: 'The 2020 Election saw record breaking donations by UChicago professors and nationwide.',
+        text: 'The 2020 Election saw record breaking donations by UChicago faculty and nationwide.',
         align: 'center',
         style: {
             fontSize: '15px'

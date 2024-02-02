@@ -94,7 +94,7 @@ var drawGraph = function () {
         .attr('font-weight', 700)
         .attr('font-size', 20)
         .text(
-            'Between 2015 and 2023, University of Chicago professors have donated...'
+            'Between 2015 and 2023, University of Chicago faculty have donated...'
         );
 
     var title = svg
