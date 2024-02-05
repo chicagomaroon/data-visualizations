@@ -21,7 +21,7 @@ Highcharts.chart('chart-div', {
         type: 'bar'
     },
     title: {
-        text: 'Top Five Campaigns/Committees Donated to by Faculty in the 2020 Election',
+        text: 'Top Five Campaigns/Committees Faculty Donated to in the 2020 Election',
         align: 'center',
         style: {
             fontSize: '20px'
