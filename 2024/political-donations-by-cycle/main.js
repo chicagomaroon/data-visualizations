@@ -324,7 +324,7 @@ const byDay2022 = [
 ];
 const start2022 = new Date(2020, 9, 27).getTime();
 
-yAxisLabels = [0, 295038, 384179, 453972, 1289469];
+yAxisLabels = [0, 295038, 384179, 453972];
 
 color2016 = '#C16622';
 color2018 = '#800000';
@@ -433,7 +433,7 @@ Highcharts.chart('chart-div', {
                     point: {
                         xAxis: 0,
                         yAxis: 0,
-                        x: new Date(2020, 3, 1).getTime(),
+                        x: new Date(2019, 8, 1).getTime(),
                         y: 800000
                     },
                     style: {
