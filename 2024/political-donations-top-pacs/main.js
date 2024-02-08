@@ -73,18 +73,6 @@ Highcharts.chart('chart-div', {
         enabled: false
     },
     plotOptions: {
-        // bar: {
-        //     dataLabels: {
-        //         enabled: true,
-        //         format: '${y:,.0f}',
-        //         align: 'left',
-        //         inside: true,
-        //         color: 'white',
-        //         style: {
-        //             fontSize: '20px'
-        //         }
-        //     }
-        // },
         series: {
             groupPadding: 0,
             pointPadding: 0.05

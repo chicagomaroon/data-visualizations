@@ -6,7 +6,7 @@ var drawGraph = function () {
     var svgBackgroundColor = '#ffffff';
 
     //width and height of the SVG
-    const width = 650;
+    const width = 800;
     const height = 400;
 
     //create an svg with width and height
@@ -35,7 +35,7 @@ var drawGraph = function () {
 
     var repData = d3.range(repNumRows * repNumCols);
 
-    const demTranslate = 'translate(' + width * 0.4 + ',' + height * 0.18 + ')';
+    const demTranslate = 'translate(' + width * 0.43 + ',' + height * 0.22 + ')';
 
     //container to hold the grid
     var demContainer = svg.append('g').attr('transform', demTranslate);
@@ -60,7 +60,7 @@ var drawGraph = function () {
         .attr('fill', demSquare)
         .style('stroke', demSquare);
 
-    const repTranslate = 'translate(' + width * 0.13 + ',' + height * 0.6 + ')';
+    const repTranslate = 'translate(' + width * 0.19 + ',' + height * 0.643 + ')';
 
     var repContainer = svg.append('g').attr('transform', repTranslate);
 
@@ -87,7 +87,7 @@ var drawGraph = function () {
     var title = svg
         .append('text')
         .attr('class', 'title')
-        .attr('x', 20)
+        .attr('x', 100)
         .attr('y', 40)
         .attr('text-anchor', 'start')
         .attr('font-weight', 700)
@@ -99,8 +99,8 @@ var drawGraph = function () {
     var title = svg
         .append('text')
         .attr('class', 'rep-text')
-        .attr('x', 120)
-        .attr('y', 300)
+        .attr('x', 190)
+        .attr('y', 310)
         .attr('font-weight', 700)
         .attr('text-anchor', 'middle')
         .style('fill', repSquare)
@@ -113,16 +113,16 @@ var drawGraph = function () {
     var title = svg
         .append('text')
         .attr('class', 'rep-text')
-        .attr('x', 120)
-        .attr('y', 320)
+        .attr('x', 190)
+        .attr('y', 330)
         .attr('text-anchor', 'middle')
         .text('candidates and PACs');
 
     var title = svg
         .append('text')
         .attr('class', 'rep-text')
-        .attr('x', 435)
-        .attr('y', 300)
+        .attr('x', 525)
+        .attr('y', 310)
         .attr('text-anchor', 'middle')
         .attr('font-weight', 700)
         .style('fill', demSquare)
@@ -135,8 +135,8 @@ var drawGraph = function () {
     var title = svg
         .append('text')
         .attr('class', 'rep-text')
-        .attr('x', 435)
-        .attr('y', 320)
+        .attr('x', 525)
+        .attr('y', 330)
         .attr('text-anchor', 'middle')
         .text('candidates and PACs');
 };
