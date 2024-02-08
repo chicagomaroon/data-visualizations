@@ -10,10 +10,11 @@ var drawGraph = function () {
 
     //create an svg with width and height
     const svg = d3
-        .select('#grid-chart')
+        .select('#grid-container')
         .append('svg')
-        .attr('width', width)
-        .attr('height', height)
+        .attr('preserveAspectRatio', 'xMinYMin meet')
+        .attr('viewBox', '0 0 800 400')
+        .classed('d3-content', true)
         .style('background-color', svgBackgroundColor);
 
     //dem_data
