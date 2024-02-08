@@ -13,7 +13,7 @@ var drawGraph = function () {
         .select('#grid-container')
         .append('svg')
         .attr('preserveAspectRatio', 'xMinYMin meet')
-        .attr('viewBox', '0 0 800 400')
+        .attr('viewBox', `0 0 ${width} ${height}`)
         .classed('d3-content', true)
         .style('background-color', svgBackgroundColor);
 
