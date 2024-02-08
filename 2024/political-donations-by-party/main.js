@@ -35,7 +35,8 @@ var drawGraph = function () {
 
     var repData = d3.range(repNumRows * repNumCols);
 
-    const demTranslate = 'translate(' + width * 0.43 + ',' + height * 0.22 + ')';
+    const demTranslate =
+        'translate(' + width * 0.43 + ',' + height * 0.22 + ')';
 
     //container to hold the grid
     var demContainer = svg.append('g').attr('transform', demTranslate);
@@ -60,7 +61,8 @@ var drawGraph = function () {
         .attr('fill', demSquare)
         .style('stroke', demSquare);
 
-    const repTranslate = 'translate(' + width * 0.19 + ',' + height * 0.643 + ')';
+    const repTranslate =
+        'translate(' + width * 0.19 + ',' + height * 0.643 + ')';
 
     var repContainer = svg.append('g').attr('transform', repTranslate);
 
