@@ -1,5 +1,19 @@
 <html lang="en">
     <head>
+        <style>
+            #grid-container {
+                display: inline-block;
+                position: relative;
+                width: 100%;
+                padding-bottom: 45%;
+                overflow: hidden;
+            }
+            .d3-content {
+                display: inline-block;
+                position: absolute;
+            }
+        </style>
+
         <title>Donations by Party</title>
         <!-- PLACE ALL REPOSITORY CSS FILES IN A BRACKET LIKE THIS -->
         <!-- build:css inline -->
@@ -9,9 +23,7 @@
     </head>
 
     <body>
-        <div id="grid-container">
-            <div id="grid-chart"></div>
-        </div>
+        <div id="grid-container"></div>
         <!-- build:js inline -->
         <script src="main.js" type="text/javascript"></script>
         <!-- /build -->
