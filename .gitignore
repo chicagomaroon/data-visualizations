@@ -1,5 +1,7 @@
-/.idea
-/.vscode
-/node_modules
+.ipynb_checkpoints
+.idea
+.vscode
+node_modules
 *.DS_Store
 .env
+data-analysis/private_data
