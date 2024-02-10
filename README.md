@@ -1,7 +1,7 @@
 # The Chicago Maroon’s Data Visualizations
 Feature stories by The Chicago Maroon are grouped by year into corresponding folders.
 
-## The Visuals are served via this URL template
+## [For Head Developer] The Visuals are served via this URL template
 URL Template: `https://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
 
 URL Example: `https://chicagomaroon.github.io/data-visualizations/2023/thifting-growth/thifting-growth.min.html`
@@ -13,13 +13,15 @@ The following articles introduce some basic Github features we will use:
 
 ## Technical Necessities
 If you don’t have a code environment on your computer already, download one:
-- [Webstorm](https://www.jetbrains.com/webstorm/?var=1)
-   - A luxury tier JavaScript IDE. This will offer all sorts of configuration options as well as thorough documentation for any and all relevant features. You also get a free student license to IDEs from this company, JetBrains, as [a student at UChicago](https://www.jetbrains.com/community/education/#students).
-- Visual Studio Code (VSCode): An IDE that requires more technical savvy to fully benefit from, but can give you all the benefits of an IDE like WebStorm. It is also free, and is applicable to all coding languages.
+ - [Webstorm](https://www.jetbrains.com/webstorm/?var=1)
+    - A luxury tier JavaScript IDE. This will offer all sorts of configuration options as well as thorough documentation for any and all relevant features. You also get a free student license to IDEs from this company, JetBrains, as [a student at UChicago](https://www.jetbrains.com/community/education/#students).
+ - Visual Studio Code ([VSCode](https://code.visualstudio.com/download)): An IDE that requires more technical savvy to fully benefit from, but can give you all the benefits of an IDE like WebStorm. It is also free, and is applicable to all coding languages.
+
 Download these software that will allow you to run Javascript, which we write our visualizations in:
-- [node.js](https://nodejs.org/en) `v20.9.0`
+ - [node.js](https://nodejs.org/en) `v20.9.0`
    - To manage the versions of node.js I use on my computer, I use the Node Version Manager program: [Link](https://github.com/nvm-sh/nvm)
-- Download [Github desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (eg. VSCode)
+
+Download [Github desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (eg. VSCode)
 
 ## Libraries To Read When Creating Visuals
 1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
@@ -36,8 +38,8 @@ Download these software that will allow you to run Javascript, which we write ou
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
       - If you would rather use the [D3](https://d3js.org/) library, [d3plus](https://github.com/d3plus/d3plus), use this command: `npm run create-visual-d3 --year=2023 --story=example-visual`
 4. Start creating your visual that will be housed in the `./$year/$story/` folder.
-    - In your ./$year/$story/ folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
-    - If you are using Highcharts, this site gives a lot of helpful documentation on the options for creating charts.
+    - In your `./$year/$story/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
+    - If you are using Highcharts, [this site](https://api.highcharts.com/highmaps/) gives a lot of helpful documentation on the options for creating charts.
     - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
 5. Update the `meta_data.json` in your story's folder, which will look something like this:
    ```json
