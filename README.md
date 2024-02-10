@@ -15,7 +15,7 @@ The following articles introduce some basic Github features we will use:
 If you don’t have a code environment on your computer already, download one:
  - [Webstorm](https://www.jetbrains.com/webstorm/?var=1)
     - A luxury tier JavaScript IDE. This will offer all sorts of configuration options as well as thorough documentation for any and all relevant features. You also get a free student license to IDEs from this company, JetBrains, as [a student at UChicago](https://www.jetbrains.com/community/education/#students).
- - Visual Studio Code ([VSCode](https://code.visualstudio.com/download)): An IDE that requires more technical savvy to fully benefit from, but can give you all the benefits of an IDE like WebStorm. It is also free, and is applicable to all coding languages.
+ - [Visual Studio Code](https://code.visualstudio.com/download) (VSCode): An IDE that requires more technical savvy to fully benefit from, but can give you all the benefits of an IDE like WebStorm. It is also free, and is applicable to all coding languages.
 
 Download these software that will allow you to run Javascript, which we write our visualizations in:
  - [node.js](https://nodejs.org/en) `v20.9.0`
