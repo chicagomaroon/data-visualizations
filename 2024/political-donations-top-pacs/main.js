@@ -6,7 +6,7 @@ topPACs = [
     { name: 'Lauren Underwood<br/>For Congress', y: 35644 }
 ];
 
-yAxisLabels = [0, 25000, 50000, 100000, 200000, 300000, 400000];
+yAxisLabels = [0, 100000, 200000, 300000, 400000];
 
 Highcharts.setOptions({
     lang: {
@@ -36,6 +36,7 @@ Highcharts.chart('chart-div', {
     },
     xAxis: {
         type: 'category',
+        useHTML: true,
         labels: {
             style: {
                 fontSize: '16px'
@@ -44,33 +45,34 @@ Highcharts.chart('chart-div', {
     },
     yAxis: {
         labels: {
-            format: '${value:,.0f}',
+            format: '${text}',
             style: {
                 fontSize: '16px'
             }
         },
         tickPositions: yAxisLabels,
-        enabled: false
+        showLastLabel: false,
+        title: {
+            enabled: false
+        }
     },
     tooltip: {
-        enabled: false
+        formatter: function () {
+            return (
+                '<b>' +
+                this.point.name +
+                '</b>' +
+                ': ' +
+                '$' +
+                Highcharts.numberFormat(this.y, 0, ',')
+            );
+        },
+        valuePrefix: '$'
     },
     legend: {
         enabled: false
     },
     plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true,
-                format: '${y:,.0f}',
-                align: 'left',
-                inside: true,
-                color: 'white',
-                style: {
-                    fontSize: '20px'
-                }
-            }
-        },
         series: {
             groupPadding: 0,
             pointPadding: 0.05
