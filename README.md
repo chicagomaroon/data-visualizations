@@ -47,7 +47,7 @@ Download [GitHub Desktop](https://desktop.github.com/), which will allow you to 
      "description": "Describe your visual"
    }
    ```
-    - make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` 
+    - Make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` and in `index.html`'s `<title>` tag.
 6. Run `npm run lint` and make the changes that the output recommends.
 7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
