@@ -1,7 +1,7 @@
 # The Chicago Maroon’s Data Visualizations
 Feature stories by The Chicago Maroon are grouped by year into corresponding folders.
 
-## [For Head Developer] The Visuals are served via this URL template
+## [For the Lead Developer] The Visuals are served via this URL template
 URL Template: `https://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
 
 URL Example: `https://chicagomaroon.github.io/data-visualizations/2023/thifting-growth/thifting-growth.min.html`
@@ -20,14 +20,14 @@ Download these software that will allow you to run Javascript, which we write ou
  - [node.js](https://nodejs.org/en) `v20.9.0`
    - To manage the versions of node.js I use on my computer, I use the Node Version Manager program: [Link](https://github.com/nvm-sh/nvm)
 
-Download [Github desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (eg. VSCode)
+Download [GitHub desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.)
 
 ## Libraries To Read When Creating Visuals
 1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
 2. `HighCharts`: [Link](https://www.highcharts.com/)
    - We are currently using the non-profit license that requires that the `HighCharts` logo be displayed on the chart.
    - We are using version `11.0.0`, which is hosted externally.
-   - Under the ‘Demos’ tab on the Highcharts website, there are visualization templates of various kinds. When creating a data visualization, finding a template from Highcharts similar to what you’re trying to develop and working off the existing JavaScript code from the Highcharts template can be beneficial. You can find the code for that specific visual under the “View Code” or “Copy JS code” tabs under the visualization.
+   - Under the `Demos` tab on the Highcharts website, there are visualization templates of various kinds. When creating a data visualization, finding a template from Highcharts similar to what you’re trying to develop and working off the existing JavaScript code from the Highcharts template can be beneficial. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
 
 ## Build Process for a Visualization
 1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [repository](https://github.com/chicagomaroon/data-visualizations) from GitHub if you have not already.
