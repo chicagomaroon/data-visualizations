@@ -20,7 +20,7 @@ Download these software that will allow you to run Javascript, which we write ou
  - [node.js](https://nodejs.org/en) `v20.9.0`
    - To manage the versions of node.js I use on my computer, I use the Node Version Manager program: [Link](https://github.com/nvm-sh/nvm)
 
-Download [GitHub desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.)
+Download [GitHub Desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.)
 
 ## Libraries To Read When Creating Visuals
 1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
