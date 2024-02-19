@@ -354,12 +354,17 @@ map.on('load', () => {
     // Add a layer showing the places.
     map.addLayer({
         id: 'places',
-        type: 'symbol',
+        type: 'circle',
         source: 'places',
-        layout: {
-            'icon-image': ['get', 'icon'],
-            'icon-allow-overlap': true,
-            'icon-size': 2
+        paint: {
+            // Use step expressions (https://docs.mapbox.com/style-spec/reference/expressions/#step)
+            // with three steps to implement three types of circles:
+            //   * Blue, 20px circles when point count is less than 100
+            //   * Yellow, 30px circles when point count is between 100 and 750
+            //   * Pink, 40px circles when point count is greater than or equal to 750
+            'circle-radius': [
+                ["feature-state", string]:['get', '']
+            ]
         }
     });
 
