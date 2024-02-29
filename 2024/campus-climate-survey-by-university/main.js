@@ -30,12 +30,12 @@ Highcharts.chart('chart-div', {
     },
 
     xAxis: {
-        categories: ['UChicago', 'MIT', 'Stanford*', 'Brown'],
-        crosshair: true
+        categories: ['UChicago', 'MIT', 'Stanford*', 'Brown']
     },
 
     yAxis: {
         min: 0,
+        max: 100,
         title: {
             text: 'Response rate (%)'
         }
@@ -48,17 +48,14 @@ Highcharts.chart('chart-div', {
     series: [
         {
             name: 'Students',
-            type: 'column',
             data: [21, 39, 30, 16]
         },
         {
             name: 'Academics/Faculty',
-            type: 'column',
             data: [41, 69, 38, 33]
         },
         {
             name: 'Staff',
-            type: 'column',
             data: [42, 49, 44, 62]
         }
     ]
