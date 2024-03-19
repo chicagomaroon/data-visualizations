@@ -7,8 +7,7 @@ var DATA = {
             properties: {
                 name: 'AIC',
                 description: '<strong>AIC</strong>',
-                icon: 'lodging',
-                migrants: 10000
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -21,8 +20,7 @@ var DATA = {
             properties: {
                 name: 'Brands Park',
                 description: '<strong>Brands Park</strong>',
-                icon: 'lodging',
-                migrants: 5000
+                migrants: 169
             },
             geometry: {
                 type: 'Point',
@@ -35,21 +33,20 @@ var DATA = {
             properties: {
                 name: 'Broadway Armory Park',
                 description: '<strong>Broadway Armory Park</strong>',
-                icon: 'lodging',
-                migrants: 75000
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
                 coordinates: [-87.6598587, 41.9891929, 0.0]
             }
-        }/**,
+        },
         {
             id: '3',
             type: 'Feature',
             properties: {
                 name: 'Casa Esperanza',
                 description: '<strong>Casa Esperanza</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -62,7 +59,7 @@ var DATA = {
             properties: {
                 name: 'Chicago Lake Shore Hotel',
                 description: '<strong>Chicago Lake Shore Hotel</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -75,7 +72,7 @@ var DATA = {
             properties: {
                 name: 'Daley College',
                 description: '<strong>Daley College</strong>',
-                icon: 'lodging'
+                migrants: 172
             },
             geometry: {
                 type: 'Point',
@@ -88,7 +85,7 @@ var DATA = {
             properties: {
                 name: 'Gage Park',
                 description: '<strong>Gage Park</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -101,7 +98,7 @@ var DATA = {
             properties: {
                 name: 'Halsted Shelter',
                 description: '<strong>Halsted Shelter</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -114,7 +111,7 @@ var DATA = {
             properties: {
                 name: 'Inn of Chicago',
                 description: '<strong>Inn of Chicago</strong>',
-                icon: 'lodging'
+                migrants: 1432
             },
             geometry: {
                 type: 'Point',
@@ -127,7 +124,7 @@ var DATA = {
             properties: {
                 name: 'Leone Beach Park',
                 description: '<strong>Leone Beach Park</strong>',
-                icon: 'lodging'
+                migrants: 100
             },
             geometry: {
                 type: 'Point',
@@ -140,7 +137,7 @@ var DATA = {
             properties: {
                 name: 'MWRD',
                 description: '<strong>MWRD</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -153,7 +150,7 @@ var DATA = {
             properties: {
                 name: 'Near South',
                 description: '<strong>Near South</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -167,7 +164,7 @@ var DATA = {
                 name: 'New Life Community Church Lakeview',
                 description:
                     '<strong>New Life Community Church Lakeview</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -180,7 +177,7 @@ var DATA = {
             properties: {
                 name: 'North Park Village',
                 description: '<strong>North Park Village</strong>',
-                icon: 'lodging'
+                migrants: 92
             },
             geometry: {
                 type: 'Point',
@@ -193,7 +190,7 @@ var DATA = {
             properties: {
                 name: 'Ogden Shelter',
                 description: '<strong>Ogden Shelter</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -206,7 +203,7 @@ var DATA = {
             properties: {
                 name: 'Parthenon Guest House (Hostel)',
                 description: '<strong>Parthenon Guest House (Hostel)</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -219,7 +216,7 @@ var DATA = {
             properties: {
                 name: 'Piotrowski (Lillian) Park',
                 description: '<strong>Piotrowski (Lillian) Park</strong>',
-                icon: 'lodging'
+                migrants: 195
             },
             geometry: {
                 type: 'Point',
@@ -232,7 +229,7 @@ var DATA = {
             properties: {
                 name: 'Social Club',
                 description: '<strong>Social Club</strong>',
-                icon: 'lodging'
+                migrants: 1026
             },
             geometry: {
                 type: 'Point',
@@ -245,7 +242,7 @@ var DATA = {
             properties: {
                 name: 'Super 8',
                 description: '<strong>Super 8</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -258,7 +255,7 @@ var DATA = {
             properties: {
                 name: 'Wadsworth',
                 description: '<strong>Wadsworth</strong>',
-                icon: 'lodging'
+                migrants: 596
             },
             geometry: {
                 type: 'Point',
@@ -271,7 +268,7 @@ var DATA = {
             properties: {
                 name: 'Walnut Shelter',
                 description: '<strong>Walnut Shelter</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -284,7 +281,7 @@ var DATA = {
             properties: {
                 name: 'West Lake Street Shelter',
                 description: '<strong>West Lake Street Shelter</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -297,7 +294,7 @@ var DATA = {
             properties: {
                 name: 'North Western Shelter',
                 description: '<strong>North Western Shelter</strong>',
-                icon: 'lodging'
+                migrants: 0
             },
             geometry: {
                 type: 'Point',
@@ -310,7 +307,7 @@ var DATA = {
             properties: {
                 name: 'YMCA High Ridge',
                 description: '<strong>YMCA High Ridge</strong>',
-                icon: 'lodging'
+                migrants: 158
             },
             geometry: {
                 type: 'Point',
@@ -324,13 +321,27 @@ var DATA = {
                 name: "Young Women's Leadership Academy",
                 description:
                     "<strong>Young Women's Leadership Academy</strong>",
-                icon: 'lodging'
+                migrants: 247
             },
             geometry: {
                 type: 'Point',
                 coordinates: [-87.6184451, 41.8444336, 0.0]
             }
-        }*/
+        },
+        {
+            id: '25',
+            type: 'Feature',
+            properties: {
+                name: "The Salvation Army Shield of Hope",
+                description:
+                    "<strong>Salvation Army Shield of Hope</strong>",
+                migrants: 92
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.7083656, 41.9057728, 0.0]
+            }
+        }
     ]
 };
 
@@ -343,19 +354,30 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map); 
 
-/**L.geoJSON(states, {
-    style: function(feature) {
-        return {radius: feature.properties.migrants}; 
-    }
-}).addTo(map);
-*/
+const SCALE = 2
+var style = {radius: 150, 
+            fillColor: "#4035db", 
+            color: "#4035db",
+            weight: 1, 
+            opacity: 1, 
+            fillOpacity: 0.8
+        }
+
+var style2 = {radius: 9, 
+            fillColor: "#eb2121", 
+            color: "#555",
+            weight: 0.4, 
+            opacity: 1, 
+            fillOpacity: 0.7
+        }
 
 L.geoJSON(DATA, {
-    style: function (feature) {
-        return L.circleMarker(
-            {latlng: feature.geometry.coordinates}, 
-            {radius: feature.properties.migrants}
-            );
+    pointToLayer: function (feature, latlng) {
+        if(feature.properties.migrants == 0){
+            return L.circleMarker(latlng, style2);
+        } else {
+            style.radius = (Math.sqrt(feature.properties.migrants))/SCALE
+            return L.circleMarker(latlng, style);
+        }
     }
 }).addTo(map);
-//L.geoJSON(DATA).addTo(map);
