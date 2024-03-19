@@ -332,9 +332,8 @@ var DATA = {
             id: '25',
             type: 'Feature',
             properties: {
-                name: "The Salvation Army Shield of Hope",
-                description:
-                    "<strong>Salvation Army Shield of Hope</strong>",
+                name: 'The Salvation Army Shield of Hope',
+                description: '<strong>Salvation Army Shield of Hope</strong>',
                 migrants: 92
             },
             geometry: {
@@ -345,38 +344,40 @@ var DATA = {
     ]
 };
 
-
 //coordinates correct
-var map = L.map('map').setView([41.88, -87.61], 11)//;
+var map = L.map('map').setView([41.88, -87.61], 11); //;
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map); 
+    attribution:
+        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
 
-const SCALE = 2
-var style = {radius: 150, 
-            fillColor: "#4035db", 
-            color: "#4035db",
-            weight: 1, 
-            opacity: 1, 
-            fillOpacity: 0.8
-        }
+const SCALE = 2;
+var style = {
+    radius: 150,
+    fillColor: '#4035db',
+    color: '#4035db',
+    weight: 1,
+    opacity: 1,
+    fillOpacity: 0.8
+};
 
-var style2 = {radius: 9, 
-            fillColor: "#eb2121", 
-            color: "#555",
-            weight: 0.4, 
-            opacity: 1, 
-            fillOpacity: 0.7
-        }
+var style2 = {
+    radius: 9,
+    fillColor: '#eb2121',
+    color: '#555',
+    weight: 0.4,
+    opacity: 1,
+    fillOpacity: 0.7
+};
 
 L.geoJSON(DATA, {
     pointToLayer: function (feature, latlng) {
-        if(feature.properties.migrants == 0){
+        if (feature.properties.migrants == 0) {
             return L.circleMarker(latlng, style2);
         } else {
-            style.radius = (Math.sqrt(feature.properties.migrants))/SCALE
+            style.radius = Math.sqrt(feature.properties.migrants) / SCALE;
             return L.circleMarker(latlng, style);
         }
     }
