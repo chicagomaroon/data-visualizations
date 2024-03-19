@@ -347,10 +347,11 @@ var DATA = {
 //coordinates correct
 var map = L.map('map').setView([41.88, -87.61], 11); //;
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
 }).addTo(map);
 
 const SCALE = 2;
@@ -380,5 +381,18 @@ L.geoJSON(DATA, {
             style.radius = Math.sqrt(feature.properties.migrants) / SCALE;
             return L.circleMarker(latlng, style);
         }
+    },
+    // AS added mouseover functions
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup(
+            'Total Migrants as of 2/03/23: ' + feature.properties.migrants,
+            { closeButton: false, offset: L.point(0, -5) }
+        );
+        layer.on('mouseover', function () {
+            layer.openPopup();
+        });
+        layer.on('mouseout', function () {
+            layer.closePopup();
+        });
     }
 }).addTo(map);
