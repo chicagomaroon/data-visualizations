@@ -2,16 +2,10 @@
 
 ## Contribution Standards
 
-
 ## Style Standards
 
 ### Titles
 
-
 ### Subtitles
 
-
 ### Colors
-
-
-
