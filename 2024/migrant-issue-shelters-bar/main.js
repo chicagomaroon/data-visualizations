@@ -104,13 +104,18 @@ Highcharts.chart('chart-div', {
         type: 'column'
     },
     title: {
-        text: 'Total Migrants at Shelters By Region',
+        text: 'Total Migrants at Shelters By Region From June 2023 to February 2024',
         align: 'left'
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Migrants at Shelters'
+            text: ''
+        },
+        labels: {
+            formatter: function () {
+                return Highcharts.numberFormat(this.value, 0,'',',');
+            }
         },
         stackLabels: {
             enabled: false
@@ -118,7 +123,7 @@ Highcharts.chart('chart-div', {
     },
     legend: {
         align: 'left',
-        x: 70,
+        x: 100,
         verticalAlign: 'top',
         y: 60,
         floating: true,

@@ -98,29 +98,25 @@ Highcharts.chart('chart-div', {
         type: 'column'
     },
     title: {
-        text: 'Staging',
+        text: 'Total Migrants in Staging Areas from June 2023 to February 2024',
         align: 'left'
     },
     yAxis: {
         min: 0,
         title: {
-            text: 'Migrants at Shelters'
+            text: ''
+        },
+        labels: {
+            formatter: function () {
+                return Highcharts.numberFormat(this.value, 0,'',',');
+            }
         },
         stackLabels: {
-            enabled: true
+            enabled: false
         }
     },
     legend: {
-        align: 'left',
-        x: 70,
-        verticalAlign: 'top',
-        y: 70,
-        floating: true,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || 'white',
-        borderColor: '#CCC',
-        borderWidth: 1,
-        shadow: false
+       enabled: false
     },
     xAxis: {
         categories: stagingCategories.map((date) => {
