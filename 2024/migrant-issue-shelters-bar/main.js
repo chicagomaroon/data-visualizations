@@ -104,7 +104,7 @@ Highcharts.chart('chart-div', {
         type: 'column'
     },
     title: {
-        text: 'Shelters',
+        text: 'Total Migrants at Shelters By Region',
         align: 'left'
     },
     yAxis: {
@@ -113,14 +113,14 @@ Highcharts.chart('chart-div', {
             text: 'Migrants at Shelters'
         },
         stackLabels: {
-            enabled: true
+            enabled: false
         }
     },
     legend: {
         align: 'left',
         x: 70,
         verticalAlign: 'top',
-        y: 70,
+        y: 60,
         floating: true,
         backgroundColor:
             Highcharts.defaultOptions.legend.backgroundColor || 'white',
