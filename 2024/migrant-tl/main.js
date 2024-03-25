@@ -365,8 +365,8 @@ var style = {
 };
 
 var style2 = {
-    fillColor: '#ffa319',
-    color: '#ffa319',
+    fillColor: 'grey',
+    color: 'grey',
     weight: 0.4,
     opacity: 1,
     fillOpacity: 0.7
@@ -375,28 +375,33 @@ var style2 = {
 L.geoJSON(DATA, {
     pointToLayer: function (feature, latlng) {
         if (feature.properties.migrants == 0) {
-            // define rectangle geographical bounds
-            var latLng = L.latLng(feature.geometry.coordinates);
-            var currentPoint = map.latLngToContainerPoint(latLng);
-            var width = 20;
-            var height = 20;
-            var xDifference = width / 2;
-            var yDifference = height / 2;
-            var southWest = L.point(
-                currentPoint.x - xDifference,
-                currentPoint.y - yDifference
-            );
-            var northEast = L.point(
-                currentPoint.x + xDifference,
-                currentPoint.y + yDifference
-            );
-            var bounds = L.latLngBounds(
-                map.containerPointToLatLng(southWest),
-                map.containerPointToLatLng(northEast)
-            );
+            //var latLng = L.latLng(feature.geometry.coordinates);
+            // var currentPoint = map.latLngToContainerPoint(latLng);
+            // console.log(currentPoint)
+            // var width = 100;
+            // var height = 100;
+            // var xDifference = width / 2;
+            // var yDifference = height / 2;
+            // var southWest = L.point(
+            //     currentPoint.x, //- xDifference,
+            //     currentPoint.y //- yDifference
+            // );
+            // var northEast = L.point(
+            //     currentPoint.x, //+ xDifference,
+            //     currentPoint.y //+ yDifference
+            // );
+            // var bounds = L.latLngBounds(
+            //     map.containerPointToLatLng(southWest),
+            //     map.containerPointToLatLng(northEast)
+            // );
+
+            bounds = L.latLng(latlng).toBounds(600); 
+            //console.log(bounds)
             return L.rectangle(bounds, style2).addTo(map);
+
         } else {
             style.radius = Math.sqrt(feature.properties.migrants) / SCALE;
+            //console.log(latlng)
             return L.circleMarker(latlng, style);
         }
     },
