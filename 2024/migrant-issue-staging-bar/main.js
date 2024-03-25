@@ -115,7 +115,6 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
 
-    
     yAxis: {
         min: 0,
         title: {
