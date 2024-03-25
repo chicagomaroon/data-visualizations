@@ -108,7 +108,7 @@ Highcharts.chart('chart-div', {
     },
     title: {
         text: 'Total Migrants in Staging Areas from June 2023 to March 2024',
-        align: 'left'
+        align: 'center'
     },
     yAxis: {
         min: 0,

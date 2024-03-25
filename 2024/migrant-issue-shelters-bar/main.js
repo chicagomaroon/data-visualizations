@@ -112,7 +112,7 @@ Highcharts.chart('chart-div', {
     },
     title: {
         text: 'Total Migrants at Shelters By Region From June 2023 to March 2024',
-        align: 'left'
+        align: 'center'
     },
     yAxis: {
         min: 0,
