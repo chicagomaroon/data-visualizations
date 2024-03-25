@@ -114,6 +114,10 @@ Highcharts.chart('chart-div', {
         text: 'Total Migrants at Shelters By Region From June 2023 to March 2024',
         align: 'center'
     },
+    subtitle: {
+        text: "Source: The 40th Ward Office's <a href=https://40thward.org/cirr/new-arrivals/new-arrivals-data-dashboard/>New Arrivals Data Dashboard</a> ",
+        align: 'center'
+    },
     yAxis: {
         min: 0,
         title: {
