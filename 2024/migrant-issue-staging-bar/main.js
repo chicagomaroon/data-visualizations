@@ -91,12 +91,7 @@ Highcharts.setOptions({
 
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: [
-        '#155F83',
-        '#C16622',
-        '#58593F',
-        '#800000',
-    ],
+    colors: ['#155F83', '#C16622', '#58593F', '#800000'],
     chart: {
         type: 'column'
     },
