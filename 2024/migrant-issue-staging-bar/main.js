@@ -120,7 +120,7 @@ Highcharts.chart('chart-div', {
     },
     legend: {
         align: 'left',
-        x: 100,
+        x: 80,
         verticalAlign: 'top',
         y: 60,
         floating: true,
@@ -128,7 +128,8 @@ Highcharts.chart('chart-div', {
             Highcharts.defaultOptions.legend.backgroundColor || 'white',
         borderColor: '#CCC',
         borderWidth: 1,
-        shadow: false
+        shadow: false,
+        layout: 'vertical'
     },
     xAxis: {
         categories: stagingCategories.map((date) => {

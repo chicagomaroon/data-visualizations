@@ -131,7 +131,8 @@ Highcharts.chart('chart-div', {
             Highcharts.defaultOptions.legend.backgroundColor || 'white',
         borderColor: '#CCC',
         borderWidth: 1,
-        shadow: false
+        shadow: false,
+        layout: 'vertical'
     },
     xAxis: {
         categories: shelterCategories.map((date) => {
