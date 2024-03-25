@@ -1,4 +1,4 @@
-seriesData = [
+const seriesData = [
     {
         name: 'Landing Zone',
         data: [
@@ -39,7 +39,7 @@ seriesData = [
     }
 ];
 
-stagingCategories = [
+const stagingCategories = [
     '6/9/2023',
     '6/16/2023',
     '6/23/2023',
@@ -92,16 +92,10 @@ Highcharts.setOptions({
 Highcharts.chart('chart-div', {
     // Setting default colors
     colors: [
-        '#800000',
-        '#FFA319',
-        '#C16622',
-        '#8F3931',
-        '#8A9045',
-        '#58593F',
         '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
+        '#C16622',
+        '#58593F',
+        '#800000',
     ],
     chart: {
         type: 'column'
@@ -111,7 +105,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: "Source: The 40th Ward Office's <a href=https://40thward.org/cirr/new-arrivals/new-arrivals-data-dashboard/>New Arrivals Data Dashboard</a> ",
+        text: "Source: The 40th Ward Office's <a href=https://40thward.org/cirr/new-arrivals/new-arrivals-data-dashboard/>New Arrivals Data Dashboard</a>",
         align: 'center'
     },
 
@@ -130,7 +124,16 @@ Highcharts.chart('chart-div', {
         }
     },
     legend: {
-        enabled: false
+        align: 'left',
+        x: 100,
+        verticalAlign: 'top',
+        y: 60,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
     },
     xAxis: {
         categories: stagingCategories.map((date) => {

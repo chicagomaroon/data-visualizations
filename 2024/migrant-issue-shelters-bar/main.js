@@ -1,4 +1,4 @@
-seriesData = [
+const seriesData = [
     {
         name: 'Loop',
         data: [
@@ -43,7 +43,7 @@ seriesData = [
     }
 ];
 
-shelterCategories = [
+const shelterCategories = [
     '06-09-2023',
     '06-16-2023',
     '06-23-2023',
@@ -97,21 +97,15 @@ Highcharts.chart('chart-div', {
     // Setting default colors
     colors: [
         '#800000',
-        '#FFA319',
-        '#C16622',
-        '#8F3931',
-        '#8A9045',
-        '#58593F',
         '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
+        '#C16622',
+        '#58593F'
     ],
     chart: {
         type: 'column'
     },
     title: {
-        text: 'Total Migrants at Shelters By Region From June 2023 to March 2024',
+        text: 'Total Migrants at Shelters From June 2023 to March 2024',
         align: 'center'
     },
     subtitle: {
