@@ -1,0 +1,55 @@
+@import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
+
+body {
+  font-family: "Public Sans", Helvetica, sans-serif;
+  width: 100%;
+  /* padding: 1em;
+  margin: 0 auto; */
+  background: #f9f9f9;
+}
+
+.map-container {
+    position: sticky;
+    z-index: 1;
+    margin: auto;
+    top: 0;
+    width: 100%;
+}
+
+#map {
+    height: 100%;
+}
+
+.scroller {
+    position: relative;
+    background-color: white;
+    /*border: 1px black solid; */
+    padding: 10px 20px;
+    /* margin-left: 100px; */
+    width: 20%;
+    margin-top: 90vh;
+    margin-bottom: 20vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: left;
+    margin-right: auto;
+    margin-left: 45;
+    line-height: 1.2;
+    z-index: 9999;
+  }
+
+  #step1 {
+    margin-top: 0vh;
+  }
+
+  #title {
+    margin-left: auto;
+    width: 70%;
+    background-color: white;
+    box-shadow: none;
+    margin-bottom: 50vh;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    background-color: transparent;
+}
