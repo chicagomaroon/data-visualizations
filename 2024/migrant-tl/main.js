@@ -5,9 +5,9 @@ var DATA = {
             id: '0',
             type: 'Feature',
             properties: {
-                name: 'AIC',
-                description: '<strong>AIC</strong>',
-                migrants: 0
+                name: 'American Islamic College',
+                description: '<strong>American Islamic College</strong>',
+                migrants: 1014
             },
             geometry: {
                 type: 'Point',
@@ -18,9 +18,22 @@ var DATA = {
             id: '1',
             type: 'Feature',
             properties: {
+                name: 'Best Western Hotel',
+                description: '<strong>Brands Park</strong>',
+                migrants: 98
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.5858081, 41.8058927, 0.0]
+            }
+        },
+        {
+            id: '2',
+            type: 'Feature',
+            properties: {
                 name: 'Brands Park',
                 description: '<strong>Brands Park</strong>',
-                migrants: 169
+                migrants: 107
             },
             geometry: {
                 type: 'Point',
@@ -28,12 +41,12 @@ var DATA = {
             }
         },
         {
-            id: '2',
+            id: '3',
             type: 'Feature',
             properties: {
                 name: 'Broadway Armory Park',
                 description: '<strong>Broadway Armory Park</strong>',
-                migrants: 0
+                migrants: 223
             },
             geometry: {
                 type: 'Point',
@@ -41,12 +54,13 @@ var DATA = {
             }
         },
         {
-            id: '3',
+            id: '4',
             type: 'Feature',
             properties: {
                 name: 'Casa Esperanza',
                 description: '<strong>Casa Esperanza</strong>',
-                migrants: 0
+                migrants: 0,
+                closed: "Not used since 2/16/2024"
             },
             geometry: {
                 type: 'Point',
@@ -54,12 +68,12 @@ var DATA = {
             }
         },
         {
-            id: '4',
+            id: '5',
             type: 'Feature',
             properties: {
-                name: 'Chicago Lake Shore Hotel',
-                description: '<strong>Chicago Lake Shore Hotel</strong>',
-                migrants: 0
+                name: 'Lake Shore Hotel',
+                description: '<strong>Lake Shore Hotel</strong>',
+                migrants: 557
             },
             geometry: {
                 type: 'Point',
@@ -67,12 +81,12 @@ var DATA = {
             }
         },
         {
-            id: '5',
+            id: '6',
             type: 'Feature',
             properties: {
                 name: 'Daley College',
                 description: '<strong>Daley College</strong>',
-                migrants: 172
+                migrants: 182
             },
             geometry: {
                 type: 'Point',
@@ -80,12 +94,25 @@ var DATA = {
             }
         },
         {
-            id: '6',
+            id: '7',
+            type: 'Feature',
+            properties: {
+                name: 'Elston',
+                description: '<strong>Elston</strong>',
+                migrants: 893
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.6615536,41.9164027, 0.0]
+            }
+        },
+        {
+            id: '8',
             type: 'Feature',
             properties: {
                 name: 'Gage Park',
                 description: '<strong>Gage Park</strong>',
-                migrants: 0
+                migrants: 297
             },
             geometry: {
                 type: 'Point',
@@ -93,12 +120,12 @@ var DATA = {
             }
         },
         {
-            id: '7',
+            id: '9',
             type: 'Feature',
             properties: {
                 name: 'Halsted Shelter',
                 description: '<strong>Halsted Shelter</strong>',
-                migrants: 0
+                migrants: 1570
             },
             geometry: {
                 type: 'Point',
@@ -106,12 +133,26 @@ var DATA = {
             }
         },
         {
-            id: '8',
+            id: '10',
+            type: 'Feature',
+            properties: {
+                name: 'Harold Washington Library',
+                description: '<strong>Harold Washington Library</strong>',
+                migrants: 0,
+                closed: "Not used since 2/16/2024"
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.6282185, 41.8767027, 0.0]
+            }
+        },
+        {
+            id: '11',
             type: 'Feature',
             properties: {
                 name: 'Inn of Chicago',
                 description: '<strong>Inn of Chicago</strong>',
-                migrants: 1432
+                migrants: 1204
             },
             geometry: {
                 type: 'Point',
@@ -119,12 +160,12 @@ var DATA = {
             }
         },
         {
-            id: '9',
+            id: '12',
             type: 'Feature',
             properties: {
                 name: 'Leone Beach Park',
                 description: '<strong>Leone Beach Park</strong>',
-                migrants: 100
+                migrants: 61
             },
             geometry: {
                 type: 'Point',
@@ -132,12 +173,25 @@ var DATA = {
             }
         },
         {
-            id: '10',
+            id: '13',
+            type: 'Feature',
+            properties: {
+                name: 'Little Village - Pulaski CVS',
+                description: '<strong>Little Village - Pulaski CVS</strong>',
+                migrants: 189
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.7231754, 41.7641347, 0.0]
+            }
+        },
+        {
+            id: '14',
             type: 'Feature',
             properties: {
                 name: 'MWRD',
                 description: '<strong>MWRD</strong>',
-                migrants: 0
+                migrants: 516
             },
             geometry: {
                 type: 'Point',
@@ -145,12 +199,13 @@ var DATA = {
             }
         },
         {
-            id: '11',
+            id: '15',
             type: 'Feature',
             properties: {
-                name: 'Near South',
-                description: '<strong>Near South</strong>',
-                migrants: 0
+                name: 'Near South Health Center',
+                description: '<strong>Near South Health Center</strong>',
+                migrants: 0,
+                closed: "Not used since 3/8/2024"
             },
             geometry: {
                 type: 'Point',
@@ -158,13 +213,14 @@ var DATA = {
             }
         },
         {
-            id: '12',
+            id: '16',
             type: 'Feature',
             properties: {
                 name: 'New Life Community Church Lakeview',
                 description:
                     '<strong>New Life Community Church Lakeview</strong>',
-                migrants: 0
+                migrants: 0,
+                closed: "Not used since 2/23/2024"
             },
             geometry: {
                 type: 'Point',
@@ -172,12 +228,13 @@ var DATA = {
             }
         },
         {
-            id: '13',
+            id: '17',
             type: 'Feature',
             properties: {
                 name: 'North Park Village',
                 description: '<strong>North Park Village</strong>',
-                migrants: 92
+                migrants: 0,
+                closed: "Not used since 2/23/2024"
             },
             geometry: {
                 type: 'Point',
@@ -185,12 +242,12 @@ var DATA = {
             }
         },
         {
-            id: '14',
+            id: '18',
             type: 'Feature',
             properties: {
                 name: 'Ogden Shelter',
                 description: '<strong>Ogden Shelter</strong>',
-                migrants: 0
+                migrants: 858
             },
             geometry: {
                 type: 'Point',
@@ -198,12 +255,12 @@ var DATA = {
             }
         },
         {
-            id: '15',
+            id: '19',
             type: 'Feature',
             properties: {
                 name: 'Parthenon Guest House (Hostel)',
                 description: '<strong>Parthenon Guest House (Hostel)</strong>',
-                migrants: 0
+                migrants: 158
             },
             geometry: {
                 type: 'Point',
@@ -211,12 +268,12 @@ var DATA = {
             }
         },
         {
-            id: '16',
+            id: '20',
             type: 'Feature',
             properties: {
                 name: 'Piotrowski (Lillian) Park',
                 description: '<strong>Piotrowski (Lillian) Park</strong>',
-                migrants: 195
+                migrants: 142
             },
             geometry: {
                 type: 'Point',
@@ -224,12 +281,12 @@ var DATA = {
             }
         },
         {
-            id: '17',
+            id: '21',
             type: 'Feature',
             properties: {
                 name: 'Social Club',
                 description: '<strong>Social Club</strong>',
-                migrants: 1026
+                migrants: 981
             },
             geometry: {
                 type: 'Point',
@@ -237,12 +294,12 @@ var DATA = {
             }
         },
         {
-            id: '18',
+            id: '22',
             type: 'Feature',
             properties: {
-                name: 'Super 8',
-                description: '<strong>Super 8</strong>',
-                migrants: 0
+                name: 'Super 8 Motel',
+                description: '<strong>Super 8 Motel</strong>',
+                migrants: 233
             },
             geometry: {
                 type: 'Point',
@@ -250,12 +307,12 @@ var DATA = {
             }
         },
         {
-            id: '19',
+            id: '23',
             type: 'Feature',
             properties: {
                 name: 'Wadsworth',
                 description: '<strong>Wadsworth</strong>',
-                migrants: 596
+                migrants: 531
             },
             geometry: {
                 type: 'Point',
@@ -263,12 +320,12 @@ var DATA = {
             }
         },
         {
-            id: '20',
+            id: '24',
             type: 'Feature',
             properties: {
                 name: 'Walnut Shelter',
                 description: '<strong>Walnut Shelter</strong>',
-                migrants: 0
+                migrants: 635
             },
             geometry: {
                 type: 'Point',
@@ -276,12 +333,12 @@ var DATA = {
             }
         },
         {
-            id: '21',
+            id: '25',
             type: 'Feature',
             properties: {
                 name: 'West Lake Street Shelter',
                 description: '<strong>West Lake Street Shelter</strong>',
-                migrants: 0
+                migrants: 234
             },
             geometry: {
                 type: 'Point',
@@ -289,12 +346,12 @@ var DATA = {
             }
         },
         {
-            id: '22',
+            id: '26',
             type: 'Feature',
             properties: {
                 name: 'North Western Shelter',
                 description: '<strong>North Western Shelter</strong>',
-                migrants: 0
+                migrants: 187
             },
             geometry: {
                 type: 'Point',
@@ -302,12 +359,12 @@ var DATA = {
             }
         },
         {
-            id: '23',
+            id: '27',
             type: 'Feature',
             properties: {
                 name: 'YMCA High Ridge',
                 description: '<strong>YMCA High Ridge</strong>',
-                migrants: 158
+                migrants: 121
             },
             geometry: {
                 type: 'Point',
@@ -315,7 +372,7 @@ var DATA = {
             }
         },
         {
-            id: '24',
+            id: '28',
             type: 'Feature',
             properties: {
                 name: "Young Women's Leadership Academy",
@@ -329,16 +386,31 @@ var DATA = {
             }
         },
         {
-            id: '25',
+            id: '29',
             type: 'Feature',
             properties: {
                 name: 'The Salvation Army Shield of Hope',
                 description: '<strong>Salvation Army Shield of Hope</strong>',
-                migrants: 92
+                migrants: 0,
+                closed: "Not used since 6/23/2023"
             },
             geometry: {
                 type: 'Point',
                 coordinates: [-87.7083656, 41.9057728, 0.0]
+            }
+        },
+        {
+            id: '29',
+            type: 'Feature',
+            properties: {
+                name: 'Wilbur Wright College',
+                description: '<strong>Wilbur Wright College</strong>',
+                migrants: 0,
+                closed: "Not used since 8/4/2023"
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.7882797, 41.9585332, 0.0]
             }
         }
     ]
@@ -354,7 +426,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     maxZoom: 20
 }).addTo(map);
 
-const SCALE = 2;
+const SCALE = 3;
 var style = {
     radius: 150,
     fillColor: '#800000',
@@ -369,33 +441,13 @@ var style2 = {
     color: 'grey',
     weight: 0.4,
     opacity: 1,
-    fillOpacity: 0.7
+    fillOpacity: 0.8
 };
 
 L.geoJSON(DATA, {
     pointToLayer: function (feature, latlng) {
         if (feature.properties.migrants == 0) {
-            //var latLng = L.latLng(feature.geometry.coordinates);
-            // var currentPoint = map.latLngToContainerPoint(latLng);
-            // console.log(currentPoint)
-            // var width = 100;
-            // var height = 100;
-            // var xDifference = width / 2;
-            // var yDifference = height / 2;
-            // var southWest = L.point(
-            //     currentPoint.x, //- xDifference,
-            //     currentPoint.y //- yDifference
-            // );
-            // var northEast = L.point(
-            //     currentPoint.x, //+ xDifference,
-            //     currentPoint.y //+ yDifference
-            // );
-            // var bounds = L.latLngBounds(
-            //     map.containerPointToLatLng(southWest),
-            //     map.containerPointToLatLng(northEast)
-            // );
-
-            bounds = L.latLng(latlng).toBounds(600); 
+            bounds = L.latLng(latlng).toBounds(800); 
             //console.log(bounds)
             return L.rectangle(bounds, style2).addTo(map);
 
@@ -407,8 +459,14 @@ L.geoJSON(DATA, {
     },
     // AS added mouseover functions
     onEachFeature: function (feature, layer) {
+        String, label = '';
+        if (feature.properties.migrants == 0) {
+            label = feature.properties.name + ': ' + feature.properties.closed;
+        } else {
+            label = feature.properties.name + ': ' + feature.properties.migrants + ' migrants as of 3/15/23';
+        }
         layer.bindPopup(
-            'Total Migrants as of 2/03/23: ' + feature.properties.migrants,
+            label,
             { closeButton: false, offset: L.point(0, -5) }
         );
         layer.on('mouseover', function () {
