@@ -417,7 +417,7 @@ const DATA = {
 };
 
 //coordinates correct
-const map = L.map('map').setView([41.88, -87.61], 11); //;
+const map = L.map('chart-div').setView([41.88, -87.61], 11); //;
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution:

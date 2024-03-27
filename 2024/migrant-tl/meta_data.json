@@ -1,4 +1,4 @@
 {
-    "description": "Map of the migrant shelters in Chicago, represented by circles where the radius varies with the number of migrants",
+    "description": "Migrant shelters in Chicago are represented with circles, where the radius varies with the number of migrants.",
     "title": "Chicago Migrant Shelters"
 }
