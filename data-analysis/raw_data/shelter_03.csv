@@ -1,0 +1,1272 @@
+date,shelter,count,area
+6/9/2023,American Islamic College,,north
+6/16/2023,American Islamic College,,north
+6/23/2023,American Islamic College,,north
+6/30/2023,American Islamic College,,north
+7/7/2023,American Islamic College,,north
+7/14/2023,American Islamic College,,north
+7/21/2023,American Islamic College,,north
+7/28/2023,American Islamic College,,north
+8/4/2023,American Islamic College,556,north
+8/11/2023,American Islamic College,610,north
+8/18/2023,American Islamic College,783,north
+8/25/2023,American Islamic College,798,north
+9/1/2023,American Islamic College,814,north
+9/8/2023,American Islamic College,828,north
+9/15/2023,American Islamic College,996,north
+9/22/2023,American Islamic College,992,north
+9/29/2023,American Islamic College,1000,north
+10/6/2023,American Islamic College,1198,north
+10/13/2023,American Islamic College,1151,north
+10/20/2023,American Islamic College,1302,north
+10/27/2023,American Islamic College,1283,north
+11/3/2023,American Islamic College,1269,north
+11/10/2023,American Islamic College,1269,north
+11/17/2023,American Islamic College,1228,north
+11/24/2023,American Islamic College,1194,north
+12/1/2023,American Islamic College,1265,north
+12/8/2023,American Islamic College,1247,north
+12/15/2023,American Islamic College,1242,north
+12/22/2023,American Islamic College,1226,north
+12/29/2023,American Islamic College,1204,north
+1/5/2024,American Islamic College,1200,north
+1/12/2024,American Islamic College,1170,north
+1/19/2024,American Islamic College,1155,north
+1/26/2024,American Islamic College,1105,north
+2/2/2024,American Islamic College,1104,north
+2/9/2024,American Islamic College,1025,north
+2/16/2024,American Islamic College,986,north
+2/23/2024,American Islamic College,1030,north
+3/1/2024,American Islamic College,1029,north
+3/8/2024,American Islamic College,1070,north
+3/15/2024,American Islamic College,1014,north
+6/9/2023,Best Western Hotel,,south
+6/16/2023,Best Western Hotel,,south
+6/23/2023,Best Western Hotel,,south
+6/30/2023,Best Western Hotel,,south
+7/7/2023,Best Western Hotel,,south
+7/14/2023,Best Western Hotel,,south
+7/21/2023,Best Western Hotel,,south
+7/28/2023,Best Western Hotel,,south
+8/4/2023,Best Western Hotel,,south
+8/11/2023,Best Western Hotel,,south
+8/18/2023,Best Western Hotel,,south
+8/25/2023,Best Western Hotel,,south
+9/1/2023,Best Western Hotel,,south
+9/8/2023,Best Western Hotel,,south
+9/15/2023,Best Western Hotel,,south
+9/22/2023,Best Western Hotel,,south
+9/29/2023,Best Western Hotel,,south
+10/6/2023,Best Western Hotel,,south
+10/13/2023,Best Western Hotel,,south
+10/20/2023,Best Western Hotel,,south
+10/27/2023,Best Western Hotel,,south
+11/3/2023,Best Western Hotel,,south
+11/10/2023,Best Western Hotel,,south
+11/17/2023,Best Western Hotel,,south
+11/24/2023,Best Western Hotel,,south
+12/1/2023,Best Western Hotel,,south
+12/8/2023,Best Western Hotel,,south
+12/15/2023,Best Western Hotel,,south
+12/22/2023,Best Western Hotel,,south
+12/29/2023,Best Western Hotel,,south
+1/5/2024,Best Western Hotel,,south
+1/12/2024,Best Western Hotel,,south
+1/19/2024,Best Western Hotel,,south
+1/26/2024,Best Western Hotel,,south
+2/2/2024,Best Western Hotel,,south
+2/9/2024,Best Western Hotel,,south
+2/16/2024,Best Western Hotel,,south
+2/23/2024,Best Western Hotel,,south
+3/1/2024,Best Western Hotel,,south
+3/8/2024,Best Western Hotel,,south
+3/15/2024,Best Western Hotel,98,south
+6/9/2023,Brands Park,169,north
+6/16/2023,Brands Park,155,north
+6/23/2023,Brands Park,144,north
+6/30/2023,Brands Park,160,north
+7/7/2023,Brands Park,130,north
+7/14/2023,Brands Park,145,north
+7/21/2023,Brands Park,150,north
+7/28/2023,Brands Park,150,north
+8/4/2023,Brands Park,151,north
+8/11/2023,Brands Park,152,north
+8/18/2023,Brands Park,150,north
+8/25/2023,Brands Park,150,north
+9/1/2023,Brands Park,145,north
+9/8/2023,Brands Park,146,north
+9/15/2023,Brands Park,139,north
+9/22/2023,Brands Park,151,north
+9/29/2023,Brands Park,145,north
+10/6/2023,Brands Park,150,north
+10/13/2023,Brands Park,145,north
+10/20/2023,Brands Park,148,north
+10/27/2023,Brands Park,150,north
+11/3/2023,Brands Park,146,north
+11/10/2023,Brands Park,142,north
+11/17/2023,Brands Park,134,north
+11/24/2023,Brands Park,119,north
+12/1/2023,Brands Park,142,north
+12/8/2023,Brands Park,139,north
+12/15/2023,Brands Park,149,north
+12/22/2023,Brands Park,145,north
+12/29/2023,Brands Park,148,north
+1/5/2024,Brands Park,150,north
+1/12/2024,Brands Park,150,north
+1/19/2024,Brands Park,138,north
+1/26/2024,Brands Park,147,north
+2/2/2024,Brands Park,147,north
+2/9/2024,Brands Park,149,north
+2/16/2024,Brands Park,138,north
+2/23/2024,Brands Park,136,north
+3/1/2024,Brands Park,118,north
+3/8/2024,Brands Park,111,north
+3/15/2024,Brands Park,107,north
+6/9/2023,Broadway Armory,,north
+6/16/2023,Broadway Armory,,north
+6/23/2023,Broadway Armory,,north
+6/30/2023,Broadway Armory,,north
+7/7/2023,Broadway Armory,,north
+7/14/2023,Broadway Armory,,north
+7/21/2023,Broadway Armory,,north
+7/28/2023,Broadway Armory,,north
+8/4/2023,Broadway Armory,267,north
+8/11/2023,Broadway Armory,269,north
+8/18/2023,Broadway Armory,343,north
+8/25/2023,Broadway Armory,347,north
+9/1/2023,Broadway Armory,350,north
+9/8/2023,Broadway Armory,349,north
+9/15/2023,Broadway Armory,350,north
+9/22/2023,Broadway Armory,350,north
+9/29/2023,Broadway Armory,347,north
+10/6/2023,Broadway Armory,347,north
+10/13/2023,Broadway Armory,349,north
+10/20/2023,Broadway Armory,329,north
+10/27/2023,Broadway Armory,345,north
+11/3/2023,Broadway Armory,344,north
+11/10/2023,Broadway Armory,344,north
+11/17/2023,Broadway Armory,317,north
+11/24/2023,Broadway Armory,340,north
+12/1/2023,Broadway Armory,345,north
+12/8/2023,Broadway Armory,341,north
+12/15/2023,Broadway Armory,342,north
+12/22/2023,Broadway Armory,344,north
+12/29/2023,Broadway Armory,350,north
+1/5/2024,Broadway Armory,343,north
+1/12/2024,Broadway Armory,346,north
+1/19/2024,Broadway Armory,338,north
+1/26/2024,Broadway Armory,310,north
+2/2/2024,Broadway Armory,295,north
+2/9/2024,Broadway Armory,282,north
+2/16/2024,Broadway Armory,251,north
+2/23/2024,Broadway Armory,254,north
+3/1/2024,Broadway Armory,237,north
+3/8/2024,Broadway Armory,231,north
+3/15/2024,Broadway Armory,223,north
+6/9/2023,Casa Esperanza,,west
+6/16/2023,Casa Esperanza,,west
+6/23/2023,Casa Esperanza,,west
+6/30/2023,Casa Esperanza,,west
+7/7/2023,Casa Esperanza,,west
+7/14/2023,Casa Esperanza,,west
+7/21/2023,Casa Esperanza,,west
+7/28/2023,Casa Esperanza,,west
+8/4/2023,Casa Esperanza,,west
+8/11/2023,Casa Esperanza,,west
+8/18/2023,Casa Esperanza,,west
+8/25/2023,Casa Esperanza,,west
+9/1/2023,Casa Esperanza,,west
+9/8/2023,Casa Esperanza,,west
+9/15/2023,Casa Esperanza,,west
+9/22/2023,Casa Esperanza,,west
+9/29/2023,Casa Esperanza,,west
+10/6/2023,Casa Esperanza,,west
+10/13/2023,Casa Esperanza,,west
+10/20/2023,Casa Esperanza,31,west
+10/27/2023,Casa Esperanza,37,west
+11/3/2023,Casa Esperanza,41,west
+11/10/2023,Casa Esperanza,41,west
+11/17/2023,Casa Esperanza,43,west
+11/24/2023,Casa Esperanza,45,west
+12/1/2023,Casa Esperanza,39,west
+12/8/2023,Casa Esperanza,42,west
+12/15/2023,Casa Esperanza,54,west
+12/22/2023,Casa Esperanza,51,west
+12/29/2023,Casa Esperanza,48,west
+1/5/2024,Casa Esperanza,34,west
+1/12/2024,Casa Esperanza,45,west
+1/19/2024,Casa Esperanza,46,west
+1/26/2024,Casa Esperanza,34,west
+2/2/2024,Casa Esperanza,17,west
+2/9/2024,Casa Esperanza,16,west
+2/16/2024,Casa Esperanza,,west
+2/23/2024,Casa Esperanza,,west
+3/1/2024,Casa Esperanza,,west
+3/8/2024,Casa Esperanza,,west
+3/15/2024,Casa Esperanza,,west
+6/9/2023,Daley College,172,south
+6/16/2023,Daley College,411,south
+6/23/2023,Daley College,415,south
+6/30/2023,Daley College,392,south
+7/7/2023,Daley College,407,south
+7/14/2023,Daley College,412,south
+7/21/2023,Daley College,415,south
+7/28/2023,Daley College,410,south
+8/4/2023,Daley College,256,south
+8/11/2023,Daley College,254,south
+8/18/2023,Daley College,255,south
+8/25/2023,Daley College,256,south
+9/1/2023,Daley College,256,south
+9/8/2023,Daley College,252,south
+9/15/2023,Daley College,253,south
+9/22/2023,Daley College,252,south
+9/29/2023,Daley College,255,south
+10/6/2023,Daley College,246,south
+10/13/2023,Daley College,256,south
+10/20/2023,Daley College,256,south
+10/27/2023,Daley College,249,south
+11/3/2023,Daley College,246,south
+11/10/2023,Daley College,253,south
+11/17/2023,Daley College,246,south
+11/24/2023,Daley College,232,south
+12/1/2023,Daley College,249,south
+12/8/2023,Daley College,250,south
+12/15/2023,Daley College,240,south
+12/22/2023,Daley College,293,south
+12/29/2023,Daley College,390,south
+1/5/2024,Daley College,403,south
+1/12/2024,Daley College,405,south
+1/19/2024,Daley College,338,south
+1/26/2024,Daley College,254,south
+2/2/2024,Daley College,234,south
+2/9/2024,Daley College,222,south
+2/16/2024,Daley College,208,south
+2/23/2024,Daley College,203,south
+3/1/2024,Daley College,191,south
+3/8/2024,Daley College,183,south
+3/15/2024,Daley College,182,south
+6/9/2023,Elston,,west
+6/16/2023,Elston,,west
+6/23/2023,Elston,,west
+6/30/2023,Elston,,west
+7/7/2023,Elston,,west
+7/14/2023,Elston,,west
+7/21/2023,Elston,,west
+7/28/2023,Elston,,west
+8/4/2023,Elston,,west
+8/11/2023,Elston,,west
+8/18/2023,Elston,,west
+8/25/2023,Elston,,west
+9/1/2023,Elston,,west
+9/8/2023,Elston,,west
+9/15/2023,Elston,,west
+9/22/2023,Elston,,west
+9/29/2023,Elston,,west
+10/6/2023,Elston,,west
+10/13/2023,Elston,,west
+10/20/2023,Elston,,west
+10/27/2023,Elston,,west
+11/3/2023,Elston,,west
+11/10/2023,Elston,,west
+11/17/2023,Elston,,west
+11/24/2023,Elston,,west
+12/1/2023,Elston,367,west
+12/8/2023,Elston,568,west
+12/15/2023,Elston,841,west
+12/22/2023,Elston,987,west
+12/29/2023,Elston,1000,west
+1/5/2024,Elston,994,west
+1/12/2024,Elston,1009,west
+1/19/2024,Elston,981,west
+1/26/2024,Elston,950,west
+2/2/2024,Elston,975,west
+2/9/2024,Elston,897,west
+2/16/2024,Elston,850,west
+2/23/2024,Elston,789,west
+3/1/2024,Elston,796,west
+3/8/2024,Elston,831,west
+3/15/2024,Elston,893,west
+6/9/2023,Gage Park,,south
+6/16/2023,Gage Park,,south
+6/23/2023,Gage Park,,south
+6/30/2023,Gage Park,206,south
+7/7/2023,Gage Park,246,south
+7/14/2023,Gage Park,253,south
+7/21/2023,Gage Park,277,south
+7/28/2023,Gage Park,295,south
+8/4/2023,Gage Park,282,south
+8/11/2023,Gage Park,294,south
+8/18/2023,Gage Park,302,south
+8/25/2023,Gage Park,313,south
+9/1/2023,Gage Park,322,south
+9/8/2023,Gage Park,329,south
+9/15/2023,Gage Park,329,south
+9/22/2023,Gage Park,326,south
+9/29/2023,Gage Park,388,south
+10/6/2023,Gage Park,388,south
+10/13/2023,Gage Park,384,south
+10/20/2023,Gage Park,376,south
+10/27/2023,Gage Park,385,south
+11/3/2023,Gage Park,389,south
+11/10/2023,Gage Park,380,south
+11/17/2023,Gage Park,385,south
+11/24/2023,Gage Park,381,south
+12/1/2023,Gage Park,373,south
+12/8/2023,Gage Park,378,south
+12/15/2023,Gage Park,369,south
+12/22/2023,Gage Park,358,south
+12/29/2023,Gage Park,398,south
+1/5/2024,Gage Park,393,south
+1/12/2024,Gage Park,377,south
+1/19/2024,Gage Park,368,south
+1/26/2024,Gage Park,344,south
+2/2/2024,Gage Park,355,south
+2/9/2024,Gage Park,354,south
+2/16/2024,Gage Park,353,south
+2/23/2024,Gage Park,344,south
+3/1/2024,Gage Park,310,south
+3/8/2024,Gage Park,309,south
+3/15/2024,Gage Park,297,south
+6/9/2023,Halsted,,south
+6/16/2023,Halsted,,south
+6/23/2023,Halsted,,south
+6/30/2023,Halsted,,south
+7/7/2023,Halsted,,south
+7/14/2023,Halsted,,south
+7/21/2023,Halsted,,south
+7/28/2023,Halsted,,south
+8/4/2023,Halsted,,south
+8/11/2023,Halsted,,south
+8/18/2023,Halsted,,south
+8/25/2023,Halsted,,south
+9/1/2023,Halsted,60,south
+9/8/2023,Halsted,61,south
+9/15/2023,Halsted,,south
+9/22/2023,Halsted,,south
+9/29/2023,Halsted,,south
+10/6/2023,Halsted,397,south
+10/13/2023,Halsted,870,south
+10/20/2023,Halsted,973,south
+10/27/2023,Halsted,1272,south
+11/3/2023,Halsted,1291,south
+11/10/2023,Halsted,1264,south
+11/17/2023,Halsted,1385,south
+11/24/2023,Halsted,1501,south
+12/1/2023,Halsted,2030,south
+12/8/2023,Halsted,2305,south
+12/15/2023,Halsted,2391,south
+12/22/2023,Halsted,2536,south
+12/29/2023,Halsted,2539,south
+1/5/2024,Halsted,2547,south
+1/12/2024,Halsted,2549,south
+1/19/2024,Halsted,2535,south
+1/26/2024,Halsted,2451,south
+2/2/2024,Halsted,2442,south
+2/9/2024,Halsted,2298,south
+2/16/2024,Halsted,2235,south
+2/23/2024,Halsted,2150,south
+3/1/2024,Halsted,2038,south
+3/8/2024,Halsted,1896,south
+3/15/2024,Halsted,1570,south
+6/9/2023,Harold Washington Library,,loop
+6/16/2023,Harold Washington Library,,loop
+6/23/2023,Harold Washington Library,,loop
+6/30/2023,Harold Washington Library,,loop
+7/7/2023,Harold Washington Library,,loop
+7/14/2023,Harold Washington Library,,loop
+7/21/2023,Harold Washington Library,,loop
+7/28/2023,Harold Washington Library,,loop
+8/4/2023,Harold Washington Library,,loop
+8/11/2023,Harold Washington Library,,loop
+8/18/2023,Harold Washington Library,,loop
+8/25/2023,Harold Washington Library,,loop
+9/1/2023,Harold Washington Library,,loop
+9/8/2023,Harold Washington Library,,loop
+9/15/2023,Harold Washington Library,,loop
+9/22/2023,Harold Washington Library,,loop
+9/29/2023,Harold Washington Library,,loop
+10/6/2023,Harold Washington Library,,loop
+10/13/2023,Harold Washington Library,,loop
+10/20/2023,Harold Washington Library,,loop
+10/27/2023,Harold Washington Library,,loop
+11/3/2023,Harold Washington Library,,loop
+11/10/2023,Harold Washington Library,,loop
+11/17/2023,Harold Washington Library,,loop
+11/24/2023,Harold Washington Library,,loop
+12/1/2023,Harold Washington Library,,loop
+12/8/2023,Harold Washington Library,,loop
+12/15/2023,Harold Washington Library,66,loop
+12/22/2023,Harold Washington Library,106,loop
+12/29/2023,Harold Washington Library,113,loop
+1/5/2024,Harold Washington Library,156,loop
+1/12/2024,Harold Washington Library,115,loop
+1/19/2024,Harold Washington Library,113,loop
+1/26/2024,Harold Washington Library,107,loop
+2/2/2024,Harold Washington Library,107,loop
+2/9/2024,Harold Washington Library,25,loop
+2/16/2024,Harold Washington Library,,loop
+2/23/2024,Harold Washington Library,,loop
+3/1/2024,Harold Washington Library,,loop
+3/8/2024,Harold Washington Library,,loop
+3/15/2024,Harold Washington Library,,loop
+6/9/2023,High Ridge YMCA,158,north
+6/16/2023,High Ridge YMCA,126,north
+6/23/2023,High Ridge YMCA,148,north
+6/30/2023,High Ridge YMCA,149,north
+7/7/2023,High Ridge YMCA,124,north
+7/14/2023,High Ridge YMCA,145,north
+7/21/2023,High Ridge YMCA,149,north
+7/28/2023,High Ridge YMCA,149,north
+8/4/2023,High Ridge YMCA,153,north
+8/11/2023,High Ridge YMCA,160,north
+8/18/2023,High Ridge YMCA,156,north
+8/25/2023,High Ridge YMCA,160,north
+9/1/2023,High Ridge YMCA,158,north
+9/8/2023,High Ridge YMCA,158,north
+9/15/2023,High Ridge YMCA,155,north
+9/22/2023,High Ridge YMCA,160,north
+9/29/2023,High Ridge YMCA,159,north
+10/6/2023,High Ridge YMCA,159,north
+10/13/2023,High Ridge YMCA,158,north
+10/20/2023,High Ridge YMCA,156,north
+10/27/2023,High Ridge YMCA,157,north
+11/3/2023,High Ridge YMCA,155,north
+11/10/2023,High Ridge YMCA,158,north
+11/17/2023,High Ridge YMCA,151,north
+11/24/2023,High Ridge YMCA,149,north
+12/1/2023,High Ridge YMCA,151,north
+12/8/2023,High Ridge YMCA,153,north
+12/15/2023,High Ridge YMCA,157,north
+12/22/2023,High Ridge YMCA,154,north
+12/29/2023,High Ridge YMCA,154,north
+1/5/2024,High Ridge YMCA,113,north
+1/12/2024,High Ridge YMCA,159,north
+1/19/2024,High Ridge YMCA,257,north
+1/26/2024,High Ridge YMCA,131,north
+2/2/2024,High Ridge YMCA,145,north
+2/9/2024,High Ridge YMCA,150,north
+2/16/2024,High Ridge YMCA,146,north
+2/23/2024,High Ridge YMCA,142,north
+3/1/2024,High Ridge YMCA,131,north
+3/8/2024,High Ridge YMCA,133,north
+3/15/2024,High Ridge YMCA,121,north
+6/9/2023,Inn of Chicago,1432,loop
+6/16/2023,Inn of Chicago,1252,loop
+6/23/2023,Inn of Chicago,1398,loop
+6/30/2023,Inn of Chicago,1388,loop
+7/7/2023,Inn of Chicago,1408,loop
+7/14/2023,Inn of Chicago,1426,loop
+7/21/2023,Inn of Chicago,1468,loop
+7/28/2023,Inn of Chicago,1507,loop
+8/4/2023,Inn of Chicago,1509,loop
+8/11/2023,Inn of Chicago,1503,loop
+8/18/2023,Inn of Chicago,1469,loop
+8/25/2023,Inn of Chicago,1550,loop
+9/1/2023,Inn of Chicago,1543,loop
+9/8/2023,Inn of Chicago,1503,loop
+9/15/2023,Inn of Chicago,1553,loop
+9/22/2023,Inn of Chicago,1530,loop
+9/29/2023,Inn of Chicago,1529,loop
+10/6/2023,Inn of Chicago,1156,loop
+10/13/2023,Inn of Chicago,1532,loop
+10/20/2023,Inn of Chicago,1533,loop
+10/27/2023,Inn of Chicago,1499,loop
+11/3/2023,Inn of Chicago,1531,loop
+11/10/2023,Inn of Chicago,1507,loop
+11/17/2023,Inn of Chicago,1488,loop
+11/24/2023,Inn of Chicago,1478,loop
+12/1/2023,Inn of Chicago,1455,loop
+12/8/2023,Inn of Chicago,1388,loop
+12/15/2023,Inn of Chicago,1366,loop
+12/22/2023,Inn of Chicago,1478,loop
+12/29/2023,Inn of Chicago,1492,loop
+1/5/2024,Inn of Chicago,1522,loop
+1/12/2024,Inn of Chicago,1411,loop
+1/19/2024,Inn of Chicago,1384,loop
+1/26/2024,Inn of Chicago,1371,loop
+2/2/2024,Inn of Chicago,1294,loop
+2/9/2024,Inn of Chicago,1215,loop
+2/16/2024,Inn of Chicago,1180,loop
+2/23/2024,Inn of Chicago,1171,loop
+3/1/2024,Inn of Chicago,1166,loop
+3/8/2024,Inn of Chicago,1152,loop
+3/15/2024,Inn of Chicago,1204,loop
+6/9/2023,Lakeshore Hotel,,south
+6/16/2023,Lakeshore Hotel,,south
+6/23/2023,Lakeshore Hotel,,south
+6/30/2023,Lakeshore Hotel,,south
+7/7/2023,Lakeshore Hotel,,south
+7/14/2023,Lakeshore Hotel,,south
+7/21/2023,Lakeshore Hotel,,south
+7/28/2023,Lakeshore Hotel,,south
+8/4/2023,Lakeshore Hotel,,south
+8/11/2023,Lakeshore Hotel,,south
+8/18/2023,Lakeshore Hotel,,south
+8/25/2023,Lakeshore Hotel,,south
+9/1/2023,Lakeshore Hotel,,south
+9/8/2023,Lakeshore Hotel,377,south
+9/15/2023,Lakeshore Hotel,603,south
+9/22/2023,Lakeshore Hotel,602,south
+9/29/2023,Lakeshore Hotel,598,south
+10/6/2023,Lakeshore Hotel,625,south
+10/13/2023,Lakeshore Hotel,616,south
+10/20/2023,Lakeshore Hotel,616,south
+10/27/2023,Lakeshore Hotel,628,south
+11/3/2023,Lakeshore Hotel,607,south
+11/10/2023,Lakeshore Hotel,619,south
+11/17/2023,Lakeshore Hotel,606,south
+11/24/2023,Lakeshore Hotel,617,south
+12/1/2023,Lakeshore Hotel,615,south
+12/8/2023,Lakeshore Hotel,589,south
+12/15/2023,Lakeshore Hotel,588,south
+12/22/2023,Lakeshore Hotel,591,south
+12/29/2023,Lakeshore Hotel,602,south
+1/5/2024,Lakeshore Hotel,601,south
+1/12/2024,Lakeshore Hotel,600,south
+1/19/2024,Lakeshore Hotel,597,south
+1/26/2024,Lakeshore Hotel,577,south
+2/2/2024,Lakeshore Hotel,571,south
+2/9/2024,Lakeshore Hotel,553,south
+2/16/2024,Lakeshore Hotel,546,south
+2/23/2024,Lakeshore Hotel,544,south
+3/1/2024,Lakeshore Hotel,532,south
+3/8/2024,Lakeshore Hotel,581,south
+3/15/2024,Lakeshore Hotel,557,south
+6/9/2023,Leone Beach,100,north
+6/16/2023,Leone Beach,97,north
+6/23/2023,Leone Beach,97,north
+6/30/2023,Leone Beach,80,north
+7/7/2023,Leone Beach,103,north
+7/14/2023,Leone Beach,86,north
+7/21/2023,Leone Beach,101,north
+7/28/2023,Leone Beach,101,north
+8/4/2023,Leone Beach,100,north
+8/11/2023,Leone Beach,96,north
+8/18/2023,Leone Beach,101,north
+8/25/2023,Leone Beach,101,north
+9/1/2023,Leone Beach,101,north
+9/8/2023,Leone Beach,91,north
+9/15/2023,Leone Beach,99,north
+9/22/2023,Leone Beach,101,north
+9/29/2023,Leone Beach,99,north
+10/6/2023,Leone Beach,99,north
+10/13/2023,Leone Beach,98,north
+10/20/2023,Leone Beach,99,north
+10/27/2023,Leone Beach,99,north
+11/3/2023,Leone Beach,99,north
+11/10/2023,Leone Beach,98,north
+11/17/2023,Leone Beach,94,north
+11/24/2023,Leone Beach,93,north
+12/1/2023,Leone Beach,95,north
+12/8/2023,Leone Beach,93,north
+12/15/2023,Leone Beach,98,north
+12/22/2023,Leone Beach,95,north
+12/29/2023,Leone Beach,98,north
+1/5/2024,Leone Beach,99,north
+1/12/2024,Leone Beach,100,north
+1/19/2024,Leone Beach,98,north
+1/26/2024,Leone Beach,90,north
+2/2/2024,Leone Beach,94,north
+2/9/2024,Leone Beach,92,north
+2/16/2024,Leone Beach,88,north
+2/23/2024,Leone Beach,91,north
+3/1/2024,Leone Beach,87,north
+3/8/2024,Leone Beach,75,north
+3/15/2024,Leone Beach,61,north
+6/9/2023,Little Village - Pulaski CVS,,west
+6/16/2023,Little Village - Pulaski CVS,,west
+6/23/2023,Little Village - Pulaski CVS,,west
+6/30/2023,Little Village - Pulaski CVS,,west
+7/7/2023,Little Village - Pulaski CVS,,west
+7/14/2023,Little Village - Pulaski CVS,,west
+7/21/2023,Little Village - Pulaski CVS,,west
+7/28/2023,Little Village - Pulaski CVS,,west
+8/4/2023,Little Village - Pulaski CVS,,west
+8/11/2023,Little Village - Pulaski CVS,,west
+8/18/2023,Little Village - Pulaski CVS,,west
+8/25/2023,Little Village - Pulaski CVS,,west
+9/1/2023,Little Village - Pulaski CVS,,west
+9/8/2023,Little Village - Pulaski CVS,,west
+9/15/2023,Little Village - Pulaski CVS,,west
+9/22/2023,Little Village - Pulaski CVS,,west
+9/29/2023,Little Village - Pulaski CVS,,west
+10/6/2023,Little Village - Pulaski CVS,,west
+10/13/2023,Little Village - Pulaski CVS,,west
+10/20/2023,Little Village - Pulaski CVS,,west
+10/27/2023,Little Village - Pulaski CVS,,west
+11/3/2023,Little Village - Pulaski CVS,,west
+11/10/2023,Little Village - Pulaski CVS,,west
+11/17/2023,Little Village - Pulaski CVS,,west
+11/24/2023,Little Village - Pulaski CVS,,west
+12/1/2023,Little Village - Pulaski CVS,,west
+12/8/2023,Little Village - Pulaski CVS,,west
+12/15/2023,Little Village - Pulaski CVS,,west
+12/22/2023,Little Village - Pulaski CVS,,west
+12/29/2023,Little Village - Pulaski CVS,,west
+1/5/2024,Little Village - Pulaski CVS,,west
+1/12/2024,Little Village - Pulaski CVS,202,west
+1/19/2024,Little Village - Pulaski CVS,202,west
+1/26/2024,Little Village - Pulaski CVS,202,west
+2/2/2024,Little Village - Pulaski CVS,201,west
+2/9/2024,Little Village - Pulaski CVS,200,west
+2/16/2024,Little Village - Pulaski CVS,206,west
+2/23/2024,Little Village - Pulaski CVS,196,west
+3/1/2024,Little Village - Pulaski CVS,196,west
+3/8/2024,Little Village - Pulaski CVS,193,west
+3/15/2024,Little Village - Pulaski CVS,189,west
+6/9/2023,MWRD,,north
+6/16/2023,MWRD,,north
+6/23/2023,MWRD,,north
+6/30/2023,MWRD,,north
+7/7/2023,MWRD,,north
+7/14/2023,MWRD,,north
+7/21/2023,MWRD,,north
+7/28/2023,MWRD,,north
+8/4/2023,MWRD,,north
+8/11/2023,MWRD,,north
+8/18/2023,MWRD,,north
+8/25/2023,MWRD,,north
+9/1/2023,MWRD,,north
+9/8/2023,MWRD,,north
+9/15/2023,MWRD,,north
+9/22/2023,MWRD,390,north
+9/29/2023,MWRD,547,north
+10/6/2023,MWRD,550,north
+10/13/2023,MWRD,548,north
+10/20/2023,MWRD,545,north
+10/27/2023,MWRD,550,north
+11/3/2023,MWRD,542,north
+11/10/2023,MWRD,542,north
+11/17/2023,MWRD,549,north
+11/24/2023,MWRD,523,north
+12/1/2023,MWRD,541,north
+12/8/2023,MWRD,549,north
+12/15/2023,MWRD,540,north
+12/22/2023,MWRD,547,north
+12/29/2023,MWRD,547,north
+1/5/2024,MWRD,547,north
+1/12/2024,MWRD,550,north
+1/19/2024,MWRD,541,north
+1/26/2024,MWRD,547,north
+2/2/2024,MWRD,538,north
+2/9/2024,MWRD,528,north
+2/16/2024,MWRD,511,north
+2/23/2024,MWRD,534,north
+3/1/2024,MWRD,515,north
+3/8/2024,MWRD,476,north
+3/15/2024,MWRD,516,north
+6/9/2023,Near South Health Center,,south
+6/16/2023,Near South Health Center,,south
+6/23/2023,Near South Health Center,,south
+6/30/2023,Near South Health Center,,south
+7/7/2023,Near South Health Center,,south
+7/14/2023,Near South Health Center,,south
+7/21/2023,Near South Health Center,48,south
+7/28/2023,Near South Health Center,131,south
+8/4/2023,Near South Health Center,126,south
+8/11/2023,Near South Health Center,125,south
+8/18/2023,Near South Health Center,155,south
+8/25/2023,Near South Health Center,154,south
+9/1/2023,Near South Health Center,153,south
+9/8/2023,Near South Health Center,150,south
+9/15/2023,Near South Health Center,152,south
+9/22/2023,Near South Health Center,155,south
+9/29/2023,Near South Health Center,155,south
+10/6/2023,Near South Health Center,155,south
+10/13/2023,Near South Health Center,154,south
+10/20/2023,Near South Health Center,153,south
+10/27/2023,Near South Health Center,146,south
+11/3/2023,Near South Health Center,155,south
+11/10/2023,Near South Health Center,154,south
+11/17/2023,Near South Health Center,153,south
+11/24/2023,Near South Health Center,154,south
+12/1/2023,Near South Health Center,151,south
+12/8/2023,Near South Health Center,153,south
+12/15/2023,Near South Health Center,154,south
+12/22/2023,Near South Health Center,154,south
+12/29/2023,Near South Health Center,157,south
+1/5/2024,Near South Health Center,155,south
+1/12/2024,Near South Health Center,160,south
+1/19/2024,Near South Health Center,156,south
+1/26/2024,Near South Health Center,154,south
+2/2/2024,Near South Health Center,148,south
+2/9/2024,Near South Health Center,135,south
+2/16/2024,Near South Health Center,117,south
+2/23/2024,Near South Health Center,100,south
+3/1/2024,Near South Health Center,106,south
+3/8/2024,Near South Health Center,,south
+3/15/2024,Near South Health Center,,south
+6/9/2023,New Life Church,,north
+6/16/2023,New Life Church,,north
+6/23/2023,New Life Church,,north
+6/30/2023,New Life Church,,north
+7/7/2023,New Life Church,25,north
+7/14/2023,New Life Church,40,north
+7/21/2023,New Life Church,40,north
+7/28/2023,New Life Church,,north
+8/4/2023,New Life Church,,north
+8/11/2023,New Life Church,,north
+8/18/2023,New Life Church,,north
+8/25/2023,New Life Church,,north
+9/1/2023,New Life Church,50,north
+9/8/2023,New Life Church,50,north
+9/15/2023,New Life Church,50,north
+9/22/2023,New Life Church,49,north
+9/29/2023,New Life Church,51,north
+10/6/2023,New Life Church,50,north
+10/13/2023,New Life Church,47,north
+10/20/2023,New Life Church,50,north
+10/27/2023,New Life Church,50,north
+11/3/2023,New Life Church,50,north
+11/10/2023,New Life Church,49,north
+11/17/2023,New Life Church,47,north
+11/24/2023,New Life Church,47,north
+12/1/2023,New Life Church,47,north
+12/8/2023,New Life Church,51,north
+12/15/2023,New Life Church,50,north
+12/22/2023,New Life Church,49,north
+12/29/2023,New Life Church,49,north
+1/5/2024,New Life Church,50,north
+1/12/2024,New Life Church,49,north
+1/19/2024,New Life Church,48,north
+1/26/2024,New Life Church,48,north
+2/2/2024,New Life Church,48,north
+2/9/2024,New Life Church,35,north
+2/16/2024,New Life Church,33,north
+2/23/2024,New Life Church,,north
+3/1/2024,New Life Church,,north
+3/8/2024,New Life Church,,north
+3/15/2024,New Life Church,,north
+6/9/2023,North Park Village,92,north
+6/16/2023,North Park Village,102,north
+6/23/2023,North Park Village,125,north
+6/30/2023,North Park Village,126,north
+7/7/2023,North Park Village,144,north
+7/14/2023,North Park Village,181,north
+7/21/2023,North Park Village,176,north
+7/28/2023,North Park Village,179,north
+8/4/2023,North Park Village,178,north
+8/11/2023,North Park Village,174,north
+8/18/2023,North Park Village,179,north
+8/25/2023,North Park Village,174,north
+9/1/2023,North Park Village,176,north
+9/8/2023,North Park Village,178,north
+9/15/2023,North Park Village,178,north
+9/22/2023,North Park Village,179,north
+9/29/2023,North Park Village,181,north
+10/6/2023,North Park Village,170,north
+10/13/2023,North Park Village,169,north
+10/20/2023,North Park Village,182,north
+10/27/2023,North Park Village,176,north
+11/3/2023,North Park Village,167,north
+11/10/2023,North Park Village,174,north
+11/17/2023,North Park Village,175,north
+11/24/2023,North Park Village,170,north
+12/1/2023,North Park Village,178,north
+12/8/2023,North Park Village,177,north
+12/15/2023,North Park Village,173,north
+12/22/2023,North Park Village,174,north
+12/29/2023,North Park Village,178,north
+1/5/2024,North Park Village,181,north
+1/12/2024,North Park Village,180,north
+1/19/2024,North Park Village,180,north
+1/26/2024,North Park Village,173,north
+2/2/2024,North Park Village,166,north
+2/9/2024,North Park Village,163,north
+2/16/2024,North Park Village,149,north
+2/23/2024,North Park Village,,north
+3/1/2024,North Park Village,,north
+3/8/2024,North Park Village,,north
+3/15/2024,North Park Village,,north
+6/9/2023,North Western,,west
+6/16/2023,North Western,,west
+6/23/2023,North Western,,west
+6/30/2023,North Western,,west
+7/7/2023,North Western,,west
+7/14/2023,North Western,,west
+7/21/2023,North Western,,west
+7/28/2023,North Western,,west
+8/4/2023,North Western,,west
+8/11/2023,North Western,,west
+8/18/2023,North Western,,west
+8/25/2023,North Western,,west
+9/1/2023,North Western,,west
+9/8/2023,North Western,,west
+9/15/2023,North Western,,west
+9/22/2023,North Western,,west
+9/29/2023,North Western,,west
+10/6/2023,North Western,,west
+10/13/2023,North Western,,west
+10/20/2023,North Western,,west
+10/27/2023,North Western,,west
+11/3/2023,North Western,,west
+11/10/2023,North Western,201,west
+11/17/2023,North Western,187,west
+11/24/2023,North Western,186,west
+12/1/2023,North Western,185,west
+12/8/2023,North Western,195,west
+12/15/2023,North Western,200,west
+12/22/2023,North Western,200,west
+12/29/2023,North Western,199,west
+1/5/2024,North Western,199,west
+1/12/2024,North Western,199,west
+1/19/2024,North Western,199,west
+1/26/2024,North Western,191,west
+2/2/2024,North Western,162,west
+2/9/2024,North Western,144,west
+2/16/2024,North Western,128,west
+2/23/2024,North Western,115,west
+3/1/2024,North Western,106,west
+3/8/2024,North Western,98,west
+3/15/2024,North Western,187,west
+6/9/2023,Ogden,,west
+6/16/2023,Ogden,,west
+6/23/2023,Ogden,,west
+6/30/2023,Ogden,,west
+7/7/2023,Ogden,,west
+7/14/2023,Ogden,,west
+7/21/2023,Ogden,,west
+7/28/2023,Ogden,,west
+8/4/2023,Ogden,,west
+8/11/2023,Ogden,,west
+8/18/2023,Ogden,,west
+8/25/2023,Ogden,,west
+9/1/2023,Ogden,,west
+9/8/2023,Ogden,,west
+9/15/2023,Ogden,,west
+9/22/2023,Ogden,100,west
+9/29/2023,Ogden,650,west
+10/6/2023,Ogden,647,west
+10/13/2023,Ogden,881,west
+10/20/2023,Ogden,890,west
+10/27/2023,Ogden,895,west
+11/3/2023,Ogden,882,west
+11/10/2023,Ogden,1127,west
+11/17/2023,Ogden,1127,west
+11/24/2023,Ogden,1128,west
+12/1/2023,Ogden,1135,west
+12/8/2023,Ogden,1114,west
+12/15/2023,Ogden,1132,west
+12/22/2023,Ogden,1134,west
+12/29/2023,Ogden,1126,west
+1/5/2024,Ogden,1129,west
+1/12/2024,Ogden,1109,west
+1/19/2024,Ogden,1129,west
+1/26/2024,Ogden,1128,west
+2/2/2024,Ogden,1068,west
+2/9/2024,Ogden,1039,west
+2/16/2024,Ogden,1064,west
+2/23/2024,Ogden,1010,west
+3/1/2024,Ogden,1006,west
+3/8/2024,Ogden,929,west
+3/15/2024,Ogden,858,west
+6/9/2023,Parthenon,,west
+6/16/2023,Parthenon,,west
+6/23/2023,Parthenon,,west
+6/30/2023,Parthenon,,west
+7/7/2023,Parthenon,,west
+7/14/2023,Parthenon,,west
+7/21/2023,Parthenon,,west
+7/28/2023,Parthenon,,west
+8/4/2023,Parthenon,,west
+8/11/2023,Parthenon,,west
+8/18/2023,Parthenon,,west
+8/25/2023,Parthenon,,west
+9/1/2023,Parthenon,,west
+9/8/2023,Parthenon,,west
+9/15/2023,Parthenon,,west
+9/22/2023,Parthenon,185,west
+9/29/2023,Parthenon,184,west
+10/6/2023,Parthenon,186,west
+10/13/2023,Parthenon,185,west
+10/20/2023,Parthenon,178,west
+10/27/2023,Parthenon,186,west
+11/3/2023,Parthenon,185,west
+11/10/2023,Parthenon,182,west
+11/17/2023,Parthenon,182,west
+11/24/2023,Parthenon,183,west
+12/1/2023,Parthenon,185,west
+12/8/2023,Parthenon,186,west
+12/15/2023,Parthenon,185,west
+12/22/2023,Parthenon,186,west
+12/29/2023,Parthenon,186,west
+1/5/2024,Parthenon,186,west
+1/12/2024,Parthenon,185,west
+1/19/2024,Parthenon,184,west
+1/26/2024,Parthenon,184,west
+2/2/2024,Parthenon,184,west
+2/9/2024,Parthenon,183,west
+2/16/2024,Parthenon,184,west
+2/23/2024,Parthenon,176,west
+3/1/2024,Parthenon,170,west
+3/8/2024,Parthenon,158,west
+3/15/2024,Parthenon,158,west
+6/9/2023,Piotrowski Park,195,west
+6/16/2023,Piotrowski Park,197,west
+6/23/2023,Piotrowski Park,200,west
+6/30/2023,Piotrowski Park,197,west
+7/7/2023,Piotrowski Park,200,west
+7/14/2023,Piotrowski Park,192,west
+7/21/2023,Piotrowski Park,196,west
+7/28/2023,Piotrowski Park,198,west
+8/4/2023,Piotrowski Park,198,west
+8/11/2023,Piotrowski Park,198,west
+8/18/2023,Piotrowski Park,195,west
+8/25/2023,Piotrowski Park,200,west
+9/1/2023,Piotrowski Park,200,west
+9/8/2023,Piotrowski Park,197,west
+9/15/2023,Piotrowski Park,200,west
+9/22/2023,Piotrowski Park,195,west
+9/29/2023,Piotrowski Park,200,west
+10/6/2023,Piotrowski Park,198,west
+10/13/2023,Piotrowski Park,197,west
+10/20/2023,Piotrowski Park,200,west
+10/27/2023,Piotrowski Park,200,west
+11/3/2023,Piotrowski Park,202,west
+11/10/2023,Piotrowski Park,197,west
+11/17/2023,Piotrowski Park,186,west
+11/24/2023,Piotrowski Park,174,west
+12/1/2023,Piotrowski Park,180,west
+12/8/2023,Piotrowski Park,200,west
+12/15/2023,Piotrowski Park,198,west
+12/22/2023,Piotrowski Park,199,west
+12/29/2023,Piotrowski Park,200,west
+1/5/2024,Piotrowski Park,196,west
+1/12/2024,Piotrowski Park,198,west
+1/19/2024,Piotrowski Park,187,west
+1/26/2024,Piotrowski Park,180,west
+2/2/2024,Piotrowski Park,161,west
+2/9/2024,Piotrowski Park,145,west
+2/16/2024,Piotrowski Park,141,west
+2/23/2024,Piotrowski Park,146,west
+3/1/2024,Piotrowski Park,140,west
+3/8/2024,Piotrowski Park,138,west
+3/15/2024,Piotrowski Park,142,west
+6/9/2023,Shield of Hope,92,west
+6/16/2023,Shield of Hope,90,west
+6/23/2023,Shield of Hope,,west
+6/30/2023,Shield of Hope,,west
+7/7/2023,Shield of Hope,,west
+7/14/2023,Shield of Hope,,west
+7/21/2023,Shield of Hope,,west
+7/28/2023,Shield of Hope,,west
+8/4/2023,Shield of Hope,,west
+8/11/2023,Shield of Hope,,west
+8/18/2023,Shield of Hope,,west
+8/25/2023,Shield of Hope,,west
+9/1/2023,Shield of Hope,,west
+9/8/2023,Shield of Hope,,west
+9/15/2023,Shield of Hope,,west
+9/22/2023,Shield of Hope,,west
+9/29/2023,Shield of Hope,,west
+10/6/2023,Shield of Hope,,west
+10/13/2023,Shield of Hope,,west
+10/20/2023,Shield of Hope,,west
+10/27/2023,Shield of Hope,,west
+11/3/2023,Shield of Hope,,west
+11/10/2023,Shield of Hope,,west
+11/17/2023,Shield of Hope,,west
+11/24/2023,Shield of Hope,,west
+12/1/2023,Shield of Hope,,west
+12/8/2023,Shield of Hope,,west
+12/15/2023,Shield of Hope,,west
+12/22/2023,Shield of Hope,,west
+12/29/2023,Shield of Hope,,west
+1/5/2024,Shield of Hope,,west
+1/12/2024,Shield of Hope,,west
+1/19/2024,Shield of Hope,,west
+1/26/2024,Shield of Hope,,west
+2/2/2024,Shield of Hope,,west
+2/9/2024,Shield of Hope,,west
+2/16/2024,Shield of Hope,,west
+2/23/2024,Shield of Hope,,west
+3/1/2024,Shield of Hope,,west
+3/8/2024,Shield of Hope,,west
+3/15/2024,Shield of Hope,,west
+6/9/2023,Social Club,1026,loop
+6/16/2023,Social Club,1033,loop
+6/23/2023,Social Club,1084,loop
+6/30/2023,Social Club,1147,loop
+7/7/2023,Social Club,1167,loop
+7/14/2023,Social Club,1182,loop
+7/21/2023,Social Club,1169,loop
+7/28/2023,Social Club,1179,loop
+8/4/2023,Social Club,1185,loop
+8/11/2023,Social Club,1182,loop
+8/18/2023,Social Club,1190,loop
+8/25/2023,Social Club,1187,loop
+9/1/2023,Social Club,1176,loop
+9/8/2023,Social Club,1179,loop
+9/15/2023,Social Club,1170,loop
+9/22/2023,Social Club,1191,loop
+9/29/2023,Social Club,1172,loop
+10/6/2023,Social Club,1191,loop
+10/13/2023,Social Club,1190,loop
+10/20/2023,Social Club,1167,loop
+10/27/2023,Social Club,1192,loop
+11/3/2023,Social Club,1196,loop
+11/10/2023,Social Club,1197,loop
+11/17/2023,Social Club,1176,loop
+11/24/2023,Social Club,1185,loop
+12/1/2023,Social Club,1200,loop
+12/8/2023,Social Club,1192,loop
+12/15/2023,Social Club,1175,loop
+12/22/2023,Social Club,1178,loop
+12/29/2023,Social Club,1200,loop
+1/5/2024,Social Club,1197,loop
+1/12/2024,Social Club,1208,loop
+1/19/2024,Social Club,1192,loop
+1/26/2024,Social Club,1171,loop
+2/2/2024,Social Club,1090,loop
+2/9/2024,Social Club,1183,loop
+2/16/2024,Social Club,1106,loop
+2/23/2024,Social Club,1087,loop
+3/1/2024,Social Club,1076,loop
+3/8/2024,Social Club,1019,loop
+3/15/2024,Social Club,981,loop
+6/9/2023,Super 8 Motel,,north
+6/16/2023,Super 8 Motel,,north
+6/23/2023,Super 8 Motel,,north
+6/30/2023,Super 8 Motel,,north
+7/7/2023,Super 8 Motel,,north
+7/14/2023,Super 8 Motel,,north
+7/21/2023,Super 8 Motel,,north
+7/28/2023,Super 8 Motel,243,north
+8/4/2023,Super 8 Motel,258,north
+8/11/2023,Super 8 Motel,276,north
+8/18/2023,Super 8 Motel,279,north
+8/25/2023,Super 8 Motel,282,north
+9/1/2023,Super 8 Motel,285,north
+9/8/2023,Super 8 Motel,285,north
+9/15/2023,Super 8 Motel,278,north
+9/22/2023,Super 8 Motel,283,north
+9/29/2023,Super 8 Motel,281,north
+10/6/2023,Super 8 Motel,284,north
+10/13/2023,Super 8 Motel,281,north
+10/20/2023,Super 8 Motel,282,north
+10/27/2023,Super 8 Motel,280,north
+11/3/2023,Super 8 Motel,282,north
+11/10/2023,Super 8 Motel,280,north
+11/17/2023,Super 8 Motel,278,north
+11/24/2023,Super 8 Motel,261,north
+12/1/2023,Super 8 Motel,279,north
+12/8/2023,Super 8 Motel,263,north
+12/15/2023,Super 8 Motel,278,north
+12/22/2023,Super 8 Motel,271,north
+12/29/2023,Super 8 Motel,267,north
+1/5/2024,Super 8 Motel,272,north
+1/12/2024,Super 8 Motel,268,north
+1/19/2024,Super 8 Motel,250,north
+1/26/2024,Super 8 Motel,256,north
+2/2/2024,Super 8 Motel,237,north
+2/9/2024,Super 8 Motel,191,north
+2/16/2024,Super 8 Motel,180,north
+2/23/2024,Super 8 Motel,232,north
+3/1/2024,Super 8 Motel,227,north
+3/8/2024,Super 8 Motel,233,north
+3/15/2024,Super 8 Motel,233,north
+6/9/2023,Wadsworth,596,south
+6/16/2023,Wadsworth,598,south
+6/23/2023,Wadsworth,588,south
+6/30/2023,Wadsworth,591,south
+7/7/2023,Wadsworth,568,south
+7/14/2023,Wadsworth,570,south
+7/21/2023,Wadsworth,584,south
+7/28/2023,Wadsworth,581,south
+8/4/2023,Wadsworth,586,south
+8/11/2023,Wadsworth,595,south
+8/18/2023,Wadsworth,593,south
+8/25/2023,Wadsworth,607,south
+9/1/2023,Wadsworth,623,south
+9/8/2023,Wadsworth,611,south
+9/15/2023,Wadsworth,619,south
+9/22/2023,Wadsworth,623,south
+9/29/2023,Wadsworth,626,south
+10/6/2023,Wadsworth,611,south
+10/13/2023,Wadsworth,616,south
+10/20/2023,Wadsworth,621,south
+10/27/2023,Wadsworth,621,south
+11/3/2023,Wadsworth,629,south
+11/10/2023,Wadsworth,621,south
+11/17/2023,Wadsworth,611,south
+11/24/2023,Wadsworth,618,south
+12/1/2023,Wadsworth,621,south
+12/8/2023,Wadsworth,621,south
+12/15/2023,Wadsworth,619,south
+12/22/2023,Wadsworth,625,south
+12/29/2023,Wadsworth,623,south
+1/5/2024,Wadsworth,631,south
+1/12/2024,Wadsworth,642,south
+1/19/2024,Wadsworth,625,south
+1/26/2024,Wadsworth,616,south
+2/2/2024,Wadsworth,597,south
+2/9/2024,Wadsworth,586,south
+2/16/2024,Wadsworth,601,south
+2/23/2024,Wadsworth,584,south
+3/1/2024,Wadsworth,578,south
+3/8/2024,Wadsworth,548,south
+3/15/2024,Wadsworth,531,south
+6/9/2023,Walnut,,west
+6/16/2023,Walnut,,west
+6/23/2023,Walnut,,west
+6/30/2023,Walnut,,west
+7/7/2023,Walnut,,west
+7/14/2023,Walnut,,west
+7/21/2023,Walnut,,west
+7/28/2023,Walnut,,west
+8/4/2023,Walnut,,west
+8/11/2023,Walnut,,west
+8/18/2023,Walnut,,west
+8/25/2023,Walnut,,west
+9/1/2023,Walnut,,west
+9/8/2023,Walnut,,west
+9/15/2023,Walnut,,west
+9/22/2023,Walnut,401,west
+9/29/2023,Walnut,544,west
+10/6/2023,Walnut,804,west
+10/13/2023,Walnut,798,west
+10/20/2023,Walnut,798,west
+10/27/2023,Walnut,786,west
+11/3/2023,Walnut,795,west
+11/10/2023,Walnut,780,west
+11/17/2023,Walnut,839,west
+11/24/2023,Walnut,875,west
+12/1/2023,Walnut,854,west
+12/8/2023,Walnut,863,west
+12/15/2023,Walnut,881,west
+12/22/2023,Walnut,877,west
+12/29/2023,Walnut,880,west
+1/5/2024,Walnut,879,west
+1/12/2024,Walnut,878,west
+1/19/2024,Walnut,856,west
+1/26/2024,Walnut,843,west
+2/2/2024,Walnut,860,west
+2/9/2024,Walnut,854,west
+2/16/2024,Walnut,829,west
+2/23/2024,Walnut,839,west
+3/1/2024,Walnut,824,west
+3/8/2024,Walnut,758,west
+3/15/2024,Walnut,635,west
+6/9/2023,West Lake,,west
+6/16/2023,West Lake,,west
+6/23/2023,West Lake,,west
+6/30/2023,West Lake,,west
+7/7/2023,West Lake,,west
+7/14/2023,West Lake,,west
+7/21/2023,West Lake,,west
+7/28/2023,West Lake,,west
+8/4/2023,West Lake,,west
+8/11/2023,West Lake,,west
+8/18/2023,West Lake,,west
+8/25/2023,West Lake,,west
+9/1/2023,West Lake,,west
+9/8/2023,West Lake,,west
+9/15/2023,West Lake,,west
+9/22/2023,West Lake,,west
+9/29/2023,West Lake,,west
+10/6/2023,West Lake,,west
+10/13/2023,West Lake,144,west
+10/20/2023,West Lake,150,west
+10/27/2023,West Lake,315,west
+11/3/2023,West Lake,303,west
+11/10/2023,West Lake,300,west
+11/17/2023,West Lake,286,west
+11/24/2023,West Lake,299,west
+12/1/2023,West Lake,299,west
+12/8/2023,West Lake,298,west
+12/15/2023,West Lake,297,west
+12/22/2023,West Lake,299,west
+12/29/2023,West Lake,296,west
+1/5/2024,West Lake,298,west
+1/12/2024,West Lake,300,west
+1/19/2024,West Lake,295,west
+1/26/2024,West Lake,292,west
+2/2/2024,West Lake,292,west
+2/9/2024,West Lake,294,west
+2/16/2024,West Lake,285,west
+2/23/2024,West Lake,281,west
+3/1/2024,West Lake,268,west
+3/8/2024,West Lake,247,west
+3/15/2024,West Lake,234,west
+6/9/2023,Wright,368,north
+6/16/2023,Wright,384,north
+6/23/2023,Wright,383,north
+6/30/2023,Wright,393,north
+7/7/2023,Wright,398,north
+7/14/2023,Wright,388,north
+7/21/2023,Wright,387,north
+7/28/2023,Wright,392,north
+8/4/2023,Wright,,north
+8/11/2023,Wright,,north
+8/18/2023,Wright,,north
+8/25/2023,Wright,,north
+9/1/2023,Wright,,north
+9/8/2023,Wright,,north
+9/15/2023,Wright,,north
+9/22/2023,Wright,,north
+9/29/2023,Wright,,north
+10/6/2023,Wright,,north
+10/13/2023,Wright,,north
+10/20/2023,Wright,,north
+10/27/2023,Wright,,north
+11/3/2023,Wright,,north
+11/10/2023,Wright,,north
+11/17/2023,Wright,,north
+11/24/2023,Wright,,north
+12/1/2023,Wright,,north
+12/8/2023,Wright,,north
+12/15/2023,Wright,,north
+12/22/2023,Wright,,north
+12/29/2023,Wright,,north
+1/5/2024,Wright,,north
+1/12/2024,Wright,,north
+1/19/2024,Wright,,north
+1/26/2024,Wright,,north
+2/2/2024,Wright,,north
+2/9/2024,Wright,,north
+2/16/2024,Wright,,north
+2/23/2024,Wright,,north
+3/1/2024,Wright,,north
+3/8/2024,Wright,,north
+3/15/2024,Wright,,north
+6/9/2023,YWLA,247,south
+6/16/2023,YWLA,248,south
+6/23/2023,YWLA,248,south
+6/30/2023,YWLA,243,south
+7/7/2023,YWLA,246,south
+7/14/2023,YWLA,248,south
+7/21/2023,YWLA,247,south
+7/28/2023,YWLA,248,south
+8/4/2023,YWLA,249,south
+8/11/2023,YWLA,240,south
+8/18/2023,YWLA,210,south
+8/25/2023,YWLA,248,south
+9/1/2023,YWLA,250,south
+9/8/2023,YWLA,247,south
+9/15/2023,YWLA,246,south
+9/22/2023,YWLA,245,south
+9/29/2023,YWLA,250,south
+10/6/2023,YWLA,249,south
+10/13/2023,YWLA,249,south
+10/20/2023,YWLA,243,south
+10/27/2023,YWLA,248,south
+11/3/2023,YWLA,244,south
+11/10/2023,YWLA,246,south
+11/17/2023,YWLA,248,south
+11/24/2023,YWLA,246,south
+12/1/2023,YWLA,241,south
+12/8/2023,YWLA,245,south
+12/15/2023,YWLA,248,south
+12/22/2023,YWLA,248,south
+12/29/2023,YWLA,256,south
+1/5/2024,YWLA,259,south
+1/12/2024,YWLA,260,south
+1/19/2024,YWLA,257,south
+1/26/2024,YWLA,232,south
+2/2/2024,YWLA,217,south
+2/9/2024,YWLA,198,south
+2/16/2024,YWLA,207,south
+2/23/2024,YWLA,196,south
+3/1/2024,YWLA,237,south
+3/8/2024,YWLA,223,south
+3/15/2024,YWLA,216,south
