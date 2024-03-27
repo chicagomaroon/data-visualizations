@@ -60,7 +60,7 @@ var DATA = {
                 name: 'Casa Esperanza',
                 description: '<strong>Casa Esperanza</strong>',
                 migrants: 0,
-                closed: "Not used since 2/16/2024"
+                closed: 'Not used since 2/16/2024'
             },
             geometry: {
                 type: 'Point',
@@ -103,7 +103,7 @@ var DATA = {
             },
             geometry: {
                 type: 'Point',
-                coordinates: [-87.6615536,41.9164027, 0.0]
+                coordinates: [-87.6615536, 41.9164027, 0.0]
             }
         },
         {
@@ -139,7 +139,7 @@ var DATA = {
                 name: 'Harold Washington Library',
                 description: '<strong>Harold Washington Library</strong>',
                 migrants: 0,
-                closed: "Not used since 2/16/2024"
+                closed: 'Not used since 2/16/2024'
             },
             geometry: {
                 type: 'Point',
@@ -205,7 +205,7 @@ var DATA = {
                 name: 'Near South Health Center',
                 description: '<strong>Near South Health Center</strong>',
                 migrants: 0,
-                closed: "Not used since 3/8/2024"
+                closed: 'Not used since 3/8/2024'
             },
             geometry: {
                 type: 'Point',
@@ -220,7 +220,7 @@ var DATA = {
                 description:
                     '<strong>New Life Community Church Lakeview</strong>',
                 migrants: 0,
-                closed: "Not used since 2/23/2024"
+                closed: 'Not used since 2/23/2024'
             },
             geometry: {
                 type: 'Point',
@@ -234,7 +234,7 @@ var DATA = {
                 name: 'North Park Village',
                 description: '<strong>North Park Village</strong>',
                 migrants: 0,
-                closed: "Not used since 2/23/2024"
+                closed: 'Not used since 2/23/2024'
             },
             geometry: {
                 type: 'Point',
@@ -392,7 +392,7 @@ var DATA = {
                 name: 'The Salvation Army Shield of Hope',
                 description: '<strong>Salvation Army Shield of Hope</strong>',
                 migrants: 0,
-                closed: "Not used since 6/23/2023"
+                closed: 'Not used since 6/23/2023'
             },
             geometry: {
                 type: 'Point',
@@ -400,13 +400,13 @@ var DATA = {
             }
         },
         {
-            id: '29',
+            id: '30',
             type: 'Feature',
             properties: {
                 name: 'Wilbur Wright College',
                 description: '<strong>Wilbur Wright College</strong>',
                 migrants: 0,
-                closed: "Not used since 8/4/2023"
+                closed: 'Not used since 8/4/2023'
             },
             geometry: {
                 type: 'Point',
@@ -447,10 +447,9 @@ var style2 = {
 L.geoJSON(DATA, {
     pointToLayer: function (feature, latlng) {
         if (feature.properties.migrants == 0) {
-            bounds = L.latLng(latlng).toBounds(800); 
+            bounds = L.latLng(latlng).toBounds(800);
             //console.log(bounds)
             return L.rectangle(bounds, style2).addTo(map);
-
         } else {
             style.radius = Math.sqrt(feature.properties.migrants) / SCALE;
             //console.log(latlng)
@@ -459,16 +458,17 @@ L.geoJSON(DATA, {
     },
     // AS added mouseover functions
     onEachFeature: function (feature, layer) {
-        String, label = '';
+        String, (label = '');
         if (feature.properties.migrants == 0) {
             label = feature.properties.name + ': ' + feature.properties.closed;
         } else {
-            label = feature.properties.name + ': ' + feature.properties.migrants + ' migrants as of 3/15/23';
+            label =
+                feature.properties.name +
+                ': ' +
+                feature.properties.migrants +
+                ' migrants as of 3/15/23';
         }
-        layer.bindPopup(
-            label,
-            { closeButton: false, offset: L.point(0, -5) }
-        );
+        layer.bindPopup(label, { closeButton: false, offset: L.point(0, -5) });
         layer.on('mouseover', function () {
             layer.openPopup();
         });
