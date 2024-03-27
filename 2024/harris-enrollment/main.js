@@ -34,9 +34,6 @@ Highcharts.chart('chart-div', {
     series: [
         {
             name: 'Total Enrollment',
-            label: {
-                enabled: false
-            },
             data: [
                 265, 252, 248, 272, 257, 278, 307, 294, 303, 308, 336, 354, 354,
                 369, 502, 774, 915, 1006, 1089, 1200, 1123
@@ -44,9 +41,6 @@ Highcharts.chart('chart-div', {
         },
         {
             name: 'New Students',
-            label: {
-                enabled: false
-            },
             data: [
                 null,
                 null,
