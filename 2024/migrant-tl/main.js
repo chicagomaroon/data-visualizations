@@ -1,4 +1,4 @@
-var DATA = {
+const DATA = {
     type: 'FeatureCollection',
     features: [
         {
@@ -417,7 +417,7 @@ var DATA = {
 };
 
 //coordinates correct
-var map = L.map('map').setView([41.88, -87.61], 11); //;
+const map = L.map('map').setView([41.88, -87.61], 11); //;
 
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
     attribution:
@@ -427,7 +427,7 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
 }).addTo(map);
 
 const SCALE = 3;
-var style = {
+const style = {
     radius: 150,
     fillColor: '#800000',
     color: '#800000',
@@ -436,7 +436,7 @@ var style = {
     fillOpacity: 0.8
 };
 
-var style2 = {
+const style2 = {
     fillColor: 'grey',
     color: 'grey',
     weight: 0.4,
