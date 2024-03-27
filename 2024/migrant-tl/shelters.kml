@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>City Shelters</name>
+    <Style id="icon-seq2-0-0-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-1-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-2.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-10-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-11.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-11-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-12.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-12-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-13.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-13-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-14.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-14-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-15.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-15-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-16.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-16-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-17.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-17-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-18.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-18-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-19.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-19-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-20.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-2-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-3.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-20-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-21.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-21-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-22.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-22-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-23.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-23-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-24.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-24-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-25.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-3-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-4.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-4-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-5.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-5-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-6.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-6-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-7-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-8.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-8-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-9-9C27B0-labelson">
+      <IconStyle>
+        <color>ffb0279c</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-10.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>AIC</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-0-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6464061,41.9550208,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Brands Park</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-1-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6992049,41.9411802,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Broadway Armory Park</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-2-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6598587,41.9891929,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Casa Esperanza</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-3-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.7151664,41.8659924,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Chicago Lake Shore Hotel</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-4-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.5856401,41.8059408,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Daley College</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-5-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.7228798,41.7570501,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Gage Park</name>
+      <description><![CDATA[Type: Adults<br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-6-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value>Adults</value>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.7035777,41.7935203,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Halsted Shelter</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-7-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6457439,41.851402,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Inn of Chicago </name>
+      <description><![CDATA[Type: Families<br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-8-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value>Families</value>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6230694,41.8928452,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Leone Beach Park </name>
+      <description><![CDATA[Type: Men<br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-9-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value>Men</value>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.662313,42.0132045,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>MWRD</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-10-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.7058692,41.9764379,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Near South</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-11-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.62288,41.8302083,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>New Life Community Church Lakeview</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-12-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6787227,41.9358319,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>North Park Village</name>
+      <description><![CDATA[Type: <br>description: Building C]]></description>
+      <styleUrl>#icon-seq2-0-13-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value>Building C</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.7238491,41.9838682,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Ogden Shelter</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-14-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6619782,41.8877935,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Parthenon Guest House (Hostel)</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-15-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6474612,41.8775112,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Piotrowski (Lillian) Park</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-16-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.7309295,41.8348342,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Social Club </name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-17-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.629022,41.877706,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Super 8</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-18-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6646751,42.0142016,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Wadsworth</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-19-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.5980831,41.7784533,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Walnut Shelter</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-20-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6686713,41.8863555,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>West Lake Street Shelter</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-21-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.651114,41.8854717,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>North Western Shelter</name>
+      <description><![CDATA[Type: <br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-22-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value/>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.687129,41.8916781,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>YMCA High Ridge </name>
+      <description><![CDATA[Type: Adults<br>description: ]]></description>
+      <styleUrl>#icon-seq2-0-23-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value>Adults</value>
+        </Data>
+        <Data name="description">
+          <value/>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6914618,42.0125928,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[Young Women's Leadership Academy]]></name>
+      <description><![CDATA[Type: Men<br>description: 2641 S Calumet Ave]]></description>
+      <styleUrl>#icon-seq2-0-24-9C27B0-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Type">
+          <value>Men</value>
+        </Data>
+        <Data name="description">
+          <value>2641 S Calumet Ave</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -87.6184451,41.8444336,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
