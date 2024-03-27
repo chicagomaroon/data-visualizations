@@ -1,6 +1,8 @@
 # The Chicago Maroon’s Data Visualizations
 Feature stories by The Chicago Maroon are grouped by year into corresponding folders.
 
+For information on contribution and style standards, please visit [this document](CONTRIB.md).
+
 ## [For the Lead Developer] The Visuals are served via this URL template
 URL Template: `https://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
 
