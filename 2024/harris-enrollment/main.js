@@ -13,7 +13,17 @@ Highcharts.chart('chart-div', {
     },
 
     legend: {
-        enabled: false
+        align: 'left',
+        x: 100,
+        verticalAlign: 'top',
+        y: 60,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false,
+        layout: 'vertical'
     },
 
     yAxis: {
