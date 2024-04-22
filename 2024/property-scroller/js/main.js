@@ -1,4 +1,14 @@
 // data (figure out how to pull from data folder)
+dataPath = "data/with_era.geojson"
+
+d3.json(dataPath, function (df) {
+  
+  window.data = df
+  console.log(window.data)
+});
+
+
+
 const DATA = {
     "type": "FeatureCollection",
     "name": "property_with_years",
@@ -113,7 +123,35 @@ const DATA = {
     ]
     };
     
-//create map
+
+ // -------- FUNCTIONS ---------
+ //fead in layer
+ function fadeInLayerLeaflet(layer, startOpacity, finalOpacity, opacityStep, delay) {
+    let opacity = startOpacity;
+    let timer = setTimeout(function changeOpacity() {
+      if (opacity < finalOpacity) {
+        layer.setStyle({
+          opacity: opacity,
+          fillOpacity: opacity
+        });
+        opacity = opacity + opacityStep
+      }
+      
+      timer = setTimeout(changeOpacity, delay);
+    }, delay)
+  }
+ 
+
+//create map styles
+const buildingStyle = {
+    "color": "#800000",
+    "weight": 2,
+    "opacity": 0,
+    "fillOpacity": 0
+    
+};
+
+// create map
 var map;
 var layertest;
 function createMap() {
@@ -123,12 +161,11 @@ function createMap() {
         scrollWheelZoom: false
         }).setView([41.79139,-87.60000], 15.5);
 
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
-        minZoom: 0,
-        //maxZoom: 20,
-        attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        ext: 'png',
-    }).addTo(map);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
 
     // disable everything
     map.dragging.disable();
@@ -139,7 +176,11 @@ function createMap() {
     map.keyboard.disable();
     if (map.tap) map.tap.disable();
     document.getElementById('map').style.cursor='default';
+
+    // add all layers with opacity 0
+    buildingLayer1 = L.geoJSON(DATA, {style: buildingStyle}).addTo(map);
     };
+
 
 // create all waypoint triggers
 function waypoints() {
@@ -150,7 +191,7 @@ function waypoints() {
         handler: function (direction) {
             if (direction == "down") {
                 console.log("waypoint1")
-                layertest = L.geoJSON(DATA).addTo(map);
+                fadeInLayerLeaflet(buildingLayer1, 0,.5, 0.005, 5)
             } else {
                 map.removeLayer(layertest)
                 map.flyTo([41.79139,-87.60000], 15.5);

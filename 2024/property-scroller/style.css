@@ -1,8 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Public+Sans:400,400i,700,700i);
-@import url(https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i);
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 body {
-  font-family: "Public Sans", Helvetica, sans-serif;
+  font-family: Georgia;
   width: 100%;
   /* padding: 1em;
   margin: 0 auto; */
@@ -43,6 +42,7 @@ body {
   }
 
   #title {
+    font-family: "Playfair Display", serif;
     margin-left: auto;
     width: 70%;
     background-color: white;
