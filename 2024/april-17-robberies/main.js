@@ -99,7 +99,7 @@ const mapStyles = [
 async function createMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
-        center: new google.maps.LatLng(41.794295, -87.590701),
+        center: new google.maps.LatLng(41.79504513183251, -87.59490984947294),
         mapTypeId: 'terrain',
         styles: mapStyles
     });
