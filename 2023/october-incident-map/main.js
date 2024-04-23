@@ -1,5 +1,3 @@
-let map;
-
 function titleCase(str) {
     return str.replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -188,7 +186,9 @@ const incidents = [
         coords: [41.79454468839313, -87.59039905133166]
     }
 ];
-
+let infoWindow = undefined;
+let map = undefined;
+let markers = [];
 const mapStyles = [
     {
         featureType: 'poi.attraction',
@@ -264,9 +264,7 @@ function createMap() {
         styles: mapStyles
     });
 
-    for (let i = 0; i < incidents.length; i++) {
-        let incident = incidents[i];
-
+    incidents.forEach((incident) => {
         let content = `
             <div id="content">
                 <h3 style="margin-top:2px; margin-bottom: 8px;">${
@@ -285,11 +283,6 @@ function createMap() {
                  </div>
         `;
 
-        const infoWindow = new google.maps.InfoWindow({
-            content: content,
-            ariaLabel: 'Uluru'
-        });
-
         let marker = new google.maps.Marker({
             title: `${incident.incident} @ ${incident.occurred}`,
             position: new google.maps.LatLng(
@@ -299,13 +292,26 @@ function createMap() {
             map: map
         });
 
+        // Add an info when a marker is clicked
         marker.addListener('click', () => {
+            // If an info window is already open, close it
+            if (infoWindow) {
+                infoWindow.close();
+            }
+
+            infoWindow = new google.maps.InfoWindow({
+                content: content,
+                ariaLabel: 'Uluru'
+            });
+
             infoWindow.open({
                 anchor: marker,
                 map
             });
         });
-    }
+
+        markers.push(marker);
+    });
 }
 
 window.initMap = createMap;
