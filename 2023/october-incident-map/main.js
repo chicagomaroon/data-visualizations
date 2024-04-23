@@ -281,7 +281,7 @@ function createMap() {
                 }</p>
                  <p class="incident-information"><b>UCPD ID:</b> ${
                      incident.ucpdID
-                 }
+                 }</p>
                  </div>
         `;
 
