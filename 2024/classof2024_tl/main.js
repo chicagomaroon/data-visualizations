@@ -62,7 +62,7 @@ Highcharts.chart('chart-div', {
                     y: 15
                 },
                 {
-                    name: 'Coding (Tech Industry)',
+                    name: 'Tech Industry',
                     y: 12
                 },
                 {

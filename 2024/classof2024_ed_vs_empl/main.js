@@ -1,7 +1,4 @@
-// For API and chart documentation please look here:
-// https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
-    // Setting default colors
     colors: [
         '#800000',
         '#FFA319',
@@ -15,25 +12,49 @@ Highcharts.chart('chart-div', {
         '#FF3399'
     ],
 
-    // All code for your chart goes here
-    title: {
-        text: '[TITLE]',
-        align: 'center'
+    chart: {
+        type: 'column'
     },
-
-    plotOptions: {
-        series: {
-            // PUT PLOT CONFIG OPTIONS HERE SPACE FOR YOUR DATA
+    title: {
+        text: 'Student Plans After Graduation',
+        align: 'left'
+    },
+    subtitle: {
+        text:
+            'Source: <a target="_blank" ' +
+            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>',
+        align: 'left'
+    },
+    xAxis: {
+        categories: ['2004', '2023', '2024'],
+        crosshair: true,
+        accessibility: {
+            description: 'Countries'
         }
     },
-
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Percentage'
+        }
+    },
+    tooltip: {
+        valueSuffix: '%'
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
     series: [
         {
-            name: '[DATA FIELD NAME]',
-            label: {
-                enabled: false
-            },
-            data: []
+            name: 'Employment',
+            data: [27.5, 77, 77]
+        },
+        {
+            name: 'Further Education (professional degrees, PhDs, and academic masters programs)',
+            data: [72.5, 22, 22]
         }
     ]
 });
