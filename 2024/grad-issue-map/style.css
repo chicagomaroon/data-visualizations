@@ -1,0 +1,62 @@
+:root {
+    --westColor: #155F83;
+    --southColor: #58593F;
+    --midwestColor: #800000;
+    --northeasterColor: #FFA319;
+    --internationalColor: #C16622;
+  }
+
+  :root {
+    --westColor: #fb6a4a;
+    --southColor: #fcae91;
+    --midwestColor: #800000;
+    --northeasterColor: #de2d26;
+    --internationalColor: #fee5d9;
+  }
+.annotation {
+    position: absolute;
+    border: 3px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: calc(1vw + 1vh);
+    color: white;
+    width: 20%;
+    text-align: center;
+    min-width: 50px;
+}
+
+.west {
+    top: 28%;
+    left: 10%;
+    background-color: var(--westColor); 
+}
+
+.south {
+    top: 43%;
+    left: 50%;
+    background-color: var(--southColor);
+    color: black;
+    border: 3px solid black;
+}
+
+.midwest {
+    top: 25%;
+    left: 45%;
+    background-color: var(--midwestColor);
+}
+
+.northeast {
+    top: 15%;
+    left: 70%;
+    background-color: var(--northeasterColor);
+}
+
+.international {
+    top: 45%;
+    left: 82%;
+    background-color: var(--internationalColor);
+    max-width: 75px;
+    color: black;
+    border: 3px solid black;
+}
+
