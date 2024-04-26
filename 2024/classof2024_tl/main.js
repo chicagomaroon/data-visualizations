@@ -8,7 +8,6 @@ Highcharts.chart('chart-div', {
         '#f2ca46',
         '#4b2163',
         '#de986d'
-        
     ],
     chart: {
         type: 'pie'
@@ -20,31 +19,33 @@ Highcharts.chart('chart-div', {
         valueSuffix: '%'
     },
     subtitle: {
-        text:
-        'Source:<a href="https://www.mdpi.com/2072-6643/11/3/684/htm" target="_default">MDPI</a>'
+        text: 'Source:<a href="https://www.mdpi.com/2072-6643/11/3/684/htm" target="_default">MDPI</a>'
     },
     plotOptions: {
         series: {
             allowPointSelect: true,
             cursor: 'pointer',
-            dataLabels: [{
-                enabled: true,
-                distance: 20
-            }, {
-                enabled: true,
-                distance: -40,
-                format: '{point.percentage:.1f}%',
-                style: {
-                    fontSize: '0.8em',
-                    textOutline: 'none',
-                    opacity: 1
+            dataLabels: [
+                {
+                    enabled: true,
+                    distance: 20
                 },
-                filter: {
-                    operator: '>',
-                    property: 'percentage',
-                    value: 10
+                {
+                    enabled: true,
+                    distance: -40,
+                    format: '{point.percentage:.1f}%',
+                    style: {
+                        fontSize: '0.8em',
+                        textOutline: 'none',
+                        opacity: 1
+                    },
+                    filter: {
+                        operator: '>',
+                        property: 'percentage',
+                        value: 10
+                    }
                 }
-            }]
+            ]
         }
     },
     series: [

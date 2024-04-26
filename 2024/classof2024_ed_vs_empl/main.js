@@ -36,7 +36,7 @@ Highcharts.chart('chart-div', {
     yAxis: {
         allowDecimals: false,
         labels: {
-            format: '{text}%',
+            format: '{text}%'
         },
         min: 0,
         max: 100,
@@ -55,13 +55,16 @@ Highcharts.chart('chart-div', {
         }
     },
 
-    series: [{
-        name: 'Employment',
-        data: [79, 82, 78],
-        stack: 'Europe'
-    }, {
-        name: 'Continuing Education',
-        data: [21, 18, 22],
-        stack: 'Europe'
-    }]
+    series: [
+        {
+            name: 'Employment',
+            data: [79, 82, 78],
+            stack: 'Europe'
+        },
+        {
+            name: 'Continuing Education',
+            data: [21, 18, 22],
+            stack: 'Europe'
+        }
+    ]
 });
