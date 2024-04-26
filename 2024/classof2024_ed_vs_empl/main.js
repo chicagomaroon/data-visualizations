@@ -15,46 +15,53 @@ Highcharts.chart('chart-div', {
     chart: {
         type: 'column'
     },
+
     title: {
         text: 'Student Plans After Graduation',
         align: 'left'
     },
+
     subtitle: {
-        text:
-            'Source: <a target="_blank" ' +
-            'href="https://www.indexmundi.com/agriculture/?commodity=corn">indexmundi</a>',
-        align: 'left'
+        text: 'The ratio of students pursuing employment versus continuing their education has remained roughly constant from the Class of 2004 to the Class of 2024. The "Continuing Education" category includes students pursuing professional degrees, PhDs, and academic masters.',
+        align: 'left',
+        style: {
+            fontSize: '16px'
+        }
     },
+
     xAxis: {
-        categories: ['2004', '2023', '2024'],
-        crosshair: true,
-        accessibility: {
-            description: 'Countries'
-        }
+        categories: ['2004', '2014', '2024 (projected)']
     },
+
     yAxis: {
+        allowDecimals: false,
+        labels: {
+            format: '{text}%',
+        },
         min: 0,
+        max: 100,
         title: {
-            text: 'Percentage'
+            text: 'Percentage of graduating class'
         }
     },
+
     tooltip: {
-        valueSuffix: '%'
+        format: '<b>{key}</b><br/>{series.name}: {y}%<br/>'
     },
+
     plotOptions: {
         column: {
-            pointPadding: 0.2,
-            borderWidth: 0
+            stacking: 'normal'
         }
     },
-    series: [
-        {
-            name: 'Employment',
-            data: [27.5, 77, 77]
-        },
-        {
-            name: 'Further Education (professional degrees, PhDs, and academic masters programs)',
-            data: [72.5, 22, 22]
-        }
-    ]
+
+    series: [{
+        name: 'Employment',
+        data: [79, 82, 78],
+        stack: 'Europe'
+    }, {
+        name: 'Continuing Education',
+        data: [21, 18, 22],
+        stack: 'Europe'
+    }]
 });

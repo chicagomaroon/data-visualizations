@@ -2,14 +2,13 @@ Highcharts.chart('chart-div', {
     colors: [
         '#800000',
         '#FFA319',
-        '#C16622',
         '#8F3931',
-        '#8A9045',
-        '#58593F',
-        '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
+        '#5c071e',
+        '#C16622',
+        '#f2ca46',
+        '#4b2163',
+        '#de986d'
+        
     ],
     chart: {
         type: 'pie'
@@ -38,7 +37,7 @@ Highcharts.chart('chart-div', {
                 style: {
                     fontSize: '0.8em',
                     textOutline: 'none',
-                    opacity: 0.7
+                    opacity: 1
                 },
                 filter: {
                     operator: '>',
