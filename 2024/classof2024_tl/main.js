@@ -2,14 +2,12 @@ Highcharts.chart('chart-div', {
     colors: [
         '#800000',
         '#FFA319',
-        '#C16622',
         '#8F3931',
-        '#8A9045',
-        '#58593F',
-        '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
+        '#5c071e',
+        '#C16622',
+        '#f2ca46',
+        '#4b2163',
+        '#de986d'
     ],
     chart: {
         type: 'pie'
@@ -21,31 +19,33 @@ Highcharts.chart('chart-div', {
         valueSuffix: '%'
     },
     subtitle: {
-        text:
-        'Source:<a href="https://www.mdpi.com/2072-6643/11/3/684/htm" target="_default">MDPI</a>'
+        text: 'Source:<a href="https://www.mdpi.com/2072-6643/11/3/684/htm" target="_default">MDPI</a>'
     },
     plotOptions: {
         series: {
             allowPointSelect: true,
             cursor: 'pointer',
-            dataLabels: [{
-                enabled: true,
-                distance: 20
-            }, {
-                enabled: true,
-                distance: -40,
-                format: '{point.percentage:.1f}%',
-                style: {
-                    fontSize: '0.8em',
-                    textOutline: 'none',
-                    opacity: 0.7
+            dataLabels: [
+                {
+                    enabled: true,
+                    distance: 20
                 },
-                filter: {
-                    operator: '>',
-                    property: 'percentage',
-                    value: 10
+                {
+                    enabled: true,
+                    distance: -40,
+                    format: '{point.percentage:.1f}%',
+                    style: {
+                        fontSize: '0.8em',
+                        textOutline: 'none',
+                        opacity: 1
+                    },
+                    filter: {
+                        operator: '>',
+                        property: 'percentage',
+                        value: 10
+                    }
                 }
-            }]
+            ]
         }
     },
     series: [
@@ -62,7 +62,7 @@ Highcharts.chart('chart-div', {
                     y: 15
                 },
                 {
-                    name: 'Coding (Tech Industry)',
+                    name: 'Tech Industry',
                     y: 12
                 },
                 {

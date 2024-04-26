@@ -1,7 +1,4 @@
-// For API and chart documentation please look here:
-// https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
-    // Setting default colors
     colors: [
         '#800000',
         '#FFA319',
@@ -15,25 +12,59 @@ Highcharts.chart('chart-div', {
         '#FF3399'
     ],
 
-    // All code for your chart goes here
+    chart: {
+        type: 'column'
+    },
+
     title: {
-        text: '[TITLE]',
-        align: 'center'
+        text: 'Student Plans After Graduation',
+        align: 'left'
+    },
+
+    subtitle: {
+        text: 'The ratio of students pursuing employment versus continuing their education has remained roughly constant from the Class of 2004 to the Class of 2024. The "Continuing Education" category includes students pursuing professional degrees, PhDs, and academic masters.',
+        align: 'left',
+        style: {
+            fontSize: '16px'
+        }
+    },
+
+    xAxis: {
+        categories: ['2004', '2014', '2024 (projected)']
+    },
+
+    yAxis: {
+        allowDecimals: false,
+        labels: {
+            format: '{text}%'
+        },
+        min: 0,
+        max: 100,
+        title: {
+            text: 'Percentage of graduating class'
+        }
+    },
+
+    tooltip: {
+        format: '<b>{key}</b><br/>{series.name}: {y}%<br/>'
     },
 
     plotOptions: {
-        series: {
-            // PUT PLOT CONFIG OPTIONS HERE SPACE FOR YOUR DATA
+        column: {
+            stacking: 'normal'
         }
     },
 
     series: [
         {
-            name: '[DATA FIELD NAME]',
-            label: {
-                enabled: false
-            },
-            data: []
+            name: 'Employment',
+            data: [79, 82, 78],
+            stack: 'Europe'
+        },
+        {
+            name: 'Continuing Education',
+            data: [21, 18, 22],
+            stack: 'Europe'
         }
     ]
 });
