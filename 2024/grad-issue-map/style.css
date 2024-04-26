@@ -1,18 +1,18 @@
 :root {
-    --westColor: #155F83;
-    --southColor: #58593F;
+    --westColor: #155f83;
+    --southColor: #58593f;
     --midwestColor: #800000;
-    --northeasterColor: #FFA319;
-    --internationalColor: #C16622;
-  }
+    --northeasterColor: #ffa319;
+    --internationalColor: #c16622;
+}
 
-  :root {
+:root {
     --westColor: #fb6a4a;
     --southColor: #fcae91;
     --midwestColor: #800000;
     --northeasterColor: #de2d26;
     --internationalColor: #fee5d9;
-  }
+}
 .annotation {
     position: absolute;
     border: 3px solid white;
@@ -28,7 +28,7 @@
 .west {
     top: 28%;
     left: 10%;
-    background-color: var(--westColor); 
+    background-color: var(--westColor);
 }
 
 .south {
@@ -59,4 +59,3 @@
     color: black;
     border: 3px solid black;
 }
-

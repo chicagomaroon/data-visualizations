@@ -20,7 +20,6 @@ Highcharts.chart('chart-div', {
         text: '[TITLE]',
         align: 'center'
     },
-    
 
     plotOptions: {
         series: {

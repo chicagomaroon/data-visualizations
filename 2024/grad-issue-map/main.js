@@ -3,7 +3,7 @@
         'https://code.highcharts.com/mapdata/countries/us/us-all.topo.json'
     ).then((response) => response.json());
 
-    colors = ['#fee5d9', '#fcae91','#fb6a4a', '#de2d26', '#a50f15']
+    colors = ['#fee5d9', '#fcae91', '#fb6a4a', '#de2d26', '#a50f15'];
 
     const data = [
         { region: 'West', state_code: 'AK', value: 13 },
@@ -69,7 +69,7 @@
             text: 'Where is the Class of 2024 Going?'
         },
         subtitle: {
-            text: "Most students are staying in the Mideast or heading to the Northeast."
+            text: 'Most students are staying in the Mideast or heading to the Northeast.'
         },
         legend: {
             enabled: false
@@ -83,28 +83,31 @@
         colorAxis: {
             dataClasses: [
                 {
-                from: 36,
-                to: 36,
-                color: colors[4],
+                    from: 36,
+                    to: 36,
+                    color: colors[4],
 
-                name: 'Midwest'
-                }, {
-                from: 35,
-                to: 35,
-                color: colors[3],
-                name: 'Northeastern'
-                }, {
-                from: 13,
-                to: 13,
-                color: colors[2],
-                name: 'West'
-                }, {
-                from: 9,
-                to: 9,
-                color: colors[1],
-                name: 'South'
-                        }
-                    ]
+                    name: 'Midwest'
+                },
+                {
+                    from: 35,
+                    to: 35,
+                    color: colors[3],
+                    name: 'Northeastern'
+                },
+                {
+                    from: 13,
+                    to: 13,
+                    color: colors[2],
+                    name: 'West'
+                },
+                {
+                    from: 9,
+                    to: 9,
+                    color: colors[1],
+                    name: 'South'
+                }
+            ]
         },
         series: [
             {
@@ -115,9 +118,10 @@
                 },
                 states: {
                     hover: {
-                      enabled: false
+                        enabled: false
                     }
-            }}
+                }
+            }
         ]
     });
 })();
