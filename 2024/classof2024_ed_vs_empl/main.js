@@ -21,14 +21,6 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
 
-    subtitle: {
-        text: 'The ratio of students pursuing employment versus continuing their education has remained roughly constant from the Class of 2004 to the Class of 2024. The "Continuing Education" category includes students pursuing professional degrees, PhDs, and academic masters.',
-        align: 'center',
-        style: {
-            fontSize: '16px'
-        }
-    },
-
     xAxis: {
         categories: ['2004', '2014', '2024 (projected)']
     },
