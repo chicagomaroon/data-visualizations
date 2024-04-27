@@ -6,8 +6,10 @@ Highcharts.chart('chart-div', {
         '#5c071e',
         '#C16622',
         '#f2ca46',
+        '#a33737',
+        '#de986d',
         '#4b2163',
-        '#de986d'
+        '#961d1d'
     ],
     chart: {
         type: 'pie'

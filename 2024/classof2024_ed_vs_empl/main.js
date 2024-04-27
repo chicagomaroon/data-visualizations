@@ -1,7 +1,7 @@
 Highcharts.chart('chart-div', {
     colors: [
-        '#800000',
         '#FFA319',
+        '#800000',
         '#C16622',
         '#8F3931',
         '#8A9045',
@@ -18,12 +18,12 @@ Highcharts.chart('chart-div', {
 
     title: {
         text: 'Student Plans After Graduation',
-        align: 'left'
+        align: 'center'
     },
 
     subtitle: {
         text: 'The ratio of students pursuing employment versus continuing their education has remained roughly constant from the Class of 2004 to the Class of 2024. The "Continuing Education" category includes students pursuing professional degrees, PhDs, and academic masters.',
-        align: 'left',
+        align: 'center',
         style: {
             fontSize: '16px'
         }
