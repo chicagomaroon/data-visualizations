@@ -69,7 +69,7 @@
             text: 'Where is the Class of 2024 Going?'
         },
         subtitle: {
-            text: 'Most students are staying in the Mideast or heading to the Northeast.'
+            text: 'Most students are staying in the Midwest or heading to the Northeast.'
         },
         legend: {
             enabled: false
