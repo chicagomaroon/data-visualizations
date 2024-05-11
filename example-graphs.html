@@ -1,0 +1,320 @@
+<html lang="en">
+    <head>
+        <title>Example data visualizations</title>
+        
+        <style>
+            hr {
+                width: 40%;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+
+            #page-title {
+                font-size: 30px;
+                font-family: Georgia, serif !important;
+                text-align: left;
+
+                width: 40%;
+                margin: 25px;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+
+            #section-title {
+                font-size: 20px;
+                font-family: Georgia, serif !important;
+                text-align: left;
+
+                width: 40%;
+                margin: 25px;
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+
+            #paragraph-div {
+                width: 40%;
+                margin-left: 30%;
+                margin-right: 30%;
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+
+            #paragraph {
+                font-size: 16px;
+                font-family: Georgia, serif !important;
+            }
+
+            div.iframe-container {
+                margin-right: 2px;
+            }
+
+            iframe.data-viz-container {
+                height: 420px;
+                /* width: 100%; */
+                margin-bottom: -5px;
+                border: #dddddd 2px;
+                border-style: solid;
+                border-bottom: 0;
+
+                width: calc(40% - 2px);
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+
+            div.data-viz-description-container {
+                margin-bottom: 20px;
+                background-color: #eeeeee;
+                padding: 10px;
+                border: #dddddd 2px;
+                border-style: solid;
+                border-top: 0;
+
+                margin-left: 30%;
+                margin-right: 30%;
+            }
+
+            div.data-viz-description-container div.data-viz-description {
+                font-size: 14px;
+                font-weight: 300;
+                font-family: Georgia, serif !important;
+                line-height: 1.4em;
+            }
+            
+            div.data-viz-description-container div.data-viz-link {
+                text-align: right;
+                font-size: 14px;
+                font-family: Georgia, serif !important;
+                padding-bottom: 5px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="static/main.css" />
+
+    </head>
+
+    <body>
+        <script
+            src="https://code.highcharts.com/highcharts.js"
+            type="text/javascript"
+        ></script>
+
+        <!-- Bar chart -->
+
+        <!-- <iframe src="2024/campus-climate-survey-by-university/campus-climate-survey-by-university.min.html" style="width:90%;height:425px;">
+        </iframe>
+
+        <iframe src="2024/campus-climate-survey-by-university/campus-climate-survey-by-university.min.html" style="width:90%;height:425px;">
+        </iframe> -->
+
+        <h1 id="page-title">Example Data Visuals in <i>The Maroon</i></h1>
+
+        <div id="paragraph-div">
+            <p id="paragraph">This document shows examples of data visualizations in Chicago Maroon articles. If you would like to use one of these graphs as a starting point for another graph, follow the corresponding link to the graph's source code in our GitHub repository.</p>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Bar Charts</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/political-donations-top-pacs/political-donations-top-pacs.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/political-donations-top-pacs">Link</a>
+            </div>
+            <div class="data-viz-description">A simple horizontal bar chart with horizontal axis units in thousands of dollars.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Column Charts</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/campus-climate-survey-by-university/campus-climate-survey-by-university.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/campus-climate-survey-by-university">Link</a>
+            </div>
+            <div class="data-viz-description">A column chart with three series over four groups along with a caption clarifying an edge case.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2023/sg-election-votes/sg-election-votes.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2023/sg-election-votes">Link</a>
+            </div>
+            <div class="data-viz-description">A stacked column chart with numerical labels above each bar.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/migrant-issue-shelters-bar/migrant-issue-shelters-bar.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/migrant-issue-shelters-bar">Link</a>
+            </div>
+            <div class="data-viz-description">A stacked column chart with many columns.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Line Charts</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2022/admittance-rate/admittance-rate.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2022/admittance-rate">Link</a>
+            </div>
+            <div class="data-viz-description">A simple line chart.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/harris-enrollment/harris-enrollment.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/harris-enrollment">Link</a>
+            </div>
+            <div class="data-viz-description">A line chart with multiple series that start at different times.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/political-donations-by-cycle/political-donations-by-cycle.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/political-donations-by-cycle">Link</a>
+            </div>
+            <div class="data-viz-description">A complex line chart with several series.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/political-donations-compare/political-donations-compare.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/political-donations-compare">Link</a>
+            </div>
+            <div class="data-viz-description">A line chart with series labels.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Pie Charts</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/classof2024_tl/classof2024_tl.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/classof2024_tl">Link</a>
+            </div>
+            <div class="data-viz-description">A pie chart.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Word Clouds</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2023/staff-survey-maroon-in-a-word/staff-survey-maroon-in-a-word.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2023/staff-survey-maroon-in-a-word">Link</a>
+            </div>
+            <div class="data-viz-description">A word cloud.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Maps (HighCharts)</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/fgli-map/fgli-map.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/fgli-map">Link</a>
+            </div>
+            <div class="data-viz-description">A HighCharts map of the US with multiple colors of pins.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/grad-issue-map/grad-issue-map.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/grad-issue-map">Link</a>
+            </div>
+            <div class="data-viz-description">
+                A HighCharts map with labels over regions added via HTML. (Note: the labels only line up correctly when the map window has the correct dimensions)</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Maps (Google Maps)</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/april-17-robberies/april-17-robberies.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/april-17-robberies">Link</a>
+            </div>
+            <div class="data-viz-description">A Google Maps map with two pins.</div>
+        </div>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2023/october-incident-map/october-incident-map.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2023/october-incident-map">Link</a>
+            </div>
+            <div class="data-viz-description">A Google Maps map with many pins.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Maps (Leaflet)</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/migrant-tl/migrant-tl.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/migrant-tl">Link</a>
+            </div>
+            <div class="data-viz-description">A Leaflet map with graduated symbols of different shapes and colors.</div>
+        </div>
+
+        <hr>
+        <h2 id="section-title">Other</h2>
+
+        <div class="iframe-container">
+            <iframe class="data-viz-container" src="2024/political-donations-by-party/political-donations-by-party.min.html">
+            </iframe>
+        </div>
+        <div class="data-viz-description-container">
+            <div class="data-viz-link">
+                <a href="https://github.com/chicagomaroon/data-visualizations/blob/main/2024/political-donations-by-party">Link</a>
+            </div>
+            <div class="data-viz-description">A custom HTML visual showing political donation amounts visually.</div>
+        </div>
+
+    </body>
+</html>
