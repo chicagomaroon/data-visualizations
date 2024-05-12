@@ -1,3 +1,11 @@
+Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    }
+});
+
 Highcharts.chart('chart-div', {
     // Setting default colors
     colors: ['#800000', '#FFA319'],
