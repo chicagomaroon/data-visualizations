@@ -1,5 +1,5 @@
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Georgia', 'serif';
 }
 
 /* This sets the size of the main `div` the chart is held in. The values below should not need to be adjusted. */
