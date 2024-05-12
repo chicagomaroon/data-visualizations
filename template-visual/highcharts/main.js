@@ -15,6 +15,10 @@ Highcharts.chart('chart-div', {
         '#FF3399'
     ],
 
+    style: {
+        fontFamily: 'Georgia, serif'
+    },
+
     // All code for your chart goes here
     title: {
         text: '[TITLE]',
