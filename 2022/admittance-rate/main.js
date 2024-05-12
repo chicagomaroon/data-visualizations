@@ -13,6 +13,10 @@ Highcharts.chart('chart-div', {
         '#184F26'
     ],
 
+    style: {
+        fontFamily: 'Georgia, serif'
+    },
+
     // All code for your chart goes here
     title: {
         text: 'Admittance Rate by Graduation Year'
