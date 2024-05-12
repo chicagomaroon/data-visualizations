@@ -36,7 +36,7 @@ Download [GitHub Desktop](https://desktop.github.com/), which will allow you to 
     - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
     - Example command: `npm run create-visual --year=2023 --story=example-visual`
       - If you would rather use the [D3](https://d3js.org/) library, [d3plus](https://github.com/d3plus/d3plus), use this command: `npm run create-visual-d3 --year=2023 --story=example-visual`
-4. Start creating your visual that will be housed in the `./$year/$story/` folder.
+4. Start creating your visual that will be housed in the `./$year/$story/` folder. Open `example-graphs.html` in your local repo for examples of past visuals we have made.
     - In your `./$year/$story/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
     - If you are using Highcharts, [this site](https://api.highcharts.com/highmaps/) gives a lot of helpful documentation on the options for creating charts.
     - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
