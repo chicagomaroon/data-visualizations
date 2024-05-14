@@ -1,3 +1,11 @@
+Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    }
+});
+
 Highcharts.chart('chart-div', {
     colors: ['#767676', '#FFA319', '#800000'],
     chart: {

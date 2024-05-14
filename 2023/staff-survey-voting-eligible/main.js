@@ -1,5 +1,11 @@
-// For API and chart documentation please look here:
-// https://www.highcharts.com/demo
+Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    }
+});
+
 Highcharts.chart('chart-div', {
     // Setting default colors
     colors: ['#800000', '#FD4C4C', '#FC0000', '#7D2525', '#C90000'],
