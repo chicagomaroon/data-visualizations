@@ -88,6 +88,11 @@ const shelterCategories = [
 ];
 
 Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    },
     lang: {
         thousandsSep: ','
     }

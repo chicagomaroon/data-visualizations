@@ -9,6 +9,11 @@ topPACs = [
 yAxisLabels = [0, 100000, 200000, 300000, 400000];
 
 Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    },
     lang: {
         thousandsSep: ','
     }

@@ -332,6 +332,11 @@ color2020 = '#155F83';
 color2022 = '#8A9045';
 
 Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    },
     lang: {
         thousandsSep: ','
     }
