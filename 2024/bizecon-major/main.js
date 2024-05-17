@@ -24,9 +24,11 @@ Highcharts.chart('chart-div', {
     },
 
     yAxis: {
-        title: {
-            text: 'Number of Students'
-        }
+        min: -50,
+        startOnTick: false
+        
+          
+        
     },
 
     plotOptions: {
