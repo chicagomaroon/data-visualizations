@@ -84,6 +84,11 @@ const stagingCategories = [
 ];
 
 Highcharts.setOptions({
+    chart: {
+        style: {
+            fontFamily: 'Georgia, serif'
+        }
+    },
     lang: {
         thousandsSep: ','
     }

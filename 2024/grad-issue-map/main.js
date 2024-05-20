@@ -59,6 +59,14 @@
         { region: 'West', state_code: 'WY', value: 13 }
     ];
 
+    Highcharts.setOptions({
+        chart: {
+            style: {
+                fontFamily: 'Georgia, serif'
+            }
+        }
+    });
+
     // Instantiate the map
     Highcharts.mapChart('chart-div', {
         chart: {
