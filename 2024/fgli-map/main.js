@@ -6,6 +6,14 @@ async function getTopolgy() {
 }
 
 getTopolgy().then((topology) => {
+    Highcharts.setOptions({
+        chart: {
+            style: {
+                fontFamily: 'Georgia, serif'
+            }
+        }
+    });
+
     // Create the chart
     Highcharts.mapChart('chart-div', {
         chart: {
