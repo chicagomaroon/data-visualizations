@@ -1,3 +1,9 @@
+// make sticky map stop for some text
+// https://jsfiddle.net/qm3KZ/26/
+
+
+
+
 // ------------------ DATA ------------------
 dataPath = "data/with_era.geojson"
 
@@ -28,7 +34,7 @@ const dataFirst = dataAll.features.filter(d => d.properties.year_start <= 1925)
  
 
 //create map styles
-const buildingStyle = {
+const buildingStyleHide = {
     "color": "#800000",
     "weight": 2,
     "opacity": 0,
@@ -36,12 +42,20 @@ const buildingStyle = {
     
 };
 
+const buildingStyleShow = {
+  "color": "#800000",
+  "weight": 2,
+  "opacity": 1,
+  "fillOpacity": .5
+  
+};
+
 // create map
-let map;
 
-function createMap() {
 
-    map = L.map('map',{
+function createMap(div) {
+
+    let map = L.map(div,{
         zoomControl: false,
         scrollWheelZoom: false
         }).setView([41.78955289156096,-87.59974479675293], 17);
@@ -60,12 +74,9 @@ function createMap() {
     map.boxZoom.disable();
     map.keyboard.disable();
     if (map.tap) map.tap.disable();
-    document.getElementById('map').style.cursor='default';
+    document.getElementById(div).style.cursor='default';
 
-    // add all layers with opacity 0
-    buildingLayer1 = L.geoJSON(dataAll, {style: buildingStyle}).addTo(map);
-    
-    buildingLayer2 = L.geoJSON(dataFirst, {style: buildingStyle}).addTo(map);
+    return map 
   };
 
 
@@ -88,8 +99,17 @@ function processChapter(chapter) {
     let title_div = document.createElement("div");
     title_div.className = "scroller chapter";
     title_div.id = chapter.id;
-    title_div.id = "scroller chapter";
-    title_div.textContent = chapter.title;
+
+    let title_text_div = document.createElement("div");
+    title_text_div.textContent = chapter.title;
+    title_text_div.className = "chapter-title";
+
+    let title_image_div = document.createElement("img");
+    title_image_div.src = chapter.image;
+
+    title_div.appendChild(title_text_div);
+    title_div.appendChild(title_image_div);
+
     document.getElementById("chapters-container").appendChild(title_div);
 
     // create subsection divs
@@ -114,10 +134,9 @@ function waypoints() {
         handler: function (direction) {
             if (direction == "down") {
                 console.log("waypoint1")
-                fadeInLayerLeaflet(buildingLayer2, 0,.5, 0.005, 5)
             } else {
-                map.removeLayer(buildingLayer2)
-                map.flyTo([41.79139,-87.60000], 15.5);
+                mapIntro.removeLayer(introAllBuildings)
+                mapIntro.flyTo([41.79139,-87.60000], 15.5);
             }
             },
         offset: offset,
@@ -127,9 +146,9 @@ function waypoints() {
         element: document.getElementById("step2"),
         handler: function () {
             console.log("waypoint2")
-            map.removeLayer(buildingLayer2)
-            fadeInLayerLeaflet(buildingLayer1, 0,.5, 0.005, 5)
-            map.flyTo([41.79139,-87.60000], 15);
+            mapIntro.removeLayer(introFirstBuildings)
+            fadeInLayerLeaflet(introAllBuildings, 0,.5, 0.005, 5)
+            mapIntro.flyTo([41.79139,-87.60000], 15);
             },
         offset: offset,
       });
@@ -140,7 +159,16 @@ function waypoints() {
 // combine all into one function
 function main() {
     processConfig(config);
-    createMap();
+    mapIntro = createMap('map-intro');
+    // add all layers with opacity 0
+    introAllBuildings = L.geoJSON(dataAll, {style: buildingStyleHide}).addTo(mapIntro);
+    introFirstBuildings = L.geoJSON(dataFirst, {style: buildingStyleShow}).addTo(mapIntro);
+
+    mapBody = createMap('map-body');
+    bodyAllBuildings = L.geoJSON(dataAll, {style: buildingStyleHide}).addTo(mapBody);
+    bodyFirstBuildings = L.geoJSON(dataFirst, {style: buildingStyleShow}).addTo(mapBody);
+
+
     waypoints();
     };
 
@@ -149,3 +177,86 @@ function main() {
 main();
 
 
+
+
+
+// ------------ TESTING ------------
+
+(function() {
+  function setElementPosition(element, styles) {
+      for (let key in styles) {
+          element.style[key] = styles[key];
+      }
+  }
+
+  function follow(event) {
+      const { settings, element } = event.data;
+      const elHeight = element.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const screenTop = window.scrollY;
+      const screenBottom = screenTop + windowHeight;
+      const elTop = element.getBoundingClientRect().top + screenTop;
+      const elBottom = elTop + elHeight;
+
+      const isShorterThanScreen = elHeight < windowHeight;
+      const isFollowTopPxVisible = screenTop <= settings.topPixel;
+      const isFollowBottomPxVisible = screenBottom >= settings.bottomPixel;
+
+      if (elHeight < settings.bottomPixel - settings.topPixel) {
+          if (isShorterThanScreen) {
+              if (isFollowTopPxVisible) {
+                  setElementPosition(element, { top: `${settings.topPixel - screenTop}px`, bottom: '' });
+              } else if (isFollowBottomPxVisible && (settings.bottomPixel - screenTop < elHeight)) {
+                  setElementPosition(element, { top: '', bottom: `${screenBottom - settings.bottomPixel}px` });
+              } else {
+                  setElementPosition(element, { top: '0', bottom: '' });
+              }
+          } else {
+              if (isFollowBottomPxVisible) {
+                  setElementPosition(element, { top: '', bottom: `${screenBottom - settings.bottomPixel}px` });
+              } else if (isFollowTopPxVisible) {
+                  setElementPosition(element, { top: `${settings.topPixel - screenTop}px`, bottom: '' });
+              } else {
+                  const prevScreenTop = element.dataset.followScreen || 0;
+                  const scrollDistance = screenTop - prevScreenTop;
+
+                  if (scrollDistance < 0) {
+                      if (Math.abs(scrollDistance) > (screenTop - elTop)) {
+                          setElementPosition(element, { top: '0', bottom: '' });
+                      } else {
+                          setElementPosition(element, { top: `${element.getBoundingClientRect().top - (distance || 0)}px`, bottom: '' });
+                      }
+                  } else {
+                      if (Math.abs(scrollDistance) > (elBottom - screenBottom)) {
+                          setElementPosition(element, { top: '', bottom: '0' });
+                      } else {
+                          setElementPosition(element, { top: `${element.getBoundingClientRect().top - (distance || 0)}px`, bottom: '' });
+                      }
+                  }
+              }
+          }
+      }
+
+      element.dataset.followScreen = screenTop;
+  }
+
+  Element.prototype.followScreen = function(options) {
+      const settings = Object.assign({ topPixel: 0, bottomPixel: Infinity }, options);
+
+      this.style.position = 'fixed';
+      const data = { element: this, settings };
+
+      const onScroll = () => follow({ data });
+      window.addEventListener('scroll', onScroll);
+
+      follow({ data });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      const topPxOfFooter = document.querySelector('#title-container').getBoundingClientRect().top //+ window.scrollY;
+
+      document.querySelectorAll('#map-intro').forEach(element => {
+          element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
+      });
+  });
+})();

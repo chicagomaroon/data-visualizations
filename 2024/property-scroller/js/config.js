@@ -2,6 +2,7 @@ const config = {
     chapter1: {
         title: 'Chapter 1: Isolation: 1890-1930',
         id: 'chapter1',
+        image: './static/images/chapter1.jpg',
         subsections: [
             {
                 id: '1.1',
@@ -26,6 +27,7 @@ const config = {
     chapter2: {
         title: 'Chapter 2: The Problem of our Property:” Racially-Restrictive Covenants, 1933–1948',
         id: 'chapter2',
+        image: './static/images/chapter2.jpg',
         subsections: [
             {
                 id: '2.1',

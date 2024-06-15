@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+  font-family: Georgia;
+  width: 100%;
+  /* padding: 1em;
+  margin: 0 auto; */
+  background: #f9f9f9;
+}
+
+.article-text {
+  width: 60%;
+  margin: auto;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+}
+
+.header img {
+  width: 250px;
+  margin: auto;
+}
+
+.map-container-intro {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    top: 0;
+    width: 100%;
+    height: 800px;
+}
+
+#map-intro {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.map-container-body {
+  position: sticky;
+  z-index: 1;
+  margin: auto;
+  top: 0;
+  width: 100%;
+  height: 800px;
+}
+
+#map-body {
+  height: 100%;
+  margin: 0;
+}
+
+.scroller {
+    position: relative;
+    background-color: white;
+    /*border: 1px black solid; */
+    padding: 10px 20px;
+    /* margin-left: 100px; */
+    width: 25%;
+    margin-top: 100vh;
+    margin-bottom: 20vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: left;
+    margin-right: auto;
+    margin-left: 45;
+    line-height: 1.2;
+    font-size: 22px;
+    border-radius: 5px;
+    z-index: 9999;
+  }
+
+
+  .scroller.chapter{
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: black
+  }
+
+  .scroller.chapter img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+
+  .chapter-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    font-weight: 400;
+    z-index: 999;
+    text-align: center;
+    color: white;
+  }
+
+  #step1 {
+    margin-top: -70vh;
+  }
+
+  #step3 {
+    margin-bottom: 100vh;
+  }
+
+
+  #title-container {
+    text-align: center;
+    padding: 10px;
+    width: 65%;
+    margin: auto;
+
+  }
+
+  #title {
+    margin-top: 7vh;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 400;
+    z-index: 9999;
+    padding: 10px;
+  }
+
+  #subtitle {
+    padding: 5px;
+    font-size: 30px;
+  }
+
+  #byline {
+    padding: 10px;
+  }
+
+  #date {
+    padding: 10px;
+  }
