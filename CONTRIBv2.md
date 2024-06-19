@@ -85,6 +85,11 @@ All pull requests should contain a still of the image and be linted, minified, c
 
 ### Style Standards
 
+Examples for updated style guides
+- https://urbaninstitute.github.io/graphics-styleguide/
+- https://bbc.github.io/rcookbook/
+
+
 #### Font
 
 The font is set via the [`main.css`](./static/main.css) file. The default font, and the one used on the rest of _The Chicago Maroon_, is Georgia, serif font: [Link](https://www.cssfontstack.com/Georgia).
