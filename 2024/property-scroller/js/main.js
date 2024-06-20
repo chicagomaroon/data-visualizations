@@ -50,15 +50,19 @@ const buildingStyleShow = {
   
 };
 
+const uChiLocation = [41.78955289156096,-87.59974479675293]
+const ChiLocation = [41.862161325588076, -87.63211524853163]
+
+
 // create map
 
 
-function createMap(div) {
+function createMap(div, startCoords = uChiLocation, zoomStart = 17) {
 
     let map = L.map(div,{
         zoomControl: false,
         scrollWheelZoom: false
-        }).setView([41.78955289156096,-87.59974479675293], 17);
+        }).setView(startCoords, zoomStart);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -86,9 +90,9 @@ const config = JSON.parse(sessionStorage.getItem("config"))
 
 function processConfig(config) {
   // config file is an  object with each chapter is an attribute
-  for (const chapter in config) {
+  for (const chapter of config) {
     //console.log(config[chapter])
-    processChapter(config[chapter])
+    processChapter(chapter)
   }
 };
 
@@ -98,10 +102,10 @@ function processChapter(chapter) {
     console.log(chapter.title)
     let title_div = document.createElement("div");
     title_div.className = "scroller chapter";
-    title_div.id = chapter.id;
+    title_div.id = "chapter" + chapter.id;
 
     let title_text_div = document.createElement("div");
-    title_text_div.textContent = chapter.title;
+    title_text_div.innerHTML = "<p>Chapter " + chapter.id + "</p>" + "<hr>"+ "<p>" + chapter.chapterTitle + "</p>";
     title_text_div.className = "chapter-title";
 
     let title_image_div = document.createElement("img");
@@ -123,7 +127,7 @@ function processChapter(chapter) {
     }
 }
 
-
+let layers = {}
 // ------------ WAYPOINTS ------------
 // create all waypoint triggers
 function waypoints() {
@@ -147,11 +151,37 @@ function waypoints() {
         handler: function () {
             console.log("waypoint2")
             mapIntro.removeLayer(introFirstBuildings)
-            fadeInLayerLeaflet(introAllBuildings, 0,.5, 0.005, 5)
-            mapIntro.flyTo([41.79139,-87.60000], 15);
+            introAllBuildings = L.geoJSON(dataAll, {style: buildingStyleShow}).addTo(mapIntro);
+            mapIntro.flyTo([41.79139,-87.60000], 15, {
+                animate: true,
+                duration: 2
+                });
             },
         offset: offset,
       });
+
+      for (const chapter of config) {
+        for (const subsection of chapter.subsections) {
+        //console.log(config[chapter])
+            new Waypoint({
+            element: document.getElementById(subsection.id),
+            handler: function (direction) {
+                if (direction == "down") {
+
+                    const data = dataAll.features.filter(d => d.properties.year_start >= subsection.start_year && d.properties.year_start <= subsection.end_year)
+                    //bodyAllBuildings.clearLayers();
+                    layers[subsection.id] = L.geoJSON(data, {style: buildingStyleShow}).addTo(mapBody);
+                        mapBody.flyTo(uChiLocation, subsection.zoom, {
+                            animate: true,
+                            duration: 3
+                            });
+                    fadeInLayerLeaflet(layers[subsection.id], 0,.5, 0.005, 5)
+                } else {
+                    mapBody.removeLayer(layers[subsection.id])
+                }},
+            offset: offset,
+        });
+      }}
 };
 
 
@@ -161,12 +191,9 @@ function main() {
     processConfig(config);
     mapIntro = createMap('map-intro');
     // add all layers with opacity 0
-    introAllBuildings = L.geoJSON(dataAll, {style: buildingStyleHide}).addTo(mapIntro);
     introFirstBuildings = L.geoJSON(dataFirst, {style: buildingStyleShow}).addTo(mapIntro);
 
-    mapBody = createMap('map-body');
-    bodyAllBuildings = L.geoJSON(dataAll, {style: buildingStyleHide}).addTo(mapBody);
-    bodyFirstBuildings = L.geoJSON(dataFirst, {style: buildingStyleShow}).addTo(mapBody);
+    mapBody = createMap('map-body',ChiLocation, 12);
 
 
     waypoints();
