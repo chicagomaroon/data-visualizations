@@ -88,6 +88,7 @@ All pull requests should contain a still of the image and be linted, minified, c
 Examples for updated style guides
 - https://urbaninstitute.github.io/graphics-styleguide/
 - https://bbc.github.io/rcookbook/
+- https://docs.google.com/spreadsheets/d/1F1gm5QLXh3USC8ZFx_M9TXYxmD-X5JLDD0oJATRTuIE/edit?gid=1679646668#gid=1679646668
 
 
 #### Font
