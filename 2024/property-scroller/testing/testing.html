@@ -10,7 +10,11 @@
 </head>
 <body>
     <button onclick="zoomToFeature()" id='zoom-in'>Zoom In</button>
-    <div id='map' style='width: 400px; height: 300px;'></div>
+    <div class="slidecontainer">
+        <p>Year: <span id="year"></span></p>
+        <input type="range" min="1890" max="2024" value="1890" class="slider" id="myRange">
+      </div>
+    <div id='map' style='width: 1000px; height: 600px;'></div>
     <script src='testing.js'></script>
 
 </body>

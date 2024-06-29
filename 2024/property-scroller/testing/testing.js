@@ -22,7 +22,7 @@ var map = new maplibregl.Map({
     container: 'map',
     style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
     center: uChiLocation, // starting position [lng, lat]
-    zoom: 10 // starting zoom
+    zoom: 13 // starting zoom
 });  
 
 
@@ -40,7 +40,7 @@ map.on('load', () => {
             'fill-color': '#800000',
             'fill-opacity': 0.8
         },
-        "filter": ['<', 'year_start',1940]
+        "filter": ['<', 'year_start',1990]
     });
 
     // todo 
@@ -59,6 +59,12 @@ function zoomToFeature() {
     map.zoomTo(14, {
         duration: 2000,})
 }
+
+document.getElementById('myRange').addEventListener('input', (e) => {
+    map.setFilter('maineLayer', ['<', 'year_start', Number(e.target.value)]);
+    document.getElementById('year').innerText = e.target.value;
+
+})
 
 
 

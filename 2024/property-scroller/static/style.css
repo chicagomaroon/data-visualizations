@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
+html {
+  width:100%; 
+  margin:0;
+}
+
 body {
   font-family: Georgia;
-  width: 100%;
-  /* padding: 1em;
-  margin: 0 auto; */
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background: rgb(245, 243, 240);
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 .article-text {
@@ -32,7 +42,7 @@ body {
 }
 
 .header img {
-  width: 250px;
+  width: 20%;
   margin: auto;
 }
 
@@ -52,6 +62,8 @@ body {
 }
 
 .map-container-body {
+  display: flex;
+  flex-direction: row;
   position: sticky;
   z-index: 1;
   margin: auto;
@@ -60,9 +72,53 @@ body {
   height: 800px;
 }
 
+.timeline-container {
+  align-content: center;
+  padding: 10px;
+  height: 100%;
+  flex:.5;
+  vertical-align: middle;
+}
+
+.timeline-text {
+  color: rgba(128, 128, 128, 0.404);
+  font-size: medium;
+}
+
+#timeline-0 {
+  color: black;
+  font-size: large;
+}
+
+
 #map-body {
   height: 100%;
   margin: 0;
+  flex:15;
+}
+
+#explore-nav {
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  z-index: 1020;
+  position: fixed;
+  top: 0;
+  left: 5%;
+  margin: 5px;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: all;
+  transition: all 1s ease;
+  visibility: hidden;
+}
+
+#explore-button {
+display: inline-block;
+float: left;
+background: white;
+color: #333;
+padding: 5px;
+border-radius: 5px;
 }
 
 .scroller {
