@@ -8,9 +8,7 @@ technical projects. See all of our stories [here](https://chicagomaroon.com/cate
 Our team makes use of a variety of JavaScript tools to create web-based journalistic data visualizations embedded in the
 *Maroon*'s online articles. Most notably, we use [HighCharts](https://www.highcharts.com/), a JavaScript module designed
 for simple, interactive data visualization in a variety of formats. For map-based visualizations, we use HighCharts, 
-[Leaflet](https://leafletjs.com/), or [Google Maps](https://developers.google.com/maps/documentation/javascript), and
-for even more customization, we use [d3.js](https://d3js.org/). Also, individual projects have made use of various 
-Python and R-based tools to perform more complex data-related tasks such as geoprocessing and web scraping. 
+[Leaflet](https://leafletjs.com/), [MapLibre](https://maplibre.org/maplibre-gl-js/docs/) or [Google Maps](https://developers.google.com/maps/documentation/javascript). For custom visualizations we use [d3.js](https://d3js.org/). Individual projects have made use of various tools such as Google Sheets, Python and R. to perform data-related tasks including general data.
 
 ## Interested in joining?
 
@@ -24,5 +22,5 @@ of the team's Lead Developers, [Nikhil Patel](nvp15@uchicago.edu) and [Austin St
 
 ## Interested in contributing?
 
-Once you've joined and chosen a project you'd like to work on, please review our [contributor guide](notes.md) to get 
+Once you've joined and chosen a project you'd like to work on, please review our [contributor guide](CONTRIBv2.md) to get 
 started.

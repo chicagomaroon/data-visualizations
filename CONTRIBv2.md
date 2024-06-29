@@ -2,8 +2,8 @@
 Interested in writing a story with the Maroon Data Team? Follow the steps below.
 
 1. If you are new, please complete all the [getting started](#from-the-very-beginning) steps.
-2. Claim a story on the pitch document (see Slack channel for document) or pitch a new story. Fill out Data Team Story Outline and send to a Data Editor for review.
-3. Research, write, and create any visuals needed for your story. Feel free to create draft versions of visual using any program or language that you would like. Published visuals will need to be created by following the [build process](#build-process-for-a-visualization). Any other visuals must be approved by your editor. Visuals must follow the Maroon's Data [Style Guide](#style-guide).
+2. Claim a story on the pitch document (see Slack channel for pitch list) or pitch a new story. to pitch a new story, fill out [Data Team Story Outline](link) and send to a Data Editor for review.
+3. Research, write, and create necessary visuals for your story. Feel free to create draft visuals using any program or language that you would like. Published visuals will need to be created by following the [build process](#build-process-for-a-visualization). Any visuals that do not follow the build process must be approved by a data editor. Visuals must follow the Maroon's Data [Style Guide](#style-guide).
 
 ## Getting Started
 
@@ -11,7 +11,7 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 1. Make a Github account and learn about version control (git). 
     - Make an account with github if you do not have one: https://github.com/join
     - You may also want to download [GitHub Desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.)
-    - There are lots of resources to learn about version control using git. Below are a few we recommend but I would recommend exploring There are many other resources online if these are unclear!
+    - There are lots of resources to learn about version control using Github. Below are a few we recommend but we encourage you to exploring other online resources as needed.
         - Version Control by [The Missing Semester from MIT](https://missing.csail.mit.edu/2020/version-control/)
         - [CAPP Camp Git I and Git II](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s2-git-i/)
         - [GitHub Feature Branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
@@ -25,7 +25,7 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
         - learn more about code editors generally [here](https://missing.csail.mit.edu/2020/editors/)
         - learn more about VS Code [here](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s1-linux/2-vs-code-layout.html)
 
-4. Download node that will allow you to run Javascript, the programming language we use to write our visualizations in:
+4. Download node which will allow you to run Javascript, the programming language we use to write our visualizations in:
     - [node.js](https://nodejs.org/en) `v20.9.0`
         - To install the correct version, open the terminal and run:
             1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash` 
@@ -37,13 +37,17 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 
 ### Tools and Skills to Review
 Programming is a skill that you learn by doing. There is no expectation that someone fully understands a programming language or package before they can start creating things. Much of the process is about learning as you go and building a muscle of problem solving and debugging as you go.
-With that being said, use the resources below as a starting place and reference source. Aim to learn just enough to jump into a project and learning the rest as you go. 
+With that being said, use the resources below as a starting place and reference source. Aim to learn just enough to jump into a project and learn the rest as you go. 
 - We primarily use [`HighCharts`](https://www.highcharts.com/) a javascript library to build visualizations.
     - The best place to start is to find a previously created visual from the Maroon Team by opening [example-graphs.html](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     - If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
-- Other tools includes
-    - For mapping, we have used [Leaflet](https://leafletjs.com/) an open-source JavaScript library for mobile-friendly interactive. maps   
+- Other tools includes:
+    - Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
+    - R and Python; For more data intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
+    - For mapping, we have used [Leaflet](https://leafletjs.com/) an open-source JavaScript library for mobile-friendly interactive maps. 
     - For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Ask Austin if you are interested in learning more. (more resources TK).
+
+See the [resources][resources/] folder for additional material.
 
 ## Build Process for a Visualization 
 1. Go to the base folder of the `data-visualizations` repository ensure your local repo is up to date with the remote repo by running `git checkout main` and `git pull`
