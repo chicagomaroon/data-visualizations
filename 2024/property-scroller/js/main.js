@@ -1,19 +1,32 @@
 // make sticky map stop for some text
 // https://jsfiddle.net/qm3KZ/26/
 
+// explore map funciton like
+    // allowed to pan,
+    // max and min area 
+    // popup for buildings
+    // hid story text
+    // stop scrolling 
+// change filter of layers 
+// [
+//     "all",     
+//    [">=", ['get', 'startDate1'], startDate2],
+//    ["<=", ['get', 'endDate1'], endDate2]
+// ]
+
 // ------------------ DATA ------------------
 dataPath = 'data/with_era.geojson';
 
 d3.json(dataPath, function (df) {
     sessionStorage.setItem('data', JSON.stringify(df));
 });
-
 const dataAll = JSON.parse(sessionStorage.getItem('data'));
-
+    
 let dataFirst = structuredClone(dataAll);
 dataFirst.features = dataFirst.features.filter(
     (d) => d.properties.year_start <= 1925
 );
+
 
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
 const ChiLocation = [-87.63211524853163, 41.862161325588076];
@@ -76,7 +89,7 @@ function changeLayerOpacity(map, layerName, show) {
 function createMap(div, startCoords = uChiLocation, zoomStart = 17) {
     var map = new maplibregl.Map({
         container: div,
-        style: 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json', // stylesheet locatio
+        style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
         center: startCoords, // starting position [lng, lat]
         zoom: zoomStart, // starting zoom
         scrollZoom: false,
@@ -106,7 +119,7 @@ function processConfig(config) {
 function processChapter(chapter) {
     // a chapter is object with title:str and subsection:array of objects
     // create title div
-    console.log(chapter.title);
+    //console.log(chapter.title);
     let title_div = document.createElement('div');
     title_div.className = 'scroller chapter';
     title_div.id = 'chapter' + chapter.id;
@@ -231,6 +244,7 @@ function main() {
 
 // run everything
 main();
+
 
 // ------------ TESTING ------------
 

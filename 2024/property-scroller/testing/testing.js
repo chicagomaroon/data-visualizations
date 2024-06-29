@@ -9,8 +9,9 @@ d3.json(dataPath, function (df) {
 
 const dataAll = JSON.parse(sessionStorage.getItem("data"))
 
-let dataFirst = dataAll
-    dataFirst.features = dataFirst.features.filter(d => d.properties.year_start <= 1925)
+let dataFirst = structuredClone(dataAll);
+dataFirst.features = dataFirst.features.filter(
+    (d) => d.properties.year_start <= 1925);
 
 console.log(dataAll)
 console.log(dataFirst)
@@ -19,7 +20,7 @@ console.log(dataFirst)
 
 var map = new maplibregl.Map({
     container: 'map',
-    style: 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json', // stylesheet locatio
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
     center: uChiLocation, // starting position [lng, lat]
     zoom: 10 // starting zoom
 });  
@@ -38,8 +39,12 @@ map.on('load', () => {
         'paint': {
             'fill-color': '#800000',
             'fill-opacity': 0.8
-        }
+        },
+        "filter": ['<', 'year_start',1940]
     });
+
+    // todo 
+    //map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
 
 
     map.on('mouseenter', 'maineLayer', (e) => {
