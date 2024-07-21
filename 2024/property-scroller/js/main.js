@@ -1,21 +1,20 @@
+//TODO
 // explore map function
-    // max and min area 
-    // popup for buildings
-
-// filtering might not actually work as cant fade in just the new buildings. need to explore more
+    // max and min area
 
 // why is the page too wide????
 
+// loading at start up
+
+// hover options
+// https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
+
 // ------------------ DATA ------------------
 dataPath = 'data/with_era.geojson';
-
-d3.json(dataPath, function (df) {
-    sessionStorage.setItem('data', JSON.stringify(df));
-});
-const dataAll = JSON.parse(sessionStorage.getItem('data'));
-
 const config = JSON.parse(sessionStorage.getItem('config'));
-    
+
+// -------- CONSTANTS --------
+
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
 const ChiLocation = [-87.63211524853163, 41.862161325588076];
 const hydeParkLocation = [-87.59654429195592, 41.79504596867451];
@@ -23,47 +22,46 @@ const hydeParkLocation = [-87.59654429195592, 41.79504596867451];
 const fullOpacity = 0.6;
 const nav = new maplibregl.NavigationControl();
 
-
-
 // -------- HELPER FUNCTIONS --------
 
-
 function exploreMap() {
-    const active = document.querySelector("#explore-button").dataset.active;
-    console.log(active)
-    
-    if (active == "Story") {
+    const active = document.querySelector('#explore-button').dataset.active;
+    console.log(active);
+
+    if (active == 'Story') {
         // exploring map
 
         // change text and flag
-        document.querySelector("#explore-button").dataset.active = 'Explore';
-        document.querySelector("#explore-button").innerHTML = "Return to Story";
+        document.querySelector('#explore-button').dataset.active = 'Explore';
+        document.querySelector('#explore-button').innerHTML = 'Return to Story';
 
         // disable scroll;
-        document.body.classList.add("stop-scrolling");
+        document.body.classList.add('stop-scrolling');
 
         // hide scrollers
-        document.querySelectorAll(".scroller").forEach((o) => o.style.visibility = "hidden");
+        document
+            .querySelectorAll('.scroller')
+            .forEach((o) => (o.style.visibility = 'hidden'));
 
         // allow map panning
         mapBody.dragPan.enable();
-        mapBody.scrollZoom.enable()
-        mapBody.boxZoom.enable()
-        mapBody.doubleClickZoom.enable()
+        mapBody.scrollZoom.enable();
+        mapBody.boxZoom.enable();
+        mapBody.doubleClickZoom.enable();
         mapBody.addControl(nav, 'top-right');
-        
-        
-        } else {
+    } else {
         // change text and flag
-        document.querySelector("#explore-button").dataset.active = 'Story';
-        document.querySelector("#explore-button").innerHTML = "Explore Map";
+        document.querySelector('#explore-button').dataset.active = 'Story';
+        document.querySelector('#explore-button').innerHTML = 'Explore Map';
 
         // show scrollers
-        console.log(document.querySelectorAll(".scroller"))
-        document.querySelectorAll(".scroller").forEach((o) => o.style.visibility = "visible");
+        console.log(document.querySelectorAll('.scroller'));
+        document
+            .querySelectorAll('.scroller')
+            .forEach((o) => (o.style.visibility = 'visible'));
 
         // enable scroll
-        document.body.classList.remove("stop-scrolling");
+        document.body.classList.remove('stop-scrolling');
 
         // return to where we were
         //location = [center, zoom]
@@ -75,16 +73,16 @@ function exploreMap() {
 
         // disable map stuff
         mapBody.dragPan.disable();
-        mapBody.scrollZoom.disable()
-        mapBody.boxZoom.disable()
-        mapBody.doubleClickZoom.disable()
+        mapBody.scrollZoom.disable();
+        mapBody.boxZoom.disable();
+        mapBody.doubleClickZoom.disable();
         mapBody.removeControl(nav);
-
-
     }
 }
 
 function changeTimelineYear(targetYear) {
+    pause = 25;
+
     let currentYearM3 = document.getElementById('timeline-3').innerHTML,
         currentYearM2 = document.getElementById('timeline-2').innerHTML,
         currentYearM1 = document.getElementById('timeline-1').innerHTML,
@@ -94,104 +92,93 @@ function changeTimelineYear(targetYear) {
         currentYearP3 = document.getElementById('timeline+3').innerHTML;
 
     function incrementCounter() {
-        document.getElementById('timeline-3').innerHTML = currentYearM3
-        document.getElementById('timeline-2').innerHTML = currentYearM2
-        document.getElementById('timeline-1').innerHTML = currentYearM1
-        document.getElementById('timeline-0').innerHTML = currentYear
-        document.getElementById('timeline+1').innerHTML = currentYearP1
-        document.getElementById('timeline+2').innerHTML = currentYearP2
-        document.getElementById('timeline+3').innerHTML = currentYearP3
+        document.getElementById('timeline-3').innerHTML = currentYearM3;
+        document.getElementById('timeline-2').innerHTML = currentYearM2;
+        document.getElementById('timeline-1').innerHTML = currentYearM1;
+        document.getElementById('timeline-0').innerHTML = currentYear;
+        document.getElementById('timeline+1').innerHTML = currentYearP1;
+        document.getElementById('timeline+2').innerHTML = currentYearP2;
+        document.getElementById('timeline+3').innerHTML = currentYearP3;
 
-        if (currentYear++ < targetYear) {
-            currentYearM3++
-            currentYearM2++
-            currentYearM1++
-            currentYearP1++
-            currentYearP2++
-            currentYearP3++
-            setTimeout(incrementCounter, 100);
+        if (targetYear > currentYear) {
+            if (currentYear++ < targetYear) {
+                currentYearM3++;
+                currentYearM2++;
+                currentYearM1++;
+                currentYearP1++;
+                currentYearP2++;
+                currentYearP3++;
+                setTimeout(incrementCounter, pause);
+            }
+        } else {
+            if (currentYear-- > targetYear) {
+                currentYearM3--;
+                currentYearM2--;
+                currentYearM1--;
+                currentYearP1--;
+                currentYearP2--;
+                currentYearP3--;
+                setTimeout(incrementCounter, pause);
+            }
         }
-     }
-     incrementCounter()
-
+    }
+    incrementCounter();
 }
-
 
 // -------- MAP FUNCTIONS ---------
 
-function createLayer(data, map, is_show = true) {
+function createLayer(map_name, layerName, start_year = 1890, end_year = 2025) {
     /*
     create the base source and layers that we will filter
     */
-    sourceName = 'source';
-
-    if (is_show) {
-        opacity = fullOpacity;
-    } else {
-        opacity = 0;
-    }
-
-    map.addSource(sourceName, {
-        type: 'geojson',
-        data: data
-    });
-
-    map.addLayer({
-        id: 'layerFill',
+    map_name.addLayer({
+        id: layerName,
         type: 'fill',
-        source: sourceName,
+        source: 'buildings',
         layout: {},
         paint: {
             'fill-color': '#800000',
-            'fill-opacity': opacity,
-            'fill-opacity-transition': { duration: 500 }
+            'fill-opacity': 0,
+            'fill-opacity-transition': { duration: 1000 }
         },
-        "filter": ['<', 'year_start', 1910]
-    });
-    map.addLayer({
-        id: 'layerLine',
-        type: 'line',
-        source: sourceName,
-        layout: {},
-        paint: {
-            'line-color': '#800000',
-            'line-width': 2,
-            'line-opacity': opacity,
-        },
-        "filter": ['<', 'year_start', 1910]
+        filter: [
+            'all',
+            ['>=', ['get', 'year_start'], start_year],
+            ['<=', ['get', 'year_start'], end_year]
+        ]
     });
 }
 
-function filterLayer (map, startYear, endYear) {
-    /*
-    filter the layer set for the map
-    */
-
-    map.setFilter('layerFill',  ["all", [ '>', 'year_start', Number(startYear)],
-                                ["<", 'year_start', Number(endYear)]
-])
-    
-    map.setFilter('layerLine', ['all',[">=", ['get', 'year_start'], startYear],
-                                    ["<=", ['get', 'year_start'], endYear]]
-    )
-    map.setPaintProperty('layerFill', 'fill-opacity-transition', {duration: 500});
-    map.setPaintProperty('layerFill', 'fill-opacity', 0);         
-    map.setPaintProperty('layerFill', 'fill-opacity', fullOpacity);
-    map.setPaintProperty('layerLine', 'line-opacity', fullOpacity);
+function allLayers(map, type) {
+    if (type == 'intro') {
+        console.log('intro');
+        createLayer(map, 'startLayer', 1890, 1900);
+        createLayer(map, 'endLayer', 1890, 2025);
+    } else if (type == 'body') {
+        for (let year = 1900; year <= 2025; year += 25) {
+            layerName = 'layer' + String(year);
+            console.log(layerName);
+            createLayer(map, layerName, 1890, year + 25);
+        }
     }
-    
+}
 
-// function changeLayerOpacity(map, layerName, show) {
-//     if (show == 'show') {
-//         opacity = fullOpacity;
-//     } else {
-//         opacity = 0;
-//     }
-//     map.setPaintProperty(layerName + 'Fill', 'fill-opacity', opacity);
-//     map.setPaintProperty(layerName + 'Line', 'line-opacity', opacity);
-// }
+function filterOpacity(map, layer, show = true) {
+    if (show) {
+        opacity = 0.6;
+    } else {
+        opacity = 0;
+    }
+    map.setPaintProperty(layer, 'fill-opacity', opacity);
+}
 
-function createMap(div, startCoords = uChiLocation, zoomStart = 17) {
+function createMap(
+    div,
+    layers,
+    startCoords = uChiLocation,
+    zoomStart = 17,
+    start_year = 1900
+) {
     var map = new maplibregl.Map({
         container: div,
         style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
@@ -203,16 +190,65 @@ function createMap(div, startCoords = uChiLocation, zoomStart = 17) {
         dragPan: false,
         pitchWithRotate: false,
         dragRotate: false,
-        touchZoomRotate: false,
-        // TODO 
+        touchZoomRotate: false
+        // TODO
         // maxBounds: bounds
-
     });
     map.on('load', () => {
-        createLayer(dataAll, map, true);
+        map.addSource('buildings', {
+            type: 'geojson',
+            data: dataPath
+        });
+
+        allLayers(map, layers);
+
+        popupStuff(map);
     });
 
     return map;
+}
+
+function popupStuff(map) {
+    // Create a popup, but don't add it to the map yet.
+
+    // fix popup stuff, only on popup on turn on layer 
+    // mapBody.getLayer('layer1900').paint._values['fill-opacity'].value.value
+
+    const popup = new maplibregl.Popup({
+        closeButton: false,
+        closeOnClick: false
+    });
+
+    map.on('mousemove', 'layerFill', (e) => {
+        const active = document.querySelector('#explore-button').dataset.active;
+        if (active == 'Explore') {
+            // Change the cursor style as a UI indicator.
+            map_name.getCanvas().style.cursor = 'pointer';
+            // console.log(e.features[0].properties.name)
+            // Copy coordinates array.
+            const coordinates = e.features[0].geometry.coordinates.slice();
+            const description =
+                e.features[0].properties.name +
+                '<br>' +
+                'Year Built: ' +
+                e.features[0].properties.year_start;
+
+            // if (['mercator', 'equirectangular'].includes(mapBody.getProjection().name)) {
+            //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+            //     }
+            // }
+
+            // Populate the popup and set its coordinates
+            // based on the feature found.
+            popup.setLngLat(e.lngLat).setHTML(description).addTo(map_name);
+        }
+    });
+
+    map.on('mouseleave', 'layerFill', () => {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
+    });
 }
 
 //  ------------ CONFIG TEXT ------------
@@ -267,19 +303,29 @@ function processChapter(chapter) {
 }
 
 // ------------ WAYPOINTS ------------
-// create all waypoint triggers
-function waypoints() {
-    let offset = '50%';
 
+function updateLayers(addYear, removeLayer) {
+    // update timeline
+    changeTimelineYear((targetYear = addYear));
+
+    // remove layer
+    filterOpacity(mapBody, removeLayer, false);
+
+    // add layer
+    filterOpacity(mapBody, 'layer' + String(addYear), true);
+}
+
+function introWaypoints() {
     new Waypoint({
         element: document.getElementById('step1'),
         handler: function (direction) {
             if (direction == 'down') {
                 console.log('waypoint1');
             } else {
-                console.log('waypoint1 up')
-                filterLayer(mapIntro, 1890, 1910);
-                mapIntro.setFilter('layerFill', ['<', 'year_start', 1910]);
+                console.log('waypoint1 up');
+                filterOpacity(mapIntro, 'endLayer', false);
+                filterOpacity(mapIntro, 'startLayer', true);
+
                 mapIntro.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
@@ -287,14 +333,17 @@ function waypoints() {
                 });
             }
         },
-        offset: '10%'
+        offset: '1%'
     });
 
     new Waypoint({
         element: document.getElementById('step2'),
         handler: function () {
             console.log('waypoint2');
-            filterLayer(mapIntro, 1890, 2025);
+            filterOpacity(mapIntro, 'startLayer', false);
+
+            filterOpacity(mapIntro, 'endLayer', true);
+
             mapIntro.flyTo({
                 center: hydeParkLocation,
                 zoom: 14,
@@ -303,35 +352,9 @@ function waypoints() {
         },
         offset: '90%'
     });
+}
 
-    new Waypoint({
-        element: document.getElementById('1.1'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                console.log('waypoint 1.1');
-                document.getElementById('explore-nav').style.visibility = "visible";
-                mapBody.setPaintProperty('firstLayer', 'fill-opacity', 0.8);
-                mapBody.setPaintProperty('allLayer', 'fill-opacity', 0);
-                mapBody.flyTo({ center: uChiLocation, zoom: 15.5, duration: 4000 });
-            } else {
-
-                document.getElementById('explore-nav').style.visibility = "hidden";
-        }},
-        offset: '99%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('1.2'),
-        handler: function () {
-            console.log('waypoint 1.2');
-            changeTimelineYear(targetYear = 1910)
-        },
-        offset: '99%'
-    });
-
-
-    ;
-
+function bodyWaypoints() {
     //   for (const chapter of config) {
     //     for (const subsection of chapter.subsections) {
     //     //console.log(config[chapter])
@@ -356,18 +379,105 @@ function waypoints() {
     //   }}
 }
 
+// create all waypoint triggers
+function waypoints() {
+    let offset = '50%';
+
+    // intro way points
+    introWaypoints();
+
+    new Waypoint({
+        element: document.getElementById('1.1'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                console.log('waypoint 1.1');
+                document.getElementById('explore-nav').style.visibility =
+                    'visible';
+                filterOpacity(mapBody, 'layer1900');
+                mapBody.flyTo({
+                    center: uChiLocation,
+                    zoom: 15.5,
+                    duration: 6000
+                });
+            } else {
+                document.getElementById('explore-nav').style.visibility =
+                    'hidden';
+            }
+        },
+        offset: '99%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('1.2'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                console.log('waypoint 1.2');
+
+                updateLayers(1925, 'layer1900');
+            } else {
+                console.log('waypoint 1.2 up');
+                updateLayers(1900, 'layer1925');
+            }
+        },
+        offset: '99%'
+    });
+    new Waypoint({
+        element: document.getElementById('2.1'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                console.log('waypoint 2.1');
+                updateLayers(1950, 'layer1925');
+                mapBody.flyTo({
+                    center: hydeParkLocation,
+                    zoom: 14,
+                    duration: 3500
+                });
+            } else {
+                console.log('waypoint 1.2 up');
+                updateLayers(1925, 'layer1950');
+                mapBody.flyTo({
+                    center: uChiLocation,
+                    zoom: 15.5,
+                    duration: 6000
+                });
+            }
+        },
+        offset: '99%'
+    });
+}
+
 // ------------ MAIN ------------
 // combine all into one function
 function main() {
+
+    // create html elements from config
     processConfig(config);
-    mapIntro = createMap('map-intro', uChiLocation, 16);
-    mapBody = createMap('map-body', ChiLocation, 12);
+
+    // create maps
+    mapIntro = createMap('map-intro', 'intro', uChiLocation, 16);
+    mapBody = createMap('map-body', 'body', ChiLocation, 12);
+    popupStuff(mapBody);
+
+
+    // figure out start loading
+    mapIntro.on('style.load', () => {
+        const waiting = () => {
+            if (!mapIntro.isStyleLoaded()) {
+                console.log('waiting');
+                setTimeout(waiting, 200);
+            } else {
+                filterOpacity(mapIntro, 'startLayer', true);
+            }
+        };
+        waiting();
+    });
+
+    // create waypoints
     waypoints();
 }
 
 // run everything
 main();
-
 
 // ------------ TESTING ------------
 
@@ -490,28 +600,3 @@ main();
         });
     });
 })();
-
-// map popups
-function popupStuff() {
-    // Create a popup, but don't add it to the map yet.
-    const popup = new maplibregl.Popup({
-        closeButton: false,
-        closeOnClick: false
-    });
-
-    map.on('mouseenter', 'firstLayer', (e) => {
-        // Change the cursor style as a UI indicator.
-        map.getCanvas().style.cursor = 'pointer';
-        // Copy coordinates array.
-        const description = e.features[0].properties.name;
-
-        // Populate the popup and set its coordinates
-        // based on the feature found.
-        popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
-    });
-
-    map.on('mouseleave', 'firstLayer', () => {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-    });
-}

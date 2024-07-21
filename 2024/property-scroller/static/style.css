@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-html {
-  width:100%; 
-  margin:0;
+
+* {
+  box-sizing: border-box
 }
 
 body {
@@ -103,7 +103,7 @@ body {
   z-index: 1020;
   position: fixed;
   top: 0;
-  left: 5%;
+  right: 0%;
   margin: 5px;
   cursor: pointer;
   user-select: none;
@@ -113,12 +113,16 @@ body {
 }
 
 #explore-button {
-display: inline-block;
-float: left;
-background: white;
-color: #333;
-padding: 5px;
-border-radius: 5px;
+  display: inline-block;
+  float: left;
+  background: white;
+  color: #333;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.maplibregl-ctrl-top-right {
+  top: 5%;
 }
 
 .scroller {
@@ -133,7 +137,7 @@ border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-align: left;
     margin-right: auto;
-    margin-left: 45;
+    margin-left: 5%;
     line-height: 1.2;
     font-size: 30px;
     border-radius: 5px;
