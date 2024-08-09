@@ -18,7 +18,7 @@ Highcharts.chart('chart-div', {
    
     
     caption: {
-        text: '*Data for 2024 pertains to 2023-2024 school year.',
+        text: '*These data reflect student populations as of autumn quarter each year.',
         align: 'center'
     },
 
