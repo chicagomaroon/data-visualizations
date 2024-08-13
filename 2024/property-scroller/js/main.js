@@ -6,6 +6,8 @@
 
 // loading at start up
 
+// edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
+
 // hover options
 // https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
 

@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: Georgia;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgb(245, 243, 240);
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.article-text {
+  width: 50%;
+  margin: auto;
+  line-height: 1.6;
+  font-size: 20px;
+}
+
+#maroon-text {
+    background-color: #800000;
+    border-radius: 5px;
+    color: white;
+    padding: 3px;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+}
+
+.header img {
+  width: 20%;
+  margin: auto;
+}
+
+.map-container-intro {
+    position: relative;
+    z-index: 1;
+    margin: auto;
+    top: 0;
+    width: 100%;
+    height: 800px;
+}
+
+#map-intro {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.map-container-body {
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  z-index: 1;
+  margin: auto;
+  top: 0;
+  width: 100%;
+  height: 800px;
+}
+
+.timeline-container {
+  align-content: center;
+  padding: 10px;
+  height: 100%;
+  flex:5;
+  vertical-align: middle;
+}
+
+.timeline-text {
+  color: rgba(128, 128, 128, 0.404);
+  font-size: medium;
+}
+
+#timeline-0 {
+  color: black;
+  font-size: large;
+}
+
+
+#map-body {
+  height: 100%;
+  margin: 0;
+  flex:11;
+}
+
+#explore-nav {
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  z-index: 1020;
+  position: fixed;
+  top: 0;
+  right: 0%;
+  margin: 5px;
+  cursor: pointer;
+  user-select: none;
+  pointer-events: all;
+  transition: all 1s ease;
+  visibility: hidden;
+}
+
+#explore-button {
+  display: inline-block;
+  float: left;
+  background: white;
+  color: #333;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.maplibregl-ctrl-top-right {
+  top: 5%;
+}
+
+.scroller {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    /*border: 1px black solid; */
+    padding: 20px;
+    /* margin-left: 100px; */
+    width: 25%;
+    margin-top: 100vh;
+    margin-bottom: 20vh;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: left;
+    margin-right: auto;
+    margin-left: 5%;
+    line-height: 1.2;
+    font-size: 30px;
+    border-radius: 5px;
+    z-index: 9999;
+  }
+
+
+  .scroller.chapter{
+    position: relative;
+    height: 50%;
+    background: black;
+    padding: 0;
+  }
+
+  .scroller.chapter img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+
+  .chapter-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.1em;
+    font-weight: 400;
+    z-index: 999;
+    text-align: center;
+    color: white;
+    width: 100%;
+  }
+
+  hr {
+    border: none;
+    height: 4px;
+    /* Set the hr color */
+    color: white;  /* old IE */
+    background-color: white;  /* Modern Browsers */
+  }
+
+  #step1 {
+    margin-top: -70vh;
+  }
+
+  #step3 {
+    margin-bottom: 100vh;
+  }
+
+
+  #title-container {
+    text-align: center;
+    padding: 10px;
+    width: 65%;
+    margin: auto;
+
+  }
+
+  #title {
+    margin-top: 7vh;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 400;
+    z-index: 9999;
+    padding: 10px;
+  }
+
+  #subtitle {
+    padding: 5px;
+    font-size: 30px;
+  }
+
+  #byline {
+    padding: 10px;
+  }
+
+  #date {
+    padding: 10px;
+  }
