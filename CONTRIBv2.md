@@ -43,6 +43,7 @@ With that being said, use the resources below as a starting place and reference 
 - We primarily use [`HighCharts`](https://www.highcharts.com/), a JavaScript library, to build visualizations. Each HighChart graphic is embedded on a simple HTML page that is linked in its parent story.
     - The best place to start is to find a previously created visual from the Maroon Team by opening [example-graphs.html](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     - If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
+    - Continue to [Build Process for a Visualization](#build-process-for-a-visualization)
 - Other tools include:
     - Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
     - R and Python; For more data intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
@@ -52,10 +53,11 @@ With that being said, use the resources below as a starting place and reference 
 See the [resources][resources/] folder for additional material.
 
 ## Build Process for a Visualization 
-1. Go to the base folder of the `data-visualizations` repository ensure your local repo is up to date with the remote repo by running `git checkout main` and `git pull`
-2. Create a branch for you story by running `git checkout -b '[kebab-case-story-name]'`. Read more about kebab-case [here](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
+1. Go to the base folder of the `data-visualizations` repository and ensure your local repo is up to date with the remote repo by running `git checkout main` and `git pull`
+2. Create a branch for your story by running `git checkout -b '[kebab-case-story-name]'`. Replace the values in brackets with the relevant names. Read more about kebab-case [here](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
 2. In the terminal run `npm run create-visual --year=[year] --story=[kebab-case-story-name]`  This will create a folder with all the necessary files to create your visual.
     - If it is the year `2024` and your story is called `Example Visual` then run the command `npm run create-visual --year=2023 --story=example-visual` using the year `2024` and your story's name `example-visual` in kebab-case.
+    - For the error `The syntax of the command is incorrect`, use ChatGPT to edit the command for your terminal. For example, Git Bash requires line breaks. You may also have to manually set environment variables with `npm_config_year=` and `npm_config_story=`.
     - In your `./[year]/[story-name]/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
 3. Start creating your visual that will be housed in the `./[year]/[story-name]/` folder.
     - If you'd like to see previously created example visuals, open [example-graphs.html](./example-graphs.html) from your local repository.
