@@ -2,7 +2,7 @@
 Interested in writing a story with the Maroon Data Team? Follow the steps below.
 
 1. If you are new, please complete all the [getting started](#from-the-very-beginning) steps.
-2. Claim a story on the pitch document (see Slack channel for pitch list) or pitch a new story. to pitch a new story, fill out [Data Team Story Outline](link) and send to a Data Editor for review.
+2. Claim a story on the pitch document (see Slack channel for pitch list) or pitch a new story. To pitch a new story, fill out [Data Team Story Outline](link) and send to a Data Editor for review.
 3. Research, write, and create necessary visuals for your story. Feel free to create draft visuals using any program or language that you would like. Published visuals will need to be created by following the [build process](#build-process-for-a-visualization). Any visuals that do not follow the build process must be approved by a data editor. Visuals must follow the Maroon's Data [Style Guide](#style-guide).
 
 ## Getting Started
@@ -37,15 +37,16 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 
 ### Tools and Skills to Review
 Programming is a skill that you learn by doing. There is no expectation that someone fully understands a programming language or package before they can start creating things. Much of the process is about learning as you go and building a muscle of problem solving and debugging as you go.
+
 With that being said, use the resources below as a starting place and reference source. Aim to learn just enough to jump into a project and learn the rest as you go. 
 - We primarily use [`HighCharts`](https://www.highcharts.com/) a javascript library to build visualizations.
     - The best place to start is to find a previously created visual from the Maroon Team by opening [example-graphs.html](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     - If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
-- Other tools includes:
+- Other tools include:
     - Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
     - R and Python; For more data intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
-    - For mapping, we have used [Leaflet](https://leafletjs.com/) an open-source JavaScript library for mobile-friendly interactive maps. 
-    - For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Ask Austin if you are interested in learning more. (more resources TK).
+    - For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps. 
+    - For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Ask Austin if you are interested in learning more. (More resources TK).
 
 See the [resources][resources/] folder for additional material.
 
