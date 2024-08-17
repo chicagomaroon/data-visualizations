@@ -92,14 +92,14 @@ All pull requests should contain a still of the image and be linted, minified, c
 ### Style Standards
 
 Examples for updated style guides
-- https://urbaninstitute.github.io/graphics-styleguide/
-- https://bbc.github.io/rcookbook/
-- https://docs.google.com/spreadsheets/d/1F1gm5QLXh3USC8ZFx_M9TXYxmD-X5JLDD0oJATRTuIE/edit?gid=1679646668#gid=1679646668
+- [Urban Institute](https://urbaninstitute.github.io/graphics-styleguide/)
+- [BBC](https://bbc.github.io/rcookbook/)
+- [Other organizations](https://docs.google.com/spreadsheets/d/1F1gm5QLXh3USC8ZFx_M9TXYxmD-X5JLDD0oJATRTuIE/edit?gid=1679646668#gid=1679646668)
 
 
 #### Font
 
-The font is set via the [`main.css`](./static/main.css) file. The default font, and the one used on the rest of _The Chicago Maroon_, is Georgia, serif font: [Link](https://www.cssfontstack.com/Georgia).
+The font is set via the [`main.css`](./static/main.css) file. The default font, and the one used on the rest of _The Chicago Maroon_, is [Georgia, serif font](https://www.cssfontstack.com/Georgia).
 
 #### Titles and Subtitles
 
