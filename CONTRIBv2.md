@@ -59,7 +59,7 @@ See the [resources][resources/] folder for additional material.
     - In your `./[year]/[story-name]/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
 3. Start creating your visual that will be housed in the `./[year]/[story-name]/` folder.
     - If you'd like to see previously created example visuals, open [example-graphs.html](./example-graphs.html) from your local repository.
-    - If you are using Highcharts, [this site](https://api.highcharts.com/highmaps/) gives a lot of helpful documentation on the options for creating charts.
+    - If you are using Highcharts, here is a lot of helpful documentation on the [options for creating charts](https://api.highcharts.com/highmaps/).
 4. Update the `meta_data.json` in your story's folder, which will look something like this:
    ```json
    {
@@ -73,8 +73,6 @@ See the [resources][resources/] folder for additional material.
    - Example: `npm run process-visual --year=2023 --story=example-visual`
 7. Create a Pull Request to have your visual reviewed by committing and pushing your changes.
     - You can run `git status` to see which files in red have not been added. Then run `git add [file-name]` for each file to add them. Next run `git commit -m '[commit message]'` to commit your changes. Then run `git push` to push your changes. If this is your first commit, github may ask you to run a different command, which you should. Ex `git push --set-upstream origin [branch-name]`
-
- 
 
 ## The Chicago Maroon’s Data Contribution and Style Guide
 
