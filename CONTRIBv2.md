@@ -111,7 +111,7 @@ Titles and subtitles should meet the following constraints:
 
 #### Colors
 
-Color palates are based off the [UChicago style guide](https://news.uchicago.edu/sites/default/files/attachments/_uchicago.identity.guidelines.pdf).
+Color palettes are based off the [UChicago style guide](https://news.uchicago.edu/sites/default/files/attachments/_uchicago.identity.guidelines.pdf).
 
 <img src="static/primary-colors.png" alt="UChicago primary colors."/>
 
