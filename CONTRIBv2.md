@@ -28,7 +28,7 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 4. Download node which will allow you to run Javascript, the programming language we use to write our visualizations in:
     - [node.js](https://nodejs.org/en) `v20.9.0`
         - To install the correct version, open the terminal and run:
-            1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash` . If you are getting error of alias contains slash (likely if you are on Windows) try using `nvm-setup.exe` from the [Windows release site](https://github.com/coreybutler/nvm-windows/releases).
+            1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash` . If you are getting error "should not accept aliases with slashes" (likely if you are on Windows) try using `nvm-setup.exe` from the [Windows release site](https://github.com/coreybutler/nvm-windows/releases).
             2. Install the correct version of Node `nvm install 20.9.0`. If you are getting error of nvm not recognized then run `source ~/.nvm/nvm.sh` and then run above again. 
             3. Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`
             4. Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`
