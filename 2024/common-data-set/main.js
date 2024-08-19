@@ -8,16 +8,6 @@ Highcharts.setOptions({
     },
     colors: [
         '#800000',
-        '#FFA319',
-        '#C16622',
-        '#8F3931',
-        '#8A9045',
-        '#58593F',
-        '#155F83',
-        '#350E20',
-        '#47B5FF',
-        '#FF3399'
-    ]
 });
 
 Highcharts.chart('chart-uchicago', {
@@ -37,6 +27,9 @@ Highcharts.chart('chart-uchicago', {
         text: '2021-2022 UChicago applicants by status and gender',
         align: 'center'
     },
+        '#FFA319'
+    ],
+    
 
     xAxis: {
         categories: ['Applied','Admitted','Enrolled']
