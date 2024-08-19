@@ -27,6 +27,16 @@ Highcharts.setOptions({
         title: {
             text: 'Percent'
         },
+
+        stackLabels: {
+            enabled: true,
+            formatter: function(){
+                return this.stack
+            },
+            crop: false,
+            overflow: 'allow',
+            style: {textOutline: 'none'}
+        },
     },
 
     plotOptions: {
