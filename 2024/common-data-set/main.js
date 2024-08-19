@@ -12,31 +12,21 @@ Highcharts.setOptions({
     },
     colors: [
         '#800000',
-});
-
-Highcharts.chart('chart-uchicago', {
-    // Setting default colors
-    // data: {
-    //     csvURL: window.location.origin + '/gender.csv'
-    // },
-
-    // All code for your chart goes here
-    title: {
-        text: '2021-2022 UChicago applicants by status and gender',
-        align: 'center'
-    },
         '#FFA319'
     ],
     
 
     xAxis: {
-        categories: ['Applied','Admitted','Enrolled']
+        categories: ['Applied','Admitted','Enrolled'],
+        title: {
+            text: 'Year'
+        }
     },
-
+    
     yAxis: {
         title: {
             text: 'Percent'
-        }
+        },
     },
 
     plotOptions: {
@@ -47,6 +37,19 @@ Highcharts.chart('chart-uchicago', {
                 format: '{point.percentage:.0f}%'
             }
         }
+    }
+});
+
+Highcharts.chart('chart-uchicago', {
+
+    // data: {
+    //     csvURL: window.location.origin + '/gender.csv'
+    // },
+
+    // All code for your chart goes here
+    title: {
+        text: 'UChicago applicants by status, year, and gender',
+        align: 'center'
     },
 
     series: [
@@ -66,26 +69,6 @@ Highcharts.chart('chart-northwestern', {
     title: {
         text: '2021-2022 Northwestern applicants by status and gender',
         align: 'center'
-    },
-
-    xAxis: {
-        categories: ['Applied','Admitted','Enrolled']
-    },
-
-    yAxis: {
-        title: {
-            text: 'Percent'
-        }
-    },
-
-    plotOptions: {
-        column: {
-            stacking: 'percent', // percent chart
-            dataLabels: {
-                enabled: true,
-                format: '{point.percentage:.0f}%'
-            }
-        }
     },
 
     series: [
