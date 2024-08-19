@@ -44,7 +44,8 @@ Highcharts.setOptions({
             stacking: 'percent', // percent chart
             dataLabels: {
                 enabled: true,
-                format: '{point.percentage:.0f}%'
+                format: '{point.percentage:.0f}%',
+                style: {textOutline: 'none'}
             }
         }
     }
