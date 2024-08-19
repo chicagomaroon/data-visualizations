@@ -2,6 +2,8 @@
 // https://www.highcharts.com/demo
 Highcharts.setOptions({
     chart: {
+        type: 'column',
+        // inverted: true,
         style: {
             fontFamily: 'Georgia, serif'
         }
@@ -12,12 +14,6 @@ Highcharts.setOptions({
 
 Highcharts.chart('chart-uchicago', {
     // Setting default colors
-
-    chart: {
-        type: 'column',
-        inverted: true
-    },
-
     // data: {
     //     csvURL: window.location.origin + '/gender.csv'
     // },
@@ -60,13 +56,6 @@ Highcharts.chart('chart-uchicago', {
 
 
 Highcharts.chart('chart-northwestern', {
-    // Setting default colors
-
-    chart: {
-        type: 'column',
-        inverted: true
-    },
-
     // data: {
     //     csvURL: window.location.origin + '/gender.csv'
     // },
