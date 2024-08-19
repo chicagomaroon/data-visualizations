@@ -53,8 +53,12 @@ Highcharts.chart('chart-uchicago', {
     },
 
     series: [
-        {name:'Male', data:[17513,1254,1067],},
-        {name:'Female', data:[20445,1206,986]}         
+        {name:'Male', data:[17513,1254,1067],stack:'2021-2022'},
+        {name:'Female', data:[20445,1206,986],stack:'2021-2022'},
+        {name:'Male', data:[16830,1064,937],stack:'2022-2023',showInLegend:false},
+        {name:'Female', data:[20670,975,792],stack:'2022-2023',showInLegend:false},
+        {name:'Male', data:[17373,994,885],stack:'2023-2024',showInLegend:false},
+        {name:'Female', data:[21249,855,741],stack:'2023-2024',showInLegend:false}         
     ]
 
 });
@@ -72,7 +76,11 @@ Highcharts.chart('chart-northwestern', {
     },
 
     series: [
-        {name:'Male', data:[21781,1452,925],},
-        {name:'Female', data:[25855,1869,1161]}         
+        {name:'Male', data:[21781,1452,925],stack:'2021-2022'},
+        {name:'Female', data:[25855,1869,1161],stack:'2021-2022'},
+        {name:'Male', data:[23534,1652,923],stack:'2022-2023',showInLegend:false},
+        {name:'Female', data:[27725,2043,1115],stack:'2022-2023',showInLegend:false},
+        {name:'Male', data:[24511,1729,965],stack:'2023-2024',showInLegend:false},
+        {name:'Female', data:[27256,2010,1144],stack:'2023-2024',showInLegend:false}           
     ]
 });
