@@ -4,6 +4,8 @@ Highcharts.setOptions({
     chart: {
         type: 'column',
         // inverted: true,
+        height: '400',
+        width: '600',
         style: {
             fontFamily: 'Georgia, serif'
         }
