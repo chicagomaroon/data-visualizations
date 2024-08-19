@@ -10,11 +10,11 @@ Highcharts.setOptions({
             fontFamily: 'Georgia, serif'
         }
     },
+
     colors: [
         '#800000',
         '#FFA319'
     ],
-    
 
     xAxis: {
         categories: ['Applied','Admitted','Enrolled'],
@@ -74,7 +74,6 @@ Highcharts.chart('chart-uchicago', {
 
 });
 
-
 Highcharts.chart('chart-northwestern', {
     // data: {
     //     csvURL: window.location.origin + '/gender.csv'
@@ -82,7 +81,6 @@ Highcharts.chart('chart-northwestern', {
 
     // All code for your chart goes here
     title: {
-        text: '2021-2022 Northwestern applicants by status and gender',
         text: 'Northwestern applicants by status, year, and gender',
         align: 'center'
     },
