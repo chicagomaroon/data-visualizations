@@ -83,6 +83,7 @@ Highcharts.chart('chart-northwestern', {
     // All code for your chart goes here
     title: {
         text: '2021-2022 Northwestern applicants by status and gender',
+        text: 'Northwestern applicants by status, year, and gender',
         align: 'center'
     },
 
