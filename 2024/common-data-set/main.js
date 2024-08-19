@@ -17,10 +17,7 @@ Highcharts.setOptions({
     ],
 
     xAxis: {
-        categories: ['Applied','Admitted','Enrolled'],
-        title: {
-            text: 'Year'
-        }
+        categories: ['Applied','Admitted','Enrolled']
     },
     
     yAxis: {
