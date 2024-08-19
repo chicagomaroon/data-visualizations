@@ -58,6 +58,7 @@ Highcharts.chart('chart-uchicago', {
     title: {
         text: 'UChicago applicants by status, incoming year, and gender',
         align: 'center',
+        margin: 40
     },
 
     series: [
@@ -80,6 +81,7 @@ Highcharts.chart('chart-northwestern', {
     title: {
         text: 'Northwestern applicants by status, incoming year, and gender',
         align: 'center',
+        margin: 40
     },
 
     series: [
