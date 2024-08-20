@@ -1,4 +1,4 @@
 {
-    "description": "Donut chart describing demographics for incoming UChicago students in 2024.",
-    "title": "2024 admitted students by race"
+    "description": "Grouped percentage bar chart describing gender distribution for incoming UChicago students, using Northwestern as a comparison school. Each group represents includes students who applied, were admitted, and enrolled, respectively. Each bar in each group represents incoming cohorts of years 2021, 2022, and 2023.",
+    "title": "Gender distribution of UChicago applicants compared to Northwestern by status and incoming year"
 }
