@@ -52,7 +52,6 @@ Highcharts.chart('chart-uchicago', {
     //     csvURL: window.location.origin + '/gender.csv'
     // },
 
-    // All code for your chart goes here
     title: {
         text: 'UChicago applicants by status, incoming year, and gender',
         align: 'center',
@@ -75,7 +74,6 @@ Highcharts.chart('chart-northwestern', {
     //     csvURL: window.location.origin + '/gender.csv'
     // },
 
-    // All code for your chart goes here
     title: {
         text: 'Northwestern applicants by status, incoming year, and gender',
         align: 'center',
