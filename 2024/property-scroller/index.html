@@ -6,8 +6,11 @@
         <!-- external builds -->
         <script src="js/noframework.waypoints.min.js"></script>
         <script src="https://d3js.org/d3.v4.min.js"></script>
-        <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
-        <link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+        <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
+        <link
+            href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css"
+            rel="stylesheet"
+        />
         <!-- my styling is supreme -->
         <link rel="stylesheet" href="static/style3.css" />
     </head>
@@ -24,8 +27,8 @@
                 <figure id="map-intro"></figure>
             </div>
             <div class="scroller" id="step1">
-                When the University of Chicago was founded in 1890, there were 14
-                original buildings built on 22 acres of land.
+                When the University of Chicago was founded in 1890, there were
+                14 original buildings built on 22 acres of land.
             </div>
             <div class="scroller" id="step2">
                 Today, UChicago owns or manages over 200 properties and
@@ -34,8 +37,7 @@
             </div>
             <div class="scroller" id="step3">
                 How did UChicago come to own all this property and what role has
-                the university played in shaping the neighborhood of Hyde
-                Park?
+                the university played in shaping the neighborhood of Hyde Park?
             </div>
         </div>
         <div class="title-container" id="title-container">
@@ -91,18 +93,24 @@
         <div id="chapters-container">
             <div class="map-container-body">
                 <div id="explore-nav">
-                    <button id="explore-button" onclick= 'exploreMap()' data-active = 'Story'>Explore Map</button>
+                    <button
+                        id="explore-button"
+                        onclick="exploreMap()"
+                        data-active="Story"
+                    >
+                        Explore Map
+                    </button>
                 </div>
                 <div class="timeline-container">
-                    <div class = 'timeline-text' id="timeline-3">1887</div>
-                    <div class = 'timeline-text' id="timeline-2">1888</div>
-                    <div class = 'timeline-text' id="timeline-1">1889</div>
-                    <div class = 'timeline-text' id="timeline-0">1890</div>
-                    <div class = 'timeline-text' id="timeline+1">1891</div>
-                    <div class = 'timeline-text' id="timeline+2">1892</div>
-                    <div class = 'timeline-text' id="timeline+3">1893</div>
+                    <div class="timeline-text" id="timeline-3">1887</div>
+                    <div class="timeline-text" id="timeline-2">1888</div>
+                    <div class="timeline-text" id="timeline-1">1889</div>
+                    <div class="timeline-text" id="timeline-0">1890</div>
+                    <div class="timeline-text" id="timeline+1">1891</div>
+                    <div class="timeline-text" id="timeline+2">1892</div>
+                    <div class="timeline-text" id="timeline+3">1893</div>
                 </div>
-                
+
                 <figure id="map-body"></figure>
             </div>
         </div>

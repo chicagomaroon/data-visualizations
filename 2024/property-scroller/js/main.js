@@ -1,6 +1,6 @@
 //TODO
 // explore map function
-    // max and min area
+// max and min area
 
 // why is the page too wide????
 
@@ -13,6 +13,7 @@
 
 // ------------------ DATA ------------------
 dataPath = 'data/with_era.geojson';
+otherPath = 'data/extra.geojson';
 const config = JSON.parse(sessionStorage.getItem('config'));
 
 // -------- CONSTANTS --------
@@ -57,7 +58,6 @@ function exploreMap() {
         document.querySelector('#explore-button').innerHTML = 'Explore Map';
 
         // show scrollers
-        console.log(document.querySelectorAll('.scroller'));
         document
             .querySelectorAll('.scroller')
             .forEach((o) => (o.style.visibility = 'visible'));
@@ -129,7 +129,27 @@ function changeTimelineYear(targetYear) {
 
 // -------- MAP FUNCTIONS ---------
 
-function createLayer(map_name, layerName, start_year = 1890, end_year = 2025) {
+function createLayerOther(map_name, layerName, filter) {
+    map_name.addLayer({
+        id: layerName,
+        type: 'fill',
+        source: 'other',
+        layout: {},
+        paint: {
+            'fill-color': '#800000',
+            'fill-opacity': 0,
+            'fill-opacity-transition': { duration: 1000 }
+        },
+        filter: filter
+    });
+}
+
+function createLayerYears(
+    map_name,
+    layerName,
+    start_year = 1890,
+    end_year = 2025
+) {
     /*
     create the base source and layers that we will filter
     */
@@ -151,17 +171,26 @@ function createLayer(map_name, layerName, start_year = 1890, end_year = 2025) {
     });
 }
 
+let bodyLayers = [];
+
 function allLayers(map, type) {
     if (type == 'intro') {
         console.log('intro');
-        createLayer(map, 'startLayer', 1890, 1900);
-        createLayer(map, 'endLayer', 1890, 2025);
+        createLayerYears(map, 'startLayer', 1890, 1900);
+        createLayerYears(map, 'endLayer', 1890, 2025);
     } else if (type == 'body') {
         for (let year = 1900; year <= 2025; year += 25) {
             layerName = 'layer' + String(year);
-            console.log(layerName);
-            createLayer(map, layerName, 1890, year + 25);
+            // console.log(layerName);
+            bodyLayers.push(layerName);
+            createLayerYears(map, layerName, 1890, year + 25);
         }
+        //
+        createLayerOther(map, 'land_grant', [
+            '==',
+            ['get', 'name'],
+            'og_land_grant'
+        ]);
     }
 }
 
@@ -179,7 +208,8 @@ function createMap(
     layers,
     startCoords = uChiLocation,
     zoomStart = 17,
-    start_year = 1900
+    start_year = 1900,
+    type = 'body'
 ) {
     var map = new maplibregl.Map({
         container: div,
@@ -201,7 +231,12 @@ function createMap(
             type: 'geojson',
             data: dataPath
         });
-
+        if (type == 'body') {
+            map.addSource('other', {
+                type: 'geojson',
+                data: otherPath
+            });
+        }
         allLayers(map, layers);
 
         popupStuff(map);
@@ -210,10 +245,10 @@ function createMap(
     return map;
 }
 
-function popupStuff(map) {
+function popupStuff(map_name) {
     // Create a popup, but don't add it to the map yet.
 
-    // fix popup stuff, only on popup on turn on layer 
+    // fix popup stuff, only on popup on turn on layer
     // mapBody.getLayer('layer1900').paint._values['fill-opacity'].value.value
 
     const popup = new maplibregl.Popup({
@@ -221,36 +256,35 @@ function popupStuff(map) {
         closeOnClick: false
     });
 
-    map.on('mousemove', 'layerFill', (e) => {
-        const active = document.querySelector('#explore-button').dataset.active;
-        if (active == 'Explore') {
-            // Change the cursor style as a UI indicator.
-            map_name.getCanvas().style.cursor = 'pointer';
-            // console.log(e.features[0].properties.name)
-            // Copy coordinates array.
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const description =
-                e.features[0].properties.name +
-                '<br>' +
-                'Year Built: ' +
-                e.features[0].properties.year_start;
+    // do all of this for all the layers :(
+    for (l of bodyLayers) {
+        map_name.on('mousemove', l, (e) => {
+            const active =
+                document.querySelector('#explore-button').dataset.active;
+            if (
+                (active == 'Explore') & // only show popup if in explore mode
+                (e.features[0].layer.paint['fill-opacity'] > 0) // only show popup if layer is visible
+            ) {
+                // Change the cursor style as a UI indicator.
+                map_name.getCanvas().style.cursor = 'pointer';
 
-            // if (['mercator', 'equirectangular'].includes(mapBody.getProjection().name)) {
-            //     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-            //         coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            //     }
-            // }
+                const description =
+                    e.features[0].properties.name +
+                    '<br>' +
+                    'Year Built: ' +
+                    e.features[0].properties.year_start;
 
-            // Populate the popup and set its coordinates
-            // based on the feature found.
-            popup.setLngLat(e.lngLat).setHTML(description).addTo(map_name);
-        }
-    });
+                // Populate the popup and set its coordinates
+                // based on the feature found.
+                popup.setLngLat(e.lngLat).setHTML(description).addTo(map_name);
+            }
+        });
 
-    map.on('mouseleave', 'layerFill', () => {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
-    });
+        map_name.on('mouseleave', l, () => {
+            map_name.getCanvas().style.cursor = '';
+            popup.remove();
+        });
+    }
 }
 
 //  ------------ CONFIG TEXT ------------
@@ -364,7 +398,6 @@ function bodyWaypoints() {
     //         element: document.getElementById(subsection.id),
     //         handler: function (direction) {
     //             if (direction == "down") {
-
     //                 const data = dataAll.features.filter(d => d.properties.year_start >= subsection.start_year && d.properties.year_start <= subsection.end_year)
     //                 //bodyAllBuildings.clearLayers();
     //                 layers[subsection.id] = L.geoJSON(data, {style: buildingStyleShow}).addTo(mapBody);
@@ -395,7 +428,8 @@ function waypoints() {
                 console.log('waypoint 1.1');
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
-                filterOpacity(mapBody, 'layer1900');
+
+                filterOpacity(mapBody, 'land_grant');
                 mapBody.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
@@ -451,7 +485,6 @@ function waypoints() {
 // ------------ MAIN ------------
 // combine all into one function
 function main() {
-
     // create html elements from config
     processConfig(config);
 
@@ -459,7 +492,6 @@ function main() {
     mapIntro = createMap('map-intro', 'intro', uChiLocation, 16);
     mapBody = createMap('map-body', 'body', ChiLocation, 12);
     popupStuff(mapBody);
-
 
     // figure out start loading
     mapIntro.on('style.load', () => {
