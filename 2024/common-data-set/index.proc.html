@@ -1,25 +1,34 @@
 <html lang="en">
     <head>
-        <title>Gender distribution of UChicago applicants compared to Northwestern by status and incoming year</title>
+        <title>
+            Gender distribution of UChicago applicants compared to Northwestern
+            by status and incoming year
+        </title>
         <!-- PLACE ALL REPOSITORY CSS FILES IN A BRACKET LIKE THIS -->
         <style>
-body {
-    font-family: 'Georgia', 'serif';
-}
+            body {
+                font-family: 'Georgia', 'serif';
+            }
 
-/* This sets the size of the main `div` the chart is held in. The values below should not need to be adjusted. */
-#chart-div {
-    width: 100%;
-    height: 400px;
-}
+            /* This sets the size of the main `div` the chart is held in. The values below should not need to be adjusted. */
+            #chart-div {
+                width: 100%;
+                height: 400px;
+            }
         </style>
     </head>
 
     <body>
         <div id="chart-uchicago"></div>
         <div id="chart-northwestern"></div>
-        <p>Note: While data on non-binary applicants was recorded, most data were incomplete, so we do not include them here. Source: <a href="https://data.uchicago.edu/common-data-set/">Common Data Set</a></p>
-        
+        <p>
+            Note: While data on non-binary applicants was recorded, most data
+            were incomplete, so we do not include them here. Source:
+            <a href="https://data.uchicago.edu/common-data-set/"
+                >Common Data Set</a
+            >
+        </p>
+
         <!-- EXTERNAL JS FILES -->
         <!-- YOU LIKELY DO NOT NEED ALL OF THESE -->
         <!-- IF YOU AREN'T USING AN IMPORT, IT'S RECOMMENDED THAT YOU REMOVE IT -->
@@ -44,97 +53,136 @@ body {
 
         <!-- PLACE ALL REPOSITORY JS FILES IN A BRACKET LIKE THIS -->
         <script>
-// For API and chart documentation please look here:
-// https://www.highcharts.com/demo
-Highcharts.setOptions({
-    chart: {
-        type: 'column',
-        // inverted: true,
-        style: {
-            fontFamily: 'Georgia, serif'
-        }
-    },
+            // For API and chart documentation please look here:
+            // https://www.highcharts.com/demo
+            Highcharts.setOptions({
+                chart: {
+                    type: 'column',
+                    // inverted: true,
+                    style: {
+                        fontFamily: 'Georgia, serif'
+                    }
+                },
 
-    colors: [
-        '#800000',
-        '#FFA319'
-    ],
+                colors: ['#800000', '#FFA319'],
 
-    xAxis: {
-        categories: ['Applied','Admitted','Enrolled']
-    },
-    
-    yAxis: {
-        title: {
-            text: 'Percent'
-        },
+                xAxis: {
+                    categories: ['Applied', 'Admitted', 'Enrolled']
+                },
 
-        stackLabels: {
-            enabled: true,
-            formatter: function(){
-                return this.stack
-            },
-            crop: false,
-            overflow: 'allow',
-            style: {textOutline: 'none'}
-        },
-    },
+                yAxis: {
+                    title: {
+                        text: 'Percent'
+                    },
 
-    plotOptions: {
-        column: {
-            stacking: 'percent', // percent chart
-            dataLabels: {
-                enabled: true,
-                format: '{point.percentage:.0f}%',
-                style: {textOutline: 'none'}
-            }
-        }
-    }
-});
+                    stackLabels: {
+                        enabled: true,
+                        formatter: function () {
+                            return this.stack;
+                        },
+                        crop: false,
+                        overflow: 'allow',
+                        style: { textOutline: 'none' }
+                    }
+                },
 
-Highcharts.chart('chart-uchicago', {
+                plotOptions: {
+                    column: {
+                        stacking: 'percent', // percent chart
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.percentage:.0f}%',
+                            style: { textOutline: 'none' }
+                        }
+                    }
+                }
+            });
 
-    // data: {
-    //     csvURL: window.location.origin + '/gender.csv'
-    // },
+            Highcharts.chart('chart-uchicago', {
+                // data: {
+                //     csvURL: window.location.origin + '/gender.csv'
+                // },
 
-    title: {
-        text: 'UChicago applicants by status, incoming year, and gender',
-        align: 'center',
-        margin: 40
-    },
+                title: {
+                    text: 'UChicago applicants by status, incoming year, and gender',
+                    align: 'center',
+                    margin: 40
+                },
 
-    series: [
-        {name:'Male', data:[17513,1254,1067],stack:'2021'},
-        {name:'Female', data:[20445,1206,986],stack:'2021'},
-        {name:'Male', data:[16830,1064,937],stack:'2022',showInLegend:false},
-        {name:'Female', data:[20670,975,792],stack:'2022',showInLegend:false},
-        {name:'Male', data:[17373,994,885],stack:'2023',showInLegend:false},
-        {name:'Female', data:[21249,855,741],stack:'2023',showInLegend:false}         
-    ]
+                series: [
+                    { name: 'Male', data: [17513, 1254, 1067], stack: '2021' },
+                    { name: 'Female', data: [20445, 1206, 986], stack: '2021' },
+                    {
+                        name: 'Male',
+                        data: [16830, 1064, 937],
+                        stack: '2022',
+                        showInLegend: false
+                    },
+                    {
+                        name: 'Female',
+                        data: [20670, 975, 792],
+                        stack: '2022',
+                        showInLegend: false
+                    },
+                    {
+                        name: 'Male',
+                        data: [17373, 994, 885],
+                        stack: '2023',
+                        showInLegend: false
+                    },
+                    {
+                        name: 'Female',
+                        data: [21249, 855, 741],
+                        stack: '2023',
+                        showInLegend: false
+                    }
+                ]
+            });
 
-});
+            Highcharts.chart('chart-northwestern', {
+                // data: {
+                //     csvURL: window.location.origin + '/gender.csv'
+                // },
 
-Highcharts.chart('chart-northwestern', {
-    // data: {
-    //     csvURL: window.location.origin + '/gender.csv'
-    // },
+                title: {
+                    text: 'Northwestern applicants by status, incoming year, and gender',
+                    align: 'center',
+                    margin: 40
+                },
 
-    title: {
-        text: 'Northwestern applicants by status, incoming year, and gender',
-        align: 'center',
-        margin: 40
-    },
-
-    series: [
-        {name:'Male', data:[21781,1452,925],stack:'2021'},
-        {name:'Female', data:[25855,1869,1161],stack:'2021'},
-        {name:'Male', data:[23534,1652,923],stack:'2022',showInLegend:false},
-        {name:'Female', data:[27725,2043,1115],stack:'2022',showInLegend:false},
-        {name:'Male', data:[24511,1729,965],stack:'2023',showInLegend:false},
-        {name:'Female', data:[27256,2010,1144],stack:'2023',showInLegend:false}           
-    ]
-});
+                series: [
+                    { name: 'Male', data: [21781, 1452, 925], stack: '2021' },
+                    {
+                        name: 'Female',
+                        data: [25855, 1869, 1161],
+                        stack: '2021'
+                    },
+                    {
+                        name: 'Male',
+                        data: [23534, 1652, 923],
+                        stack: '2022',
+                        showInLegend: false
+                    },
+                    {
+                        name: 'Female',
+                        data: [27725, 2043, 1115],
+                        stack: '2022',
+                        showInLegend: false
+                    },
+                    {
+                        name: 'Male',
+                        data: [24511, 1729, 965],
+                        stack: '2023',
+                        showInLegend: false
+                    },
+                    {
+                        name: 'Female',
+                        data: [27256, 2010, 1144],
+                        stack: '2023',
+                        showInLegend: false
+                    }
+                ]
+            });
         </script>
     </body>
 </html>
