@@ -20,8 +20,6 @@
     },
     "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
     "devDependencies": {
-        "@eslint/eslintrc": "^3.1.0",
-        "@eslint/js": "^9.9.0",
         "dotenv": "^16.0.3",
         "eslint-config-prettier": "^8.6.0",
         "eslint-plugin-prettier": "4.2.1",

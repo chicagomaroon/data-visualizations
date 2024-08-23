@@ -534,8 +534,8 @@
                             (event.wheelDelta
                                 ? event.wheelDelta / 120
                                 : event.detail
-                                ? -event.detail / 3
-                                : 0);
+                                  ? -event.detail / 3
+                                  : 0);
                         initDrag();
                         ceaseAnimation();
                         var d = dragPosition;
@@ -710,8 +710,8 @@
                             mouseOffset < offset
                                 ? mouseOffset - offset
                                 : mouseOffset > maxOffset
-                                ? mouseOffset - maxOffset
-                                : 0;
+                                  ? mouseOffset - maxOffset
+                                  : 0;
                         if (textDragDistanceAway == 0) {
                             clearTextSelectionInterval();
                         } else {
