@@ -34,12 +34,7 @@ strong {
     font-weight: 600;
 }
 .modal-content > h4 {
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
 }
 a.modal-trigger:focus,
@@ -81,12 +76,7 @@ a.modal-trigger {
     height: 400px;
 }
 .card-title {
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
     font-size: 1.3rem;
     background-color: rgba(0, 0, 0, 0.2);
@@ -99,12 +89,7 @@ a.modal-trigger {
     margin-right: 10px;
     font-size: 2rem;
     font-weight: 800;
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
 }
 .subcard > .card-text {
@@ -153,12 +138,7 @@ iframe {
 }
 .text {
     margin: 0;
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
 }
 .credit {
