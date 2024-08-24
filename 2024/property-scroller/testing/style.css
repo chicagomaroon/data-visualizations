@@ -15,10 +15,9 @@
     font-size: 30px;
     border-radius: 5px;
     z-index: 9999;
-  }
+}
 
-
-  .map-container {
+.map-container {
     position: sticky;
     z-index: 1;
     margin: auto;

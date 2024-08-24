@@ -1,25 +1,24 @@
-function filterLayer (map, startYear, endYear) {
+function filterLayer(map, startYear, endYear) {
     /*
     filter the layer set for the map
     */
 
-    
     //map.setPaintProperty('layerLine', 'line-opacity', 0)
 
-    map.setFilter('layerFill',  ["all", [ '>', 'year_start', Number(startYear)],
-                             ["<", 'year_start', Number(endYear)]
- ])
-    map.setPaintProperty('layerFill', 'fill-opacity', 0)
+    map.setFilter('layerFill', [
+        'all',
+        ['>', 'year_start', Number(startYear)],
+        ['<', 'year_start', Number(endYear)]
+    ]);
+    map.setPaintProperty('layerFill', 'fill-opacity', 0);
     //  map.setFilter('layerLine', ['all',[">=", ['get', 'year_start'], startYear],
     //                                 ["<=", ['get', 'year_start'], endYear]]
     // )
-    setTimeout(() => {map.setPaintProperty('layerFill', 'fill-opacity', fullOpacity)
-                        map.setPaintProperty('layerLine', 'line-opacity', fullOpacity)
+    setTimeout(() => {
+        map.setPaintProperty('layerFill', 'fill-opacity', fullOpacity);
+        map.setPaintProperty('layerLine', 'line-opacity', fullOpacity);
     }, 1000);
-
-    }
-
-
+}
 
 // map.setPaintProperty(layer, property, filter, matchValue, styleValue, fallbackStyleValue)
 
@@ -34,7 +33,7 @@ function filterLayer (map, startYear, endYear) {
 // const speedBlazing = ['>=', ['get', 'speed_down'], 200];
 
 // const circleColor = [
-//     'case', 
+//     'case',
 //     speedSlow, colors[0],
 //     speedMedium, colors[1],
 //     speedFast, colors[2],
@@ -45,27 +44,25 @@ function filterLayer (map, startYear, endYear) {
 // map.setPaintProperty(
 //     'isp-data',
 //     'circle-color',
-//     ['case', 
-//         ['all', 
-//             ['>', 
-//                 ['number', 
+//     ['case',
+//         ['all',
+//             ['>',
+//                 ['number',
 //                     ['get', 'median_household_income']
-//                 ], 
+//                 ],
 //                 parseInt(selectedOption.getAttribute("data-min"))
 //             ],
-//             ['<', 
-//                 ['number', 
+//             ['<',
+//                 ['number',
 //                     ['get', 'median_household_income']
-//                 ], 
+//                 ],
 //                 parseInt(selectedOption.getAttribute("data-max"))
 //             ]
 //         ],
 //         circleColor, //value when true
 //         blankColor //fallback value
-//     ]          
+//     ]
 // );
-
-
 
 // function changeLayerOpacity(map, layerName, show) {
 //     if (show == 'show') {
@@ -77,15 +74,15 @@ function filterLayer (map, startYear, endYear) {
 //     map.setPaintProperty(layerName + 'Line', 'line-opacity', opacity);
 // }
 
-    // map.addLayer({
-    //     id: 'layerLine',
-    //     type: 'line',
-    //     source: sourceName,
-    //     layout: {},
-    //     paint: {
-    //         'line-color': '#800000',
-    //         'line-width': 2,
-    //         'line-opacity': 0,
-    //     },
-    //     "filter": ['<', 'year_start', 1910]
-    // });
+// map.addLayer({
+//     id: 'layerLine',
+//     type: 'line',
+//     source: sourceName,
+//     layout: {},
+//     paint: {
+//         'line-color': '#800000',
+//         'line-width': 2,
+//         'line-opacity': 0,
+//     },
+//     "filter": ['<', 'year_start', 1910]
+// });

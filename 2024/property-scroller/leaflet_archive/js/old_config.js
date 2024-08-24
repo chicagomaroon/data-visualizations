@@ -1,4 +1,5 @@
-const config = [{
+const config = [
+    {
         chapterTitle: 'Isolation: 1890-1930',
         id: '1',
         image: './static/images/chapter1.jpg',
@@ -8,7 +9,7 @@ const config = [{
                 text: 'This is the section 1.1',
                 start_year: 1890,
                 end_year: 1900,
-                zoom: 17,
+                zoom: 17
                 //pan: uChiLocation
             },
             {
@@ -22,8 +23,10 @@ const config = [{
                 text: 'This is the section 1.3'
             }
         ]
-    }, {
-        chapterTitle: 'The Problem of our Property: Racially-Restrictive Covenants, 1933–1948',
+    },
+    {
+        chapterTitle:
+            'The Problem of our Property: Racially-Restrictive Covenants, 1933–1948',
         id: '2',
         image: './static/images/chapter2.jpg',
         subsections: [
@@ -32,9 +35,8 @@ const config = [{
                 text: 'This is the section 2.1',
                 start_year: 1910,
                 end_year: 1930,
-                zoom: 16,
+                zoom: 16
                 //pan: [41.79139, -87.60000]
-
             },
             {
                 id: '2.2',
