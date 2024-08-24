@@ -42,12 +42,7 @@ li {
     padding-top: 10px;
     font-size: 1.5em !important;
     margin: 0;
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
     padding-bottom: 5px;
 }
@@ -113,12 +108,7 @@ h3 a:active {
 }
 .section-container {
     font-size: 1em;
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
     color: #fff;
     position: relative;

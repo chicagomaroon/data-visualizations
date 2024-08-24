@@ -57,12 +57,7 @@ div.col-xs-12 > img {
 }
 .text {
     margin: 0;
-    font-family:
-        'Crimson Text',
-        'Georgia',
-        Cambria,
-        Times New Roman,
-        Times,
+    font-family: 'Crimson Text', 'Georgia', Cambria, Times New Roman, Times,
         serif;
 }
 .credit {
