@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: "Racial/ethnic distribution for UChicago class of '28",
+        text: "UChicago class of '28 racial/ethnic distribution",
         align: 'center'
     },
 
