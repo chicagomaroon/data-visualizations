@@ -99,19 +99,27 @@ Highcharts.chart('chart-div', {
 
     accessibility: {
         point: {
-            valueDescriptionFormat: '{index}. {point.category}, {point.y:.1f}%.'
+            valueDescriptionFormat: '{index}. {point.category}, {point.y:.2f}%.'
         }
     },
 
     tooltip: {
-        formatter: function() {
+        formatter: function () {
             var high = this.point.high,
                 low = this.point.low,
                 difference = high - low;
 
-            return '2022: ' + high + '<br>' +
-                   '2012: ' + low + '<br>' +
-                   'Difference: ' + difference.toFixed(2);
+            return (
+                '2022: ' +
+                high +
+                '% <br>' +
+                '2012: ' +
+                low +
+                '% <br>' +
+                'Difference: ' +
+                difference.toFixed(2) +
+                '%'
+            );
         }
     }
 });
