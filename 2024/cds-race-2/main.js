@@ -37,14 +37,14 @@ Highcharts.chart('chart-div', {
     },
 
     xAxis: {
-        type: 'category',
-        title: {
-            text: 'Students'
-        }
+        type: 'category'
     },
 
     yAxis: {
-        title: false
+        title: false,
+        title: {
+            text: 'Students'
+        }
     },
 
     legend: {
