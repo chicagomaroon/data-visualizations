@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'Change in racial/ethnic distribution of UChicago student body, 2012-2022',
+        text: 'Change in racial/ethnic distribution of UChicago undergraduates, 2012-2022',
         align: 'center'
     },
 
