@@ -9,7 +9,6 @@ Highcharts.setOptions({
 });
 
 Highcharts.chart('chart-div', {
-    // Setting default colors
     colors: [
         // '#800000',
         // '#FFA319',
@@ -47,45 +46,54 @@ Highcharts.chart('chart-div', {
         },
         labels: {
             format: '{value}%'
-        },
+        }
     },
 
     series: [
         {
-            name: 'Change in enrollment share as compared to 2012',
-            data: [{
-                name: 'American Indian or Alaska Native',
-                low: 0.23,
-                high: 0.07
-            }, { 
-                name: 'Asian', 
-                low: 14.14, 
-                high: 15.89 
-            }, {
-                name: 'Black or African American',
-                low: 4.45,
-                high: 5.29
-            }, { 
-                name: 'Hispanic or Latino', 
-                low: 6.15, 
-                high: 10.91 
-            }, {
-                name: 'Native Hawaiian or Other Pacific Islanders',
-                low: 0.01,
-                high: 0.02
-            }, { 
-                name: 'International', 
-                low: 22.16, 
-                high: 30.83 
-            }, { 
-                name: 'Two or More Races', 
-                low: 0.031, 
-                high: 0.044 
-            }, { 
-                name: 'White', 
-                low: 49.73, 
-                high: 32.59 
-            }]
+            name: 'Change in enrollment share compared to 2012',
+            data: [
+                {
+                    name: 'American Indian or Alaska Native',
+                    low: 0.23,
+                    high: 0.07
+                },
+                {
+                    name: 'Asian',
+                    low: 14.14,
+                    high: 15.89
+                },
+                {
+                    name: 'Black or African American',
+                    low: 4.45,
+                    high: 5.29
+                },
+                {
+                    name: 'Hispanic or Latino',
+                    low: 6.15,
+                    high: 10.91
+                },
+                {
+                    name: 'Native Hawaiian or Other Pacific Islanders',
+                    low: 0.01,
+                    high: 0.02
+                },
+                {
+                    name: 'International',
+                    low: 22.16,
+                    high: 30.83
+                },
+                {
+                    name: 'Two or More Races',
+                    low: 0.031,
+                    high: 0.044
+                },
+                {
+                    name: 'White',
+                    low: 49.73,
+                    high: 32.59
+                }
+            ]
         }
     ],
 
