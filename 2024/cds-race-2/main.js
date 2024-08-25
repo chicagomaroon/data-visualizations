@@ -48,32 +48,32 @@ Highcharts.chart('chart-div', {
         enabled: false
     },
 
-    // plotOptions: {
-    //     bar: {
-    //         stacking: 'percent'
-    //     }
-    // },
-
     series: [
         {
             name: 'Enrolled students',
             data: [
-                {name: "White, non-Hispanic", y: 520},
-                {name: "Asian, non-Hispanic", y: 333},
-                {name: "Hispanic/Latino", y: 313},
-                {name: "International", y: 302},
-                {name: "Two or more races, non-Hispanic", y: 119},
-                {name: "Black or African American, non-Hispanic", y: 115},
-                {name: "Race and/or ethnicity unknown", y: 46},
-                {name: "American Indian or Alaska Native, non-Hispanic", y: 1},
-                {name: "Native Hawaiian or other Pacific Islander, non-Hispanic", y: 0}
+                { name: 'White, non-Hispanic', y: 520 },
+                { name: 'Asian, non-Hispanic', y: 333 },
+                { name: 'Hispanic/Latino', y: 313 },
+                { name: 'International', y: 302 },
+                { name: 'Two or more races, non-Hispanic', y: 119 },
+                { name: 'Black or African American, non-Hispanic', y: 115 },
+                { name: 'Race and/or ethnicity unknown', y: 46 },
+                {
+                    name: 'American Indian or Alaska Native, non-Hispanic',
+                    y: 1
+                },
+                {
+                    name: 'Native Hawaiian or other Pacific Islander, non-Hispanic',
+                    y: 0
+                }
             ]
         }
     ],
 
     accessibility: {
         point: {
-            valueDescriptionFormat: '{index}. {point.category}, {point.y:.2f}%.'
+            valueDescriptionFormat: '{index}. {point.category}, {point.y:.0f}.'
         }
     }
 });
