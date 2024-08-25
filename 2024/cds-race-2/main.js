@@ -37,7 +37,10 @@ Highcharts.chart('chart-div', {
     },
 
     xAxis: {
-        type: 'category'
+        type: 'category',
+        title: {
+            text: 'Students'
+        }
     },
 
     yAxis: {
