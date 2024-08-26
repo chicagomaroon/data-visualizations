@@ -44,8 +44,11 @@ Highcharts.chart('chart-div', {
             text: ''
         },
         labels: {
-            format: '{value:,.0f}'
-        }
+            format: '{value:,.0f}',
+            step: 2
+        },
+        max: 40000,
+        tickInterval: 5000
     },
 
     plotOptions: {
@@ -68,17 +71,21 @@ Highcharts.chart('chart-div', {
             labels: [
                 {
                     point: 'aMax',
+                    y: 68,
+                    align: 'right',
                     style: {
-                        fontSize: '16px'
+                        fontSize: '15px'
                     },
-                    text: '<span style="color:#800000"><b>+30% in Applicants from 2014<b>'
+                    text: '<span style="color:#800000">+30% in Applicants <br>from 2014'
                 },
                 {
-                    point: 'eText',
+                    point: 'e',
+                    align: 'right',
+                    x: -10,
                     style: {
-                        fontSize: '16px'
+                        fontSize: '14px'
                     },
-                    text: '<span style="color:black"><b>+25% in Enrollment<b>'
+                    text: '<span style="color:black">+25% in Enrollment'
                 }
             ]
         }
@@ -121,8 +128,8 @@ Highcharts.chart('chart-div', {
                 6801,
                 7011,
                 { y: 7559, id: 'eText' },
-                7512,
-                { y: 7489, id: 'eMax' }
+                { y: 7512, id: 'eMax' },
+                { y: 7489, id: 'e' }
             ]
         },
         {
