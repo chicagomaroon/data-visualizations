@@ -53,30 +53,11 @@ Highcharts.chart('chart-div', {
         {
             name: 'Change in enrollment share compared to 2012',
             data: [
+                
                 {
-                    name: 'American Indian or Alaska Native',
-                    low: 0.23,
-                    high: 0.03
-                },
-                {
-                    name: 'Asian',
-                    low: 14.14,
-                    high: 19.70
-                },
-                {
-                    name: 'Black or African American',
-                    low: 4.45,
-                    high: 6.94
-                },
-                {
-                    name: 'Hispanic or Latino',
-                    low: 6.15,
-                    high: 17.07
-                },
-                {
-                    name: 'Native Hawaiian or Other Pacific Islanders',
-                    low: 0.01,
-                    high: 0.01
+                    name: 'White',
+                    low: 49.73,
+                    high: 30.82
                 },
                 {
                     name: 'International',
@@ -84,14 +65,34 @@ Highcharts.chart('chart-div', {
                     high: 16.17
                 },
                 {
+                    name: 'American Indian or Alaska Native',
+                    low: 0.23,
+                    high: 0.03
+                },
+                {
+                    name: 'Native Hawaiian or Other Pacific Islanders',
+                    low: 0.01,
+                    high: 0.01
+                },
+                {
+                    name: 'Black or African American',
+                    low: 4.45,
+                    high: 6.94
+                },
+                {
                     name: 'Two or More Races',
                     low: 3.10,
                     high: 7.06
                 },
                 {
-                    name: 'White',
-                    low: 49.73,
-                    high: 30.82
+                    name: 'Asian',
+                    low: 14.14,
+                    high: 19.70
+                },
+                {
+                    name: 'Hispanic or Latino',
+                    low: 6.15,
+                    high: 17.07
                 }
             ]
         }
