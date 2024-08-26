@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'Change in racial/ethnic distribution of UChicago undergraduates, 2012-2022',
+        text: 'Change in Racial/Ethnic Distribution, 2012-2022',
         align: 'center'
     },
 
@@ -49,11 +49,37 @@ Highcharts.chart('chart-div', {
         }
     },
 
+    legend: {
+        enabled: false
+    },
+
+    annotations: [{
+        labels: [{
+            point: {y: 410, x: 43},
+            text: '2022',
+            color: 'black',
+            backgroundColor: 'none',
+            borderColor: 'none',
+            style: {
+                fontSize: 14
+            }
+        },
+        {
+            point: {y: 740,  x: 43 },
+            text: '2012',
+            color: 'black',
+            backgroundColor: 'none',
+            borderColor: 'none',
+            style: {
+                fontSize: 14
+            }
+        }]
+    }],
+
     series: [
         {
             name: 'Change in enrollment share compared to 2012',
             data: [
-                
                 {
                     name: 'White',
                     low: 49.73,

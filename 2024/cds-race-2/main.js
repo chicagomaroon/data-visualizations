@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: "UChicago class of '28 racial/ethnic distribution",
+        text: "Class of '28 Racial/Ethnic Distribution",
         align: 'center'
     },
 
@@ -42,8 +42,8 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: false,
-        title: {
-            text: 'Students'
+        labels: {
+            format: '{value}%'
         }
     },
 
@@ -53,18 +53,18 @@ Highcharts.chart('chart-div', {
 
     series: [
         {
-            name: 'Enrolled students',
+            name: 'Share',
             data: [
-                { name: 'White, non-Hispanic', y: 520 },
-                { name: 'Asian, non-Hispanic', y: 333 },
-                { name: 'Hispanic/Latino', y: 313 },
-                { name: 'International', y: 302 },
-                { name: 'Two or more races, non-Hispanic', y: 119 },
-                { name: 'Black or African American, non-Hispanic', y: 115 },
-                { name: 'Race and/or ethnicity unknown', y: 46 },
+                { name: 'White, non-Hispanic', y: 29.7 },
+                { name: 'Asian, non-Hispanic', y: 19.0 },
+                { name: 'Hispanic/Latino', y: 17.9 },
+                { name: 'International', y: 17.3 },
+                { name: 'Two or more races, non-Hispanic', y: 6.8 },
+                { name: 'Black or African American, non-Hispanic', y: 6.6 },
+                { name: 'Race and/or ethnicity unknown', y: 2.6 },
                 {
                     name: 'American Indian or Alaska Native, non-Hispanic',
-                    y: 1
+                    y: 0.1
                 },
                 {
                     name: 'Native Hawaiian or other Pacific Islander, non-Hispanic',
@@ -73,6 +73,10 @@ Highcharts.chart('chart-div', {
             ]
         }
     ],
+
+    tooltip: {
+        pointFormat: '{point.y:.1f}%' 
+    },
 
     accessibility: {
         point: {
