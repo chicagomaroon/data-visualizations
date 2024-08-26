@@ -83,42 +83,42 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'White',
                     low: 49.73,
-                    high: 30.82
+                    high: 32.59
                 },
                 {
                     name: 'International',
                     low: 22.16,
-                    high: 16.17
-                },
-                {
-                    name: 'American Indian or Alaska Native',
-                    low: 0.23,
-                    high: 0.03
-                },
-                {
-                    name: 'Native Hawaiian or Other Pacific Islanders',
-                    low: 0.01,
-                    high: 0.01
-                },
-                {
-                    name: 'Black or African American',
-                    low: 4.45,
-                    high: 6.94
-                },
-                {
-                    name: 'Two or More Races',
-                    low: 3.10,
-                    high: 7.06
-                },
-                {
-                    name: 'Asian',
-                    low: 14.14,
-                    high: 19.70
+                    high: 30.83
                 },
                 {
                     name: 'Hispanic or Latino',
                     low: 6.15,
-                    high: 17.07
+                    high: 10.91
+                },
+                {
+                    name: 'Asian',
+                    low: 14.14,
+                    high: 15.89
+                },
+                {
+                    name: 'Two or More Races',
+                    low: 3.10,
+                    high: 4.40
+                },
+                {
+                    name: 'Black or African American',
+                    low: 4.45,
+                    high: 5.29
+                },
+                {
+                    name: 'American Indian or Alaska Native',
+                    low: 0.23,
+                    high: 0.07
+                },
+                {
+                    name: 'Native Hawaiian or Other Pacific Islanders',
+                    low: 0.01,
+                    high: 0.02
                 }
             ]
         }
