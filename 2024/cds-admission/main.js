@@ -28,11 +28,12 @@ Highcharts.chart('chart-div', {
 
     // All code for your chart goes here
     title: {
-        text: 'Change in Applicants and Enrollment from 2014 to 2023',
+        text: 'Applicants and Enrollment from 2014 to 2023',
         align: 'center'
     },
     subtitle: {
-        text: 'While both increased, growth in applicants outpaced growth in enrollment.',
+        text: `While both increased, growth in applicants outpaced growth in enrollment.<br/>
+        Source: <a href="https://www.highcharts.com/demo">Highcharts.com</a>`,
         align: 'center'
     },
 
@@ -76,7 +77,7 @@ Highcharts.chart('chart-div', {
                     style: {
                         fontSize: '15px'
                     },
-                    text: '<span style="color:#800000">+30% in Applicants <br>from 2014'
+                    text: '<span style="color:#800000">+30% in applicants <br>since 2014'
                 },
                 {
                     point: 'e',
@@ -85,7 +86,7 @@ Highcharts.chart('chart-div', {
                     style: {
                         fontSize: '14px'
                     },
-                    text: '<span style="color:black">+25% in Enrollment'
+                    text: '<span style="color:black">+25% in enrollment'
                 }
             ]
         }
@@ -96,7 +97,7 @@ Highcharts.chart('chart-div', {
 
     series: [
         {
-            name: 'Applications',
+            name: 'Applicants',
             label: {
                 enabled: false
             },
