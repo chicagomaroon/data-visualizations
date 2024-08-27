@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: '2023-24 Racial/Ethnic Distribution',
+        text: 'Undergraduate Racial/Ethnic Distribution in 2023-2024 Academic Year',
         align: 'center'
     },
 
