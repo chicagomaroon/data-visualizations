@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: "Class of '28 Racial/Ethnic Distribution",
+        text: '2024-25 Racial/Ethnic Distribution',
         align: 'center'
     },
 
@@ -41,7 +41,10 @@ Highcharts.chart('chart-div', {
     },
 
     yAxis: {
-        title: false,
+        title: {
+            text: 'Share of all undergraduates',
+            margin: 10
+        },
         labels: {
             format: '{value}%'
         }
@@ -55,27 +58,27 @@ Highcharts.chart('chart-div', {
         {
             name: 'Share',
             data: [
-                { name: 'White, non-Hispanic', y: 29.7 },
-                { name: 'Asian, non-Hispanic', y: 19.0 },
-                { name: 'Hispanic/Latino', y: 17.9 },
-                { name: 'International', y: 17.3 },
-                { name: 'Two or more races, non-Hispanic', y: 6.8 },
-                { name: 'Black or African American, non-Hispanic', y: 6.6 },
-                { name: 'Race and/or ethnicity unknown', y: 2.6 },
+                { name: 'White, non-Hispanic', y: 30.82 },
+                { name: 'Asian, non-Hispanic', y: 19.7 },
+                { name: 'Hispanic/Latino', y: 17.07 },
+                { name: 'International', y: 16.17 },
+                { name: 'Two or more races, non-Hispanic', y: 7.06 },
+                { name: 'Black or African American, non-Hispanic', y: 6.94 },
+                { name: 'Race and/or ethnicity unknown', y: 2.2 },
                 {
                     name: 'American Indian or Alaska Native, non-Hispanic',
-                    y: 0.1
+                    y: 0.03
                 },
                 {
                     name: 'Native Hawaiian or other Pacific Islander, non-Hispanic',
-                    y: 0
+                    y: 0.01
                 }
             ]
         }
     ],
 
     tooltip: {
-        pointFormat: '{point.y:.1f}%' 
+        pointFormat: '{point.y:.1f}%'
     },
 
     accessibility: {

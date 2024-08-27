@@ -11,13 +11,13 @@ Highcharts.setOptions({
 Highcharts.chart('chart-div', {
     colors: [
         // '#800000',
-        // '#FFA319',
+        '#FFA319',
         // '#C16622',
         // '#8F3931',
         // '#8A9045',
         // '#58593F',
-        // '#155F83',
-        // '#350E20',
+        '#155F83',
+        '#350E20',
         '#47B5FF',
         '#FF3399'
     ],
@@ -28,12 +28,12 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'Change in Racial/Ethnic Distribution, 2012-2022',
+        text: 'Racial/Ethnic Demographics from 2012-2022',
         align: 'center'
     },
 
     subtitle: {
-        text: 'Diversity increased in past ten years, with largest increases in Latino and international students'
+        text: 'Diversity, including undergraduates and graduates, increased in past ten years, with largest increases in Latino and international students'
     },
 
     xAxis: {
@@ -42,39 +42,58 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Enrollment share'
+            text: 'Share of all undergraduates and graduates',
+            margin: 10
         },
         labels: {
             format: '{value}%'
-        }
+        },
+        endOnTick: false,
+        max: 60
     },
 
     legend: {
         enabled: false
     },
 
-    annotations: [{
-        labels: [{
-            point: {y: 410, x: 43},
-            text: '2022',
-            color: 'black',
-            backgroundColor: 'none',
-            borderColor: 'none',
-            style: {
-                fontSize: 14
-            }
-        },
+    annotations: [
         {
-            point: {y: 740,  x: 43 },
-            text: '2012',
-            color: 'black',
-            backgroundColor: 'none',
-            borderColor: 'none',
-            style: {
-                fontSize: 14
+            labels: [
+                {
+                    text: '2022',
+                    x: -120,
+                    style: {
+                        color: '#B27700'
+                    }
+                },
+                {
+                    text: '2012',
+                    x: 115,
+                    style: {
+                        color: '#800000'
+                    }
+                }
+            ],
+            labelOptions: {
+                draggable: '',
+                point: 'point',
+                backgroundColor: 'none',
+                borderColor: 'none',
+                style: {
+                    fontSize: 14,
+                    fontWeight: 'bold'
+                }
             }
-        }]
-    }],
+        }
+    ],
+
+    plotOptions: {
+        dumbbell: {
+            connectorWidth: 8,
+            connectorColor: '#EEEEEE',
+            lowColor: '#800000'
+        }
+    },
 
     series: [
         {
@@ -83,7 +102,8 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'White',
                     low: 49.73,
-                    high: 32.59
+                    high: 32.59,
+                    id: 'point'
                 },
                 {
                     name: 'International',
@@ -102,8 +122,8 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'Two or More Races',
-                    low: 3.10,
-                    high: 4.40
+                    low: 3.1,
+                    high: 4.4
                 },
                 {
                     name: 'Black or African American',
@@ -111,14 +131,9 @@ Highcharts.chart('chart-div', {
                     high: 5.29
                 },
                 {
-                    name: 'American Indian or Alaska Native',
-                    low: 0.23,
-                    high: 0.07
-                },
-                {
-                    name: 'Native Hawaiian or Other Pacific Islanders',
-                    low: 0.01,
-                    high: 0.02
+                    name: 'Other',
+                    low: 0.24,
+                    high: 0.09
                 }
             ]
         }
