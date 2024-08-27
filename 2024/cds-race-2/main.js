@@ -28,7 +28,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: '2024-25 Racial/Ethnic Distribution',
+        text: '2023-24 Racial/Ethnic Distribution',
         align: 'center'
     },
 
