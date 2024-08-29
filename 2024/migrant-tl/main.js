@@ -94,6 +94,19 @@ const DATA = {
             }
         },
         {
+            id: '6',
+            type: 'Feature',
+            properties: {
+                name: 'Daley College',
+                description: '<strong>Daley College</strong>',
+                migrants: 182
+            },
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.7228798, 41.7570501, 0.0
+            }
+        },
+        {
             id: '7',
             type: 'Feature',
             properties: {
@@ -390,7 +403,8 @@ const DATA = {
             type: 'Feature',
             properties: {
                 name: 'The Salvation Army Shield of Hope',
-                description: '<strong>Salvation Army Shield of Hope</strong>',
+                description:
+                    '<strong>Salvation Army Shield of Hope</strong> ;aklfh;adfj ;ajkldf JKLD ;JKL D;LKJas ;ldkjasKL;DJ AS;LJKÅ',
                 migrants: 0,
                 closed: 'Not used since 6/23/2023'
             },
