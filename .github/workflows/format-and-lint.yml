@@ -29,4 +29,4 @@ jobs:
         - name: Run eslint on changed files
           uses: tj-actions/eslint-changed-files@v19
           with:
-            config_path: "eslint.config.cjs"
+            config_path: "eslint.config.mjs"
