@@ -125,11 +125,11 @@ body {
 
 .scroller {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
     /*border: 1px black solid; */
     padding: 20px;
     /* margin-left: 100px; */
-    width: 25%;
+    width: 30%;
     margin-top: 100vh;
     margin-bottom: 20vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -137,9 +137,13 @@ body {
     margin-right: auto;
     margin-left: 5%;
     line-height: 1.2;
-    font-size: 30px;
+    font-size: 20px;
     border-radius: 5px;
     z-index: 9999;
+}
+
+.scroller.s-intro {
+    font-size: 30px;
 }
 
 .scroller.chapter {
