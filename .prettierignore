@@ -5,7 +5,6 @@ jquery*
 README.md
 .github
 *.min.html
-eslint.config.mjs
 
 # Directories and files to ignore
 2015/dev-files/raw-data.json
