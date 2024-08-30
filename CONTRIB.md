@@ -1,3 +1,4 @@
+
 # Contributors Guide
 
 Interested in writing a story with the Maroon Data Team? Follow the steps below.
@@ -111,11 +112,13 @@ The font is set via the [`main.css`](./static/main.css) file. The default font, 
 
 #### Titles and Subtitles
 
+
 Titles and subtitles should meet the following constraints:
 
 -   They should not take up more than one line each.
 -   They should be centered, not left or right-justified.
 -   Links should be added using [anchor tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
+
 
 #### Colors
 
