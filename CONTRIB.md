@@ -2,7 +2,7 @@
 Interested in writing a story with the Maroon Data Team? Follow the steps below.
 
 1. If you are new, please complete all the [getting started](#from-the-very-beginning) steps.
-2. Claim a story on the pitch document (see Slack channel for pitch list) or pitch a new story. To pitch a new story, fill out [Data Team Story Outline](link) and send to a Data Editor for review.
+2. Claim a story on the pitch document (see Slack channel for pitch list) or pitch a new story. To pitch a new story, fill out Data Team Story Outline (TK) and send to a Data Editor for review.
 3. Research, write, and create necessary visuals for your story. Feel free to create draft visuals using any program or language that you would like. Published visuals will need to be created by following the [build process](#build-process-for-a-visualization). Any visuals that do not follow the build process must be approved by a data editor. Visuals must follow the Maroon's Data [Style Guide](#style-guide).
 
 ## Getting Started
@@ -91,7 +91,7 @@ All pull requests should contain a still of the image and be linted, minified, c
 
 ### Style Standards
 
-Examples for updated style guides
+Examples for external style guides for inspiration.
 - [Urban Institute](https://urbaninstitute.github.io/graphics-styleguide/)
 - [BBC](https://bbc.github.io/rcookbook/)
 - [Other organizations](https://docs.google.com/spreadsheets/d/1F1gm5QLXh3USC8ZFx_M9TXYxmD-X5JLDD0oJATRTuIE/edit?gid=1679646668#gid=1679646668)

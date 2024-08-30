@@ -1,74 +1,18 @@
-# The Chicago Maroon’s Data Visualizations
-Feature stories by The Chicago Maroon are grouped by year into corresponding folders.
+# Welcome to the *Chicago Maroon*'s Data Repository!
 
-## [For the Lead Developer] The Visuals are served via this URL template
-URL Template: `https://chicagomaroon.github.io/data-visualizations/[PATH TO FILE]`
+Our team supports the *Maroon*'s journalism by producing data visualizations, our own data-focused stories, and internal technical projects. See all of our stories on the [Maroon website](https://chicagomaroon.com/tag/data-visual/) or read selected stories:
+- [University Faculty Aren’t Neutral When It Comes to Political Donations](https://chicagomaroon.com/41302/grey-city/university-faculty-arent-neutral-when-it-comes-to-political-donations/)
+- [The Maroon Launches UChicago Police Department Incident Reporter](https://chicagomaroon.com/41255/grey-city/the-maroon-launches-uchicago-police-department-incident-reporter/)
 
-URL Example: `https://chicagomaroon.github.io/data-visualizations/2023/thifting-growth/thifting-growth.min.html`
+Our team makes use of a variety of JavaScript tools to create web-based journalistic data visualizations embedded in the *Maroon*'s online articles. Most notably, we use [HighCharts](https://www.highcharts.com/), a JavaScript module designed
+for simple, interactive data visualization in a variety of formats. For map-based visualizations, we use HighCharts, [Leaflet](https://leafletjs.com/), [MapLibre](https://maplibre.org/maplibre-gl-js/docs/) or [Google Maps](https://developers.google.com/maps/documentation/javascript). For custom visualizations we use [d3.js](https://d3js.org/). Individual projects have made use of various tools such as Google Sheets, Python and R to perform data-related tasks including general data.
 
-## GitHub Concepts and Processes To Know
-The following articles introduce some basic Github features we will use:
-- [GitHub Feature Branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
-- [GitHub Pull Requests](https://www.atlassian.com/git/tutorials/making-a-pull-request)
+## Interested in joining?
 
-## Technical Necessities
-If you don’t have a code environment on your computer already, download one:
- - [Webstorm](https://www.jetbrains.com/webstorm/?var=1): A luxury tier JavaScript IDE. This will offer all sorts of configuration options as well as thorough documentation for any and all relevant features. You also get a free student license to IDEs from this company, JetBrains, as [a student at UChicago](https://www.jetbrains.com/community/education/#students).
- - [Visual Studio Code](https://code.visualstudio.com/download) (VSCode): An IDE that requires more technical savvy to fully benefit from, but can give you all the benefits of an IDE like WebStorm. It is also free, and is applicable to all coding languages.
+The *Maroon*'s Data Team is an excellent place to learn new tools while developing extracurricular skills in data collection, analysis, and storytelling. Many of our team members join with little to no experience in any of these systems. We provide a flexible, low-stakes environment with ample support for new members to learn, grow, and publish a final product they can be proud of. If you are interested in joining our team, please fill out [the *Maroon*'s interest form](https://chicagomaroon.com/apply/) and we will reach out to get to know you and find a 
+meaningful project you would like to work on. If you have any further questions, feel free to reach out to one or both of the team's Lead Developers, [Nikhil Patel](nvp15@uchicago.edu) and [Austin Steinhart](asteinhart@uchicago.edu).
 
-Download these software that will allow you to run Javascript, which we write our visualizations in:
- - [node.js](https://nodejs.org/en) `v20.9.0`
-   - To manage the versions of node.js I use on my computer, I use the Node Version Manager program: [Link](https://github.com/nvm-sh/nvm)
+## Interested in contributing?
 
-Download [GitHub Desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.)
-
-## Libraries To Read When Creating Visuals
-1. `node-htmlprocessor`: [Link](https://github.com/dciccale/node-htmlprocessor)
-2. `HighCharts`: [Link](https://www.highcharts.com/)
-   - We are currently using the non-profit license that requires that the `HighCharts` logo be displayed on the chart.
-   - We are using version `11.0.0`, which is hosted externally.
-   - Under the `Demos` tab on the Highcharts website, there are visualization templates of various kinds. When creating a data visualization, finding a template from Highcharts similar to what you’re trying to develop and working off the existing JavaScript code from the Highcharts template can be beneficial. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
-
-## Build Process for a Visualization
-1. [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) the [repository](https://github.com/chicagomaroon/data-visualizations) from GitHub if you have not already.
-2. Go to the base folder of the `data-visualizations` repository and run the command `npm ci`
-3. Create the HTML file that will serve as the basis for your visualization inside its respective year and story folder via the `npm run create-visual` command.  This will create a folder with all the necessary files to create your visual.
-    - If it is the year `2023` and your story is called `Example Visual` then go to the year folder `2023` and your story's folder `example-visual` in [kebab-case](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
-    - Example command: `npm run create-visual --year=2023 --story=example-visual`
-      - If you would rather use the [D3](https://d3js.org/) library, [d3plus](https://github.com/d3plus/d3plus), use this command: `npm run create-visual-d3 --year=2023 --story=example-visual`
-4. Start creating your visual that will be housed in the `./$year/$story/` folder. 
-    - If you'd like to see previously created example visuals, open [example-graphs.html](./example-graphs.html) from your local repository.
-    - In your `./$year/$story/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
-    - If you are using Highcharts, [this site](https://api.highcharts.com/highmaps/) gives a lot of helpful documentation on the options for creating charts.
-    - Note that any external files, things not stored within this repository, should not be included in the `<build>` tags.
-5. Update the `meta_data.json` in your story's folder, which will look something like this:
-   ```json
-   {
-     "title": "Example Visual",
-     "description": "Describe your visual"
-   }
-   ```
-    - Make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` and in `index.html`'s `<title>` tag.
-6. Run `npm run lint` and make the changes that the output recommends.
-7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
-   - Example: `npm run process-visual --year=2023 --story=example-visual`
-
-## Commands
-- `npm run lint`: Runs the formatter and linter in the repository and will let you know if any JavaScript faux pas were made in your code
-- `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the HighCharts files in `./template_visual/highcharts` to the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
-- `npm run create-visual-d3 --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the D3 files in `./template_visual/d3plus` to the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
-- `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` folder and outputs the processed version as `$story.min.html`
-
-## HTML Segment Using the iframe
-Here is the template to for putting minified HTML files into the WordPress site using an iframe:
-```html
-<div class="iframe-container">
-   <iframe class="data-viz-container" src="https://chicagomaroon.github.io/data-visualizations/[PATH TO MINIFIED HTML FILE]"></iframe>
-</div>
-<div class="data-viz-description-container">
-   <div class="data-viz-credit">
-      <a href="https://chicagomaroon.com/staff_name/[FIRST NAME]-[LAST NAME]/">[AUTHOR OF CHART]</a>
-   </div>
-   <div class="data-viz-description">[DESCRIPTION OF CHART]</div>
-</div>
-```
+Once you've joined and chosen a project you'd like to work on, please review our [contributor guide](CONTRIB.md) to get 
+started.
