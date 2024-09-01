@@ -51,12 +51,12 @@ Download [GitHub Desktop](https://desktop.github.com/), which will allow you to 
    }
    ```
     - Make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` and in `index.html`'s `<title>` tag.
-6. Run `npm run lint` and make the changes that the output recommends.
+6. Run `npm run format` and make the changes that the output recommends.
 7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
    - Example: `npm run process-visual --year=2023 --story=example-visual`
 
 ## Commands
-- `npm run lint`: Runs the formatter and linter in the repository and will let you know if any JavaScript faux pas were made in your code
+- `npm run format`: Runs the formatter in the repository and will let you know if any JavaScript faux pas were made in your code
 - `npm run create-visual --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the HighCharts files in `./template_visual/highcharts` to the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
 - `npm run create-visual-d3 --year=[year] --story=[kebab-case-story-name]`: Creates a copy of the D3 files in `./template_visual/d3plus` to the `/$year/$story` folder, which will serve as the basis of your new Chicago Maroon visual
 - `npm run process-visual --year=[year] --story=[kebab-case-story-name]`: Runs `node-htmlprocessor` on the `index.html` file in the `/$year/$story` folder and outputs the processed version as `$story.min.html`
