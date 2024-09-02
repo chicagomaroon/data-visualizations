@@ -1,4 +1,3 @@
-
 # Contributors Guide
 
 Interested in writing a story with the Maroon Data Team? Follow the steps below.
@@ -47,7 +46,7 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 Programming is a skill that you learn by doing. There is no expectation that someone fully understands a programming language or package before they can start creating things. Much of the process is about learning as you go and building a muscle of problem solving and debugging as you go.
 
 With that being said, use the resources below as a starting place and reference source. Aim to learn just enough to jump into a project and learn the rest as you go.
-
+ 
 -   We primarily use [`HighCharts`](https://www.highcharts.com/), a JavaScript library, to build visualizations. Each HighChart graphic is embedded on a simple HTML page that is linked in its parent story.
     -   The best place to start is to find a previously created visual from the Maroon Team by opening [example-graphs.html](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     -   If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
@@ -79,7 +78,7 @@ See the [resources][resources/] folder for additional material.
     }
     ```
     - Make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` and in `index.html`'s `<title>` tag.
-6. Run `npm run lint` and make the changes that the output recommends.
+6. Run `npm run format` and make the changes that the output recommends.
 7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
     - Example: `npm run process-visual --year=2023 --story=example-visual`
 8. Create a Pull Request to have your visual reviewed by committing and pushing your changes.
@@ -112,13 +111,11 @@ The font is set via the [`main.css`](./static/main.css) file. The default font, 
 
 #### Titles and Subtitles
 
-
 Titles and subtitles should meet the following constraints:
 
 -   They should not take up more than one line each.
 -   They should be centered, not left or right-justified.
 -   Links should be added using [anchor tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
-
 
 #### Colors
 
