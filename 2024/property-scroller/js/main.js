@@ -14,7 +14,6 @@
 // ------------------ DATA ------------------
 dataPath = 'data/with_era.geojson';
 otherPath = 'data/extra.geojson';
-const config = JSON.parse(sessionStorage.getItem('config'));
 
 // -------- CONSTANTS --------
 
@@ -438,6 +437,7 @@ function waypoints() {
             } else {
                 document.getElementById('explore-nav').style.visibility =
                     'hidden';
+                filterOpacity(mapBody, 'layer1900', false);
             }
         },
         offset: '99%'
@@ -448,8 +448,8 @@ function waypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 console.log('waypoint 1.2');
-
-                updateLayers(1925, 'layer1900');
+                filterOpacity(mapBody, 'land_grant', false);
+                updateLayers(1900, 'layer1900');
             } else {
                 console.log('waypoint 1.2 up');
                 updateLayers(1900, 'layer1925');
@@ -484,8 +484,9 @@ function waypoints() {
 
 // ------------ MAIN ------------
 // combine all into one function
-function main() {
+function init() {
     // create html elements from config
+    const config = JSON.parse(sessionStorage.getItem('config'));
     processConfig(config);
 
     // create maps
@@ -510,8 +511,7 @@ function main() {
     waypoints();
 }
 
-// run everything
-main();
+// run everything on dom load
 
 // ------------ TESTING ------------
 
@@ -632,5 +632,6 @@ main();
         document.querySelectorAll('#map-intro').forEach((element) => {
             element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
         });
+        init();
     });
 })();
