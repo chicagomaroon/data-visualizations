@@ -58,28 +58,6 @@ let socialSciences = [
     ['Public Policy Studies', 7]
 ];
 
-// Calculate total majors represented and create percentages
-let totalMajorsRepresented = 0;
-collegeDivisions.map((d) => {
-    totalMajorsRepresented += d.y;
-});
-collegeDivisions = collegeDivisions.map((d) => {
-    d.y /= totalMajorsRepresented;
-    d.y *= 100;
-    return d;
-});
-
-// Calculate percentages for each college division
-function calculatePercentagesForDivisions(d) {
-    d[1] /= totalMajorsRepresented;
-    d[1] *= 100;
-    return d;
-}
-biologicalSciences = biologicalSciences.map(calculatePercentagesForDivisions);
-humanities = humanities.map(calculatePercentagesForDivisions);
-physicalSciences = physicalSciences.map(calculatePercentagesForDivisions);
-socialSciences = socialSciences.map(calculatePercentagesForDivisions);
-
 // For API and chart documentation please look here:
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
@@ -96,18 +74,17 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2023: Represented Majors',
+        text: 'The Maroon Staff Survey 2024: Represented Majors',
         align: 'center'
     },
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
+        headerFormat: '',
         pointFormat:
-            '<span style="color:{point.color}">{point.name}</span>: {point.y:.1f}% of majors in the Maroon'
+            '<span style="color:{point.color}">{point.name}</span>: {point.y} Maroon members'
     },
 
     subtitle: {
-        text: 'Click The Divisions To See The Individual Majors',
+        text: 'Click each division to see individual majors',
         align: 'center'
     },
 
@@ -117,7 +94,7 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Percentage of Represented Majors'
+            text: 'Members in Category'
         }
     },
 
@@ -126,7 +103,7 @@ Highcharts.chart('chart-div', {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
-                format: '{point.y:.1f}%'
+                format: '{point.y}'
             }
         }
     },

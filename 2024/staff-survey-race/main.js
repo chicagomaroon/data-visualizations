@@ -32,14 +32,13 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
-        pointFormat: '<span>{point.name}</span>: {point.y} Maroon member(s)'
+        headerFormat: '',
+        pointFormat: '<b>{point.name}</b>: {point.y} Maroon member(s)'
     },
 
     series: [
         {
-            name: '',
+            name: 'Race',
             colorByPoint: true,
             data: [
                 {

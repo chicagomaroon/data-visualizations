@@ -32,10 +32,8 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">Sexual Orientation:</span><br>',
-        pointFormat:
-            '<span style="display: flex; justify-content: center;">{point.y} members identify as {point.name}</span>'
+        headerFormat: '',
+        pointFormat: '{point.y} Maroon member(s) {point.pointText}'
     },
 
     series: [
@@ -45,34 +43,42 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Aromantic/Asexual',
+                    pointText: 'identify as <b>Aromantic/Asexual</b>',
                     y: 5
                 },
                 {
                     name: 'Bisexual',
+                    pointText: 'identify as <b>Bisexual</b>',
                     y: 14
                 },
                 {
                     name: 'Gay',
+                    pointText: 'identify as <b>Gay</b>',
                     y: 2
                 },
                 {
                     name: 'Lesbian',
+                    pointText: 'identify as <b>Lesbian</b>',
                     y: 2
                 },
                 {
                     name: 'Queer',
+                    pointText: 'identify as <b>Queer</b>',
                     y: 5
                 },
                 {
                     name: 'Questioning Or Unsure',
+                    pointText: 'are <b>Questioning or Unsure</b>',
                     y: 4
                 },
                 {
                     name: 'Straight (Heterosexual)',
+                    pointText: 'identify as <b>Straight/Heterosexual</b>',
                     y: 21
                 },
                 {
                     name: 'Prefer Not To Disclose',
+                    pointText: 'prefer not to disclose',
                     y: 1
                 }
             ]

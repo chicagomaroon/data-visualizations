@@ -18,10 +18,9 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
+        headerFormat: '',
         pointFormat:
-            '<span>{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
     },
     accessibility: {
         point: {
@@ -40,7 +39,7 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: '',
+            name: 'High School Type',
             colorByPoint: true,
             data: [
                 {

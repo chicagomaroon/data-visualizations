@@ -32,10 +32,8 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">Gender:</span><br>',
-        pointFormat:
-            '<span style="display: flex; justify-content: center;">{point.y} member(s) {point.pointText}</span>'
+        headerFormat: '',
+        pointFormat: '{point.y} Maroon member(s) {point.pointText}'
     },
 
     series: [
@@ -45,27 +43,27 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Man',
-                    pointText: 'identify as a Man',
+                    pointText: 'identify as a <b>Man</b>',
                     y: 16
                 },
                 {
                     name: 'Woman',
-                    pointText: 'identify as a Woman',
+                    pointText: 'identify as a <b>Woman</b>',
                     y: 25
                 },
                 {
                     name: 'Non-Binary',
-                    pointText: 'identify as Non-Binary',
+                    pointText: 'identify as <b>Non-Binary</b>',
                     y: 2
                 },
                 {
                     name: 'Agender',
-                    pointText: 'identifies as a Agender',
+                    pointText: 'identifies as <b>Agender</b>',
                     y: 1
                 },
                 {
                     name: 'Prefer Not To Disclose',
-                    pointText: 'prefers not to disclose',
+                    pointText: 'prefer(s) not to disclose',
                     y: 1
                 }
             ]

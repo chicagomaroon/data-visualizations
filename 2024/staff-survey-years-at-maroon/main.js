@@ -18,10 +18,9 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
+        headerFormat: '',
         pointFormat:
-            '<span>{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
     },
     accessibility: {
         point: {
@@ -44,19 +43,19 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: '≤1',
+                    name: 'One or less',
                     y: 17
                 },
                 {
-                    name: '2',
+                    name: 'Two',
                     y: 10
                 },
                 {
-                    name: '3',
+                    name: 'Three',
                     y: 12
                 },
                 {
-                    name: '≥4',
+                    name: 'Four or more',
                     y: 5
                 }
             ]

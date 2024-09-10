@@ -16,10 +16,9 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
+        headerFormat: '',
         pointFormat:
-            '<span>{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<span style="font-size:11px;font-weight:bold;">{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
     },
     accessibility: {
         point: {
@@ -38,7 +37,7 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'First-Generation, Low Income Status',
+            name: 'FGLI Status',
             colorByPoint: true,
             data: [
                 {

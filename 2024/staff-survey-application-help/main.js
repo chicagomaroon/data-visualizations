@@ -32,14 +32,14 @@ Highcharts.chart('chart-div', {
     },
 
     tooltip: {
-        headerFormat:
-            '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
-        pointFormat: '<span>{point.name}</span>: {point.y} Maroon member(s)'
+        headerFormat: '',
+        pointFormat:
+            '<span style="font-weight:bold;">{point.name}</span>: {point.y} Maroon member(s)'
     },
 
     series: [
         {
-            name: 'Is Maroon Membership Helpful on Job Applications?',
+            name: 'Is Maroon membership helpful on job applications?',
             colorByPoint: true,
             data: [
                 {
