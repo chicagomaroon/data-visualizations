@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Years Served at The Maroon',
+        text: 'The Maroon Staff Survey 2024: U.S. Generation Status',
         align: 'center'
     },
 
@@ -40,24 +40,20 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Years Served at The Maroon',
+            name: '',
             colorByPoint: true,
             data: [
                 {
-                    name: '≤1',
-                    y: 17
+                    name: 'First-generation (immigrant)',
+                    y: 9
                 },
                 {
-                    name: '2',
-                    y: 10
+                    name: 'Second-generation (at least one foreign-born parent)',
+                    y: 14
                 },
                 {
-                    name: '3',
-                    y: 12
-                },
-                {
-                    name: '≥4',
-                    y: 5
+                    name: 'U.S. Dual Citizen',
+                    y: 19
                 }
             ]
         }

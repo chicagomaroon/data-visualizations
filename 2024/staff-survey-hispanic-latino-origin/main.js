@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Years Served at The Maroon',
+        text: 'The Maroon Staff Survey 2024: Hispanic/Latino Origin',
         align: 'center'
     },
 
@@ -40,24 +40,28 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Years Served at The Maroon',
+            name: '',
             colorByPoint: true,
             data: [
                 {
-                    name: '≤1',
-                    y: 17
+                    name: 'Both Hispanic and Latino',
+                    y: 2
                 },
                 {
-                    name: '2',
-                    y: 10
+                    name: 'Hispanic, not Latino',
+                    y: 1
                 },
                 {
-                    name: '3',
-                    y: 12
+                    name: 'Latino, not Hispanic',
+                    y: 1
                 },
                 {
-                    name: '≥4',
-                    y: 5
+                    name: 'Neither Hispanic nor Latino',
+                    y: 39
+                },
+                {
+                    name: 'Prefer Not to Disclose',
+                    y: 4
                 }
             ]
         }

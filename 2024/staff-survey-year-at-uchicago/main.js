@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Years Served at The Maroon',
+        text: 'The Maroon Staff Survey 2024: Year at UChicago',
         align: 'center'
     },
 
@@ -40,24 +40,28 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Years Served at The Maroon',
+            name: '',
             colorByPoint: true,
             data: [
                 {
-                    name: '≤1',
-                    y: 17
+                    name: 'First-Year',
+                    y: 11
                 },
                 {
-                    name: '2',
-                    y: 10
+                    name: 'Second-Year',
+                    y: 11
                 },
                 {
-                    name: '3',
-                    y: 12
+                    name: 'Third-Year',
+                    y: 13
                 },
                 {
-                    name: '≥4',
-                    y: 5
+                    name: 'Fourth-Year',
+                    y: 7
+                },
+                {
+                    name: 'Masters Student',
+                    y: 2
                 }
             ]
         }

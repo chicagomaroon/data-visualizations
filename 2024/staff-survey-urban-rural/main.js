@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Years Served at The Maroon',
+        text: 'The Maroon Staff Survey 2024: Urban, Suburban, or Rural?',
         align: 'center'
     },
 
@@ -40,24 +40,24 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Years Served at The Maroon',
+            name: '',
             colorByPoint: true,
             data: [
                 {
-                    name: '≤1',
-                    y: 17
+                    name: 'Urban',
+                    y: 19
                 },
                 {
-                    name: '2',
-                    y: 10
+                    name: 'Suburban',
+                    y: 21
                 },
                 {
-                    name: '3',
-                    y: 12
+                    name: 'Rural',
+                    y: 2
                 },
                 {
-                    name: '≥4',
-                    y: 5
+                    name: 'Unsure',
+                    y: 1
                 }
             ]
         }

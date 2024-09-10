@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Years Served at The Maroon',
+        text: 'The Maroon Staff Survey 2024: High School Type',
         align: 'center'
     },
 
@@ -40,24 +40,24 @@ Highcharts.chart('chart-div', {
     },
     series: [
         {
-            name: 'Years Served at The Maroon',
+            name: '',
             colorByPoint: true,
             data: [
                 {
-                    name: '≤1',
-                    y: 17
-                },
-                {
-                    name: '2',
-                    y: 10
-                },
-                {
-                    name: '3',
-                    y: 12
-                },
-                {
-                    name: '≥4',
+                    name: 'Boarding School',
                     y: 5
+                },
+                {
+                    name: 'Public School',
+                    y: 13
+                },
+                {
+                    name: 'Religious School',
+                    y: 3
+                },
+                {
+                    name: 'Secular Private Day School',
+                    y: 22
                 }
             ]
         }

@@ -21,7 +21,7 @@ Highcharts.chart('chart-div', {
         headerFormat:
             '<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',
         pointFormat:
-            '<span>{point.name}</span>: {point.y:.1f}% of Maroon members'
+            '<span>{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
     },
     accessibility: {
         point: {
@@ -34,7 +34,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
             }
         }
     },
