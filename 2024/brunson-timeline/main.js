@@ -78,7 +78,12 @@ Highcharts.chart('chart', {
                     description:
                         'FBI Special Agent Thomas M. Dalton files a seventeen-page complaint against Brunson alleging that he violeted U.S. federal statute sections 18 USC Section 1001(a)(2), making "false statements", and 18 USC Section 1001(a)(1), "falsifying, concealing, and covering up a material fact by trick, scheme, or device".'
                 }
-            ]
+            ],
+            dataLabels: {
+                style: {
+                    fontSize: 11
+                }
+            }
         }
     ]
 });
