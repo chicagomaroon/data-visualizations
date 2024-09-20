@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
     },
 
     subtitle: {
-        text: 'Diversity, including undergraduates and graduates, increased in past ten years, with largest increases in Latino and international students'
+        text: 'Diversity, including undergraduates and graduates, increased in past ten years, with largest increases in Latino and international students.'
     },
 
     xAxis: {

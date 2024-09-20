@@ -64,7 +64,7 @@ Highcharts.chart('chart-admit', {
     },
 
     subtitle: {
-        text: 'Female admission rate is lower than male'
+        text: 'Female admission rate is lower than male.'
     },
 
     legend: {
