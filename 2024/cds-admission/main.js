@@ -32,8 +32,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: `While both increased, growth in applicants outpaced growth in enrollment.<br/>
-        Source: <a href="https://www.highcharts.com/demo">Highcharts.com</a>`,
+        text: `While both increased, growth in applicants outpaced growth in enrollment.<br/>`,
         align: 'center'
     },
 
