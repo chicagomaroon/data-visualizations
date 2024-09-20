@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
     },
 
     subtitle: {
-        text: ''
+        text: 'The makeup of the undergraduate student population had not significantly changed in the last three years.'
     },
 
     xAxis: {
