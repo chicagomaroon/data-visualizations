@@ -48,7 +48,7 @@ Programming is a skill that you learn by doing. There is no expectation that som
 With that being said, use the resources below as a starting place and reference source. Aim to learn just enough to jump into a project and learn the rest as you go.
 
 -   We primarily use [`HighCharts`](https://www.highcharts.com/), a JavaScript library, to build visualizations. Each HighChart graphic is embedded on a simple HTML page that is linked in its parent story.
-    -   The best place to start is to find a previously created visual from the Maroon Team by opening [example-graphs.html](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
+    -   The best place to start is to find a previously created visual from the Maroon Team by opening [https://chicagomaroon.github.io/data-visualizations/example-graphs](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     -   If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
     -   Continue to [Build Process for a Visualization](#build-process-for-a-visualization)
 -   Other tools include:
