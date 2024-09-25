@@ -1,0 +1,317 @@
+<html lang="en">
+    <head>
+        <title>Getting Started: Software</title>
+
+        <style>
+            body {
+                font-family: 'Georgia', 'serif' !important;
+            }
+
+            div.page-container {
+                width: 600px;
+                margin-left: calc(50% - 300px);
+                margin-right: calc(50% - 300px);
+            }
+
+            @media screen and (max-width: 625px) {
+                div.page-container {
+                    margin-left: 10px;
+                    width: calc(100% - 20px);
+                }
+            }
+
+            hr {
+                border: 1px solid #dddddd;
+            }
+
+            #page-title {
+                font-size: 30px;
+                text-align: left;
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                text-align: left;
+                margin-top: 25px;
+                margin-bottom: 25px;
+            }
+
+            #paragraph-div {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                font-size: 16px;
+            }
+
+            div.iframe-container {
+                margin-right: 4px;
+            }
+
+            .data-viz-container {
+                height: 420px;
+                width: 100%;
+                margin-bottom: -5px;
+                border: 2px solid #dddddd;
+                border-bottom-width: 0;
+            }
+
+            div.data-viz-description-container {
+                margin-bottom: 20px;
+                background-color: #eeeeee;
+                padding: 10px;
+                border: 2px solid #dddddd;
+                border-top-width: 0;
+            }
+
+            div.data-viz-description-container div.data-viz-description {
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 1.4em;
+            }
+
+            div.data-viz-description-container div.data-viz-link {
+                text-align: right;
+                font-size: 14px;
+                padding-bottom: 5px;
+            }
+        </style>
+
+        <link rel="stylesheet" href="static/main.css" />
+    </head>
+
+    <body>
+        <div class="page-container">
+            <h1 id="page-title">Getting Started: Software</h1>
+
+            <p>
+                The <i>Maroon's</i> Data & Technology team uses a variety of
+                software to produce high-quality, interactive data
+                visualizations. This document will introduce you to our
+                development environment and guide you through downloading the
+                necessary software. These tools can be quite complex, so don't
+                worry if you don't get it right away. No prior experience is
+                required, and please feel free to reach out to us at
+                <a href="mailto:data@chicagomaroon.com"
+                    >data@chicagomaroon.com</a
+                >
+                if you have any questions!
+            </p>
+
+            <h2 class="section-title">The Terminal</h2>
+
+            <p>
+                The Terminal is a program on your computer designed to let you
+                interact with files, code, programs, and more at a low level.
+                You do all of this by running commands. Thus, the Terminal is an
+                example of a Command Line Interface (CLI).
+            </p>
+
+            <p>
+                The Terminal works within your computer's file system. When you
+                open it, it will display a mostly blank screen with a single
+                line where you can type. This line will look different depending
+                on what type of computer you're using, but it will always
+                display a location in your file system. This is your "working
+                directory" ("directory" is a synonym of "file" in this context).
+            </p>
+
+            <p>
+                Try typing <code>pwd</code> and hitting "enter". This stands for
+                "Print Working Directory", and it should have printed a line of
+                text showing your current location in more detail.
+            </p>
+
+            <p>
+                Now, try <code>ls</code>! This command, short for "List", prints
+                the contents of your current working directory. For example, if
+                I ran <code>ls</code> in my "Maroon_Data_Viz" folder, the
+                Terminal would list folders like "2024", "node_modules", and
+                "template_visual", along with files like "CONTRIB.md",
+                "example-graphs.html", and "package.json". If your working
+                directory is empty, it will print nothing.
+            </p>
+
+            <p>
+                The final command you need in order to navigate the Terminal is
+                <code>cd</code>, or "Change Directory". As its name suggests,
+                This command lets you change your working directory. If my
+                working directory is "2024" in the Maroon file system, I can
+                navigate to a sub-folder using
+                <code>cd [folder-name]</code> (for example,
+                <code>cd fgli-map</code>). I can also navigate to my working
+                directory's parent folder using <code>cd ..</code>.
+            </p>
+
+            <p>
+                Using <code>pwd</code>, <code>ls</code>, and <code>cd</code>,
+                you can go anywhere in your computer's file system! Take a few
+                minutes to mess around with these commands to make sure you're
+                comfortable with them (don't worry, you won't break anything).
+                The Terminal can do much more, but these are the three basic
+                commands you'll need for now. Later, we'll go through some
+                commands specific to software we use.
+            </p>
+
+            <h2 class="section-title">Code Editors</h2>
+
+            <p>
+                As the name suggests, code editors are apps that let you edit
+                code on your computer. Like Word, they allow you to open and
+                edit text-based documents.
+            </p>
+
+            <p>
+                For a popular, free, all-purpose code editor, try Visual Studio
+                Code, or VSCode (download
+                <a href="https://code.visualstudio.com/download">here</a>). If
+                you want an editor that's more specific to web development
+                (which is much of what we do here), try Webstorm (download
+                <a href="https://www.jetbrains.com/webstorm/">here</a>), a
+                powerful JavaScript IDE (integrated development environment).
+                This will offer all sorts of configuration options as well as
+                thorough documentation for any and all relevant features. You
+                can get a free student license
+                <a
+                    href="https://www.jetbrains.com/community/education/#students"
+                    >as a student at UChicago</a
+                >.
+            </p>
+
+            <h2 class="section-title">Git, GitHub, and GitHub Desktop</h2>
+
+            <p>
+                Git is the most widely used version management software. Once
+                you download Git, you can set up a "Git repository" in one of
+                your existing folders. This will allow you to run Terminal
+                commands to track your changes, create and switch between
+                different versions of your code (called "branches"), and cleanly
+                combine changes made on different branches. For more detailed
+                information about Git, see
+                <a href="https://git-scm.com/book/en/v2">this book</a>.
+            </p>
+
+            <p>
+                Please download Git here:
+                <a href="https://git-scm.com/downloads"
+                    >https://git-scm.com/downloads</a
+                >
+            </p>
+
+            <p>
+                <a href="github.com">GitHub</a> is a widely used system that
+                extends Git to allow for collaboration on a Git repository. Our
+                team hosts its code in a collection of public repositories found
+                <a href="https://github.com/chicagomaroon">here</a>. Through
+                GitHub, you can download (or "clone") a new repository, make
+                changes, and upload (or "push") those changes. When you clone a
+                repository, you tell Git to copy the repository's contents into
+                a specified folder on your computer. Later, you can "pull"
+                others' changes to the shared ("remote") repository, and when
+                you edit the code (and save your changes) in your "local"
+                repository, you can push them to the "remote". You can also
+                create and publish branches for others to see/edit.
+            </p>
+
+            <p>
+                Please create a GitHub account at
+                <a href="https://github.com/">github.com</a>. You can use your
+                personal and/or UChicago email address, but be aware that if you
+                only connect your UChicago account, your GitHub may disappear
+                after graduation. When you are done, please send us your
+                username so we can add you as a contributor.
+            </p>
+
+            <p>
+                Although you can use Git and GitHub through commands in the
+                Terminal, we don't recommend using them that way. Instead, you
+                can download an app called "GitHub Desktop" to perform all of
+                the Git/GitHub tasks.
+            </p>
+
+            <p>
+                Please download GitHub Desktop
+                <a href="https://desktop.github.com/download/">here</a>. Then,
+                clone our
+                <a href="https://github.com/chicagomaroon/data-visualizations"
+                    >Data Visualization repository</a
+                >
+                by going to "Current Repository > Add > Clone Repository > URL",
+                entering the URL
+                "https://github.com/chicagomaroon/data-visualizations.git", and
+                choosing an empty folder on your computer where you want the new
+                repository to go.
+            </p>
+
+            <p>
+                When you want to contribute to our repository, create a branch
+                using the "Current Branch" menu in GitHub Desktop, make your
+                changes using your favorite code editor, select the files whose
+                changes you want to push using the left-hand-side menu, commit
+                those changes (using present imperative tense to title your
+                Commit), and push those changes using the top-right button.
+                Then, go to our repository in GitHub and open a
+                <a
+                    href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request"
+                    >pull request</a
+                >
+                asking to merge your branch into the main one. This will start a
+                conversation in GitHub where admins can provide feedback,
+                approve your changes, and merge your branch. We will review this
+                process again in a future workshop.
+            </p>
+
+            <h2 class="section-title">Node.js</h2>
+
+            <p>
+                <a href="https://nodejs.org/en">Node.js</a> is a complex piece
+                of software that allows us to use custom scripts to perform
+                specific tasks in our repository. For example, if you run
+                <code>npm run format</code> ("NPM" = "Node Package Manager") in
+                the Terminal in our repository, Node will run a program on the
+                entire repository that applies a standard format to everything.
+                These scripts are an integral part of our team's workflow. We'll
+                go through them in more detail later.
+            </p>
+
+            <p>
+                To download Node.js, go
+                <a href="https://nodejs.org/en/download/package-manager">here</a
+                >. NOTE: Please download Node version 20.9.0 by running
+                <code>nvm install v20.9.0</code> instead of
+                <code>nvm install 22</code>.
+            </p>
+
+            <h2 class="section-title">HighCharts</h2>
+
+            <p>
+                <a href="https://www.highcharts.com/">HighCharts</a> is a
+                JavaScript library used to make high-quality, interactive data
+                visualizations that can be embedded into websites with
+                relatively little effort. See
+                <a href="https://www.highcharts.com/demo">this page</a> for
+                examples of what HighCharts can do. Most of our graphs are made
+                through HighCharts. We will discuss how to make graphs like this
+                in future workshops.
+            </p>
+
+            <p>You don't need to download anything to use HighCharts.</p>
+
+            <h2 class="section-title">Review</h2>
+
+            <p>
+                Now, you should understand the basics of navigating the
+                Terminal, how to use a code editor, how Git and GitHub work, and
+                what we use Node and HighCharts for. You also should have
+                successfully downloaded VSCode or Webstorm, Git, GitHub Desktop,
+                and Node. To check VSCode/Webstorm and GitHub Desktop, find
+                those apps on your computer. To check Git, go to the Terminal
+                (it doesn't matter what your working directory is) and run
+                <code>git --version</code>. To check Node and NPM, run
+                <code>node --version</code> and <code>npm --version</code>,
+                respectively. If any of these commands give you an error, please
+                reach out to us for assistance.
+            </p>
+        </div>
+    </body>
+</html>
