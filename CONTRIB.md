@@ -62,15 +62,15 @@ See the [resources][resources/] folder for additional material.
 ## Build Process for a Visualization
 
 1. Go to the base folder of the `data-visualizations` repository and ensure your local repo is up to date with the remote repo by running `git checkout main` and `git pull`
-2. Create a branch for your story by running `git checkout -b '[kebab-case-story-name]'`. Replace the values in brackets with the relevant names. Read more about kebab-case [here](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
-3. In the terminal run `npm run create-visual --year=[year] --story=[kebab-case-story-name]` This will create a folder with all the necessary files to create your visual.
+1. Create a branch for your story by running `git checkout -b '[kebab-case-story-name]'`. Replace the values in brackets with the relevant names. Read more about kebab-case [here](https://www.freecodecamp.org/news/programming-naming-conventions-explained#what-is-kebab-case).
+1. In the terminal run `npm run create-visual --year=[year] --story=[kebab-case-story-name]` This will create a folder with all the necessary files to create your visual.
     - If it is the year `2024` and your story is called `Example Visual` then run the command `npm run create-visual --year=2023 --story=example-visual` using the year `2024` and your story's name `example-visual` in kebab-case.
     - For the error `The syntax of the command is incorrect`, use ChatGPT to edit the command for your terminal. For example, Git Bash requires line breaks. You may also have to manually set environment variables with `npm_config_year=` and `npm_config_story=`.
     - In your `./[year]/[story-name]/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
-4. Start creating your visual that will be housed in the `./[year]/[story-name]/` folder.
+1. Start creating your visual that will be housed in the `./[year]/[story-name]/` folder.
     - If you'd like to see previously created example visuals, open [example-graphs.html](./example-graphs.html) from your local repository.
     - If you are using Highcharts, here is a lot of helpful documentation on the [options for creating charts](https://api.highcharts.com/highmaps/).
-5. Update the `meta_data.json` in your story's folder, which will look something like this:
+1. Update the `meta_data.json` in your story's folder, which will look something like this:
     ```json
     {
         "title": "Example Visual",
@@ -78,11 +78,14 @@ See the [resources][resources/] folder for additional material.
     }
     ```
     - Make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` and in `index.html`'s `<title>` tag.
-6. Run `npm run format` and make the changes that the output recommends.
-7. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
+
+1. Run `npm run format` and make the changes that the output recommends. Also ensure the title, subtitle, and captions follow the requirements in the [Contribution Standards section](#titles-subtitles-and-captions). Ensure the chart and annotations still look correct at a width of ~700px. This is the width of the charts when online.
+1. Go to the base folder of the `data-visualizations` repository and run the command `npm run process-visual --year=[year] --story=[kebab-case-story-name]`
     - Example: `npm run process-visual --year=2023 --story=example-visual`
-8. Create a Pull Request to have your visual reviewed by committing and pushing your changes.
+1. Create a Pull Request to have your visual reviewed by committing and pushing your changes.
+    - In your pull request, include a screenshot of the visual. Ensure the visual is ~700px.  
     - You can run `git status` to see which files in red have not been added. Then run `git add [file-name]` for each file to add them. Next run `git commit -m '[commit message]'` to commit your changes. Then run `git push` to push your changes. If this is your first commit, github may ask you to run a different command, which you should. Ex `git push --set-upstream origin [branch-name]`
+
 
 ## The Chicago Maroon’s Data Contribution and Style Guide
 
@@ -109,11 +112,16 @@ Examples for external style guides for inspiration.
 
 The font is set via the [`main.css`](./static/main.css) file. The default font, and the one used on the rest of _The Chicago Maroon_, is [Georgia, serif font](https://www.cssfontstack.com/Georgia).
 
-#### Titles and Subtitles
+#### Titles, Subtitles, and Captions 
 
-Titles and subtitles should meet the following constraints:
+Plot `title`: A few words describing what the plot is about (can be a phrase or a question, not a full statement)
+Plot `subtitle` (optional): A short sentence summarizing the main takeaway from the data; should end with a period
+Plot `caption` (optional): Any asterisk-style note that adds important clarifying context to part of the plot (ex: if data for one year is incomplete, put an asterisk on that year and make an asterisk-prefixed note in the caption)
+HTML caption (Adding in SNO): One or more longer sentences explaining findings and tying the plot to the story and a link to the data source (on a new line)
 
--   They should not take up more than one line each.
+In addition itles and subtitles should meet the following constraints:
+
+-   They should ideally not take up more than one line each.
 -   They should be centered, not left or right-justified.
 -   Links should be added using [anchor tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a).
 
