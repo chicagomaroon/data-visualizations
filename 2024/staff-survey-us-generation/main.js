@@ -51,7 +51,7 @@ Highcharts.chart('chart-div', {
                     y: 14
                 },
                 {
-                    name: 'U.S. Dual Citizen',
+                    name: 'Third-generation and beyond (two U.S. native parents)',
                     y: 19
                 }
             ]
