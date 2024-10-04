@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     caption: {
-        text: '*These data reflect student populations as of autumn quarter each year.',
+        text: '*These data reflect student populations as of Autumn quarter each year.',
         align: 'center'
     },
 
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
 
     series: [
         {
-            name: 'Total Enrollement',
+            name: 'Total Enrollment',
             data: [
                 2715, 2755, 2867, 2870, 2920, 2981, 2977, 3166, 3254, 3332,
                 3433, 3478, 3447, 3425, 3435, 3478, 3554, 3616, 3756, 3852,
