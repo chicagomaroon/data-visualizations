@@ -59,6 +59,14 @@
         { region: 'West', state_code: 'WY', value: 13 }
     ];
 
+    Highcharts.setOptions({
+        chart: {
+            style: {
+                fontFamily: 'Georgia, serif'
+            }
+        }
+    });
+
     // Instantiate the map
     Highcharts.mapChart('chart-div', {
         chart: {
@@ -69,7 +77,7 @@
             text: 'Where is the Class of 2024 Going?'
         },
         subtitle: {
-            text: 'Most students are staying in the Mideast or heading to the Northeast.'
+            text: 'Most students are staying in the Midwest or heading to the Northeast.'
         },
         legend: {
             enabled: false
