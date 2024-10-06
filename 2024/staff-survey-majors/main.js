@@ -1,12 +1,12 @@
 let collegeDivisions = [
     {
         name: 'Social Sciences',
-        y: 41,
+        y: 40,
         drilldown: 'Social Sciences'
     },
     {
         name: 'Humanities',
-        y: 20,
+        y: 17,
         drilldown: 'Humanities'
     },
     {
@@ -16,13 +16,8 @@ let collegeDivisions = [
     },
     {
         name: 'Biological Sciences',
-        y: 1,
+        y: 2,
         drilldown: 'Biological Sciences'
-    },
-    {
-        name: 'Undecided',
-        y: 1,
-        drilldown: null
     }
 ];
 let biologicalSciences = [['Biological Sciences', 2]];

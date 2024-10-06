@@ -1,7 +1,7 @@
 let collegeDivisions = [
     {
         name: 'Humanities',
-        y: 17,
+        y: 6,
         drilldown: 'Humanities'
     },
     {

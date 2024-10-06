@@ -45,10 +45,6 @@ Highcharts.chart('chart-div', {
                     weight: 1
                 },
                 {
-                    name: 'Hyper-woke',
-                    weight: 1
-                },
-                {
                     name: 'Impactful',
                     weight: 1
                 },
