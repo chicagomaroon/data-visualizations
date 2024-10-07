@@ -36,8 +36,8 @@ Here is the template to for putting minified HTML files into the WordPress site 
 
 ## Crediting Authors and Contributors
 
-Anyone who contributed to writing the story should be credited as a "Writer" through SNO. Anyone who contributed a data 
-visualization but did not write should be credited through the "Video/Embed" widget on the right-hand-side of the SNO 
-editing window. Click "Add Video or Embed Code", and set “Location” to “Do Not Display on Story Page” and set 
+Anyone who contributed to writing the story should be credited as a "Writer" through SNO. Anyone who contributed a data
+visualization but did not write should be credited through the "Video/Embed" widget on the right-hand-side of the SNO
+editing window. Click "Add Video or Embed Code", and set “Location” to “Do Not Display on Story Page” and set
 “Embed/Video Credit Line” to the name of the developer to be credited. This will make the story show up on their bio
-page on the Maroon's website without adding them to the byline. 
+page on the Maroon's website without adding them to the byline.
