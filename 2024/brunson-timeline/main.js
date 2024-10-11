@@ -74,7 +74,7 @@ Highcharts.chart('chart', {
                         "Officers found a notebook in Brunson's bedroom containing notes on how to make HMTD. A bomb dog alerted on three locations in his bedroom."
                 },
                 {
-                    name: '<b>August 27, 2023</b>: FBI files complaint against Brunson',
+                    name: '<b>August 27, 2024</b>: FBI files complaint against Brunson',
                     description:
                         'FBI Special Agent Thomas M. Dalton files a seventeen-page complaint against Brunson alleging that he violeted U.S. federal statute sections 18 USC Section 1001(a)(2), making "false statements", and 18 USC Section 1001(a)(1), "falsifying, concealing, and covering up a material fact by trick, scheme, or device".'
                 }
