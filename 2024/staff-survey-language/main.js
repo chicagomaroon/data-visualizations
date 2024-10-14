@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Languages Spoken',
+        text: 'The Maroon Staff Survey 2024: Foreign Languages Spoken',
         align: 'center'
     },
 
@@ -52,10 +52,6 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'Dutch',
                     y: 1
-                },
-                {
-                    name: 'English',
-                    y: 37
                 },
                 {
                     name: 'French',
