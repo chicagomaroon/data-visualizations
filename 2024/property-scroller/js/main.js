@@ -81,6 +81,7 @@ function exploreMap() {
     }
 }
 
+// ------------ functions ------------
 function changeTimelineYear(targetYear) {
     pause = 25;
 
@@ -126,6 +127,28 @@ function changeTimelineYear(targetYear) {
     incrementCounter();
 }
 
+function showHighlight(div) {
+    highlightLayer = document.querySelector('#highlight-layer');
+    highlightLayer.innerHTML = '';
+    highlightLayer.appendChild(div);
+    // show highlight layer
+    highlightLayer.style.visibility = 'visible';
+    // add fade in calss
+    highlightLayer.classList.add('fadeIn');
+
+    // lower opacity of map
+    document.querySelector('#map-body').style.opacity = 0.3;
+}
+
+function hideHighlight() {
+    // hide highlight layer
+    highlightLayer = document.querySelector('#highlight-layer');
+    highlightLayer.innerHTML = '';
+    highlightLayer.style.visibility = 'hidden';
+
+    // return map opacity
+    document.querySelector('#map-body').style.opacity = 1;
+}
 // -------- MAP FUNCTIONS ---------
 
 function createLayerOther(map_name, layerName, filter) {
@@ -448,6 +471,11 @@ function waypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 console.log('waypoint 1.2');
+
+                const div = document.createElement('img');
+                div.src = 'static/images/1907_quad.jpg';
+                showHighlight(div);
+
                 filterOpacity(mapBody, 'land_grant', false);
                 updateLayers(1900, 'layer1900');
             } else {
@@ -457,11 +485,22 @@ function waypoints() {
         },
         offset: '99%'
     });
+
+    new Waypoint({
+        element: document.getElementById('1.3'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                console.log('waypoint 1.3');
+                hideHighlight();
+            }
+        }
+    });
     new Waypoint({
         element: document.getElementById('2.1'),
         handler: function (direction) {
             if (direction == 'down') {
                 console.log('waypoint 2.1');
+                hideHighlight();
                 updateLayers(1950, 'layer1925');
                 mapBody.flyTo({
                     center: hydeParkLocation,
