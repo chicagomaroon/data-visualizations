@@ -10,36 +10,92 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 
 ### Setup
 
-1. Make a Github account and learn about version control (git).
+This section walks through the necessary software you need to understand and install to participate in our team. We don't expect you to know or already have installed any of this, but **even if you do, please read everything to avoid missing something important that is specific to us**.
 
-    - Make an account with github if you do not have one: https://github.com/join
-    - You may also want to download [GitHub Desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface, and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.)
-    - There are lots of resources to learn about version control using Github. Below are a few we recommend but we encourage you to exploring other online resources as needed.
+1. Learn about the Terminal, running commands, and navigating your file system.
+
+    - What is the Terminal?
+        - The Terminal is a built-in program on your computer designed to let you interact with files, code, programs, and more at a low level. You do all of this by running commands. Thus, the Terminal is an example of a Command Line Interface (CLI).
+        - Warning: The Terminal may have a different name if you're using Windows, and the more complex commands may be different.
+    - How do I run commands?
+        - To run a command, type it into the Terminal and hit "Enter/Return".
+        - Each operating system (Mac, Windows, Linux, etc.) has its own language for built-in commands, but the basics are generally the same.
+        - The Terminal works within your computer's file system. Your Terminal always displays a current location ("working directory", or "WD" for short) on the same line where you type your commands. Any commands you run are in the context of your WD. For example, if you run the command `ls` ("list"), the Terminal will list the contents of your WD.
+        - **When we ask you to "run `[command]` in `[location]`", we are asking you to go to `[location]` in your Terminal, type `[command]` into the prompt line, and hit "Enter".**
+    - Try running the following commands to get a feel for navigating your computer's file system through the Terminal:
+        - `pwd` ("print working directory"): Prints a path from the root of your file system to your current WD
+        - `ls` ("list"): Prints a list of the contents of your current WD
+        - `cd ..` ("change directory"):  Moves you from your current WD to its parent directory
+        - `cd [child directory]`: Moves you from your current WD to the specified child directory
+            - For example, if I am currently located in my `Documents` folder and there is a sub-folder called `Maroon`, I can move to `Maroon` via `cd Maroon`
+    - Another tip: When you're typing a command in the Terminal, you can hit `Tab` and it will try to auto-fill what it thinks you're typing. This is very useful when navigating to folders with long names.
+    - The Terminal's built-in language has much more vocabulary and grammar that allows you to do a number of complex things, but for our purposes, you just need to know the basics. Software like Git and Node add their own commands we will discuss later.
+
+2. Download Git, make a Github account, and learn about version control.
+
+    - What is Git?
+        - Git is the most widely used version management software. 
+        - Once you download Git, you can set up a "Git repository" (or "Git repo" for short) in one of your existing folders. 
+        - In a Git repo, you can run Terminal commands to track your changes to the folder's contents, create and switch between different versions of your code (called "branches"), and cleanly combine changes made on different branches. 
+        - For more detailed information on Git, see [this book](https://git-scm.com/book/en/v2).
+    - Download Git [here](https://git-scm.com/downloads).
+    - What is GitHub?
+        - [GitHub](https://github.com/) is a widely used system that extends Git to allow collaboration on a Git repo. Our team hosts its code in a collection of public repos found [here](https://github.com/chicagomaroon).
+        - Vocabulary: Through GitHub, you can
+            - "clone" (download) a "remote" repository into a folder on your computer, creating a "local" version,
+            - "push" (upload) any changes you make,
+            - "pull" others' changes to the remote repo into your local repo,
+            - "push" your own changes to the remote repo for others to "pull",
+            - create "branches" (alternate versions of the repo) for yourself and others to see/edit,
+            - create "pull requests" to open a conversation asking to merge a branch into the main repository version,
+            - and much more!
+    - Make an account with GitHub if you do not have one: https://github.com/join.
+        - Warning: Be aware that if you only link your UChicago email address, your GitHub account will likely disappear after you graduate. We recommend creating your account with your personal email address and then linking your UChicago address as a secondary address.
+    - Send the Lead Developer(s) your GitHub username so we can add you as a contributor to our repository.
+    - What is GitHub Desktop?
+        - Although you can interact with Git and GitHub entirely through the Terminal, we do not recommend using them that way.
+        - If you want a cleaner, more intuitive interface, download [GitHub Desktop](https://desktop.github.com/), which will allow you to manage repositories on your computer using a graphical user interface (GUI), and work with any code environments on your computer (e.g. VSCode, WebStorm, etc.).
+    - There are lots of resources to learn more about version control using Github. Below are a few we recommend but we encourage you to exploring other online resources as needed.
         - Version Control by [The Missing Semester from MIT](https://missing.csail.mit.edu/2020/version-control/)
         - [CAPP Camp Git I and Git II](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s2-git-i/)
         - [GitHub Feature Branches](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)
         - [GitHub Pull Requests](https://www.atlassian.com/git/tutorials/making-a-pull-request)
 
-2. Clone the `data-visualization` repo locally.
+3. Clone the `data-visualizations` repo from [here](https://github.com/chicagomaroon/data-visualizations).
 
-    - Learn more about cloning [here](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s3-git-ii/1-working-from-multiple-locations.html#using-git-clone)
+    - You can do this through either Terminal commands or GitHub Desktop. 
+    - Learn more about cloning [here](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s3-git-ii/1-working-from-multiple-locations.html#using-git-clone).
 
-3. Download a code editor
+4. Download a code editor.
 
-    - If you do not have a strong opinion about which code editor to use, download [Visual Studio Code](https://code.visualstudio.com/) (often just called VS Code). If you do have a strong opinion, feel free to use your preferred choice.
-        - learn more about code editors generally [here](https://missing.csail.mit.edu/2020/editors/)
-        - learn more about VS Code [here](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s1-linux/2-vs-code-layout.html)
+    - Code editors are applications that allow you to open a text file and edit its contents, like Microsoft Word but for any basic text file type. This includes code files (ending in `.js`, `.py`, `.r`, etc.), data files (`.csv`, `.json`, etc.), and text/markdown files (`.txt`, `.html`, `.md`, etc.).
+    - If you do not have a strong opinion about which code editor to use, download [Visual Studio Code](https://code.visualstudio.com/) (often just called VS Code).
+        - Learn more about code editors generally [here](https://missing.csail.mit.edu/2020/editors/)
+        - Learn more about VS Code [here](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s1-linux/2-vs-code-layout.html)
+    - If you want a more specialized web development environment, try [Webstorm](https://www.jetbrains.com/webstorm/), a powerful JavaScript IDE (Integrated Development Environment). This software is not free, but as a UChicago student, you should be able to get a [free license](https://www.jetbrains.com/community/education/#students).
+    - In general, feel free to use whichever code editor you prefer as long as it allows you to edit HTML, CSS, and JavaScript files. 
 
-4. Download node which will allow you to run Javascript, the programming language we use to write our visualizations in:
+5. Download Node, a piece of software that will allow you to run Javascript, the programming language we use to write our visualizations in.
 
-    - [node.js](https://nodejs.org/en) `v20.9.0`
+    - Download here: [node.js](https://nodejs.org/en) `v20.9.0`
         - To install the correct version, open the terminal and run:
             1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash` . If you are getting error "should not accept aliases with slashes" (likely if you are on Windows) try using `nvm-setup.exe` from the [Windows release site](https://github.com/coreybutler/nvm-windows/releases).
-            2. Install the correct version of Node `nvm install 20.9.0`. If you are getting error of nvm not recognized then run `source ~/.nvm/nvm.sh` and then run above again.
-            3. Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`
-            4. Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`
+            2. Install the correct version of Node `nvm install v20.9.0`. If you are getting error of nvm not recognized, run `source ~/.nvm/nvm.sh` and then run above again.
+            3. Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`.
+            4. Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`.
 
-5. After you have cloned the repo and downloaded Node, go to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once
+6. After you have cloned the repo and downloaded Node, go to the base folder of your local copy of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once
+
+7. Check your undestanding and make sure that everything is set up properly.
+
+    - Terminal: Try navigating from one folder on your computer to another in the Terminal using `pwd`, `ls`, and `cd`.
+    - Code editor: Whichever code editor you installed, make sure you can find it as an app on your computer.
+    - Version checks: If any of the following commands gives you an error message, please reach out to us for assistance.
+        - Git: Run `git --version`. (It doesn't matter what your current WD is)
+        - Node: Run `node --version`. This should print `v20.9.0`.
+        - NPM: Run `npm --version`.
+    - If you installed GitHub Desktop, make sure you can find it as an app on your computer.
+    - Find your local version of the `data-visualizations` repository as a folder on your computer.
 
 ### Tools and Skills to Review
 
@@ -112,14 +168,14 @@ Examples for external style guides for inspiration.
 
 The font is set via the [`main.css`](./static/main.css) file. The default font, and the one used on the rest of _The Chicago Maroon_, is [Georgia, serif font](https://www.cssfontstack.com/Georgia).
 
-#### Titles, Subtitles, and Captions 
+#### Plot Titles, Subtitles, and Captions
 
-Plot `title`: A few words describing what the plot is about (can be a phrase or a question, not a full statement)
-Plot `subtitle` (optional): A short sentence summarizing the main takeaway from the data; should end with a period
-Plot `caption` (optional): Any asterisk-style note that adds important clarifying context to part of the plot (ex: if data for one year is incomplete, put an asterisk on that year and make an asterisk-prefixed note in the caption)
-HTML caption (Adding in SNO): One or more longer sentences explaining findings and tying the plot to the story and a link to the data source (on a new line)
+- Plot `title`: A few words describing what the plot is about (can be a phrase or a question, not a full statement).
+- Plot `subtitle` (optional): A short sentence summarizing the main takeaway from the data; this should end with a period.
+- Plot `caption` (optional): Any asterisk-style note that adds important clarifying context to part of the plot (ex: if data for one year is incomplete, put an asterisk on that year and make an asterisk-prefixed note in the caption).
+- HTML caption (Adding in SNO): One or more longer sentences explaining findings and tying the plot to the story and a link to the data source (on a new line).
 
-In addition itles and subtitles should meet the following constraints:
+In addition, titles and subtitles should meet the following constraints:
 
 -   They should ideally not take up more than one line each.
 -   They should be centered, not left or right-justified.
@@ -127,7 +183,7 @@ In addition itles and subtitles should meet the following constraints:
 
 #### Colors
 
-Color palettes are based off the [UChicago style guide](https://news.uchicago.edu/sites/default/files/attachments/_uchicago.identity.guidelines.pdf).
+Color palettes are based off the [UChicago style guide](https://news.uchicago.edu/sites/default/files/attachments/_uchicago.identity.guidelines.pdf). Our template for new HighCharts visuals already has the appropriate color scheme.
 
 <img src="static/primary-colors.png" alt="UChicago primary colors."/>
 
