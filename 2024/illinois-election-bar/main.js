@@ -31,12 +31,12 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'Total Campaign Funds by Candidate and Race',
+        text: 'Total Donations by Candidate and Race',
         align: 'center'
     },
 
     subtitle: {
-        text: 'State Senate campaign raised half as much as other campaigns',
+        text: 'Candidates with known donation information raised $464K on average',
         align: 'center',
         style: {
             fontSize: '18px'
@@ -90,7 +90,7 @@ Highcharts.chart('chart-div', {
 
     series: [
         {
-            name: 'Total funds',
+            name: 'Total donations',
             label: {
                 enabled: false
             },
