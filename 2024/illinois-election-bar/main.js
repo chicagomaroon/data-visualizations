@@ -36,7 +36,7 @@ Highcharts.chart('chart-div', {
     },
 
     subtitle: {
-        text: "State Senate campaign raised half as much as other campaigns",
+        text: 'State Senate campaign raised half as much as other campaigns',
         align: 'center',
         style: {
             fontSize: '18px'
