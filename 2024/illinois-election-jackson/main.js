@@ -10,16 +10,16 @@ Highcharts.setOptions({
 
 Highcharts.chart('chart-div', {
     colors: [
-        '#155F83',
-        '#8A9045',
         '#800000',
         '#FFA319',
         '#C16622',
-        '#47B5FF',
         '#8F3931',
-        '#FF3399',
+        '#8A9045',
         '#58593F',
-        '#350E20'
+        '#155F83',
+        '#350E20',
+        '#47B5FF',
+        '#FF3399'
     ],
     chart: {
         type: 'pie'
@@ -29,7 +29,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: 'Jonathan Jackson raised a total of $578,000.00.',
+        text: 'Jonathan Jackson raised a total of $578,000.',
         align: 'center'
     },
     tooltip: {
