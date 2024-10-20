@@ -18,7 +18,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: 'Total Donations: $543,076.00',
+        text: 'Kambium Buckner raised a total of $543,076.00.',
         align: 'center'
     },
     tooltip: {

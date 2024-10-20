@@ -29,7 +29,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: 'Total Donations: $578,000.00',
+        text: 'Jonathan Jackson raised a total of $578,000.00.',
         align: 'center'
     },
     tooltip: {

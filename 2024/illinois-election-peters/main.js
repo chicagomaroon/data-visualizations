@@ -18,7 +18,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: 'Total Donations: $271,134.00',
+        text: 'Robert Peters raised a total of $271,134.00.',
         align: 'center'
     },
     tooltip: {
