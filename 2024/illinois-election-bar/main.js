@@ -72,7 +72,10 @@ Highcharts.chart('chart-div', {
                 fontSize: '16px'
             }
         },
-        tickPositions: [0, 100000, 200000, 300000, 400000, 500000, 600000],
+        tickPositions: [
+            0, 100000, 200000, 300000, 400000, 500000, 600000, 650000
+        ],
+        showLastLabel: false,
         title: {
             enabled: false
         }
