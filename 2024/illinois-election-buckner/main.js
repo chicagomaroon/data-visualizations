@@ -60,7 +60,7 @@ Highcharts.chart('chart-div', {
                     y: 34143
                 },
                 {
-                    name: 'Liuna Chicago Laborers District Council PAC',
+                    name: 'LIUNA Chicago Laborers District Council PAC',
                     y: 34000
                 },
                 {
