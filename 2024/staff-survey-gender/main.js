@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2023: Gender',
+        text: 'Gender Identity',
         align: 'center'
     },
 
@@ -52,7 +52,7 @@ Highcharts.chart('chart-div', {
                     y: 25
                 },
                 {
-                    name: 'Non-Binary',
+                    name: 'Nonbinary',
                     pointText: 'identify as <b>Non-Binary</b>',
                     y: 2
                 },
@@ -62,7 +62,7 @@ Highcharts.chart('chart-div', {
                     y: 1
                 },
                 {
-                    name: 'Prefer Not To Disclose',
+                    name: 'Prefer not to disclose',
                     pointText: 'prefer(s) not to disclose',
                     y: 1
                 }

@@ -21,7 +21,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'The Maroon Staff Survey 2024: U.S. High School Regions',
+        text: 'U.S. High School Regions',
         align: 'center'
     },
     tooltip: {

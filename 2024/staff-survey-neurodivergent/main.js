@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Do you identify as neurodivergent?',
+        text: 'Do you identify as neurodivergent?',
         align: 'center'
     },
 

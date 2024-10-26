@@ -12,7 +12,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'The Maroon Staff Survey 2024: Maroon Voting Eligibility',
+        text: 'Maroon Voting Eligibility',
         align: 'center'
     },
     tooltip: {
@@ -41,7 +41,7 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Not Eligible',
+                    name: 'Not eligible',
                     y: 5
                 },
                 {

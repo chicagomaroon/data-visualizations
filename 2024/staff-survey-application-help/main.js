@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Is Maroon Membership Helpful on Job Applications?',
+        text: 'Is Maroon Membership Helpful on Job Applications?',
         align: 'center'
     },
 
@@ -43,11 +43,11 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Not Helpful At All',
+                    name: 'Not helpful at all',
                     y: 2
                 },
                 {
-                    name: 'Not Helpful',
+                    name: 'Not helpful',
                     y: 4
                 },
                 {
@@ -59,7 +59,7 @@ Highcharts.chart('chart-div', {
                     y: 14
                 },
                 {
-                    name: 'Very Helpful',
+                    name: 'Very helpful',
                     y: 8
                 }
             ]

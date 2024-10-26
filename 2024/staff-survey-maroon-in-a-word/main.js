@@ -117,7 +117,7 @@ Highcharts.chart('chart-div', {
         }
     ],
     title: {
-        text: 'The Maroon Staff Survey 2024: Maroon-in-a-Word',
+        text: 'Maroon-in-a-Word',
         align: 'center'
     },
     tooltip: {

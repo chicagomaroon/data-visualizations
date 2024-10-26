@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: High School Type',
+        text: 'High School Type',
         align: 'center'
     },
 
@@ -43,19 +43,19 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Boarding School',
+                    name: 'Boarding school',
                     y: 5
                 },
                 {
-                    name: 'Public School',
+                    name: 'Public school',
                     y: 13
                 },
                 {
-                    name: 'Religious School',
+                    name: 'Religious school',
                     y: 3
                 },
                 {
-                    name: 'Secular Private Day School',
+                    name: 'Secular private day school',
                     y: 22
                 }
             ]

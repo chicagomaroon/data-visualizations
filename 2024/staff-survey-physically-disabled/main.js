@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Do you have a physical disability?',
+        text: 'Do you have a physical disability?',
         align: 'center'
     },
 

@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Race',
+        text: 'Racial Identity',
         align: 'center'
     },
 

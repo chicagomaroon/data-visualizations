@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Reported Family Income',
+        text: 'Reported Family Income',
         align: 'center'
     },
 
@@ -72,7 +72,7 @@ Highcharts.chart('chart-div', {
                     y: 6
                 },
                 {
-                    name: 'Prefer Not to Disclose',
+                    name: 'Prefer not to disclose',
                     y: 8
                 }
             ]

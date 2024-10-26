@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Urban, Suburban, or Rural?',
+        text: 'Urban, Suburban, or Rural?',
         align: 'center'
     },
 

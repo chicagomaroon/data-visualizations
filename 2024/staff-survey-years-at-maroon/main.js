@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Years Served at The Maroon',
+        text: 'Years Served at The Maroon',
         align: 'center'
     },
 
@@ -43,7 +43,7 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'One or less',
+                    name: 'One or fewer',
                     y: 17
                 },
                 {

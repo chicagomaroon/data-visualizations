@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Amount of Federal Aid Received',
+        text: 'Amount of Federal Aid Received',
         align: 'center'
     },
 
@@ -43,27 +43,27 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: '75-100% of Tuition',
+                    name: '75-100% of tuition',
                     y: 1
                 },
                 {
-                    name: '50-75% of Tuition',
+                    name: '50-75% of tuition',
                     y: 1
                 },
                 {
-                    name: '25-50% of Tuition',
+                    name: '25-50% of tuition',
                     y: 0
                 },
                 {
-                    name: '0-25% of Tuition',
+                    name: '0-25% of tuition',
                     y: 0
                 },
                 {
-                    name: 'Prefer Not to Disclose',
+                    name: 'Prefer not to disclose',
                     y: 4
                 },
                 {
-                    name: 'Do Not Receive Federal Aid',
+                    name: 'Do not receive federal aid',
                     y: 36
                 }
             ]

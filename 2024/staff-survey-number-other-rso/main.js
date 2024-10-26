@@ -12,7 +12,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'The Maroon Staff Survey 2024: RSO Memberships or Commitments',
+        text: 'RSO Memberships or Commitments',
         align: 'center'
     },
     tooltip: {
@@ -45,19 +45,19 @@ Highcharts.chart('chart-div', {
                     y: 1
                 },
                 {
-                    name: '1 Other RSO',
+                    name: '1 other RSO',
                     y: 9
                 },
                 {
-                    name: '2 Other RSOs',
+                    name: '2 other RSOs',
                     y: 15
                 },
                 {
-                    name: '3 Other RSOs',
+                    name: '3 other RSOs',
                     y: 14
                 },
                 {
-                    name: '4 Other RSOs',
+                    name: '4 other RSOs',
                     y: 4
                 }
             ]

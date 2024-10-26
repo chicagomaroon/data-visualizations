@@ -49,7 +49,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Represented Minors',
+        text: 'Represented Minors by Division',
         align: 'center'
     },
 

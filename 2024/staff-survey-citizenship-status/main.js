@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Citizenship Status',
+        text: 'Citizenship Status',
         align: 'center'
     },
 
@@ -47,11 +47,11 @@ Highcharts.chart('chart-div', {
                     y: 8
                 },
                 {
-                    name: 'U.S. Citizen Only',
+                    name: 'U.S. citizen only',
                     y: 26
                 },
                 {
-                    name: 'U.S. Dual Citizen',
+                    name: 'U.S. dual citizen',
                     y: 9
                 }
             ]

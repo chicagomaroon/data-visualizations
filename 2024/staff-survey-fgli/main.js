@@ -2,7 +2,7 @@
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: ['#FD4C4C', '#800000', '#FFA319', '#FC0000', '#7D2525', '#C90000'],
+    colors: ['#FD4C4C', '#FFA319', '#7D2525', '#FC0000', '#800000', '#C90000'],
 
     // All code for your chart goes here
     chart: {
@@ -12,7 +12,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'The Maroon Staff Survey 2024: First-Generation, Low Income Status',
+        text: 'First-Generation, Low-Income Status',
         align: 'center'
     },
     tooltip: {
@@ -41,19 +41,19 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Prefer Not to Disclose',
+                    name: 'Prefer not to disclose',
                     y: 1
                 },
                 {
-                    name: 'Low Income',
+                    name: 'Low-income',
                     y: 3
                 },
                 {
-                    name: 'First-Generation',
+                    name: 'First-generation',
                     y: 0
                 },
                 {
-                    name: 'First-Generation and Low Income',
+                    name: 'First-generation and low-income',
                     y: 0
                 },
                 {

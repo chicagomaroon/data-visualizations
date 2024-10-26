@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Sexual Orientation',
+        text: 'Sexual Orientation',
         align: 'center'
     },
 
@@ -62,22 +62,22 @@ Highcharts.chart('chart-div', {
                     y: 2
                 },
                 {
-                    name: 'Queer',
-                    pointText: 'identify as <b>Queer</b>',
-                    y: 5
-                },
-                {
-                    name: 'Questioning Or Unsure',
-                    pointText: 'are <b>Questioning or Unsure</b>',
-                    y: 4
-                },
-                {
                     name: 'Straight (Heterosexual)',
                     pointText: 'identify as <b>Straight/Heterosexual</b>',
                     y: 21
                 },
                 {
-                    name: 'Prefer Not To Disclose',
+                    name: 'Queer',
+                    pointText: 'identify as <b>Queer</b>',
+                    y: 5
+                },
+                {
+                    name: 'Questioning or unsure',
+                    pointText: 'are <b>Questioning or Unsure</b>',
+                    y: 4
+                },
+                {
+                    name: 'Prefer not to disclose',
                     pointText: 'prefer not to disclose',
                     y: 1
                 }

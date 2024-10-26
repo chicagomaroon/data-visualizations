@@ -2,7 +2,7 @@
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: ['#800000', '#FD4C4C', '#FFA319', '#FC0000', '#7D2525', '#C90000'],
+    colors: ['#7D2525', '#FD4C4C', '#C90000', '#800000', '#FFA319', '#FC0000'],
 
     // All code for your chart goes here
     chart: {
@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Hispanic/Latino Origin',
+        text: 'Hispanic/Latino Origin',
         align: 'center'
     },
 
@@ -59,7 +59,7 @@ Highcharts.chart('chart-div', {
                     y: 39
                 },
                 {
-                    name: 'Prefer Not to Disclose',
+                    name: 'Prefer not to disclose',
                     y: 4
                 }
             ]

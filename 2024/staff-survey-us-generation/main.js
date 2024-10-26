@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: U.S. Generation Status',
+        text: 'U.S. Generation Status',
         align: 'center'
     },
 

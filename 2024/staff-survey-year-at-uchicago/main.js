@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'The Maroon Staff Survey 2024: Year at UChicago',
+        text: 'Year at UChicago',
         align: 'center'
     },
 
