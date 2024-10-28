@@ -69,6 +69,39 @@
     animation-name: none;
 }
 
-#hp-zoom {
+#details-text h3 {
+    margin: 5px 0;
+}
+
+#ca-zoom {
     margin: 20px 0;
+    color: black;
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        top: auto;
+        bottom: 10px;
+        left: 0;
+        width: 90%;
+        height: 40%;
+        max-width: none;
+    }
+
+    #sidebar h1 {
+        font-size: 20px;
+    }
+
+    #sidebar .subheader {
+        font-size: 14px;
+    }
+
+    #details {
+        padding: 10px;
+    }
+
+    #details-text {
+        padding: 10px;
+    }
 }

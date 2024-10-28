@@ -6,6 +6,87 @@ const bounds = [
     [-88.489213, 41.5], // west south
     [-87, 42.3]
 ];
+const isMobile = window.innerWidth < 768;
+
+const communities = [
+    ['albany_park', 'Albany Park'],
+    ['archer_heights', 'Archer Heights'],
+    ['armour_square', 'Armour Square'],
+    ['ashburn', 'Ashburn'],
+    ['auburn_gresham', 'Auburn Gresham'],
+    ['austin', 'Austin'],
+    ['avalon_park', 'Avalon Park'],
+    ['avondale', 'Avondale'],
+    ['belmont_cragin', 'Belmont Cragin'],
+    ['beverly', 'Beverly'],
+    ['bridgeport', 'Bridgeport'],
+    ['brighton_park', 'Brighton Park'],
+    ['burnside', 'Burnside'],
+    ['calumet_heights', 'Calumet Heights'],
+    ['chatham', 'Chatham'],
+    ['chicago_lawn', 'Chicago Lawn'],
+    ['clearing', 'Clearing'],
+    ['douglas', 'Douglas'],
+    ['dunning', 'Dunning'],
+    ['east_garfield_park', 'East Garfield Park'],
+    ['east_side', 'East Side'],
+    ['edgewater', 'Edgewater'],
+    ['edison_park', 'Edison Park'],
+    ['englewood', 'Englewood'],
+    ['forest_glen', 'Forest Glen'],
+    ['fuller_park', 'Fuller Park'],
+    ['gage_park', 'Gage Park'],
+    ['garfield_ridge', 'Garfield Ridge'],
+    ['grand_boulevard', 'Grand Boulevard'],
+    ['greater_grand_crossing', 'Greater Grand Crossing'],
+    ['hegewisch', 'Hegewisch'],
+    ['hermosa', 'Hermosa'],
+    ['humboldt_park', 'Humboldt Park'],
+    ['hyde_park', 'Hyde Park'],
+    ['irving_park', 'Irving Park'],
+    ['jefferson_park', 'Jefferson Park'],
+    ['kenwood', 'Kenwood'],
+    ['lake_view', 'Lake View'],
+    ['lincoln_park', 'Lincoln Park'],
+    ['lincoln_square', 'Lincoln Square'],
+    ['logan_square', 'Logan Square'],
+    ['loop', 'Loop'],
+    ['lower_west_side', 'Lower West Side'],
+    ['mckinley_park', 'Mckinley Park'],
+    ['montclare', 'Montclare'],
+    ['morgan_park', 'Morgan Park'],
+    ['mount_greenwood', 'Mount Greenwood'],
+    ['near_north_side', 'Near North Side'],
+    ['near_south_side', 'Near South Side'],
+    ['near_west_side', 'Near West Side'],
+    ['new_city', 'New City'],
+    ['north_center', 'North Center'],
+    ['north_lawndale', 'North Lawndale'],
+    ['north_park', 'North Park'],
+    ['norwood_park', 'Norwood Park'],
+    ['oakland', 'Oakland'],
+    ['ohare', 'Ohare'],
+    ['portage_park', 'Portage Park'],
+    ['pullman', 'Pullman'],
+    ['riverdale', 'Riverdale'],
+    ['rogers_park', 'Rogers Park'],
+    ['roseland', 'Roseland'],
+    ['south_chicago', 'South Chicago'],
+    ['south_deering', 'South Deering'],
+    ['south_lawndale', 'South Lawndale'],
+    ['south_shore', 'South Shore'],
+    ['uptown', 'Uptown'],
+    ['washington_heights', 'Washington Heights'],
+    ['washington_park', 'Washington Park'],
+    ['west_elsdon', 'West Elsdon'],
+    ['west_englewood', 'West Englewood'],
+    ['west_garfield_park', 'West Garfield Park'],
+    ['west_lawn', 'West Lawn'],
+    ['west_pullman', 'West Pullman'],
+    ['west_ridge', 'West Ridge'],
+    ['west_town', 'West Town'],
+    ['woodlawn', 'Woodlawn']
+];
 
 const HOURS = {
     normal: {
@@ -32,6 +113,26 @@ const HOURS = {
     }
 };
 
+// add options to selector
+for (const comm of communities) {
+    // add an option to selector
+    let selector = document.querySelector('#ca-zoom');
+    let option = document.createElement('option');
+    option.value = comm[0];
+    option.text = comm[1];
+    selector.appendChild(option);
+}
+
+let zoomer = document.querySelector('#ca-zoom');
+// zoom on change
+zoomer.addEventListener('change', (e) => {
+    fetch(map.getSource('votingLocations')._data)
+        .then((response) => response.json())
+        .then((data) => {
+            zoomToCA(data, e.target.value);
+        });
+});
+
 var map = new maplibregl.Map({
     container: 'map',
     style: STYLE,
@@ -46,39 +147,74 @@ var map = new maplibregl.Map({
 });
 
 map.on('load', async () => {
+    // Add an image to use as a custom marker
+    const vote = await map.loadImage('style/democracy.png');
+    map.addImage('vote', vote.data);
+
+    const school = await map.loadImage('style/school.png');
+    map.addImage('school', school.data);
+
+    const bank = await map.loadImage('style/bank.png');
+    map.addImage('bank', bank.data);
+
     map.addSource('votingLocations', {
         type: 'geojson',
-        data: 'voting_locations.geojson'
+        data: 'data/voting_locations.geojson'
     });
 
     map.addLayer({
         id: 'votingLocations',
-        type: 'circle',
+        type: 'symbol',
         source: 'votingLocations',
-        paint: {
-            'circle-radius': [
-                'interpolate',
-                // Set the exponential rate of change to 0.5
-                ['exponential', 0.5],
-                ['zoom'],
-                // When zoom is 10, buildings will be bigger radius.
-                10,
-                7,
-                // When zoom is 13 or higher, circles get bigger .
-                11,
-                10
-            ],
-            'circle-color': [
+        layout: {
+            'icon-image': [
                 'case',
                 ['==', ['get', 'type'], 'normal'],
-                '#800000',
+                'vote',
                 ['==', ['get', 'type'], 'special'],
-                '#FFA319',
+                'bank',
                 ['==', ['get', 'type'], 'school'],
-                '#155F83',
-                '#000'
+                'school',
+                'vote'
+            ],
+            'icon-allow-overlap': true,
+            'icon-size': [
+                'interpolate',
+                // Set the exponential rate of change to 1.5
+                ['exponential', 1.5],
+                ['zoom'],
+                // When zoom is 10, icon will be 50% size.
+                9,
+                0.03,
+                // When zoom is 22, icon will be 10% size.
+                11,
+                0.06
             ]
         },
+        // paint: {
+        //     'circle-radius': [
+        //         'interpolate',
+        //         // Set the exponential rate of change to 0.5
+        //         ['exponential', 0.5],
+        //         ['zoom'],
+        //         // When zoom is 10, buildings will be bigger radius.
+        //         10,
+        //         7,
+        //         // When zoom is 13 or higher, circles get bigger .
+        //         11,
+        //         10
+        //     ],
+        //     'circle-color': [
+        //         'case',
+        //         ['==', ['get', 'type'], 'normal'],
+        //         '#800000',
+        //         ['==', ['get', 'type'], 'special'],
+        //         '#FFA319',
+        //         ['==', ['get', 'type'], 'school'],
+        //         '#155F83',
+        //         '#000'
+        //     ]
+        // },
         filter: ['!=', 'type', 'bounds']
     });
 
@@ -97,25 +233,24 @@ map.on('load', async () => {
         showDetails(e);
     });
 
+    map.on('click', 'votingLocations', (e) => {
+        showDetails(e);
+    });
+
     map.on('mouseleave', 'votingLocations', () => {
         map.getCanvas().style.cursor = '';
-    });
-
-    map.on('hover', 'votingLocations', (e) => {
-        showDetails(e);
-        map.setPaintProperty('votingLocations', 'circle-radius', 12);
-    });
-});
-
-var hpZoom = document.getElementById('hp-zoom');
-hpZoom.addEventListener('click', () => {
-    map.flyTo({
-        center: hpLocation,
-        zoom: 12
     });
 });
 
 // ----- functions -----
+
+function convertToCapitalCase(text) {
+    return text
+        .toLowerCase()
+        .replace(/_/g, ' ')
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
 function showDetails(e) {
     var name = e.features[0].properties.name;
     var dates = HOURS[e.features[0].properties.type].dates;
@@ -124,7 +259,7 @@ function showDetails(e) {
     var language = e.features[0].properties.language;
 
     var description = `<h3>${name}</h3>
-        <p>Address: ${street}</p>
+        <h3>${street}</h3>
         <p>${dates}</p>
         <ul>${hours.map((hour) => `<li>${hour}</li>`).join('')}</ul>
         <p>Language assistance available in ${language}</p>`;
@@ -135,4 +270,20 @@ function showDetails(e) {
     details.offsetHeight;
     details.classList.add('fade-in');
     details.innerHTML = description;
+}
+
+function zoomToCA(data, CA) {
+    // filter name of feature
+    selection = data.features.filter(
+        (feature) => feature.properties.name == convertToCapitalCase(CA)
+    )[0];
+    // filter by the feature
+
+    map.flyTo({
+        center: [
+            selection.properties.center_lon,
+            selection.properties.center_lat
+        ],
+        zoom: 12
+    });
 }

@@ -1,11 +1,13 @@
 <html lang="en">
     <head>
         <title>Where to Vote</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+
         <!-- build:css inline -->
         <link rel="stylesheet" href="../../static/main.css" />
 
         <!-- /build -->
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style/style.css" />
         <!-- Mapbox GL -->
         <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
         <link
@@ -15,27 +17,6 @@
     </head>
 
     <body>
-        <div>
-            class="header">
-            <h1>Where to Vote</h1>
-            <p>
-                Any voter in Chicago can vote at any Early Voting site, no
-                matter where they live in the city. Voters can choose whatever
-                voting site is most convenient for them, including on Election
-                Day. All Early Voting locations are ADA-compliant and fully
-                accessible to voters with disabilities. Same Day Registration is
-                available at all Early Voting sites, including 51 sites open as
-                Vote Centers on Election Day. You will need two forms of ID, one
-                with your current address -
-                <a
-                    href="https://chicagoelections.gov/voting/when-you-need-id-vote"
-                    >click here for acceptable forms of ID.</a
-                >
-                Early voters may choose to vote in one of 12 languages: English,
-                Spanish, Chinese, Hindi, Polish, Korean, Tagalog, Gujarati,
-                Urdu, Arabic, Ukrainian, and Russian.
-            </p>
-        </div>
         <div class="map-container">
             <div id="map"></div>
             <div id="sidebar">
@@ -57,7 +38,15 @@
                         </p>
                     </div>
 
-                    <button id="hp-zoom">Zoom to Hyde Park</button>
+                    <select id="ca-zoom">
+                        <option
+                            value="12"
+                            selected="Zoom to Community Area"
+                            disabled
+                        >
+                            Zoom to Community Area
+                        </option>
+                    </select>
                 </div>
                 <div id="details">
                     <div id="details-text">
