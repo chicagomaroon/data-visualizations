@@ -194,38 +194,14 @@ map.on('load', async () => {
                 // Set the exponential rate of change to 1.5
                 ['exponential', 1.5],
                 ['zoom'],
-                // When zoom is 10, icon will be 50% size.
+                // When zoom is 9, icon will be 3% size.
                 9,
                 0.03,
-                // When zoom is 22, icon will be 10% size.
+                // When zoom is 11, icon will be 6% size.
                 11,
                 0.06
             ]
         },
-        // paint: {
-        //     'circle-radius': [
-        //         'interpolate',
-        //         // Set the exponential rate of change to 0.5
-        //         ['exponential', 0.5],
-        //         ['zoom'],
-        //         // When zoom is 10, buildings will be bigger radius.
-        //         10,
-        //         7,
-        //         // When zoom is 13 or higher, circles get bigger .
-        //         11,
-        //         10
-        //     ],
-        //     'circle-color': [
-        //         'case',
-        //         ['==', ['get', 'type'], 'normal'],
-        //         '#800000',
-        //         ['==', ['get', 'type'], 'special'],
-        //         '#FFA319',
-        //         ['==', ['get', 'type'], 'school'],
-        //         '#155F83',
-        //         '#000'
-        //     ]
-        // },
         filter: ['!=', 'type', 'bounds']
     });
 
