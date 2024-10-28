@@ -25,7 +25,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Campaign Donation Sources for Robert Peters',
+        text: 'Top Five Campaign Donation Sources for Robert Peters',
         align: 'center'
     },
     subtitle: {

@@ -25,7 +25,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Campaign Donation Sources for Jonathan Jackson',
+        text: 'Top Five Campaign Donation Sources for Jonathan Jackson',
         align: 'center'
     },
     subtitle: {
