@@ -17,17 +17,16 @@ body {
 #sidebar .subheader {
     font-size: 15px;
     margin: 10px 0;
-    text-align: justify;
 }
 
 #sidebar {
     position: absolute;
     width: auto;
-    max-width: 350px;
-    top: 45px;
+    max-width: 325px;
+    top: 25px;
     height: fit-content;
     border-radius: 10px;
-    left: 45px;
+    left: 25px;
     background-color: #104b68;
     opacity: 0.95;
     /*border: 2px solid #800000;*/

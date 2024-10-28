@@ -1,7 +1,7 @@
 const STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 // 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
-const chiLocation = [-88.19756, 41.85];
-const hpLocation = [-87.596, 41.795];
+const chiLocation = [-87.9, 41.85];
+
 const bounds = [
     [-88.489213, 41.5], // west south
     [-87, 42.3]
