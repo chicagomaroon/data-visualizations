@@ -1,0 +1,79 @@
+<html lang="en">
+    <head>
+        <title>Where to Vote</title>
+        <!-- build:css inline -->
+        <link rel="stylesheet" href="../../static/main.css" />
+
+        <!-- /build -->
+        <link rel="stylesheet" href="style.css" />
+        <!-- Mapbox GL -->
+        <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
+        <link
+            href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div>
+            class="header">
+            <h1>Where to Vote</h1>
+            <p>
+                Any voter in Chicago can vote at any Early Voting site, no
+                matter where they live in the city. Voters can choose whatever
+                voting site is most convenient for them, including on Election
+                Day. All Early Voting locations are ADA-compliant and fully
+                accessible to voters with disabilities. Same Day Registration is
+                available at all Early Voting sites, including 51 sites open as
+                Vote Centers on Election Day. You will need two forms of ID, one
+                with your current address -
+                <a
+                    href="https://chicagoelections.gov/voting/when-you-need-id-vote"
+                    >click here for acceptable forms of ID.</a
+                >
+                Early voters may choose to vote in one of 12 languages: English,
+                Spanish, Chinese, Hindi, Polish, Korean, Tagalog, Gujarati,
+                Urdu, Arabic, Ukrainian, and Russian.
+            </p>
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+            <div id="sidebar">
+                <div class="header">
+                    <h1>EARLY VOTING LOCATIONS</h1>
+
+                    <div class="subheader">
+                        Anyone in Chicago can vote at any Early Voting site,
+                        <br />
+                        no matter where they live in the city. Same Day
+                        Registration is available at all Early Voting sites.
+                        <p>
+                            <a
+                                target="_blank"
+                                href="https://chicagoelections.gov/voting/early-voting"
+                                >Click here for more information about early
+                                voting.</a
+                            >
+                        </p>
+                    </div>
+
+                    <button id="hp-zoom">Zoom to Hyde Park</button>
+                </div>
+                <div id="details">
+                    <div id="details-text">
+                        <i
+                            >Hover or click a voting location on the map to see
+                            more details.</i
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXTERNAL JS FILES -->
+
+        <!-- build:js inline -->
+        <script src="main.js" type="text/javascript"></script>
+        <!-- /build -->
+    </body>
+</html>
