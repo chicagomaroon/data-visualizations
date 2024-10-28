@@ -73,32 +73,83 @@
     margin: 5px 0;
 }
 
+#details-text h4 {
+    margin: 5px 0;
+}
+
 #ca-zoom {
     margin: 20px 0;
     color: black;
     background-color: #f0f0f0;
 }
 
+.custom-select {
+    position: relative;
+    width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+.custom-select select {
+    display: block;
+    width: 100%;
+    padding: 5px 15px;
+    font-size: 12px;
+    color: #333;
+    background-color: black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.custom-select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: black;
+}
+
+.custom-select select:hover {
+    border-color: #888;
+}
+
+.custom-select select:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+/* Style for options */
+.custom-select select option {
+    padding: 10px;
+}
+
 @media (max-width: 768px) {
     #sidebar {
-        top: auto;
-        bottom: 10px;
-        left: 0;
-        width: 90%;
-        height: 40%;
+        width: 50%;
         max-width: none;
+        left: 5px;
+        top: 5;
+        bottom: 5px;
+        height: auto;
     }
 
     #sidebar h1 {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     #sidebar .subheader {
-        font-size: 14px;
+        font-size: 10px;
     }
 
     #details {
         padding: 10px;
+        font-size: 10px;
     }
 
     #details-text {

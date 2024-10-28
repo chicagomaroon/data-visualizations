@@ -98,13 +98,22 @@ const HOURS = {
             'Election Day: 6:00 am - 7:00 pm (November 5)'
         ]
     },
-    special: {
+    elections: {
         dates: 'October 28 through November 4',
         hours: [
             'Weekdays: 9:00 am – 7:00 pm',
             'Saturday: 9:00 am – 5:00 pm',
             'Sunday: 10:00 am – 4:00 pm',
             '<b>NOT open on Election Day</b>'
+        ]
+    },
+    supersite: {
+        dates: 'October 28 through November 4',
+        hours: [
+            'Weekdays: 9:00 am – 7:00 pm',
+            'Saturday: 9:00 am – 5:00 pm',
+            'Sunday: 10:00 am – 4:00 pm',
+            '<b>OPEN on Election Day</b>'
         ]
     },
     school: {
@@ -171,7 +180,9 @@ map.on('load', async () => {
                 'case',
                 ['==', ['get', 'type'], 'normal'],
                 'vote',
-                ['==', ['get', 'type'], 'special'],
+                ['==', ['get', 'type'], 'supersite'],
+                'bank',
+                ['==', ['get', 'type'], 'elections'],
                 'bank',
                 ['==', ['get', 'type'], 'school'],
                 'school',
@@ -259,10 +270,10 @@ function showDetails(e) {
     var language = e.features[0].properties.language;
 
     var description = `<h3>${name}</h3>
-        <h3>${street}</h3>
-        <p>${dates}</p>
+        <h4>${street}</h4>
+        <p>Vote ${dates}:</p>
         <ul>${hours.map((hour) => `<li>${hour}</li>`).join('')}</ul>
-        <p>Language assistance available in ${language}</p>`;
+        <p>Language assistance available in ${language}.</p>`;
 
     details = document.getElementById('details-text');
 
