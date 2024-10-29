@@ -92,28 +92,23 @@ const HOURS = {
     normal: {
         dates: 'October 21 through November 5',
         hours: [
-
             'Weekdays: 9 a.m. - 6 p.m.',
             'Saturday: 9 a.m- 5 p.m.',
             'Sunday: 10 a.m - 4 p.m.',
             'Election Day: 6 a.m - 7 p.m. (November 5)'
-
         ]
     },
     elections: {
         dates: 'October 28 through November 4',
         hours: [
-
             'Weekdays: 9 a.m. – 7 p.m.',
             'Saturday: 9 a.m. – 5 p.m.',
-            'Sunday: 10 a.m. – 4 p.m.',
-
+            'Sunday: 10 a.m. – 4 p.m.'
         ]
     },
     supersite: {
         dates: 'October 28 through November 4',
         hours: [
-
             'Weekdays: 9 a.m. – 7 p.m.',
             'Saturday: 9 a.m. – 5 p.m.',
             'Sunday: 10 a.m. – 4 p.m.',
@@ -125,7 +120,6 @@ const HOURS = {
         dates: 'October 30 through November 1',
 
         hours: ['10 a.m. to 5 p.m.']
-
     }
 };
 
@@ -163,7 +157,6 @@ var map = new maplibregl.Map({
 });
 
 map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
-
 
 map.on('load', async () => {
     // Add an image to use as a custom marker
