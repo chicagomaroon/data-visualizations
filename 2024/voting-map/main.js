@@ -103,7 +103,8 @@ const HOURS = {
         hours: [
             'Weekdays: 9 a.m. – 7 p.m.',
             'Saturday: 9 a.m. – 5 p.m.',
-            'Sunday: 10 a.m. – 4 p.m.'
+            'Sunday: 10 a.m. – 4 p.m.',
+            '<b>NOT open on Election Day</b>'
         ]
     },
     supersite: {
@@ -112,7 +113,6 @@ const HOURS = {
             'Weekdays: 9 a.m. – 7 p.m.',
             'Saturday: 9 a.m. – 5 p.m.',
             'Sunday: 10 a.m. – 4 p.m.',
-
             '<b>OPEN on Election Day</b>'
         ]
     },
