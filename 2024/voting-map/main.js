@@ -1,6 +1,7 @@
 const STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 // 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 const chiLocation = [-87.9, 41.85];
+const hpLocation = [-87.7, 41.9];
 
 const bounds = [
     [-88.489213, 41.5], // west south
@@ -146,7 +147,7 @@ zoomer.addEventListener('change', (e) => {
 var map = new maplibregl.Map({
     container: 'map',
     style: STYLE,
-    center: chiLocation, // starting position [lng, lat]
+    center: isMobile ? hpLocation : chiLocation, // starting position [lng, lat]
     maxZoom: 17,
     minZoom: 9.5,
     zoom: 9.5, // starting zoom
@@ -271,8 +272,8 @@ function zoomToCA(data, CA) {
 
     map.flyTo({
         center: [
-            selection.properties.center_lon,
-            selection.properties.center_lat
+            selection.properties.center_lon - (isMobile ? 0 : 0.02),
+            selection.properties.center_lat + (isMobile ? 0.02 : 0)
         ],
         zoom: 12
     });
