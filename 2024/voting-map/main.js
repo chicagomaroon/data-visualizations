@@ -92,33 +92,33 @@ const HOURS = {
     normal: {
         dates: 'October 21 through November 5',
         hours: [
-            'Weekdays: 9:00 am - 6:00 pm',
-            'Saturday: 9:00 am - 5:00 pm',
-            'Sunday: 10:00 am - 4:00 pm',
-            'Election Day: 6:00 am - 7:00 pm (November 5)'
+            'Weekdays: 9 a.m. - 6 p.m.',
+            'Saturday: 9 a.m- 5 p.m.',
+            'Sunday: 10 a.m - 4 p.m.',
+            'Election Day: 6 a.m - 7 p.m. (November 5)'
         ]
     },
     elections: {
         dates: 'October 28 through November 4',
         hours: [
-            'Weekdays: 9:00 am – 7:00 pm',
-            'Saturday: 9:00 am – 5:00 pm',
-            'Sunday: 10:00 am – 4:00 pm',
+            'Weekdays: 9 a.m. – 7 p.m.',
+            'Saturday: 9 a.m. – 5 p.m.',
+            'Sunday: 10 a.m. – 4 p.m.',
             '<b>NOT open on Election Day</b>'
         ]
     },
     supersite: {
         dates: 'October 28 through November 4',
         hours: [
-            'Weekdays: 9:00 am – 7:00 pm',
-            'Saturday: 9:00 am – 5:00 pm',
-            'Sunday: 10:00 am – 4:00 pm',
+            'Weekdays: 9 a.m. – 7 p.m.',
+            'Saturday: 9 a.m. – 5 p.m.',
+            'Sunday: 10 a.m. – 4 p.m.',
             '<b>OPEN on Election Day</b>'
         ]
     },
     school: {
         dates: 'October 30 through November 1',
-        hours: ['10:00 am to 5:00 pm']
+        hours: ['10 a.m. to 5 p.m.']
     }
 };
 
@@ -154,6 +154,7 @@ var map = new maplibregl.Map({
     dragRotate: false,
     touchZoomRotate: false
 });
+map.addControl(new maplibregl.NavigationControl({ showCompass: false }));
 
 map.on('load', async () => {
     // Add an image to use as a custom marker
