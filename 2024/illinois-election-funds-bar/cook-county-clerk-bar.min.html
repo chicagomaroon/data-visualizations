@@ -16,21 +16,6 @@
             src="https://code.highcharts.com/11.0.0/modules/accessibility.js">
         </script>
 
-        <script>
-        let candidates=[
-                {name:"Monica Gordon", y:526632.5, drilldown:"Monica Gordon"},
-                {name:"Michelle Pennington", y:10717.26, drilldown:"Michelle Pennington"}],
-            monicaGordon=[['S.E.I.U. Local 73', 45900.00],['SEIU Local 73 B-PAC', 27777.39],['Citizens to Elect Karen Yarbrough', 25000.00],['Unity Party of Bloom Township',22500.00],['Chicago Land Operators Joint-Labor Mgmt PAC',21500.00]],
-            donationsToMonica=[
-                {name:'S.E.I.U. Local 73', y:45900.00},
-                {name:'SEIU Local 73 B-PAC', y:27777.39},
-                {name:'Citizens to Elect Karen Yarbrough', y:25000.00},
-                {name:'Unity Party of Bloom Township', y:22500.00},
-                {name:'Chicago Land Operators Joint-Labor Mgmt PAC', y:21500.00}],
-            michellePennington=[['Brad Stephens for State Representative', 3000.00],["Meredith O'Neil", 1500.00],["Kosta Drosos", 1000.00],["Douglas Zinser", 1000.00],["Paul Gadbut", 960.60]],
-            totalContributionsRepresented=0;function calculatePercentagesForCandidates(e){return e[1]/=totalContributionsRepresented,e[1]*=100,e}candidates.map((e=>{totalContributionsRepresented+=e.y})),candidates=candidates.map((e=>(e.y/=totalContributionsRepresented,e.y*=100,e))),
-            totalContributionsMonica=0;function calculatePercentagesForMonica(e){return e[1]/=totalContributionsToMonica,e[1]*=100,e}donationsToMonica.map((e=>{totalContributionsMonica+=e.y})),donationsToMonica=donationsToMonica.map((e=>(e.y/=totalContributionsMonica,e.y*=100,e))),
-            monicaGordon=monicaGordon.map(calculatePercentagesForCandidates),
-            donationsToMonica=donationsToMonica.map(calculatePercentagesForMonica),
-            michellePennington=michellePennington.map(calculatePercentagesForCandidates),
-            Highcharts.setOptions({chart:{style:{fontFamily:"Georgia, serif"}}}),Highcharts.chart("chart-div",{colors:['#800000','#FFA319','#C16622','#8F3931','#8A9045','#58593F','#155F83','#350E20','#47B5FF','#FF3399'],chart:{type:"column"},legend:{enabled:!1},title:{text:"Top Donors in the 2024 Cook County Clerk Election",align:"center"},tooltip:{headerFormat:'<span style="font-size:11px;font-weight:bold;">{series.name}</span><br>',pointFormat:'<span style="color:{point.color}">{point.name}</span>: {point.y:.1f}% of donation to the candidate'},subtitle:{text:"Click The Divisions To See The Individual Donations",align:"center"},xAxis:{type:"category"},yAxis:{title:{text:"Percentage of Donations"}},plotOptions:{series:{borderWidth:0,dataLabels:{enabled:!0,format:"{point.y:.1f}%"}}},series:[{name:"Candidates",colorByPoint:!0,data:candidates}],drilldown:{breadcrumbs:{position:{align:"right"}},series:[{name:"Monica Gordon",id:"Monica Gordon",data:monicaGordon},{name:"Michelle Pennington",id:"Michelle Pennington",data:michellePennington}]}})</script>
+        <script
+            src="main.js">
+        </script>
