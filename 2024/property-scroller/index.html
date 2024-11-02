@@ -17,7 +17,7 @@
         />
 
         <!-- my styling is supreme -->
-        <link rel="stylesheet" href="static/side-space.css" />
+        <link rel="stylesheet" href="static/style.css" />
     </head>
 
     <body>
@@ -45,43 +45,74 @@
                 the university played in shaping the neighborhood of Hyde Park?
             </div>
         </div>
-        <div class="title-container" id="title-container">
-            <div class="title" id="title">
-                The University of Chicago as Urban Planner
-            </div>
-            <div class="subtitle" id="subtitle">
-                The story of how the University of Chicago played an active role
-                in shaping the Hyde Park neighborhood.
-            </div>
-            <div class="byline" id="byline">Reporting by: CA, AS, NP</div>
-            <div class="byline" id="byline">Data & Web Design: AS, NP</div>
-            <div class="date" id="date">Fall 2024</div>
-        </div>
-        <div class="article-text" id="intro-text">
-            <hr />
-            <p>
-                How did the University come to own its current property?
-                UChicago has had an active role in shaping the built environment
-                of Hyde Park and other surrounding communities, as conflicting
-                priorities, land use disputes, and racial issues have driven its
-                physical expansion and influenced the evolution of a
-                historically fraught “town and gown” relationship. The following
-                interactive map documents UChicago’s property acquisition from
-                its 1890 charter to the present.
-            </p>
+        <div class="intro">
+            <div id="intro-text">
+                <div class="title-container" id="title-container">
+                    <div class="title" id="title">
+                        The University of Chicago <br />as Urban Planner
+                    </div>
+                    <div class="subtitle" id="subtitle">
+                        The story of how the University of Chicago played an
+                        active role in shaping the Hyde Park neighborhood.
+                    </div>
+                    <hr />
+                    <div class="byline" id="byline">
+                        Written by
+                        <a class="byline-link" href="">Celeste Alcalay</a>,
+                        <a class="byline-link" href="">Austin Steinhart</a>, and
+                        <a class="byline-link" href="">Nikhil Patel</a>
+                    </div>
+                    <div class="byline" id="byline">
+                        Design and Development by
+                        <a class="byline-link" href="">Austin Steinhart</a> and
+                        <a class="byline-link" href="">Nikhil Patel</a>
+                    </div>
+                </div>
+                <div class="article-text">
+                    <p>
+                        How did the University come to own its current property?
+                        UChicago has had an active role in shaping the built
+                        environment of Hyde Park and other surrounding
+                        communities, as conflicting priorities, land use
+                        disputes, and racial issues have driven its physical
+                        expansion and influenced the evolution of a historically
+                        fraught “town and gown” relationship. The following
+                        interactive map documents UChicago’s property
+                        acquisition from its 1890 charter to the present.
+                    </p>
 
-            <p style="margin-top: 50px; margin-bottom: 100px">
-                Scroll along to follow the a visual history of the University of
-                Chicago's role in shaping its built environment over its 135
-                year history.
-            </p>
-            <p style="text-align: center; margin-bottom: 20px; font-size: 2em">
-                <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-            </p>
+                    <p style="margin-top: 50px; margin-bottom: 100px">
+                        Scroll along to follow the a visual history of the
+                        University of Chicago's role in shaping its built
+                        environment over its 135 year history.
+                    </p>
+                    <p
+                        style="
+                            text-align: center;
+                            margin-bottom: 20px;
+                            font-size: 2em;
+                        "
+                    >
+                        <i
+                            class="fa fa-angle-double-down"
+                            aria-hidden="true"
+                        ></i>
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div id="chapters-container">
             <div class="map-container-body">
+                <div class="timeline-container">
+                    <div class="timeline-text" id="timeline-3">1887</div>
+                    <div class="timeline-text" id="timeline-2">1888</div>
+                    <div class="timeline-text" id="timeline-1">1889</div>
+                    <div class="timeline-text" id="timeline-0">1890</div>
+                    <div class="timeline-text" id="timeline+1">1891</div>
+                    <div class="timeline-text" id="timeline+2">1892</div>
+                    <div class="timeline-text" id="timeline+3">1893</div>
+                </div>
                 <div id="explore-nav">
                     <button
                         id="explore-button"
@@ -92,21 +123,36 @@
                     </button>
                 </div>
                 <div id="highlight-layer"></div>
-                <div class="timeline-container">
-                    <div class="timeline-text" id="timeline-3">1887</div>
-                    <div class="timeline-text" id="timeline-2">1888</div>
-                    <div class="timeline-text" id="timeline-1">1889</div>
-                    <div class="timeline-text" id="timeline-0">1890</div>
-                    <div class="timeline-text" id="timeline+1">1891</div>
-                    <div class="timeline-text" id="timeline+2">1892</div>
-                    <div class="timeline-text" id="timeline+3">1893</div>
-                </div>
 
                 <figure id="map-body"></figure>
             </div>
         </div>
 
-        <div class="outro-text"></div>
+        <div id="methodology">
+            <div id="methodology-text">
+                <div class="line-break"></div>
+                <h2>Methodology</h2>
+                <p>
+                    The data for this project was sourced from the University of
+                    Chicago’s property records, which are available online. The
+                    property records were then geocoded and visualized using the
+                    Mapbox GL JS library. The timeline was created using the
+                    Waypoints library. The project was built using HTML, CSS,
+                    and JavaScript.
+                </p>
+                <p>
+                    Access the data for this project on the University of
+                    Chicago website
+                    <a href="https://property.uchicago.edu/">here</a>.
+                </p>
+                <p>
+                    Find the code for this project on
+                    <a href="">GitHub here</a>.
+                </p>
+            </div>
+        </div>
+
+        <div id="footer"></div>
         <!-- EXTERNAL JS FILES -->
 
         <!-- build:js inline -->

@@ -12,7 +12,8 @@ const config = [
                         UChicago’s quadrangle takes shape.`,
                 start_year: 1890,
                 end_year: 1900,
-                zoom: 17
+                zoom: 17,
+                image: './static/images/og_uchi.jpg'
                 //pan: uChiLocation
             },
             {
@@ -23,7 +24,8 @@ const config = [
                 “The Gothic aesthetic allowed the new university to grant itself a sense of institutional 
                 legitimacy that belied its age,” Eldred writes.`,
                 start_year: 1900,
-                end_year: 1910
+                end_year: 1910,
+                image: './static/images/chapter1.jpg'
             },
             {
                 id: '1.3',

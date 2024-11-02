@@ -19,7 +19,9 @@ otherPath = 'data/extra.geojson';
 
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
 const ChiLocation = [-87.63211524853163, 41.862161325588076];
-const hydeParkLocation = [-87.59654429195592, 41.79504596867451];
+const hydeParkLocation = [-87.5965, 41.795];
+const hpLocationSide = [-87.606, 41.795];
+const uChiLocationSide = [-87.606, 41.78955];
 
 const fullOpacity = 0.6;
 const nav = new maplibregl.NavigationControl();
@@ -82,6 +84,19 @@ function exploreMap() {
 }
 
 // ------------ functions ------------
+
+//fade in opacity
+function fadeInLayer(layer, start, end, increment, time) {
+    let opacity = start;
+    let timer = setInterval(function () {
+        if (opacity >= end) {
+            clearInterval(timer);
+        }
+        layer.style.opacity = opacity;
+        opacity += increment;
+    }, time);
+}
+
 function changeTimelineYear(targetYear) {
     pause = 25;
 
@@ -132,12 +147,12 @@ function showHighlight(div) {
     highlightLayer.innerHTML = '';
     highlightLayer.appendChild(div);
     // show highlight layer
+    highlightLayer.style.opacity = 0;
     highlightLayer.style.visibility = 'visible';
-    // add fade in calss
-    highlightLayer.classList.add('fadeIn');
-
     // lower opacity of map
     document.querySelector('#map-body').style.opacity = 0.3;
+    // fade in
+    fadeInLayer(highlightLayer, 0, 1, 0.005, 5);
 }
 
 function hideHighlight() {
@@ -351,13 +366,31 @@ function processChapter(chapter) {
     for (const subsection of chapter.subsections) {
         //const subsection = chapter.subsections[subsection]
         let subsection_div = document.createElement('div');
+        // if there is a photo add it above text in a new div
+
+        if (subsection.image) {
+            console.log('image');
+            let image_div = document.createElement('img');
+            image_div.src = subsection.image;
+            image_div.className = 'scroller-image';
+            subsection_div.appendChild(image_div);
+        }
+
         subsection_div.className = 'scroller';
         subsection_div.id = subsection.id;
-        subsection_div.textContent = subsection.text;
+        let sText = document.createElement('div');
+        sText.innerHTML = subsection.text;
+        subsection_div.appendChild(sText);
         document
             .getElementById('chapters-container')
             .appendChild(subsection_div);
     }
+    // last scroller for spacing
+    let last = document.createElement('div');
+    last.className = 'scroller';
+    last.id = 'last-scroller';
+
+    document.getElementById('chapters-container').appendChild(last);
 }
 
 // ------------ WAYPOINTS ------------
@@ -404,11 +437,23 @@ function introWaypoints() {
 
             mapIntro.flyTo({
                 center: hydeParkLocation,
-                zoom: 14,
+                zoom: 13.5,
                 duration: 3500
             });
         },
         offset: '90%'
+    });
+    new Waypoint({
+        element: document.getElementById('intro-text'),
+        handler: function (direction) {
+            const introDiv = document.getElementById('intro-text');
+            if (direction == 'down') {
+                fadeInLayer(introDiv, 0, 1, 0.005, 5);
+            } else {
+                introDiv.style.opacity = 0;
+            }
+        },
+        offset: '50%'
     });
 }
 
@@ -444,6 +489,20 @@ function waypoints() {
     introWaypoints();
 
     new Waypoint({
+        element: document.getElementById('chapters-container'),
+        handler: function (direction) {
+            chapterDiv = document.getElementById('chapters-container');
+            if (direction == 'down') {
+                // fade in
+                fadeInLayer(chapterDiv, 0, 1, 0.005, 5);
+            } else {
+                chapterDiv.style.opacity = 0;
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
         element: document.getElementById('1.1'),
         handler: function (direction) {
             if (direction == 'down') {
@@ -453,8 +512,8 @@ function waypoints() {
 
                 filterOpacity(mapBody, 'land_grant');
                 mapBody.flyTo({
-                    center: uChiLocation,
-                    zoom: 15.5,
+                    center: uChiLocationSide,
+                    zoom: 14.5,
                     duration: 6000
                 });
             } else {
@@ -474,7 +533,7 @@ function waypoints() {
 
                 const div = document.createElement('img');
                 div.src = 'static/images/1907_quad.jpg';
-                showHighlight(div);
+                //showHighlight(div);
 
                 filterOpacity(mapBody, 'land_grant', false);
                 updateLayers(1900, 'layer1900');
