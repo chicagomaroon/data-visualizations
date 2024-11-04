@@ -198,7 +198,9 @@ function createLayerYears(
         paint: {
             'fill-color': '#800000',
             'fill-opacity': 0,
-            'fill-opacity-transition': { duration: 1000 }
+            'fill-opacity-transition': {
+                duration: map_name == mapIntro ? 5000 : 1000
+            }
         },
         filter: [
             'all',
@@ -420,7 +422,7 @@ function introWaypoints() {
                 mapIntro.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
-                    duration: 2000
+                    duration: 3000
                 });
             }
         },
@@ -438,7 +440,7 @@ function introWaypoints() {
             mapIntro.flyTo({
                 center: hydeParkLocation,
                 zoom: 13.5,
-                duration: 3500
+                duration: 8000
             });
         },
         offset: '90%'
