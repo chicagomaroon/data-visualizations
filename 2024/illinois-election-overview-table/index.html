@@ -23,10 +23,16 @@
         color: #777;
         text-align: center;
     }
+    .table-container {
+        max-width: 800px;
+        width: 90%;
+        margin: 20px auto; 
+        padding: 0 10px;
+    }
     table {
         display: block;
         border-collapse: collapse;
-        width: 80%;
+        width: 100%;
         margin: 20px;
         overflow: hidden;
     }
@@ -44,23 +50,49 @@
     tr:last-child {
         border-bottom: none; 
     }
-    .democratic {
-        background-color: #155F83;
+    .dem-high {
+        background-color: #0D4E73;
         color: #ffffff;
+        width: 15%;
        
     }
-    .republican {
-        background-color: #8F3931;
+    .dem-mid {
+        background-color: #327A9B;
         color: #ffffff;
+        width: 15%;
+       
+    }
+    .dem-low {
+        background-color: #6EA3BA;
+        color: #ffffff;
+        width: 15%;
+       
+    }
+    .rep-high {
+        background-color: #A86A63;
+        color: #ffffff;
+        width: 15%;
+        
+    }
+    .rep-mid {
+        background-color: #C9968C;
+        color: #ffffff;
+        width: 15%;
+        
+    }
+    .rep-low {
+        background-color: #D4B3AD;
+        color: #ffffff;
+        width: 15%;
         
     }
     .election-name {
         font-weight: bold;
-        width: 20%;
+        width: 15%;
         background-color: transparent;
     }
     .candidate-name {
-        width: 20%; 
+        width: 15%; 
         background-color: #F5F5F5; 
         
     }
@@ -68,8 +100,8 @@
 </head>
 <body>
 
-<h1>A Comparison of Donations in Chicago’s 2024 Local Elections</h1>
-<h2>Democratic Candidates Outpace Republican Rivals in Donations</h2>
+<h1>Money Raised in Chicago's 2024 Local Elections</h1>
+<h2>Democratic candidates outpace Republican rivals in donations.</h2>
 <div style="display: block;">
 <table>
     <thead>
@@ -82,25 +114,25 @@
     </thead>
     <tbody>
         <tr>
-            <td class="election-name">Cook County Clerk</td>
-            <td class="candidate-name">Monica Gordon</td>
-            <td class="democratic">$527,000</td>
-            <td class="candidate-name">Michelle Pennington</td>
-            <td class="republican">$11,000</td>
-        </tr>
-        <tr>
             <td class="election-name">Cook County State's Attorney</td>
             <td class="candidate-name">Eileen O'Neill Burke</td>
-            <td class="democratic">$4,170,000</td>
+            <td class="dem-high">$4,170,000</td>
             <td class="candidate-name">Robert "Bob” Fioretti</td>
-            <td class="republican">$268,000</td>
+            <td class="rep-high">$268,000</td>
+        </tr>
+        <tr>
+            <td class="election-name">Cook County Clerk</td>
+            <td class="candidate-name">Monica Gordon</td>
+            <td class="dem-mid">$527,000</td>
+            <td class="candidate-name">Michelle Pennington</td>
+            <td class="rep-mid">$11,000</td>
         </tr>
         <tr>
             <td class="election-name">Cook County Circuit Court</td>
             <td class="candidate-name">Pablo deCastro</td>
-            <td class="democratic">$185,000</td>
+            <td class="dem-low">$185,000</td>
             <td class="candidate-name">Tien Glaub</td>
-            <td class="republican">$3,000</td>
+            <td class="rep-low">$3,000</td>
         </tr>
     </tbody>
 </table>
