@@ -487,6 +487,10 @@ function bodyWaypoints() {
 function waypoints() {
     let offset = '50%';
 
+    // fade in to start
+    intro = document.querySelector('#intro');
+    fadeInLayer(intro, 0, 1, 0.002, 5);
+
     // intro way points
     introWaypoints();
 
