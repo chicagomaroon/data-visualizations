@@ -25,7 +25,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Top Five Campaign Donation Sources for Jonathan Jackson',
+        text: 'Top Five Campaign Donation Sources for Jonathan Jackson (U.S. Senate)',
         align: 'center'
     },
     subtitle: {

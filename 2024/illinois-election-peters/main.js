@@ -25,7 +25,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Top Six Campaign Donation Sources for Robert Peters',
+        text: 'Top Six Campaign Donation Sources for Robert Peters (Illinois Senate)',
         align: 'center'
     },
     subtitle: {
