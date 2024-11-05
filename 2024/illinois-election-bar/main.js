@@ -31,16 +31,8 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'Total Donations by Candidate and Race',
+        text: 'Statewide Races: Total Donations by Candidate and Race',
         align: 'center'
-    },
-
-    subtitle: {
-        text: 'Candidates with known donation information raised $464K on average.',
-        align: 'center',
-        style: {
-            fontSize: '18px'
-        }
     },
 
     tooltip: {
