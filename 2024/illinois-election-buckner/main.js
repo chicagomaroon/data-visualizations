@@ -25,7 +25,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Top Five Campaign Donation Sources for Kambium Buckner',
+        text: 'Top Five Campaign Donation Sources for Kambium Buckner (Illinois House)',
         align: 'center'
     },
     subtitle: {
