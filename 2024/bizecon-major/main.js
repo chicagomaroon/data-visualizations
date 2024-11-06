@@ -10,7 +10,7 @@ Highcharts.chart('chart-div', {
     },
 
     caption: {
-        text: '*These data reflect student populations as of Autumn quarter each year.',
+        text: '*These data reflect student populations as of autumn quarter each year.',
         align: 'center'
     },
 
