@@ -18,7 +18,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -31,7 +31,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -42,23 +42,23 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Only the Maroon',
-                    y: 1
+                    y: 2
                 },
                 {
                     name: '1 other RSO',
-                    y: 9
+                    y: 21
                 },
                 {
                     name: '2 other RSOs',
-                    y: 15
+                    y: 35
                 },
                 {
                     name: '3 other RSOs',
-                    y: 14
+                    y: 33
                 },
                 {
                     name: '4 other RSOs',
-                    y: 4
+                    y: 9
                 }
             ]
         }

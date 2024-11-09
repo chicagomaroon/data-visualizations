@@ -1,36 +1,36 @@
 let collegeDivisions = [
     {
         name: 'Humanities',
-        y: 6,
+        y: 14,
         drilldown: 'Humanities'
     },
     {
         name: 'Physical Sciences',
-        y: 4,
+        y: 9,
         drilldown: 'Physical Sciences'
     },
     {
         name: 'Social Sciences',
-        y: 3,
+        y: 7,
         drilldown: 'Social Sciences'
     }
 ];
 
 let humanities = [
-    ['Classical Studies', 1],
-    ['Creative Writing', 2],
-    ['Music', 1],
-    ['Theater And Performance Studies', 2]
+    ['Classical Studies', 2],
+    ['Creative Writing', 5],
+    ['Music', 2],
+    ['Theater And Performance Studies', 5]
 ];
 let physicalSciences = [
-    ['Astrophysics', 1],
-    ['Computer Science', 1],
-    ['Data Science', 1],
-    ['Statistics', 1]
+    ['Astrophysics', 2],
+    ['Computer Science', 2],
+    ['Data Science', 2],
+    ['Statistics', 2]
 ];
 let socialSciences = [
-    ['Democracy Studies', 1],
-    ['Education and Society', 2]
+    ['Democracy Studies', 2],
+    ['Education and Society', 5]
 ];
 
 // For API and chart documentation please look here:
@@ -56,7 +56,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<span style="color:{point.color}">{point.name}</span>: {point.y} Maroon members'
+            '<span style="color:{point.color}"><b>{point.name}</b></span>: {point.y}%'
     },
 
     subtitle: {
@@ -70,7 +70,7 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Members in Category'
+            text: 'Percent of Responses'
         }
     },
 
@@ -79,7 +79,7 @@ Highcharts.chart('chart-div', {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
-                format: '{point.y}'
+                format: '{point.y}%'
             }
         }
     },

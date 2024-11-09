@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -44,19 +44,19 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Boarding school',
-                    y: 5
+                    y: 12
                 },
                 {
                     name: 'Public school',
-                    y: 13
+                    y: 30
                 },
                 {
                     name: 'Religious school',
-                    y: 3
+                    y: 7
                 },
                 {
                     name: 'Secular private day school',
-                    y: 22
+                    y: 51
                 }
             ]
         }

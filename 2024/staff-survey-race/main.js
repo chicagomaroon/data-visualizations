@@ -27,13 +27,13 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Members in Category'
+            text: 'Percent of Responses'
         }
     },
 
     tooltip: {
         headerFormat: '',
-        pointFormat: '<b>{point.name}</b>: {point.y} Maroon member(s)'
+        pointFormat: '<b>{point.name}</b>: {point.y}%'
     },
 
     series: [
@@ -43,35 +43,35 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'African American or Black',
-                    y: 3
+                    y: 7
                 },
                 {
                     name: 'African/Afro-Caribbean/Afro-Latin',
-                    y: 2
-                },
-                {
-                    name: 'Ashkenazi Jewish',
-                    y: 1
-                },
-                {
-                    name: 'East Asian',
-                    y: 11
-                },
-                {
-                    name: 'South Asian',
                     y: 5
                 },
                 {
-                    name: 'Southeast Asian',
+                    name: 'Ashkenazi Jewish',
                     y: 2
+                },
+                {
+                    name: 'East Asian',
+                    y: 26
+                },
+                {
+                    name: 'South Asian',
+                    y: 12
+                },
+                {
+                    name: 'Southeast Asian',
+                    y: 5
                 },
                 {
                     name: 'White',
-                    y: 21
+                    y: 50
                 },
                 {
                     name: 'Prefer not to disclose',
-                    y: 2
+                    y: 5
                 }
             ]
         }

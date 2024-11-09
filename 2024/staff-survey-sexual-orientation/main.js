@@ -27,13 +27,13 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Members in Category'
+            text: 'Percent of Responses'
         }
     },
 
     tooltip: {
         headerFormat: '',
-        pointFormat: '{point.y} Maroon member(s) {point.pointText}'
+        pointFormat: '{point.y}% {point.pointText}'
     },
 
     series: [
@@ -44,42 +44,42 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'Aromantic/Asexual',
                     pointText: 'identify as <b>Aromantic/Asexual</b>',
-                    y: 5
+                    y: 11
                 },
                 {
                     name: 'Bisexual',
                     pointText: 'identify as <b>Bisexual</b>',
-                    y: 14
+                    y: 32
                 },
                 {
                     name: 'Gay',
                     pointText: 'identify as <b>Gay</b>',
-                    y: 2
+                    y: 5
                 },
                 {
                     name: 'Lesbian',
                     pointText: 'identify as <b>Lesbian</b>',
-                    y: 2
+                    y: 5
                 },
                 {
                     name: 'Straight (Heterosexual)',
                     pointText: 'identify as <b>Straight/Heterosexual</b>',
-                    y: 21
+                    y: 48
                 },
                 {
                     name: 'Queer',
                     pointText: 'identify as <b>Queer</b>',
-                    y: 5
+                    y: 11
                 },
                 {
                     name: 'Questioning or unsure',
                     pointText: 'are <b>Questioning or Unsure</b>',
-                    y: 4
+                    y: 9
                 },
                 {
                     name: 'Prefer not to disclose',
                     pointText: 'prefer not to disclose',
-                    y: 1
+                    y: 2
                 }
             ]
         }

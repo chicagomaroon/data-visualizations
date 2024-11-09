@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -44,23 +44,23 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Both Hispanic and Latino',
-                    y: 2
+                    y: 4
                 },
                 {
                     name: 'Hispanic, not Latino',
-                    y: 1
+                    y: 2
                 },
                 {
                     name: 'Latino, not Hispanic',
-                    y: 1
+                    y: 2
                 },
                 {
                     name: 'Neither Hispanic nor Latino',
-                    y: 39
+                    y: 83
                 },
                 {
                     name: 'Prefer not to disclose',
-                    y: 4
+                    y: 9
                 }
             ]
         }

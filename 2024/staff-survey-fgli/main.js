@@ -18,7 +18,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<span style="font-size:11px;font-weight:bold;">{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<span style="font-size:11px;font-weight:bold;">{point.name}</span>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -31,7 +31,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -42,14 +42,14 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Prefer not to disclose',
-                    y: 1
+                    y: 2
                 },
                 {
-                    name: 'Low-income',
-                    y: 3
+                    name: 'Low-income only',
+                    y: 8
                 },
                 {
-                    name: 'First-generation',
+                    name: 'First-generation only',
                     y: 0
                 },
                 {
@@ -58,7 +58,7 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'Neither',
-                    y: 36
+                    y: 90
                 }
             ]
         }

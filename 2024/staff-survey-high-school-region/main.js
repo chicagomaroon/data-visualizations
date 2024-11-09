@@ -27,7 +27,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -40,7 +40,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -51,15 +51,15 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Mid-Atlantic',
-                    y: 13
+                    y: 30
                 },
                 {
                     name: 'Midwest',
-                    y: 6
+                    y: 14
                 },
                 {
                     name: 'Northeast',
-                    y: 6
+                    y: 14
                 },
                 {
                     name: 'Northwest',
@@ -71,15 +71,15 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'Southwest',
-                    y: 4
+                    y: 9
                 },
                 {
                     name: 'West',
-                    y: 5
+                    y: 11
                 },
                 {
                     name: 'Not in the U.S.',
-                    y: 10
+                    y: 22
                 }
             ]
         }

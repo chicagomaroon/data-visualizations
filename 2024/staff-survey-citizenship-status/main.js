@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<span style="font-size:11px;font-weight:bold;">{point.name}</span>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -44,15 +44,15 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Citizen of another country',
-                    y: 8
+                    y: 18
                 },
                 {
                     name: 'U.S. citizen only',
-                    y: 26
+                    y: 61
                 },
                 {
                     name: 'U.S. dual citizen',
-                    y: 9
+                    y: 21
                 }
             ]
         }

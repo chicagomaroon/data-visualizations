@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -45,35 +45,35 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: '< $65K',
-                    y: 1
+                    y: 4
                 },
                 {
                     name: '$65K to $100K',
-                    y: 2
+                    y: 7
                 },
                 {
                     name: '$100K to $150K',
-                    y: 4
+                    y: 14
                 },
                 {
                     name: '$150K to $200K',
-                    y: 1
-                },
-                {
-                    name: '$200K to $250K',
-                    y: 2
-                },
-                {
-                    name: '$250K to $500K',
                     y: 4
                 },
                 {
+                    name: '$200K to $250K',
+                    y: 7
+                },
+                {
+                    name: '$250K to $500K',
+                    y: 14
+                },
+                {
                     name: 'More than $500K',
-                    y: 6
+                    y: 21
                 },
                 {
                     name: 'Prefer not to disclose',
-                    y: 8
+                    y: 29
                 }
             ]
         }

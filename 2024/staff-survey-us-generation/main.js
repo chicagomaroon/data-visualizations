@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -44,15 +44,15 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'First-generation (immigrant)',
-                    y: 9
+                    y: 22
                 },
                 {
                     name: 'Second-generation (at least one foreign-born parent)',
-                    y: 14
+                    y: 33
                 },
                 {
                     name: 'Third-generation and beyond (two U.S. native parents)',
-                    y: 19
+                    y: 45
                 }
             ]
         }

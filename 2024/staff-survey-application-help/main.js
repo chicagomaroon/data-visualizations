@@ -26,15 +26,16 @@ Highcharts.chart('chart-div', {
     },
 
     yAxis: {
+        min: 0,
         title: {
-            text: 'Members in Category'
+            text: 'Percent of responses'
         }
     },
 
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<span style="font-weight:bold;">{point.name}</span>: {point.y} Maroon member(s)'
+            '<b>{point.name}</b>: {point.y}%'
     },
 
     series: [
@@ -44,23 +45,23 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Not helpful at all',
-                    y: 2
+                    y: 5
                 },
                 {
                     name: 'Not helpful',
-                    y: 4
+                    y: 10
                 },
                 {
                     name: 'Neutral',
-                    y: 14
+                    y: 33
                 },
                 {
                     name: 'Helpful',
-                    y: 14
+                    y: 33
                 },
                 {
                     name: 'Very helpful',
-                    y: 8
+                    y: 19
                 }
             ]
         }

@@ -20,7 +20,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<b>{point.name}</b>: {point.percentage:.1f}% of Maroon members ({point.y})'
+            '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
@@ -33,7 +33,7 @@ Highcharts.chart('chart-div', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f}% ({point.y})'
+                format: '<b>{point.name}</b>: {point.y}%'
             }
         }
     },
@@ -44,23 +44,23 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'First-Year',
-                    y: 11
+                    y: 25
                 },
                 {
                     name: 'Second-Year',
-                    y: 11
+                    y: 25
                 },
                 {
                     name: 'Third-Year',
-                    y: 13
+                    y: 30
                 },
                 {
                     name: 'Fourth-Year',
-                    y: 7
+                    y: 16
                 },
                 {
                     name: 'Masters Student',
-                    y: 2
+                    y: 4
                 }
             ]
         }

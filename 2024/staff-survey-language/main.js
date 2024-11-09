@@ -27,13 +27,13 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Members in Category'
+            text: 'Percent of Responses'
         }
     },
 
     tooltip: {
         headerFormat: '',
-        pointFormat: '<b>{point.name}</b>: {point.y} Maroon member(s)'
+        pointFormat: '<b>{point.name}</b>: {point.y}%'
     },
 
     series: [
@@ -43,59 +43,59 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Cantonese',
-                    y: 3
+                    y: 8
                 },
                 {
                     name: 'Chinese (dialect unspecified)',
-                    y: 2
+                    y: 5
                 },
                 {
                     name: 'Dutch',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'French',
-                    y: 6
+                    y: 15
                 },
                 {
                     name: 'German',
-                    y: 2
+                    y: 5
                 },
                 {
                     name: 'Greek',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'Hindi',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'Hungarian',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'Italian',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'Japanese',
-                    y: 2
+                    y: 5
                 },
                 {
                     name: 'Korean',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'Mandarin',
-                    y: 6
+                    y: 15
                 },
                 {
                     name: 'Portuguese',
-                    y: 1
+                    y: 3
                 },
                 {
                     name: 'Spanish',
-                    y: 10
+                    y: 26
                 }
             ]
         }

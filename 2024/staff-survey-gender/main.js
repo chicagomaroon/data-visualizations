@@ -27,13 +27,13 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Members in Category'
+            text: 'Percent of Responses'
         }
     },
 
     tooltip: {
         headerFormat: '',
-        pointFormat: '{point.y} Maroon member(s) {point.pointText}'
+        pointFormat: '{point.y}{point.pointText}'
     },
 
     series: [
@@ -43,28 +43,28 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'Man',
-                    pointText: 'identify as a <b>Man</b>',
-                    y: 16
+                    pointText: '% identify as a <b>Man</b>',
+                    y: 36
                 },
                 {
                     name: 'Woman',
-                    pointText: 'identify as a <b>Woman</b>',
-                    y: 25
+                    pointText: '% identify as a <b>Woman</b>',
+                    y: 57
                 },
                 {
                     name: 'Nonbinary',
-                    pointText: 'identify as <b>Non-Binary</b>',
-                    y: 2
+                    pointText: '% identify as <b>Nonbinary</b>',
+                    y: 4
                 },
                 {
                     name: 'Agender',
-                    pointText: 'identifies as <b>Agender</b>',
-                    y: 1
+                    pointText: '% identify as <b>Agender</b>',
+                    y: 2
                 },
                 {
                     name: 'Prefer not to disclose',
-                    pointText: 'prefer(s) not to disclose',
-                    y: 1
+                    pointText: '% prefer not to disclose',
+                    y: 2
                 }
             ]
         }

@@ -1,56 +1,56 @@
 let collegeDivisions = [
     {
         name: 'Social Sciences',
-        y: 40,
+        y: 91,
         drilldown: 'Social Sciences'
     },
     {
         name: 'Humanities',
-        y: 17,
+        y: 39,
         drilldown: 'Humanities'
     },
     {
         name: 'Physical Sciences',
-        y: 13,
+        y: 30,
         drilldown: 'Physical Sciences'
     },
     {
         name: 'Biological Sciences',
-        y: 2,
+        y: 5,
         drilldown: 'Biological Sciences'
     }
 ];
-let biologicalSciences = [['Biological Sciences', 2]];
+let biologicalSciences = [['Biological Sciences', 5]];
 let humanities = [
-    ['Classical Studies', 1],
-    ['Comparative Literature', 2],
-    ['Creative Writing', 2],
-    ['English Literature and Language', 4],
-    ['Fundamentals: Issues and Texts', 1],
-    ['Linguistics', 2],
-    ['Media Arts and Design', 1],
-    ['Music', 1],
-    ['Romance Languages and Literatures', 1],
-    ['Russian and East European Studies', 1],
-    ['Visual Arts', 1]
+    ['Classical Studies', 2],
+    ['Comparative Literature', 5],
+    ['Creative Writing', 5],
+    ['English Literature and Language', 9],
+    ['Fundamentals: Issues and Texts', 2],
+    ['Linguistics', 5],
+    ['Media Arts and Design', 2],
+    ['Music', 2],
+    ['Romance Languages and Literatures', 2],
+    ['Russian and East European Studies', 2],
+    ['Visual Arts', 2]
 ];
 let physicalSciences = [
-    ['Astrophysics', 2],
-    ['Biological Chemistry', 1],
-    ['Chemistry', 1],
-    ['Computational and Applied Mathematics', 1],
-    ['Computer Science', 6],
-    ['Data Science', 2]
+    ['Astrophysics', 5],
+    ['Biological Chemistry', 2],
+    ['Chemistry', 2],
+    ['Computational and Applied Mathematics', 2],
+    ['Computer Science', 14],
+    ['Data Science', 5]
 ];
 let socialSciences = [
-    ['Economics', 13],
-    ['History', 8],
-    ['Human Rights', 1],
-    ['Latin American and Caribbean Studies', 1],
-    ['Law, Letters, and Society', 3],
-    ['Political Science', 6],
-    ['Psychology', 1],
-    ['Public Policy Studies', 7]
+    ['Economics', 30],
+    ['History', 18],
+    ['Human Rights', 2],
+    ['Latin American and Caribbean Studies', 2],
+    ['Law, Letters, and Society', 7],
+    ['Political Science', 14],
+    ['Psychology', 2],
+    ['Public Policy Studies', 16]
 ];
 
 // For API and chart documentation please look here:
@@ -75,7 +75,7 @@ Highcharts.chart('chart-div', {
     tooltip: {
         headerFormat: '',
         pointFormat:
-            '<span style="color:{point.color}">{point.name}</span>: {point.y} Maroon members'
+            '<span style="color:{point.color}"><b>{point.name}</b></span>: {point.y}%'
     },
 
     subtitle: {
@@ -98,7 +98,7 @@ Highcharts.chart('chart-div', {
             borderWidth: 0,
             dataLabels: {
                 enabled: true,
-                format: '{point.y}'
+                format: '{point.y}%'
             }
         }
     },
