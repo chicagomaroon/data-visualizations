@@ -19,8 +19,7 @@ Highcharts.chart('chart-div', {
 
     tooltip: {
         headerFormat: '',
-        pointFormat:
-            '<b>{point.name}</b>: {point.y}%'
+        pointFormat: '<b>{point.name}</b>: {point.y}%'
     },
     accessibility: {
         point: {
