@@ -24,7 +24,7 @@ Will cover
     * HTML is for structure and semantics (meaning).
         * what are elements
         * what does semantic HTML (`<main>, <section>, <article>, <header>`)
-        * Structure of page (<html><head></head><body></body></html>) and difference between head and body
+        * Structure of page (`<html><head></head><body></body></html>`) and difference between head and body
         * https://internetingishard.netlify.app/html-and-css/basic-web-pages/ (i like the summary at the bottom here)
         * (https://motherfuckingwebsite.com/) sorry for language but good example with no styling
 
