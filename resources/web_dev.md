@@ -6,6 +6,7 @@ Wont cover
 * web servers
 * accessing data on your website
 * ip addresses and domains
+* JS frameworks (React, etc)
 
 
 Will cover
