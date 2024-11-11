@@ -23,7 +23,7 @@ Will cover
 * Purposes of the main web authoring technologies:
     * HTML is for structure and semantics (meaning).
         * DOM 
-        * what does semantic HTML (<main>, <section>, <article>, <header>)
+        * what does semantic HTML (`<main>, <section>, <article>, <header>`)
         * what are elements
         * https://internetingishard.netlify.app/html-and-css/basic-web-pages/ (i like the summary at the bottom here)
         * (https://motherfuckingwebsite.com/) sorry for language but good example with no styling
@@ -41,7 +41,7 @@ Will cover
         * JS can be used to access and modify DOM elements
         * JS objects (where JSON comes from)
         * allows you to do very cool things like https://pudding.cool/2023/10/genre/
-    * you CAN have CSS in a <style></style> block and JS in a <script></script> block in an html document but bad practice, separate for 
+    * you CAN have CSS in a `<style></style>` block and JS in a `<script></script>` block in an html document but bad practice, separate for 
         * Code management and comprehension.
         * Teamwork/separation of roles.
         * Performance.
