@@ -46,9 +46,14 @@ Will cover
         * Teamwork/separation of roles.
         * Performance.
 
-* how we use these tools
+1. how we use these tools
     * each chart is its own webpage with a HTML, CSS, and JS file
         * show example of a folder
     * HTML (index.html) just has one element usually which is the chart
     * CSS (static/main.css) styling is default and doesnt change 
     * js (main.js) uses a package called highcharts that takes a JSON element and converts it to "real" JS
+
+
+1. how to view a webpage
+* open the html file in your browser
+* or get the live server VS code extension
