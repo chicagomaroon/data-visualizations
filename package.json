@@ -6,7 +6,7 @@
     "scripts": {
         "create-visual": "mkdir -p ./$npm_config_year/$npm_config_story && cp ./template-visual/highcharts/* ./$npm_config_year/$npm_config_story && cp ./template-visual/meta_data.json ./$npm_config_year/$npm_config_story/meta_data.json",
         "create-visual-d3": "mkdir -p ./$npm_config_year/$npm_config_story && cp ./template-visual/d3plus/* ./$npm_config_year/$npm_config_story && cp ./template-visual/meta_data.json ./$npm_config_year/$npm_config_story/",
-        "lint": "npx prettier --loglevel silent --write . && npx eslint --fix .",
+        "format": "npx prettier --loglevel silent --write .",
         "process-visual": "npx htmlprocessor ./$npm_config_year/$npm_config_story/index.html -o ./$npm_config_year/$npm_config_story/index.proc.html && npx minify ./$npm_config_year/$npm_config_story/index.proc.html > ./$npm_config_year/$npm_config_story/$npm_config_story.min.html && rm ./$npm_config_year/$npm_config_story/index.proc.html"
     },
     "repository": {
@@ -21,8 +21,6 @@
     "homepage": "https://github.com/chicagomaroon/chicagomaroon.github.io#readme",
     "devDependencies": {
         "dotenv": "^16.0.3",
-        "eslint-config-prettier": "^8.10.0",
-        "eslint-plugin-prettier": "^4.2.1",
         "fs": "^0.0.1-security",
         "htmlprocessor": "^0.3.2",
         "minify": "^9.2.0",
