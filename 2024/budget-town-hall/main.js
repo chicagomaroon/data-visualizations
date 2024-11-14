@@ -37,14 +37,7 @@ Highcharts.chart('chart-div', {
 
     tooltip: {
         formatter: function () {
-            return (
-                '<b>' +
-                this.point.name +
-                '</b>' +
-                ': ' +
-                this.y +
-                'K'
-            );
+            return '<b>' + this.point.name + '</b>' + ': ' + this.y + 'K';
         },
         valuePrefix: '$'
     },
@@ -59,7 +52,7 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         labels: {
-            formatter: function() {
+            formatter: function () {
                 return this.value > 0 ? this.value + ',000' : this.value;
             },
             style: {
@@ -86,12 +79,12 @@ Highcharts.chart('chart-div', {
                 enabled: false
             },
             data: [
-                {name:'Harvard',y:68},
-                {name:'Northwestern',y:60},
-                {name:'Cornell',y:40},
-                {name:'UPenn',y:35},
-                {name:'Stanford',y:35},
-                {name:'UChicago',y:7}
+                { name: 'Harvard', y: 68 },
+                { name: 'Northwestern', y: 60 },
+                { name: 'Cornell', y: 40 },
+                { name: 'UPenn', y: 35 },
+                { name: 'Stanford', y: 35 },
+                { name: 'UChicago', y: 7 }
             ]
         }
     ]
