@@ -5,6 +5,9 @@ Highcharts.setOptions({
         style: {
             fontFamily: 'Georgia, serif'
         }
+    },
+    lang: {
+        thousandsSep: ','
     }
 });
 
@@ -23,25 +26,65 @@ Highcharts.chart('chart-div', {
         '#FF3399'
     ],
 
-    // All code for your chart goes here
+    chart: {
+        type: 'bar'
+    },
+
     title: {
-        text: '[TITLE]',
+        text: 'Revenue from Non-Degree Programs, FY24',
         align: 'center'
+    },
+
+    tooltip: {
+        formatter: function () {
+            return '<b>' + this.point.name + '</b>' + ': $' + this.y + 'M';
+        },
+        valuePrefix: '$'
+    },
+
+    legend: {
+        enabled: false
+    },
+
+    xAxis: {
+        type: 'category'
+    },
+
+    yAxis: {
+        labels: {
+            format: '${text}M',
+            style: {
+                fontSize: '16px'
+            }
+        },
+        showLastLabel: false,
+        title: {
+            enabled: false
+        },
+        tickPositions: [0, 100, 200, 300, 400, 500, 600]
     },
 
     plotOptions: {
         series: {
-            // PUT PLOT CONFIG OPTIONS HERE SPACE FOR YOUR DATA
+            groupPadding: 0,
+            pointPadding: 0.05
         }
     },
 
     series: [
         {
-            name: '[DATA FIELD NAME]',
+            name: 'Revenue',
             label: {
                 enabled: false
             },
-            data: []
+            data: [
+                { name: 'Harvard', y: 544 },
+                { name: 'Cornell', y: 200 },
+                { name: 'UPenn', y: 163 },
+                { name: 'Northwestern', y: 160 },
+                { name: 'Stanford', y: 138 },
+                { name: 'UChicago', y: 23 }
+            ]
         }
     ]
 });
