@@ -27,11 +27,11 @@ Highcharts.chart('chart-div', {
     ],
 
     chart: {
-        type: 'bar'
+        type: 'column'
     },
 
     title: {
-        text: 'Revenue from Non-Degree Programs, FY24',
+        text: 'Revenue from Non-Degree Programs, FY23',
         align: 'center'
     },
 

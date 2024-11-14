@@ -27,11 +27,11 @@ Highcharts.chart('chart-div', {
     ],
 
     chart: {
-        type: 'bar'
+        type: 'column'
     },
 
     title: {
-        text: 'Enrollment in Non-Degree Programs 2023-24',
+        text: 'Enrollment in Non-Degree Programs 2022-23',
         align: 'center'
     },
 
