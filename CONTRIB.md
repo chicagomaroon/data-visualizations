@@ -68,7 +68,7 @@ See the [resources][resources/] folder for additional material.
     - For the error `The syntax of the command is incorrect`, use ChatGPT to edit the command for your terminal. For example, Git Bash requires line breaks. You may also have to manually set environment variables with `npm_config_year=` and `npm_config_story=`.
     - In your `./[year]/[story-name]/` folder, there will be a file called `main.js`. This is where you’ll write the JavaScript logic for your visual.
 1. Start creating your visual that will be housed in the `./[year]/[story-name]/` folder.
-    - If you'd like to see previously created example visuals, open [example-graphs.html](./example-graphs.html) from your local repository.
+    - If you'd like to see previously created example visuals, open [example-graphs.html](https://chicagomaroon.github.io/data-visualizations/example-graphs) from your local repository.
     - If you are using Highcharts, here is a lot of helpful documentation on the [options for creating charts](https://api.highcharts.com/highmaps/).
 1. Update the `meta_data.json` in your story's folder, which will look something like this:
 
