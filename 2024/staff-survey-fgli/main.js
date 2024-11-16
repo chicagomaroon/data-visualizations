@@ -41,10 +41,6 @@ Highcharts.chart('chart-div', {
             colorByPoint: true,
             data: [
                 {
-                    name: 'Prefer not to disclose',
-                    y: 2
-                },
-                {
                     name: 'Low-income only',
                     y: 8
                 },
@@ -58,7 +54,7 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'Neither',
-                    y: 90
+                    y: 92
                 }
             ]
         }

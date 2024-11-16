@@ -43,11 +43,11 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: '75-100% of tuition',
-                    y: 2
+                    y: 3
                 },
                 {
                     name: '50-75% of tuition',
-                    y: 2
+                    y: 3
                 },
                 {
                     name: '25-50% of tuition',
@@ -58,12 +58,8 @@ Highcharts.chart('chart-div', {
                     y: 0
                 },
                 {
-                    name: 'Prefer not to disclose',
-                    y: 10
-                },
-                {
                     name: 'Do not receive federal aid',
-                    y: 86
+                    y: 94
                 }
             ]
         }

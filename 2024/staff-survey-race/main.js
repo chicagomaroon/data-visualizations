@@ -43,19 +43,15 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'African American or Black',
-                    y: 7
+                    y: 8
                 },
                 {
                     name: 'African/Afro-Caribbean/Afro-Latin',
                     y: 5
                 },
                 {
-                    name: 'Ashkenazi Jewish',
-                    y: 2
-                },
-                {
                     name: 'East Asian',
-                    y: 26
+                    y: 28
                 },
                 {
                     name: 'South Asian',
@@ -67,11 +63,7 @@ Highcharts.chart('chart-div', {
                 },
                 {
                     name: 'White',
-                    y: 50
-                },
-                {
-                    name: 'Prefer not to disclose',
-                    y: 5
+                    y: 52
                 }
             ]
         }
