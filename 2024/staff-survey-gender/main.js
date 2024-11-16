@@ -44,22 +44,17 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'Man',
                     pointText: '% identify as a <b>Man</b>',
-                    y: 35
+                    y: 37
                 },
                 {
                     name: 'Woman',
                     pointText: '% identify as a <b>Woman</b>',
-                    y: 56
+                    y: 58
                 },
                 {
                     name: 'Nonbinary',
                     pointText: '% identify as <b>Nonbinary</b>',
                     y: 7
-                },
-                {
-                    name: 'Agender',
-                    pointText: '% identify as <b>Agender</b>',
-                    y: 2
                 }
             ]
         }

@@ -43,15 +43,11 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: 'No',
-                    y: 76
+                    y: 86
                 },
                 {
                     name: 'Yes',
-                    y: 12
-                },
-                {
-                    name: 'Unsure',
-                    y: 12
+                    y: 14
                 }
             ]
         }
