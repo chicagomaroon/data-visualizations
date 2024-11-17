@@ -1,6 +1,6 @@
 const config = [
     {
-        chapterTitle: '1890-1933: The Cobb Plan',
+        chapterTitle: 'The Cobb Plan, 1890-1933',
         chapterYears: '1890-1933',
         id: '1',
         image: './static/images/chapter1.jpg',
@@ -11,7 +11,8 @@ const config = [
                 start_year: 1890,
                 end_year: 1900,
                 timeline_year: 1889,
-                zoom: 17
+                zoom: 17,
+                image: './static/images/jdr.jpg'
                 //pan: uChiLocation
             },
             {
@@ -45,25 +46,45 @@ const config = [
         ]
     },
     {
-        chapterTitle:
-            '1933–1948: The Problem of our Property: Racially-Restrictive Covenants',
+        chapterTitle: 'Neighborhood Intervention, 1933-1948',
         chapterYears: '1933–1948',
         id: '2',
         image: './static/images/chapter2.jpg',
         subsections: [
             {
-                id: '2.1',
-                text: 'This is the section 2.1',
+                id: 'end_gothic',
+                text: 'The Committee on Building and Grounds was eliminated on March 21, 1932. International House (1932) and the Field House (1932) were the final buildings constructed in a “minimal Gothic” style, streamlined by Art Deco and modernist design.',
                 start_year: 1910,
                 end_year: 1930,
-                zoom: 16
+                zoom: 16,
+                timeline_year: 1932
                 //pan: [41.79139, -87.60000]
             },
             {
-                id: '2.2',
-                text: 'This is the section 2.2',
+                id: 'demographics',
+                text: `The Great Migration significantly transforms the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. “Racial succession,” or the process of one racial group replacing another in the neighborhood, becomes a growing concern of both the University and the City.`,
                 start_year: 1930,
                 end_year: 1940
+            },
+            {
+                id: '2.1',
+                text: `1933 documents the first proof of the university’s attempts to “stabilize the neighborhood.” by reinforcing legal racial covenants. They intervene through intermediaries, by providing covert financial support.`,
+                timeline_year: 1933
+            },
+            {
+                id: '2.2',
+                text: `Between 1933 and 1947, UChicago spends $83,597.46 to support legal assistance for the defense of racially restrictive covenants in Hyde Park, subsidizing neighborhood groups, such as the Woodlawn Property Owners League and the Hyde Park Property Owners Association.During these years President Hutchins maintains that residents of Hyde Park and nearby communities had the right to “invoke and defend'' racially restrictive covenants as legal instruments.`
+            },
+            {
+                id: '2.3',
+                text: `Students push back. In 1942, the Chicago chapter of the Committee of Racial Equality is created by two university students who organize mixed-race housing.`,
+                timeline_year: 1942
+            },
+            {
+                id: '2.4',
+                text: `In 1948, the Shelley vs. Kramer Supreme Court case outlaws racial covenants.`,
+                timeline_year: 1948,
+                image: './static/images/shelleyvkramer.jpeg'
             }
         ]
     }

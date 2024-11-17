@@ -16,6 +16,8 @@ dataPath = 'data/property_years_extended_11_9_24.geojson';
 otherPath = 'data/extra.geojson';
 let config = [];
 const zoomSpeed = 5000;
+PRIMARY_COLOR = '#800000';
+SECONDARY_COLOR = 'black';
 
 // -------- CONSTANTS --------
 
@@ -191,7 +193,7 @@ function createLayerOther(map_name, layerName, filter) {
         source: 'other',
         layout: {},
         paint: {
-            'fill-color': '#800000',
+            'fill-color': PRIMARY_COLOR,
             'fill-opacity': 0,
             'fill-opacity-transition': { duration: 1000 }
         },
@@ -199,12 +201,7 @@ function createLayerOther(map_name, layerName, filter) {
     });
 }
 
-function createLayerYears(
-    map_name,
-    layerName,
-    start_year = 1890,
-    end_year = 2025
-) {
+function createLayerYears(map_name, layerName, start_year, end_year) {
     /*
     create the base source and layers that we will filter
     */
@@ -214,7 +211,7 @@ function createLayerYears(
         source: 'buildings',
         layout: {},
         paint: {
-            'fill-color': '#800000',
+            'fill-color': PRIMARY_COLOR,
             'fill-opacity': 0,
             'fill-opacity-transition': {
                 duration: map_name == mapIntro ? 5000 : 1000
@@ -239,7 +236,7 @@ function allLayers(map, type) {
             source: 'buildings',
             layout: {},
             paint: {
-                'fill-color': '#800000',
+                'fill-color': PRIMARY_COLOR,
                 'fill-opacity': 0,
                 'fill-opacity-transition': {
                     duration: map == mapIntro ? 5000 : 1000
@@ -253,7 +250,7 @@ function allLayers(map, type) {
             source: 'buildings',
             layout: {},
             paint: {
-                'fill-color': '#800000',
+                'fill-color': PRIMARY_COLOR,
                 'fill-opacity': 0,
                 'fill-opacity-transition': {
                     duration: map == mapIntro ? 5000 : 1000
@@ -261,11 +258,11 @@ function allLayers(map, type) {
             }
         });
     } else if (type == 'body') {
-        for (let year = 1900; year <= 2025; year += 25) {
+        for (let year = 1890; year <= 2025; year += 5) {
             layerName = 'layer' + String(year);
             // console.log(layerName);
             bodyLayers.push(layerName);
-            createLayerYears(map, layerName, 1890, year + 25);
+            createLayerYears(map, layerName, 1890, year);
         }
         //
         createLayerOther(map, 'land_grant', [
@@ -276,9 +273,9 @@ function allLayers(map, type) {
     }
 }
 
-function filterOpacity(map, layer, show = true) {
+function filterOpacity(map, layer, show = true, opacity_max = 0.6) {
     if (show) {
-        opacity = 0.6;
+        opacity = opacity_max;
     } else {
         opacity = 0;
     }
@@ -313,10 +310,48 @@ function createMap(
             type: 'geojson',
             data: dataPath
         });
+
+        map.addSource('other', {
+            type: 'geojson',
+            data: otherPath
+        });
+
+        allLayers(map, layers);
+
         if (type == 'body') {
-            map.addSource('other', {
-                type: 'geojson',
-                data: otherPath
+            ids_1_3 = [
+                157655069.0, 157655073.0, 1228219576.0, 157655071.0,
+                156128082.0, 151173255.0
+            ];
+
+            ids_gothic = [1953426.0, 151173253.0];
+            // add highlight layers
+            map.addLayer({
+                id: 'highlight-1.3',
+                type: 'fill',
+                source: 'buildings',
+                layout: {},
+                paint: {
+                    'fill-color': SECONDARY_COLOR,
+                    'fill-opacity': 0,
+                    'fill-opacity-transition': { duration: 1000 }
+                },
+                // filter where osm_id is in a list
+                filter: ['in', ['get', 'osm_id'], ['literal', ids_1_3]]
+            });
+
+            map.addLayer({
+                id: 'highlight-gothic',
+                type: 'fill',
+                source: 'buildings',
+                layout: {},
+                paint: {
+                    'fill-color': SECONDARY_COLOR,
+                    'fill-opacity': 0,
+                    'fill-opacity-transition': { duration: 1000 }
+                },
+                // filter where osm_id is in a list
+                filter: ['in', ['get', 'osm_id'], ['literal', ids_gothic]]
             });
 
             // add all image overlay
@@ -338,11 +373,31 @@ function createMap(
                 source: 'south_campus_plan',
                 paint: {
                     'raster-opacity': 0,
-                    'raster-opacity-transition': { duration: zoomSpeed }
+                    'raster-opacity-transition': { duration: 2000 }
+                }
+            });
+
+            map.addSource('covenants', {
+                type: 'image',
+                url: './static/images/covenant_edit.png',
+                coordinates: [
+                    [-87.77, 41.9102],
+                    [-87.5246834044871, 41.914], //
+                    [-87.5246834044871, 41.702], //
+                    [-87.76566748604431, 41.7]
+                ]
+            });
+
+            map.addLayer({
+                id: 'covenants',
+                type: 'raster',
+                source: 'covenants',
+                paint: {
+                    'raster-opacity': 0,
+                    'raster-opacity-transition': { duration: 2000 }
                 }
             });
         }
-        allLayers(map, layers);
 
         popupStuff(map);
     });
@@ -620,11 +675,12 @@ function waypoints() {
             if (direction == 'down') {
                 filterOpacity(mapBody, 'land_grant');
                 timelineYear = findConfigValue('1.2', 'timeline_year');
-                console.log(timelineYear);
                 changeTimelineYear(timelineYear);
             } else {
                 console.log('waypoint 1.2 up');
-                updateLayers(1900, 'layer1925');
+                updateLayers(1895, 'layer1925');
+                filterOpacity(mapBody, 'land_grant', true);
+                filterOpacity(mapBody, 'layer1895', false);
             }
         },
         offset: '50%'
@@ -637,7 +693,7 @@ function waypoints() {
                 timelineYear = findConfigValue('1.3', 'timeline_year');
                 changeTimelineYear(timelineYear);
                 filterOpacity(mapBody, 'land_grant', false);
-                updateLayers(1900, 'layer1900');
+                updateLayers(1895, 'layer1900');
             } else {
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
@@ -662,20 +718,18 @@ function waypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 // highlight buildings
+                filterOpacity(mapBody, 'highlight-1.3', true, 1);
+                updateLayers(1930, 'layer1895');
+                changeTimelineYear(1930);
             } else {
                 mapBody.flyTo({
                     center: uChiLocationSide,
                     zoom: 14.5,
                     duration: zoomSpeed
                 });
-                mapBody.setPaintProperty(
-                    'south_campus_plan',
-                    'raster-opacity',
-                    0
-                );
             }
         },
-        offset: '10%'
+        offset: '50%'
     });
 
     new Waypoint({
@@ -683,7 +737,9 @@ function waypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 timelineYear = findConfigValue('1.4', 'timeline_year');
-                changeTimelineYear(timelineYear);
+                updateLayers(1935, 'layer1930');
+                filterOpacity(mapBody, 'highlight-1.3', false);
+                changeTimelineYear(1935);
 
                 mapBody.setPaintProperty(
                     'south_campus_plan',
@@ -723,7 +779,7 @@ function waypoints() {
                 mapBody.setPaintProperty(
                     'south_campus_plan',
                     'raster-opacity',
-                    0.6
+                    0
                 );
 
                 mapBody.flyTo({
@@ -735,17 +791,48 @@ function waypoints() {
         },
         offset: '50%'
     });
+
+    new Waypoint({
+        element: document.getElementById('end_gothic'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                filterOpacity(mapBody, 'highlight-gothic', true, 1);
+            } else {
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('demographics'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // add demo map
+                filterOpacity(mapBody, 'highlight-gothic', false);
+            } else {
+                mapBody.flyTo({
+                    center: uChiLocation,
+                    zoom: 15.5,
+                    duration: zoomSpeed
+                });
+                mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
+            }
+        },
+        offset: '99%'
+    });
+
     new Waypoint({
         element: document.getElementById('2.1'),
         handler: function (direction) {
             if (direction == 'down') {
-                console.log('waypoint 2.1');
-                hideHighlight();
-                updateLayers(1950, 'layer1925');
+                // remove demo chart
+
+                mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
+                updateLayers(1950, 'layer1935');
                 mapBody.flyTo({
-                    center: hydeParkLocation,
-                    zoom: 14,
-                    duration: 3500
+                    center: [-87.71, 41.81],
+                    zoom: 10.6,
+                    duration: zoomSpeed
                 });
             } else {
                 console.log('waypoint 1.2 up');
@@ -753,11 +840,11 @@ function waypoints() {
                 mapBody.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
-                    duration: 6000
+                    duration: zoomSpeed
                 });
             }
         },
-        offset: '99%'
+        offset: '50%'
     });
 }
 

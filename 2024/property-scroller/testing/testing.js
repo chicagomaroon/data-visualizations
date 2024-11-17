@@ -36,17 +36,17 @@ map.on('load', () => {
     //     ]
     // });
 
-    // convenants
-    // map.addSource('pic', {
-    //     type: 'image',
-    //     url: 'covenant_edit.png',
-    //     coordinates: [
-    //         [-87.76566748604431, 41.911287648040116],
-    //         [-87.5246834044871, 41.911287648040116], //
-    //         [-87.5246834044871, 41.70303671198906], //
-    //         [-87.76566748604431, 41.70303671198906]
-    //     ]
-    // });
+    //convenants;
+    map.addSource('covenants', {
+        type: 'image',
+        url: 'covenant_edit.png',
+        coordinates: [
+            [-87.77, 41.9102],
+            [-87.5246834044871, 41.914], //
+            [-87.5246834044871, 41.702], //
+            [-87.76566748604431, 41.7]
+        ]
+    });
 
     // // urban renewal
     // map.addSource('pic', {
@@ -81,21 +81,21 @@ map.on('load', () => {
     //     }
     // });
 
-    map.addSource('south_campus_plan', {
-        type: 'image',
-        url: 'south_campus_plan.jpg',
-        coordinates: [
-            [-87.60165, 41.786],
-            [-87.59755, 41.78605], //
-            [-87.5975, 41.78355],
-            [-87.60158, 41.78353]
-        ]
-    });
+    // map.addSource('south_campus_plan', {
+    //     type: 'image',
+    //     url: 'south_campus_plan.jpg',
+    //     coordinates: [
+    //         [-87.60165, 41.786],
+    //         [-87.59755, 41.78605], //
+    //         [-87.5975, 41.78355],
+    //         [-87.60158, 41.78353]
+    //     ]
+    // });
 
     map.addLayer({
-        id: 'south_campus_plan',
+        id: 'pic',
         type: 'raster',
-        source: 'south_campus_plan',
+        source: 'pic',
         paint: {
             'raster-opacity': 0.5
         }
