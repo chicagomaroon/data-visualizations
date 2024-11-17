@@ -1,5 +1,5 @@
 //TODO
-// explore map function
+//
 // max and min area
 
 // why is the page too wide????
@@ -12,8 +12,10 @@
 // https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
 
 // ------------------ DATA ------------------
-dataPath = 'data/with_era.geojson';
+dataPath = 'data/property_years_extended_11_9_24.geojson';
 otherPath = 'data/extra.geojson';
+let config = [];
+const zoomSpeed = 5000;
 
 // -------- CONSTANTS --------
 
@@ -85,6 +87,18 @@ function exploreMap() {
 
 // ------------ functions ------------
 
+// find value in config file
+
+function findConfigValue(id, value) {
+    for (chapter of config) {
+        for (subsection of chapter.subsections) {
+            if (subsection.id == id) {
+                return subsection[value];
+            }
+        }
+    }
+}
+
 //fade in opacity
 function fadeInLayer(layer, start, end, increment, time) {
     let opacity = start;
@@ -98,6 +112,10 @@ function fadeInLayer(layer, start, end, increment, time) {
 }
 
 function changeTimelineYear(targetYear) {
+    if (!targetYear) {
+        return;
+    }
+
     pause = 25;
 
     let currentYearM3 = document.getElementById('timeline-3').innerHTML,
@@ -215,8 +233,33 @@ let bodyLayers = [];
 function allLayers(map, type) {
     if (type == 'intro') {
         console.log('intro');
-        createLayerYears(map, 'startLayer', 1890, 1900);
-        createLayerYears(map, 'endLayer', 1890, 2025);
+        map.addLayer({
+            id: 'startLayer',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': '#800000',
+                'fill-opacity': 0,
+                'fill-opacity-transition': {
+                    duration: map == mapIntro ? 5000 : 1000
+                }
+            },
+            filter: ['==', ['get', 'quad_flag'], true]
+        });
+        map.addLayer({
+            id: 'endLayer',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': '#800000',
+                'fill-opacity': 0,
+                'fill-opacity-transition': {
+                    duration: map == mapIntro ? 5000 : 1000
+                }
+            }
+        });
     } else if (type == 'body') {
         for (let year = 1900; year <= 2025; year += 25) {
             layerName = 'layer' + String(year);
@@ -275,6 +318,29 @@ function createMap(
                 type: 'geojson',
                 data: otherPath
             });
+
+            // add all image overlay
+            // urban renewal 1955
+            map.addSource('south_campus_plan', {
+                type: 'image',
+                url: './static/images/south_campus_plan.jpg',
+                coordinates: [
+                    [-87.60165, 41.786],
+                    [-87.59755, 41.78605], //
+                    [-87.5975, 41.78355],
+                    [-87.60158, 41.78353]
+                ]
+            });
+
+            map.addLayer({
+                id: 'south_campus_plan',
+                type: 'raster',
+                source: 'south_campus_plan',
+                paint: {
+                    'raster-opacity': 0,
+                    'raster-opacity-transition': { duration: 1000 }
+                }
+            });
         }
         allLayers(map, layers);
 
@@ -297,7 +363,7 @@ function popupStuff(map_name) {
 
     // do all of this for all the layers :(
     for (l of bodyLayers) {
-        map_name.on('mousemove', l, (e) => {
+        map_name.on('mouseover', l, (e) => {
             const active =
                 document.querySelector('#explore-button').dataset.active;
             if (
@@ -308,10 +374,16 @@ function popupStuff(map_name) {
                 map_name.getCanvas().style.cursor = 'pointer';
 
                 const description =
+                    "<div class='popup'>" +
+                    "<div class = 'popup-label'>BUILDING NAME</div>" +
+                    '<h6>' +
                     e.features[0].properties.name +
-                    '<br>' +
-                    'Year Built: ' +
-                    e.features[0].properties.year_start;
+                    '</h6>' +
+                    "<div class = 'popup-label'> YEAR BUILT</div>" +
+                    '<h6>' +
+                    e.features[0].properties.year_start +
+                    '</h6>' +
+                    '</div>';
 
                 // Populate the popup and set its coordinates
                 // based on the feature found.
@@ -347,10 +419,10 @@ function processChapter(chapter) {
 
     let title_text_div = document.createElement('div');
     title_text_div.innerHTML =
-        '<p>Chapter ' +
+        '<p class = "num-chapter">Chapter ' +
         chapter.id +
         '</p>' +
-        '<hr>' +
+        // '<hr class = "line-chapter">' +
         '<p>' +
         chapter.chapterTitle +
         '</p>';
@@ -398,9 +470,6 @@ function processChapter(chapter) {
 // ------------ WAYPOINTS ------------
 
 function updateLayers(addYear, removeLayer) {
-    // update timeline
-    changeTimelineYear((targetYear = addYear));
-
     // remove layer
     filterOpacity(mapBody, removeLayer, false);
 
@@ -422,7 +491,7 @@ function introWaypoints() {
                 mapIntro.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
-                    duration: 3000
+                    duration: zoomSpeed
                 });
             }
         },
@@ -512,15 +581,29 @@ function waypoints() {
         element: document.getElementById('1.1'),
         handler: function (direction) {
             if (direction == 'down') {
+            } else {
+                mapBody.flyTo({
+                    center: ChiLocation,
+                    zoom: 12,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '99%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('1.1'),
+        handler: function (direction) {
+            if (direction == 'down') {
                 console.log('waypoint 1.1');
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
 
-                filterOpacity(mapBody, 'land_grant');
                 mapBody.flyTo({
                     center: uChiLocationSide,
                     zoom: 14.5,
-                    duration: 6000
+                    duration: 7000
                 });
             } else {
                 document.getElementById('explore-nav').style.visibility =
@@ -535,30 +618,122 @@ function waypoints() {
         element: document.getElementById('1.2'),
         handler: function (direction) {
             if (direction == 'down') {
-                console.log('waypoint 1.2');
-
-                const div = document.createElement('img');
-                div.src = 'static/images/1907_quad.jpg';
-                //showHighlight(div);
-
-                filterOpacity(mapBody, 'land_grant', false);
-                updateLayers(1900, 'layer1900');
+                filterOpacity(mapBody, 'land_grant');
+                timelineYear = findConfigValue('1.2', 'timeline_year');
+                console.log(timelineYear);
+                changeTimelineYear(timelineYear);
             } else {
                 console.log('waypoint 1.2 up');
                 updateLayers(1900, 'layer1925');
             }
         },
-        offset: '99%'
+        offset: '50%'
     });
 
     new Waypoint({
         element: document.getElementById('1.3'),
         handler: function (direction) {
             if (direction == 'down') {
-                console.log('waypoint 1.3');
-                hideHighlight();
+                timelineYear = findConfigValue('1.3', 'timeline_year');
+                changeTimelineYear(timelineYear);
+                filterOpacity(mapBody, 'land_grant', false);
+                updateLayers(1900, 'layer1900');
+            } else {
+                timelineYear = findConfigValue('1.2', 'timeline_year');
+                changeTimelineYear(timelineYear);
+
+                mapBody.setPaintProperty(
+                    'south_campus_plan',
+                    'raster-opacity',
+                    0
+                );
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14.5,
+                    duration: 1000
+                });
             }
-        }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('1.3a'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // highlight buildings
+            } else {
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
+                mapBody.setPaintProperty(
+                    'south_campus_plan',
+                    'raster-opacity',
+                    0
+                );
+            }
+        },
+        offset: '10%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('1.4'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                timelineYear = findConfigValue('1.4', 'timeline_year');
+                changeTimelineYear(timelineYear);
+
+                mapBody.setPaintProperty(
+                    'south_campus_plan',
+                    'raster-opacity',
+                    0.6
+                );
+
+                mapBody.flyTo({
+                    center: [-87.602, 41.7849],
+                    zoom: 16,
+                    duration: zoomSpeed
+                });
+            } else {
+                timelineYear = findConfigValue('1.3', 'timeline_year');
+                changeTimelineYear(timelineYear);
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('1.5'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                mapBody.setPaintProperty(
+                    'south_campus_plan',
+                    'raster-opacity',
+                    0
+                );
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
+                // show where football stadium was
+            } else {
+                mapBody.setPaintProperty(
+                    'south_campus_plan',
+                    'raster-opacity',
+                    0.6
+                );
+
+                mapBody.flyTo({
+                    center: [-87.602, 41.7849],
+                    zoom: 16,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
     });
     new Waypoint({
         element: document.getElementById('2.1'),
@@ -590,7 +765,7 @@ function waypoints() {
 // combine all into one function
 function init() {
     // create html elements from config
-    const config = JSON.parse(sessionStorage.getItem('config'));
+    config = JSON.parse(sessionStorage.getItem('config'));
     processConfig(config);
 
     // create maps

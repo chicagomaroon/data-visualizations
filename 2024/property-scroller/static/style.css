@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100..900;1,400..900&display=swap');
 
 :root {
-    --main-bg-color: #642822;
+    --main-bg-color: #4d0000;
 }
 
 * {
@@ -63,20 +64,27 @@ body {
     margin: auto;
     top: 0;
     width: 100%;
-    height: 800px;
 }
 
 .timeline-container {
     position: absolute;
-    align-content: center;
-    top: 20px;
-    left: 10px;
     height: fit-content;
+    z-index: 3;
+    left: 10px;
+    vertical-align: middle;
+}
+.timeline-inner {
+    font-family: Playfair Display;
+    background-color: black;
+    width: 70px;
+    height: 90%;
+
     border-radius: 5px;
+    margin-block: 10px;
+    left: 10px;
     padding: 10px;
     vertical-align: middle;
-    z-index: 3;
-    background-color: var(--main-bg-color);
+    align-content: center;
 }
 
 .timeline-text {
@@ -92,7 +100,6 @@ body {
 #map-body {
     height: 100%;
     margin: 0;
-    flex: 15;
 }
 
 #explore-nav {
@@ -111,6 +118,7 @@ body {
 }
 
 #explore-button {
+    font-family: Playfair Display;
     display: inline-block;
     float: left;
     background: white;
@@ -136,15 +144,28 @@ body {
     text-align: left;
     margin-left: 90px;
     line-height: 1.25;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 5px;
     z-index: 9999;
 }
 
 .scroller.s-intro {
-    font-size: 22px;
+    font-size: 20px;
+    width: 30%;
+}
+
+#step1 {
+    margin-top: -70vh;
+}
+
+#step2 {
+    margin-left: auto;
+    margin-right: 90px;
+}
+
+#step3 {
+    margin-bottom: 100vh;
     margin-inline: auto;
-    width: 40%;
 }
 
 .scroller.chapter {
@@ -152,7 +173,7 @@ body {
     width: 100%;
     margin: auto;
     padding: 0;
-    height: 75%;
+    height: 100%;
     background: black;
     border: grey solid 4px;
 }
@@ -163,7 +184,7 @@ body {
     height: 100%;
     margin: auto;
     object-fit: cover;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .scroller-image {
@@ -191,19 +212,28 @@ body {
     text-align: center;
     color: white;
     width: 80%;
+    margin-top: 20px;
 }
 
-#step1 {
-    margin-top: -70vh;
+.chapter-title p {
+    margin: 20px;
 }
 
-#step3 {
-    margin-bottom: 100vh;
+.num-chapter {
+    font-size: 30px;
+    font-family: Open Sans;
+}
+.line-chapter {
+    width: 20%;
 }
 
 .intro {
-    background-color: #642822;
+    background-color: var(--main-bg-color);
     color: white;
+}
+
+.intro hr {
+    opacity: 60%;
 }
 
 #intro-text {
@@ -221,7 +251,7 @@ body {
     font-size: 45px;
     font-weight: 600;
     z-index: 9999;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     line-height: 1.14;
 }
 
@@ -247,7 +277,7 @@ body {
 
 .article-text {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.5;
 }
 #chapters-container {
@@ -264,7 +294,7 @@ body {
 }
 
 #methodology {
-    background-color: #642822;
+    background-color: var(--main-bg-color);
 }
 
 .line-break {
@@ -289,6 +319,22 @@ body {
 }
 #methodology-text p {
     font-size: 12px;
+}
+
+.popup h6 {
+    font-size: 1.2em;
+    margin: 0;
+    margin-bottom: 3px;
+    padding: 0;
+    font-weight: bold;
+}
+
+.popup-label {
+    font-size: 0.7em;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    line-height: normal;
 }
 
 @media screen and (max-width: 800px) {

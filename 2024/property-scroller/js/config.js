@@ -1,50 +1,53 @@
 const config = [
     {
-        chapterTitle: 'Chapter 1: The Beginning',
+        chapterTitle: '1890-1933: The Cobb Plan',
+        chapterYears: '1890-1933',
         id: '1',
         image: './static/images/chapter1.jpg',
         subsections: [
             {
                 id: '1.1',
-                text: `In January 1890, prominent Hyde Park landowner Marshall Fields pledged 
-                        10 acres of his land—now the quad—to a new university. The site stretches 
-                        from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, 
-                        UChicago’s quadrangle takes shape.`,
+                text: `UChicago founder John D. Rockefeller commits $600,000 toward a “new institution of learning in Chicago.”`,
                 start_year: 1890,
                 end_year: 1900,
-                zoom: 17,
-                image: './static/images/og_uchi.jpg'
+                timeline_year: 1889,
+                zoom: 17
                 //pan: uChiLocation
             },
             {
                 id: '1.2',
-                text: `In 1892, architect Henry Ives Cobb draws up a master plan for the University. 
-                A neo-Gothic style, advocated for by trustees Ryerson and Hutchinson, aims to situate 
-                the University among storied European universities and “their ancient lineage of scholarship.” 
-                “The Gothic aesthetic allowed the new university to grant itself a sense of institutional 
-                legitimacy that belied its age,” Eldred writes.`,
+                text: `Prominent Hyde Park landowner Marshall Fields pledges 10 acres of his land to a new university. The site stretches from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, UChicago’s quadrangle takes shape.`,
                 start_year: 1900,
                 end_year: 1910,
-                image: './static/images/chapter1.jpg'
+                timeline_year: 1890,
+                image: './static/images/og_uchi.jpg'
             },
             {
                 id: '1.3',
-                text: `Over time, iconic buildings such as the Hutchinson Commons/Reynolds Club/Mitchell Tower/Mandel Hall complex (1903), Harper Memorial Library (1912), and Bond Chapel (1926) are completed. The Neo-Gothic buildings on the Main Quad were designed by five different architects/firms (Henry Ives Cobb; Dwight, Heald Perkins; Shepley, Rutan and Coolidge; Holabird and Roche; and Coolidge and Hodgdon).`
+                text: `Architect Henry Ives Cobb draws up a master plan for the University. A neo-Gothic style, advocated for by trustees Martin Ryerson and Charles Hutchinson, aims to situate the University among established, storied European universities. “The Gothic aesthetic allowed the new university to grant itself a sense of institutional legitimacy that belied its age,” Eldred writes.`,
+                timeline_year: 1892,
+                image: './static/images/chapter1.jpg'
+            },
+            {
+                id: '1.3a',
+                text: `Over time, iconic buildings are completed including Hutchinson Commons, Reynolds Club, Mitchell Tower, Mandel Hall, Harper Memorial Library, and Bond Chapel.`
             },
             {
                 id: '1.4',
-                text: `The end of this period is marked by a push to expand South to the area between 60th and 61st Streets and Ellis and University Avenues. One trustee, Frederic C. Woodward, argues for on-campus housing, wanting to emulate the Oxbridge tradition or the collegiate model of Oxford and Cambridge University. However, the only new building realized from this vision is Burton-Judson Courts, which opened in the autumn quarter of 1931. The full expansion would take place years later.`
+                text: `The University makes provisions to add on-campus housing. Architect Charles Klauder is commissioned to begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan is Burton-Judson Courts in 1931. It remains a commuter campus through the Great Depression.`,
+                timeline_year: 1927
             },
             {
-                id: 'closing1',
-                text: `During the first decades, the university stays cloistered from the rapidly growing Chicago metropolis.
-`
+                id: '1.5',
+                text: `While the campus was self-contained, a community-university relationship began slowly to form. When President William Rainey Harper hired sought-after coach Stagg, football culture and games at Stagg Field grew the University’s reputation among Chicagoans.`,
+                image: './static/images/football.jpg'
             }
         ]
     },
     {
         chapterTitle:
-            'The Problem of our Property: Racially-Restrictive Covenants, 1933–1948',
+            '1933–1948: The Problem of our Property: Racially-Restrictive Covenants',
+        chapterYears: '1933–1948',
         id: '2',
         image: './static/images/chapter2.jpg',
         subsections: [

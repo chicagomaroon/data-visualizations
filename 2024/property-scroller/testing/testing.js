@@ -21,13 +21,87 @@ map.on('load', () => {
         layout: {},
         paint: {
             'fill-color': '#800000',
-            'fill-opacity': 0.8,
+            'fill-opacity': 0,
             'fill-opacity-transition': { duration: 1000 }
         }
     });
+    // map.addSource('pic', {
+    //     type: 'image',
+    //     url: 'south.png',
+    //     coordinates: [
+    //         [-87.60604239816492, 41.78587818193077],
+    //         [-87.5914718984645, 41.78608103456102],
+    //         [-87.5914379346819, 41.784228542224554],
+    //         [-87.60600462554439, 41.78406161624358]
+    //     ]
+    // });
 
-    // todo
-    //map.setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
+    // convenants
+    // map.addSource('pic', {
+    //     type: 'image',
+    //     url: 'covenant_edit.png',
+    //     coordinates: [
+    //         [-87.76566748604431, 41.911287648040116],
+    //         [-87.5246834044871, 41.911287648040116], //
+    //         [-87.5246834044871, 41.70303671198906], //
+    //         [-87.76566748604431, 41.70303671198906]
+    //     ]
+    // });
+
+    // // urban renewal
+    // map.addSource('pic', {
+    //     type: 'image',
+    //     url: 'urban_renewal_1960.jpg',
+    //     coordinates: [
+    //         [-87.6069, 41.80970913038894],
+    //         [-87.574, 41.80970913038894], //
+    //         [-87.574, 41.78770955793823],
+    //         [-87.6065, 41.78770955793823]
+    //     ]
+    // });
+
+    // // urban renewal 1955
+    // map.addSource('pic', {
+    //     type: 'image',
+    //     url: 'ur_1955.jpg',
+    //     coordinates: [
+    //         [-87.6067, 41.81],
+    //         [-87.5795, 41.8105], //
+    //         [-87.5795, 41.78770955793823],
+    //         [-87.6062, 41.78770955793823]
+    //     ]
+    // });
+
+    // map.addLayer({
+    //     id: 'pic-layer',
+    //     type: 'raster',
+    //     source: 'pic',
+    //     paint: {
+    //         'raster-opacity': 0.9
+    //     }
+    // });
+
+    map.addSource('south_campus_plan', {
+        type: 'image',
+        url: 'south_campus_plan.jpg',
+        coordinates: [
+            [-87.60165, 41.786],
+            [-87.59755, 41.78605], //
+            [-87.5975, 41.78355],
+            [-87.60158, 41.78353]
+        ]
+    });
+
+    map.addLayer({
+        id: 'south_campus_plan',
+        type: 'raster',
+        source: 'south_campus_plan',
+        paint: {
+            'raster-opacity': 0.5
+        }
+    });
+
+    setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
 
     map.on('mouseenter', 'maineLayer', (e) => {
         // Change the cursor style as a UI indicator.
