@@ -338,7 +338,7 @@ function createMap(
                 source: 'south_campus_plan',
                 paint: {
                     'raster-opacity': 0,
-                    'raster-opacity-transition': { duration: 1000 }
+                    'raster-opacity-transition': { duration: zoomSpeed }
                 }
             });
         }

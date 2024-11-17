@@ -44,7 +44,7 @@ body {
 }
 
 .map-container-intro {
-    position: relative;
+    position: absolute;
     z-index: 1;
     margin: auto;
     top: 0;
@@ -155,7 +155,7 @@ body {
 }
 
 #step1 {
-    margin-top: -70vh;
+    margin-top: 40vh;
 }
 
 #step2 {
