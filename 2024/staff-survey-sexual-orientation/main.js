@@ -44,12 +44,12 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'Aromantic/Asexual',
                     pointText: 'identify as <b>Aromantic/Asexual</b>',
-                    y: 11
+                    y: 12
                 },
                 {
                     name: 'Bisexual',
                     pointText: 'identify as <b>Bisexual</b>',
-                    y: 32
+                    y: 33
                 },
                 {
                     name: 'Gay',
@@ -64,22 +64,17 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'Straight (Heterosexual)',
                     pointText: 'identify as <b>Straight/Heterosexual</b>',
-                    y: 48
+                    y: 44
                 },
                 {
                     name: 'Queer',
                     pointText: 'identify as <b>Queer</b>',
-                    y: 11
+                    y: 12
                 },
                 {
                     name: 'Questioning or unsure',
                     pointText: 'are <b>Questioning or Unsure</b>',
                     y: 9
-                },
-                {
-                    name: 'Prefer not to disclose',
-                    pointText: 'prefer not to disclose',
-                    y: 2
                 }
             ]
         }

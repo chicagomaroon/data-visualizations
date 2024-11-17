@@ -2,7 +2,15 @@
 // https://www.highcharts.com/demo
 Highcharts.chart('chart-div', {
     // Setting default colors
-    colors: ['#800000', '#FD4C4C', '#FFA319', '#FC0000', '#7D2525', '#C90000'],
+    colors: [
+        '#800000',
+        '#FD4C4C',
+        '#C16622',
+        '#FC0000',
+        '#7D2525',
+        '#C90000',
+        '#FFA319'
+    ],
 
     // All code for your chart goes here
     chart: {
@@ -44,35 +52,31 @@ Highcharts.chart('chart-div', {
             data: [
                 {
                     name: '< $65K',
-                    y: 4
+                    y: 5
                 },
                 {
                     name: '$65K to $100K',
-                    y: 7
+                    y: 10
                 },
                 {
                     name: '$100K to $150K',
-                    y: 14
+                    y: 20
                 },
                 {
                     name: '$150K to $200K',
-                    y: 4
+                    y: 5
                 },
                 {
                     name: '$200K to $250K',
-                    y: 7
+                    y: 10
                 },
                 {
                     name: '$250K to $500K',
-                    y: 14
+                    y: 20
                 },
                 {
                     name: 'More than $500K',
-                    y: 21
-                },
-                {
-                    name: 'Prefer not to disclose',
-                    y: 29
+                    y: 30
                 }
             ]
         }
