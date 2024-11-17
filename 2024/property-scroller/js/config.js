@@ -1,6 +1,6 @@
 const config = [
     {
-        chapterTitle: 'The Cobb Plan, 1890-1933',
+        chapterTitle: 'T1890-1933: The Cobb Plan',
         chapterYears: '1890-1933',
         id: '1',
         image: './static/images/chapter1.jpg',
@@ -46,7 +46,7 @@ const config = [
         ]
     },
     {
-        chapterTitle: 'Neighborhood Intervention, 1933-1948',
+        chapterTitle: '1933-1948: Neighborhood Intervention',
         chapterYears: '1933–1948',
         id: '2',
         image: './static/images/chapter2.jpg',
@@ -85,6 +85,24 @@ const config = [
                 text: `In 1948, the Shelley vs. Kramer Supreme Court case outlaws racial covenants.`,
                 timeline_year: 1948,
                 image: './static/images/shelleyvkramer.jpeg'
+            }
+        ]
+    },
+    {
+        chapterTitle:
+            '1949-1962: Urban Renewal and <br>“A Compatible Community”',
+        chapterYears: '1949-1962',
+        id: '3',
+        image: './static/images/urban_renewal_1960.jpg',
+        subsections: [
+            {
+                id: '3.1',
+                text: `The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal.”  It's the first American higher education institution to embark on a comprehensive urban renewal campaign. 
+                As early as 1945, in his State of the University message for that year Kimpton writes: “For the last 15 years, the University has steadily deteriorated, until today, I am ashamed to say, the University has the unfortunate distinction of having the worst-housed faculty in the U.S."`
+            },
+            {
+                id: '3.2',
+                text: `By the mid-1940s the black population in the area immediately surrounding the university was increasing: Hyde Park had 573 black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948. At the beginning of the 1950s, the crime rate in Hyde Park was the second highest in the city, according to beat cop Bob Mason. The university sees maintaining a “desirable” neighborhood as tied to its survival. “I believe we have found the answer. It is called "Urban Renewal"...it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities” —Julian Levi`
             }
         ]
     }

@@ -12,7 +12,7 @@
 // https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
 
 // ------------------ DATA ------------------
-dataPath = 'data/property_years_extended_11_9_24.geojson';
+dataPath = 'data/property_years_extended_11_17_24.geojson';
 otherPath = 'data/extra.geojson';
 let config = [];
 const zoomSpeed = 5000;
@@ -320,11 +320,15 @@ function createMap(
 
         if (type == 'body') {
             ids_1_3 = [
-                157655069.0, 157655073.0, 1228219576.0, 157655071.0,
-                156128082.0, 151173255.0
+                '157655069',
+                '157655073',
+                '1228219576',
+                '157655071',
+                '156128082',
+                '151173255'
             ];
 
-            ids_gothic = [1953426.0, 151173253.0];
+            ids_gothic = ['1953426', '151173253'];
             // add highlight layers
             map.addLayer({
                 id: 'highlight-1.3',
@@ -832,6 +836,32 @@ function waypoints() {
                 mapBody.flyTo({
                     center: [-87.71, 41.81],
                     zoom: 10.6,
+                    duration: zoomSpeed
+                });
+            } else {
+                console.log('waypoint 1.2 up');
+                updateLayers(1925, 'layer1950');
+                mapBody.flyTo({
+                    center: uChiLocation,
+                    zoom: 15.5,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('chapter3'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // remove demo chart
+
+                mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
+                updateLayers(1950, 'layer1935');
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14,
                     duration: zoomSpeed
                 });
             } else {
