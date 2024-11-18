@@ -255,7 +255,8 @@ function allLayers(map, type) {
                 'fill-opacity-transition': {
                     duration: map == mapIntro ? 5000 : 1000
                 }
-            }
+            },
+            filter: ['==', ['get', 'currently_exists'], true]
         });
     } else if (type == 'body') {
         for (let year = 1890; year <= 2025; year += 5) {
