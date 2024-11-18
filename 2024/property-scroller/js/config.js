@@ -31,7 +31,7 @@ const config = [
             },
             {
                 id: '1.3a',
-                text: `Over the next 40 years, iconic buildings are completed including <span class="highlight hScroller">Hutchinson Commons</span>, <span class="highlight hScroller">Reynolds Club</span>, <span class="highlight hScroller">Reynolds Club</span>,<span class="highlight hScroller">Mitchell Tower</span>, <span class="highlight hScroller">Mandel Hall</span>, <span class="highlight hScroller">Harper Memorial Library</span>, and <span class="highlight hScroller">Bond Chapel</span>.`
+                text: `Over the next 40 years, the core of what today we call the main campus is built, including iconic buildings such as <span class="highlight hScroller">Hutchinson Commons</span>, <span class="highlight hScroller">Reynolds Club</span>, <span class="highlight hScroller">Reynolds Club</span>,<span class="highlight hScroller">Mitchell Tower</span>, <span class="highlight hScroller">Mandel Hall</span>, <span class="highlight hScroller">Harper Memorial Library</span>, and <span class="highlight hScroller">Bond Chapel</span>.`
             },
             {
                 id: '1.4',

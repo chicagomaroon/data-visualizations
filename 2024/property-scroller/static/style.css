@@ -277,8 +277,8 @@ body {
     font-size: 45px;
     font-weight: 500;
     z-index: 9999;
-
-    line-height: 1.14;
+    padding-top: 7px;
+    line-height: 1.2;
 }
 
 #intro-text hr {
@@ -405,12 +405,48 @@ body {
 
 @media screen and (max-width: 800px) {
     .header img {
-        width: 40%;
+        width: 80%;
     }
-    .scroller {
-        width: 60%;
+
+    .scroller.s-intro {
+        width: 80%;
+        font-size: 22px;
+    }
+
+    #step2,
+    #step3 {
         margin-inline: auto;
-        font-size: 16px;
+    }
+
+    .seal-title {
+        width: 100px;
+    }
+
+    #title {
+        font-size: 30px;
+    }
+
+    #byline {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
+    #subtitle {
+        font-size: 23px;
+    }
+
+    .article-text {
+        font-size: 22px;
+    }
+
+    .chapter-title {
+        font-size: 40px;
+    }
+
+    .scroller {
+        width: 80%;
+        margin-inline: auto;
+        font-size: 22px;
     }
 
     .scroller-image {
@@ -422,6 +458,6 @@ body {
     }
 
     #methodology-text {
-        width: 80%;
+        width: 70%;
     }
 }
