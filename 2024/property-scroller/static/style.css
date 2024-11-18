@@ -331,6 +331,28 @@ body {
     height: auto;
 }
 
+.highlight {
+    color: white;
+    border-radius: 5px;
+    padding-block: 1.5px;
+    padding-inline: 5px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.current {
+    background-color: hsla(0, 100%, 25%, 0.6);
+}
+
+.former {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hScroller {
+    background-color: rgb(0, 0, 0);
+    padding-block: 0.5px;
+}
+
 #methodology {
     background-color: var(--main-bg-color);
 }

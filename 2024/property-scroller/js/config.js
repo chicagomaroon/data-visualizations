@@ -31,7 +31,7 @@ const config = [
             },
             {
                 id: '1.3a',
-                text: `Over the next 40 years, iconic buildings are completed including Hutchinson Commons, Reynolds Club, Mitchell Tower, Mandel Hall, Harper Memorial Library, and Bond Chapel.`
+                text: `Over the next 40 years, iconic buildings are completed including <span class="highlight hScroller">Hutchinson Commons</span>, <span class="highlight hScroller">Reynolds Club</span>, <span class="highlight hScroller">Reynolds Club</span>,<span class="highlight hScroller">Mitchell Tower</span>, <span class="highlight hScroller">Mandel Hall</span>, <span class="highlight hScroller">Harper Memorial Library</span>, and <span class="highlight hScroller">Bond Chapel</span>.`
             },
             {
                 id: '1.4',
@@ -40,7 +40,7 @@ const config = [
             },
             {
                 id: '1.5',
-                text: `While the campus was self-contained, a community-university relationship began slowly to form. When President William Rainey Harper hired sought-after coach Stagg, football culture and games at Stagg Field grew the University’s reputation among Chicagoans.`,
+                text: `While the campus was self-contained, a community-university relationship began slowly to form. When President William Rainey Harper hired sought-after coach Stagg, football culture and games at <span class="highlight hScroller">Stagg Field</span> grew the University’s reputation among Chicagoans.`,
                 image: './static/images/football.jpg'
             }
         ]

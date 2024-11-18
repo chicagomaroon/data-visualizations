@@ -250,13 +250,22 @@ function allLayers(map, type) {
             source: 'buildings',
             layout: {},
             paint: {
-                'fill-color': PRIMARY_COLOR,
+                'fill-color': [
+                    'case',
+                    ['==', ['get', 'currently_owned'], false],
+                    'black',
+                    PRIMARY_COLOR
+                ],
                 'fill-opacity': 0,
                 'fill-opacity-transition': {
                     duration: map == mapIntro ? 5000 : 1000
                 }
             },
-            filter: ['==', ['get', 'currently_exists'], true]
+            filter: [
+                'any',
+                ['==', ['get', 'currently_exists'], true],
+                ['==', ['get', 'currently_owned'], true]
+            ]
         });
     } else if (type == 'body') {
         for (let year = 1890; year <= 2025; year += 5) {
