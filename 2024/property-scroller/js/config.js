@@ -1,6 +1,6 @@
 const config = [
     {
-        chapterTitle: 'T1890-1933: The Cobb Plan',
+        chapterTitle: '1890-1933: The Cobb Plan',
         chapterYears: '1890-1933',
         id: '1',
         image: './static/images/chapter1.jpg',
@@ -31,11 +31,11 @@ const config = [
             },
             {
                 id: '1.3a',
-                text: `Over time, iconic buildings are completed including Hutchinson Commons, Reynolds Club, Mitchell Tower, Mandel Hall, Harper Memorial Library, and Bond Chapel.`
+                text: `Over the next 40 years, iconic buildings are completed including Hutchinson Commons, Reynolds Club, Mitchell Tower, Mandel Hall, Harper Memorial Library, and Bond Chapel.`
             },
             {
                 id: '1.4',
-                text: `The University makes provisions to add on-campus housing. Architect Charles Klauder is commissioned to begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan is Burton-Judson Courts in 1931. It remains a commuter campus through the Great Depression.`,
+                text: `Around 1927, the University makes provisions to add on-campus housing. Architect Charles Klauder is commissioned to begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan during this time is Burton-Judson Courts in 1931. The “South Campus Plan” is not revisited until the 1960s. Ultimately, the University remains a commuter campus through the Great Depression.`,
                 timeline_year: 1927
             },
             {

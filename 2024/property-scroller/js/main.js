@@ -481,6 +481,7 @@ function processChapter(chapter) {
         '<p class = "num-chapter">Chapter ' +
         chapter.id +
         '</p>' +
+        '<div class = "chapter-phoenix"> <img src="static/images/phoenix.svg" alt="Phoenix Logo" class = "chapter-phoenix"/></div>' +
         // '<hr class = "line-chapter">' +
         '<p>' +
         chapter.chapterTitle +
@@ -489,6 +490,7 @@ function processChapter(chapter) {
 
     let title_image_div = document.createElement('img');
     title_image_div.src = chapter.image;
+    title_image_div.className = 'chapter-image';
 
     title_div.appendChild(title_text_div);
     title_div.appendChild(title_image_div);
