@@ -85,8 +85,8 @@ async function processData(
                 jitter: 0.5,
                 pointpos: 0,
                 marker: {
-                    size: 10,
-                    color: 'blue'
+                    size: 8,
+                    color: colors[i]
                 },
                 fillcolor: 'rgba(0,0,0,0)',
                 line: {color: 'rgba(0,0,0,0)'},
