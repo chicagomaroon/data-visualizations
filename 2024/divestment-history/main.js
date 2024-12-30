@@ -265,9 +265,11 @@ async function init() {
         },
         width: 1200,
         height: 400,
-        showlegend: false
+        width: 1000,
+        showlegend: false,
         margin: {
-            l: 150
+            l: 100,
+            r: 0
         }
     };
 
