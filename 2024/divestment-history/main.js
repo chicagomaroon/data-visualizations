@@ -174,6 +174,9 @@ async function init() {
         width: 1200,
         height: 400,
         showlegend: false
+        margin: {
+            l: 150
+        }
     };
 
     Plotly.newPlot('chartDiv', traces, layout);
