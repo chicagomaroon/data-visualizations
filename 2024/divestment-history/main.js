@@ -82,17 +82,19 @@ async function processData(
                 x: [],
                 text: [],
                 boxpoints: 'all',
-                jitter: 0.5,
-                pointpos: 0,
+                jitter: 1, // so points don't overlap
+                pointpos: 0, // center points
                 marker: {
                     size: 8,
                     color: colors[i]
                 },
-                fillcolor: 'rgba(0,0,0,0)',
-                line: {color: 'rgba(0,0,0,0)'},
+                fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
+                line: {color: 'rgba(0,0,0,0)'}, // remove box part of boxplot
+                // hoverinfo: 'text',
                 hovertemplate: '%{text}<extra></extra>'
             };
             
+            // loop through data and add appropriate points for each group
             data.forEach(function(val) {
 
                 if (val[name_var]==uniqueCat[i]) {
@@ -107,7 +109,7 @@ async function processData(
             traces.push(trace);
         }
 
-        console.log(traces); // confirm data exists on page load
+        // console.log(traces); // confirm data exists on page load
         
         return traces;
 
