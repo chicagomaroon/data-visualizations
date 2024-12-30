@@ -50,12 +50,11 @@ function getUnique(data, variable) {
  */
 async function processData(
     data,
-    x_var,
-    y_var,
+    name_var,
 ) {
 
     try {
-        let uniqueCat = getUnique(data, x_var);
+        let uniqueCat = getUnique(data, name_var);
 
         // construct plotly "dataframe"
         var traces = [];
@@ -67,7 +66,7 @@ async function processData(
             let trace = {
                 type: 'box',
                 name: uniqueCat[i],
-                y: [],
+                x: [],
                 text: [],
                 boxpoints: 'all',
                 jitter: 0.5,
@@ -83,8 +82,8 @@ async function processData(
             
             data.forEach(function(val) {
 
-                if (val[x_var]==uniqueCat[i]) {
-                    trace.y.push(val[y_var]);
+                if (val[name_var]==uniqueCat[i]) {
+                    trace.x.push(val['Date of Event']);
                     trace.text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'] + '</a>');
                 }
                 
@@ -134,32 +133,26 @@ const fullOpacity = 0.6;
 
 async function init() {
     let data = await fetchData();
-    let uniqueCat = getUnique(data, 'Movement');
-    
-    let data2 = await processData(data, 'Movement','Date of Event');  
-    console.log(data);  
-    
-    console.log(uniqueCat);
+    // console.log(data);  
+
+    let traces = await processData(data,'Movement');  
+    console.log(traces);
 
     let layout = {
         title: {
             text: 'Test'
         },
         xaxis: {
-            type: 'category',
-            range: uniqueCat,
-            showgrid:'False',
-            showline:'False'
-        },
-        yaxis: {
+            showgrid:true,
+            showline:true,
             range: ['1966-1-1','2026-1-1'],
             type: 'date',
             // https://community.plotly.com/t/date-tick-formatting/11081/5
             dtick: 'M12',
             ticklabelstep: 4
         },
-        legend:{
-            'font_size':10,
+        yaxis: {
+            showgrid:false
         },
         hovermode:'closest',
         hoverlabel:{
@@ -170,7 +163,7 @@ async function init() {
         showlegend: false
     };
 
-    Plotly.newPlot('chartDiv', [data2], layout);
+    Plotly.newPlot('chartDiv', traces, layout);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
