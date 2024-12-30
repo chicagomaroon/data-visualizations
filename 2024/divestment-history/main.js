@@ -28,90 +28,65 @@ async function fetchData() {
  * @param  {[type]} foo [description]
  * @return {[type]}     [description]
  */
-function getUnique(data, variable) {
-
-    // get unique values of category variable
-    let categories = [];
-    data.forEach(function(val) {
-        categories.push(val[variable]);
-    })
-
-    var uniqueCat = new Set(categories);
-    var uniqueCat = Array.from(uniqueCat);
-
-    // console.log(uniqueCat);
-    return uniqueCat;
-}
-
-/**
- * [bar description]
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
- */
-async function processData(
+function processData(
     data,
     name_var,
 ) {
 
     try {
-        let uniqueCat = getUnique(data, name_var);
-
-        // construct plotly "dataframe"
-        var traces = [];
-
-        let colors = [
-            'rgb(128, 0, 0)',
-            'rgb(255, 163, 25)',
-            'rgb(193, 102, 34)',
-            'rgb(143, 57, 49)',
-            'rgb(138, 144, 69)',
-            'rgb(88, 89, 63)',
-            'rgb(21, 95, 131)',
-            'rgb(53, 14, 32)',
-            'rgb(71, 181, 255)',
-            'rgb(255, 51, 153)'
-        ]
-
-        // manually group data
-        for (var i=0; i<uniqueCat.length; i++) {
-            console.log(colors[i])
-            // boxplot specs
-            let trace = {
-                type: 'box',
-                name: uniqueCat[i],
-                x: [],
-                text: [],
-                boxpoints: 'all',
-                jitter: 1, // so points don't overlap
-                pointpos: 0, // center points
-                marker: {
-                    size: 8,
-                    color: colors[i]
-                },
-                fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
-                line: {color: 'rgba(0,0,0,0)'}, // remove box part of boxplot
-                // hoverinfo: 'text',
-                hovertemplate: '%{text}<extra></extra>'
-            };
-            
-            // loop through data and add appropriate points for each group
-            data.forEach(function(val) {
-
-                if (val[name_var]==uniqueCat[i]) {
-                    trace.x.push(val['Date of Event']);
-                    trace.text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'] + '</a>');
-                }
-                
-            });
-
-            // console.log(trace);
-
-            traces.push(trace);
+        colorbook = {
+            'Palestine': 'rgb(128, 0, 0)',
+            // 'rgb(255, 163, 25)',
+            'Fossil fuels':'rgb(193, 102, 34)',
+            'Uyghur rights':'rgb(143, 57, 49)',
+            'Labor rights':'rgb(138, 144, 69)',
+            'SRIC':'rgb(88, 89, 63)',
+            'Sudan':'rgb(21, 95, 131)',
+            'South Africa':'rgb(53, 14, 32)',
+            // 'rgb(71, 181, 255)',
+            // 'rgb(255, 51, 153)'
         }
 
-        // console.log(traces); // confirm data exists on page load
-        
-        return traces;
+        x = []
+        names = []
+        text = []
+
+        data.forEach(function(val) {
+            x.push(val['Date of Event']);
+            names.push(val[name_var]);
+            text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'] + '</a>');
+        });
+
+        // construct plotly "dataframe"
+        var trace = {
+            type: 'box',
+            name: names,
+            x: x,
+            text: text,
+            boxpoints: 'all',
+            jitter: 1, // so points don't overlap
+            pointpos: 0, // center points
+            marker: {
+                size: 8,
+                // color: colors
+            },
+            transforms: [{ 
+                type: "groupby", 
+                groups: names,
+                styles: names.map((group, i) => ({
+                    target: group,
+                    value: { marker: { color: colorbook[group] } } // Assign color based on group (cite: GPT)
+                })) 
+            }],
+            fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
+            line: {color: 'rgba(0,0,0,0)'}, // remove box part of boxplot
+            hoverinfo: 'text',
+            hovertemplate: '%{text}<extra></extra>'
+        }
+
+        // console.log(trace)
+
+        return trace;
 
     } catch (error) {
         console.error('Error processing data: ',error);
@@ -237,11 +212,12 @@ const fullOpacity = 0.6;
 // -------- MAIN --------
 
 async function init() {
-    let data = await fetchData();
+    var data = await fetchData();
     // console.log(data);  
 
-    let traces = await processData(data,'Movement');  
-    console.log(traces);
+    var traces = processData(data,'Movement');
+    // var admin_traces = processData(data,'Administration');
+    // console.log(traces);
 
     let layout = {
         title: {
