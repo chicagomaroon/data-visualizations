@@ -118,7 +118,97 @@ async function processData(
     }
 }
 
-new Waypoint({
+function timeWaypoint(div, timerange) {
+    keys = {
+        'palestine': [.5,1.5],
+        'fossil-fuels': [-.5,.5],
+        'uyghur-rights': [1.5,2.5],
+        'labor-rights': [2.5,3.5],
+        'sric': [3.5,4.5],
+        'sudan': [4.5,5.5],
+        'south-africa': [5.5,6.5]
+    }
+
+    new Waypoint({
+        // you can create a class 'active' with all css elements tied to the class instead of individual elements
+        
+        element: document.getElementById(div),
+        handler: function(direction) {
+            graphDiv = document.getElementById('chart-div')
+    
+            if (direction=='down') {
+                Plotly.animate('chart-div', {
+                    layout: {
+                      yaxis: {range: keys[div]},
+                      xaxis: {range: timerange},
+                      width: 400
+                    }
+                  }, {
+                    transition: {
+                      duration: 400,
+                      easing: 'linear'
+                    }
+                })
+            } else {
+
+                if (div=='palestine') {
+                    Plotly.animate('chart-div', {
+                        layout: {
+                            xaxis: {range: ['1966-1-1','2026-1-1']},
+                            yaxis: {range: [0,7]},
+                            width: 1000
+                        }
+                      }, {
+                        transition: {
+                            duration: 400,
+                            easing: 'linear'
+                        }
+                    })
+
+                } else {
+                    console.log(parseInt(timerange[1].substring(0, 4)) + 10)
+                    if (parseInt(timerange[1].substring(0, 4)) + 10 < 2028) {
+                        Plotly.animate('chart-div', {
+                            layout: {
+                                xaxis: {
+                                    range: [
+                                        (parseInt(timerange[0].substring(0, 4)) + 10) + '-1-1',
+                                        (parseInt(timerange[1].substring(0, 4)) + 10) + '-1-1'
+                                    ]
+                                },
+                                yaxis: {
+                                    range: [
+                                        keys[div][0]-1,
+                                        keys[div][1]-1
+                                    ]
+                                },
+                                width: 400
+                            }
+                          }, {
+                            transition: {
+                                duration: 400,
+                                easing: 'linear'
+                            }
+                        })
+                    }
+                }
+            }
+
+            
+        },
+        offset: '60%'
+    })
+}
+
+timeWaypoint('palestine',['2012-1-1','2026-1-1'])
+timeWaypoint('fossil-fuels',['2012-1-1','2026-1-1'])
+timeWaypoint('uyghur-rights',['2014-1-1','2018-1-1'])
+timeWaypoint('labor-rights',['2006-1-1','2016-1-1'])
+timeWaypoint('sric',['2006-1-1','2012-1-1'])
+timeWaypoint('sudan',['2004-1-1','2010-1-1'])
+timeWaypoint('south-africa',['1966-1-1','1980-1-1'])
+
+adminWP = new Waypoint({
     // you can create a class 'active' with all css elements tied to the class instead of individual elements
     
     element: document.getElementById('step1'),
