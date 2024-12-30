@@ -59,9 +59,22 @@ async function processData(
         // construct plotly "dataframe"
         var traces = [];
 
+        let colors = [
+            'rgb(128, 0, 0)',
+            'rgb(255, 163, 25)',
+            'rgb(193, 102, 34)',
+            'rgb(143, 57, 49)',
+            'rgb(138, 144, 69)',
+            'rgb(88, 89, 63)',
+            'rgb(21, 95, 131)',
+            'rgb(53, 14, 32)',
+            'rgb(71, 181, 255)',
+            'rgb(255, 51, 153)'
+        ]
+
         // manually group data
         for (var i=0; i<uniqueCat.length; i++) {
-
+            console.log(colors[i])
             // boxplot specs
             let trace = {
                 type: 'box',
