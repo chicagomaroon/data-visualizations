@@ -179,7 +179,7 @@ async function init() {
         }
     };
 
-    Plotly.newPlot('chartDiv', traces, layout);
+    Plotly.newPlot('chart-div', traces, layout);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
