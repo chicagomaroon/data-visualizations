@@ -73,9 +73,10 @@ function processData(
             transforms: [{ 
                 type: "groupby", 
                 groups: names,
+                // assign color based on group (cite: GPT)
                 styles: names.map((group, i) => ({
                     target: group,
-                    value: { marker: { color: colorbook[group] } } // Assign color based on group (cite: GPT)
+                    value: { marker: { color: colorbook[group] } } 
                 })) 
             }],
             fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
@@ -93,6 +94,18 @@ function processData(
     }
 }
 
+// async function makeTimeline(
+
+// ) {
+
+// }
+
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
 function timeWaypoint(div, timerange) {
     keys = {
         'palestine': [.5,1.5],
@@ -107,13 +120,12 @@ function timeWaypoint(div, timerange) {
     halfsize = Math.min(400, 50 * window.innerWidth)
 
     new Waypoint({
-        // you can create a class 'active' with all css elements tied to the class instead of individual elements
         
         element: document.getElementById(div),
         handler: function(direction) {
             graphDiv = document.getElementById('chart-div')
     
-            if (direction=='down') {
+            if (direction=='down') { // advance 10 years
                 Plotly.animate('chart-div', {
                     layout: {
                       yaxis: {range: keys[div]},
@@ -170,8 +182,6 @@ function timeWaypoint(div, timerange) {
                     }
                 }
             }
-
-            
         },
         offset: '60%'
     })
@@ -185,6 +195,12 @@ timeWaypoint('sric',['2006-1-1','2012-1-1'])
 timeWaypoint('sudan',['2004-1-1','2010-1-1'])
 timeWaypoint('south-africa',['1966-1-1','1980-1-1'])
 
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
 adminWP = new Waypoint({
     // you can create a class 'active' with all css elements tied to the class instead of individual elements
     
@@ -198,6 +214,12 @@ adminWP = new Waypoint({
     offset: '100%'
 })
 
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
 finalWP = new Waypoint({
     
     element: document.getElementById('further-reading'),
@@ -219,7 +241,14 @@ finalWP = new Waypoint({
     offset: '50%'
 })
 
-    let layout = {
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
+function createLayout() {
+    return {
         title: {
             text: 'Test'
         },
@@ -256,6 +285,12 @@ config = {
     // scrollZoom: true
 }
 
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
 function open_url(data){
     var info = data.points[0]
     var url = info.text.match(/href="(.*)" /);
@@ -264,6 +299,12 @@ function open_url(data){
     window.open(url[1], '_blank').focus();
 }
 
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
 function hide_box_hovers(data) {
     hoverLayer = document.querySelector('.hoverlayer')
     
