@@ -67,8 +67,8 @@ function processData(
             jitter: 1, // so points don't overlap
             pointpos: 0, // center points
             marker: {
-                size: 8,
-                // color: colors
+                size: 15,
+                opacity: .5
             },
             transforms: [{ 
                 type: "groupby", 
