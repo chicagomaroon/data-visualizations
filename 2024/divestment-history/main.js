@@ -104,6 +104,8 @@ function timeWaypoint(div, timerange) {
         'south-africa': [5.5,6.5]
     }
 
+    halfsize = Math.min(400, 50 * window.innerWidth)
+
     new Waypoint({
         // you can create a class 'active' with all css elements tied to the class instead of individual elements
         
@@ -116,7 +118,7 @@ function timeWaypoint(div, timerange) {
                     layout: {
                       yaxis: {range: keys[div]},
                       xaxis: {range: timerange},
-                      width: 400
+                      width: halfsize
                     }
                   }, {
                     transition: {
@@ -157,7 +159,7 @@ function timeWaypoint(div, timerange) {
                                         keys[div][1]-1
                                     ]
                                 },
-                                width: 400
+                                width: halfsize
                             }
                           }, {
                             transition: {
