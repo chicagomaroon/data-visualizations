@@ -132,7 +132,7 @@ function timeWaypoint(div, timerange) {
                     Plotly.animate('chart-div', {
                         layout: {
                             xaxis: {range: ['1966-1-1','2026-1-1']},
-                            yaxis: {range: [0,7]},
+                            yaxis: {range: [-.5,7.5]},
                             width: 1000
                         }
                       }, {
