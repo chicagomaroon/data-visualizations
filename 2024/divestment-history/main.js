@@ -86,7 +86,7 @@ function processData(
 
         // console.log(trace)
 
-        return trace;
+        return [trace];
 
     } catch (error) {
         console.error('Error processing data: ',error);
