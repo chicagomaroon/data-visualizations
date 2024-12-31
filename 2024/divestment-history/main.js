@@ -54,7 +54,7 @@ function processData(
         data.forEach(function(val) {
             x.push(val['Date of Event']);
             names.push(val[name_var]);
-            text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'] + '</a>');
+            text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'].replaceAll('\n', '<br>') + '</a>');
         });
 
         // construct plotly "dataframe"
