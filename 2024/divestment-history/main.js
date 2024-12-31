@@ -186,14 +186,6 @@ function timeWaypoint(div, timerange) {
     })
 }
 
-timeWaypoint('palestine',['2012-1-1','2026-1-1'])
-timeWaypoint('fossil-fuels',['2012-1-1','2026-1-1'])
-timeWaypoint('uyghur-rights',['2014-1-1','2018-1-1'])
-timeWaypoint('labor-rights',['2006-1-1','2016-1-1'])
-timeWaypoint('sric',['2006-1-1','2012-1-1'])
-timeWaypoint('sudan',['2004-1-1','2010-1-1'])
-timeWaypoint('south-africa',['1966-1-1','1980-1-1'])
-
 /**
  * [bar description]
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
@@ -339,6 +331,14 @@ async function init() {
 
     myPlot.on('plotly_click', open_url);
     myPlot.on('plotly_hover', hide_box_hovers);
+        
+    timeWaypoint('palestine',['2012-1-1','2026-1-1'])
+    timeWaypoint('fossil-fuels',['2012-1-1','2026-1-1'])
+    timeWaypoint('uyghur-rights',['2014-1-1','2018-1-1'])
+    timeWaypoint('labor-rights',['2006-1-1','2016-1-1'])
+    timeWaypoint('sric',['2006-1-1','2012-1-1'])
+    timeWaypoint('sudan',['2004-1-1','2010-1-1'])
+    timeWaypoint('south-africa',['1966-1-1','1980-1-1'])
 }
 
 document.addEventListener("DOMContentLoaded", function () {
