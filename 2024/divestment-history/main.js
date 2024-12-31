@@ -279,12 +279,6 @@ function createLayout() {
     };
 }
 
-config = {
-    modeBarButtonsToRemove: ['select2d','pan2d','lasso2d','autoscale','zoom2d'],
-    responsive: true,
-    // scrollZoom: true
-}
-
 /**
  * [bar description]
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
@@ -313,6 +307,19 @@ function hide_box_hovers(data) {
     } else {
         hoverLayer.style.display = 'block';
     }
+}
+
+// ------- CONSTANTS ------
+
+config = {
+    modeBarButtonsToRemove: ['select2d','pan2d','lasso2d','autoscale','zoom2d'],
+    responsive: true,
+    // scrollZoom: true
+}
+
+transition = {
+    duration: 400,
+    easing: 'linear'
 }
 
 // -------- MAIN --------
