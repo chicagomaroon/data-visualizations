@@ -140,45 +140,48 @@ function timeWaypoint(div, timerange) {
                 })
             } else {
 
-                if (div=='palestine') {
-                    Plotly.animate('chart-div', {
-                        layout: {
-                            xaxis: {range: ['1966-1-1','2026-1-1']},
-                            yaxis: {range: [-.5,7.5]},
-                            width: 1000
-                        }
-                      }, {
-                        transition: {
-                            duration: 400,
-                            easing: 'linear'
-                        }
-                    })
+                if (div=='palestine') { // top of story
+                    layout = {
+                        xaxis: {range: ['1966-1-1','2026-1-1']},
+                        yaxis: {range: [-.5,7.5]},
+                        width: 1000
+                    } 
 
-                } else {
-                    console.log(parseInt(timerange[1].substring(0, 4)) + 10)
-                    if (parseInt(timerange[1].substring(0, 4)) + 10 < 2028) {
-                        Plotly.animate('chart-div', {
-                            layout: {
-                                xaxis: {
-                                    range: [
-                                        (parseInt(timerange[0].substring(0, 4)) + 10) + '-1-1',
-                                        (parseInt(timerange[1].substring(0, 4)) + 10) + '-1-1'
-                                    ]
-                                },
-                                yaxis: {
-                                    range: [
-                                        keys[div][0]-1,
-                                        keys[div][1]-1
-                                    ]
-                                },
-                                width: halfsize
-                            }
-                          }, {
-                            transition: {
-                                duration: 400,
-                                easing: 'linear'
-                            }
-                        })
+                    Plotly.animate(
+                        'chart-div', 
+                        { layout: layout }, 
+                        { transition: transition }
+                    )
+
+                } else { // move back 10 years
+
+                    function minus10(year) {
+                        return (parseInt(year.substring(0, 4)) + 10)
+                    }
+
+                    layout = {
+                        xaxis: {
+                            range: [
+                                minus10(timerange[0]) + '-1-1',
+                                minus10(timerange[1]) + '-1-1'
+                            ]
+                        },
+                        yaxis: {
+                            range: [
+                                keys[div][0]-1,
+                                keys[div][1]-1
+                            ]
+                        },
+                        width: halfsize
+                    }
+
+                    // console.log(minus10(timerange[1]))
+                    if (minus10(timerange[1]) < 2028) {
+                        Plotly.animate(
+                            'chart-div', 
+                            { layout: layout }, 
+                            { transition: transition }
+                        )
                     }
                 }
             }
