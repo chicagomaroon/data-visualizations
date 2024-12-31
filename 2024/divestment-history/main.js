@@ -86,7 +86,6 @@ function processData(
         }
 
         // console.log(trace)
-
         return [trace];
 
     } catch (error) {
@@ -133,10 +132,7 @@ function timeWaypoint(div, timerange) {
                       width: halfsize
                     }
                   }, {
-                    transition: {
-                      duration: 400,
-                      easing: 'linear'
-                    }
+                    transition: transition
                 })
             } else {
 
