@@ -198,19 +198,6 @@ adminWP = new Waypoint({
     offset: '100%'
 })
 
-// let config = [];
-const zoomSpeed = 5000;
-PRIMARY_COLOR = '#800000';
-SECONDARY_COLOR = 'black';
-
-// try plotly jitter again
-// beeswarm (strip)
-// if not, then manually jitter
-
-// -------- CONSTANTS --------
-
-const fullOpacity = 0.6;
-
 // -------- MAIN --------
 
 async function init() {
@@ -220,6 +207,26 @@ async function init() {
     var traces = processData(data,'Movement');
     // var admin_traces = processData(data,'Administration');
     // console.log(traces);
+finalWP = new Waypoint({
+    
+    element: document.getElementById('further-reading'),
+    handler: function(direction) {
+        if (direction=='down') {
+            d3.selectAll('#chart-div')
+                .transition()
+                .duration(200)
+                .style("opacity", 0);
+            console.log('d3')
+        } else {
+            d3.selectAll('#chart-div')
+                .transition()
+                .duration(200)
+                .style("opacity", 1);
+            console.log('d3')
+        }        
+    },
+    offset: '50%'
+})
 
     let layout = {
         title: {
