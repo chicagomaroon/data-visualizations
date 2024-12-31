@@ -198,15 +198,6 @@ adminWP = new Waypoint({
     offset: '100%'
 })
 
-// -------- MAIN --------
-
-async function init() {
-    var data = await fetchData();
-    // console.log(data);  
-
-    var traces = processData(data,'Movement');
-    // var admin_traces = processData(data,'Administration');
-    // console.log(traces);
 finalWP = new Waypoint({
     
     element: document.getElementById('further-reading'),
@@ -257,8 +248,52 @@ finalWP = new Waypoint({
             r: 0
         }
     };
+}
 
-    Plotly.newPlot('chart-div', traces, layout);
+config = {
+    modeBarButtonsToRemove: ['select2d','pan2d','lasso2d','autoscale','zoom2d'],
+    responsive: true,
+    // scrollZoom: true
+}
+
+function open_url(data){
+    var info = data.points[0]
+    var url = info.text.match(/href="(.*)" /);
+    // console.log(url[1])
+
+    window.open(url[1], '_blank').focus();
+}
+
+function hide_box_hovers(data) {
+    hoverLayer = document.querySelector('.hoverlayer')
+    
+    if (data.points.length==7) {            
+        hoverLayer.style.display = 'none';
+    } else {
+        hoverLayer.style.display = 'block';
+    }
+}
+
+// -------- MAIN --------
+
+async function init() {
+    var data = await fetchData();
+    // console.log(data);  
+
+    var myPlot = document.getElementById('chart-div');
+    var hoverInfo = document.getElementById('hoverinfo');
+
+    Plotly.newPlot(
+        'chart-div', 
+        processData(data,'Movement'), 
+        createLayout(), 
+        config
+    );
+
+    console.log(myPlot);
+
+    myPlot.on('plotly_click', open_url);
+    myPlot.on('plotly_hover', hide_box_hovers);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
