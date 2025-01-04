@@ -1,6 +1,7 @@
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
 
 dataPath = '../data/with_era.geojson';
+shuttlePath = '../data/uchi_shuttle_lines.geojson';
 
 var map = new maplibregl.Map({
     container: 'map',
@@ -14,6 +15,10 @@ map.on('load', () => {
         type: 'geojson',
         data: dataPath
     });
+    // map.addSource('shuttleSource', {
+    //     type: 'geojson',
+    //     data: shuttlePath
+    // });
     map.addLayer({
         id: 'maineLayer',
         type: 'fill',
@@ -21,10 +26,40 @@ map.on('load', () => {
         layout: {},
         paint: {
             'fill-color': '#800000',
-            'fill-opacity': 0,
+            'fill-opacity': 1,
             'fill-opacity-transition': { duration: 1000 }
         }
     });
+
+    // map.addLayer({
+    //     id: 'shuttleLayer',
+    //     type: 'line',
+    //     source: 'shuttleSource',
+    //     layout: {},
+    //     paint: {
+    //         'line-color': [
+    //             'match',
+    //             ['get', 'color'],
+    //             'RED',
+    //             '#E23B3A',
+    //             'GREEN',
+    //             '#86E348',
+    //             'BLUE',
+    //             '#3AC6ED',
+    //             'PURPLE',
+    //             '#9738B8',
+    //             'ORANGE',
+    //             '#EE9E35',
+    //             'PINK',
+    //             '#ED62BE',
+    //             'YELLOW',
+    //             '#EAD851',
+    //             'black'
+    //         ],
+    //         'line-width': 4,
+    //         'line-opacity': 0.8
+    //     }
+    // });
     // map.addSource('pic', {
     //     type: 'image',
     //     url: 'south.png',
@@ -37,16 +72,28 @@ map.on('load', () => {
     // });
 
     //convenants;
-    map.addSource('covenants', {
+    map.addSource('south', {
         type: 'image',
-        url: 'covenant_edit.png',
+        url: 'south_1968.jpg',
         coordinates: [
-            [-87.77, 41.9102],
-            [-87.5246834044871, 41.914], //
-            [-87.5246834044871, 41.702], //
-            [-87.76566748604431, 41.7]
+            [-87.606042, 41.78644],
+            [-87.58968, 41.7867],
+            [-87.58961, 41.7843],
+            [-87.606, 41.784]
         ]
     });
+
+    // // south_1968
+    // map.addSource('covenants', {
+    //     type: 'image',
+    //     url: 'covenant_edit.png',
+    //     coordinates: [
+    //         [-87.77, 41.9102],
+    //         [-87.5246834044871, 41.914], //
+    //         [-87.5246834044871, 41.702], //
+    //         [-87.76566748604431, 41.7]
+    //     ]
+    // });
 
     // // urban renewal
     // map.addSource('pic', {
@@ -60,7 +107,7 @@ map.on('load', () => {
     //     ]
     // });
 
-    // // urban renewal 1955
+    // urban renewal 1955
     // map.addSource('pic', {
     //     type: 'image',
     //     url: 'ur_1955.jpg',
@@ -77,7 +124,7 @@ map.on('load', () => {
     //     type: 'raster',
     //     source: 'pic',
     //     paint: {
-    //         'raster-opacity': 0.9
+    //         'raster-opacity': 0.5
     //     }
     // });
 
@@ -95,18 +142,17 @@ map.on('load', () => {
     map.addLayer({
         id: 'pic',
         type: 'raster',
-        source: 'pic',
+        source: 'south',
         paint: {
-            'raster-opacity': 0.5
+            'raster-opacity': 0.0
         }
     });
 
-    setFilter('collisions', ['==', ['number', ['get', 'Hour']], hour]);
-
-    map.on('mouseenter', 'maineLayer', (e) => {
+    map.on('click', 'maineLayer', (e) => {
         // Change the cursor style as a UI indicator.
         map.getCanvas().style.cursor = 'pointer';
-        console.log(e);
+        console.log(e.features[0].properties);
+        console.log(e.features[0].properties.era);
     });
 });
 

@@ -1,23 +1,17 @@
 //TODO
-//
-// max and min area
+//nice to have
+//      add center of polygon for popup
+//      max and min area
+//      edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
 
-// why is the page too wide????
-
-// loading at start up
-
-// edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
-
-// hover options
-// https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
+//maybe
+//      hover options
+//      https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
 
 // ------------------ DATA ------------------
-dataPath = 'data/property_years_extended_11_17_24.geojson';
+dataPath = 'data/property_years_extended_12_27_24.geojson';
 otherPath = 'data/extra.geojson';
 let config = [];
-const zoomSpeed = 5000;
-PRIMARY_COLOR = '#800000';
-SECONDARY_COLOR = 'black';
 
 // -------- CONSTANTS --------
 
@@ -27,16 +21,77 @@ const hydeParkLocation = [-87.5965, 41.795];
 const hpLocationSide = [-87.606, 41.795];
 const uChiLocationSide = [-87.606, 41.78955];
 
+const zoomSpeed = 5000;
+PRIMARY_COLOR = '#800000';
+SECONDARY_COLOR = 'black';
+let currentCenter = [];
+let currentZoom = 0;
+let activePopups = [];
+
 const fullOpacity = 0.6;
 const nav = new maplibregl.NavigationControl();
 
 // -------- HELPER FUNCTIONS --------
 
+function highlightPopup(ids) {
+    activeLayer = findActiveLayerName(mapBody);
+    const features = mapBody.queryRenderedFeatures({ layers: [activeLayer] });
+
+    // Filter features based on ID
+    const selectedFeatures = features.filter((feature) =>
+        ids.includes(feature.properties.id)
+    );
+
+    // Show popup for each selected feature
+    selectedFeatures.forEach((feature) => {
+        const description =
+            "<div class='popup'>" +
+            "<div class = 'popup-label'>BUILDING NAME</div>" +
+            '<h6>' +
+            feature.properties.name +
+            '</h6>' +
+            "<div class = 'popup-label'> YEAR BUILT</div>" +
+            '<h6>' +
+            feature.properties.year_start +
+            '</h6>' +
+            '</div>';
+        // TODO centeriod of polygon instead of first point
+
+        const coordinates = feature.geometry.coordinates[0][0];
+        const popup = new maplibregl.Popup({
+            closeButton: false,
+            className: 'popup-highlight'
+        })
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(mapBody);
+        activePopups.push(popup);
+    });
+}
+
+function removePopups() {
+    activePopups.forEach((popup) => popup.remove());
+    activePopups = [];
+}
+
+function findActiveLayerName(map) {
+    layers = map.getStyle().layers;
+    activeLayer = layers.filter(
+        (layer) =>
+            layer.paint &&
+            layer.paint['fill-opacity'] > 0 &&
+            layer.id.includes('layer')
+    );
+    return activeLayer[0].id;
+}
+
 function exploreMap() {
     const active = document.querySelector('#explore-button').dataset.active;
-    console.log(active);
 
     if (active == 'Story') {
+        // update current map location to return to
+        currentZoom = mapBody.getZoom();
+        currentCenter = mapBody.getCenter();
         // exploring map
 
         // change text and flag
@@ -73,8 +128,8 @@ function exploreMap() {
         // return to where we were
         //location = [center, zoom]
         mapBody.flyTo({
-            center: uChiLocation,
-            zoom: 15,
+            center: currentCenter,
+            zoom: currentZoom,
             duration: 2000
         });
 
@@ -86,11 +141,7 @@ function exploreMap() {
         mapBody.removeControl(nav);
     }
 }
-
-// ------------ functions ------------
-
 // find value in config file
-
 function findConfigValue(id, value) {
     for (chapter of config) {
         for (subsection of chapter.subsections) {
@@ -162,28 +213,6 @@ function changeTimelineYear(targetYear) {
     incrementCounter();
 }
 
-function showHighlight(div) {
-    highlightLayer = document.querySelector('#highlight-layer');
-    highlightLayer.innerHTML = '';
-    highlightLayer.appendChild(div);
-    // show highlight layer
-    highlightLayer.style.opacity = 0;
-    highlightLayer.style.visibility = 'visible';
-    // lower opacity of map
-    document.querySelector('#map-body').style.opacity = 0.3;
-    // fade in
-    fadeInLayer(highlightLayer, 0, 1, 0.005, 5);
-}
-
-function hideHighlight() {
-    // hide highlight layer
-    highlightLayer = document.querySelector('#highlight-layer');
-    highlightLayer.innerHTML = '';
-    highlightLayer.style.visibility = 'hidden';
-
-    // return map opacity
-    document.querySelector('#map-body').style.opacity = 1;
-}
 // -------- MAP FUNCTIONS ---------
 
 function createLayerOther(map_name, layerName, filter) {
@@ -229,7 +258,6 @@ let bodyLayers = [];
 
 function allLayers(map, type) {
     if (type == 'intro') {
-        console.log('intro');
         map.addLayer({
             id: 'startLayer',
             type: 'fill',
@@ -270,7 +298,7 @@ function allLayers(map, type) {
     } else if (type == 'body') {
         for (let year = 1890; year <= 2025; year += 5) {
             layerName = 'layer' + String(year);
-            // console.log(layerName);
+
             bodyLayers.push(layerName);
             createLayerYears(map, layerName, 1890, year);
         }
@@ -280,6 +308,41 @@ function allLayers(map, type) {
             ['get', 'name'],
             'og_land_grant'
         ]);
+
+        map.addSource('shuttles', {
+            type: 'geojson',
+            data: 'data/uchi_shuttle_lines.geojson'
+        });
+
+        map.addLayer({
+            id: 'shuttles',
+            type: 'line',
+            source: 'shuttles',
+            layout: {},
+            paint: {
+                // line color based on color attribute
+                'line-color': [
+                    'case',
+                    ['==', ['get', 'color'], 'BLUE'],
+                    '#31C8F1',
+                    ['==', ['get', 'color'], 'GREEN'],
+                    '#86E23C',
+                    ['==', ['get', 'color'], 'RED'],
+                    '#E13736',
+                    ['==', ['get', 'color'], 'PURPLE'],
+                    '#9233B6',
+                    ['==', ['get', 'color'], 'YELLOW'],
+                    '#EAD946',
+                    ['==', ['get', 'color'], 'ORANGE'],
+                    '#EE9D21',
+                    ['==', ['get', 'color'], 'PINK'],
+                    '#ED61BE',
+                    'black'
+                ],
+                'line-width': 5,
+                'line-opacity': 0
+            }
+        });
     }
 }
 
@@ -311,10 +374,12 @@ function createMap(
         dragPan: false,
         pitchWithRotate: false,
         dragRotate: false,
-        touchZoomRotate: false
+        touchZoomRotate: false,
+        attributionControl: { compact: true }
         // TODO
         // maxBounds: bounds
     });
+
     map.on('load', () => {
         map.addSource('buildings', {
             type: 'geojson',
@@ -329,44 +394,9 @@ function createMap(
         allLayers(map, layers);
 
         if (type == 'body') {
-            ids_1_3 = [
-                '157655069',
-                '157655073',
-                '1228219576',
-                '157655071',
-                '156128082',
-                '151173255'
-            ];
+            ids_1_3 = ['157655073', '156128082'];
 
             ids_gothic = ['1953426', '151173253'];
-            // add highlight layers
-            map.addLayer({
-                id: 'highlight-1.3',
-                type: 'fill',
-                source: 'buildings',
-                layout: {},
-                paint: {
-                    'fill-color': SECONDARY_COLOR,
-                    'fill-opacity': 0,
-                    'fill-opacity-transition': { duration: 1000 }
-                },
-                // filter where osm_id is in a list
-                filter: ['in', ['get', 'osm_id'], ['literal', ids_1_3]]
-            });
-
-            map.addLayer({
-                id: 'highlight-gothic',
-                type: 'fill',
-                source: 'buildings',
-                layout: {},
-                paint: {
-                    'fill-color': SECONDARY_COLOR,
-                    'fill-opacity': 0,
-                    'fill-opacity-transition': { duration: 1000 }
-                },
-                // filter where osm_id is in a list
-                filter: ['in', ['get', 'osm_id'], ['literal', ids_gothic]]
-            });
 
             // add all image overlay
             // urban renewal 1955
@@ -406,6 +436,49 @@ function createMap(
                 id: 'covenants',
                 type: 'raster',
                 source: 'covenants',
+                paint: {
+                    'raster-opacity': 0,
+                    'raster-opacity-transition': { duration: 2000 }
+                }
+            });
+
+            // urban renewal
+            map.addSource('urban_renewal_1960', {
+                type: 'image',
+                url: './static/images/urban_renewal_1960.jpg',
+                coordinates: [
+                    [-87.6069, 41.80970913038894],
+                    [-87.574, 41.80970913038894], //
+                    [-87.574, 41.78770955793823],
+                    [-87.6065, 41.78770955793823]
+                ]
+            });
+
+            map.addLayer({
+                id: 'urban_renewal_1960',
+                type: 'raster',
+                source: 'urban_renewal_1960',
+                paint: {
+                    'raster-opacity': 0,
+                    'raster-opacity-transition': { duration: 2000 }
+                }
+            });
+
+            map.addSource('south_roads', {
+                type: 'image',
+                url: './static/images/south_1968.jpg',
+                coordinates: [
+                    [-87.606042, 41.78644],
+                    [-87.58968, 41.7867],
+                    [-87.58961, 41.7843],
+                    [-87.606, 41.784]
+                ]
+            });
+
+            map.addLayer({
+                id: 'south_roads',
+                type: 'raster',
+                source: 'south_roads',
                 paint: {
                     'raster-opacity': 0,
                     'raster-opacity-transition': { duration: 2000 }
@@ -473,7 +546,6 @@ function popupStuff(map_name) {
 function processConfig(config) {
     // config file is an  object with each chapter is an attribute
     for (const chapter of config) {
-        //console.log(config[chapter])
         processChapter(chapter);
     }
 }
@@ -481,7 +553,7 @@ function processConfig(config) {
 function processChapter(chapter) {
     // a chapter is object with title:str and subsection:array of objects
     // create title div
-    //console.log(chapter.title);
+
     let title_div = document.createElement('div');
     title_div.className = 'scroller chapter';
     title_div.id = 'chapter' + chapter.id;
@@ -514,11 +586,34 @@ function processChapter(chapter) {
         // if there is a photo add it above text in a new div
 
         if (subsection.image) {
-            console.log('image');
             let image_div = document.createElement('img');
             image_div.src = subsection.image;
             image_div.className = 'scroller-image';
             subsection_div.appendChild(image_div);
+            let credit = document.createElement('p');
+            credit.className = 'credit';
+            credit.innerHTML = subsection.image_credit;
+            subsection_div.appendChild(credit);
+        }
+
+        if (subsection.quote) {
+            let quote_div = document.createElement('p');
+            quote_div.className = 'quote';
+            let quoteText = document.createElement('p');
+            quoteText.innerHTML = subsection.quote;
+            quoteText.className = 'quoteText';
+            let quoteAuthor = document.createElement('p');
+            quoteAuthor.className = 'quoteAuthor';
+            quoteAuthor.innerHTML = '-' + subsection.quoteAuthor;
+
+            quote_div.appendChild(quoteText);
+            quote_div.appendChild(quoteAuthor);
+            subsection_div.appendChild(quote_div);
+
+            let credit = document.createElement('p');
+            credit.className = 'credit';
+            credit.innerHTML = subsection.quoteSource;
+            subsection_div.appendChild(credit);
         }
 
         subsection_div.className = 'scroller';
@@ -553,9 +648,7 @@ function introWaypoints() {
         element: document.getElementById('step1'),
         handler: function (direction) {
             if (direction == 'down') {
-                console.log('waypoint1');
             } else {
-                console.log('waypoint1 up');
                 filterOpacity(mapIntro, 'endLayer', false);
                 filterOpacity(mapIntro, 'startLayer', true);
 
@@ -572,7 +665,6 @@ function introWaypoints() {
     new Waypoint({
         element: document.getElementById('step2'),
         handler: function () {
-            console.log('waypoint2');
             filterOpacity(mapIntro, 'startLayer', false);
 
             filterOpacity(mapIntro, 'endLayer', true);
@@ -600,40 +692,6 @@ function introWaypoints() {
 }
 
 function bodyWaypoints() {
-    //   for (const chapter of config) {
-    //     for (const subsection of chapter.subsections) {
-    //     //console.log(config[chapter])
-    //         new Waypoint({
-    //         element: document.getElementById(subsection.id),
-    //         handler: function (direction) {
-    //             if (direction == "down") {
-    //                 const data = dataAll.features.filter(d => d.properties.year_start >= subsection.start_year && d.properties.year_start <= subsection.end_year)
-    //                 //bodyAllBuildings.clearLayers();
-    //                 layers[subsection.id] = L.geoJSON(data, {style: buildingStyleShow}).addTo(mapBody);
-    //                     mapBody.flyTo(uChiLocation, subsection.zoom, {
-    //                         animate: true,
-    //                         duration: 3
-    //                         });
-    //                 fadeInLayerLeaflet(layers[subsection.id], 0,.5, 0.005, 5)
-    //             } else {
-    //                 mapBody.removeLayer(layers[subsection.id])
-    //             }},
-    //         offset: offset,
-    //     });
-    //   }}
-}
-
-// create all waypoint triggers
-function waypoints() {
-    let offset = '50%';
-
-    // fade in to start
-    intro = document.querySelector('#intro');
-    fadeInLayer(intro, 0, 1, 0.002, 5);
-
-    // intro way points
-    introWaypoints();
-
     new Waypoint({
         element: document.getElementById('chapters-container'),
         handler: function (direction) {
@@ -667,7 +725,6 @@ function waypoints() {
         element: document.getElementById('1.1'),
         handler: function (direction) {
             if (direction == 'down') {
-                console.log('waypoint 1.1');
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
 
@@ -693,7 +750,6 @@ function waypoints() {
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
             } else {
-                console.log('waypoint 1.2 up');
                 updateLayers(1895, 'layer1925');
                 filterOpacity(mapBody, 'land_grant', true);
                 filterOpacity(mapBody, 'layer1895', false);
@@ -733,11 +789,13 @@ function waypoints() {
         element: document.getElementById('1.3a'),
         handler: function (direction) {
             if (direction == 'down') {
-                // highlight buildings
-                filterOpacity(mapBody, 'highlight-1.3', true, 1);
                 updateLayers(1930, 'layer1895');
+                // highlight popups
+                highlightPopup(ids_1_3);
+
                 changeTimelineYear(1930);
             } else {
+                removePopups();
                 mapBody.flyTo({
                     center: uChiLocationSide,
                     zoom: 14.5,
@@ -752,9 +810,9 @@ function waypoints() {
         element: document.getElementById('1.4'),
         handler: function (direction) {
             if (direction == 'down') {
+                removePopups();
                 timelineYear = findConfigValue('1.4', 'timeline_year');
                 updateLayers(1935, 'layer1930');
-                filterOpacity(mapBody, 'highlight-1.3', false);
                 changeTimelineYear(1935);
 
                 mapBody.setPaintProperty(
@@ -790,8 +848,14 @@ function waypoints() {
                     zoom: 14.5,
                     duration: zoomSpeed
                 });
+                // timeout then add popup
+                setTimeout(() => {
+                    highlightPopup(['72']);
+                }, 2000);
+
                 // show where football stadium was
             } else {
+                removePopups();
                 mapBody.setPaintProperty(
                     'south_campus_plan',
                     'raster-opacity',
@@ -809,10 +873,20 @@ function waypoints() {
     });
 
     new Waypoint({
+        element: document.getElementById('chapter2'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                removePopups();
+            }
+        }
+    });
+
+    new Waypoint({
         element: document.getElementById('end_gothic'),
         handler: function (direction) {
             if (direction == 'down') {
-                filterOpacity(mapBody, 'highlight-gothic', true, 1);
+                highlightPopup(ids_gothic);
+                //filterOpacity(mapBody, 'highlight-gothic', true, 1);
             } else {
             }
         },
@@ -824,6 +898,7 @@ function waypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 // add demo map
+                removePopups();
                 filterOpacity(mapBody, 'highlight-gothic', false);
             } else {
                 mapBody.flyTo({
@@ -851,7 +926,6 @@ function waypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                console.log('waypoint 1.2 up');
                 updateLayers(1925, 'layer1950');
                 mapBody.flyTo({
                     center: uChiLocation,
@@ -867,17 +941,16 @@ function waypoints() {
         element: document.getElementById('chapter3'),
         handler: function (direction) {
             if (direction == 'down') {
-                // remove demo chart
-
+                removePopups();
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950, 'layer1935');
+                changeTimelineYear(1950);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
+                    center: [-87.60278337713892, 41.79910939443005],
                     zoom: 14,
                     duration: zoomSpeed
                 });
             } else {
-                console.log('waypoint 1.2 up');
                 updateLayers(1925, 'layer1950');
                 mapBody.flyTo({
                     center: uChiLocation,
@@ -888,6 +961,195 @@ function waypoints() {
         },
         offset: '50%'
     });
+
+    new Waypoint({
+        element: document.getElementById('3.1'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // add overlay
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.6
+                );
+            } else {
+                updateLayers(1950, 'layer1955');
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('3.2'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // fly to A B Zoom in
+                mapBody.flyTo({
+                    center: [-87.59551281193906, 41.796688484805856],
+                    zoom: 15,
+                    duration: zoomSpeed
+                });
+                updateLayers(1955, 'layer1950');
+                changeTimelineYear(1955);
+            } else {
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('3.3'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // fly to Southwest Hyde Park Redevelopment Corporation
+                mapBody.flyTo({
+                    center: [-87.6082519319518, 41.7935107582129],
+                    zoom: 15,
+                    duration: zoomSpeed
+                });
+            } else {
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('3.4'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // fly to whole plan
+                mapBody.flyTo({
+                    center: [-87.60278337713892, 41.79910939443005],
+                    zoom: 14,
+                    duration: zoomSpeed
+                });
+                updateLayers(1960, 'layer1950');
+                changeTimelineYear(1958);
+            } else {
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('3.5'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // fly to south campus
+                mapBody.flyTo({
+                    center: [-87.6028193070742, 41.7851952871184],
+                    zoom: 14,
+                    duration: zoomSpeed
+                });
+            } else {
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('3.6'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
+            } else {
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('chapter4'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // remove map
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0
+                );
+            } else {
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.6
+                );
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.2'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // remove map
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0
+                );
+            } else {
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.6
+                );
+            }
+        },
+        offset: '50%'
+    });
+}
+
+// create all waypoint triggers
+function waypoints() {
+    let offset = '50%';
+
+    // fade in to start
+    intro = document.querySelector('#intro');
+    fadeInLayer(intro, 0, 1, 0.002, 5);
+
+    introWaypoints();
+    bodyWaypoints();
 }
 
 // ------------ MAIN ------------
@@ -902,11 +1164,9 @@ function init() {
     mapBody = createMap('map-body', 'body', ChiLocation, 12);
     popupStuff(mapBody);
 
-    // figure out start loading
     mapIntro.on('style.load', () => {
         const waiting = () => {
             if (!mapIntro.isStyleLoaded()) {
-                console.log('waiting');
                 setTimeout(waiting, 200);
             } else {
                 filterOpacity(mapIntro, 'startLayer', true);
@@ -918,8 +1178,6 @@ function init() {
     // create waypoints
     waypoints();
 }
-
-// run everything on dom load
 
 // ------------ TESTING ------------
 

@@ -2,6 +2,7 @@
 
 :root {
     --main-bg-color: #4d0000;
+    --maroon_color: #800000;
 }
 
 * {
@@ -20,7 +21,7 @@ body {
 }
 
 #maroon-text {
-    background-color: #800000;
+    background-color: var(--maroon_color);
     border-radius: 5px;
     color: white;
     padding: 3px;
@@ -132,19 +133,26 @@ body {
 .scroller {
     position: relative;
     background-color: rgba(255, 255, 255);
-    /*border: 1px black solid; */
     padding: 20px;
-    /* margin-left: 100px; */
-    width: 35%;
+    width: 37%;
     margin-top: 100vh;
     margin-bottom: 20vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     text-align: left;
     margin-left: 90px;
-    line-height: 1.25;
+    line-height: 1.4;
     font-size: 20px;
     border-radius: 5px;
     z-index: 9999;
+}
+
+.scroller a {
+    color: var(--maroon_color);
+    text-decoration: none;
+}
+
+.scroller a:hover {
+    text-decoration: underline;
 }
 
 .scroller.s-intro {
@@ -197,7 +205,12 @@ body {
     max-height: 250px;
     max-width: 100%;
     margin-inline: auto;
-    margin-bottom: 20px;
+}
+
+.credit {
+    font-size: 12px;
+    text-align: right;
+    margin-top: 6px;
 }
 
 #last-scroller {
@@ -316,7 +329,7 @@ body {
 .article-text {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
-    line-height: 1.5;
+    line-height: 1.7;
 }
 #chapters-container {
     opacity: 0;
@@ -340,17 +353,39 @@ body {
     box-decoration-break: clone;
 }
 
+.highlight.explore {
+    color: #333;
+    font-family: Playfair Display;
+    border: 2px solid #333;
+    font-size: 0.9em;
+    padding-block: 0;
+}
+
 .current {
-    background-color: hsla(0, 100%, 25%, 0.6);
+    background-color: hsla(0, 100%, 25%, 0.8);
 }
 
 .former {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .hScroller {
-    background-color: rgb(0, 0, 0);
+    background-color: hsla(0, 100%, 25%, 0.8);
     padding-block: 0.5px;
+}
+
+.quote {
+    font-family: Courier New;
+    line-height: 1.2;
+    font-size: 16px;
+    padding: 20px;
+    background-color: #f8f3e8;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+    margin: 0;
+}
+
+.quoteAuthor {
+    text-align: right;
 }
 
 #methodology {
@@ -401,6 +436,15 @@ body {
     padding: 0;
     font-weight: normal;
     line-height: normal;
+}
+
+.mapboxgl-popup-close-button {
+    display: none;
+}
+
+.maplibregl-popup-content {
+    background-color: rgba(255, 255, 255, 0.86);
+    border: 1px solid #ccc;
 }
 
 @media screen and (max-width: 800px) {

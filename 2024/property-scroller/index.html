@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- external builds -->
         <script src="js/noframework.waypoints.min.js"></script>
-        <script src="https://unpkg.com/maplibre-gl@4.6.0/dist/maplibre-gl.js"></script>
+        <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <link
-            href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css"
+            href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
             rel="stylesheet"
         />
         <link
@@ -32,9 +32,15 @@
                 <figure id="map-intro"></figure>
             </div>
             <div class="scroller s-intro" id="step1">
-                When the University of Chicago was founded in 1890, it was
-                envisioned as six quadrangles, each surrounded by buildings,
-                bordering one larger quadrangle built on 22 acres of land.
+                In 1890, the University of Chicago campus was
+                <a
+                    href="https://chicagomaroon.com/27627/grey-city/gothic-studio-gang/"
+                    >envisioned</a
+                >
+                to “remove the mind of the student from the busy mercantile
+                conditions of Chicago. " Architect Henry Ives Cobbs saw a campus
+                that would consist of one central quadrangle surrounded by six
+                others, spanning 22 acres of land.
             </div>
             <div class="scroller s-intro" id="step2">
                 Today, the University
@@ -62,12 +68,14 @@
                         />
 
                         <div class="title" id="title">
-                            The University of Chicago as Urban Planner
+                            Tracing the University of Chicago’s Role in Shaping
+                            Hyde Park Since 1890
                         </div>
                     </div>
                     <div class="subtitle" id="subtitle">
-                        The story of how the University of Chicago played an
-                        active role in shaping the Hyde Park neighborhood.
+                        How the University of Chicago played an active role in
+                        shaping the Hyde Park neighborhood since the
+                        University’s inception
                     </div>
                     <hr />
                     <div id="bylines">
@@ -133,6 +141,16 @@
                     <p
                         style="
                             text-align: center;
+                            margin-bottom: 0;
+                            font-size: 0.8em;
+                        "
+                    >
+                        Scroll to Continue
+                    </p>
+
+                    <p
+                        style="
+                            text-align: center;
                             padding-bottom: 20px;
                             font-size: 3em;
                             margin: 0;
@@ -180,21 +198,30 @@
                 <div class="line-break"></div>
                 <h2>Methodology</h2>
                 <p>
-                    The data for this project was sourced from the University of
-                    Chicago’s property records, which are available online. The
-                    property records were then geocoded and visualized using the
-                    Mapbox GL JS library. The timeline was created using the
-                    Waypoints library. The project was built using HTML, CSS,
-                    and JavaScript.
+                    This project drew data from several sources, including
+                    official University publications, campus maps, municipal
+                    records, satellite imagery, and news articles. Most building
+                    footprints were obtained from
+                    <a href="https://www.openstreetmap.org">OpenStreetMap</a>, a
+                    crowdsourced geospatial data repository; some historic
+                    building footprints were recreated from historic maps using
+                    <a href="https://felt.com/">Felt</a>. Many dates of building
+                    ownership were sourced from the
+                    <a
+                        href="https://facilities.uchicago.edu/about/uchicago_heritage_map/"
+                        >UChicago Heritage Map</a
+                    >, opening announcements, and university press releases.
                 </p>
                 <p>
-                    Access the data for this project on the University of
-                    Chicago website
-                    <a href="https://property.uchicago.edu/">here</a>.
-                </p>
-                <p>
-                    Find the code for this project on
-                    <a href="">GitHub here</a>.
+                    You can access the data for this project including building
+                    footprints and data here. All of the Maroon's data projects
+                    are open source. Find this project's full data management
+                    and visualization code on
+                    <a
+                        href="https://github.com/chicagomaroon/data-visualizations/tree/main/2024/property-scroller"
+                        >GitHub here</a
+                    >. Please reach out to data@chicagomaroon.com with any
+                    corrections or questions.
                 </p>
             </div>
         </div>

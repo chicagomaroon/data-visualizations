@@ -1,47 +1,54 @@
 const config = [
     {
-        chapterTitle: '1890-1933: The Cobb Plan',
+        chapterTitle: '1890-1933: Neo-Gothic Beginnings',
         chapterYears: '1890-1933',
         id: '1',
         image: './static/images/chapter1.jpg',
         subsections: [
             {
                 id: '1.1',
-                text: `UChicago founder John D. Rockefeller commits $600,000 toward a “new institution of learning in Chicago.”`,
+                text: `The University of Chicago’s story begins in 1889 when Oil industry titan John D. Rockefeller commits $600,000 toward a “new institution of learning in Chicago.”`,
                 start_year: 1890,
                 end_year: 1900,
                 timeline_year: 1889,
                 zoom: 17,
-                image: './static/images/jdr.jpg'
+                image: './static/images/jdr.jpg',
+                image_credit: 'University of Chicago Photographic Archive'
                 //pan: uChiLocation
             },
             {
                 id: '1.2',
-                text: `Prominent Hyde Park landowner Marshall Fields pledges 10 acres of his land to a new university. The site stretches from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, UChicago’s quadrangle takes shape.`,
+                text: `A few months later, prominent landowner Marshall Fields pledges 10 acres of his land to the new Hyde Park university. The site stretches from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, UChicago’s quadrangle takes shape.`,
                 start_year: 1900,
                 end_year: 1910,
                 timeline_year: 1890,
-                image: './static/images/og_uchi.jpg'
+                image: './static/images/og_uchi.jpg',
+                image_credit: 'University of Chicago Photographic Archive'
             },
             {
                 id: '1.3',
-                text: `Architect Henry Ives Cobb draws up a master plan for the University. A neo-Gothic style, advocated for by trustees Martin Ryerson and Charles Hutchinson, aims to situate the University among established, storied European universities. “The Gothic aesthetic allowed the new university to grant itself a sense of institutional legitimacy that belied its age,” Eldred writes.`,
+                text: `In 1892, the Board of Trustees commissions architect Henry Ives Cobb to draw up a master plan for the University. Trustees Martin Ryerson and Charles Hutchinson advocate for a neo-Gothic style, aiming to situate the University among established, storied European universities. “The Gothic aesthetic allowed the new university to grant itself a sense of institutional legitimacy that belied its age,” Eldred writes.`,
                 timeline_year: 1892,
-                image: './static/images/chapter1.jpg'
+                image: './static/images/chapter1.jpg',
+                image_credit: 'University of Chicago Photographic Archive'
             },
             {
                 id: '1.3a',
-                text: `Over the next 40 years, the core of what today we call the main campus is built, including iconic buildings such as <span class="highlight hScroller">Hutchinson Commons</span>, <span class="highlight hScroller">Reynolds Club</span>, <span class="highlight hScroller">Reynolds Club</span>,<span class="highlight hScroller">Mitchell Tower</span>, <span class="highlight hScroller">Mandel Hall</span>, <span class="highlight hScroller">Harper Memorial Library</span>, and <span class="highlight hScroller">Bond Chapel</span>.`
+                text: `In 1902, the University contracts the <a href='https://storymaps.arcgis.com/stories/8bc70c8a457943da81800274c93100ca' target = "_blank">Olmsted Brothers</a> to design the campus grounds. Over the next 40 years, the core of what today we call the main campus is built, including iconic buildings such as <span class="highlight hScroller">Reynolds Club</span> and <span class="highlight hScroller">Harper Memorial Library</span>.
+                <br>
+                <br>
+                At any time, click the <span class = 'highlight explore'>Explore Map</span> button in the top right and hover over a building to learn more.`
             },
             {
                 id: '1.4',
-                text: `Around 1927, the University makes provisions to add on-campus housing. Architect Charles Klauder is commissioned to begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan during this time is Burton-Judson Courts in 1931. The “South Campus Plan” is not revisited until the 1960s. Ultimately, the University remains a commuter campus through the Great Depression.`,
+                text: `Around 1927, the University makes provisions to add on-campus housing. The trustees commission architect Charles Klauder to  begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan during this time is Burton-Judson Courts in 1931. The “South Campus Plan” is not revisited until the 1960s, and the University remains a commuter campus through the Great Depression.`,
                 timeline_year: 1927
             },
             {
                 id: '1.5',
-                text: `While the campus was self-contained, a community-university relationship began slowly to form. When President William Rainey Harper hired sought-after coach Stagg, football culture and games at <span class="highlight hScroller">Stagg Field</span> grew the University’s reputation among Chicagoans.`,
-                image: './static/images/football.jpg'
+                text: `While the campus was self-contained, a community-university relationship began slowly to form. When President William Rainey Harper hired sought-after coach Stagg, <a href = "https://chicagomaroon.com/39731/grey-city/brains-over-brawn-how-football-found-its-place-at-uchicago/" target = "_blank">football culture </a> and games at <span class="highlight hScroller">Stagg Field</span> grew the University’s reputation among Chicagoans.`,
+                image: './static/images/football.jpg',
+                image_credit: 'University of Chicago Photographic Archive'
             }
         ]
     },
@@ -53,7 +60,7 @@ const config = [
         subsections: [
             {
                 id: 'end_gothic',
-                text: 'The Committee on Building and Grounds was eliminated on March 21, 1932. International House (1932) and the Field House (1932) were the final buildings constructed in a “minimal Gothic” style, streamlined by Art Deco and modernist design.',
+                text: 'International House and the Henry Crown Field House are the final buildings constructed in 1932 in a “minimal Gothic” style, streamlined by Art Deco and modernist design. At this stage, the University begins to see the fate of the neighborhood as tied to its own.',
                 start_year: 1910,
                 end_year: 1930,
                 zoom: 16,
@@ -62,29 +69,23 @@ const config = [
             },
             {
                 id: 'demographics',
-                text: `The Great Migration significantly transforms the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. “Racial succession,” or the process of one racial group replacing another in the neighborhood, becomes a growing concern of both the University and the City.`,
+                text: `The Great Migration significantly transforms the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. “Racial succession,” a term coined by early 20th-century University of Chicago urban sociologists meaning the process of one racial group replacing another in the neighborhood, becomes a growing concern of both the University and the City.`,
                 start_year: 1930,
-                end_year: 1940
+                end_year: 1940,
+                image: './static/images/demos.png',
+                image_credit:
+                    'Tax, S. (1959). Residential Integration: The Case of Hyde Park in Chicago.'
             },
             {
                 id: '2.1',
-                text: `1933 documents the first proof of the university’s attempts to “stabilize the neighborhood.” by reinforcing legal racial covenants. They intervene through intermediaries, by providing covert financial support.`,
-                timeline_year: 1933
-            },
-            {
-                id: '2.2',
-                text: `Between 1933 and 1947, UChicago spends $83,597.46 to support legal assistance for the defense of racially restrictive covenants in Hyde Park, subsidizing neighborhood groups, such as the Woodlawn Property Owners League and the Hyde Park Property Owners Association.During these years President Hutchins maintains that residents of Hyde Park and nearby communities had the right to “invoke and defend'' racially restrictive covenants as legal instruments.`
+                text: `Starting in 1933, the University begins to attempt “stabilizing the neighborhood.” Behind the scenes, they reinforce legal racial covenants through intermediaries. Between 1933 and 1947, the University spends $83,597.46 to support legal assistance for the defense of racially restrictive covenants in Hyde Park, subsidizing neighborhood groups, such as the Woodlawn Property Owners League and the Hyde Park Property Owners Association. President Hutchins maintains that residents of Hyde Park and nearby communities have the right to “invoke and defend'' racially restrictive covenants as legal instruments.`
             },
             {
                 id: '2.3',
-                text: `Students push back. In 1942, the Chicago chapter of the Committee of Racial Equality is created by two university students who organize mixed-race housing.`,
-                timeline_year: 1942
-            },
-            {
-                id: '2.4',
-                text: `In 1948, the Shelley vs. Kramer Supreme Court case outlaws racial covenants.`,
+                text: `In 1948, the Shelley v. Kramer Supreme Court case outlawed racial covenants. Despite the University losing this tool to shape the neighborhood, the Great Migration and the fear of“racial succession” drove the University to find other ways to “stabilize” Hyde Park.`,
                 timeline_year: 1948,
-                image: './static/images/shelleyvkramer.jpeg'
+                image: './static/images/shelleyvkramer.jpeg',
+                image_credit: 'University of Chicago Photographic Archive'
             }
         ]
     },
@@ -93,16 +94,76 @@ const config = [
             '1949-1962: Urban Renewal and <br>“A Compatible Community”',
         chapterYears: '1949-1962',
         id: '3',
-        image: './static/images/urban_renewal_1960.jpg',
+        image: './static/images/chapter3.png',
         subsections: [
             {
                 id: '3.1',
-                text: `The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal.”  It's the first American higher education institution to embark on a comprehensive urban renewal campaign. 
-                As early as 1945, in his State of the University message for that year Kimpton writes: “For the last 15 years, the University has steadily deteriorated, until today, I am ashamed to say, the University has the unfortunate distinction of having the worst-housed faculty in the U.S."`
+                text: `The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal.”  It's the first American higher education institution to embark on a comprehensive urban renewal campaign. Much of the remaking of Hyde Park was done by the South East Chicago Commission (SECC), a group that was, by most accounts, an extension of the University.There were four main plans that comprised Hyde Park’s urban renewal efforts: Hyde Park A + B, the Southwest Hyde Park Redevelopment Corporation Plan, the Urban Renewal Plan, and the South Campus Plan.`,
+                timeline_year: 1949
             },
             {
                 id: '3.2',
-                text: `By the mid-1940s the black population in the area immediately surrounding the university was increasing: Hyde Park had 573 black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948. At the beginning of the 1950s, the crime rate in Hyde Park was the second highest in the city, according to beat cop Bob Mason. The university sees maintaining a “desirable” neighborhood as tied to its survival. “I believe we have found the answer. It is called "Urban Renewal"...it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities” —Julian Levi`
+                text: `Hyde Park A + B  bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`
+            },
+            {
+                id: '3.3',
+                text: `Next, the Southwest Hyde Park Redevelopment Corporation uses the 1953 revision of the Neighborhood Redevelopment Corporation Act to take eminent domain of an area from 55th to 59th Streets and from Cottage Grove to Woodlawn Avenues (excluding property already occupied by the University of Chicago campus). The Southwest Hyde Park Redevelopment Corporation’s target site extends from 55th to 59th Streets and from Cottage Grove to Woodlawn Avenue (excluding the University of Chicago campus). Most of that area is marked for “rehabilitation.” The area between 55th and 56th and Cottage Grove and Ellis Avenue is slated for wholesale demolition and University acquisition.
+`
+            },
+            {
+                id: '3.4',
+                text: `The largest and most comprehensive phase is the Hyde Park–Kenwood Urban Renewal Plan, drawn up and approved in 1958. The University, through SECC, is a main plan drafter. The plan focuses on both total and “spot” clearance. It slates 638 structures containing 6,147 dwelling units for demolition and calls for the creation and modernization of low- and high-density residential areas, parks, schools, residential and commercial areas, and more in their place.`
+            },
+            {
+                id: '3.5',
+                text: `Lastly, the University  follows through on a suggestion in the 1949 Treasurer’s Report for the University to acquire all property in a strip of land between 60th and 61st street and Cottage Grove and Stony Island avenues to create a buffer zone between the campus and the “deteriorating neighborhood” of Woodlawn immediately to the South. The city purchases everything not yet owned by the university and then sells it to the University. This takes a decade due to legal disputes and activist groups including the Woodlawn Organization opposing the acquisition and the expansion.`
+            },
+            {
+                id: '3.6',
+                text: `Cumulatively, these plans called for the demolition of 193 acres (or 20 percent of the community); cost $120 million ($1.4 billion when adjusted for inflation), approximately half of which was public funds and the other half private; displaced more than 30,000 people; and enabled the University of Chicago to add 41 acres of land to its campus. The legacy of urban renewal shows through the urban morphology and population change in Hyde Park and Woodlawn. The campaign is a success, according to the administration. Documented by Julian Levi, it becomes a model for other institutions.`
+            }
+        ]
+    },
+    {
+        chapterTitle: '1963-1998: Spatial Intervention and Invisible Borders',
+        chapterYears: '1963-1998',
+        id: '4',
+        image: './static/images/chapter3.png',
+        subsections: [
+            {
+                id: '4.1',
+                text: `After the period of Urban Renewal, the University began to shifts its focus away from initiatives based primarily around property ownership and land clearance in favor of new techniques. The university widens its reach into the community, not through property acquisition, but in the name of safety.
+`,
+                timeline_year: 1963
+            },
+            {
+                id: '4.2',
+                text: `In 1957, the University created the UC Bus, the first itternal of the on-campus shuttle system. Marc David Loeb argues that the shuttle system was “ reappropriated as a tool of urban renewal” and helped build “a selective permeability of space” around the university.” In 2021, the shuttle system added a new route from campus to the Green and Red Line Garfield stations and the Washington Park Arts Incubator.`
+            },
+
+            {
+                id: '4.3',
+                text: `First, several right-of-way modifications took place during the 1970s. Eldred highlights how physical restrictions to “free and easy access” to and from the area could reduce crime. 151 cul-de-sacs and dead-ends: University Avenue is cut off from 61st Street by a sidewalk and a buffer augmented with trees and shrubbery that is no more than twenty feet wide; Kimbark Avenue dead-ends approximately halfway into the block; Kenwood Avenue is split into a driveway to a parking lot from the North, and a cul-de-sac from the South; Blackstone is almost entirely nonexistent between 60th and 61st, existing only as a small cul-de-sac.`,
+                timeline_year: 1970
+            },
+            {
+                id: '4.4',
+                text: `The expansion of UChicago’s own private security force enables it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus...[would] facilitate effective security activities,” Julian Levi is quoted. Community groups also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive.`,
+                timeline_year: 1980
+            },
+            {
+                id: '4.5',
+                text: `The charter schools are a key point of contact between the university and the surrounding neighborhoods and accompany the expansion of the UCPD’s patrol jurisdiction. At present the UCPD patrol zone extends from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west. The first school, the North Kenwood/Oakland Campus, opened in 1998, and serves students from pre-Kindergarten to 5th grade. The network’s other schools are Carter G. Woodson, Donoghue, and Woodlawn.`,
+                timeline_year: 1990
+            },
+            {
+                id: '4.6',
+                text: `assisted housing program for employees`
+            },
+
+            {
+                id: '4.7',
+                text: `The implementation of a private campus shuttle system, the creation of an emergency phone network, other policies, and an expanded patrol area for police encourage officers to create ‘invisible borders’ around campus.`
             }
         ]
     }
