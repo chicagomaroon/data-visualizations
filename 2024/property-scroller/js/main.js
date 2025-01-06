@@ -1,4 +1,8 @@
 //TODO
+// must
+//      backwards
+//      mobile
+
 //nice to have
 //      add center of polygon for popup
 //      max and min area
@@ -31,10 +35,22 @@ let activePopups = [];
 const fullOpacity = 0.6;
 const nav = new maplibregl.NavigationControl();
 
+let flashingInterval = '';
+
+// hihglight ids
+ids_1_3 = ['157655073', '156128082'];
+ids_gothic = ['1953426', '151173253'];
+ids_charter = ['505873479', '185377897', '2235555'];
+
 // -------- HELPER FUNCTIONS --------
 
-function highlightPopup(ids) {
-    activeLayer = findActiveLayerName(mapBody);
+function highlightPopup(ids, layer = null) {
+    if (!layer) {
+        activeLayer = findActiveLayerName(mapBody);
+    } else {
+        activeLayer = layer;
+    }
+
     const features = mapBody.queryRenderedFeatures({ layers: [activeLayer] });
 
     // Filter features based on ID
@@ -60,10 +76,12 @@ function highlightPopup(ids) {
         const coordinates = feature.geometry.coordinates[0][0];
         const popup = new maplibregl.Popup({
             closeButton: false,
-            className: 'popup-highlight'
+            className: 'popup-highlight',
+            anchor: 'top'
         })
             .setLngLat(coordinates)
             .setHTML(description)
+            .setMaxWidth('250px')
             .addTo(mapBody);
         activePopups.push(popup);
     });
@@ -93,6 +111,9 @@ function exploreMap() {
         currentZoom = mapBody.getZoom();
         currentCenter = mapBody.getCenter();
         // exploring map
+
+        //remove existing popups
+        removePopups();
 
         // change text and flag
         document.querySelector('#explore-button').dataset.active = 'Explore';
@@ -139,6 +160,9 @@ function exploreMap() {
         mapBody.boxZoom.disable();
         mapBody.doubleClickZoom.disable();
         mapBody.removeControl(nav);
+
+        // remove popups
+        removePopups();
     }
 }
 // find value in config file
@@ -211,6 +235,17 @@ function changeTimelineYear(targetYear) {
         }
     }
     incrementCounter();
+}
+
+function flashLayer(map, layerId, interval = 1000) {
+    let isVisible = true;
+
+    // Create interval for flashing
+    return setInterval(() => {
+        // Toggle opacity between 0 and 1
+        map.setPaintProperty(layerId, 'raster-opacity', isVisible ? 0 : 0.8);
+        isVisible = !isVisible;
+    }, interval);
 }
 
 // -------- MAP FUNCTIONS ---------
@@ -343,6 +378,46 @@ function allLayers(map, type) {
                 'line-opacity': 0
             }
         });
+
+        map.addSource('ucpd_bounds_2024', {
+            type: 'geojson',
+            data: 'data/ucpd_bounds_2024.geojson'
+        });
+
+        map.addLayer({
+            id: 'ucpd_bounds_2024_line',
+            type: 'line',
+            source: 'ucpd_bounds_2024',
+            layout: {},
+            paint: {
+                'line-color': 'black',
+                'line-width': 2,
+                'line-opacity': 0
+            }
+        });
+
+        map.addLayer({
+            id: 'ucpd_bounds_2024_fill',
+            type: 'fill',
+            source: 'ucpd_bounds_2024',
+            layout: {},
+            paint: {
+                'fill-color': 'black',
+                'fill-opacity': 0
+            }
+        });
+
+        mapBody.addLayer({
+            id: 'charterSchools',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': PRIMARY_COLOR,
+                'fill-opacity': 0
+            },
+            filter: ['in', 'id', ...ids_charter]
+        });
     }
 }
 
@@ -363,7 +438,7 @@ function createMap(
     start_year = 1900,
     type = 'body'
 ) {
-    var map = new maplibregl.Map({
+    let map = new maplibregl.Map({
         container: div,
         style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
         center: startCoords, // starting position [lng, lat]
@@ -394,10 +469,6 @@ function createMap(
         allLayers(map, layers);
 
         if (type == 'body') {
-            ids_1_3 = ['157655073', '156128082'];
-
-            ids_gothic = ['1953426', '151173253'];
-
             // add all image overlay
             // urban renewal 1955
             map.addSource('south_campus_plan', {
@@ -482,6 +553,26 @@ function createMap(
                 paint: {
                     'raster-opacity': 0,
                     'raster-opacity-transition': { duration: 2000 }
+                }
+            });
+
+            map.addSource('EAHP', {
+                type: 'image',
+                url: './static/images/EAHP.png',
+                coordinates: [
+                    [-87.63899174851709, 41.849],
+                    [-87.481, 41.849], //
+                    [-87.47, 41.75057371953466],
+                    [-87.63899174851709, 41.75057371953466]
+                ]
+            });
+
+            map.addLayer({
+                id: 'EAHP',
+                type: 'raster',
+                source: 'EAHP',
+                paint: {
+                    'raster-opacity': 0
                 }
             });
         }
@@ -1122,18 +1213,156 @@ function bodyWaypoints() {
         element: document.getElementById('4.2'),
         handler: function (direction) {
             if (direction == 'down') {
-                // remove map
+                // show
+                console.log('4.2');
+                mapBody.setPaintProperty('shuttles', 'line-opacity', 0.6);
+            } else {
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
-                    0
+                    0.0
+                );
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.3'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                timelineYear = findConfigValue('4.3', 'timeline_year');
+                changeTimelineYear(timelineYear);
+
+                updateLayers(1970, 'layer1960');
+
+                // rm shuttles
+                mapBody.setPaintProperty('shuttles', 'line-opacity', 0);
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
+
+                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
+                mapBody.flyTo({
+                    center: [-87.602, 41.7849],
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
+            } else {
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.0
+                );
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.4'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                timelineYear = findConfigValue('4.4', 'timeline_year');
+                changeTimelineYear(timelineYear);
+                updateLayers(1980, 'layer1970');
+
+                // rm south roads
+                clearInterval(flashingInterval);
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+
+                // charter schools
+                // show charter schools
+                mapBody.setPaintProperty('charterSchools', 'fill-opacity', 0.6);
+
+                // zoom out
+                mapBody.flyTo({
+                    center: [-87.60278, 41.8],
+                    zoom: 12.5,
+                    duration: zoomSpeed
+                });
+                // timeout then add popup due to map movement
+                setTimeout(() => {
+                    highlightPopup(ids_charter, 'charterSchools');
+                }, 3500);
+            } else {
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.0
+                );
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.5'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                timelineYear = findConfigValue('4.5', 'timeline_year');
+                changeTimelineYear(timelineYear);
+                updateLayers(1990, 'layer1980');
+
+                removePopups();
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_line',
+                    'line-opacity',
+                    1
+                );
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_fill',
+                    'fill-opacity',
+                    0.2
                 );
             } else {
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
-                    0.6
+                    0.0
                 );
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.6'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                timelineYear = findConfigValue('4.6', 'timeline_year');
+                changeTimelineYear(timelineYear);
+                updateLayers(2000, 'layer1990');
+                // EAHP
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_line',
+                    'line-opacity',
+                    0
+                );
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_fill',
+                    'fill-opacity',
+                    0
+                );
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+                mapBody.zoomTo(11.5, { duration: zoomSpeed });
+            } else {
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.0
+                );
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.7'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // rm EAHP
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
+            } else {
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
             }
         },
         offset: '50%'

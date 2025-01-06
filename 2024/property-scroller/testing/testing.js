@@ -72,16 +72,16 @@ map.on('load', () => {
     // });
 
     //convenants;
-    map.addSource('south', {
-        type: 'image',
-        url: 'south_1968.jpg',
-        coordinates: [
-            [-87.606042, 41.78644],
-            [-87.58968, 41.7867],
-            [-87.58961, 41.7843],
-            [-87.606, 41.784]
-        ]
-    });
+    // map.addSource('south', {
+    //     type: 'image',
+    //     url: 'south_1968.jpg',
+    //     coordinates: [
+    //         [-87.606042, 41.78644],
+    //         [-87.58968, 41.7867],
+    //         [-87.58961, 41.7843],
+    //         [-87.606, 41.784]
+    //     ]
+    // });
 
     // // south_1968
     // map.addSource('covenants', {
@@ -139,12 +139,23 @@ map.on('load', () => {
     //     ]
     // });
 
+    map.addSource('EAHP', {
+        type: 'image',
+        url: 'EAHP.png',
+        coordinates: [
+            [-87.63899174851709, 41.849],
+            [-87.481, 41.849], //
+            [-87.47, 41.75057371953466],
+            [-87.63899174851709, 41.75057371953466]
+        ]
+    });
+
     map.addLayer({
-        id: 'pic',
+        id: 'EAHP',
         type: 'raster',
-        source: 'south',
+        source: 'EAHP',
         paint: {
-            'raster-opacity': 0.0
+            'raster-opacity': 0.5
         }
     });
 
