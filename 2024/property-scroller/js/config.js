@@ -7,7 +7,7 @@ const config = [
         subsections: [
             {
                 id: '1.1',
-                text: `The University of Chicago’s story begins in 1889 when Oil industry titan John D. Rockefeller commits $600,000 toward a “new institution of learning in Chicago.”`,
+                text: `The University of Chicago’s story begins in 1889 when industry titan John D. Rockefeller commits $600,000 toward a “new institution of learning in Chicago.”`,
                 start_year: 1890,
                 end_year: 1900,
                 timeline_year: 1889,
@@ -18,7 +18,7 @@ const config = [
             },
             {
                 id: '1.2',
-                text: `A few months later, prominent landowner Marshall Fields pledges 10 acres of his land to the new Hyde Park university. The site stretches from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, UChicago’s quadrangle takes shape.`,
+                text: `A few months later, prominent landowner Marshall Fields pledges 10 acres of his land to the new Hyde Park university. The site stretches from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, the University’s quadrangle takes shape.`,
                 start_year: 1900,
                 end_year: 1910,
                 timeline_year: 1890,
@@ -41,7 +41,7 @@ const config = [
             },
             {
                 id: '1.4',
-                text: `Around 1927, the University makes provisions to add on-campus housing. The trustees commission architect Charles Klauder to  begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan during this time is Burton-Judson Courts in 1931. The “South Campus Plan” is not revisited until the 1960s, and the University remains a commuter campus through the Great Depression.`,
+                text: `Circa 1927, the University makes provisions to add on-campus housing. The trustees commission architect Charles Klauder to  begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan during this time is Burton-Judson Courts in 1931. The “South Campus Plan” is not revisited until the 1960s, and the University remains a commuter campus through the Great Depression.`,
                 timeline_year: 1927
             },
             {
@@ -82,7 +82,7 @@ const config = [
             },
             {
                 id: '2.3',
-                text: `In 1948, the Shelley v. Kramer Supreme Court case outlawed racial covenants. Despite the University losing this tool to shape the neighborhood, the Great Migration and the fear of“racial succession” drove the University to find other ways to “stabilize” Hyde Park.`,
+                text: `In 1948, the Shelley v. Kramer Supreme Court case outlawed racial covenants. Despite the University losing this tool to shape the neighborhood, the Great Migration and the fear of “racial succession” drove the University to find other ways to “stabilize” Hyde Park.`,
                 timeline_year: 1948,
                 image: './static/images/shelleyvkramer.jpeg',
                 image_credit: 'University of Chicago Photographic Archive'
@@ -158,7 +158,7 @@ const config = [
 
             {
                 id: '4.5',
-                text: `The opening of the University’s charter schools accompanies the expansion of the UCPD’s patrol jurisdiction. The expansion of UChicago’s own private security force enables it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus...[would] facilitate effective security activities,” Julian Levi is quoted. Community groups also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive. Currently, the UCPD patrol zone extends from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west.`,
+                text: `The opening of the University’s charter schools accompanies the expansion of the UCPD’s patrol jurisdiction. The expansion of the University’s own private security force enables it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus...[would] facilitate effective security activities,” Julian Levi is quoted. Community groups also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive. Currently, the UCPD patrol zone extends from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west.`,
                 timeline_year: 1990
             },
             {
@@ -181,7 +181,7 @@ const config = [
         subsections: [
             {
                 id: '5.1',
-                text: `During the early 2000s, the University allocates large sums of money toward the construction of extracurricular buildings, amenities, and the acquisition of housing both on and off campus. New facilities include a transformed student center in the Reynolds Club and Ratner, the first new athletics facility built on campus since 1935.
+                text: `During the early 2000s, the University allocates large sums of money toward the construction of extracurricular buildings, amenities, and the acquisition of housing both on and off campus. New facilities include a transformed student center in the Reynolds Club and Ratner, the first new athletics facility built on campus since 1935.`
             }
         ]
     }
