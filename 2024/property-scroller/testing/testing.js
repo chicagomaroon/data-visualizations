@@ -1,13 +1,15 @@
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
+const oc = [-87.5859, 41.78534];
 
-dataPath = '../data/with_era.geojson';
+dataPath = '../data/property_years_extended_12_27_24.geojson';
 shuttlePath = '../data/uchi_shuttle_lines.geojson';
 
 var map = new maplibregl.Map({
     container: 'map',
     style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
-    center: uChiLocation, // starting position [lng, lat]
-    zoom: 13 // starting zoom
+    center: oc, // starting position [lng, lat]
+    zoom: 16, // starting zoom
+    bearing: 90
 });
 
 map.on('load', () => {
@@ -139,23 +141,43 @@ map.on('load', () => {
     //     ]
     // });
 
-    map.addSource('EAHP', {
+    // map.addSource('EAHP', {
+    //     type: 'image',
+    //     url: 'EAHP.png',
+    //     coordinates: [
+    //         [-87.63899174851709, 41.849],
+    //         [-87.481, 41.849], //
+    //         [-87.47, 41.75057371953466],
+    //         [-87.63899174851709, 41.75057371953466]
+    //     ]
+    // });
+
+    // map.addLayer({
+    //     id: 'EAHP',
+    //     type: 'raster',
+    //     source: 'EAHP',
+    //     paint: {
+    //         'raster-opacity': 0.5
+    //     }
+    // });
+
+    map.addSource('opc_plan', {
         type: 'image',
-        url: 'EAHP.png',
+        url: 'opc_plan.jpg',
         coordinates: [
-            [-87.63899174851709, 41.849],
-            [-87.481, 41.849], //
-            [-87.47, 41.75057371953466],
-            [-87.63899174851709, 41.75057371953466]
+            [-87.58883159578394, 41.7881],
+            [-87.58299929754422, 41.7881], //
+            [-87.58299929754422, 41.78193744932196],
+            [-87.5888, 41.78193744932196]
         ]
     });
 
     map.addLayer({
-        id: 'EAHP',
+        id: 'opc_plan',
         type: 'raster',
-        source: 'EAHP',
+        source: 'opc_plan',
         paint: {
-            'raster-opacity': 0.5
+            'raster-opacity': 1
         }
     });
 

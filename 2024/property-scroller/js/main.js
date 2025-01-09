@@ -38,9 +38,17 @@ const nav = new maplibregl.NavigationControl();
 let flashingInterval = '';
 
 // hihglight ids
-ids_1_3 = ['157655073', '156128082'];
-ids_gothic = ['1953426', '151173253'];
-ids_charter = ['505873479', '185377897', '2235555'];
+const ids_1_3 = ['157655073', '156128082'];
+const ids_gothic = ['1953426', '151173253'];
+const ids_charter = ['505873479', '185377897', '2235555'];
+const ids_dorms = [
+    '153266965',
+    '152969810',
+    '153090078',
+    '2087203',
+    '10657061',
+    '11687839'
+];
 
 // -------- HELPER FUNCTIONS --------
 
@@ -575,6 +583,26 @@ function createMap(
                     'raster-opacity': 0
                 }
             });
+
+            map.addSource('opc_plan', {
+                type: 'image',
+                url: './static/images/opc_plan.jpg',
+                coordinates: [
+                    [-87.58883159578394, 41.7881],
+                    [-87.58299929754422, 41.7881], //
+                    [-87.58299929754422, 41.78193744932196],
+                    [-87.5888, 41.78193744932196]
+                ]
+            });
+
+            map.addLayer({
+                id: 'opc_plan',
+                type: 'raster',
+                source: 'opc_plan',
+                paint: {
+                    'raster-opacity': 0
+                }
+            });
         }
 
         popupStuff(map);
@@ -909,7 +937,7 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty(
                     'south_campus_plan',
                     'raster-opacity',
-                    0.6
+                    0.8
                 );
 
                 mapBody.flyTo({
@@ -1331,7 +1359,7 @@ function bodyWaypoints() {
                 timelineYear = findConfigValue('4.6', 'timeline_year');
                 changeTimelineYear(timelineYear);
                 updateLayers(2000, 'layer1990');
-                // EAHP
+
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
                     'line-opacity',
@@ -1359,10 +1387,72 @@ function bodyWaypoints() {
         element: document.getElementById('4.7'),
         handler: function (direction) {
             if (direction == 'down') {
-                // rm EAHP
+                changeTimelineYear(2020);
+                updateLayers(2020, 'layer2000');
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
+                mapBody.zoomTo(13, { duration: zoomSpeed });
+                // highlight dorms after zoom
+                setTimeout(() => {
+                    highlightPopup(ids_dorms);
+                }, zoomSpeed + 1);
             } else {
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.8'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // highlight dorms
+                removePopups();
+            } else {
+                highlightPopup(ids_dorms);
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('6.2'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // rm EAHP
+                mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
+                mapBody.flyTo({
+                    center: [-87.5859, 41.78534],
+                    zoom: 16.5,
+                    bearing: 90,
+                    duration: zoomSpeed
+                });
+            } else {
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('6.3'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // rm EAHP
+                mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
+            } else {
+                mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
+                mapBody.flyTo({
+                    center: [-87.5859, 41.78534],
+                    zoom: 16.5,
+                    bearing: 90,
+                    duration: zoomSpeed
+                });
             }
         },
         offset: '50%'

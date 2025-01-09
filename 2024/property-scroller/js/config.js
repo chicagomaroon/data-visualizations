@@ -125,10 +125,10 @@ const config = [
         ]
     },
     {
-        chapterTitle: '1963-1998: Spatial Intervention and Invisible Borders',
-        chapterYears: '1963-1998',
+        chapterTitle: '1963-2006: Spatial Intervention and Invisible Borders',
+        chapterYears: '1963-2006',
         id: '4',
-        image: './static/images/chapter3.png',
+        image: './static/images/chapter4.jpg',
         subsections: [
             {
                 id: '4.1',
@@ -169,19 +169,56 @@ const config = [
 
             {
                 id: '4.7',
-                text: `The implementation of a private campus shuttle system, the creation of an emergency phone network, other policies, and an expanded patrol area for police encourage officers to create ‘invisible borders’ around campus.`
+                text: `During the early 2000s, the University allocates large sums of money toward the construction of extracurricular buildings, amenities, and the acquisition of housing both on and off campus. New facilities include a transformed student center in the Reynolds Club and Ratner, the first new athletics facility built on campus since 1935. The College also formulates a radical plan to reimagine residential life on the campus by constructing new housing and dining facilities within easy walking distance of the central Quadrangles. Between 1998 and 2019, four major new residential facilities are constructed: the Palevsky Residential Commons, the Renee Granville-Grossman Residential Commons, Campus North, and recently Woodlawn Commons which opened in 2020.`
+            },
+            {
+                id: '4.8',
+                text: `The creation of a private campus shuttle system, the opening of charter schools, an expanded patrol area for UCPD, the Employer-Assisted Housing Program, and the consolidation of student housing all contributed to creating ‘invisible borders’ around campus during this period.`
             }
         ]
     },
     {
-        chapterTitle: '1999-2006: Return to South Campus Plan',
-        chapterYears: '1999-2006',
+        chapterTitle: '2007-2022: Expansion and Turning to the City',
+        chapterYears: '2007-2022',
         id: '5',
-        image: './static/images/chapter3.png',
+        image: './static/images/chapter5.jpg',
         subsections: [
             {
                 id: '5.1',
-                text: `During the early 2000s, the University allocates large sums of money toward the construction of extracurricular buildings, amenities, and the acquisition of housing both on and off campus. New facilities include a transformed student center in the Reynolds Club and Ratner, the first new athletics facility built on campus since 1935.`
+                text: `In 2006, University President Zimmer makes his "back to the city" speech, posing the question: “How should our relationship with the South Side community, city, and the region evolve?” In the following years, the University simultaneously seeks to shrink its portfolio of residential properties across  Hyde Park acquired during Urban Renewal and expand commercial real estate holdings.`
+            },
+            {
+                id: '5.2',
+                text: `The University sells over 1,200 apartment units and four lots in Hyde Park between 2004 and 2016 and has bought 26 mixed-use properties in Washington Park since 2008. They acquire commercial real estate, such as Harper Court and Jewel Osco. The University now owns the property of all four major grocery stores in Hyde Park. `
+            },
+            {
+                id: '5.3',
+                text: `The University also invests in cultural development throughout the South Side through a partnership with the Hyde Park Arts Center, stewarding the Washington Park Arts Block, and opening the Green Line Performing Arts Center in 2018.`
+            },
+            {
+                id: '5.4',
+                text: `TODO`
+            }
+        ]
+    },
+    {
+        chapterTitle:
+            '2023 Onward: The Future of the University and the South Side',
+        chapterYears: '2023 Onward',
+        id: '6',
+        image: './static/images/chapter6.png',
+        subsections: [
+            {
+                id: '6.1',
+                text: `As we have seen, the University of Chicago has played an active role in shaping the neighbhoros surrounds the university. For most of its history, the University justified its actions as necessary. In 2020, then-President Zimmer and incoming President Paul Alivisatos <a href = "https://news.uchicago.edu/story/council-examine-history-relationship-between-university-chicago-and-south-side-communities" target = "_blank">commit </a> to further community engagement by launching the Council on UChicago/Community Relations tasked with examining the role the University has had to its South Side neighbors historically.`
+            },
+            {
+                id: '6.2',
+                text: `With the <a href = "https://chicagomaroon.com/41032/grey-city/the-obama-center-a-welcome-neighbor/" target = "_blank"> opening of the Obama Presidential Center nearing </a>, the future of the University’s involvement in Hyde Park and South Chicago is at a crucial inflection point. The Center claims it will bring <a href = 'https://www.obama.org/press-releases/obama-presidential-center-estimated-support-thousands-jobs-city-chicago-south-side-construction-ten-years-operations/' target = '_blank'> $3.1bn in “economic impact” </a> to the region, and the university and <a href = "https://blockclubchicago.org/2022/12/27/as-investors-buy-more-homes-around-the-obama-presidential-center-gentrification-worries-soar/" target = "_blank">investors</a> are primed to take advantage of this. At the same time, local residents are concerned about <a href = 'https://www.theguardian.com/us-news/2023/feb/15/obama-center-chicago-south-side-residents-fear-displacement' target = "_blank">rising rent</a> and how much benefit will reach the local community.`
+            },
+            {
+                id: '6.3',
+                text: `The next decade will prove to be a crucial chapter in the ongoing story of the University of Chicago’s involvement in shaping its neighborhood. From its neo-gothic beginnings to its perch as an <a href = 'https://en.wikipedia.org/wiki/Ivy_League#Ivy_Plus' target = "_blank">Ivy Plus</a> university, the University and Hyde Park, as well as the surrounding neighborhoods—have been—and will continue to be–intertwined.`
             }
         ]
     }
