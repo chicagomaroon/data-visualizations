@@ -41,14 +41,7 @@ let flashingInterval = '';
 const ids_1_3 = ['157655073', '156128082'];
 const ids_gothic = ['1953426', '151173253'];
 const ids_charter = ['505873479', '185377897', '2235555'];
-const ids_dorms = [
-    '153266965',
-    '152969810',
-    '153090078',
-    '2087203',
-    '10657061',
-    '11687839'
-];
+const ids_dorms = ['153266965', '2087203', '10657061', '11687839'];
 
 // -------- HELPER FUNCTIONS --------
 
@@ -66,6 +59,8 @@ function highlightPopup(ids, layer = null) {
         ids.includes(feature.properties.id)
     );
 
+    console.log(activeLayer, selectedFeatures);
+
     // Show popup for each selected feature
     selectedFeatures.forEach((feature) => {
         const description =
@@ -78,14 +73,25 @@ function highlightPopup(ids, layer = null) {
             '<h6>' +
             feature.properties.year_start +
             '</h6>' +
+            '<p>' +
+            feature.properties.id +
+            '</p>' +
             '</div>';
         // TODO centeriod of polygon instead of first point
 
         const coordinates = feature.geometry.coordinates[0][0];
+        // hacky way to fix dorm popup overlap
+        if (['153266965', '2087203'].includes(feature.properties.id)) {
+            anchor = 'right';
+        } else if (['10657061', '11687839'].includes(feature.properties.id)) {
+            anchor = 'left';
+        } else {
+            anchor = 'top';
+        }
         const popup = new maplibregl.Popup({
             closeButton: false,
             className: 'popup-highlight',
-            anchor: 'top'
+            anchor: anchor
         })
             .setLngLat(coordinates)
             .setHTML(description)
@@ -108,7 +114,9 @@ function findActiveLayerName(map) {
             layer.paint['fill-opacity'] > 0 &&
             layer.id.includes('layer')
     );
-    return activeLayer[0].id;
+    // if length of active layer is 0
+
+    return activeLayer.length != 0 ? activeLayer[0].id : null;
 }
 
 function exploreMap() {
@@ -754,10 +762,16 @@ function processChapter(chapter) {
 
 // ------------ WAYPOINTS ------------
 
-function updateLayers(addYear, removeLayer) {
+function updateLayers(addYear, removeLayer = null) {
     // remove layer
-    filterOpacity(mapBody, removeLayer, false);
+    // TODO can this find the active layer and just remove that?
+    if (!removeLayer) {
+        activeLayer = findActiveLayerName(mapBody);
+    } else {
+        activeLayer = removeLayer;
+    }
 
+    activeLayer ? filterOpacity(mapBody, activeLayer, false) : null;
     // add layer
     filterOpacity(mapBody, 'layer' + String(addYear), true);
 }
@@ -869,7 +883,7 @@ function bodyWaypoints() {
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
             } else {
-                updateLayers(1895, 'layer1925');
+                updateLayers(1895);
                 filterOpacity(mapBody, 'land_grant', true);
                 filterOpacity(mapBody, 'layer1895', false);
             }
@@ -884,7 +898,7 @@ function bodyWaypoints() {
                 timelineYear = findConfigValue('1.3', 'timeline_year');
                 changeTimelineYear(timelineYear);
                 filterOpacity(mapBody, 'land_grant', false);
-                updateLayers(1895, 'layer1900');
+                updateLayers(1895);
             } else {
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
@@ -908,7 +922,7 @@ function bodyWaypoints() {
         element: document.getElementById('1.3a'),
         handler: function (direction) {
             if (direction == 'down') {
-                updateLayers(1930, 'layer1895');
+                updateLayers(1930);
                 // highlight popups
                 highlightPopup(ids_1_3);
 
@@ -931,7 +945,7 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 removePopups();
                 timelineYear = findConfigValue('1.4', 'timeline_year');
-                updateLayers(1935, 'layer1930');
+                updateLayers(1935);
                 changeTimelineYear(1935);
 
                 mapBody.setPaintProperty(
@@ -1038,14 +1052,14 @@ function bodyWaypoints() {
                 // remove demo chart
 
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
-                updateLayers(1950, 'layer1935');
+                updateLayers(1950);
                 mapBody.flyTo({
                     center: [-87.71, 41.81],
                     zoom: 10.6,
                     duration: zoomSpeed
                 });
             } else {
-                updateLayers(1925, 'layer1950');
+                updateLayers(1925);
                 mapBody.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
@@ -1062,7 +1076,7 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 removePopups();
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
-                updateLayers(1950, 'layer1935');
+                updateLayers(1950);
                 changeTimelineYear(1950);
                 mapBody.flyTo({
                     center: [-87.60278337713892, 41.79910939443005],
@@ -1070,7 +1084,7 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                updateLayers(1925, 'layer1950');
+                updateLayers(1925);
                 mapBody.flyTo({
                     center: uChiLocation,
                     zoom: 15.5,
@@ -1089,10 +1103,10 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
-                    0.6
+                    0.8
                 );
             } else {
-                updateLayers(1950, 'layer1955');
+                updateLayers(1950);
                 mapBody.flyTo({
                     center: uChiLocationSide,
                     zoom: 14,
@@ -1113,7 +1127,7 @@ function bodyWaypoints() {
                     zoom: 15,
                     duration: zoomSpeed
                 });
-                updateLayers(1955, 'layer1950');
+                updateLayers(1955);
                 changeTimelineYear(1955);
             } else {
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
@@ -1159,7 +1173,7 @@ function bodyWaypoints() {
                     zoom: 14,
                     duration: zoomSpeed
                 });
-                updateLayers(1960, 'layer1950');
+                updateLayers(1960);
                 changeTimelineYear(1958);
             } else {
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
@@ -1262,7 +1276,7 @@ function bodyWaypoints() {
                 timelineYear = findConfigValue('4.3', 'timeline_year');
                 changeTimelineYear(timelineYear);
 
-                updateLayers(1970, 'layer1960');
+                updateLayers(1970);
 
                 // rm shuttles
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0);
@@ -1291,7 +1305,7 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 timelineYear = findConfigValue('4.4', 'timeline_year');
                 changeTimelineYear(timelineYear);
-                updateLayers(1980, 'layer1970');
+                updateLayers(1980);
 
                 // rm south roads
                 clearInterval(flashingInterval);
@@ -1328,7 +1342,7 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 timelineYear = findConfigValue('4.5', 'timeline_year');
                 changeTimelineYear(timelineYear);
-                updateLayers(1990, 'layer1980');
+                updateLayers(1990);
 
                 removePopups();
                 mapBody.setPaintProperty(
@@ -1358,7 +1372,7 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 timelineYear = findConfigValue('4.6', 'timeline_year');
                 changeTimelineYear(timelineYear);
-                updateLayers(2000, 'layer1990');
+                updateLayers(2000);
 
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
@@ -1388,13 +1402,18 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 changeTimelineYear(2020);
-                updateLayers(2020, 'layer2000');
+                updateLayers(2020);
+                removePopups();
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
-                mapBody.zoomTo(13, { duration: zoomSpeed });
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
                 // highlight dorms after zoom
                 setTimeout(() => {
                     highlightPopup(ids_dorms);
-                }, zoomSpeed + 1);
+                }, 1000);
             } else {
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
             }
@@ -1415,11 +1434,54 @@ function bodyWaypoints() {
         offset: '50%'
     });
 
+    // TODO high light buildings idea
+    new Waypoint({
+        element: document.getElementById('5.2'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // highlight sold buildings
+            } else {
+            }
+        }
+    });
+
+    new Waypoint({
+        element: document.getElementById('5.3'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // highlight arts buildings
+            } else {
+            }
+        }
+    });
+
+    new Waypoint({
+        element: document.getElementById('5.4'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // highlight arts buildings
+            } else {
+            }
+        }
+    });
+
+    new Waypoint({
+        element: document.getElementById('chapter6'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // reset highlights
+                changeTimelineYear(2025);
+                // what layer to remove?
+                updateLayers(2025);
+            } else {
+            }
+        }
+    });
+
     new Waypoint({
         element: document.getElementById('6.2'),
         handler: function (direction) {
             if (direction == 'down') {
-                // rm EAHP
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.5859, 41.78534],
@@ -1437,7 +1499,6 @@ function bodyWaypoints() {
         element: document.getElementById('6.3'),
         handler: function (direction) {
             if (direction == 'down') {
-                // rm EAHP
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);
                 mapBody.flyTo({
                     center: uChiLocationSide,
