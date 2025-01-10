@@ -59,15 +59,6 @@ const config = [
         image: './static/images/chapter2.jpg',
         subsections: [
             {
-                id: 'end_gothic',
-                text: 'International House and the Henry Crown Field House are the final buildings constructed in 1932 in a “minimal Gothic” style, streamlined by Art Deco and modernist design. At this stage, the University begins to see the fate of the neighborhood as tied to its own.',
-                start_year: 1910,
-                end_year: 1930,
-                zoom: 16,
-                timeline_year: 1932
-                //pan: [41.79139, -87.60000]
-            },
-            {
                 id: 'demographics',
                 text: `The Great Migration significantly transforms the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. “Racial succession,” the process of one racial group replacing another in the neighborhood coined by early 20th-century University of Chicago urban sociologists, becomes a growing concern of both the University and the City.`,
                 start_year: 1930,

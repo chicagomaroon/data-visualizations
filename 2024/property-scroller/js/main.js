@@ -2,10 +2,12 @@
 // must
 //      backwards
 //      mobile
+//      load all images in a function
 
 //nice to have
 //      add center of polygon for popup
 //      max and min area
+//     separate out js files
 //      edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
 
 //maybe
@@ -72,11 +74,11 @@ function highlightPopup(ids, layer = null) {
             "<div class = 'popup-label'> YEAR BUILT</div>" +
             '<h6>' +
             feature.properties.year_start +
-            '</h6>' +
-            '<p>' +
-            feature.properties.id +
-            '</p>' +
-            '</div>';
+            '</h6>';
+        //'<p>' +
+        //feature.properties.id +
+        //'</p>' +
+        ('</div>');
         // TODO centeriod of polygon instead of first point
 
         const coordinates = feature.geometry.coordinates[0][0];
@@ -774,6 +776,9 @@ function updateLayers(addYear, removeLayer = null) {
     activeLayer ? filterOpacity(mapBody, activeLayer, false) : null;
     // add layer
     filterOpacity(mapBody, 'layer' + String(addYear), true);
+
+    // update timeline
+    changeTimelineYear(addYear);
 }
 
 function introWaypoints() {
@@ -895,24 +900,13 @@ function bodyWaypoints() {
         element: document.getElementById('1.3'),
         handler: function (direction) {
             if (direction == 'down') {
-                timelineYear = findConfigValue('1.3', 'timeline_year');
-                changeTimelineYear(timelineYear);
                 filterOpacity(mapBody, 'land_grant', false);
                 updateLayers(1895);
             } else {
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
-
-                mapBody.setPaintProperty(
-                    'south_campus_plan',
-                    'raster-opacity',
-                    0
-                );
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
-                    duration: 1000
-                });
+                filterOpacity(mapBody, 'land_grant', true);
+                filterOpacity(mapBody, 'layer1895', false);
             }
         },
         offset: '50%'
@@ -925,15 +919,9 @@ function bodyWaypoints() {
                 updateLayers(1930);
                 // highlight popups
                 highlightPopup(ids_1_3);
-
-                changeTimelineYear(1930);
             } else {
                 removePopups();
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
-                    duration: zoomSpeed
-                });
+                updateLayers(1895);
             }
         },
         offset: '50%'
@@ -946,7 +934,6 @@ function bodyWaypoints() {
                 removePopups();
                 timelineYear = findConfigValue('1.4', 'timeline_year');
                 updateLayers(1935);
-                changeTimelineYear(1935);
 
                 mapBody.setPaintProperty(
                     'south_campus_plan',
@@ -960,8 +947,17 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                timelineYear = findConfigValue('1.3', 'timeline_year');
-                changeTimelineYear(timelineYear);
+                mapBody.setPaintProperty(
+                    'south_campus_plan',
+                    'raster-opacity',
+                    0.0
+                );
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
+                updateLayers(1930);
             }
         },
         offset: '50%'
@@ -985,14 +981,12 @@ function bodyWaypoints() {
                 setTimeout(() => {
                     highlightPopup(['72']);
                 }, 2000);
-
-                // show where football stadium was
             } else {
                 removePopups();
                 mapBody.setPaintProperty(
                     'south_campus_plan',
                     'raster-opacity',
-                    0
+                    0.8
                 );
 
                 mapBody.flyTo({
@@ -1015,31 +1009,11 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('end_gothic'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                highlightPopup(ids_gothic);
-                //filterOpacity(mapBody, 'highlight-gothic', true, 1);
-            } else {
-            }
-        },
-        offset: '50%'
-    });
-
-    new Waypoint({
         element: document.getElementById('demographics'),
         handler: function (direction) {
             if (direction == 'down') {
-                // add demo map
                 removePopups();
-                filterOpacity(mapBody, 'highlight-gothic', false);
             } else {
-                mapBody.flyTo({
-                    center: uChiLocation,
-                    zoom: 15.5,
-                    duration: zoomSpeed
-                });
-                mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
             }
         },
         offset: '99%'
@@ -1049,20 +1023,19 @@ function bodyWaypoints() {
         element: document.getElementById('2.1'),
         handler: function (direction) {
             if (direction == 'down') {
-                // remove demo chart
-
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.71, 41.81],
+                    center: [-87.73, 41.81],
                     zoom: 10.6,
                     duration: zoomSpeed
                 });
             } else {
+                mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1925);
                 mapBody.flyTo({
-                    center: uChiLocation,
-                    zoom: 15.5,
+                    center: uChiLocationSide,
+                    zoom: 14.5,
                     duration: zoomSpeed
                 });
             }
@@ -1077,17 +1050,17 @@ function bodyWaypoints() {
                 removePopups();
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
-                changeTimelineYear(1950);
                 mapBody.flyTo({
                     center: [-87.60278337713892, 41.79910939443005],
                     zoom: 14,
                     duration: zoomSpeed
                 });
             } else {
-                updateLayers(1925);
+                mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
+                updateLayers(1950);
                 mapBody.flyTo({
-                    center: uChiLocation,
-                    zoom: 15.5,
+                    center: [-87.71, 41.81],
+                    zoom: 10.6,
                     duration: zoomSpeed
                 });
             }
@@ -1106,12 +1079,11 @@ function bodyWaypoints() {
                     0.8
                 );
             } else {
-                updateLayers(1950);
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14,
-                    duration: zoomSpeed
-                });
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.0
+                );
             }
         },
         offset: '50%'
@@ -1128,12 +1100,10 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
                 updateLayers(1955);
-                changeTimelineYear(1955);
             } else {
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13,
+                    center: [-87.60278337713892, 41.79910939443005],
+                    zoom: 14,
                     duration: zoomSpeed
                 });
             }
@@ -1152,12 +1122,12 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13,
+                    center: [-87.59551281193906, 41.796688484805856],
+                    zoom: 15,
                     duration: zoomSpeed
                 });
+                updateLayers(1955);
             }
         },
         offset: '50%'
@@ -1174,12 +1144,10 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
-                changeTimelineYear(1958);
             } else {
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13,
+                    center: [-87.6082519319518, 41.7935107582129],
+                    zoom: 15,
                     duration: zoomSpeed
                 });
             }
@@ -1198,12 +1166,12 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13,
+                    center: [-87.60278337713892, 41.79910939443005],
+                    zoom: 14,
                     duration: zoomSpeed
                 });
+                updateLayers(1960);
             }
         },
         offset: '50%'
@@ -1219,10 +1187,9 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13,
+                    center: [-87.6028193070742, 41.7851952871184],
+                    zoom: 14,
                     duration: zoomSpeed
                 });
             }
@@ -1241,11 +1208,11 @@ function bodyWaypoints() {
                     0
                 );
             } else {
-                mapBody.setPaintProperty(
-                    'urban_renewal_1960',
-                    'raster-opacity',
-                    0.6
-                );
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
             }
         },
         offset: '50%'
@@ -1259,11 +1226,7 @@ function bodyWaypoints() {
                 console.log('4.2');
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0.6);
             } else {
-                mapBody.setPaintProperty(
-                    'urban_renewal_1960',
-                    'raster-opacity',
-                    0.0
-                );
+                mapBody.setPaintProperty('shuttles', 'line-opacity', 0);
             }
         },
         offset: '50%'
@@ -1273,9 +1236,6 @@ function bodyWaypoints() {
         element: document.getElementById('4.3'),
         handler: function (direction) {
             if (direction == 'down') {
-                timelineYear = findConfigValue('4.3', 'timeline_year');
-                changeTimelineYear(timelineYear);
-
                 updateLayers(1970);
 
                 // rm shuttles
@@ -1284,16 +1244,19 @@ function bodyWaypoints() {
 
                 flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
                 mapBody.flyTo({
-                    center: [-87.602, 41.7849],
+                    center: [-87.605, 41.7849],
                     zoom: 14.5,
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.setPaintProperty(
-                    'urban_renewal_1960',
-                    'raster-opacity',
-                    0.0
-                );
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
+                mapBody.setPaintProperty('shuttles', 'line-opacity', 0.6);
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
+                clearInterval(flashingInterval);
             }
         },
         offset: '50%'
@@ -1303,8 +1266,6 @@ function bodyWaypoints() {
         element: document.getElementById('4.4'),
         handler: function (direction) {
             if (direction == 'down') {
-                timelineYear = findConfigValue('4.4', 'timeline_year');
-                changeTimelineYear(timelineYear);
                 updateLayers(1980);
 
                 // rm south roads
@@ -1326,11 +1287,15 @@ function bodyWaypoints() {
                     highlightPopup(ids_charter, 'charterSchools');
                 }, 3500);
             } else {
-                mapBody.setPaintProperty(
-                    'urban_renewal_1960',
-                    'raster-opacity',
-                    0.0
-                );
+                removePopups();
+                mapBody.setPaintProperty('charterSchools', 'fill-opacity', 0);
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
+                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
+                mapBody.flyTo({
+                    center: [-87.602, 41.7849],
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
             }
         },
         offset: '50%'
@@ -1340,8 +1305,6 @@ function bodyWaypoints() {
         element: document.getElementById('4.5'),
         handler: function (direction) {
             if (direction == 'down') {
-                timelineYear = findConfigValue('4.5', 'timeline_year');
-                changeTimelineYear(timelineYear);
                 updateLayers(1990);
 
                 removePopups();
@@ -1356,10 +1319,18 @@ function bodyWaypoints() {
                     0.2
                 );
             } else {
+                updateLayers(1980);
+                highlightPopup(ids_charter, 'charterSchools');
+
                 mapBody.setPaintProperty(
-                    'urban_renewal_1960',
-                    'raster-opacity',
-                    0.0
+                    'ucpd_bounds_2024_line',
+                    'line-opacity',
+                    0
+                );
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_fill',
+                    'fill-opacity',
+                    0
                 );
             }
         },
@@ -1370,8 +1341,6 @@ function bodyWaypoints() {
         element: document.getElementById('4.6'),
         handler: function (direction) {
             if (direction == 'down') {
-                timelineYear = findConfigValue('4.6', 'timeline_year');
-                changeTimelineYear(timelineYear);
                 updateLayers(2000);
 
                 mapBody.setPaintProperty(
@@ -1385,13 +1354,30 @@ function bodyWaypoints() {
                     0
                 );
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
-                mapBody.zoomTo(11.5, { duration: zoomSpeed });
+                mapBody.flyTo({
+                    center: [-87.62, 41.8],
+                    zoom: 11.75,
+                    duration: zoomSpeed
+                });
             } else {
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
                 mapBody.setPaintProperty(
-                    'urban_renewal_1960',
-                    'raster-opacity',
-                    0.0
+                    'ucpd_bounds_2024_line',
+                    'line-opacity',
+                    1
                 );
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_fill',
+                    'fill-opacity',
+                    0.2
+                );
+                updateLayers(1990);
+                // zoom out
+                mapBody.flyTo({
+                    center: [-87.60278, 41.8],
+                    zoom: 12.5,
+                    duration: zoomSpeed
+                });
             }
         },
         offset: '50%'
@@ -1401,12 +1387,11 @@ function bodyWaypoints() {
         element: document.getElementById('4.7'),
         handler: function (direction) {
             if (direction == 'down') {
-                changeTimelineYear(2020);
                 updateLayers(2020);
                 removePopups();
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
+                    center: [-87.6105, 41.78955],
                     zoom: 13.5,
                     duration: zoomSpeed
                 });
@@ -1415,7 +1400,10 @@ function bodyWaypoints() {
                     highlightPopup(ids_dorms);
                 }, 1000);
             } else {
+                removePopups();
+                mapBody.zoomTo(11.5, { duration: zoomSpeed });
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+                updateLayers(2000);
             }
         },
         offset: '50%'
@@ -1428,7 +1416,6 @@ function bodyWaypoints() {
                 // highlight dorms
                 removePopups();
             } else {
-                highlightPopup(ids_dorms);
             }
         },
         offset: '50%'
@@ -1470,7 +1457,6 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 // reset highlights
-                changeTimelineYear(2025);
                 // what layer to remove?
                 updateLayers(2025);
             } else {
@@ -1500,9 +1486,9 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14,
+                mapIntro.flyTo({
+                    center: hydeParkLocation,
+                    zoom: 13.5,
                     bearing: 0,
                     duration: zoomSpeed
                 });
