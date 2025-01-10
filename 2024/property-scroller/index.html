@@ -22,10 +22,12 @@
 
     <body>
         <div class="header">
-            <img
-                src="static/images/maroon_logo_edit.png"
-                alt="Chicago Maroon Logo"
-            />
+            <a href="https://chicagomaroon.com/">
+                <img
+                    src="static/images/maroon_logo_edit.png"
+                    alt="Chicago Maroon Logo"
+                />
+            </a>
         </div>
         <div class="entry-start" id="intro">
             <div class="map-container-intro">
@@ -168,7 +170,63 @@
 
         <div id="chapters-container">
             <div class="map-container-body">
-                <div class="timeline-container">
+                <div id="map-overlay-menu">
+                    <div class="map-overlay-inner">
+                        <h4>
+                            Explore the University of Chicago's Presence in Hyde
+                            Park
+                        </h4>
+                        <div id="slider-container">
+                            <p>Year: <span id="slider-year">2025</span></p>
+                            <input
+                                type="range"
+                                min="1890"
+                                max="2025"
+                                value="2025"
+                                class="slider"
+                                id="map-slider"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div id="map-overlay-methodology">
+                    <div class="map-overlay-inner">
+                        <h4>Methodology</h4>
+                        <p>
+                            This project drew data from several sources,
+                            including official University publications, campus
+                            maps, municipal records, satellite imagery, and news
+                            articles. Most building footprints were obtained
+                            from
+                            <a href="https://www.openstreetmap.org"
+                                >OpenStreetMap</a
+                            >, a crowdsourced geospatial data repository; some
+                            historic building footprints were recreated from
+                            historic maps using
+                            <a href="https://felt.com/">Felt</a>. Many dates of
+                            building ownership were sourced from the
+                            <a
+                                href="https://facilities.uchicago.edu/about/uchicago_heritage_map/"
+                                >UChicago Heritage Map</a
+                            >, opening announcements, and university press
+                            releases.
+                        </p>
+                        <p>
+                            You can access the data for this project including
+                            building footprints and data here. All of the
+                            Maroon's data projects are open source. Find this
+                            project's full data management and visualization
+                            code on
+                            <a
+                                href="https://github.com/chicagomaroon/data-visualizations/tree/main/2024/property-scroller"
+                                >GitHub here</a
+                            >. Please reach out to data@chicagomaroon.com with
+                            any corrections or questions.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="timeline-container">
                     <div class="timeline-inner">
                         <div class="timeline-text" id="timeline-3">1887</div>
                         <div class="timeline-text" id="timeline-2">1888</div>
@@ -193,7 +251,7 @@
                 <figure id="map-body"></figure>
             </div>
         </div>
-
+        <!--
         <div id="methodology">
             <div id="methodology-text">
                 <div class="line-break"></div>
@@ -226,6 +284,7 @@
                 </p>
             </div>
         </div>
+        -->
 
         <div id="footer"></div>
         <!-- EXTERNAL JS FILES -->

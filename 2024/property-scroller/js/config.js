@@ -34,7 +34,7 @@ const config = [
             },
             {
                 id: '1.3a',
-                text: `In 1902, the University contracts the <a href='https://storymaps.arcgis.com/stories/8bc70c8a457943da81800274c93100ca' target = "_blank">Olmsted Brothers</a> to design the campus grounds. Over the next 40 years, the core of what today we call the main campus is built, including iconic buildings such as <span class="highlight hScroller">Reynolds Club</span> and <span class="highlight hScroller">Harper Memorial Library</span>.
+                text: `In 1902, the University contracts the <a href='https://storymaps.arcgis.com/stories/8bc70c8a457943da81800274c93100ca' target = "_blank">Olmsted Brothers</a> to design the campus grounds. Over the next 40 years, the core of what today is called the main campus is built, including iconic buildings such as <span class="highlight hScroller">Reynolds Club</span> and <span class="highlight hScroller">Harper Memorial Library</span>.
                 <br>
                 <br>
                 At any time, click the <span class = 'highlight explore'>Explore Map</span> button in the top right and hover over a building to learn more.`
@@ -88,13 +88,20 @@ const config = [
         image: './static/images/chapter3.png',
         subsections: [
             {
+                id: '3.0',
+                text: `With the outlawing of racial covenants, the black population in the University’s immediate surroundings continues to increase: Hyde Park had 573 black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948. The university sees maintaining a “desirable” neighborhood as tied to its survival and key to its academic mission. The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal” making it the first American higher education institution to embark on a comprehensive urban renewal campaign.`,
+                quote: `I believe we have found the answer. It is called 'Urban Renewal' ... it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities`,
+                quoteAuthor:
+                    'Julian Levi, UChicago Professor and SECC Executive Director'
+            },
+            {
                 id: '3.1',
-                text: `The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal” making it the first American higher education institution to embark on a comprehensive urban renewal campaign. Much of the remaking of Hyde Park was done by the South East Chicago Commission (SECC), a group that was, by most accounts, an extension of the University. There were four main plans that comprised Hyde Park’s urban renewal efforts: Hyde Park A + B, the Southwest Hyde Park Redevelopment Corporation Plan, the Urban Renewal Plan, and the South Campus Plan.`,
+                text: ` Much of the remaking of Hyde Park was done by the South East Chicago Commission (SECC), a group that was, by most accounts, an extension of the University. University Chancellor Kimpton chose a University Professor, Julian Levi, to chair the new Commission. There were four main plans that comprised Hyde Park’s urban renewal efforts: Hyde Park A + B, the Southwest Hyde Park Redevelopment Corporation Plan, the Urban Renewal Plan, and the South Campus Plan.`,
                 timeline_year: 1949
             },
             {
                 id: '3.2',
-                text: `Hyde Park A + B  bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`
+                text: `The Hyde Park A + B plan bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`
             },
             {
                 id: '3.3',
@@ -180,11 +187,13 @@ const config = [
             },
             {
                 id: '5.2',
-                text: `The University sells over 1,200 apartment units and four lots in Hyde Park between 2004 and 2016 and has bought 26 mixed-use properties in Washington Park since 2008. They acquire commercial real estate, such as Harper Court and Jewel Osco. The University now owns the property of all four major grocery stores in Hyde Park. `
+                text: `The University <span class="highlight former">sells</span> over 1,200 apartment units and four lots in Hyde Park between 2004 and 2016 and has bought 26 mixed-use properties in Washington Park since 2008. They acquire commercial real estate, such as Harper Court and Jewel Osco. The University now owns the property that all four major grocery stores in Hyde Park sit on.`
             },
             {
                 id: '5.3',
-                text: `The University also invests in cultural development throughout the South Side through a partnership with the Hyde Park Arts Center, stewarding the Washington Park Arts Block, and opening the Green Line Performing Arts Center in 2018.`
+                text: `The University also invests in cultural development throughout the South Side through a partnership with the Hyde Park Arts Center, stewarding the Washington Park Arts Block, and opening the Green Line Performing Arts Center in 2018.`,
+                image: './static/images/arts_block.jpg',
+                image_credit: 'Visual Manifesto'
             },
             {
                 id: '5.4',
@@ -210,6 +219,10 @@ const config = [
             {
                 id: '6.3',
                 text: `The next decade will prove to be a crucial chapter in the ongoing story of the University of Chicago’s involvement in shaping its neighborhood. From its neo-gothic beginnings to its perch as an <a href = 'https://en.wikipedia.org/wiki/Ivy_League#Ivy_Plus' target = "_blank">Ivy Plus</a> university, the University and Hyde Park, as well as the surrounding neighborhoods—have been—and will continue to be–intertwined.`
+            },
+            {
+                id: 'final-scroller',
+                text: ``
             }
         ]
     }

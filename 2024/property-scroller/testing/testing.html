@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="style.css" />
         <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+        <script type="module" src="test2.js"></script>
         <link
             href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
             rel="stylesheet"
@@ -17,8 +18,8 @@
     <body>
         <button onclick="zoomToFeature()" id="zoom-in">Zoom In</button>
         <button id="fade">Fade Out</button>
-        <div class="slidecontainer">
-            <p>Year: <span id="year"></span></p>
+        <div class="slide-container">
+            <p>Year: <span id="slider-year"></span></p>
             <input
                 type="range"
                 min="1890"

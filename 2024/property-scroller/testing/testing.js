@@ -1,3 +1,7 @@
+import { testImport } from './test2';
+
+testImport();
+
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
 const oc = [-87.5859, 41.78534];
 

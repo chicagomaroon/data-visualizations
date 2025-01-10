@@ -65,12 +65,57 @@ body {
     width: 100%;
 }
 
-.timeline-container {
+#map-overlay-menu,
+#map-overlay-methodology {
+    position: absolute;
+    left: 0;
+    margin: 10px;
+    z-index: 9999;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    visibility: hidden;
+}
+
+#map-overlay-menu {
+    top: 0;
+}
+
+#map-overlay-methodology {
+    bottom: 0;
+}
+
+#map-overlay-menu h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    font-family: Playfair Display;
+}
+
+#map-overlay-methodology {
+    font-family: Open Sans;
+    padding-bottom: 10px;
+    width: 40%;
+}
+
+#map-overlay-methodology h4 {
+    font-size: 15px;
+    margin-block: 0;
+}
+#map-overlay-methodology p {
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+#timeline-container {
     position: absolute;
     height: fit-content;
     z-index: 3;
     left: 10px;
     vertical-align: middle;
+    visibility: visible;
 }
 .timeline-inner {
     font-family: Playfair Display;
@@ -112,7 +157,6 @@ body {
     cursor: pointer;
     user-select: none;
     pointer-events: all;
-    transition: all 1s ease;
     visibility: hidden;
 }
 
@@ -146,12 +190,14 @@ body {
     z-index: 9999;
 }
 
-.scroller a {
+.scroller a,
+#map-overlay-methodology a {
     color: var(--maroon_color);
     text-decoration: none;
 }
 
-.scroller a:hover {
+.scroller a:hover,
+#map-overlay-methodology a:hover {
     text-decoration: underline;
 }
 
@@ -213,7 +259,8 @@ body {
     margin-top: 6px;
 }
 
-#last-scroller {
+#last-scroller,
+#final-scroller {
     margin-bottom: 0;
     opacity: 0;
 }
@@ -398,22 +445,6 @@ body {
     height: 1px;
     margin: 30px 0 20px;
     background-color: white;
-}
-
-#methodology-text {
-    font-family: Open Sans;
-    color: white;
-    width: 30%;
-    margin: auto;
-    padding-bottom: 20px;
-}
-
-#methodology-text h2 {
-    font-size: 15px;
-    margin-top: 0;
-}
-#methodology-text p {
-    font-size: 12px;
 }
 
 #methodology-text a {

@@ -3,6 +3,7 @@
 //      backwards
 //      mobile
 //      load all images in a function
+//      safari compatibility (timeline)
 
 //nice to have
 //      add center of polygon for popup
@@ -44,6 +45,12 @@ const ids_1_3 = ['157655073', '156128082'];
 const ids_gothic = ['1953426', '151173253'];
 const ids_charter = ['505873479', '185377897', '2235555'];
 const ids_dorms = ['153266965', '2087203', '10657061', '11687839'];
+
+// ------- LISTENERS --------
+document.getElementById('map-slider').addEventListener('input', (e) => {
+    mapBody.setFilter('layer2025', ['<', 'year_start', Number(e.target.value)]);
+    document.getElementById('slider-year').innerText = e.target.value;
+});
 
 // -------- HELPER FUNCTIONS --------
 
@@ -1421,35 +1428,85 @@ function bodyWaypoints() {
         offset: '50%'
     });
 
+    new Waypoint({
+        element: document.getElementById('chapter5'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                removePopups();
+            } else {
+                removePopups();
+            }
+        }
+    });
+
     // TODO high light buildings idea
     new Waypoint({
         element: document.getElementById('5.2'),
         handler: function (direction) {
             if (direction == 'down') {
                 // highlight sold buildings
+                activeLayer = findActiveLayerName(mapBody);
+                mapBody.flyTo({
+                    center: [-87.59975128884997, 41.795],
+                    zoom: 14,
+                    duration: zoomSpeed
+                });
+                mapBody.setPaintProperty(activeLayer, 'fill-color', [
+                    'case',
+                    ['>=', ['get', 'recent_residential_sales'], 0],
+                    'black',
+                    PRIMARY_COLOR
+                ]);
             } else {
+                mapBody.flyTo({
+                    center: [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
             }
-        }
+        },
+        offset: '50%'
     });
 
     new Waypoint({
         element: document.getElementById('5.3'),
         handler: function (direction) {
             if (direction == 'down') {
-                // highlight arts buildings
+                // highlight arts buildings /WP
+                mapBody.flyTo({
+                    center: [-87.62238983619335, 41.79449748170734],
+                    zoom: 15.5,
+                    duration: zoomSpeed
+                });
             } else {
+                mapBody.flyTo({
+                    center: [-87.62238983619335, 41.79449748170734],
+                    zoom: 14,
+                    duration: zoomSpeed
+                });
             }
-        }
+        },
+        offset: '50%'
     });
 
     new Waypoint({
         element: document.getElementById('5.4'),
         handler: function (direction) {
             if (direction == 'down') {
-                // highlight arts buildings
+                mapBody.flyTo({
+                    center: [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
             } else {
+                mapBody.flyTo({
+                    center: [-87.62238983619335, 41.79449748170734],
+                    zoom: 15.5,
+                    duration: zoomSpeed
+                });
             }
-        }
+        },
+        offset: '50%'
     });
 
     new Waypoint({
@@ -1476,6 +1533,12 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
+                mapBody.flyTo({
+                    center: [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
             }
         },
         offset: '50%'
@@ -1486,7 +1549,7 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);
-                mapIntro.flyTo({
+                mapBody.flyTo({
                     center: hydeParkLocation,
                     zoom: 13.5,
                     bearing: 0,
@@ -1503,6 +1566,74 @@ function bodyWaypoints() {
             }
         },
         offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('final-scroller'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // move up a little
+                mapBody.flyTo({
+                    center: hydeParkLocation,
+                    zoom: 13.5,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
+                // rm timeline and explore map button
+                document.getElementById('explore-nav').style.visibility =
+                    'hidden';
+                document.getElementById('timeline-container').style.visibility =
+                    'hidden';
+                removePopups();
+                document.getElementById('map-overlay-menu').style.visibility =
+                    'visible';
+                document.getElementById(
+                    'map-overlay-methodology'
+                ).style.visibility = 'visible';
+
+                // enable popups
+                document.querySelector('#explore-button').dataset.active =
+                    'Explore';
+
+                // allow map panning
+                mapBody.dragPan.enable();
+                mapBody.boxZoom.enable();
+                mapBody.doubleClickZoom.enable();
+                mapBody.addControl(nav, 'top-right');
+            } else {
+                // bring back timeline and explore map button
+                document.getElementById('explore-nav').style.visibility =
+                    'visible';
+                document.getElementById('timeline-container').style.visibility =
+                    'visible';
+                removePopups();
+                document.getElementById('map-overlay-menu').style.visibility =
+                    'hidden';
+                document.getElementById(
+                    'map-overlay-methodology'
+                ).style.visibility = 'hidden';
+
+                // reset map
+                mapBody.flyTo({
+                    center: hydeParkLocation,
+                    zoom: 13.5,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
+
+                // disable popup
+                document.querySelector('#explore-button').dataset.active =
+                    'Story';
+
+                // disable map stuff
+                mapBody.dragPan.disable();
+                mapBody.scrollZoom.disable();
+                mapBody.boxZoom.disable();
+                mapBody.doubleClickZoom.disable();
+                mapBody.removeControl(nav);
+            }
+        },
+        offset: '0%'
     });
 }
 
