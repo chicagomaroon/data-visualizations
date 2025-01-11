@@ -1,0 +1,297 @@
+<html lang="en">
+    <head>
+        <title>The University of Chicago as Urban Planner</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- external builds -->
+        <script src="js/noframework.waypoints.min.js"></script>
+        <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <link
+            href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+
+        <!-- my styling is supreme -->
+        <link rel="stylesheet" href="static/style.css" />
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="https://chicagomaroon.com/">
+                <img
+                    src="static/images/maroon_logo_edit.png"
+                    alt="Chicago Maroon Logo"
+                />
+            </a>
+        </div>
+        <div class="entry-start" id="intro">
+            <div class="map-container-intro">
+                <figure id="map-intro"></figure>
+            </div>
+            <div class="scroller s-intro" id="step1">
+                In 1890, the University of Chicago's
+                <a
+                    href="https://chicagomaroon.com/27627/grey-city/gothic-studio-gang/"
+                    target="_blank"
+                    >campus aimed to</a
+                >
+                “remove the mind of the student from the busy mercantile
+                conditions of Chicago." Architect Henry Ives Cobbs envisioned a
+                campus that would consist of one central quadrangle surrounded
+                by six others, spanning 22 acres of land.
+            </div>
+            <div class="scroller s-intro" id="step2">
+                Today, the University
+                <span class="highlight current">currently</span> or
+                <span class="highlight former">formerly</span> has control over
+                200 properties in Hyde Park and the surrounding neighborhoods,
+                spanning from 65th Street in the south, 38th Street in the
+                north, Lake Michigan in the east, and I-90 to the west.
+            </div>
+            <div class="scroller s-intro" id="step3">
+                How did the University come to control all this property and
+                what role has it played in shaping Hyde Park and the surrounding
+                neighborhoods?
+            </div>
+        </div>
+        <div class="intro">
+            <div id="intro-text">
+                <div class="title-container" id="title-container">
+                    <div class="title-box">
+                        <img
+                            src="static/images/seal.svg"
+                            alt="Chicago Maroon Logo"
+                            class="seal-title"
+                        />
+
+                        <div class="title" id="title">
+                            How the University Built a “Compatible Community”
+                        </div>
+                    </div>
+                    <div class="subtitle" id="subtitle">
+                        How the University of Chicago played an active role in
+                        shaping the surrounding neighborhoods since the
+                        University’s inception
+                    </div>
+                    <hr />
+                    <div id="bylines">
+                        <div class="byline" id="byline">
+                            Written by
+                            <a
+                                class="byline-link"
+                                href="https://chicagomaroon.com/staff_name/celeste-alcalay/"
+                                >Celeste Alcalay</a
+                            >,
+                            <a
+                                class="byline-link"
+                                href="https://chicagomaroon.com/staff_name/austin-steinhart/"
+                                >Austin Steinhart</a
+                            >, and
+                            <a
+                                class="byline-link"
+                                href="https://chicagomaroon.com/staff_name/nikhil-patel/"
+                                >Nikhil Patel</a
+                            >
+                        </div>
+                        <div class="byline" id="byline">
+                            Design and Development by
+                            <a
+                                class="byline-link"
+                                href="https://chicagomaroon.com/staff_name/austin-steinhart/"
+                                >Austin Steinhart</a
+                            >
+                            and
+                            <a
+                                class="byline-link"
+                                href="https://chicagomaroon.com/staff_name/nikhil-patel/"
+                                >Nikhil Patel</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="phoenix">
+                    <img src="static/images/phoenix.svg" alt="Phoenix Logo" />
+                </div>
+                <div class="article-text">
+                    <p>
+                        Conflicting priorities, land use disputes, and racial
+                        issues have driven both the University’s physical
+                        expansion and the evolution of a historically fraught
+                        “town and gown” relationship with Hyde Park and the
+                        surrounding neighborhoods. Drawing from campus maps,
+                        University plans, academic literature, and other
+                        archival material, the <i>Maroon</i> has charted the
+                        University’s property acquisition from its charter in
+                        1890 to the present.
+                    </p>
+                    <p>
+                        The narration is not an exhaustive history—rather, it
+                        traces the contours of shifting university values and
+                        priorities that contributed to the institutional
+                        identity the University of Chicago holds today.
+                    </p>
+
+                    <p style="margin-bottom: 50px">
+                        Scroll along to follow a visual history of the
+                        University of Chicago's role in shaping its built
+                        environment over its 135 year history.
+                    </p>
+                    <p
+                        style="
+                            text-align: center;
+                            margin-bottom: 0;
+                            font-size: 0.8em;
+                        "
+                    >
+                        Scroll to Continue
+                    </p>
+
+                    <p
+                        style="
+                            text-align: center;
+                            padding-bottom: 20px;
+                            font-size: 3em;
+                            margin: 0;
+                        "
+                    >
+                        <i
+                            class="fa fa-angle-double-down"
+                            aria-hidden="true"
+                        ></i>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="chapters-container">
+            <div class="map-container-body">
+                <div id="map-overlay-menu">
+                    <div class="map-overlay-inner">
+                        <h4>
+                            Explore the University of Chicago's Presence in Hyde
+                            Park
+                        </h4>
+                        <div id="slider-container">
+                            <p>Year: <span id="slider-year">2025</span></p>
+                            <input
+                                type="range"
+                                min="1890"
+                                max="2025"
+                                value="2025"
+                                class="slider"
+                                id="map-slider"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div id="map-overlay-methodology">
+                    <div class="map-overlay-inner">
+                        <h4>Methodology</h4>
+                        <p>
+                            This project drew data from several sources,
+                            including official University publications, campus
+                            maps, municipal records, satellite imagery, and news
+                            articles. Most building footprints were obtained
+                            from
+                            <a href="https://www.openstreetmap.org"
+                                >OpenStreetMap</a
+                            >, a crowdsourced geospatial data repository; some
+                            historic building footprints were recreated from
+                            historic maps using
+                            <a href="https://felt.com/">Felt</a>. Many dates of
+                            building ownership were sourced from the
+                            <a
+                                href="https://facilities.uchicago.edu/about/uchicago_heritage_map/"
+                                >UChicago Heritage Map</a
+                            >, opening announcements, and university press
+                            releases.
+                        </p>
+                        <p>
+                            You can access the data for this project including
+                            building footprints and data here. All of the
+                            Maroon's data projects are open source. Find this
+                            project's full data management and visualization
+                            code on
+                            <a
+                                href="https://github.com/chicagomaroon/data-visualizations/tree/main/2024/property-scroller"
+                                >GitHub here</a
+                            >. Please reach out to data@chicagomaroon.com with
+                            any corrections or questions.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="timeline-container">
+                    <div class="timeline-inner">
+                        <div class="timeline-text" id="timeline-3">1887</div>
+                        <div class="timeline-text" id="timeline-2">1888</div>
+                        <div class="timeline-text" id="timeline-1">1889</div>
+                        <div class="timeline-text" id="timeline-0">1890</div>
+                        <div class="timeline-text" id="timeline+1">1891</div>
+                        <div class="timeline-text" id="timeline+2">1892</div>
+                        <div class="timeline-text" id="timeline+3">1893</div>
+                    </div>
+                </div>
+                <div id="explore-nav">
+                    <button
+                        id="explore-button"
+                        onclick="exploreMap()"
+                        data-active="Story"
+                    >
+                        Explore Map
+                    </button>
+                </div>
+                <div id="highlight-layer"></div>
+
+                <figure id="map-body"></figure>
+            </div>
+        </div>
+        <!--
+        <div id="methodology">
+            <div id="methodology-text">
+                <div class="line-break"></div>
+                <h2>Methodology</h2>
+                <p>
+                    This project drew data from several sources, including
+                    official University publications, campus maps, municipal
+                    records, satellite imagery, and news articles. Most building
+                    footprints were obtained from
+                    <a href="https://www.openstreetmap.org">OpenStreetMap</a>, a
+                    crowdsourced geospatial data repository; some historic
+                    building footprints were recreated from historic maps using
+                    <a href="https://felt.com/">Felt</a>. Many dates of building
+                    ownership were sourced from the
+                    <a
+                        href="https://facilities.uchicago.edu/about/uchicago_heritage_map/"
+                        >UChicago Heritage Map</a
+                    >, opening announcements, and university press releases.
+                </p>
+                <p>
+                    You can access the data for this project including building
+                    footprints and data here. All of the Maroon's data projects
+                    are open source. Find this project's full data management
+                    and visualization code on
+                    <a
+                        href="https://github.com/chicagomaroon/data-visualizations/tree/main/2024/property-scroller"
+                        >GitHub here</a
+                    >. Please reach out to data@chicagomaroon.com with any
+                    corrections or questions.
+                </p>
+            </div>
+        </div>
+        -->
+
+        <div id="footer"></div>
+        <!-- EXTERNAL JS FILES -->
+
+        <!-- build:js inline -->
+        <script src="js/main.js" type="text/javascript"></script>
+        <script src="js/config.js" type="module"></script>
+        <!-- /build -->
+    </body>
+</html>
