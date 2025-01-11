@@ -1,9 +1,8 @@
 //TODO
 // must
-//      backwards
 //      mobile
-//      load all images in a function
 //      safari compatibility (timeline)
+//      downtown commuter shuttle
 
 //nice to have
 //      add center of polygon for popup
