@@ -16,8 +16,8 @@
 //      https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
 
 // ------------------ DATA ------------------
-dataPath = 'data/property_years_extended_12_27_24.geojson';
-otherPath = 'data/extra.geojson';
+dataPath = 'data/properties.geojson';
+otherPath = 'data/other_geoms.geojson';
 let config = [];
 
 // -------- CONSTANTS --------
@@ -67,8 +67,6 @@ function highlightPopup(ids, layer = null) {
     const selectedFeatures = features.filter((feature) =>
         ids.includes(feature.properties.id)
     );
-
-    console.log(activeLayer, selectedFeatures);
 
     // Show popup for each selected feature
     selectedFeatures.forEach((feature) => {
@@ -273,11 +271,28 @@ function flashLayer(map, layerId, interval = 1000) {
     }, interval);
 }
 
+function updateLayers(addYear, removeLayer = null) {
+    // remove layer
+    if (!removeLayer) {
+        activeLayer = findActiveLayerName(mapBody);
+    } else {
+        activeLayer = removeLayer;
+    }
+    // remove layer
+    activeLayer ? filterOpacity(mapBody, activeLayer, false) : null;
+    // add layer
+    filterOpacity(mapBody, 'layer' + String(addYear), true);
+
+    // update timeline
+    changeTimelineYear(addYear);
+}
+
 // -------- MAP FUNCTIONS ---------
 
-function createLayerOther(map_name, layerName, filter) {
-    map_name.addLayer({
-        id: layerName,
+function createOtherGeoms(map) {
+    // land_grant
+    map.addLayer({
+        id: 'land_grant',
         type: 'fill',
         source: 'other',
         layout: {},
@@ -286,7 +301,204 @@ function createLayerOther(map_name, layerName, filter) {
             'fill-opacity': 0,
             'fill-opacity-transition': { duration: 1000 }
         },
-        filter: filter
+        filter: ['==', ['get', 'name'], 'og_land_grant']
+    });
+
+    // shuttles
+    map.addLayer({
+        id: 'shuttles',
+        type: 'line',
+        source: 'other',
+        layout: {},
+        paint: {
+            // line color based on color attribute
+            'line-color': [
+                'case',
+                ['==', ['get', 'color'], 'BLUE'],
+                '#31C8F1',
+                ['==', ['get', 'color'], 'GREEN'],
+                '#86E23C',
+                ['==', ['get', 'color'], 'RED'],
+                '#E13736',
+                ['==', ['get', 'color'], 'PURPLE'],
+                '#9233B6',
+                ['==', ['get', 'color'], 'YELLOW'],
+                '#EAD946',
+                ['==', ['get', 'color'], 'ORANGE'],
+                '#EE9D21',
+                ['==', ['get', 'color'], 'PINK'],
+                '#ED61BE',
+                'black'
+            ],
+            'line-width': 5,
+            'line-opacity': 0
+        }
+    });
+
+    // police
+    map.addLayer({
+        id: 'ucpd_bounds_2024_line',
+        type: 'line',
+        source: 'other',
+        layout: {},
+        paint: {
+            'line-color': 'black',
+            'line-width': 2,
+            'line-opacity': 0
+        }
+    });
+
+    map.addLayer({
+        id: 'ucpd_bounds_2024_fill',
+        type: 'fill',
+        source: 'other',
+        layout: {},
+        paint: {
+            'fill-color': 'black',
+            'fill-opacity': 0
+        }
+    });
+
+    // charters
+    map.addLayer({
+        id: 'charterSchools',
+        type: 'fill',
+        source: 'buildings',
+        layout: {},
+        paint: {
+            'fill-color': PRIMARY_COLOR,
+            'fill-opacity': 0
+        },
+        filter: ['in', 'id', ...ids_charter]
+    });
+}
+
+function createOverlayMapLayers(map) {
+    // add all image overlay
+    // urban renewal 1955
+    map.addSource('south_campus_plan', {
+        type: 'image',
+        url: './static/images/south_campus_plan.jpg',
+        coordinates: [
+            [-87.60165, 41.786],
+            [-87.59755, 41.78605], //
+            [-87.5975, 41.78355],
+            [-87.60158, 41.78353]
+        ]
+    });
+
+    map.addLayer({
+        id: 'south_campus_plan',
+        type: 'raster',
+        source: 'south_campus_plan',
+        paint: {
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
+        }
+    });
+
+    map.addSource('covenants', {
+        type: 'image',
+        url: './static/images/covenant_edit.png',
+        coordinates: [
+            [-87.77, 41.9102],
+            [-87.5246834044871, 41.914], //
+            [-87.5246834044871, 41.702], //
+            [-87.76566748604431, 41.7]
+        ]
+    });
+
+    map.addLayer({
+        id: 'covenants',
+        type: 'raster',
+        source: 'covenants',
+        paint: {
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
+        }
+    });
+
+    // urban renewal
+    map.addSource('urban_renewal_1960', {
+        type: 'image',
+        url: './static/images/urban_renewal_1960.jpg',
+        coordinates: [
+            [-87.6069, 41.80970913038894],
+            [-87.574, 41.80970913038894], //
+            [-87.574, 41.78770955793823],
+            [-87.6065, 41.78770955793823]
+        ]
+    });
+
+    map.addLayer({
+        id: 'urban_renewal_1960',
+        type: 'raster',
+        source: 'urban_renewal_1960',
+        paint: {
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
+        }
+    });
+
+    map.addSource('south_roads', {
+        type: 'image',
+        url: './static/images/south_1968.jpg',
+        coordinates: [
+            [-87.606042, 41.78644],
+            [-87.58968, 41.7867],
+            [-87.58961, 41.7843],
+            [-87.606, 41.784]
+        ]
+    });
+
+    map.addLayer({
+        id: 'south_roads',
+        type: 'raster',
+        source: 'south_roads',
+        paint: {
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
+        }
+    });
+
+    map.addSource('EAHP', {
+        type: 'image',
+        url: './static/images/EAHP.png',
+        coordinates: [
+            [-87.63899174851709, 41.849],
+            [-87.481, 41.849], //
+            [-87.47, 41.75057371953466],
+            [-87.63899174851709, 41.75057371953466]
+        ]
+    });
+
+    map.addLayer({
+        id: 'EAHP',
+        type: 'raster',
+        source: 'EAHP',
+        paint: {
+            'raster-opacity': 0
+        }
+    });
+
+    map.addSource('opc_plan', {
+        type: 'image',
+        url: './static/images/opc_plan.jpg',
+        coordinates: [
+            [-87.58883159578394, 41.7881],
+            [-87.58299929754422, 41.7881], //
+            [-87.58299929754422, 41.78193744932196],
+            [-87.5888, 41.78193744932196]
+        ]
+    });
+
+    map.addLayer({
+        id: 'opc_plan',
+        type: 'raster',
+        source: 'opc_plan',
+        paint: {
+            'raster-opacity': 0
+        }
     });
 }
 
@@ -362,87 +574,10 @@ function allLayers(map, type) {
             bodyLayers.push(layerName);
             createLayerYears(map, layerName, 1890, year);
         }
-        //
-        createLayerOther(map, 'land_grant', [
-            '==',
-            ['get', 'name'],
-            'og_land_grant'
-        ]);
 
-        map.addSource('shuttles', {
-            type: 'geojson',
-            data: 'data/uchi_shuttle_lines.geojson'
-        });
+        createOtherGeoms(map);
 
-        map.addLayer({
-            id: 'shuttles',
-            type: 'line',
-            source: 'shuttles',
-            layout: {},
-            paint: {
-                // line color based on color attribute
-                'line-color': [
-                    'case',
-                    ['==', ['get', 'color'], 'BLUE'],
-                    '#31C8F1',
-                    ['==', ['get', 'color'], 'GREEN'],
-                    '#86E23C',
-                    ['==', ['get', 'color'], 'RED'],
-                    '#E13736',
-                    ['==', ['get', 'color'], 'PURPLE'],
-                    '#9233B6',
-                    ['==', ['get', 'color'], 'YELLOW'],
-                    '#EAD946',
-                    ['==', ['get', 'color'], 'ORANGE'],
-                    '#EE9D21',
-                    ['==', ['get', 'color'], 'PINK'],
-                    '#ED61BE',
-                    'black'
-                ],
-                'line-width': 5,
-                'line-opacity': 0
-            }
-        });
-
-        map.addSource('ucpd_bounds_2024', {
-            type: 'geojson',
-            data: 'data/ucpd_bounds_2024.geojson'
-        });
-
-        map.addLayer({
-            id: 'ucpd_bounds_2024_line',
-            type: 'line',
-            source: 'ucpd_bounds_2024',
-            layout: {},
-            paint: {
-                'line-color': 'black',
-                'line-width': 2,
-                'line-opacity': 0
-            }
-        });
-
-        map.addLayer({
-            id: 'ucpd_bounds_2024_fill',
-            type: 'fill',
-            source: 'ucpd_bounds_2024',
-            layout: {},
-            paint: {
-                'fill-color': 'black',
-                'fill-opacity': 0
-            }
-        });
-
-        mapBody.addLayer({
-            id: 'charterSchools',
-            type: 'fill',
-            source: 'buildings',
-            layout: {},
-            paint: {
-                'fill-color': PRIMARY_COLOR,
-                'fill-opacity': 0
-            },
-            filter: ['in', 'id', ...ids_charter]
-        });
+        createOverlayMapLayers(map);
     }
 }
 
@@ -455,14 +590,7 @@ function filterOpacity(map, layer, show = true, opacity_max = 0.6) {
     map.setPaintProperty(layer, 'fill-opacity', opacity);
 }
 
-function createMap(
-    div,
-    layers,
-    startCoords = uChiLocation,
-    zoomStart = 17,
-    start_year = 1900,
-    type = 'body'
-) {
+function createMap(div, type, startCoords = uChiLocation, zoomStart = 17) {
     let map = new maplibregl.Map({
         container: div,
         style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json', // stylesheet locatio
@@ -491,137 +619,7 @@ function createMap(
             data: otherPath
         });
 
-        allLayers(map, layers);
-
-        if (type == 'body') {
-            // add all image overlay
-            // urban renewal 1955
-            map.addSource('south_campus_plan', {
-                type: 'image',
-                url: './static/images/south_campus_plan.jpg',
-                coordinates: [
-                    [-87.60165, 41.786],
-                    [-87.59755, 41.78605], //
-                    [-87.5975, 41.78355],
-                    [-87.60158, 41.78353]
-                ]
-            });
-
-            map.addLayer({
-                id: 'south_campus_plan',
-                type: 'raster',
-                source: 'south_campus_plan',
-                paint: {
-                    'raster-opacity': 0,
-                    'raster-opacity-transition': { duration: 2000 }
-                }
-            });
-
-            map.addSource('covenants', {
-                type: 'image',
-                url: './static/images/covenant_edit.png',
-                coordinates: [
-                    [-87.77, 41.9102],
-                    [-87.5246834044871, 41.914], //
-                    [-87.5246834044871, 41.702], //
-                    [-87.76566748604431, 41.7]
-                ]
-            });
-
-            map.addLayer({
-                id: 'covenants',
-                type: 'raster',
-                source: 'covenants',
-                paint: {
-                    'raster-opacity': 0,
-                    'raster-opacity-transition': { duration: 2000 }
-                }
-            });
-
-            // urban renewal
-            map.addSource('urban_renewal_1960', {
-                type: 'image',
-                url: './static/images/urban_renewal_1960.jpg',
-                coordinates: [
-                    [-87.6069, 41.80970913038894],
-                    [-87.574, 41.80970913038894], //
-                    [-87.574, 41.78770955793823],
-                    [-87.6065, 41.78770955793823]
-                ]
-            });
-
-            map.addLayer({
-                id: 'urban_renewal_1960',
-                type: 'raster',
-                source: 'urban_renewal_1960',
-                paint: {
-                    'raster-opacity': 0,
-                    'raster-opacity-transition': { duration: 2000 }
-                }
-            });
-
-            map.addSource('south_roads', {
-                type: 'image',
-                url: './static/images/south_1968.jpg',
-                coordinates: [
-                    [-87.606042, 41.78644],
-                    [-87.58968, 41.7867],
-                    [-87.58961, 41.7843],
-                    [-87.606, 41.784]
-                ]
-            });
-
-            map.addLayer({
-                id: 'south_roads',
-                type: 'raster',
-                source: 'south_roads',
-                paint: {
-                    'raster-opacity': 0,
-                    'raster-opacity-transition': { duration: 2000 }
-                }
-            });
-
-            map.addSource('EAHP', {
-                type: 'image',
-                url: './static/images/EAHP.png',
-                coordinates: [
-                    [-87.63899174851709, 41.849],
-                    [-87.481, 41.849], //
-                    [-87.47, 41.75057371953466],
-                    [-87.63899174851709, 41.75057371953466]
-                ]
-            });
-
-            map.addLayer({
-                id: 'EAHP',
-                type: 'raster',
-                source: 'EAHP',
-                paint: {
-                    'raster-opacity': 0
-                }
-            });
-
-            map.addSource('opc_plan', {
-                type: 'image',
-                url: './static/images/opc_plan.jpg',
-                coordinates: [
-                    [-87.58883159578394, 41.7881],
-                    [-87.58299929754422, 41.7881], //
-                    [-87.58299929754422, 41.78193744932196],
-                    [-87.5888, 41.78193744932196]
-                ]
-            });
-
-            map.addLayer({
-                id: 'opc_plan',
-                type: 'raster',
-                source: 'opc_plan',
-                paint: {
-                    'raster-opacity': 0
-                }
-            });
-        }
-
+        allLayers(map, type);
         popupStuff(map);
     });
 
@@ -770,23 +768,6 @@ function processChapter(chapter) {
 }
 
 // ------------ WAYPOINTS ------------
-
-function updateLayers(addYear, removeLayer = null) {
-    // remove layer
-    // TODO can this find the active layer and just remove that?
-    if (!removeLayer) {
-        activeLayer = findActiveLayerName(mapBody);
-    } else {
-        activeLayer = removeLayer;
-    }
-
-    activeLayer ? filterOpacity(mapBody, activeLayer, false) : null;
-    // add layer
-    filterOpacity(mapBody, 'layer' + String(addYear), true);
-
-    // update timeline
-    changeTimelineYear(addYear);
-}
 
 function introWaypoints() {
     new Waypoint({
@@ -1230,7 +1211,6 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 // show
-                console.log('4.2');
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0.6);
             } else {
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0);
@@ -1639,17 +1619,12 @@ function bodyWaypoints() {
 
 // create all waypoint triggers
 function waypoints() {
-    let offset = '50%';
-
-    // fade in to start
-    intro = document.querySelector('#intro');
-    fadeInLayer(intro, 0, 1, 0.002, 5);
-
     introWaypoints();
     bodyWaypoints();
 }
 
 // ------------ MAIN ------------
+
 // combine all into one function
 function init() {
     // create html elements from config
@@ -1671,6 +1646,10 @@ function init() {
         };
         waiting();
     });
+
+    // fade in to start
+    intro = document.querySelector('#intro');
+    fadeInLayer(intro, 0, 1, 0.002, 5);
 
     // create waypoints
     waypoints();
@@ -1795,6 +1774,7 @@ function init() {
         document.querySelectorAll('#map-intro').forEach((element) => {
             element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
         });
+
         init();
     });
 })();
