@@ -50,7 +50,29 @@ const ids_dorms = ['153266965', '2087203', '10657061', '11687839'];
 
 // ------- LISTENERS --------
 document.getElementById('map-slider').addEventListener('input', (e) => {
-    mapBody.setFilter('layer2025', ['<', 'year_start', Number(e.target.value)]);
+    mapBody.setFilter('layerSlider', [
+        'any',
+        [
+            'all',
+            ['<=', ['get', 'year_start'], Number(e.target.value)],
+            ['>', ['get', 'year_end'], Number(e.target.value)]
+        ],
+        [
+            'all',
+            ['<=', ['get', 'year_end'], Number(e.target.value)],
+            ['==', ['get', 'currently_exists'], true]
+        ]
+    ]);
+    mapBody.setPaintProperty('layerSlider', 'fill-color', [
+        'case',
+        [
+            'all',
+            ['<', ['get', 'year_end'], Number(e.target.value)],
+            ['==', ['get', 'currently_owned'], false]
+        ],
+        'black', // sold
+        PRIMARY_COLOR
+    ]);
     document.getElementById('slider-year').innerText = e.target.value;
 });
 
@@ -506,16 +528,33 @@ function createLayerYears(map_name, layerName, year) {
         source: 'buildings',
         layout: {},
         paint: {
-            'fill-color': PRIMARY_COLOR,
+            'fill-color': [
+                'case',
+                [
+                    'all',
+                    ['<', ['get', 'year_end'], year],
+                    ['==', ['get', 'currently_owned'], false]
+                ],
+                'black', // sold
+                PRIMARY_COLOR
+            ],
             'fill-opacity': 0,
             'fill-opacity-transition': {
                 duration: map_name == mapIntro ? 5000 : 1000
             }
         },
         filter: [
-            'all',
-            ['<=', 'year_start', parseInt(year)],
-            ['>', 'year_end', parseInt(year)]
+            'any',
+            [
+                'all',
+                ['<=', ['get', 'year_start'], parseInt(year)],
+                ['>', ['get', 'year_end'], parseInt(year)]
+            ],
+            [
+                'all',
+                ['<', ['get', 'year_end'], year],
+                ['==', ['get', 'currently_exists'], true]
+            ]
         ]
     });
 }
@@ -568,6 +607,57 @@ function allLayers(map, type) {
             bodyLayers.push(layerName);
             createLayerYears(map, layerName, year);
         }
+
+        // add 2024 layer for now
+        map.addLayer({
+            id: 'layer2024',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': [
+                    'case',
+                    [
+                        'all',
+                        ['<', ['get', 'year_end'], 2024],
+                        ['==', ['get', 'currently_owned'], false]
+                    ],
+                    'black', // sold
+                    PRIMARY_COLOR
+                ],
+                'fill-opacity': 0,
+                'fill-opacity-transition': {
+                    duration: map == mapIntro ? 5000 : 1000
+                }
+            },
+            filter: ['all', ['<=', 'year_start', 2024], ['>', 'year_end', 2024]]
+        });
+
+        map.addLayer({
+            id: 'layerSlider',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': [
+                    'case',
+                    [
+                        'all',
+                        ['<', ['get', 'year_end'], 2024],
+                        ['==', ['get', 'currently_owned'], false]
+                    ],
+                    'black', // sold
+                    PRIMARY_COLOR
+                ],
+                'fill-opacity': 0,
+                'fill-opacity-transition': {
+                    duration: map == mapIntro ? 5000 : 1000
+                }
+            },
+            filter: ['all', ['<=', 'year_start', 2024], ['>', 'year_end', 2024]]
+        });
+
+        bodyLayers.push('layer2024');
 
         createOtherGeoms(map);
 
@@ -1483,7 +1573,7 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // reset highlights
                 // what layer to remove?
-                updateLayers(2025);
+                updateLayers(2024);
             } else {
             }
         }
@@ -1540,6 +1630,8 @@ function bodyWaypoints() {
         element: document.getElementById('final-scroller'),
         handler: function (direction) {
             if (direction == 'down') {
+                filterOpacity(mapBody, 'layerSlider', true);
+                filterOpacity(mapBody, 'layer2024', false);
                 // move up a little
                 mapBody.flyTo({
                     center: hydeParkLocation,
@@ -1569,6 +1661,8 @@ function bodyWaypoints() {
                 mapBody.doubleClickZoom.enable();
                 mapBody.addControl(nav, 'top-right');
             } else {
+                filterOpacity(mapBody, 'layerSlider', false);
+                filterOpacity(mapBody, 'layer2024', true);
                 // bring back timeline and explore map button
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
