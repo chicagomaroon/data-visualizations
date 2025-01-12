@@ -280,6 +280,18 @@ body {
     margin-top: 20px;
 }
 
+.chapter-img-credit {
+    font-family: Playfair Display;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    z-index: 999;
+    color: white;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
 .chapter-title p {
     margin: 0;
 }

@@ -4,6 +4,8 @@ const config = [
         chapterYears: '1890-1933',
         id: '1',
         image: './static/images/chapter1.jpg',
+        img_credit: 'University of Chicago Photographic Archive',
+
         subsections: [
             {
                 id: '1.1',
@@ -57,6 +59,7 @@ const config = [
         chapterYears: '1933–1948',
         id: '2',
         image: './static/images/chapter2.jpg',
+        img_credit: 'University of Chicago Photographic Archive',
         subsections: [
             {
                 id: 'demographics',
@@ -86,6 +89,7 @@ const config = [
         chapterYears: '1949-1962',
         id: '3',
         image: './static/images/chapter3.png',
+        img_credit: 'Hyde Park Herald',
         subsections: [
             {
                 id: '3.0',
@@ -127,6 +131,7 @@ const config = [
         chapterYears: '1963-2006',
         id: '4',
         image: './static/images/chapter4.jpg',
+        img_credit: 'University of Chicago Photographic Archive',
         subsections: [
             {
                 id: '4.1',
@@ -180,6 +185,8 @@ const config = [
         chapterYears: '2007-2022',
         id: '5',
         image: './static/images/chapter5.jpg',
+
+        img_credit: 'UChicago Arts',
         subsections: [
             {
                 id: '5.1',
@@ -207,6 +214,7 @@ const config = [
         chapterYears: '2023 Onward',
         id: '6',
         image: './static/images/chapter6.png',
+        img_credit: 'The Obama Presidential Center',
         subsections: [
             {
                 id: '6.1',

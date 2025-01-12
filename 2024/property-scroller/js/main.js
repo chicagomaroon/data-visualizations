@@ -2,10 +2,12 @@
 // must
 //      mobile
 //      safari compatibility (timeline)
-//      downtown commuter shuttle
+//      confirm timeline years
+//       red is > year_start and (< end or currently own)
+//       > year_end and currently exists and currently own is false, then grey (sold)
 
 //nice to have
-//      add center of polygon for popup
+//      scroll to continue at the top
 //      max and min area
 //     separate out js files
 //      edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
@@ -42,7 +44,6 @@ let flashingInterval = '';
 // hihglight ids
 const ids_1_3 = ['157655073', '156128082'];
 const ids_gothic = ['1953426', '151173253'];
-const ids_charter = ['505873479', '185377897', '2235555'];
 const ids_dorms = ['153266965', '2087203', '10657061', '11687839'];
 
 // ------- LISTENERS --------
@@ -317,6 +318,8 @@ function createOtherGeoms(map) {
                 '#31C8F1',
                 ['==', ['get', 'color'], 'GREEN'],
                 '#86E23C',
+                ['==', ['get', 'color'], 'DARK GREEN'],
+                '#306024',
                 ['==', ['get', 'color'], 'RED'],
                 '#E13736',
                 ['==', ['get', 'color'], 'PURPLE'],
@@ -331,7 +334,8 @@ function createOtherGeoms(map) {
             ],
             'line-width': 5,
             'line-opacity': 0
-        }
+        },
+        filter: ['==', ['get', 'shuttle'], '1']
     });
 
     // police
@@ -344,7 +348,8 @@ function createOtherGeoms(map) {
             'line-color': 'black',
             'line-width': 2,
             'line-opacity': 0
-        }
+        },
+        filter: ['==', ['get', 'name'], 'Patrol Area']
     });
 
     map.addLayer({
@@ -355,20 +360,8 @@ function createOtherGeoms(map) {
         paint: {
             'fill-color': 'black',
             'fill-opacity': 0
-        }
-    });
-
-    // charters
-    map.addLayer({
-        id: 'charterSchools',
-        type: 'fill',
-        source: 'buildings',
-        layout: {},
-        paint: {
-            'fill-color': PRIMARY_COLOR,
-            'fill-opacity': 0
         },
-        filter: ['in', 'id', ...ids_charter]
+        filter: ['==', ['get', 'name'], 'Patrol Area']
     });
 }
 
@@ -466,7 +459,7 @@ function createOverlayMapLayers(map) {
         coordinates: [
             [-87.63899174851709, 41.849],
             [-87.481, 41.849], //
-            [-87.47, 41.75057371953466],
+            [-87.481, 41.75057371953466],
             [-87.63899174851709, 41.75057371953466]
         ]
     });
@@ -501,7 +494,7 @@ function createOverlayMapLayers(map) {
     });
 }
 
-function createLayerYears(map_name, layerName, start_year, end_year) {
+function createLayerYears(map_name, layerName, year) {
     /*
     create the base source and layers that we will filter
     */
@@ -519,8 +512,8 @@ function createLayerYears(map_name, layerName, start_year, end_year) {
         },
         filter: [
             'all',
-            ['>=', ['get', 'year_start'], start_year],
-            ['<=', ['get', 'year_start'], end_year]
+            ['<=', 'year_start', parseInt(year)],
+            ['>', 'year_end', parseInt(year)]
         ]
     });
 }
@@ -571,7 +564,7 @@ function allLayers(map, type) {
             layerName = 'layer' + String(year);
 
             bodyLayers.push(layerName);
-            createLayerYears(map, layerName, 1890, year);
+            createLayerYears(map, layerName, year);
         }
 
         createOtherGeoms(map);
@@ -703,12 +696,17 @@ function processChapter(chapter) {
         '</p>';
     title_text_div.className = 'chapter-title';
 
+    let title_img_credit = document.createElement('div');
+    title_img_credit.innerHTML = chapter.img_credit;
+    title_img_credit.className = 'chapter-img-credit';
+
     let title_image_div = document.createElement('img');
     title_image_div.src = chapter.image;
     title_image_div.className = 'chapter-image';
 
     title_div.appendChild(title_text_div);
     title_div.appendChild(title_image_div);
+    title_div.appendChild(title_img_credit);
 
     document.getElementById('chapters-container').appendChild(title_div);
 
@@ -797,7 +795,7 @@ function introWaypoints() {
             mapIntro.flyTo({
                 center: hydeParkLocation,
                 zoom: 13.5,
-                duration: 8000
+                duration: 6000
             });
         },
         offset: '90%'
@@ -852,12 +850,6 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
-
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
-                    duration: 7000
-                });
             } else {
                 document.getElementById('explore-nav').style.visibility =
                     'hidden';
@@ -874,6 +866,11 @@ function bodyWaypoints() {
                 filterOpacity(mapBody, 'land_grant');
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
+                mapBody.flyTo({
+                    center: uChiLocationSide,
+                    zoom: 14.5,
+                    duration: 7000
+                });
             } else {
                 updateLayers(1895);
                 filterOpacity(mapBody, 'land_grant', true);
@@ -1258,23 +1255,14 @@ function bodyWaypoints() {
                 clearInterval(flashingInterval);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
 
-                // charter schools
-                // show charter schools
-                mapBody.setPaintProperty('charterSchools', 'fill-opacity', 0.6);
-
                 // zoom out
                 mapBody.flyTo({
                     center: [-87.60278, 41.8],
                     zoom: 12.5,
                     duration: zoomSpeed
                 });
-                // timeout then add popup due to map movement
-                setTimeout(() => {
-                    highlightPopup(ids_charter, 'charterSchools');
-                }, 3500);
             } else {
                 removePopups();
-                mapBody.setPaintProperty('charterSchools', 'fill-opacity', 0);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
                 flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
                 mapBody.flyTo({
@@ -1306,7 +1294,6 @@ function bodyWaypoints() {
                 );
             } else {
                 updateLayers(1980);
-                highlightPopup(ids_charter, 'charterSchools');
 
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
@@ -1339,7 +1326,7 @@ function bodyWaypoints() {
                     'fill-opacity',
                     0
                 );
-                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.62, 41.8],
                     zoom: 11.75,
@@ -1388,7 +1375,7 @@ function bodyWaypoints() {
             } else {
                 removePopups();
                 mapBody.zoomTo(11.5, { duration: zoomSpeed });
-                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 updateLayers(2000);
             }
         },
@@ -1454,7 +1441,7 @@ function bodyWaypoints() {
                 // highlight arts buildings /WP
                 mapBody.flyTo({
                     center: [-87.62238983619335, 41.79449748170734],
-                    zoom: 15.5,
+                    zoom: 14.5,
                     duration: zoomSpeed
                 });
             } else {
@@ -1626,6 +1613,9 @@ function waypoints() {
 
 // combine all into one function
 function init() {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
     // create html elements from config
     config = JSON.parse(sessionStorage.getItem('config'));
     processConfig(config);
