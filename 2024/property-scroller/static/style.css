@@ -111,7 +111,7 @@ body {
 
 #timeline-container {
     position: absolute;
-    height: fit-content;
+    box-sizing: border-box;
     z-index: 3;
     left: 10px;
     vertical-align: middle;
@@ -346,7 +346,7 @@ body {
 
 #title {
     font-family: 'Playfair Display', serif;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 500;
     z-index: 9999;
     padding-top: 7px;
