@@ -29,6 +29,8 @@ const hydeParkLocation = [-87.5965, 41.795];
 const hpLocationSide = [-87.606, 41.795];
 const uChiLocationSide = [-87.606, 41.78955];
 
+const isMobile = window.innerWidth < 800;
+
 const zoomSpeed = 5000;
 PRIMARY_COLOR = '#800000';
 SECONDARY_COLOR = 'black';
@@ -1494,7 +1496,7 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.5859, 41.78534],
-                    zoom: 16.5,
+                    zoom: isMobile ? 15.5 : 16.5,
                     bearing: 90,
                     duration: zoomSpeed
                 });
@@ -1525,7 +1527,7 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.5859, 41.78534],
-                    zoom: 16.5,
+                    zoom: isMobile ? 15.5 : 16.5,
                     bearing: 90,
                     duration: zoomSpeed
                 });

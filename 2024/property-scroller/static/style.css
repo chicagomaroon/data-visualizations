@@ -497,7 +497,7 @@ body {
 
     .scroller.s-intro {
         width: 80%;
-        font-size: 22px;
+        font-size: 18px;
     }
 
     #step2,
@@ -510,7 +510,7 @@ body {
     }
 
     #title {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     #byline {
@@ -519,25 +519,38 @@ body {
     }
 
     #subtitle {
-        font-size: 23px;
-    }
-
-    .article-text {
         font-size: 22px;
     }
 
+    .article-text {
+        font-size: 20px;
+    }
+
     .chapter-title {
-        font-size: 40px;
+        font-size: 35px;
+    }
+
+    .num-chapter {
+        font-size: 30px;
+    }
+
+    .quote {
+        padding-block: 10px;
+    }
+
+    .quoteText,
+    .quoteAuthor {
+        font-size: 14px;
     }
 
     .scroller {
         width: 80%;
         margin-inline: auto;
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .scroller-image {
-        max-height: 200px;
+        max-height: 150px;
     }
 
     #intro-text {
