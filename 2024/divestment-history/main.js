@@ -146,6 +146,14 @@ function timeWaypoint(div, timerange) {
         element: document.getElementById(div),
         handler: function(direction) {
             graphDiv = document.getElementById('chart-div')
+            Plotly.restyle(
+                graphDiv,
+                { 
+                    visible: true,
+                },
+                [0]
+            );
+
     
             if (direction=='down') { // advance 10 years
                 Plotly.animate('chart-div', {
