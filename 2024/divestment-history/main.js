@@ -425,7 +425,6 @@ async function init() {
     // console.log(data);  
 
     var myPlot = document.getElementById('chart-div');
-    var hoverInfo = document.getElementById('hoverinfo');
 
     Plotly.newPlot(
         'chart-div', 
@@ -433,8 +432,6 @@ async function init() {
         createLayout(),
         config
     );
-
-    console.log(myPlot);
 
     myPlot.on('plotly_click', open_url);
     myPlot.on('plotly_hover', hide_box_hovers);
