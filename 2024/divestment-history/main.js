@@ -37,14 +37,31 @@ function processData(
             'Movement' : {
                 'Palestine': 'rgb(128, 0, 0)',
             // 'rgb(255, 163, 25)',
-            'Fossil fuels':'rgb(193, 102, 34)',
-            'Uyghur rights':'rgb(143, 57, 49)',
-            'Labor rights':'rgb(138, 144, 69)',
-            'SRIC':'rgb(88, 89, 63)',
-            'Sudan':'rgb(21, 95, 131)',
-            'South Africa':'rgb(53, 14, 32)',
-            // 'rgb(71, 181, 255)',
-            // 'rgb(255, 51, 153)'
+                'Fossil fuels':'rgb(193, 102, 34)',
+                'Uyghur rights':'rgb(143, 57, 49)',
+                'Labor rights':'rgb(138, 144, 69)',
+                'SRIC':'rgb(88, 89, 63)',
+                'Sudan':'rgb(21, 95, 131)',
+                // 'rgb(53, 14, 32)',
+                'South Africa':'rgb(71, 181, 255)',
+                // 'rgb(255, 51, 153)'
+            },
+            'Type of Action': {
+                'Letter Writing': 'rgb(128, 0, 0)',
+                'Protest': 'rgb(193, 102, 34)',
+                'Pledge/Resolution': 'rgb(143, 57, 49)',
+                'Legal Action': 'rgb(138, 144, 69)',
+                'Research Report': 'rgb(88, 89, 63)',
+                'Debate': 'rgb(21, 95, 131)',
+                'Forum': 'rgb(71, 181, 255))',
+            },
+            'Admin Response': {
+                'Arrest/punish': 'rgb(128, 0, 0)',
+                'Meeting/negotiation': 'rgb(193, 102, 34)',
+                'Interview/forum': 'rgb(143, 57, 49)',
+                'Non-divestment support': 'rgb(138, 144, 69)',
+                'Ignore/refuse': 'rgb(88, 89, 63)',
+            }
         }
 
         traces = []
