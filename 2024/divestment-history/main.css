@@ -1,3 +1,56 @@
+body {
+    line-height: 2em;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 40;
+    text-align: center;
+    padding-top: 20vh;
+    font-weight: 400;
+}
+
+#subtitle {
+    font-size: 28;
+    text-align: center;
+}
+
+.scroller {
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+    width: 50%;
+    margin-left: 50%;
+}
+
+#content {
+    width: min(900px, 90%);
+    margin: auto;
+}
+
 #chart-div {
-    position: fixed;
+    position: sticky;
+    top: 30vh;
+    margin: auto;
+}
+
+#bylines {
+    font-size: 16px;
+}
+
+figure {
+    margin: 0 !important;
+}
+
+blockquote {
+    font-weight: 1000;
+    line-height: 1.2em;
+    font-size: 26px;
+    margin: 0 !important;
+}
+
+footer {
+    background-color: #800000;
+    padding: 60px;
+    color: white;
+    margin-top: 20vh;
 }
