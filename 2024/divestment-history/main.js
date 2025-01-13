@@ -128,168 +128,97 @@ function processData(
  * @param  {[type]} foo [description]
  * @return {[type]}     [description]
  */
-function timeWaypoint(div, timerange) {
-    keys = {
-        'palestine': [.5,1.5],
-        'fossil-fuels': [-.5,.5],
-        'uyghur-rights': [1.5,2.5],
-        'labor-rights': [2.5,3.5],
-        'sric': [3.5,4.5],
-        'sudan': [4.5,5.5],
-        'south-africa': [5.5,6.5]
-    }
+function createWaypoint(div, mapping, traceindex) {
+    function handler(direction) {
+        graphDiv = document.getElementById('chart-div');
 
-    halfsize = Math.min(400, 50 * window.innerWidth)
+        // note: don't try to make this a constant as it needs to be calculated when the user gets to this point
+        halfsize = Math.min(400, 50 * window.innerWidth)
 
-    new Waypoint({
-        
-        element: document.getElementById(div),
-        handler: function(direction) {
-            graphDiv = document.getElementById('chart-div');
+        Plotly.restyle(
+            graphDiv,
+            { 
+                visible: true,
+            },
+            [0]
+        );
 
-            Plotly.restyle(
-                graphDiv,
-                { 
-                    visible: true,
-                },
-                [0]
-            );
+        if (direction=='down') { // advance 10 years
+            if (div=='letters') { 
+                Plotly.restyle(
+                    graphDiv,
+                    { visible: false },
+                    [0]
+                );
+                Plotly.restyle(
+                    graphDiv,
+                    { visible: true },
+                    [1]
+                );
+            }
 
-    
-            if (direction=='down') { // advance 10 years
+            Plotly.animate(graphDiv, {
+                layout: {
+                    xaxis: {range: mapping[div]['x']},
+                    yaxis: {range: mapping[div]['y']},
+                    width: halfsize
+                }
+              }, {
+                transition: transition
+            })
+        } else { // scroll up
 
-                Plotly.animate(graphDiv, {
-                    layout: {
-                        xaxis: {range: timerange},
-                        yaxis: {range: keys[div]},
-                        width: halfsize
-                    }
-                  }, {
-                    transition: transition
-                })
-            } else {
+            if (div=='palestine') { // top of story
+                layout = {
+                    xaxis: {range: mapping['all']['x']},
+                    yaxis: {range: mapping['all']['y']},
+                    width: 1000
+                } 
 
-                if (div=='palestine') { // top of story
-                    layout = {
-                        xaxis: {range: ['1966-1-1','2026-1-1']},
-                        yaxis: {range: [-.5,7.5]},
-                        width: 1000
-                    } 
+                Plotly.animate(
+                    graphDiv, 
+                    { layout: layout }, 
+                    { transition: transition }
+                )
 
+            } else { // move back 10 years
+
+                function minus10(year) {
+                    return (parseInt(year.substring(0, 4)) + 10)
+                }
+
+                layout = {
+                    xaxis: {
+                        range: [
+                            minus10(mapping[div]['x'][0]) + '-1-1',
+                            minus10(mapping[div]['x'][1]) + '-1-1'
+                        ]
+                    },
+                    yaxis: {
+                        range: [
+                            mapping[div]['y'][0]-1,
+                            mapping[div]['y'][1]-1
+                        ]
+                    },
+                    width: halfsize
+                }
+
+                // console.log(minus10(timerange[1]))
+                if (minus10(mapping[div]['x'][1]) < 2028) {
                     Plotly.animate(
                         graphDiv, 
                         { layout: layout }, 
                         { transition: transition }
                     )
-
-                } else { // move back 10 years
-
-                    function minus10(year) {
-                        return (parseInt(year.substring(0, 4)) + 10)
-                    }
-
-                    layout = {
-                        xaxis: {
-                            range: [
-                                minus10(timerange[0]) + '-1-1',
-                                minus10(timerange[1]) + '-1-1'
-                            ]
-                        },
-                        yaxis: {
-                            range: [
-                                keys[div][0]-1,
-                                keys[div][1]-1
-                            ]
-                        },
-                        width: halfsize
-                    }
-
-                    // console.log(minus10(timerange[1]))
-                    if (minus10(timerange[1]) < 2028) {
-                        Plotly.animate(
-                            graphDiv, 
-                            { layout: layout }, 
-                            { transition: transition }
-                        )
-                    }
                 }
             }
-        },
-        offset: '60%'
-    })
-}
-
-
-/**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
- */
-function stratWaypoint(div, strat) {
-
-    keys = {
-        'letters': [.5,1.5],
-        'protest': [-.5,.5],
-        'other': [1.5,7.5],
+        }
     }
 
     new Waypoint({
         element: document.getElementById(div),
-        handler: function(direction) {
-            graphDiv = document.getElementById('chart-div')
-
-            if (direction=='down') {
-                if (div=='letters') { 
-                    Plotly.restyle(
-                        graphDiv,
-                        { 
-                            visible: false,
-                        },
-                        [0]
-                    );
-                    Plotly.restyle(
-                        graphDiv,
-                        { 
-                            visible: true,
-                        },
-                        [1]
-                    );
-                    
-                }
-                layout = {
-                    xaxis: {range: ['1966-1-1','2026-1-1']},
-                    yaxis: {range: keys[div]},
-                } 
-
-                Plotly.animate(
-                    graphDiv, 
-                    { layout: layout }, 
-                    { transition: transition }
-                )
-            } else {
-                if (div=='letters') { 
-                    Plotly.restyle(
-                        graphDiv,
-                        { 
-                            visible: true,
-                        },
-                        [0]
-                    );
-                }
-                layout = {
-                    xaxis: {range: ['1966-1-1','2026-1-1']},
-                    yaxis: {range: keys[div]},
-                } 
-
-                Plotly.animate(
-                    graphDiv, 
-                    { layout: layout }, 
-                    { transition: transition }
-                )
-            }
-            
-        offset: '100%'
+        handler: handler,
+        offset: '60%'
     })
 }
 
@@ -435,17 +364,38 @@ async function init() {
 
     myPlot.on('plotly_click', open_url);
     myPlot.on('plotly_hover', hide_box_hovers);
-        
-    timeWaypoint('palestine',['2012-1-1','2026-1-1'])
-    timeWaypoint('fossil-fuels',['2012-1-1','2026-1-1'])
-    timeWaypoint('uyghur-rights',['2014-1-1','2018-1-1'])
-    timeWaypoint('labor-rights',['2006-1-1','2016-1-1'])
-    timeWaypoint('sric',['2006-1-1','2012-1-1'])
-    timeWaypoint('sudan',['2004-1-1','2010-1-1'])
-    timeWaypoint('south-africa',['1966-1-1','1980-1-1'])
-    stratWaypoint('letters')
-    stratWaypoint('protest')
-    stratWaypoint('other')
+    
+    // define waypoints (scroll reactions)
+
+    let time_mapping = {
+        'palestine': {'x': ['2012-1-1','2026-1-1'],'y': [.5,1.5],},
+        'fossil-fuels': {'x': ['2012-1-1','2026-1-1'],'y': [-.5,.5]},
+        'uyghur-rights': {'x': ['2014-1-1','2018-1-1'],'y': [1.5,2.5]},
+        'labor-rights': {'x': ['2006-1-1','2016-1-1'], 'y': [2.5,3.5]},
+        'sric': {'x': ['2006-1-1','2012-1-1'], 'y': [3.5,4.5]},
+        'sudan': {'x': ['2004-1-1','2010-1-1'], 'y': [4.5,5.5]},
+        'south-africa': {'x': ['1966-1-1','1980-1-1'], 'y': [5.5,6.5]},
+        'all': {'x': ['1966-1-1','2026-1-1'], y: [-.5,7.5]}
+    }
+
+    createWaypoint('palestine',time_mapping,0)
+    createWaypoint('fossil-fuels',time_mapping,0)
+    createWaypoint('uyghur-rights',time_mapping,0)
+    createWaypoint('labor-rights',time_mapping,0)
+    createWaypoint('sric',time_mapping,0)
+    createWaypoint('sudan',time_mapping,0)
+    createWaypoint('south-africa',time_mapping,0)
+    
+    let strat_mapping = {
+        'letters': {'x': ['1966-1-1','2026-1-1'], 'y': [.5,1.5]},
+        'protest': {'x': ['1966-1-1','2026-1-1'], 'y': [-.5,.5]},
+        'other': {'x': ['1966-1-1','2026-1-1'], 'y': [1.5,7.5]},
+        'all': {'x': ['1966-1-1','2026-1-1'], y: [-.5,7.5]}
+    }
+
+    createWaypoint('letters',strat_mapping,1)
+    createWaypoint('protest',strat_mapping,1)
+    createWaypoint('other',strat_mapping,1)
 }
 
 document.addEventListener("DOMContentLoaded", function () {
