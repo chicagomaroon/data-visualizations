@@ -4,9 +4,8 @@
 // Fetch JSON data
 
 /**
- * [bar description]
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
+ * Load data from external URL location
+ * @return {json} jsonData Data to be cleaned in a later step
  */
 async function fetchData() {
     try {
@@ -24,9 +23,11 @@ async function fetchData() {
 }
 
 /**
- * [bar description]
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
+ * Group data and define all traces
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {json} data Data loaded in a previous step
+ * @param  {Array} name_vars Variable(s) to group by
+ * @return {Array} traces List of traces (data) as input to a plotly graph
  */
 function processData(
     data,
@@ -84,7 +85,7 @@ function processData(
                 name: names,
                 x: x,
                 text: text,
-                boxpoints: 'all',
+                boxpoints: 'all', // show points used in box plot
                 jitter: 1, // so points don't overlap
                 pointpos: 0, // center points
                 marker: {
@@ -103,7 +104,7 @@ function processData(
                 fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
                 line: {color: 'rgba(0,0,0,0)'}, // remove box part of boxplot
                 hoverinfo: 'text',
-                hovertemplate: '%{text}<extra></extra>',
+                hovertemplate: '%{text}<extra></extra>', // the <extra> tag removes any excess formatting
                 visible: false,
             })
         }
@@ -123,10 +124,10 @@ function processData(
 // }
 
 /**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
+ * Waypoints (scroll interactions) for article body.
+ * Cite: 
+ * @param  {str} Name of HTML div to attach waypoint to 
+ * @param  {json} mapping Maps div name to the proper zoom ranges
  */
 function createWaypoint(div, mapping, traceindex) {
     function handler(direction) {
