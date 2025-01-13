@@ -490,7 +490,7 @@ body {
     border: 1px solid #ccc;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .header img {
         width: 80%;
     }

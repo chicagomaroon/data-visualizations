@@ -1,7 +1,6 @@
 //TODO
 // must
 //      mobile
-//      safari compatibility (timeline)
 //      confirm timeline years
 //       red is > year_start and (< end or currently own)
 //       > year_end and currently exists and currently own is false, then grey (sold)
@@ -24,12 +23,13 @@ let config = [];
 // -------- CONSTANTS --------
 
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
+const uChiLocationMobile = [-87.59977046881636, 41.7896449092535];
 const ChiLocation = [-87.63211524853163, 41.862161325588076];
 const hydeParkLocation = [-87.5965, 41.795];
 const hpLocationSide = [-87.606, 41.795];
 const uChiLocationSide = [-87.606, 41.78955];
 
-const isMobile = window.innerWidth < 800;
+const isMobile = window.innerWidth < 900;
 
 const zoomSpeed = 5000;
 PRIMARY_COLOR = '#800000';
@@ -959,8 +959,8 @@ function bodyWaypoints() {
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: 7000
                 });
             } else {
@@ -1018,8 +1018,10 @@ function bodyWaypoints() {
                 );
 
                 mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 16,
+                    center: isMobile
+                        ? [-87.59949114840359, 41.78503755171042]
+                        : [-87.602, 41.7849],
+                    zoom: isMobile ? 15.5 : 16,
                     duration: zoomSpeed
                 });
             } else {
@@ -1029,8 +1031,8 @@ function bodyWaypoints() {
                     0.0
                 );
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
                 updateLayers(1930);
@@ -1049,8 +1051,8 @@ function bodyWaypoints() {
                     0
                 );
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
                 // timeout then add popup
@@ -1066,8 +1068,10 @@ function bodyWaypoints() {
                 );
 
                 mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 16,
+                    center: isMobile
+                        ? [-87.59949114840359, 41.78503755171042]
+                        : [-87.602, 41.7849],
+                    zoom: isMobile ? 15.5 : 16,
                     duration: zoomSpeed
                 });
             }
@@ -1102,16 +1106,18 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.73, 41.81],
-                    zoom: 10.6,
+                    center: isMobile
+                        ? [-87.62954280979011, 41.812252875663404]
+                        : [-87.73, 41.81],
+                    zoom: isMobile ? 10 : 10.6,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1925);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
             }
@@ -1127,16 +1133,20 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.71, 41.81],
-                    zoom: 10.6,
+                    center: isMobile
+                        ? [-87.62954280979011, 41.812252875663404]
+                        : [-87.73, 41.81],
+                    zoom: isMobile ? 10 : 10.6,
                     duration: zoomSpeed
                 });
             }
@@ -1171,15 +1181,19 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to A B Zoom in
                 mapBody.flyTo({
-                    center: [-87.59551281193906, 41.796688484805856],
+                    center: isMobile
+                        ? [-87.59067538770329, 41.79664800370716]
+                        : [-87.59551281193906, 41.796688484805856],
                     zoom: 15,
                     duration: zoomSpeed
                 });
                 updateLayers(1955);
             } else {
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             }
@@ -1193,13 +1207,17 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to Southwest Hyde Park Redevelopment Corporation
                 mapBody.flyTo({
-                    center: [-87.6082519319518, 41.7935107582129],
+                    center: isMobile
+                        ? [-87.60413577508204, 41.79399163751296]
+                        : [-87.6082519319518, 41.7935107582129],
                     zoom: 15,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.59551281193906, 41.796688484805856],
+                    center: isMobile
+                        ? [-87.59067538770329, 41.79664800370716]
+                        : [-87.59551281193906, 41.796688484805856],
                     zoom: 15,
                     duration: zoomSpeed
                 });
@@ -1215,14 +1233,18 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to whole plan
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
             } else {
                 mapBody.flyTo({
-                    center: [-87.6082519319518, 41.7935107582129],
+                    center: isMobile
+                        ? [-87.60413577508204, 41.79399163751296]
+                        : [-87.6082519319518, 41.7935107582129],
                     zoom: 15,
                     duration: zoomSpeed
                 });
@@ -1237,14 +1259,18 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to south campus
                 mapBody.flyTo({
-                    center: [-87.6028193070742, 41.7851952871184],
+                    center: isMobile
+                        ? [-87.59644229579109, 41.784868927190615]
+                        : [-87.6028193070742, 41.7851952871184],
                     zoom: 14,
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                mmapBody.flyTo({
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
@@ -1258,14 +1284,18 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13.5,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.6028193070742, 41.7851952871184],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59644229579109, 41.784868927190615]
+                        : [-87.6028193070742, 41.7851952871184],
+                    zoom: isMobile ? 13.5 : 14,
                     duration: zoomSpeed
                 });
             }
@@ -1285,8 +1315,10 @@ function bodyWaypoints() {
                 );
             } else {
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13.5,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             }
