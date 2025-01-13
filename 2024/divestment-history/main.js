@@ -217,6 +217,80 @@ function timeWaypoint(div, timerange) {
     })
 }
 
+
+/**
+ * [bar description]
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * @param  {[type]} foo [description]
+ * @return {[type]}     [description]
+ */
+function stratWaypoint(div, strat) {
+
+    keys = {
+        'letters': [.5,1.5],
+        'protest': [-.5,.5],
+        'other': [1.5,7.5],
+    }
+
+    new Waypoint({
+        element: document.getElementById(div),
+        handler: function(direction) {
+            graphDiv = document.getElementById('chart-div')
+
+            if (direction=='down') {
+                if (div=='letters') { 
+                    Plotly.restyle(
+                        graphDiv,
+                        { 
+                            visible: false,
+                        },
+                        [0]
+                    );
+                    Plotly.restyle(
+                        graphDiv,
+                        { 
+                            visible: true,
+                        },
+                        [1]
+                    );
+                    
+                }
+                layout = {
+                    xaxis: {range: ['1966-1-1','2026-1-1']},
+                    yaxis: {range: keys[div]},
+                } 
+
+                Plotly.animate(
+                    graphDiv, 
+                    { layout: layout }, 
+                    { transition: transition }
+                )
+            } else {
+                if (div=='letters') { 
+                    Plotly.restyle(
+                        graphDiv,
+                        { 
+                            visible: true,
+                        },
+                        [0]
+                    );
+                }
+                layout = {
+                    xaxis: {range: ['1966-1-1','2026-1-1']},
+                    yaxis: {range: keys[div]},
+                } 
+
+                Plotly.animate(
+                    graphDiv, 
+                    { layout: layout }, 
+                    { transition: transition }
+                )
+            }
+            
+        offset: '100%'
+    })
+}
+
 /**
  * [bar description]
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
@@ -370,6 +444,9 @@ async function init() {
     timeWaypoint('sric',['2006-1-1','2012-1-1'])
     timeWaypoint('sudan',['2004-1-1','2010-1-1'])
     timeWaypoint('south-africa',['1966-1-1','1980-1-1'])
+    stratWaypoint('letters')
+    stratWaypoint('protest')
+    stratWaypoint('other')
 }
 
 document.addEventListener("DOMContentLoaded", function () {
