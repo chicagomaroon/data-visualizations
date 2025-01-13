@@ -30,12 +30,12 @@ async function fetchData() {
  */
 function processData(
     data,
-    name_var,
+    name_vars,
 ) {
-
     try {
         colorbook = {
-            'Palestine': 'rgb(128, 0, 0)',
+            'Movement' : {
+                'Palestine': 'rgb(128, 0, 0)',
             // 'rgb(255, 163, 25)',
             'Fossil fuels':'rgb(193, 102, 34)',
             'Uyghur rights':'rgb(143, 57, 49)',
@@ -47,46 +47,52 @@ function processData(
             // 'rgb(255, 51, 153)'
         }
 
-        x = []
-        names = []
-        text = []
-
-        data.forEach(function(val) {
-            x.push(val['Date of Event']);
-            names.push(val[name_var]);
-            text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'].replaceAll('\n', '<br>') + '</a>');
-        });
+        traces = []
 
         // construct plotly "dataframe"
-        var trace = {
-            type: 'box',
-            name: names,
-            x: x,
-            text: text,
-            boxpoints: 'all',
-            jitter: 1, // so points don't overlap
-            pointpos: 0, // center points
-            marker: {
-                size: 15,
-                opacity: .5
-            },
-            transforms: [{ 
-                type: "groupby", 
-                groups: names,
-                // assign color based on group (cite: GPT)
-                styles: names.map((group, i) => ({
-                    target: group,
-                    value: { marker: { color: colorbook[group] } } 
-                })) 
-            }],
-            fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
-            line: {color: 'rgba(0,0,0,0)'}, // remove box part of boxplot
-            hoverinfo: 'text',
-            hovertemplate: '%{text}<extra></extra>'
+        for (let i=0; i<name_vars.length; i++) {
+            x = []
+            names = []
+            text = []
+            name_var = name_vars[i]
+
+            data.forEach(function(val) {
+                x.push(val['Date of Event']);
+                names.push(val[name_var]);
+                text.push('<a href="' + val['Link'] + '" target="_blank">' + val['Source'].replaceAll('\n', '<br>') + '</a>');
+            });
+
+            traces.push({
+                type: 'box',
+                name: names,
+                x: x,
+                text: text,
+                boxpoints: 'all',
+                jitter: 1, // so points don't overlap
+                pointpos: 0, // center points
+                marker: {
+                    size: 15,
+                    opacity: .5
+                },
+                transforms: [{ 
+                    type: "groupby", 
+                    groups: names,
+                    // assign color based on group (cite: GPT)
+                    styles: names.map((group, i) => ({
+                        target: group,
+                        value: { marker: { color: colorbook[name_var][group] } } 
+                    })) 
+                }],
+                fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
+                line: {color: 'rgba(0,0,0,0)'}, // remove box part of boxplot
+                hoverinfo: 'text',
+                hovertemplate: '%{text}<extra></extra>',
+                visible: false,
+            })
         }
 
-        // console.log(trace)
-        return [trace];
+        // console.log(traces)
+        return traces;
 
     } catch (error) {
         console.error('Error processing data: ',error);
@@ -322,8 +328,8 @@ async function init() {
 
     Plotly.newPlot(
         'chart-div', 
-        processData(data,'Movement'), 
-        createLayout(), 
+        processData(data,['Movement','Administration','Type of Action','Admin Response']), 
+        createLayout(),
         config
     );
 
