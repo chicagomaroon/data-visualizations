@@ -269,10 +269,9 @@ finalWP = new Waypoint({
 })
 
 /**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
+ * Layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
+ * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
+ * @return {json} Layout object for plotly
  */
 function createLayout() {
     return {
@@ -305,10 +304,9 @@ function createLayout() {
 }
 
 /**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
+ * When you click on a data point, it should open the URL linked in the hover text in a new tab.
+ * Cite: GPT
+ * @param {json} data Data sensed from plotly hover event
  */
 function open_url(data){
     var info = data.points[0]
@@ -319,10 +317,9 @@ function open_url(data){
 }
 
 /**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
+ * For plotly boxplots, hovering over the boxplot will show its summary statistics. Because I am using boxplots only for the built-in jitter function, keeping the points and hiding the box part, I need to disable the summary statistic hover.
+ * Cite: GPT
+ * @param {json} data Data sensed from plotly hover event
  */
 function hide_box_hovers(data) {
     hoverLayer = document.querySelector('.hoverlayer')
@@ -355,6 +352,7 @@ async function init() {
 
     var myPlot = document.getElementById('chart-div');
 
+    // we will edit this plot throughout the whole article
     Plotly.newPlot(
         'chart-div', 
         processData(data,['Movement','Administration','Type of Action','Admin Response']), 
@@ -398,6 +396,7 @@ async function init() {
     createWaypoint('other',strat_mapping,1)
 }
 
+// when page is loaded, define custom JS
 document.addEventListener("DOMContentLoaded", function () {
     init();
 });
