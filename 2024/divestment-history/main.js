@@ -145,7 +145,8 @@ function timeWaypoint(div, timerange) {
         
         element: document.getElementById(div),
         handler: function(direction) {
-            graphDiv = document.getElementById('chart-div')
+            graphDiv = document.getElementById('chart-div');
+
             Plotly.restyle(
                 graphDiv,
                 { 
@@ -156,11 +157,12 @@ function timeWaypoint(div, timerange) {
 
     
             if (direction=='down') { // advance 10 years
-                Plotly.animate('chart-div', {
+
+                Plotly.animate(graphDiv, {
                     layout: {
-                      yaxis: {range: keys[div]},
-                      xaxis: {range: timerange},
-                      width: halfsize
+                        xaxis: {range: timerange},
+                        yaxis: {range: keys[div]},
+                        width: halfsize
                     }
                   }, {
                     transition: transition
@@ -175,7 +177,7 @@ function timeWaypoint(div, timerange) {
                     } 
 
                     Plotly.animate(
-                        'chart-div', 
+                        graphDiv, 
                         { layout: layout }, 
                         { transition: transition }
                     )
@@ -205,7 +207,7 @@ function timeWaypoint(div, timerange) {
                     // console.log(minus10(timerange[1]))
                     if (minus10(timerange[1]) < 2028) {
                         Plotly.animate(
-                            'chart-div', 
+                            graphDiv, 
                             { layout: layout }, 
                             { transition: transition }
                         )
