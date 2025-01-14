@@ -490,6 +490,49 @@ body {
     border: 1px solid #ccc;
 }
 
+.custom-animated-handle {
+    transition: transform 0.2s;
+}
+
+.slider-with-animated-handle:hover .custom-animated-handle {
+    transform: scale(1.2);
+}
+
+.before,
+.after {
+    margin: 0;
+}
+
+.before figcaption,
+.after figcaption {
+    background: black;
+    font-size: 20px;
+    color: white;
+    padding: 5px 7px 5px 7px;
+    top: 0;
+    position: absolute;
+    line-height: 100%;
+}
+
+.before figcaption {
+    left: 0;
+}
+
+.after figcaption {
+    right: 0;
+}
+
+img-comparison-slider {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+img-comparison-slider:focus {
+    outline: none;
+}
+
 @media screen and (max-width: 900px) {
     .header img {
         width: 80%;

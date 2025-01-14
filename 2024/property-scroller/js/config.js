@@ -105,7 +105,9 @@ const config = [
             },
             {
                 id: '3.2',
-                text: `The Hyde Park A + B plan bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`
+                text: `The Hyde Park A + B plan bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`,
+                image: './static/images/placeholder.jpg',
+                image_credit: 'University of Chicago Photographic Archive'
             },
             {
                 id: '3.3',
