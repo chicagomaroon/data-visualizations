@@ -68,7 +68,7 @@ const config = [
                 end_year: 1940,
                 image: './static/images/demos.png',
                 image_credit:
-                    'Tax, S. (1959). Residential Integration: The Case of Hyde Park in Chicago.'
+                    'Tax, Residential Integration: The Case of Hyde Park in Chicago'
             },
             {
                 id: '2.1',
@@ -96,7 +96,8 @@ const config = [
                 text: `With the outlawing of racial covenants, the black population in the University’s immediate surroundings continues to increase: Hyde Park had 573 black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948. The university sees maintaining a “desirable” neighborhood as tied to its survival and key to its academic mission. The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal” making it the first American higher education institution to embark on a comprehensive urban renewal campaign.`,
                 quote: `I believe we have found the answer. It is called 'Urban Renewal' ... it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities`,
                 quoteAuthor:
-                    'Julian Levi, UChicago Professor and SECC Executive Director'
+                    'Julian Levi, UChicago Professor and SECC Executive Director',
+                quoteSource: 'Haar, The City as Campus '
             },
             {
                 id: '3.1',
@@ -105,9 +106,10 @@ const config = [
             },
             {
                 id: '3.2',
-                text: `The Hyde Park A + B plan bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`,
+                text: `The Hyde Park A + B plan bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue. `,
                 image: './static/images/placeholder.jpg',
-                image_credit: 'University of Chicago Photographic Archive'
+                image_credit:
+                    'View of 55th St from Lake Park Blvd in 1950 and 1961<br>University of Chicago Photographic Archive'
             },
             {
                 id: '3.3',
