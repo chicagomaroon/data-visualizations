@@ -1,11 +1,12 @@
 //TODO
 // must
 //      mobile
-//      safari compatibility (timeline)
-//      downtown commuter shuttle
+//      confirm timeline years
+//       red is > year_start and (< end or currently own)
+//       > year_end and currently exists and currently own is false, then grey (sold)
 
 //nice to have
-//      add center of polygon for popup
+//      scroll to continue at the top
 //      max and min area
 //     separate out js files
 //      edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
@@ -22,10 +23,13 @@ let config = [];
 // -------- CONSTANTS --------
 
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
+const uChiLocationMobile = [-87.59977046881636, 41.7896449092535];
 const ChiLocation = [-87.63211524853163, 41.862161325588076];
 const hydeParkLocation = [-87.5965, 41.795];
 const hpLocationSide = [-87.606, 41.795];
 const uChiLocationSide = [-87.606, 41.78955];
+
+const isMobile = window.innerWidth < 900;
 
 const zoomSpeed = 5000;
 PRIMARY_COLOR = '#800000';
@@ -42,12 +46,33 @@ let flashingInterval = '';
 // hihglight ids
 const ids_1_3 = ['157655073', '156128082'];
 const ids_gothic = ['1953426', '151173253'];
-const ids_charter = ['505873479', '185377897', '2235555'];
 const ids_dorms = ['153266965', '2087203', '10657061', '11687839'];
 
 // ------- LISTENERS --------
 document.getElementById('map-slider').addEventListener('input', (e) => {
-    mapBody.setFilter('layer2025', ['<', 'year_start', Number(e.target.value)]);
+    mapBody.setFilter('layerSlider', [
+        'any',
+        [
+            'all',
+            ['<=', ['get', 'year_start'], Number(e.target.value)],
+            ['>', ['get', 'year_end'], Number(e.target.value)]
+        ],
+        [
+            'all',
+            ['<=', ['get', 'year_end'], Number(e.target.value)],
+            ['==', ['get', 'currently_exists'], true]
+        ]
+    ]);
+    mapBody.setPaintProperty('layerSlider', 'fill-color', [
+        'case',
+        [
+            'all',
+            ['<', ['get', 'year_end'], Number(e.target.value)],
+            ['==', ['get', 'currently_owned'], false]
+        ],
+        'black', // sold
+        PRIMARY_COLOR
+    ]);
     document.getElementById('slider-year').innerText = e.target.value;
 });
 
@@ -317,6 +342,8 @@ function createOtherGeoms(map) {
                 '#31C8F1',
                 ['==', ['get', 'color'], 'GREEN'],
                 '#86E23C',
+                ['==', ['get', 'color'], 'DARK GREEN'],
+                '#306024',
                 ['==', ['get', 'color'], 'RED'],
                 '#E13736',
                 ['==', ['get', 'color'], 'PURPLE'],
@@ -331,7 +358,8 @@ function createOtherGeoms(map) {
             ],
             'line-width': 5,
             'line-opacity': 0
-        }
+        },
+        filter: ['==', ['get', 'shuttle'], '1']
     });
 
     // police
@@ -344,7 +372,8 @@ function createOtherGeoms(map) {
             'line-color': 'black',
             'line-width': 2,
             'line-opacity': 0
-        }
+        },
+        filter: ['==', ['get', 'name'], 'Patrol Area']
     });
 
     map.addLayer({
@@ -355,20 +384,8 @@ function createOtherGeoms(map) {
         paint: {
             'fill-color': 'black',
             'fill-opacity': 0
-        }
-    });
-
-    // charters
-    map.addLayer({
-        id: 'charterSchools',
-        type: 'fill',
-        source: 'buildings',
-        layout: {},
-        paint: {
-            'fill-color': PRIMARY_COLOR,
-            'fill-opacity': 0
         },
-        filter: ['in', 'id', ...ids_charter]
+        filter: ['==', ['get', 'name'], 'Patrol Area']
     });
 }
 
@@ -466,7 +483,7 @@ function createOverlayMapLayers(map) {
         coordinates: [
             [-87.63899174851709, 41.849],
             [-87.481, 41.849], //
-            [-87.47, 41.75057371953466],
+            [-87.481, 41.75057371953466],
             [-87.63899174851709, 41.75057371953466]
         ]
     });
@@ -501,7 +518,7 @@ function createOverlayMapLayers(map) {
     });
 }
 
-function createLayerYears(map_name, layerName, start_year, end_year) {
+function createLayerYears(map_name, layerName, year) {
     /*
     create the base source and layers that we will filter
     */
@@ -511,16 +528,33 @@ function createLayerYears(map_name, layerName, start_year, end_year) {
         source: 'buildings',
         layout: {},
         paint: {
-            'fill-color': PRIMARY_COLOR,
+            'fill-color': [
+                'case',
+                [
+                    'all',
+                    ['<', ['get', 'year_end'], year],
+                    ['==', ['get', 'currently_owned'], false]
+                ],
+                'black', // sold
+                PRIMARY_COLOR
+            ],
             'fill-opacity': 0,
             'fill-opacity-transition': {
                 duration: map_name == mapIntro ? 5000 : 1000
             }
         },
         filter: [
-            'all',
-            ['>=', ['get', 'year_start'], start_year],
-            ['<=', ['get', 'year_start'], end_year]
+            'any',
+            [
+                'all',
+                ['<=', ['get', 'year_start'], parseInt(year)],
+                ['>', ['get', 'year_end'], parseInt(year)]
+            ],
+            [
+                'all',
+                ['<', ['get', 'year_end'], year],
+                ['==', ['get', 'currently_exists'], true]
+            ]
         ]
     });
 }
@@ -571,8 +605,84 @@ function allLayers(map, type) {
             layerName = 'layer' + String(year);
 
             bodyLayers.push(layerName);
-            createLayerYears(map, layerName, 1890, year);
+            createLayerYears(map, layerName, year);
         }
+
+        // add 2024 layer for now
+        map.addLayer({
+            id: 'layer2024',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': [
+                    'case',
+                    [
+                        'all',
+                        ['<', ['get', 'year_end'], 2024],
+                        ['==', ['get', 'currently_owned'], false]
+                    ],
+                    'black', // sold
+                    PRIMARY_COLOR
+                ],
+                'fill-opacity': 0,
+                'fill-opacity-transition': {
+                    duration: map == mapIntro ? 5000 : 1000
+                }
+            },
+            filter: [
+                'any',
+                [
+                    'all',
+                    ['<=', ['get', 'year_start'], 2024],
+                    ['>=', ['get', 'year_end'], 2024]
+                ],
+                [
+                    'all',
+                    ['<', ['get', 'year_end'], 2024],
+                    ['==', ['get', 'currently_exists'], true]
+                ]
+            ]
+        });
+        bodyLayers.push('layer2024');
+
+        map.addLayer({
+            id: 'layerSlider',
+            type: 'fill',
+            source: 'buildings',
+            layout: {},
+            paint: {
+                'fill-color': [
+                    'case',
+                    [
+                        'all',
+                        ['<', ['get', 'year_end'], 2024],
+                        ['==', ['get', 'currently_owned'], false]
+                    ],
+                    'black', // sold
+                    PRIMARY_COLOR
+                ],
+                'fill-opacity': 0,
+                'fill-opacity-transition': {
+                    duration: map == mapIntro ? 5000 : 1000
+                }
+            },
+            filter: [
+                'any',
+                [
+                    'all',
+                    ['<=', ['get', 'year_start'], 2024],
+                    ['>=', ['get', 'year_end'], 2024]
+                ],
+                [
+                    'all',
+                    ['<', ['get', 'year_end'], 2024],
+                    ['==', ['get', 'currently_exists'], true]
+                ]
+            ]
+        });
+
+        bodyLayers.push('layerSlider');
 
         createOtherGeoms(map);
 
@@ -703,12 +813,17 @@ function processChapter(chapter) {
         '</p>';
     title_text_div.className = 'chapter-title';
 
+    let title_img_credit = document.createElement('div');
+    title_img_credit.innerHTML = chapter.img_credit;
+    title_img_credit.className = 'chapter-img-credit';
+
     let title_image_div = document.createElement('img');
     title_image_div.src = chapter.image;
     title_image_div.className = 'chapter-image';
 
     title_div.appendChild(title_text_div);
     title_div.appendChild(title_image_div);
+    title_div.appendChild(title_img_credit);
 
     document.getElementById('chapters-container').appendChild(title_div);
 
@@ -719,10 +834,43 @@ function processChapter(chapter) {
         // if there is a photo add it above text in a new div
 
         if (subsection.image) {
-            let image_div = document.createElement('img');
-            image_div.src = subsection.image;
-            image_div.className = 'scroller-image';
-            subsection_div.appendChild(image_div);
+            if (subsection.id == '3.2') {
+                let comparison_div = document.createElement('div');
+                let image_comparison = `
+                    <img-comparison-slider class="slider-with-animated-handle">
+                        <figure slot="first" class="before">
+                            <img width="100%" src="./static/images/before_55.jpg" />
+                            <figcaption>1950</figcaption>
+                        </figure>
+                        <figure slot="second" class="after">
+                            <img width="100%" src="./static/images/after_55.jpg" />
+                            <figcaption>1961</figcaption>
+                        </figure>
+                        <svg
+                            slot="handle"
+                            class="custom-animated-handle"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="100"
+                            viewBox="-8 -3 16 6"
+                        >
+                            <path
+                                stroke="#fff"
+                                d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
+                                stroke-width="1"
+                                fill="#fff"
+                                vector-effect="non-scaling-stroke"
+                            ></path>
+                        </svg>
+                    </img-comparison-slider>
+                `;
+                comparison_div.innerHTML = image_comparison;
+                subsection_div.appendChild(comparison_div);
+            } else {
+                let image_div = document.createElement('img');
+                image_div.src = subsection.image;
+                image_div.className = 'scroller-image';
+                subsection_div.appendChild(image_div);
+            }
             let credit = document.createElement('p');
             credit.className = 'credit';
             credit.innerHTML = subsection.image_credit;
@@ -764,6 +912,36 @@ function processChapter(chapter) {
     last.id = 'last-scroller';
 
     document.getElementById('chapters-container').appendChild(last);
+
+    // fix for img comparison image in 3.2
+
+    let image_comparison = `
+        <img-comparison-slider class="slider-with-animated-handle">
+            <figure slot="first" class="before">
+                <img width="100%" src="before_55.jpg" />
+                <figcaption>1950</figcaption>
+            </figure>
+            <figure slot="second" class="after">
+                <img width="100%" src="after_55.jpg" />
+                <figcaption>1961</figcaption>
+            </figure>
+            <svg
+                slot="handle"
+                class="custom-animated-handle"
+                xmlns="http://www.w3.org/2000/svg"
+                width="100"
+                viewBox="-8 -3 16 6"
+            >
+                <path
+                    stroke="#fff"
+                    d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
+                    stroke-width="1"
+                    fill="#fff"
+                    vector-effect="non-scaling-stroke"
+                ></path>
+            </svg>
+        </img-comparison-slider>
+    `;
 }
 
 // ------------ WAYPOINTS ------------
@@ -797,7 +975,7 @@ function introWaypoints() {
             mapIntro.flyTo({
                 center: hydeParkLocation,
                 zoom: 13.5,
-                duration: 8000
+                duration: 6000
             });
         },
         offset: '90%'
@@ -852,12 +1030,6 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
-
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
-                    duration: 7000
-                });
             } else {
                 document.getElementById('explore-nav').style.visibility =
                     'hidden';
@@ -874,6 +1046,11 @@ function bodyWaypoints() {
                 filterOpacity(mapBody, 'land_grant');
                 timelineYear = findConfigValue('1.2', 'timeline_year');
                 changeTimelineYear(timelineYear);
+                mapBody.flyTo({
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
+                    duration: 7000
+                });
             } else {
                 updateLayers(1895);
                 filterOpacity(mapBody, 'land_grant', true);
@@ -929,8 +1106,10 @@ function bodyWaypoints() {
                 );
 
                 mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 16,
+                    center: isMobile
+                        ? [-87.59949114840359, 41.78503755171042]
+                        : [-87.602, 41.7849],
+                    zoom: isMobile ? 15.5 : 16,
                     duration: zoomSpeed
                 });
             } else {
@@ -940,8 +1119,8 @@ function bodyWaypoints() {
                     0.0
                 );
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
                 updateLayers(1930);
@@ -960,8 +1139,8 @@ function bodyWaypoints() {
                     0
                 );
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
                 // timeout then add popup
@@ -977,8 +1156,10 @@ function bodyWaypoints() {
                 );
 
                 mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 16,
+                    center: isMobile
+                        ? [-87.59949114840359, 41.78503755171042]
+                        : [-87.602, 41.7849],
+                    zoom: isMobile ? 15.5 : 16,
                     duration: zoomSpeed
                 });
             }
@@ -988,10 +1169,8 @@ function bodyWaypoints() {
 
     new Waypoint({
         element: document.getElementById('chapter2'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                removePopups();
-            }
+        handler: function () {
+            removePopups();
         }
     });
 
@@ -1013,16 +1192,18 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.73, 41.81],
-                    zoom: 10.6,
+                    center: isMobile
+                        ? [-87.62954280979011, 41.812252875663404]
+                        : [-87.73, 41.81],
+                    zoom: isMobile ? 10 : 10.6,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1925);
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 14.5,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
             }
@@ -1038,16 +1219,21 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             } else {
+                removePopups();
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: [-87.71, 41.81],
-                    zoom: 10.6,
+                    center: isMobile
+                        ? [-87.62954280979011, 41.812252875663404]
+                        : [-87.73, 41.81],
+                    zoom: isMobile ? 10 : 10.6,
                     duration: zoomSpeed
                 });
             }
@@ -1082,15 +1268,19 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to A B Zoom in
                 mapBody.flyTo({
-                    center: [-87.59551281193906, 41.796688484805856],
+                    center: isMobile
+                        ? [-87.59067538770329, 41.79664800370716]
+                        : [-87.59551281193906, 41.796688484805856],
                     zoom: 15,
                     duration: zoomSpeed
                 });
                 updateLayers(1955);
             } else {
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             }
@@ -1104,13 +1294,17 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to Southwest Hyde Park Redevelopment Corporation
                 mapBody.flyTo({
-                    center: [-87.6082519319518, 41.7935107582129],
+                    center: isMobile
+                        ? [-87.60413577508204, 41.79399163751296]
+                        : [-87.6082519319518, 41.7935107582129],
                     zoom: 15,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.59551281193906, 41.796688484805856],
+                    center: isMobile
+                        ? [-87.59067538770329, 41.79664800370716]
+                        : [-87.59551281193906, 41.796688484805856],
                     zoom: 15,
                     duration: zoomSpeed
                 });
@@ -1126,14 +1320,18 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to whole plan
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
             } else {
                 mapBody.flyTo({
-                    center: [-87.6082519319518, 41.7935107582129],
+                    center: isMobile
+                        ? [-87.60413577508204, 41.79399163751296]
+                        : [-87.6082519319518, 41.7935107582129],
                     zoom: 15,
                     duration: zoomSpeed
                 });
@@ -1148,14 +1346,18 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // fly to south campus
                 mapBody.flyTo({
-                    center: [-87.6028193070742, 41.7851952871184],
+                    center: isMobile
+                        ? [-87.59644229579109, 41.784868927190615]
+                        : [-87.6028193070742, 41.7851952871184],
                     zoom: 14,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.60278337713892, 41.79910939443005],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
@@ -1169,14 +1371,18 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13.5,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
                     duration: zoomSpeed
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.6028193070742, 41.7851952871184],
-                    zoom: 14,
+                    center: isMobile
+                        ? [-87.59644229579109, 41.784868927190615]
+                        : [-87.6028193070742, 41.7851952871184],
+                    zoom: isMobile ? 13.5 : 14,
                     duration: zoomSpeed
                 });
             }
@@ -1188,18 +1394,33 @@ function bodyWaypoints() {
         element: document.getElementById('chapter4'),
         handler: function (direction) {
             if (direction == 'down') {
+                removePopups();
                 // remove map
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
                     0
                 );
-            } else {
                 mapBody.flyTo({
                     center: uChiLocationSide,
                     zoom: 13.5,
                     duration: zoomSpeed
                 });
+            } else {
+                removePopups();
+                mapBody.flyTo({
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
+                    duration: zoomSpeed
+                });
+                // add overlay
+                mapBody.setPaintProperty(
+                    'urban_renewal_1960',
+                    'raster-opacity',
+                    0.8
+                );
             }
         },
         offset: '50%'
@@ -1258,23 +1479,14 @@ function bodyWaypoints() {
                 clearInterval(flashingInterval);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
 
-                // charter schools
-                // show charter schools
-                mapBody.setPaintProperty('charterSchools', 'fill-opacity', 0.6);
-
                 // zoom out
                 mapBody.flyTo({
                     center: [-87.60278, 41.8],
                     zoom: 12.5,
                     duration: zoomSpeed
                 });
-                // timeout then add popup due to map movement
-                setTimeout(() => {
-                    highlightPopup(ids_charter, 'charterSchools');
-                }, 3500);
             } else {
                 removePopups();
-                mapBody.setPaintProperty('charterSchools', 'fill-opacity', 0);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
                 flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
                 mapBody.flyTo({
@@ -1306,7 +1518,6 @@ function bodyWaypoints() {
                 );
             } else {
                 updateLayers(1980);
-                highlightPopup(ids_charter, 'charterSchools');
 
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
@@ -1339,7 +1550,7 @@ function bodyWaypoints() {
                     'fill-opacity',
                     0
                 );
-                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.62, 41.8],
                     zoom: 11.75,
@@ -1388,7 +1599,7 @@ function bodyWaypoints() {
             } else {
                 removePopups();
                 mapBody.zoomTo(11.5, { duration: zoomSpeed });
-                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0.7);
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 updateLayers(2000);
             }
         },
@@ -1428,7 +1639,8 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: [-87.59975128884997, 41.795],
                     zoom: 14,
-                    duration: zoomSpeed
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
                 mapBody.setPaintProperty(activeLayer, 'fill-color', [
                     'case',
@@ -1440,7 +1652,8 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: [-87.6105, 41.78955],
                     zoom: 13.5,
-                    duration: zoomSpeed
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
             }
         },
@@ -1454,14 +1667,16 @@ function bodyWaypoints() {
                 // highlight arts buildings /WP
                 mapBody.flyTo({
                     center: [-87.62238983619335, 41.79449748170734],
-                    zoom: 15.5,
-                    duration: zoomSpeed
+                    zoom: 14.5,
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
             } else {
                 mapBody.flyTo({
                     center: [-87.62238983619335, 41.79449748170734],
                     zoom: 14,
-                    duration: zoomSpeed
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
             }
         },
@@ -1475,13 +1690,15 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: [-87.6105, 41.78955],
                     zoom: 13.5,
-                    duration: zoomSpeed
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
             } else {
                 mapBody.flyTo({
                     center: [-87.62238983619335, 41.79449748170734],
                     zoom: 15.5,
-                    duration: zoomSpeed
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
             }
         },
@@ -1494,8 +1711,10 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // reset highlights
                 // what layer to remove?
-                updateLayers(2025);
+                removePopups();
+                updateLayers(2024);
             } else {
+                removePopups();
             }
         }
     });
@@ -1507,7 +1726,7 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.5859, 41.78534],
-                    zoom: 16.5,
+                    zoom: isMobile ? 15.5 : 16.5,
                     bearing: 90,
                     duration: zoomSpeed
                 });
@@ -1538,7 +1757,7 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
                 mapBody.flyTo({
                     center: [-87.5859, 41.78534],
-                    zoom: 16.5,
+                    zoom: isMobile ? 15.5 : 16.5,
                     bearing: 90,
                     duration: zoomSpeed
                 });
@@ -1551,6 +1770,8 @@ function bodyWaypoints() {
         element: document.getElementById('final-scroller'),
         handler: function (direction) {
             if (direction == 'down') {
+                filterOpacity(mapBody, 'layerSlider', true);
+                filterOpacity(mapBody, 'layer2024', false);
                 // move up a little
                 mapBody.flyTo({
                     center: hydeParkLocation,
@@ -1580,6 +1801,8 @@ function bodyWaypoints() {
                 mapBody.doubleClickZoom.enable();
                 mapBody.addControl(nav, 'top-right');
             } else {
+                filterOpacity(mapBody, 'layerSlider', false);
+                filterOpacity(mapBody, 'layer2024', true);
                 // bring back timeline and explore map button
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
@@ -1626,6 +1849,9 @@ function waypoints() {
 
 // combine all into one function
 function init() {
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
     // create html elements from config
     config = JSON.parse(sessionStorage.getItem('config'));
     processConfig(config);

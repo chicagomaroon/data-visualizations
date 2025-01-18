@@ -111,7 +111,7 @@ body {
 
 #timeline-container {
     position: absolute;
-    height: fit-content;
+    box-sizing: border-box;
     z-index: 3;
     left: 10px;
     vertical-align: middle;
@@ -280,6 +280,18 @@ body {
     margin-top: 20px;
 }
 
+.chapter-img-credit {
+    font-family: Playfair Display;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    z-index: 999;
+    color: white;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
 .chapter-title p {
     margin: 0;
 }
@@ -334,7 +346,7 @@ body {
 
 #title {
     font-family: 'Playfair Display', serif;
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 500;
     z-index: 9999;
     padding-top: 7px;
@@ -478,14 +490,68 @@ body {
     border: 1px solid #ccc;
 }
 
-@media screen and (max-width: 800px) {
+.custom-animated-handle {
+    transition: transform 0.2s;
+}
+
+.slider-with-animated-handle:hover .custom-animated-handle {
+    transform: scale(1.2);
+}
+
+.before,
+.after {
+    margin: 0;
+}
+
+.before figcaption,
+.after figcaption {
+    background: black;
+    font-size: 20px;
+    color: white;
+    padding: 5px 7px 5px 7px;
+    top: 0;
+    position: absolute;
+    line-height: 100%;
+}
+
+.before figcaption {
+    left: 0;
+}
+
+.after figcaption {
+    right: 0;
+}
+
+img-comparison-slider {
+    display: block;
+    max-height: 300px;
+    max-width: 100%;
+    margin-inline: auto;
+}
+
+img-comparison-slider:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 900px) {
     .header img {
         width: 80%;
     }
 
     .scroller.s-intro {
         width: 80%;
-        font-size: 22px;
+        font-size: 18px;
+    }
+
+    .scroller {
+        width: 80%;
+        margin-inline: auto;
+        font-size: 18px;
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .scroller-image {
+        max-height: 150px;
     }
 
     #step2,
@@ -498,34 +564,37 @@ body {
     }
 
     #title {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     #byline {
-        font-size: 15px;
+        font-size: 12px;
         margin-bottom: 5px;
     }
 
     #subtitle {
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .article-text {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .chapter-title {
-        font-size: 40px;
+        font-size: 35px;
     }
 
-    .scroller {
-        width: 80%;
-        margin-inline: auto;
-        font-size: 22px;
+    .num-chapter {
+        font-size: 30px;
     }
 
-    .scroller-image {
-        max-height: 200px;
+    .quote {
+        padding-block: 10px;
+    }
+
+    .quoteText,
+    .quoteAuthor {
+        font-size: 14px;
     }
 
     #intro-text {
