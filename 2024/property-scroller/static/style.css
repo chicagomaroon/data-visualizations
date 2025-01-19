@@ -37,6 +37,22 @@ body {
     color: white;
 }
 
+#scroll-down-arrow {
+    animation: jumpInfinite 2s infinite;
+}
+
+@keyframes jumpInfinite {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .header img {
     width: 30%;
     margin: auto;

@@ -16,7 +16,7 @@
 //      https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
 
 // ------------------ DATA ------------------
-dataPath = 'data/properties.geojson';
+dataPath = 'data/display_dataset_1_16_25.geojson';
 otherPath = 'data/other_geoms.geojson';
 let config = [];
 
@@ -92,6 +92,8 @@ function highlightPopup(ids, layer = null) {
         ids.includes(feature.properties.id)
     );
 
+    console.log(selectedFeatures);
+
     // Show popup for each selected feature
     selectedFeatures.forEach((feature) => {
         const description =
@@ -110,7 +112,7 @@ function highlightPopup(ids, layer = null) {
         ('</div>');
         // TODO centeriod of polygon instead of first point
 
-        const coordinates = feature.geometry.coordinates[0][0];
+        const coordinates = [feature.properties.lon, feature.properties.lat];
         // hacky way to fix dorm popup overlap
         if (['153266965', '2087203'].includes(feature.properties.id)) {
             anchor = 'right';
@@ -548,7 +550,7 @@ function createLayerYears(map_name, layerName, year) {
             [
                 'all',
                 ['<=', ['get', 'year_start'], parseInt(year)],
-                ['>', ['get', 'year_end'], parseInt(year)]
+                ['>=', ['get', 'year_end'], parseInt(year)]
             ],
             [
                 'all',
@@ -609,42 +611,42 @@ function allLayers(map, type) {
         }
 
         // add 2024 layer for now
-        map.addLayer({
-            id: 'layer2024',
-            type: 'fill',
-            source: 'buildings',
-            layout: {},
-            paint: {
-                'fill-color': [
-                    'case',
-                    [
-                        'all',
-                        ['<', ['get', 'year_end'], 2024],
-                        ['==', ['get', 'currently_owned'], false]
-                    ],
-                    'black', // sold
-                    PRIMARY_COLOR
-                ],
-                'fill-opacity': 0,
-                'fill-opacity-transition': {
-                    duration: map == mapIntro ? 5000 : 1000
-                }
-            },
-            filter: [
-                'any',
-                [
-                    'all',
-                    ['<=', ['get', 'year_start'], 2024],
-                    ['>=', ['get', 'year_end'], 2024]
-                ],
-                [
-                    'all',
-                    ['<', ['get', 'year_end'], 2024],
-                    ['==', ['get', 'currently_exists'], true]
-                ]
-            ]
-        });
-        bodyLayers.push('layer2024');
+        // map.addLayer({
+        //     id: 'layer2024',
+        //     type: 'fill',
+        //     source: 'buildings',
+        //     layout: {},
+        //     paint: {
+        //         'fill-color': [
+        //             'case',
+        //             [
+        //                 'all',
+        //                 ['<', ['get', 'year_end'], 2024],
+        //                 ['==', ['get', 'currently_owned'], false]
+        //             ],
+        //             'black', // sold
+        //             PRIMARY_COLOR
+        //         ],
+        //         'fill-opacity': 0,
+        //         'fill-opacity-transition': {
+        //             duration: map == mapIntro ? 5000 : 1000
+        //         }
+        //     },
+        //     filter: [
+        //         'any',
+        //         [
+        //             'all',
+        //             ['<=', ['get', 'year_start'], 2024],
+        //             ['>=', ['get', 'year_end'], 2024]
+        //         ],
+        //         [
+        //             'all',
+        //             ['<', ['get', 'year_end'], 2024],
+        //             ['==', ['get', 'currently_exists'], true]
+        //         ]
+        //     ]
+        // });
+        // bodyLayers.push('layer2024');
 
         map.addLayer({
             id: 'layerSlider',
@@ -656,7 +658,7 @@ function allLayers(map, type) {
                     'case',
                     [
                         'all',
-                        ['<', ['get', 'year_end'], 2024],
+                        ['<', ['get', 'year_end'], 2025],
                         ['==', ['get', 'currently_owned'], false]
                     ],
                     'black', // sold
@@ -671,12 +673,12 @@ function allLayers(map, type) {
                 'any',
                 [
                     'all',
-                    ['<=', ['get', 'year_start'], 2024],
-                    ['>=', ['get', 'year_end'], 2024]
+                    ['<=', ['get', 'year_start'], 2025],
+                    ['>=', ['get', 'year_end'], 2025]
                 ],
                 [
                     'all',
-                    ['<', ['get', 'year_end'], 2024],
+                    ['<', ['get', 'year_end'], 2025],
                     ['==', ['get', 'currently_exists'], true]
                 ]
             ]
@@ -1219,10 +1221,8 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: isMobile
-                        ? [-87.59299428700159, 41.795720774063426]
-                        : [-87.60278337713892, 41.79910939443005],
-                    zoom: isMobile ? 13.2 : 14,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
             } else {
@@ -1245,6 +1245,13 @@ function bodyWaypoints() {
         element: document.getElementById('3.1'),
         handler: function (direction) {
             if (direction == 'down') {
+                mapBody.flyTo({
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
+                    duration: zoomSpeed
+                });
                 // add overlay
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
@@ -1367,7 +1374,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('3.6'),
+        element: document.getElementById('3.5a'),
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.flyTo({
@@ -1479,33 +1486,6 @@ function bodyWaypoints() {
                 clearInterval(flashingInterval);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
 
-                // zoom out
-                mapBody.flyTo({
-                    center: [-87.60278, 41.8],
-                    zoom: 12.5,
-                    duration: zoomSpeed
-                });
-            } else {
-                removePopups();
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
-                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
-                mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 14.5,
-                    duration: zoomSpeed
-                });
-            }
-        },
-        offset: '50%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('4.5'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                updateLayers(1990);
-
-                removePopups();
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
                     'line-opacity',
@@ -1516,8 +1496,23 @@ function bodyWaypoints() {
                     'fill-opacity',
                     0.2
                 );
+
+                // zoom out
+                mapBody.flyTo({
+                    center: [-87.60278, 41.8],
+                    zoom: 12.5,
+                    duration: zoomSpeed
+                });
             } else {
-                updateLayers(1980);
+                updateLayers(1970);
+
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
+                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
+                mapBody.flyTo({
+                    center: [-87.602, 41.7849],
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
 
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
@@ -1535,7 +1530,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.6'),
+        element: document.getElementById('4.5'),
         handler: function (direction) {
             if (direction == 'down') {
                 updateLayers(2000);
@@ -1568,7 +1563,7 @@ function bodyWaypoints() {
                     'fill-opacity',
                     0.2
                 );
-                updateLayers(1990);
+                updateLayers(1980);
                 // zoom out
                 mapBody.flyTo({
                     center: [-87.60278, 41.8],
@@ -1581,7 +1576,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.7'),
+        element: document.getElementById('4.6'),
         handler: function (direction) {
             if (direction == 'down') {
                 updateLayers(2020);
@@ -1607,12 +1602,21 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.8'),
+        element: document.getElementById('4.7'),
         handler: function (direction) {
             if (direction == 'down') {
                 // highlight dorms
                 removePopups();
             } else {
+                mapBody.flyTo({
+                    center: [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
+                // highlight dorms after zoom
+                setTimeout(() => {
+                    highlightPopup(ids_dorms);
+                }, 1000);
             }
         },
         offset: '50%'
@@ -1634,20 +1638,13 @@ function bodyWaypoints() {
         element: document.getElementById('5.2'),
         handler: function (direction) {
             if (direction == 'down') {
-                // highlight sold buildings
-                activeLayer = findActiveLayerName(mapBody);
+                // zoom to sold buildings
                 mapBody.flyTo({
                     center: [-87.59975128884997, 41.795],
                     zoom: 14,
                     duration: zoomSpeed,
                     bearing: 0
                 });
-                mapBody.setPaintProperty(activeLayer, 'fill-color', [
-                    'case',
-                    ['>=', ['get', 'recent_residential_sales'], 0],
-                    'black',
-                    PRIMARY_COLOR
-                ]);
             } else {
                 mapBody.flyTo({
                     center: [-87.6105, 41.78955],
@@ -1694,6 +1691,7 @@ function bodyWaypoints() {
                     bearing: 0
                 });
             } else {
+                updateLayers(2020);
                 mapBody.flyTo({
                     center: [-87.62238983619335, 41.79449748170734],
                     zoom: 15.5,
@@ -1712,7 +1710,7 @@ function bodyWaypoints() {
                 // reset highlights
                 // what layer to remove?
                 removePopups();
-                updateLayers(2024);
+                updateLayers(2025);
             } else {
                 removePopups();
             }
@@ -1720,7 +1718,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('6.2'),
+        element: document.getElementById('6.1'),
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
@@ -1743,12 +1741,12 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('6.3'),
+        element: document.getElementById('6.2'),
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);
                 mapBody.flyTo({
-                    center: hydeParkLocation,
+                    center: isMobile ? hydeParkLocation : hpLocationSide,
                     zoom: 13.5,
                     bearing: 0,
                     duration: zoomSpeed
@@ -1771,7 +1769,7 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 filterOpacity(mapBody, 'layerSlider', true);
-                filterOpacity(mapBody, 'layer2024', false);
+                filterOpacity(mapBody, 'layer2025', false);
                 // move up a little
                 mapBody.flyTo({
                     center: hydeParkLocation,
@@ -1802,7 +1800,7 @@ function bodyWaypoints() {
                 mapBody.addControl(nav, 'top-right');
             } else {
                 filterOpacity(mapBody, 'layerSlider', false);
-                filterOpacity(mapBody, 'layer2024', true);
+                filterOpacity(mapBody, 'layer2025', true);
                 // bring back timeline and explore map button
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
@@ -1817,7 +1815,7 @@ function bodyWaypoints() {
 
                 // reset map
                 mapBody.flyTo({
-                    center: hydeParkLocation,
+                    center: isMobile ? hydeParkLocation : hpLocationSide,
                     zoom: 13.5,
                     bearing: 0,
                     duration: zoomSpeed
