@@ -1219,10 +1219,8 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: isMobile
-                        ? [-87.59299428700159, 41.795720774063426]
-                        : [-87.60278337713892, 41.79910939443005],
-                    zoom: isMobile ? 13.2 : 14,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
             } else {
@@ -1245,6 +1243,13 @@ function bodyWaypoints() {
         element: document.getElementById('3.1'),
         handler: function (direction) {
             if (direction == 'down') {
+                mapBody.flyTo({
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
+                    duration: zoomSpeed
+                });
                 // add overlay
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',

@@ -64,7 +64,7 @@ const config = [
         subsections: [
             {
                 id: 'demographics',
-                text: `The Great Migration significantly transformed the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. <a href = "http://www.encyclopedia.chicagohistory.org/pages/880.html" target = "_blank">“Racial succession,”</a> the process of one racial group replacing another in the neighborhood coined by early 20th-century University of Chicago urban sociologists, became a growing concern of both the University and the City. At this stage, the University began to see the fate of the neighborhood as tied to its own.`,
+                text: `The Great Migration significantly transformed the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. “<a href = "http://www.encyclopedia.chicagohistory.org/pages/880.html" target = "_blank">Racial succession</a>,” the process of one racial group replacing another in the neighborhood coined by early 20th-century University of Chicago urban sociologists, became a growing concern of both the University and the City. At this stage, the University began to see the fate of the neighborhood as tied to its own.`,
                 start_year: 1930,
                 end_year: 1940,
                 image: './static/images/demos.png',
