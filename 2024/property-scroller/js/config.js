@@ -96,10 +96,10 @@ const config = [
             {
                 id: '3.0',
                 text: `With the outlawing of racial covenants, the black population in the University’s immediate surroundings continues to increase: Hyde Park had 573 black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948. The university sees maintaining a “desirable” neighborhood as tied to its survival and key to its academic mission. The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal” making it the first American higher education institution to embark on a comprehensive urban renewal campaign.`,
-                quote: `I believe we have found the answer. It is called 'Urban Renewal' ... it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities`,
+                quote: `“I believe we have found the answer. It is called 'Urban Renewal' ... it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities.”`,
                 quoteAuthor:
                     'Julian Levi, UChicago Professor and SECC Executive Director',
-                quoteSource: 'Haar, The City as Campus '
+                quoteSource: 'Haar, The City as Campus'
             },
             {
                 id: '3.1',
