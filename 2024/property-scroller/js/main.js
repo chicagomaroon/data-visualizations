@@ -1372,7 +1372,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('3.6'),
+        element: document.getElementById('3.5a'),
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.flyTo({
@@ -1484,33 +1484,6 @@ function bodyWaypoints() {
                 clearInterval(flashingInterval);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
 
-                // zoom out
-                mapBody.flyTo({
-                    center: [-87.60278, 41.8],
-                    zoom: 12.5,
-                    duration: zoomSpeed
-                });
-            } else {
-                removePopups();
-                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
-                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
-                mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 14.5,
-                    duration: zoomSpeed
-                });
-            }
-        },
-        offset: '50%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('4.5'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                updateLayers(1990);
-
-                removePopups();
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
                     'line-opacity',
@@ -1521,8 +1494,23 @@ function bodyWaypoints() {
                     'fill-opacity',
                     0.2
                 );
+
+                // zoom out
+                mapBody.flyTo({
+                    center: [-87.60278, 41.8],
+                    zoom: 12.5,
+                    duration: zoomSpeed
+                });
             } else {
-                updateLayers(1980);
+                updateLayers(1970);
+
+                mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
+                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
+                mapBody.flyTo({
+                    center: [-87.602, 41.7849],
+                    zoom: 14.5,
+                    duration: zoomSpeed
+                });
 
                 mapBody.setPaintProperty(
                     'ucpd_bounds_2024_line',
@@ -1540,7 +1528,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.6'),
+        element: document.getElementById('4.5'),
         handler: function (direction) {
             if (direction == 'down') {
                 updateLayers(2000);
@@ -1573,7 +1561,7 @@ function bodyWaypoints() {
                     'fill-opacity',
                     0.2
                 );
-                updateLayers(1990);
+                updateLayers(1980);
                 // zoom out
                 mapBody.flyTo({
                     center: [-87.60278, 41.8],
@@ -1586,7 +1574,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.7'),
+        element: document.getElementById('4.6'),
         handler: function (direction) {
             if (direction == 'down') {
                 updateLayers(2020);
@@ -1612,12 +1600,21 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.8'),
+        element: document.getElementById('4.7'),
         handler: function (direction) {
             if (direction == 'down') {
                 // highlight dorms
                 removePopups();
             } else {
+                mapBody.flyTo({
+                    center: [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
+                // highlight dorms after zoom
+                setTimeout(() => {
+                    highlightPopup(ids_dorms);
+                }, 1000);
             }
         },
         offset: '50%'
@@ -1725,7 +1722,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('6.2'),
+        element: document.getElementById('6.1'),
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 1);
@@ -1748,7 +1745,7 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('6.3'),
+        element: document.getElementById('6.2'),
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);

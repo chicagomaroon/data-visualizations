@@ -95,40 +95,43 @@ const config = [
         subsections: [
             {
                 id: '3.0',
-                text: `With the outlawing of racial covenants, the black population in the University’s immediate surroundings continues to increase: Hyde Park had 573 black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948. The university sees maintaining a “desirable” neighborhood as tied to its survival and key to its academic mission. The University begins shaping the urban environment, beyond its earlier legal and financial methods, through substantial property acquisition and “blight removal” making it the first American higher education institution to embark on a comprehensive urban renewal campaign.`,
+                text: `With the outlawing of racial covenants, the Black population in the University’s immediate surroundings continued to increase: Hyde Park had 573 Black residents in 1940 and 1,757 in 1950, most of whom had arrived after 1948, according to Hirsch’s Making the Second Ghetto. The University saw maintaining a “desirable” neighborhood as tied to its survival and key to its academic mission. It began substantial property acquisition and “blight removal,”  making it the first American higher education institution to embark on a comprehensive urban renewal campaign.`,
                 quote: `“I believe we have found the answer. It is called 'Urban Renewal' ... it is, however, a tragic fact that these efforts are today essential to the ability of the institutions to fulfill their primary responsibilities.”`,
                 quoteAuthor:
-                    'Julian Levi, UChicago Professor and SECC Executive Director',
+                    'Julian Levi, UChicago Professor and and South East Chicago Commission (SECC) Executive Director',
                 quoteSource: 'Haar, The City as Campus'
             },
             {
                 id: '3.1',
-                text: ` Much of the remaking of Hyde Park was done by the South East Chicago Commission (SECC), a group that was, by most accounts, an extension of the University. University Chancellor Kimpton chose a University Professor, Julian Levi, to chair the new Commission. There were four main plans that comprised Hyde Park’s urban renewal efforts: Hyde Park A + B, the Southwest Hyde Park Redevelopment Corporation Plan, the Urban Renewal Plan, and the South Campus Plan.`,
+                text: ` The South East Chicago Commission administered much of the remaking of Hyde Park. The SECC, by most accounts, was an extension of the University. University Chancellor Kimpton chose University Professor Julian Levi to chair the new Commission. Four main plans comprised Hyde Park’s urban renewal efforts: Hyde Park A + B, the Southwest Hyde Park Redevelopment Corporation Plan, the Hyde Park-Kenwood Urban Renewal Plan, and the South Campus Plan.`,
                 timeline_year: 1949
             },
             {
                 id: '3.2',
-                text: `The Hyde Park A + B plan bagan in 1954.The Land Clearance Commission, a city agency, approves a plan that aims to clear and redevelop approximately 48 acres of land. The intent is to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue. `,
+                text: `The Hyde Park A + B plan began in 1954. The Land Clearance Commission, a city agency, approved a plan to clear and redevelop approximately 48 acres of land. The intent was to replace “blighted” residences and businesses with groups of similar townhouses along both sides of 55th Street, the twin towers of I.M. Pei’s University Apartments in the middle of 55th Street, and a shopping center at 55th and Lake Park Avenue.`,
                 image: './static/images/placeholder.jpg',
                 image_credit:
                     'View of 55th St from Lake Park Blvd in 1950 and 1961<br>University of Chicago Photographic Archive'
             },
             {
                 id: '3.3',
-                text: `Next, the Southwest Hyde Park Redevelopment Corporation uses the 1953 revision of the Neighborhood Redevelopment Corporation Act to take eminent domain of an area from 55th to 59th Streets and from Cottage Grove to Woodlawn Avenues. Most of that area is marked for “rehabilitation.” The area between 55th and 56th and Cottage Grove and Ellis Avenue is slated for wholesale demolition and University acquisition.
-`
+                text: `Next, the Southwest Hyde Park Redevelopment Corporation used the <a href = "https://chicagounbound.uchicago.edu/cgi/viewcontent.cgi?article=2841&context=uclrev" target = "_blank">Neighborhood Redevelopment Corporation Act</a> to acquire the once-private land between campus and Washington Park for public use. Most of that area was marked for “rehabilitation.” The area from 55th to 56th Street and from Cottage Grove to Ellis Avenue was slated for wholesale demolition and University acquisition.`
             },
             {
                 id: '3.4',
-                text: `The largest and most comprehensive phase is the Hyde Park–Kenwood Urban Renewal Plan, drawn up and approved in 1958. The University, through SECC, is a main plan drafter. The plan focuses on both total and “spot” clearance. It slates 638 structures containing 6,147 dwelling units for demolition and calls for the creation and modernization of low- and high-density residential areas, parks, schools, residential and commercial areas, and more in their place.`
+                text: `The largest and most comprehensive phase was the Hyde Park–Kenwood Urban Renewal Plan, drawn up and approved in 1958. The University, through the SECC, was a main plan drafter. The plan focused on both total and “spot” clearance. It slated 638 structures containing 6,147 dwelling units for demolition and called for the creation and modernization of low- and high-density residential areas, parks, schools, residential and commercial areas, and more in their place.`
             },
             {
                 id: '3.5',
-                text: `Lastly, the University  follows through on a suggestion in the 1949 Treasurer’s Report for the University to acquire all property in a strip of land between 60th and 61st street and Cottage Grove and Stony Island avenues to create a buffer zone between the campus and the “deteriorating neighborhood” of Woodlawn immediately to the South. The city purchases everything not yet owned by the university and then sells it to the University. This takes a decade due to legal disputes and activist groups including the Woodlawn Organization opposing the acquisition and the expansion.`
+                text: `Finally, the University followed through on a suggestion in the 1949 Treasurer’s Report for the University to acquire all property in the strip of land from 60th to 61st Street and from Cottage Grove to Stony Island Avenue to create a buffer zone between the campus and the “deteriorating neighborhood” of Woodlawn immediately to the South. The city purchased everything not yet owned by the University and then sold it to the University in a process that took a decade due to legal disputes and activist groups opposing the acquisition and the expansion. Notably, the <a href = "https://www.wttw.com/dusable-to-obama/woodlawn-organization" target = "_blank">Woodlawn Organization</a> (T.W.O) successfully prevented the University from expanding further southward than 61st street.`
+            },
+            {
+                id: '3.5a',
+                text: `Success was not everyone’s interpretation of urban renewal efforts. In 1955, Black residents marched on city hall and demanded that Mayor Richard Daley address the discrimination against Black families, writes Eddie R. Cole in <i>The Campus Color Line</i>.`
             },
             {
                 id: '3.6',
-                text: `Cumulatively, these plans called for the demolition of 193 acres (or 20 percent of the community); cost $120 million ($1.4 billion when adjusted for inflation), approximately half of which was public funds and the other half private; displaced more than 30,000 people; and enabled the University of Chicago to add 41 acres of land to its campus. The legacy of urban renewal shows through the urban morphology and population change in Hyde Park and Woodlawn. The campaign is a success, according to the administration. Documented by Julian Levi, it becomes a model for other institutions.`
+                text: `Cumulatively, these plans called for the demolition of 193 acres (20 percent of the Hyde Park); cost $120 million ($1.4 billion when adjusted for inflation), approximately half of which was public funds and the other half private; displaced more than 30,000 people; and enabled the University of Chicago to add 41 acres of land to its campus. The campaign was a success, according to the administration. Documented by Julian Levi, it became a model for other institutions.`
             }
         ]
     },
@@ -141,48 +144,36 @@ const config = [
         subsections: [
             {
                 id: '4.1',
-                text: `After the period of Urban Renewal, the University began to shifts its focus away from initiatives based primarily around property ownership and land clearance in favor of new techniques. The university widens its reach into the community, not through property acquisition, but in the name of safety.
-`,
+                text: `After the period of Urban Renewal, the University began to shift its focus away from initiatives based primarily around property ownership and land clearance in favor of new techniques. It widened its reach into the community, not through property acquisition, but in the name of student safety.`,
                 timeline_year: 1963
             },
             {
                 id: '4.2',
-                text: `In 1957, the University created the UC Bus, the first iteration of the on-campus shuttle system. Marc David Loeb argues that the shuttle system was “ reappropriated as a tool of urban renewal” and helped build “a selective permeability of space” around the university.” In 2021, the shuttle system added a new route from campus to the Green and Red Line Garfield stations and the Washington Park Arts Incubator. `
+                text: `In 1957, the University created the UC Bus, the first iteration of the on-campus shuttle system. Marc David Loeb <a href = "https://humanities-web.s3.us-east-2.amazonaws.com/college/chicagostudies-prod/s3fs-public/2021-05/Loeb,%20Marc%20-%20Building%20a%20Selective%20Permeability%20of%20Space%20-%20Urban%20Renewal%20and%20The%20University%20of%20Chicago%20Campus%20Shuttle%20System.pdf" target = "_blank">argued</a> that the shuttle system was “reappropriated as a tool of urban renewal,” granting the University freedom to delineate and extend the borders of campus. The shuttle system has added eight <a href = "https://www.chicagomaroon.com/article/2021/9/28/ucpd-announces-new-shuttle-route-garfield-green-red/" target = "_blank">new routes</a> since it was created, including a new route from campus to the Green and Red Line Garfield stations and the Washington Park Arts Incubator in 2021.`
             },
-
             {
                 id: '4.3',
-                text: `Next, several right-of-way modifications took place during the 1970s. Eldred highlights how physical restrictions to “free and easy access” to and from the area could reduce crime. 151 cul-de-sacs and dead-ends: University Avenue is cut off from 61st Street by a sidewalk and a buffer augmented with trees and shrubbery that is no more than twenty feet wide; Kimbark Avenue dead-ends approximately halfway into the block; Kenwood Avenue is split into a driveway to a parking lot from the North, and a cul-de-sac from the South; Blackstone is almost entirely nonexistent between 60th and 61st, existing only as a small cul-de-sac.`,
+                text: `Several right-of-way modifications took place during the 1970s, which Juliet Eldred (A.B ‘17) writes in her thesis, <a href = "https://www.julieteldred.com/thesis" target = "_blank">The University of Chicago as Urban Planner</a>. Eldred argues created an explicit division between the University and the neighborhood of Woodlawn. University Avenue is cut off from 61st Street by a sidewalk and a buffer augmented with trees and shrubbery that is no more than twenty feet wide; Kimbark Avenue dead-ends approximately halfway into the block; Kenwood Avenue is split into a driveway to a parking lot from the North and a cul-de-sac from the South; and Blackstone Avenue is almost entirely nonexistent between 60th and 61st.`,
                 timeline_year: 1970
             },
             {
                 id: '4.4',
-                text: `The charter schools are a key point of contact between the university and the surrounding neighborhoods. The first school, the North Kenwood/Oakland Campus, opened in 1998, and serves students from pre-Kindergarten to 5th grade. The network’s other schools are Donoghue and Woodlawn. `,
+                text: `The expansion of the University’s private security force enabled it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus...[would] facilitate effective security activities,” Julian Levi is quoted. Community groups also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive. When the University’s charter schools opened, UCPD’s patrol jurisdiction expanded to include them, now extending from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west.`,
                 timeline_year: 1980
-            },
-            {
-                id: '4.4a',
-                text: `The opening of Woodlawn Charter in 2018 on 63rd Street broke a <a href = "https://chicagomaroon.com/25412/news/uchicago-charter-schools-opens-new-woodlawn-campus/ target = "_blank">decades-old agreement</a> for the University not to extend further into Woodlawn and calls into question whether it intends to keep this promise.`
             },
 
             {
                 id: '4.5',
-                text: `The opening of the University’s charter schools accompanies the expansion of the UCPD’s patrol jurisdiction. The expansion of the University’s own private security force enables it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus...[would] facilitate effective security activities,” Julian Levi is quoted. Community groups also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive. Currently, the UCPD patrol zone extends from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west.`,
+                text: `The University has had an ever increasing role in shaping the neighborhood housing landscape. Since 2003, the University’s <a href = "https://ucce.s3.eu-west-2.amazonaws.com/store/b51c4f8ef138f22488f40c5496aa030c.pdf" target = "_blank">Employer-Assisted Housing Program (EAHP)</a>, operated by the Office of Civic Engagement, has aided University employees in buying homes in several South Side neighborhoods.The EAHP has supported more than 300 employees to purchase homes in neighborhoods near campus.`,
                 timeline_year: 1990
             },
             {
                 id: '4.6',
-                text: `Since 2003, the University’s <a href = "https://ucce.s3.eu-west-2.amazonaws.com/store/b51c4f8ef138f22488f40c5496aa030c.pdf" target = "_blank">Employer-Assisted Housing Program (EAHP)</a>, operated by the Office of Civic Engagement, has aided University employees in buying homes in several South Side neighborhoods. Following a pause during the COVID pandemic, the program adjusted its priority area and explicitly structures loan eligibility according to its development goals: $20,000 towards purchases in the Focus Area (West Woodlawn and Washington Park) $10,000 for its Established Markets Area (Hyde Park/South Kenwood and East Woodlawn), and $5,000 towards residences its Greater South Side Area.`,
-                timeline_year: 2000
+                text: `During the early 2000s, the College formulated a radical plan to reimagine residential life on campus by constructing new housing, dining, and recreational facilities within walking distance of the central Quadrangles. New facilities included a transformed student center in the Reynolds Club and Ratner, the first new athletics facility built on campus since 1935. In 2002, the Max Palevsky Residential Commons were built, beginning a pattern of large dorms built on campus; in subsequent years, three more large dorms were built on campus. These improvements ensured that students would not have much need to <a href = "https://chicagomaroon.com/42601/grey-city/the-case-of-the-checkerboard-blues/" target = "_blank">venture outside of campus</a> for necessities or leisure purposes.`
             },
-
             {
                 id: '4.7',
-                text: `During the early 2000s, the University allocates large sums of money toward the construction of extracurricular buildings, amenities, and the acquisition of housing both on and off campus. New facilities include a transformed student center in the Reynolds Club and Ratner, the first new athletics facility built on campus since 1935. The College also formulates a radical plan to reimagine residential life on the campus by constructing new housing and dining facilities within easy walking distance of the central Quadrangles. Between 1998 and 2019, four major new residential facilities are constructed: the Palevsky Residential Commons, the Renee Granville-Grossman Residential Commons, Campus North, and recently Woodlawn Commons which opened in 2020.`
-            },
-            {
-                id: '4.8',
-                text: `The creation of a private campus shuttle system, the opening of charter schools, an expanded patrol area for UCPD, the Employer-Assisted Housing Program, and the consolidation of student housing all contributed to creating ‘invisible borders’ around campus during this period.`
+                text: `The creation of a private campus shuttle system, an expanded patrol area for UCPD, the Employer-Assisted Housing Program, and the consolidation of student amenities all contributed to creating what Eldred termed “invisible borders” around campus during this period.`
             }
         ]
     },
@@ -196,21 +187,22 @@ const config = [
         subsections: [
             {
                 id: '5.1',
-                text: `In 2006, University President Zimmer makes his "back to the city" speech, posing the question: “How should our relationship with the South Side community, city, and the region evolve?” In the following years, the University simultaneously seeks to shrink its portfolio of residential properties across  Hyde Park acquired during Urban Renewal and expand commercial real estate holdings.`
+                text: `In 2006, University President Zimmer made his "<a href = "https://d3qi0qp55mx5f5.cloudfront.net/convocation/docs/zimmer.pdf?mtime=1517338474" target = "_blank">back to the city</a>" speech, posing the question: “How should our relationship with the South Side community, city, and the region evolve?” In the following years, the University simultaneously seeks to shrink its portfolio of residential properties across  Hyde Park acquired during Urban Renewal and expand commercial real estate holdings.`
             },
+
             {
                 id: '5.2',
-                text: `The University <span class="highlight former">sells</span> over 1,200 apartment units and four lots in Hyde Park between 2004 and 2016 and has bought 26 mixed-use properties in Washington Park since 2008. They acquire commercial real estate, such as Harper Court and Jewel Osco. The University now owns the property that all four major grocery stores in Hyde Park sit on.`
+                text: `The University <span class="highlight former">sold</span> over 1,200 apartment units and four lots in Hyde Park between 2004 and 2016 and has bought 26 mixed-use properties in Washington Park since 2008. They acquired commercial real estate, such as Harper Court and the building now containing Jewel Osco. Currently, the University owns the buildings containing four of the major grocery stores in the area.`
             },
             {
                 id: '5.3',
-                text: `The University also invests in cultural development throughout the South Side through a partnership with the Hyde Park Arts Center, stewarding the Washington Park Arts Block, and opening the Green Line Performing Arts Center in 2018.`,
+                text: `The University also invested in cultural development throughout the South Side through a partnership with the Hyde Park Arts Center, stewarding the <a href = 'https://news.uchicago.edu/story/arts-lawn-community-centered-space-washington-park-celebrates-opening' target = "_blank">Washington Park Arts Block</a> and opening the <a href = 'https://news.uchicago.edu/story/uchicago-opens-green-line-performing-arts-center-washington-park' target = "_blank">Green Line Performing Arts Center</a> in 2018.`,
                 image: './static/images/arts_block.jpg',
                 image_credit: 'Visual Manifesto'
             },
             {
                 id: '5.4',
-                text: `TODO`
+                text: `The University’s acquisitions and investments during this period focused on branding and flashy flagship buildings, the continued curation of an entertainment district on 53rd Street, and the increasing involvement of third-party investors. `
             }
         ]
     },
@@ -224,15 +216,16 @@ const config = [
         subsections: [
             {
                 id: '6.1',
-                text: `As we have seen, the University of Chicago has played an active role in shaping the neighbhoros surrounds the university. For most of its history, the University justified its actions as necessary. In 2020, then-President Zimmer and incoming President Paul Alivisatos <a href = "https://news.uchicago.edu/story/council-examine-history-relationship-between-university-chicago-and-south-side-communities" target = "_blank">commit </a> to further community engagement by launching the Council on UChicago/Community Relations tasked with examining the role the University has had to its South Side neighbors historically.`
+                text: `The future of the University’s involvement in Hyde Park and South Chicago is at a crucial inflection point. With the opening of the <a href = "https://chicagomaroon.com/41032/grey-city/the-obama-center-a-welcome-neighbor/" target = "_blank"> Obama Presidential Center </a> nearing, the University is once again in a position to make decisions that will significantly impact the future of the surrounding communities. The Center (of which University is an investor) claims it will <a href = "https://www.obama.org/press-releases/obama-presidential-center-estimated-support-thousands-jobs-city-chicago-south-side-construction-ten-years-operations/" target = "_blank"> bring $3.1bn in “economic impact”</a> to the region. The University and <a href = "https://blockclubchicago.org/2022/12/27/as-investors-buy-more-homes-around-the-obama-presidential-center-gentrification-worries-soar/" target = "_blank">other investors</a> are prepared to reap the benefits as the Center joins the University’s other recent large-scale projects, including <a href = "https://hydeparklabs.com/" target = "_blank">Hyde Park Labs</a> and <a href = "https://news.uchicago.edu/story/state-approves-uchicago-medicines-plan-build-citys-first-freestanding-cancer-care-and" target = "_blank">UChicago Medicine’s Cancer Pavilion</a>. The projects are expected to have a large impact on the local economy, but residents are concerned about <a href = "https://www.theguardian.com/us-news/2023/feb/15/obama-center-chicago-south-side-residents-fear-displacement" target = "_blank">rising rent</a> and how much benefit will reach the community. `
             },
             {
                 id: '6.2',
-                text: `With the <a href = "https://chicagomaroon.com/41032/grey-city/the-obama-center-a-welcome-neighbor/" target = "_blank"> opening of the Obama Presidential Center nearing </a>, the future of the University’s involvement in Hyde Park and South Chicago is at a crucial inflection point. The Center claims it will bring <a href = 'https://www.obama.org/press-releases/obama-presidential-center-estimated-support-thousands-jobs-city-chicago-south-side-construction-ten-years-operations/' target = '_blank'> $3.1bn in “economic impact” </a> to the region, and the university and <a href = "https://blockclubchicago.org/2022/12/27/as-investors-buy-more-homes-around-the-obama-presidential-center-gentrification-worries-soar/" target = "_blank">investors</a> are primed to take advantage of this. At the same time, local residents are concerned about <a href = 'https://www.theguardian.com/us-news/2023/feb/15/obama-center-chicago-south-side-residents-fear-displacement' target = "_blank">rising rent</a> and how much benefit will reach the local community.`
+                text: `Recent actions leave many wary of the University’s commitment to change. The opening of the Woodlawn Charter School in 2018 on 63rd Street broke the decades-old agreement with The Woodlawn Organization for the University not to extend further into Woodlawn. In 2020, then-President Zimmer and incoming President Paul Alivisatos committed to exploring and addressing the University’s historical relationship with its surrounding neighborhoods by launching the Council on UChicago/Community Relations tasked with examining the role the University has had to its South Side neighbors historically. However, as of 2023, after the Council's first two years, it was not yet prepared to engage meaningfully with the public but that outreach could begin soon. These actions recall those of the University's past actions, and some see them as confirmation that the University is continuing to privilege its well-being over that of the community.
+`
             },
             {
                 id: '6.3',
-                text: `The next decade will prove to be a crucial chapter in the ongoing story of the University of Chicago’s involvement in shaping its neighborhood. From its neo-gothic beginnings to its perch as an <a href = 'https://en.wikipedia.org/wiki/Ivy_League#Ivy_Plus' target = "_blank">Ivy Plus</a> university, the University and Hyde Park, as well as the surrounding neighborhoods—have been—and will continue to be–intertwined.`
+                text: `The next decade represents a crucial chapter in the ongoing story of the University of Chicago’s involvement in shaping its surrounding neighborhoods. From its neo-Gothic beginnings to its perch as an Ivy Plus university, the University and the South Side have been—and will continue to be—intertwined.`
             },
             {
                 id: 'final-scroller',
