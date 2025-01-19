@@ -9,7 +9,7 @@ const config = [
         subsections: [
             {
                 id: '1.1',
-                text: `The University of Chicago’s story begins in 1889 when industry titan John D. Rockefeller commits $600,000 toward a “new institution of learning in Chicago.”`,
+                text: `In 1889, industry titan John D. Rockefeller committed $600,000 toward a “new institution of learning in Chicago.”`,
                 start_year: 1890,
                 end_year: 1900,
                 timeline_year: 1889,
@@ -20,7 +20,7 @@ const config = [
             },
             {
                 id: '1.2',
-                text: `A few months later, prominent landowner Marshall Fields pledges 10 acres of his land to the new Hyde Park university. The site stretches from 57th to 59th Street, between Ellis and Lexington. Over the next forty years, the University’s quadrangle takes shape.`,
+                text: `A few months later, prominent landowner Marshall Field pledged 10 acres of his land in Hyde Park to the new University. The site stretched from 57th to 59th Street, between Ellis and Lexington.`,
                 start_year: 1900,
                 end_year: 1910,
                 timeline_year: 1890,
@@ -29,26 +29,27 @@ const config = [
             },
             {
                 id: '1.3',
-                text: `In 1892, the Board of Trustees commissions architect Henry Ives Cobb to draw up a master plan for the University. Trustees Martin Ryerson and Charles Hutchinson advocate for a neo-Gothic style, aiming to situate the University among established, storied European universities. “The Gothic aesthetic allowed the new university to grant itself a sense of institutional legitimacy that belied its age,” Eldred writes.`,
+                text: `In 1892, the Board of Trustees commissioned architect Henry Ives Cobb to draw up a master plan for the University. Trustees Martin Ryerson and Charles Hutchinson advocated for a neo-Gothic style, aiming to situate the University among established, storied European universities. In a letter to John Rockefeller, President William Rainey Harper wrote that he didn’t want festivities on opening day, so that it would seem like “the continuation of work which had been conducted for a thousand years.”`,
                 timeline_year: 1892,
                 image: './static/images/chapter1.jpg',
                 image_credit: 'University of Chicago Photographic Archive'
             },
             {
                 id: '1.3a',
-                text: `In 1902, the University contracts the <a href='https://storymaps.arcgis.com/stories/8bc70c8a457943da81800274c93100ca' target = "_blank">Olmsted Brothers</a> to design the campus grounds. Over the next 40 years, the core of what today is called the main campus is built, including iconic buildings such as <span class="highlight hScroller">Reynolds Club</span> and <span class="highlight hScroller">Harper Memorial Library</span>.
+                text: `In 1902, the University contracted the <a href='https://storymaps.arcgis.com/stories/8bc70c8a457943da81800274c93100ca' target = "_blank">Olmsted Brothers</a> to design the campus grounds. Over the next 40 years, the core of what today is called the main campus was built, including iconic buildings such as <span class="highlight hScroller">Reynolds Club</span> and <span class="highlight hScroller">Harper Memorial Library</span>.
                 <br>
                 <br>
                 At any time, click the <span class = 'highlight explore'>Explore Map</span> button in the top right and hover over a building to learn more.`
             },
             {
                 id: '1.4',
-                text: `Circa 1927, the University makes provisions to add on-campus housing. The trustees commission architect Charles Klauder to  begin work on the “South Campus Plan” for the development of new residence halls on the south side of the Midway, however, the only building realized under the plan during this time is Burton-Judson Courts in 1931. The “South Campus Plan” is not revisited until the 1960s, and the University remains a commuter campus through the Great Depression.`,
+                text: `Circa 1927, the University made provisions to add on-campus housing. The trustees commissioned architect Charles Klauder whose “South Campus Plan” included new residence halls on the south side of the Midway. However, the only building that was realized under the plan during this time was the Burton-Judson Courts in 1931. The plan was not revisited until the 1960s, and the University remained mostly a commuter campus through the 1930s. In 1933, facing financial difficulties amidst the Great Depression, President Hutchins <a href='https://www.northwestern.edu/nu150/news/stories/04_05_01_merger.html' target = "_blank">even proposed</a> merging the University with Northwestern.`,
                 timeline_year: 1927
             },
+
             {
                 id: '1.5',
-                text: `While the campus was self-contained, a community-university relationship began slowly to form. When President William Rainey Harper hired sought-after coach Amos Alonzo Stagg, <a href = "https://chicagomaroon.com/39731/grey-city/brains-over-brawn-how-football-found-its-place-at-uchicago/" target = "_blank">football culture </a> and games at <span class="highlight hScroller">Stagg Field</span> grew the University’s reputation among Chicagoans.`,
+                text: `Although the campus was self-contained, a community-university relationship began slowly to form. When President  Harper hired sought-after coach Amos Alonzo Stagg, <a href = "https://chicagomaroon.com/39731/grey-city/brains-over-brawn-how-football-found-its-place-at-uchicago/" target = "_blank">football culture</a> and games at <span class="highlight hScroller">Stagg Field</span> grew the University’s reputation among Chicagoans.`,
                 image: './static/images/football.jpg',
                 image_credit: 'University of Chicago Photographic Archive'
             }
@@ -63,7 +64,7 @@ const config = [
         subsections: [
             {
                 id: 'demographics',
-                text: `The Great Migration significantly transforms the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. “Racial succession,” the process of one racial group replacing another in the neighborhood coined by early 20th-century University of Chicago urban sociologists, becomes a growing concern of both the University and the City.`,
+                text: `The Great Migration significantly transformed the racial makeup of Chicago. A city that was 2% Black in 1910 would approach 14% by 1950. <a href = "http://www.encyclopedia.chicagohistory.org/pages/880.html" target = "_blank">“Racial succession,”</a> the process of one racial group replacing another in the neighborhood coined by early 20th-century University of Chicago urban sociologists, became a growing concern of both the University and the City. At this stage, the University began to see the fate of the neighborhood as tied to its own.`,
                 start_year: 1930,
                 end_year: 1940,
                 image: './static/images/demos.png',
@@ -72,11 +73,12 @@ const config = [
             },
             {
                 id: '2.1',
-                text: `Starting in 1933, the University begins to attempt “stabilizing the neighborhood.” Behind the scenes, they reinforce legal racial covenants through intermediaries. Between 1933 and 1947, the University spends $83,597.46 to support legal assistance for the defense of racially restrictive covenants in Hyde Park, subsidizing neighborhood groups, such as the Woodlawn Property Owners League and the Hyde Park Property Owners Association. President Hutchins maintains that residents of Hyde Park and nearby communities have the right to “invoke and defend'' racially restrictive covenants as legal instruments.`
+                text: `By 1933, the University had begun its attempts to “stabilize the neighborhood.” Between 1933 and 1947, the University spent $83,597.46 to support legal assistance for the defense of racially restrictive covenants, or private agreements that prohibited African Americans from buying property and living in certain neighborhoods, in Hyde Park, according to historian Arnold R. Hirsch. They did this by subsidizing neighborhood groups advocating for the covenants, such as the Woodlawn Property Owners League and the Hyde Park Property Owners Association. President Hutchins maintained that residents of Hyde Park and nearby communities had the right to “invoke and defend” racially restrictive covenants as legal instruments.`
             },
+
             {
                 id: '2.3',
-                text: `In 1948, the Shelley v. Kramer Supreme Court case outlawed racial covenants. Despite the University losing this tool to shape the neighborhood, the Great Migration and the fear of “racial succession” drove the University to find other ways to “stabilize” Hyde Park.`,
+                text: `In 1948, the Shelley v. Kramer Supreme Court case outlawed racial covenants. After losing this legal tool, the Great Migration and continued fear of “racial succession” drove the University to find other ways to “stabilize”  the surrounding communities`,
                 timeline_year: 1948,
                 image: './static/images/shelleyvkramer.jpeg',
                 image_credit: 'University of Chicago Photographic Archive'
