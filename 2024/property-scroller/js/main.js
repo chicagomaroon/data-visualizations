@@ -92,8 +92,6 @@ function highlightPopup(ids, layer = null) {
         ids.includes(feature.properties.id)
     );
 
-    console.log(selectedFeatures);
-
     // Show popup for each selected feature
     selectedFeatures.forEach((feature) => {
         const description =
@@ -121,6 +119,8 @@ function highlightPopup(ids, layer = null) {
         } else {
             anchor = 'top';
         }
+
+        maxWidth = isMobile ? '150px' : '250px';
         const popup = new maplibregl.Popup({
             closeButton: false,
             className: 'popup-highlight',
@@ -128,7 +128,7 @@ function highlightPopup(ids, layer = null) {
         })
             .setLngLat(coordinates)
             .setHTML(description)
-            .setMaxWidth('250px')
+            .setMaxWidth(maxWidth)
             .addTo(mapBody);
         activePopups.push(popup);
     });
@@ -975,8 +975,8 @@ function introWaypoints() {
             filterOpacity(mapIntro, 'endLayer', true);
 
             mapIntro.flyTo({
-                center: hydeParkLocation,
-                zoom: 13.5,
+                center: isMobile ? [-87.597, 41.795] : hydeParkLocation,
+                zoom: isMobile ? 13.3 : 13.5,
                 duration: 6000
             });
         },
@@ -987,7 +987,7 @@ function introWaypoints() {
         handler: function (direction) {
             const introDiv = document.getElementById('intro-text');
             if (direction == 'down') {
-                fadeInLayer(introDiv, 0, 1, 0.005, 5);
+                fadeInLayer(introDiv, 0, 1, 0.005, 4);
             } else {
                 introDiv.style.opacity = 0;
             }
@@ -1003,7 +1003,7 @@ function bodyWaypoints() {
             chapterDiv = document.getElementById('chapters-container');
             if (direction == 'down') {
                 // fade in
-                fadeInLayer(chapterDiv, 0, 1, 0.005, 5);
+                fadeInLayer(chapterDiv, 0, 1, 0.005, 4);
             } else {
                 chapterDiv.style.opacity = 0;
             }
@@ -1409,9 +1409,9 @@ function bodyWaypoints() {
                     0
                 );
                 mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13.5,
-                    duration: zoomSpeed
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 13 : 14.5,
+                    duration: 7000
                 });
             } else {
                 removePopups();
@@ -1458,16 +1458,13 @@ function bodyWaypoints() {
 
                 flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
                 mapBody.flyTo({
-                    center: [-87.605, 41.7849],
-                    zoom: 14.5,
+                    center: isMobile
+                        ? [-87.59759805192628, 41.78503293901767]
+                        : [-87.605, 41.7849],
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.flyTo({
-                    center: uChiLocationSide,
-                    zoom: 13.5,
-                    duration: zoomSpeed
-                });
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0.6);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 clearInterval(flashingInterval);
@@ -1499,7 +1496,7 @@ function bodyWaypoints() {
 
                 // zoom out
                 mapBody.flyTo({
-                    center: [-87.60278, 41.8],
+                    center: isMobile ? [-87.595, 41.8] : [-87.60278, 41.8],
                     zoom: 12.5,
                     duration: zoomSpeed
                 });
@@ -1509,8 +1506,10 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
                 flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
                 mapBody.flyTo({
-                    center: [-87.602, 41.7849],
-                    zoom: 14.5,
+                    center: isMobile
+                        ? [-87.59759805192628, 41.78503293901767]
+                        : [-87.605, 41.7849],
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
 
@@ -1547,8 +1546,8 @@ function bodyWaypoints() {
                 );
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 mapBody.flyTo({
-                    center: [-87.62, 41.8],
-                    zoom: 11.75,
+                    center: isMobile ? [-87.56, 41.8] : [-87.62, 41.8],
+                    zoom: isMobile ? 10.7 : 11.75,
                     duration: zoomSpeed
                 });
             } else {
@@ -1566,7 +1565,7 @@ function bodyWaypoints() {
                 updateLayers(1980);
                 // zoom out
                 mapBody.flyTo({
-                    center: [-87.60278, 41.8],
+                    center: isMobile ? [-87.595, 41.8] : [-87.60278, 41.8],
                     zoom: 12.5,
                     duration: zoomSpeed
                 });
@@ -1582,8 +1581,11 @@ function bodyWaypoints() {
                 updateLayers(2020);
                 removePopups();
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
+
                 mapBody.flyTo({
-                    center: [-87.6105, 41.78955],
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
                     zoom: 13.5,
                     duration: zoomSpeed
                 });
@@ -1593,7 +1595,11 @@ function bodyWaypoints() {
                 }, 1000);
             } else {
                 removePopups();
-                mapBody.zoomTo(11.5, { duration: zoomSpeed });
+                mapBody.flyTo({
+                    center: isMobile ? [-87.56, 41.8] : [-87.62, 41.8],
+                    zoom: isMobile ? 10.7 : 11.75,
+                    duration: zoomSpeed
+                });
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 updateLayers(2000);
             }
@@ -1609,7 +1615,9 @@ function bodyWaypoints() {
                 removePopups();
             } else {
                 mapBody.flyTo({
-                    center: [-87.6105, 41.78955],
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
                     zoom: 13.5,
                     duration: zoomSpeed
                 });
@@ -1640,17 +1648,18 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // zoom to sold buildings
                 mapBody.flyTo({
-                    center: [-87.59975128884997, 41.795],
+                    center: isMobile ? [-87.595, 41.795] : [-87.59975, 41.795],
                     zoom: 14,
                     duration: zoomSpeed,
                     bearing: 0
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.6105, 41.78955],
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
                     zoom: 13.5,
-                    duration: zoomSpeed,
-                    bearing: 0
+                    duration: zoomSpeed
                 });
             }
         },
@@ -1663,14 +1672,16 @@ function bodyWaypoints() {
             if (direction == 'down') {
                 // highlight arts buildings /WP
                 mapBody.flyTo({
-                    center: [-87.62238983619335, 41.79449748170734],
+                    center: isMobile
+                        ? [-87.62082, 41.795837]
+                        : [-87.622389, 41.794497],
                     zoom: 14.5,
                     duration: zoomSpeed,
                     bearing: 0
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.62238983619335, 41.79449748170734],
+                    center: isMobile ? [-87.595, 41.795] : [-87.59975, 41.795],
                     zoom: 14,
                     duration: zoomSpeed,
                     bearing: 0
@@ -1685,16 +1696,18 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.flyTo({
-                    center: [-87.6105, 41.78955],
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
                     zoom: 13.5,
-                    duration: zoomSpeed,
-                    bearing: 0
+                    duration: zoomSpeed
                 });
             } else {
-                updateLayers(2020);
                 mapBody.flyTo({
-                    center: [-87.62238983619335, 41.79449748170734],
-                    zoom: 15.5,
+                    center: isMobile
+                        ? [-87.62082, 41.795837]
+                        : [-87.622389, 41.794497],
+                    zoom: 14.5,
                     duration: zoomSpeed,
                     bearing: 0
                 });
@@ -1730,9 +1743,10 @@ function bodyWaypoints() {
                 });
             } else {
                 mapBody.flyTo({
-                    center: [-87.6105, 41.78955],
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
                     zoom: 13.5,
-                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1872,7 +1886,7 @@ function init() {
 
     // fade in to start
     intro = document.querySelector('#intro');
-    fadeInLayer(intro, 0, 1, 0.002, 5);
+    fadeInLayer(intro, 0, 1, 0.002, 4);
 
     // create waypoints
     waypoints();
