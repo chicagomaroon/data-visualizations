@@ -78,6 +78,26 @@ document.getElementById('map-slider').addEventListener('input', (e) => {
 
 // -------- HELPER FUNCTIONS --------
 
+// change class of active when click on collapse
+
+document
+    .querySelector('#methodology-link')
+    .addEventListener('click', function () {
+        if (
+            document
+                .querySelector('.collapse-arrow')
+                .classList.contains('active')
+        ) {
+            console.log('remove');
+            document
+                .querySelector('.collapse-arrow')
+                .classList.remove('active');
+        } else {
+            console.log('add');
+            document.querySelector('.collapse-arrow').classList.add('active');
+        }
+    });
+
 function highlightPopup(ids, layer = null) {
     if (!layer) {
         activeLayer = findActiveLayerName(mapBody);
@@ -228,8 +248,15 @@ function findConfigValue(id, value) {
 //fade in opacity
 function fadeInLayer(layer, start, end, increment, time) {
     let opacity = start;
+    // go both directions
+    if (start > end) {
+        increment = -increment;
+        last = start;
+    } else {
+        last = end;
+    }
     let timer = setInterval(function () {
-        if (opacity >= end) {
+        if (opacity >= last) {
             clearInterval(timer);
         }
         layer.style.opacity = opacity;
@@ -1192,6 +1219,7 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
+                removePopups();
                 updateLayers(1950);
                 mapBody.flyTo({
                     center: isMobile
@@ -1797,11 +1825,10 @@ function bodyWaypoints() {
                 document.getElementById('timeline-container').style.visibility =
                     'hidden';
                 removePopups();
-                document.getElementById('map-overlay-menu').style.visibility =
-                    'visible';
-                document.getElementById(
-                    'map-overlay-methodology'
-                ).style.visibility = 'visible';
+
+                yearSlider = document.getElementById('map-overlay-menu');
+                yearSlider.style.visibility = 'visible';
+                fadeInLayer(yearSlider, 0, 1, 0.01, 3);
 
                 // enable popups
                 document.querySelector('#explore-button').dataset.active =
@@ -1821,11 +1848,11 @@ function bodyWaypoints() {
                 document.getElementById('timeline-container').style.visibility =
                     'visible';
                 removePopups();
-                document.getElementById('map-overlay-menu').style.visibility =
-                    'hidden';
-                document.getElementById(
-                    'map-overlay-methodology'
-                ).style.visibility = 'hidden';
+
+                // fade out
+                yearSlider = document.getElementById('map-overlay-menu');
+                yearSlider.style.visibility = 'hidden';
+                yearSlider.style.opacity = 0;
 
                 // reset map
                 mapBody.flyTo({
@@ -1862,7 +1889,9 @@ function waypoints() {
 // combine all into one function
 function init() {
     window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
+        setTimeout(function () {
+            window.scrollTo(0, 0);
+        }, 2);
     };
     // create html elements from config
     config = JSON.parse(sessionStorage.getItem('config'));
