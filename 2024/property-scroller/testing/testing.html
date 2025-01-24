@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+        <script type="module" src="test2.js"></script>
+        <link
+            href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+            rel="stylesheet"
+        />
+
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="../js/noframework.waypoints.min.js"></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
+        />
+        <title>Document</title>
+    </head>
+    <body>
+        <img-comparison-slider class="slider-with-animated-handle">
+            <figure slot="first" class="before">
+                <img width="100%" src="before_55.jpg" />
+                <figcaption>1950</figcaption>
+            </figure>
+            <figure slot="second" class="after">
+                <img width="100%" src="after_55.jpg" />
+                <figcaption>1961</figcaption>
+            </figure>
+            <svg
+                slot="handle"
+                class="custom-animated-handle"
+                xmlns="http://www.w3.org/2000/svg"
+                width="100"
+                viewBox="-8 -3 16 6"
+            >
+                <path
+                    stroke="#fff"
+                    d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
+                    stroke-width="1"
+                    fill="#fff"
+                    vector-effect="non-scaling-stroke"
+                ></path>
+            </svg>
+        </img-comparison-slider>
+
+        <button onclick="zoomToFeature()" id="zoom-in">Zoom In</button>
+        <button id="fade">Fade Out</button>
+        <div class="slide-container">
+            <p>Year: <span id="slider-year"></span></p>
+            <input
+                type="range"
+                min="1890"
+                max="2024"
+                value="1890"
+                class="slider"
+                id="myRange"
+            />
+        </div>
+        <div class="container">
+            <div class="map-container">
+                <div id="map" style="width: 1000px; height: 600px"></div>
+            </div>
+            <div class="scroller" id="step1">step1</div>
+            <div class="scroller" id="step2">step2</div>
+            <div class="scroller" id="step3">step 3</div>
+        </div>
+        <script src="testing.js"></script>
+    </body>
+</html>
