@@ -5,6 +5,12 @@
 //nice to have
 //      max and min area for map
 
+/*
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; URL=https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/">
+<link rel="canonical" href="https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/"></link>
+*/
+
 // ------------------ DATA ------------------
 dataPath = 'data/display_dataset_1_16_25.geojson';
 otherPath = 'data/other_geoms.geojson';
