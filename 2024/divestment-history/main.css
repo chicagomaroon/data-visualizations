@@ -10,6 +10,10 @@ h1 {
     font-weight: 400;
 }
 
+hr {
+    margin: 2em 0;
+}
+
 #subtitle {
     font-size: 28;
     text-align: center;
@@ -22,9 +26,58 @@ h1 {
     margin-left: 50%;
 }
 
+.scroller img {
+    width: 40vw;
+    border: 1px solid black;
+}
+
+#pre-intro {
+    background: black;
+    color: white;
+    padding: 5em;
+    font-size: 20px;
+}
+
+
+.intro-quote {
+    display: flex;
+    flex-direction: column;
+}
+
+.quote {
+    text-align: left;
+    width: 60%;
+}
+
+.quote p {
+    margin: 0;
+}
+
+.admin {
+    align-items: flex-end;
+}
+
+.admin p {
+    text-align: right;
+    display: block;
+}
+
+.attribution {
+    margin: 0;
+}
+
 #content {
     width: min(900px, 90%);
     margin: auto;
+}
+
+.intro, #intro-quotes {
+    width: max(700px, 70%);
+    margin: auto;
+}
+
+#intro-quotes {
+    width: 60%;
 }
 
 #chart-div {
