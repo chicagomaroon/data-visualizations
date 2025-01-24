@@ -1910,6 +1910,12 @@ function init() {
 
     // create waypoints
     waypoints();
+
+    // show methodoloy if not mobile
+    if (!isMobile) {
+        methodology = document.querySelector('#methodology-text');
+        methodology.classList.add('show');
+    }
 }
 
 // ------------ TESTING ------------
