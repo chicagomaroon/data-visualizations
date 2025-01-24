@@ -1,19 +1,15 @@
 //TODO
 // must
-//      mobile
-//      confirm timeline years
-//       red is > year_start and (< end or currently own)
-//       > year_end and currently exists and currently own is false, then grey (sold)
-
+//      ensure mobile works for last section
+//      safari mobile bub
 //nice to have
-//      scroll to continue at the top
-//      max and min area
-//     separate out js files
-//      edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
+//      max and min area for map
 
-//maybe
-//      hover options
-//      https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
+/*
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; URL=https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/">
+<link rel="canonical" href="https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/"></link>
+*/
 
 // ------------------ DATA ------------------
 dataPath = 'data/display_dataset_1_16_25.geojson';
@@ -1838,6 +1834,9 @@ function bodyWaypoints() {
                     'Explore';
 
                 // allow map panning
+                if (isMobile) {
+                    mapBody.scrollZoom.enable();
+                }
                 mapBody.dragPan.enable();
                 mapBody.boxZoom.enable();
                 mapBody.doubleClickZoom.enable();
@@ -1922,6 +1921,12 @@ function init() {
 
     // create waypoints
     waypoints();
+
+    // show methodoloy if not mobile
+    if (!isMobile) {
+        methodology = document.querySelector('#methodology-text');
+        methodology.classList.add('show');
+    }
 }
 
 // ------------ TESTING ------------
@@ -2040,10 +2045,10 @@ function init() {
             .querySelector('#title-container')
             .getBoundingClientRect().top; //+ window.scrollY;
 
+        init();
+
         document.querySelectorAll('#map-intro').forEach((element) => {
             element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
         });
-
-        init();
     });
 })();

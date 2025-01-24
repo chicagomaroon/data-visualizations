@@ -69,7 +69,13 @@ body {
 }
 
 #map-intro {
-    height: 100%;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+}
+
+#map-body {
+    height: 100vh;
     width: 100%;
     margin: 0;
 }
@@ -107,7 +113,8 @@ body {
 }
 
 #map-overlay-menu p {
-   margin-block: 10px
+    margin-block: 10px;
+
 }
 
 #map-overlay-menu hr {
@@ -129,21 +136,20 @@ body {
 }
 
 #methodology-text a {
-    color: var(--maroon_color)
+    color: var(--maroon_color);
+
 }
 
 .collapse-arrow {
     display: inline;
-    
- 
-  }
-  
+}
+
 .collapse-arrow.active {
-    display: inline-block;  
+    display: inline-block;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     transform: rotate(90deg);
-  }
+}
 
 #methodology h4 {
     font-family: Playfair Display;
@@ -157,12 +163,9 @@ body {
     font-family: Open Sans;
 }
 
-input[type='range'] { 
-    accent-color: var(--maroon_color); 
+input[type='range'] {
+    accent-color: var(--maroon_color);
 }
-
-
-
 
 #slider-container {
     display: flex;
@@ -408,7 +411,7 @@ input[type='range'] {
 .phoenix {
     width: 60px;
     margin: auto;
-    margin-top: 20px;
+    margin-block: 20px;
 }
 
 #title {
@@ -423,6 +426,7 @@ input[type='range'] {
 #intro-text hr {
     margin-top: 30px;
     margin-bottom: 20px;
+    border: 1px solid white;
 }
 
 #subtitle {
@@ -430,10 +434,6 @@ input[type='range'] {
     font-size: 28px;
     margin-bottom: 10px;
     font-weight: 400;
-}
-
-#bylines {
-    margin-bottom: 30px;
 }
 
 #byline {
@@ -521,7 +521,6 @@ input[type='range'] {
     margin: 30px 0 20px;
     background-color: white;
 }
-
 
 .popup h6 {
     font-size: 1.2em;
@@ -627,7 +626,6 @@ img-comparison-slider:focus {
 
     #byline {
         font-size: 12px;
-        margin-bottom: 5px;
     }
 
     #subtitle {
@@ -656,6 +654,10 @@ img-comparison-slider:focus {
     }
 
     #intro-text {
-        width: 80%;
+        width: 85%;
     }
-
+  
+    #map-overlay-menu {
+        max-width: 80%;
+    }
+}
