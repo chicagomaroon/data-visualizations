@@ -114,6 +114,7 @@ body {
 
 #map-overlay-menu p {
     margin-block: 10px;
+
 }
 
 #map-overlay-menu hr {
@@ -136,6 +137,7 @@ body {
 
 #methodology-text a {
     color: var(--maroon_color);
+
 }
 
 .collapse-arrow {
@@ -654,7 +656,7 @@ img-comparison-slider:focus {
     #intro-text {
         width: 85%;
     }
-
+  
     #map-overlay-menu {
         max-width: 80%;
     }

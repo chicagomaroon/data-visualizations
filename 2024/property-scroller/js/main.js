@@ -108,6 +108,8 @@ function highlightPopup(ids, layer = null) {
         ids.includes(feature.properties.id)
     );
 
+    console.log(selectedFeatures);
+
     // Show popup for each selected feature
     selectedFeatures.forEach((feature) => {
         const description =
@@ -1727,6 +1729,7 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
+                updateLayers(2020);
                 mapBody.flyTo({
                     center: isMobile
                         ? [-87.62082, 41.795837]
@@ -1888,7 +1891,9 @@ function waypoints() {
 // combine all into one function
 function init() {
     window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
+        setTimeout(function () {
+            window.scrollTo(0, 0);
+        }, 2);
     };
     // create html elements from config
     config = JSON.parse(sessionStorage.getItem('config'));
