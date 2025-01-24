@@ -1,19 +1,9 @@
 //TODO
 // must
-//      mobile
-//      confirm timeline years
-//       red is > year_start and (< end or currently own)
-//       > year_end and currently exists and currently own is false, then grey (sold)
-
+//      ensure mobile works for last section
+//      safari mobile bub
 //nice to have
-//      scroll to continue at the top
-//      max and min area
-//     separate out js files
-//      edit basemap to take out stuff we dont want https://basemaps.cartocdn.com/gl/positron-gl-style/style.json
-
-//maybe
-//      hover options
-//      https://docs.mapbox.com/help/tutorials/create-interactive-hover-effects-with-mapbox-gl-js/
+//      max and min area for map
 
 // ------------------ DATA ------------------
 dataPath = 'data/display_dataset_1_16_25.geojson';
@@ -1835,6 +1825,9 @@ function bodyWaypoints() {
                     'Explore';
 
                 // allow map panning
+                if (isMobile) {
+                    mapBody.scrollZoom.enable();
+                }
                 mapBody.dragPan.enable();
                 mapBody.boxZoom.enable();
                 mapBody.doubleClickZoom.enable();
@@ -1889,9 +1882,7 @@ function waypoints() {
 // combine all into one function
 function init() {
     window.onbeforeunload = function () {
-        setTimeout(function () {
-            window.scrollTo(0, 0);
-        }, 2);
+        window.scrollTo(0, 0);
     };
     // create html elements from config
     config = JSON.parse(sessionStorage.getItem('config'));
@@ -2037,10 +2028,10 @@ function init() {
             .querySelector('#title-container')
             .getBoundingClientRect().top; //+ window.scrollY;
 
+        init();
+
         document.querySelectorAll('#map-intro').forEach((element) => {
             element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
         });
-
-        init();
     });
 })();

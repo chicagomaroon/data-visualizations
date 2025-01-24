@@ -74,6 +74,12 @@ body {
     margin: 0;
 }
 
+#map-body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
 .map-container-body {
     position: sticky;
     z-index: 1;
@@ -107,7 +113,7 @@ body {
 }
 
 #map-overlay-menu p {
-   margin-block: 10px
+    margin-block: 10px;
 }
 
 #map-overlay-menu hr {
@@ -129,21 +135,19 @@ body {
 }
 
 #methodology-text a {
-    color: var(--maroon_color)
+    color: var(--maroon_color);
 }
 
 .collapse-arrow {
     display: inline;
-    
- 
-  }
-  
+}
+
 .collapse-arrow.active {
-    display: inline-block;  
+    display: inline-block;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     transform: rotate(90deg);
-  }
+}
 
 #methodology h4 {
     font-family: Playfair Display;
@@ -157,12 +161,9 @@ body {
     font-family: Open Sans;
 }
 
-input[type='range'] { 
-    accent-color: var(--maroon_color); 
+input[type='range'] {
+    accent-color: var(--maroon_color);
 }
-
-
-
 
 #slider-container {
     display: flex;
@@ -522,7 +523,6 @@ input[type='range'] {
     background-color: white;
 }
 
-
 .popup h6 {
     font-size: 1.2em;
     margin: 0;
@@ -658,4 +658,4 @@ img-comparison-slider:focus {
     #intro-text {
         width: 80%;
     }
-
+}
