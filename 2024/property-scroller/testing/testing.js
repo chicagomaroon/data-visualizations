@@ -1,7 +1,7 @@
 const uChiLocation = [-87.59974479675293, 41.78955289156096];
 const oc = [-87.5859, 41.78534];
 
-dataPath = '../data/property_years_extended_12_27_24.geojson';
+dataPath = '../data/display_dataset_1_16_25.geojson';
 shuttlePath = '../data/uchi_shuttle_lines.geojson';
 
 var map = new maplibregl.Map({
@@ -145,25 +145,25 @@ map.on('load', () => {
     //         [-87.47, 41.75057371953466],
     //         [-87.63899174851709, 41.75057371953466]
 
-    map.addSource('EAHP', {
-        type: 'image',
-        url: 'EAHP.png',
-        coordinates: [
-            [-87.63899174851709, 41.849],
-            [-87.481, 41.849], //
-            [-87.481, 41.75057371953466],
-            [-87.63899174851709, 41.75057371953466]
-        ]
-    });
+    // map.addSource('EAHP', {
+    //     type: 'image',
+    //     url: 'EAHP.png',
+    //     coordinates: [
+    //         [-87.63899174851709, 41.849],
+    //         [-87.481, 41.849], //
+    //         [-87.481, 41.75057371953466],
+    //         [-87.63899174851709, 41.75057371953466]
+    //     ]
+    // });
 
-    map.addLayer({
-        id: 'EAHP',
-        type: 'raster',
-        source: 'EAHP',
-        paint: {
-            'raster-opacity': 0.9
-        }
-    });
+    // map.addLayer({
+    //     id: 'EAHP',
+    //     type: 'raster',
+    //     source: 'EAHP',
+    //     paint: {
+    //         'raster-opacity': 0.9
+    //     }
+    // });
 
     // map.addSource('opc_plan', {
     //     type: 'image',
@@ -202,6 +202,34 @@ function zoomToFeature() {
 document.getElementById('myRange').addEventListener('input', (e) => {
     map.setFilter('maineLayer', ['<', 'year_start', Number(e.target.value)]);
     document.getElementById('year').innerText = e.target.value;
+});
+
+const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+
+let play_state = false;
+document.getElementById('play-button').addEventListener('click', async (e) => {
+    // change year every one second
+    console.log('play');
+    if (play_state) {
+        e.target.innerText = 'Play';
+        play_state = false;
+        return;
+    } else {
+        e.target.innerText = 'Pause';
+        play_state = true;
+    }
+    for (let i = 1890; i <= 2025; i++) {
+        document.getElementById('year').innerText = i;
+        map.setFilter('maineLayer', ['<', 'year_start', Number(i)]);
+        await sleep(10);
+    }
+    await sleep(1000);
+    for (let i = 2025; i >= 1890; i--) {
+        document.getElementById('year').innerText = i;
+        map.setFilter('maineLayer', ['<', 'year_start', Number(i)]);
+        year--;
+        await sleep(10);
+    }
 });
 
 document.getElementById('fade').addEventListener('click', () => {

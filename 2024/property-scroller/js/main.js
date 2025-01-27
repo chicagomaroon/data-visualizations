@@ -9,6 +9,7 @@
 <meta charset="utf-8">
 <meta http-equiv="refresh" content="0; URL=https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/">
 <link rel="canonical" href="https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/"></link>
+<style> body { display:none}</style>
 */
 
 // ------------------ DATA ------------------
@@ -1434,7 +1435,7 @@ function bodyWaypoints() {
                 );
                 mapBody.flyTo({
                     center: isMobile ? uChiLocationMobile : uChiLocationSide,
-                    zoom: isMobile ? 13 : 14.5,
+                    zoom: isMobile ? 13 : 14,
                     duration: 7000
                 });
             } else {
@@ -1492,6 +1493,11 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0.6);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0);
                 clearInterval(flashingInterval);
+                mapBody.flyTo({
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 13 : 14,
+                    duration: 7000
+                });
             }
         },
         offset: '50%'
@@ -1683,6 +1689,7 @@ function bodyWaypoints() {
                         ? uChiLocationMobile
                         : [-87.6105, 41.78955],
                     zoom: 13.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1716,17 +1723,22 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('5.4'),
+        element: document.getElementById('chapter6'),
         handler: function (direction) {
             if (direction == 'down') {
+                // reset highlights
                 mapBody.flyTo({
                     center: isMobile
                         ? uChiLocationMobile
                         : [-87.6105, 41.78955],
                     zoom: 13.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
+                removePopups();
+                updateLayers(2025);
             } else {
+                removePopups();
                 mapBody.flyTo({
                     center: isMobile
                         ? [-87.62082, 41.795837]
@@ -1735,21 +1747,6 @@ function bodyWaypoints() {
                     duration: zoomSpeed,
                     bearing: 0
                 });
-            }
-        },
-        offset: '50%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('chapter6'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                // reset highlights
-                // what layer to remove?
-                removePopups();
-                updateLayers(2025);
-            } else {
-                removePopups();
             }
         }
     });
@@ -1818,13 +1815,14 @@ function bodyWaypoints() {
                 // rm timeline and explore map button
                 document.getElementById('explore-nav').style.visibility =
                     'hidden';
-                document.getElementById('timeline-container').style.visibility =
-                    'hidden';
+
+                timeline = document.getElementById('timeline-container');
+                fadeInLayer(timeline, 1, 0, 0.01, 1);
                 removePopups();
 
                 yearSlider = document.getElementById('map-overlay-menu');
                 yearSlider.style.visibility = 'visible';
-                fadeInLayer(yearSlider, 0, 1, 0.01, 3);
+                fadeInLayer(yearSlider, 0, 1, 0.01, 4);
 
                 // enable popups
                 document.querySelector('#explore-button').dataset.active =
@@ -1844,8 +1842,11 @@ function bodyWaypoints() {
                 // bring back timeline and explore map button
                 document.getElementById('explore-nav').style.visibility =
                     'visible';
-                document.getElementById('timeline-container').style.visibility =
-                    'visible';
+
+                timeline = document.getElementById('timeline-container');
+                timeline.style.opacity = '0';
+                timeline.style.visibility = 'visible';
+                fadeInLayer(timeline, 0, 1, 0.01, 3);
                 removePopups();
 
                 // fade out
@@ -1912,16 +1913,10 @@ function init() {
 
     // fade in to start
     intro = document.querySelector('#intro');
-    fadeInLayer(intro, 0, 1, 0.002, 4);
+    fadeInLayer(intro, 0, 1, 0.002, 3);
 
     // create waypoints
     waypoints();
-
-    // show methodoloy if not mobile
-    if (!isMobile) {
-        methodology = document.querySelector('#methodology-text');
-        methodology.classList.add('show');
-    }
 }
 
 // ------------ TESTING ------------

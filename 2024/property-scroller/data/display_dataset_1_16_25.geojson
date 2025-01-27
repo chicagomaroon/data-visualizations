@@ -20,7 +20,7 @@
                 "year_end_confirmed": 2016.0,
                 "currently_owned": false,
                 "years_confirmed": false,
-                "quad_flag": true,
+                "quad_flag": false,
                 "recent_residential_sales": 2.0,
                 "charter_schools_flag": false,
                 "commercial_buildings_flag": true,

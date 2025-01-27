@@ -53,7 +53,7 @@
         <button onclick="zoomToFeature()" id="zoom-in">Zoom In</button>
         <button id="fade">Fade Out</button>
         <div class="slide-container">
-            <p>Year: <span id="slider-year"></span></p>
+            <p id="year">Year: <span id="slider-year"></span></p>
             <input
                 type="range"
                 min="1890"
@@ -63,6 +63,7 @@
                 id="myRange"
             />
         </div>
+        <button id="play-button">Play</button>
         <div class="container">
             <div class="map-container">
                 <div id="map" style="width: 1000px; height: 600px"></div>
