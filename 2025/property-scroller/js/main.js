@@ -118,7 +118,6 @@ function highlightPopup(ids, layer = null) {
         //feature.properties.id +
         //'</p>' +
         ('</div>');
-        // TODO centeriod of polygon instead of first point
 
         const coordinates = [feature.properties.lon, feature.properties.lat];
         // hacky way to fix dorm popup overlap
@@ -730,10 +729,7 @@ function createMap(div, type, startCoords = uChiLocation, zoomStart = 17) {
         dragPan: false,
         pitchWithRotate: false,
         dragRotate: false,
-        touchZoomRotate: false,
-        attributionControl: { compact: true }
-        // TODO
-        // maxBounds: bounds
+        touchZoomRotate: false
     });
 
     map.on('load', () => {
@@ -756,10 +752,6 @@ function createMap(div, type, startCoords = uChiLocation, zoomStart = 17) {
 
 function popupStuff(map_name) {
     // Create a popup, but don't add it to the map yet.
-
-    // fix popup stuff, only on popup on turn on layer
-    // mapBody.getLayer('layer1900').paint._values['fill-opacity'].value.value
-
     const popup = new maplibregl.Popup({
         closeButton: false,
         closeOnClick: false
@@ -1912,7 +1904,7 @@ function init() {
     waypoints();
 }
 
-// ------------ TESTING ------------
+// ------------ INIT ------------
 
 (function () {
     function setElementPosition(element, styles) {
