@@ -610,7 +610,8 @@ img-comparison-slider:focus {
         font-size: 18px;
     }
 
-    .scroller {
+    .scroller,
+    #conclusion {
         width: 80%;
         margin-inline: auto;
         font-size: 18px;
@@ -678,4 +679,6 @@ img-comparison-slider:focus {
     #map-overlay-menu {
         max-width: 80%;
     }
+
+    /* TODO timeline stying */
 }

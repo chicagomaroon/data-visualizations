@@ -1,9 +1,8 @@
-/*
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; URL=https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/">
-<link rel="canonical" href="https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/"></link>
-<style> body { display:none}</style>
-*/
+// todo
+
+// make mobile timeline smaller
+// fix last scroller in mobile
+// buildings not adding on initial load
 
 // ------------------ DATA ------------------
 dataPath = 'data/properties.geojson';
@@ -740,7 +739,8 @@ function createMap(div, type, startCoords = uChiLocation, zoomStart = 17) {
 
         map.addSource('other', {
             type: 'geojson',
-            data: otherPath
+            data: otherPath,
+            tolerance: 0.0
         });
 
         allLayers(map, type);
