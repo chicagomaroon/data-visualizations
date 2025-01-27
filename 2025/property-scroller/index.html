@@ -6,8 +6,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:title" content="A Neighborhood Institution" />
-        <meta property="og:image" content="static/images/black_m.png" />
-        <meta property="og:type" content="article" />
+        <meta property="og:image" content="static/images/property_gif.gif" />
         <meta property="og:site_name" content="The Chicago Maroon" />
         <meta
             property="og:description"
@@ -17,10 +16,10 @@
             property="og:url"
             content="https://chicagomaroon.github.io/data-visualizations/2025/property-scroller/"
         />
-
+        <meta property="og:type" content="article" />
         <meta
             property="og:article:author"
-            content="Austin Steinhart, Nikhil Patal, Celeste Alcalay"
+            content="Celeste Alcalay, Nikhil Patal, Austin Steinhart"
         />
         <link rel="icon" href="static/images/black_m.png" />
 
@@ -70,7 +69,7 @@
                 <figure id="map-intro"></figure>
             </div>
             <div class="scroller s-intro" id="step1">
-                In 1890, the University of Chicago's
+                In 1890, the University of Chicago's newly founded
                 <a
                     href="https://chicagomaroon.com/27627/grey-city/gothic-studio-gang/"
                     target="_blank"
@@ -85,7 +84,7 @@
                 Today, the University
                 <span class="highlight current">currently</span> or
                 <span class="highlight former">formerly</span> has control over
-                200 properties in Hyde Park and the surrounding neighborhoods,
+                300 properties in Hyde Park and the surrounding neighborhoods,
                 spanning 38th Street to 65th Street and I-90 to Lake Michigan.
             </div>
         </div>
@@ -319,50 +318,10 @@
                 <figure id="map-body"></figure>
             </div>
         </div>
-        <!--
-        <div id="methodology">
-            <div id="methodology-text">
-                <div class="line-break"></div>
-                <h2>Methodology</h2>
-                <p>
-                    This project drew data from several sources, including
-                    official University publications, campus maps, municipal
-                    records, satellite imagery, and news articles. Most building
-                    footprints were obtained from
-                    <a href="https://www.openstreetmap.org">OpenStreetMap</a>, a
-                    crowdsourced geospatial data repository; some historic
-                    building footprints were recreated from historic maps using
-                    <a href="https://felt.com/">Felt</a>. Many dates of building
-                    ownership were sourced from the
-                    <a
-                        href="https://facilities.uchicago.edu/about/uchicago_heritage_map/"
-                        >UChicago Heritage Map</a
-                    >, opening announcements, and university press releases.
-                </p>
-                <p>
-                    You can access the data for this project including building
-                    footprints and data here. All of the Maroon's data projects
-                    are open source. Find this project's full data management
-                    and visualization code on
-                    <a
-                        href="https://github.com/chicagomaroon/data-visualizations/tree/main/2024/property-scroller"
-                        >GitHub here</a
-                    >. Please reach out to data@chicagomaroon.com with any
-                    corrections or questions.
-                </p>
-            </div>
-        </div>
-        -->
-
         <div id="footer"></div>
 
         <!-- build:js inline -->
         <script src="js/main.js" type="text/javascript"></script>
         <script src="js/config.js" type="module"></script>
-        <script>
-            window.onbeforeunload = function () {
-                window.scrollTo(0, 0);
-            };
-        </script>
     </body>
 </html>

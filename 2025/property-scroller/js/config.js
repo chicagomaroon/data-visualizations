@@ -16,7 +16,7 @@ const config = [
             },
             {
                 id: '1.2',
-                text: `A few months later in January 1890, prominent landowner Marshall Field pledged 10 acres of his land in Hyde Park to the new University. The site stretched from 57th to 59th Street, between Ellis and Lexington.`,
+                text: `A few months later in January 1890, prominent landowner Marshall Field pledged 10 acres of his land in Hyde Park to the new University. The site stretched from 57th to 59th Street, between Ellis Avenue and Lexington.`,
                 timeline_year: 1890,
                 image: './static/images/og_uchi.jpg',
                 image_credit: 'University of Chicago Photographic Archive'

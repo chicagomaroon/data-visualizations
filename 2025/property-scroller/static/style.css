@@ -128,7 +128,11 @@ body {
 #methodology a {
     text-decoration: none;
     color: black;
-    margin-bottom: 5px;
+}
+
+.card-body {
+    margin-top: 10px;
+    padding: 1rem;
 }
 #methodology a:hover {
     text-decoration: underline;

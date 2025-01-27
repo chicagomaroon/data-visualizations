@@ -2016,11 +2016,17 @@ function init() {
     };
 
     document.addEventListener('DOMContentLoaded', () => {
-        const topPxOfFooter = document
-            .querySelector('#title-container')
-            .getBoundingClientRect().top; //+ window.scrollY;
+        // force scroll to top on refresh
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
 
         init();
+
+        // make map intro follow screen
+        const topPxOfFooter = document
+            .querySelector('#title-container')
+            .getBoundingClientRect().top;
 
         document.querySelectorAll('#map-intro').forEach((element) => {
             element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
