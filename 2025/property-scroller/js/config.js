@@ -100,7 +100,10 @@ const config = [
             },
             {
                 id: '3.0a',
-                text: `In his history of the University, John Boyer writes, “Beginning in the early 1940s, signs of deterioration around the University were evident. As a result of the Depression and the war, many buildings had not been maintained for fifteen years, and there had been little new investment in the area. In 1945, 53 percent of the buildings in Hyde Park and 82% of the buildings in Woodlawn were more than forty years old. The heavy migration of blacks from the South to Chicago resulted in severe population pressures on the South Side…which led to predatory real estate practices: slumlords illegally converting six flats into twenty-four unit rooming houses charging exorbitant rental rates, and not maintaining buildings to code.`
+                text: ``,
+                quote: `“Beginning in the early 1940s, signs of deterioration around the University were evident. As a result of the Depression and the war, many buildings had not been maintained for fifteen years, and there had been little new investment in the area. In 1945, 53 percent of the buildings in Hyde Park and 82% of the buildings in Woodlawn were more than forty years old. The heavy migration of blacks from the South to Chicago resulted in severe population pressures on the South Side…which led to predatory real estate practices: slumlords illegally converting six flats into twenty-four unit rooming houses charging exorbitant rental rates, and not maintaining buildings to code."`,
+                quoteAuthor: `John Boyer, <i>The University of Chicago: A History</i>`,
+                quoteSource: ''
             },
             {
                 id: '3.1',
@@ -138,7 +141,7 @@ const config = [
             },
             {
                 id: '3.6',
-                text: `Cumulatively, these plans called for the demolition of 193 acres (20 percent of the Hyde Park); cost $120 million ($1.4 billion when adjusted for inflation), approximately half of which was public funds and the other half private; displaced more than 30,000 people; and enabled the University of Chicago to add 41 acres of land to its campus. The campaign was a success, according to the administration. Documented by Julian Levi, it became a model for other institutions, such <a href = "https://projects.browndailyherald.com/2022/12/13/brown-property-footprint/" target = "_blank">Brown University</a> in the 1960s and <a href = "https://www.theguardian.com/cities/2018/apr/18/gentrify-or-die-inside-a-universitys-controversial-plan-for-baltimore" target = "_blank">Johns Hopkins</a> in the 2010s`,
+                text: `Cumulatively, these plans called for the demolition of 193 acres (20 percent of the Hyde Park); cost $120 million ($1.4 billion when adjusted for inflation), approximately half of which was public funds and the other half private; displaced more than 30,000 people; and enabled the University of Chicago to add 41 acres of land to its campus. The campaign was a success, according to the administration. Documented by Julian Levi, it became a model for other institutions, such as <a href = "https://projects.browndailyherald.com/2022/12/13/brown-property-footprint/" target = "_blank">Brown University</a> in the 1960s and <a href = "https://www.theguardian.com/cities/2018/apr/18/gentrify-or-die-inside-a-universitys-controversial-plan-for-baltimore" target = "_blank">Johns Hopkins</a> in the 2010s`,
                 quote: `"The Chicago Association of Industry Tuesday endorsed a 50-acre redevelopment project for the Hyde Park area. The association said that the project, planned by the South East Chicago Commission, “may well become a model for similar urban renewal in other sections of the city."`,
                 quoteAuthor: 'Chicago Daily News, 1954',
                 quoteSource: ''

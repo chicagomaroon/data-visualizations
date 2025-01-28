@@ -1244,6 +1244,22 @@ function bodyWaypoints() {
                         ? [-87.62954280979011, 41.812252875663404]
                         : [-87.73, 41.81],
                     zoom: isMobile ? 10 : 10.6,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('3.0a'),
+        handler: function (direction) {
+            if (direction == 'up') {
+                mapBody.flyTo({
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1260,6 +1276,7 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 // add overlay
@@ -1274,6 +1291,12 @@ function bodyWaypoints() {
                     'raster-opacity',
                     0.0
                 );
+                mapBody.flyTo({
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
             }
         },
         offset: '50%'
@@ -1289,6 +1312,7 @@ function bodyWaypoints() {
                         ? [-87.59067538770329, 41.79664800370716]
                         : [-87.59551281193906, 41.796688484805856],
                     zoom: 15,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 updateLayers(1955);
@@ -1298,6 +1322,7 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1315,6 +1340,7 @@ function bodyWaypoints() {
                         ? [-87.60413577508204, 41.79399163751296]
                         : [-87.6082519319518, 41.7935107582129],
                     zoom: 15,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
@@ -1323,6 +1349,7 @@ function bodyWaypoints() {
                         ? [-87.59067538770329, 41.79664800370716]
                         : [-87.59551281193906, 41.796688484805856],
                     zoom: 15,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 updateLayers(1955);
@@ -1341,6 +1368,7 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
@@ -1350,6 +1378,7 @@ function bodyWaypoints() {
                         ? [-87.60413577508204, 41.79399163751296]
                         : [-87.6082519319518, 41.7935107582129],
                     zoom: 15,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1367,6 +1396,7 @@ function bodyWaypoints() {
                         ? [-87.59644229579109, 41.784868927190615]
                         : [-87.6028193070742, 41.7851952871184],
                     zoom: 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
@@ -1375,6 +1405,7 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 updateLayers(1960);
@@ -1392,6 +1423,7 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
@@ -1400,6 +1432,7 @@ function bodyWaypoints() {
                         ? [-87.59644229579109, 41.784868927190615]
                         : [-87.6028193070742, 41.7851952871184],
                     zoom: isMobile ? 13.5 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1421,6 +1454,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? uChiLocationMobile : uChiLocationSide,
                     zoom: isMobile ? 13 : 14,
+                    bearing: 0,
                     duration: 7000
                 });
             } else {
@@ -1430,6 +1464,7 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 // add overlay
@@ -1472,6 +1507,7 @@ function bodyWaypoints() {
                         ? [-87.59759805192628, 41.78503293901767]
                         : [-87.605, 41.7849],
                     zoom: isMobile ? 14 : 14.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
@@ -1481,6 +1517,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? uChiLocationMobile : uChiLocationSide,
                     zoom: isMobile ? 13 : 14,
+                    bearing: 0,
                     duration: 7000
                 });
             }
@@ -1513,6 +1550,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? [-87.595, 41.8] : [-87.60278, 41.8],
                     zoom: 12.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
@@ -1525,6 +1563,7 @@ function bodyWaypoints() {
                         ? [-87.59759805192628, 41.78503293901767]
                         : [-87.605, 41.7849],
                     zoom: isMobile ? 14 : 14.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
 
@@ -1563,6 +1602,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? [-87.56, 41.8] : [-87.62, 41.8],
                     zoom: isMobile ? 10.7 : 11.75,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
@@ -1582,6 +1622,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? [-87.595, 41.8] : [-87.60278, 41.8],
                     zoom: 12.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             }
@@ -1602,6 +1643,7 @@ function bodyWaypoints() {
                         ? uChiLocationMobile
                         : [-87.6105, 41.78955],
                     zoom: 13.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 // highlight dorms after zoom
@@ -1613,7 +1655,8 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? [-87.56, 41.8] : [-87.62, 41.8],
                     zoom: isMobile ? 10.7 : 11.75,
-                    duration: zoomSpeed
+                    duration: zoomSpeed,
+                    bearing: 0
                 });
                 mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
                 updateLayers(2000);
@@ -1634,6 +1677,7 @@ function bodyWaypoints() {
                         ? uChiLocationMobile
                         : [-87.6105, 41.78955],
                     zoom: 13.5,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
                 // highlight dorms after zoom
@@ -1880,6 +1924,11 @@ function init() {
     config = JSON.parse(sessionStorage.getItem('config'));
     processConfig(config);
 
+    // hacky fix for only quote
+    quoteOnly = document.getElementById('3.0a');
+    quoteOnlyCredit = quoteOnly.querySelector('.credit');
+    quoteOnlyCredit.style.margin = 0;
+
     // create maps
     mapIntro = createMap('map-intro', 'intro', uChiLocation, 16);
     mapBody = createMap('map-body', 'body', ChiLocation, 12);
@@ -1887,9 +1936,13 @@ function init() {
 
     mapIntro.on('style.load', () => {
         const waiting = () => {
-            if (!mapIntro.isStyleLoaded()) {
+            if (
+                !mapIntro.isStyleLoaded() ||
+                !mapIntro.isSourceLoaded('buildings')
+            ) {
                 setTimeout(waiting, 200);
             } else {
+                console.log('loaded');
                 filterOpacity(mapIntro, 'startLayer', true);
             }
         };

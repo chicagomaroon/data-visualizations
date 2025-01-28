@@ -514,7 +514,7 @@ input[type='range'] {
     font-family: Courier New;
     line-height: 1.2;
     font-size: 16px;
-    padding: 20px;
+    padding: 25px;
     background-color: #f8f3e8;
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
     margin: 0;
@@ -522,6 +522,7 @@ input[type='range'] {
 
 .quoteAuthor {
     text-align: right;
+    margin: 0;
 }
 
 .line-break {
@@ -614,7 +615,7 @@ img-comparison-slider:focus {
     #conclusion {
         width: 80%;
         margin-inline: auto;
-        font-size: 18px;
+        font-size: 16px;
         background-color: rgba(255, 255, 255, 0.9);
     }
 
@@ -680,5 +681,15 @@ img-comparison-slider:focus {
         max-width: 80%;
     }
 
-    /* TODO timeline stying */
+    .timeline-inner {
+        width: 55px;
+    }
+
+    .timeline-text {
+        font-size: small;
+    }
+
+    #timeline-0 {
+        font-size: large;
+    }
 }
