@@ -1,9 +1,3 @@
-// todo
-
-// make mobile timeline smaller
-// fix last scroller in mobile
-// buildings not adding on initial load
-
 // ------------------ DATA ------------------
 dataPath = 'data/properties.geojson';
 otherPath = 'data/other_geoms.geojson';
@@ -1501,7 +1495,7 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('shuttles', 'line-opacity', 0);
                 mapBody.setPaintProperty('south_roads', 'raster-opacity', 0.7);
 
-                flashingInterval = flashLayer(mapBody, 'south_roads', 2000);
+                flashingInterval = flashLayer(mapBody, 'south_roads', 2500);
                 mapBody.flyTo({
                     center: isMobile
                         ? [-87.59759805192628, 41.78503293901767]
