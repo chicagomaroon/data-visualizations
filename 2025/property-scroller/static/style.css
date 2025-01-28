@@ -54,6 +54,22 @@ body {
     }
 }
 
+#scroll-down-arrow {
+    animation: jumpInfinite 2s infinite;
+}
+
+@keyframes jumpInfinite {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .header img {
     width: 30%;
     margin: auto;
@@ -89,13 +105,17 @@ body {
 }
 
 #map-overlay-menu {
+#map-overlay-menu {
     position: absolute;
+    font-family: Playfair Display;
+    top: 0;
     font-family: Playfair Display;
     top: 0;
     margin: 10px;
     z-index: 9999;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
     border-radius: 3px;
     padding: 10px;
     margin-bottom: 10px;
@@ -103,10 +123,16 @@ body {
     max-width: 350px;
     opacity: 0;
     height: fit-content;
+    max-width: 350px;
+    opacity: 0;
+    height: fit-content;
 }
 
 #map-overlay-menu h4 {
     font-family: Playfair Display;
+    margin-block: 5px;
+    padding: 0;
+    font-size: 1.3em;
     margin-block: 5px;
     padding: 0;
     font-size: 1.3em;
@@ -159,7 +185,9 @@ body {
     font-size: 15px;
     margin-block: 0;
     margin-top: 10px;
+    margin-top: 10px;
 }
+#methodology p {
 #methodology p {
     font-size: 12px;
     margin-top: 4px;
@@ -264,6 +292,7 @@ input[type='range'] {
     z-index: 9999;
 }
 
+.scroller a {
 .scroller a {
     color: var(--maroon_color);
     text-decoration: none;
@@ -421,6 +450,7 @@ input[type='range'] {
     width: 60px;
     margin: auto;
     margin-block: 20px;
+    margin-block: 20px;
 }
 
 #title {
@@ -435,6 +465,7 @@ input[type='range'] {
 #intro-text hr {
     margin-top: 30px;
     margin-bottom: 20px;
+    border: 1px solid white;
     border: 1px solid white;
 }
 

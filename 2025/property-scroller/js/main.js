@@ -1,11 +1,26 @@
+<<<<<<< HEAD:2025/property-scroller/js/main.js
 // todo
 
 // make mobile timeline smaller
 // fix last scroller in mobile
 // buildings not adding on initial load
+=======
+//TODO
+// must
+//      ensure mobile works for last section
+//      safari mobile bub
+//nice to have
+//      max and min area for map
+
+/*
+<meta charset="utf-8">
+<meta http-equiv="refresh" content="0; URL=https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/">
+<link rel="canonical" href="https://chicagomaroon.github.io/data-visualizations/2024/property-scroller/"></link>
+*/
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
 
 // ------------------ DATA ------------------
-dataPath = 'data/properties.geojson';
+dataPath = 'data/display_dataset_1_16_25.geojson';
 otherPath = 'data/other_geoms.geojson';
 let config = [];
 
@@ -100,6 +115,8 @@ function highlightPopup(ids, layer = null) {
     const selectedFeatures = features.filter((feature) =>
         ids.includes(feature.properties.id)
     );
+
+    console.log(selectedFeatures);
 
     // Show popup for each selected feature
     selectedFeatures.forEach((feature) => {
@@ -1276,7 +1293,10 @@ function bodyWaypoints() {
                         ? [-87.59299428700159, 41.795720774063426]
                         : [-87.60278337713892, 41.79910939443005],
                     zoom: isMobile ? 13.2 : 14,
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                     bearing: 0,
+=======
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                     duration: zoomSpeed
                 });
                 // add overlay
@@ -1453,8 +1473,12 @@ function bodyWaypoints() {
                 );
                 mapBody.flyTo({
                     center: isMobile ? uChiLocationMobile : uChiLocationSide,
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                     zoom: isMobile ? 13 : 14,
                     bearing: 0,
+=======
+                    zoom: isMobile ? 13 : 14.5,
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                     duration: 7000
                 });
             } else {
@@ -1507,7 +1531,10 @@ function bodyWaypoints() {
                         ? [-87.59759805192628, 41.78503293901767]
                         : [-87.605, 41.7849],
                     zoom: isMobile ? 14 : 14.5,
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                     bearing: 0,
+=======
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                     duration: zoomSpeed
                 });
             } else {
@@ -1563,7 +1590,10 @@ function bodyWaypoints() {
                         ? [-87.59759805192628, 41.78503293901767]
                         : [-87.605, 41.7849],
                     zoom: isMobile ? 14 : 14.5,
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                     bearing: 0,
+=======
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                     duration: zoomSpeed
                 });
 
@@ -1602,6 +1632,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile ? [-87.56, 41.8] : [-87.62, 41.8],
                     zoom: isMobile ? 10.7 : 11.75,
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                     bearing: 0,
                     duration: zoomSpeed
                 });
@@ -1644,6 +1675,27 @@ function bodyWaypoints() {
                         : [-87.6105, 41.78955],
                     zoom: 13.5,
                     bearing: 0,
+=======
+                    duration: zoomSpeed
+                });
+            } else {
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_line',
+                    'line-opacity',
+                    1
+                );
+                mapBody.setPaintProperty(
+                    'ucpd_bounds_2024_fill',
+                    'fill-opacity',
+                    0.2
+                );
+                updateLayers(1980);
+                // zoom out
+                mapBody.flyTo({
+                    center: isMobile ? [-87.595, 41.8] : [-87.60278, 41.8],
+                    zoom: 12.5,
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                     duration: zoomSpeed
                 });
                 // highlight dorms after zoom
@@ -1666,12 +1718,17 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('4.7'),
+        element: document.getElementById('4.6'),
         handler: function (direction) {
             if (direction == 'down') {
                 // highlight dorms
                 removePopups();
+<<<<<<< HEAD:2025/property-scroller/js/main.js
             } else {
+=======
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 0);
+
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                 mapBody.flyTo({
                     center: isMobile
                         ? uChiLocationMobile
@@ -1684,6 +1741,41 @@ function bodyWaypoints() {
                 setTimeout(() => {
                     highlightPopup(ids_dorms);
                 }, 1000);
+<<<<<<< HEAD:2025/property-scroller/js/main.js
+=======
+            } else {
+                removePopups();
+                mapBody.flyTo({
+                    center: isMobile ? [-87.56, 41.8] : [-87.62, 41.8],
+                    zoom: isMobile ? 10.7 : 11.75,
+                    duration: zoomSpeed
+                });
+                mapBody.setPaintProperty('EAHP', 'raster-opacity', 1);
+                updateLayers(2000);
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('4.7'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                // highlight dorms
+                removePopups();
+            } else {
+                mapBody.flyTo({
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
+                // highlight dorms after zoom
+                setTimeout(() => {
+                    highlightPopup(ids_dorms);
+                }, 1000);
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
             }
         },
         offset: '50%'
@@ -1718,7 +1810,10 @@ function bodyWaypoints() {
                         ? uChiLocationMobile
                         : [-87.6105, 41.78955],
                     zoom: 13.5,
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                     bearing: 0,
+=======
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
                     duration: zoomSpeed
                 });
             }
@@ -1752,6 +1847,35 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
+<<<<<<< HEAD:2025/property-scroller/js/main.js
+=======
+        element: document.getElementById('5.4'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                mapBody.flyTo({
+                    center: isMobile
+                        ? uChiLocationMobile
+                        : [-87.6105, 41.78955],
+                    zoom: 13.5,
+                    duration: zoomSpeed
+                });
+            } else {
+                updateLayers(2020);
+                mapBody.flyTo({
+                    center: isMobile
+                        ? [-87.62082, 41.795837]
+                        : [-87.622389, 41.794497],
+                    zoom: 14.5,
+                    duration: zoomSpeed,
+                    bearing: 0
+                });
+            }
+        },
+        offset: '50%'
+    });
+
+    new Waypoint({
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
         element: document.getElementById('chapter6'),
         handler: function (direction) {
             if (direction == 'down') {
@@ -1851,7 +1975,11 @@ function bodyWaypoints() {
 
                 yearSlider = document.getElementById('map-overlay-menu');
                 yearSlider.style.visibility = 'visible';
+<<<<<<< HEAD:2025/property-scroller/js/main.js
                 fadeInLayer(yearSlider, 0, 1, 0.01, 4);
+=======
+                fadeInLayer(yearSlider, 0, 1, 0.01, 3);
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
 
                 // enable popups
                 document.querySelector('#explore-button').dataset.active =
@@ -1918,7 +2046,9 @@ function waypoints() {
 // combine all into one function
 function init() {
     window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
+        setTimeout(function () {
+            window.scrollTo(0, 0);
+        }, 2);
     };
     // create html elements from config
     config = JSON.parse(sessionStorage.getItem('config'));
@@ -1951,10 +2081,20 @@ function init() {
 
     // fade in to start
     intro = document.querySelector('#intro');
+<<<<<<< HEAD:2025/property-scroller/js/main.js
     fadeInLayer(intro, 0, 1, 0.002, 3);
+=======
+    fadeInLayer(intro, 0, 1, 0.002, 4);
+>>>>>>> b752c8631a3678391d41ec8beb17534a97fed848:2024/property-scroller/js/main.js
 
     // create waypoints
     waypoints();
+
+    // show methodoloy if not mobile
+    if (!isMobile) {
+        methodology = document.querySelector('#methodology-text');
+        methodology.classList.add('show');
+    }
 }
 
 // ------------ INIT ------------
@@ -2080,6 +2220,8 @@ function init() {
         const topPxOfFooter = document
             .querySelector('#title-container')
             .getBoundingClientRect().top;
+
+        init();
 
         document.querySelectorAll('#map-intro').forEach((element) => {
             element.followScreen({ topPixel: 0, bottomPixel: topPxOfFooter });
