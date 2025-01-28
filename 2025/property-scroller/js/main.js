@@ -103,14 +103,11 @@ function highlightPopup(ids, layer = null) {
             '<h6>' +
             feature.properties.name +
             '</h6>' +
-            "<div class = 'popup-label'> YEAR BUILT</div>" +
+            "<div class = 'popup-label'>YEAR BUILT</div>" +
             '<h6>' +
             feature.properties.year_start +
-            '</h6>';
-        //'<p>' +
-        //feature.properties.id +
-        //'</p>' +
-        ('</div>');
+            '</h6>' +
+            '</div>';
 
         const coordinates = [feature.properties.lon, feature.properties.lat];
         // hacky way to fix dorm popup overlap
@@ -198,7 +195,6 @@ function exploreMap() {
         document.body.classList.remove('stop-scrolling');
 
         // return to where we were
-        //location = [center, zoom]
         mapBody.flyTo({
             center: currentCenter,
             zoom: currentZoom,
@@ -408,7 +404,7 @@ function createOverlayMapLayers(map) {
         url: './static/images/south_campus_plan.jpg',
         coordinates: [
             [-87.60165, 41.786],
-            [-87.59755, 41.78605], //
+            [-87.59755, 41.78605],
             [-87.5975, 41.78355],
             [-87.60158, 41.78353]
         ]
@@ -429,8 +425,8 @@ function createOverlayMapLayers(map) {
         url: './static/images/covenant_edit.png',
         coordinates: [
             [-87.77, 41.9102],
-            [-87.5246834044871, 41.914], //
-            [-87.5246834044871, 41.702], //
+            [-87.5246834044871, 41.914],
+            [-87.5246834044871, 41.702],
             [-87.76566748604431, 41.7]
         ]
     });
@@ -451,7 +447,7 @@ function createOverlayMapLayers(map) {
         url: './static/images/urban_renewal_1960.jpg',
         coordinates: [
             [-87.6069, 41.80970913038894],
-            [-87.574, 41.80970913038894], //
+            [-87.574, 41.80970913038894],
             [-87.574, 41.78770955793823],
             [-87.6065, 41.78770955793823]
         ]
@@ -493,7 +489,7 @@ function createOverlayMapLayers(map) {
         url: './static/images/EAHP.png',
         coordinates: [
             [-87.63899174851709, 41.849],
-            [-87.481, 41.849], //
+            [-87.481, 41.849],
             [-87.481, 41.75057371953466],
             [-87.63899174851709, 41.75057371953466]
         ]
@@ -513,7 +509,7 @@ function createOverlayMapLayers(map) {
         url: './static/images/opc_plan.jpg',
         coordinates: [
             [-87.58883159578394, 41.7881],
-            [-87.58299929754422, 41.7881], //
+            [-87.58299929754422, 41.7881],
             [-87.58299929754422, 41.78193744932196],
             [-87.5888, 41.78193744932196]
         ]
@@ -618,45 +614,6 @@ function allLayers(map, type) {
             bodyLayers.push(layerName);
             createLayerYears(map, layerName, year);
         }
-
-        // add 2024 layer for now
-        // map.addLayer({
-        //     id: 'layer2024',
-        //     type: 'fill',
-        //     source: 'buildings',
-        //     layout: {},
-        //     paint: {
-        //         'fill-color': [
-        //             'case',
-        //             [
-        //                 'all',
-        //                 ['<', ['get', 'year_end'], 2024],
-        //                 ['==', ['get', 'currently_owned'], false]
-        //             ],
-        //             'black', // sold
-        //             PRIMARY_COLOR
-        //         ],
-        //         'fill-opacity': 0,
-        //         'fill-opacity-transition': {
-        //             duration: map == mapIntro ? 5000 : 1000
-        //         }
-        //     },
-        //     filter: [
-        //         'any',
-        //         [
-        //             'all',
-        //             ['<=', ['get', 'year_start'], 2024],
-        //             ['>=', ['get', 'year_end'], 2024]
-        //         ],
-        //         [
-        //             'all',
-        //             ['<', ['get', 'year_end'], 2024],
-        //             ['==', ['get', 'currently_exists'], true]
-        //         ]
-        //     ]
-        // });
-        // bodyLayers.push('layer2024');
-
         map.addLayer({
             id: 'layerSlider',
             type: 'fill',
@@ -812,7 +769,6 @@ function processChapter(chapter) {
         chapter.id +
         '</p>' +
         '<div class = "chapter-phoenix"> <img src="static/images/phoenix.svg" alt="Phoenix Logo" class = "chapter-phoenix"/></div>' +
-        // '<hr class = "line-chapter">' +
         '<p>' +
         chapter.chapterTitle +
         '</p>';
@@ -917,36 +873,6 @@ function processChapter(chapter) {
     last.id = 'last-scroller';
 
     document.getElementById('chapters-container').appendChild(last);
-
-    // fix for img comparison image in 3.2
-
-    let image_comparison = `
-        <img-comparison-slider class="slider-with-animated-handle">
-            <figure slot="first" class="before">
-                <img width="100%" src="before_55.jpg" />
-                <figcaption>1950</figcaption>
-            </figure>
-            <figure slot="second" class="after">
-                <img width="100%" src="after_55.jpg" />
-                <figcaption>1961</figcaption>
-            </figure>
-            <svg
-                slot="handle"
-                class="custom-animated-handle"
-                xmlns="http://www.w3.org/2000/svg"
-                width="100"
-                viewBox="-8 -3 16 6"
-            >
-                <path
-                    stroke="#fff"
-                    d="M -5 -2 L -7 0 L -5 2 M -5 -2 L -5 2 M 5 -2 L 7 0 L 5 2 M 5 -2 L 5 2"
-                    stroke-width="1"
-                    fill="#fff"
-                    vector-effect="non-scaling-stroke"
-                ></path>
-            </svg>
-        </img-comparison-slider>
-    `;
 }
 
 // ------------ WAYPOINTS ------------
@@ -1897,7 +1823,7 @@ function bodyWaypoints() {
                 mapBody.removeControl(nav);
             }
         },
-        offset: '0%'
+        offset: '2%'
     });
 }
 
