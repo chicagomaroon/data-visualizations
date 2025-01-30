@@ -463,6 +463,27 @@ function createOverlayMapLayers(map) {
         }
     });
 
+    map.addSource('sol_tax', {
+        type: 'image',
+        url: './static/images/sol_tax.jpg',
+        coordinates: [
+            [-87.6067419011806, 41.81005],
+            [-87.58040046800122, 41.81005],
+            [-87.58040046800122, 41.7877],
+            [-87.60620619190088, 41.7876]
+        ]
+    });
+
+    map.addLayer({
+        id: 'sol_tax',
+        type: 'raster',
+        source: 'sol_tax',
+        paint: {
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
+        }
+    });
+
     map.addSource('south_roads', {
         type: 'image',
         url: './static/images/south_1968.jpg',
@@ -500,7 +521,8 @@ function createOverlayMapLayers(map) {
         type: 'raster',
         source: 'EAHP',
         paint: {
-            'raster-opacity': 0
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
         }
     });
 
@@ -520,7 +542,8 @@ function createOverlayMapLayers(map) {
         type: 'raster',
         source: 'opc_plan',
         paint: {
-            'raster-opacity': 0
+            'raster-opacity': 0,
+            'raster-opacity-transition': { duration: 2000 }
         }
     });
 }
@@ -1151,11 +1174,15 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
-                    zoom: isMobile ? 14 : 14.5,
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
                     duration: zoomSpeed
                 });
             } else {
+                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0);
                 removePopups();
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
@@ -1173,15 +1200,12 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('3.0a'),
+        element: document.getElementById('3.0'),
         handler: function (direction) {
-            if (direction == 'up') {
-                mapBody.flyTo({
-                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
-                    zoom: isMobile ? 14 : 14.5,
-                    bearing: 0,
-                    duration: zoomSpeed
-                });
+            if (direction == 'down') {
+                // add overlay
+                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0.8);
+            } else {
             }
         },
         offset: '50%'
@@ -1191,14 +1215,7 @@ function bodyWaypoints() {
         element: document.getElementById('3.1'),
         handler: function (direction) {
             if (direction == 'down') {
-                mapBody.flyTo({
-                    center: isMobile
-                        ? [-87.59299428700159, 41.795720774063426]
-                        : [-87.60278337713892, 41.79910939443005],
-                    zoom: isMobile ? 13.2 : 14,
-                    bearing: 0,
-                    duration: zoomSpeed
-                });
+                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0);
                 // add overlay
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
@@ -1206,17 +1223,12 @@ function bodyWaypoints() {
                     0.8
                 );
             } else {
+                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0.8);
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
                     0.0
                 );
-                mapBody.flyTo({
-                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
-                    zoom: isMobile ? 14 : 14.5,
-                    bearing: 0,
-                    duration: zoomSpeed
-                });
             }
         },
         offset: '50%'
