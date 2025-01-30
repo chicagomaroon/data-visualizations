@@ -71,12 +71,10 @@ document
                 .querySelector('.collapse-arrow')
                 .classList.contains('active')
         ) {
-            console.log('remove');
             document
                 .querySelector('.collapse-arrow')
                 .classList.remove('active');
         } else {
-            console.log('add');
             document.querySelector('.collapse-arrow').classList.add('active');
         }
     });
@@ -1668,15 +1666,15 @@ function bodyWaypoints() {
                         ? [-87.62082, 41.795837]
                         : [-87.622389, 41.794497],
                     zoom: 14.5,
-                    duration: zoomSpeed,
-                    bearing: 0
+                    bearing: 0,
+                    duration: zoomSpeed
                 });
             } else {
                 mapBody.flyTo({
                     center: isMobile ? [-87.595, 41.795] : [-87.59975, 41.795],
                     zoom: 14,
-                    duration: zoomSpeed,
-                    bearing: 0
+                    bearing: 0,
+                    duration: zoomSpeed
                 });
             }
         },
@@ -1699,14 +1697,15 @@ function bodyWaypoints() {
                 removePopups();
                 updateLayers(2025);
             } else {
+                mapBody.setPaintProperty('opc_plan', 'raster-opacity', 0);
                 removePopups();
                 mapBody.flyTo({
                     center: isMobile
                         ? [-87.62082, 41.795837]
                         : [-87.622389, 41.794497],
                     zoom: 14.5,
-                    duration: zoomSpeed,
-                    bearing: 0
+                    bearing: 0,
+                    duration: zoomSpeed
                 });
             }
         }
@@ -1835,7 +1834,7 @@ function bodyWaypoints() {
                 mapBody.removeControl(nav);
             }
         },
-        offset: '2%'
+        offset: '90%'
     });
 }
 
