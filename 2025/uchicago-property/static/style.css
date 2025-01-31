@@ -680,12 +680,21 @@ img-comparison-slider:focus {
         max-width: 80%;
     }
 
+    #methodology p {
+        font-size: 12px;
+    }
+
     .timeline-inner {
         width: 55px;
     }
 
     .timeline-text {
         font-size: small;
+    }
+
+    .card-body {
+        overflow-y: scroll;
+        max-height: 50vh;
     }
 
     #timeline-0 {

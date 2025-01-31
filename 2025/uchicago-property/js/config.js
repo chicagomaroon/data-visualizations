@@ -142,7 +142,7 @@ const config = [
             },
             {
                 id: '3.5a',
-                text: `Urban renewal fueled unrest across the city. In 1955, African American residents marched on city hall and demanded that Mayor Richard Daley address the discrimination against Black families, writes Eddie R. Cole in <i>The Campus Color Line</i>. Local leaders also raised concerns about the University’s role. “I see this whole area being controlled by a monolithic institution via its political puppets,” accused Wesley W. South, candidate for the 2nd Congressional district in 1968 in the Chicago Defender.
+                text: `Urban renewal fueled unrest across the city. In 1955, Black residents marched on city hall and demanded that Mayor Richard Daley address the discrimination against Black families, writes Eddie R. Cole in <i>The Campus Color Line</i>. Local leaders also raised concerns about the University’s role. “I see this whole area being controlled by a monolithic institution via its political puppets,” accused Wesley W. South, candidate for the 2nd Congressional district in 1968 in the Chicago Defender.
 
 `,
                 image: './static/images/ousts.png',
@@ -192,7 +192,7 @@ const config = [
             {
                 id: '4.4',
                 text: `
-                The expansion of the University’s private security force enabled it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus... [would] facilitate effective security activities,” Levi said. SECC also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive. When the University’s charter schools opened, <a href = "https://d3qi0qp55mx5f5.cloudfront.net/safety-security/uploads/files/Extended_Patrol_Map.pdf" target = "_blank">UCPD’s patrol jurisdiction expanded</a> to include them, now extending from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west.`,
+                The expansion of the University’s private security force enabled it to patrol areas beyond the boundaries of campus proper. “Providing definite boundary limits to the campus... [would] facilitate effective security activities,” Levi said. The SECC also lobbied for the extension of UCPD patrols. By 1980, the UCPD patrol area extended from 47th to 61st Streets, and Cottage Grove Avenue to Lake Shore Drive. When the University’s charter schools opened, <a href = "https://d3qi0qp55mx5f5.cloudfront.net/safety-security/uploads/files/Extended_Patrol_Map.pdf" target = "_blank">UCPD’s patrol jurisdiction expanded</a> to include them, now extending from 37th Street to the north, 64th Street to the south, Lake Shore Drive to the east, and Cottage Grove Avenue to the west.`,
                 timeline_year: 1980
             },
 
@@ -224,7 +224,7 @@ const config = [
             {
                 id: '5.1',
                 text: `
-                In 2006, University President Zimmer made his "<a href = "https://d3qi0qp55mx5f5.cloudfront.net/convocation/docs/zimmer.pdf?mtime=1517338474" target = "_blank">Back to the City</a>" speech, posing the question: “How should our relationship with the South Side community, city, and the region evolve?” In the following years, the University has simultaneously sought to shrink its portfolio of residential properties acquired during Urban Renewal and the <a href = "https://chicagomaroon.com/20278/news/univ-to-sell-21-residential-properties-in-hyde-park/" target = "_blank">Great Recession</a> and expand non-residential real estate holdings.`
+                In 2006, University President Zimmer made his "<a href = "https://d3qi0qp55mx5f5.cloudfront.net/convocation/docs/zimmer.pdf?mtime=1517338474" target = "_blank">Back to the City</a>" speech, posing the question: “How should our relationship with the South Side community, city, and the region evolve?” In the following years, the University simultaneously sought to shrink its portfolio of residential properties acquired during Urban Renewal and the <a href = "https://chicagomaroon.com/20278/news/univ-to-sell-21-residential-properties-in-hyde-park/" target = "_blank">Great Recession</a> and expand non-residential real estate holdings.`
             },
             {
                 id: '5.2',
