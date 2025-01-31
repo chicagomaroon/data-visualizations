@@ -461,27 +461,6 @@ function createOverlayMapLayers(map) {
         }
     });
 
-    map.addSource('sol_tax', {
-        type: 'image',
-        url: './static/images/sol_tax.jpg',
-        coordinates: [
-            [-87.6067419011806, 41.81005],
-            [-87.58040046800122, 41.81005],
-            [-87.58040046800122, 41.7877],
-            [-87.60620619190088, 41.7876]
-        ]
-    });
-
-    map.addLayer({
-        id: 'sol_tax',
-        type: 'raster',
-        source: 'sol_tax',
-        paint: {
-            'raster-opacity': 0,
-            'raster-opacity-transition': { duration: 2000 }
-        }
-    });
-
     map.addSource('south_roads', {
         type: 'image',
         url: './static/images/south_1968.jpg',
@@ -1172,15 +1151,11 @@ function bodyWaypoints() {
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0);
                 updateLayers(1950);
                 mapBody.flyTo({
-                    center: isMobile
-                        ? [-87.59299428700159, 41.795720774063426]
-                        : [-87.60278337713892, 41.79910939443005],
-                    zoom: isMobile ? 13.2 : 14,
-                    bearing: 0,
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0);
                 removePopups();
                 mapBody.setPaintProperty('covenants', 'raster-opacity', 0.7);
                 updateLayers(1950);
@@ -1198,30 +1173,29 @@ function bodyWaypoints() {
     });
 
     new Waypoint({
-        element: document.getElementById('3.0'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                // add overlay
-                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0.8);
-            } else {
-            }
-        },
-        offset: '50%'
-    });
-
-    new Waypoint({
         element: document.getElementById('3.1'),
         handler: function (direction) {
             if (direction == 'down') {
-                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0);
                 // add overlay
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
                     0.8
                 );
+                mapBody.flyTo({
+                    center: isMobile
+                        ? [-87.59299428700159, 41.795720774063426]
+                        : [-87.60278337713892, 41.79910939443005],
+                    zoom: isMobile ? 13.2 : 14,
+                    bearing: 0,
+                    duration: zoomSpeed
+                });
             } else {
-                mapBody.setPaintProperty('sol_tax', 'raster-opacity', 0.8);
+                mapBody.flyTo({
+                    center: isMobile ? uChiLocationMobile : uChiLocationSide,
+                    zoom: isMobile ? 14 : 14.5,
+                    duration: zoomSpeed
+                });
                 mapBody.setPaintProperty(
                     'urban_renewal_1960',
                     'raster-opacity',
@@ -1686,14 +1660,6 @@ function bodyWaypoints() {
         handler: function (direction) {
             if (direction == 'down') {
                 // reset highlights
-                mapBody.flyTo({
-                    center: isMobile
-                        ? uChiLocationMobile
-                        : [-87.6105, 41.78955],
-                    zoom: 13.5,
-                    bearing: 0,
-                    duration: zoomSpeed
-                });
                 removePopups();
                 updateLayers(2025);
             } else {
@@ -1723,13 +1689,6 @@ function bodyWaypoints() {
                     duration: zoomSpeed
                 });
             } else {
-                mapBody.flyTo({
-                    center: isMobile
-                        ? uChiLocationMobile
-                        : [-87.6105, 41.78955],
-                    zoom: 13.5,
-                    duration: zoomSpeed
-                });
             }
         },
         offset: '50%'
@@ -1857,6 +1816,10 @@ function init() {
 
     // hacky fix for only quote
     quoteOnly = document.getElementById('3.0a');
+    quoteOnlyCredit = quoteOnly.querySelector('.credit');
+    quoteOnlyCredit.style.margin = 0;
+
+    quoteOnly = document.getElementById('3.5b');
     quoteOnlyCredit = quoteOnly.querySelector('.credit');
     quoteOnlyCredit.style.margin = 0;
 

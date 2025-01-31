@@ -142,10 +142,20 @@ const config = [
             },
             {
                 id: '3.5a',
-                text: `Some interpreted urban renewal efforts as a success, while others expressed concerns about its execution. In 1955, Black residents marched on city hall and demanded that Mayor Richard Daley address the discrimination against Black families, writes Eddie R. Cole in <i>The Campus Color Line</i>.
+                text: `Urban renewal fueled unrest across the city. In 1955, African American residents marched on city hall and demanded that Mayor Richard Daley address the discrimination against Black families, writes Eddie R. Cole in <i>The Campus Color Line</i>. Local leaders also raised concerns about the University’s role. “I see this whole area being controlled by a monolithic institution via its political puppets,” accused Wesley W. South, candidate for the 2nd Congressional district in 1968 in the Chicago Defender.
 
-`
+`,
+                image: './static/images/ousts.png',
+                image_credit: 'Chicago Defender, 1962'
             },
+            {
+                id: '3.5b',
+                text: ``,
+                quote: `Land clearance is perverted to Negro Clearance. Urban Renewal, despite its good intentions and its great possibilities, becomes a distortion and a false promise. Slums have not been eradicated but have been made mobile. Most of the new housing units erected, though providing good living, have not provided housing for those displaced.”`,
+                quoteAuthor: `Edwin C. Berry, Executive Director of the Chicago Urban League, 1962`,
+                quoteSource: ''
+            },
+
             {
                 id: '3.6',
                 text: `
@@ -176,7 +186,7 @@ const config = [
             {
                 id: '4.3',
                 text: `
-                Several right-of-way street modifications took place during the 1970s, Juliet Eldred (A.B. ’17) writes in her thesis, <a href = "https://www.julieteldred.com/thesis" target = "_blank">The University of Chicago as Urban Planner</a>, arguing that these changes created an explicit division between the University and the neighborhood of Woodlawn. A narrow, tree-lined buffer cuts University Avenue off from 61st Street; Kimbark Avenue dead-ends approximately halfway into the block; Kenwood Avenue is split into a driveway to a parking lot from the north and a cul-de-sac from the south; and Blackstone Avenue is almost entirely nonexistent between 60th and 61st Streets.`,
+                Several right-of-way street modifications took place during the 1970s, Juliet Eldred (A.B. ’17) writes in her thesis, <a href = "https://www.julieteldred.com/thesis" target = "_blank">The University of Chicago as Urban Planner</a>, arguing that these changes created an explicit division between the University and the neighborhood of Woodlawn. A narrow, tree-lined buffer cuts University Avenue off from 61st Street; Kimbark Avenue dead-ends approximately halfway into the block; Kenwood Avenue is split into a parking lot from the north and a cul-de-sac from the south; and Blackstone Avenue is almost entirely nonexistent between 60th and 61st Streets.`,
                 timeline_year: 1970
             },
             {
@@ -242,7 +252,7 @@ const config = [
                 text: `
                 The future of the University’s involvement in Hyde Park and the South Side is at a crucial inflection point. 
                 With the <a href = "https://chicagomaroon.com/41032/grey-city/the-obama-center-a-welcome-neighbor/" target = "_blank">opening of the Obama Presidential Center</a> nearing, the University is once again in a position to make decisions that will significantly impact the future of the surrounding communities. 
-                The Center—of which the University is an investor—claims it will <a href = "https://www.obama.org/press-releases/obama-presidential-center-estimated-support-thousands-jobs-city-chicago-south-side-construction-ten-years-operations/" target = "_blank">bring $3.1 billion in “economic impact”</a> to the region. The University and <a href = "https://blockclubchicago.org/2022/12/27/as-investors-buy-more-homes-around-the-obama-presidential-center-gentrification-worries-soar/" target = "_blank">other investors</a> are prepared to reap the benefits. The University is the main investor in other large-scale projects, including <a href = "https://hydeparklabs.com/" target = "_blank">Hyde Park Labs</a> and UCMed’s <a href = "https://news.uchicago.edu/story/state-approves-uchicago-medicines-plan-build-citys-first-freestanding-cancer-care-and" target = "_blank">Cancer Pavilion</a>. While the University has emphasized the positive impact the projects will have on the local economy, some residents are concerned about <a href = "https://www.theguardian.com/us-news/2023/feb/15/obama-center-chicago-south-side-residents-fear-displacement" target = "_blank">rising rent</a> and how much benefit will reach the local community.`
+                The Center—of which the University is an investor—claims it will <a href = "https://www.obama.org/press-releases/obama-presidential-center-estimated-support-thousands-jobs-city-chicago-south-side-construction-ten-years-operations/" target = "_blank">bring $3.1 billion in “economic impact”</a> to the region. The University and <a href = "https://blockclubchicago.org/2022/12/27/as-investors-buy-more-homes-around-the-obama-presidential-center-gentrification-worries-soar/" target = "_blank">other investors</a> are prepared to reap the benefits. The University is the main investor in other large-scale projects that are expected to greatly impact the South Side, including <a href = "https://hydeparklabs.com/" target = "_blank">Hyde Park Labs</a> and UCMed’s <a href = "https://news.uchicago.edu/story/state-approves-uchicago-medicines-plan-build-citys-first-freestanding-cancer-care-and" target = "_blank">Cancer Pavilion</a>. While the University has emphasized the positive impact the projects will have on the local economy, some residents are concerned about <a href = "https://www.theguardian.com/us-news/2023/feb/15/obama-center-chicago-south-side-residents-fear-displacement" target = "_blank">rising rent</a> and how much benefit will reach the local community.`
             },
             {
                 id: '6.2',

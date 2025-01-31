@@ -1,4 +1,4 @@
-This script displays the [*Maroon*](https://chicagomaroon.com/)'s R code we used in the process of cleaning and processing data for [our project](https://chicagomaroon.github.io/data-visualizations/2025/property-scroller/) on the University's property footprint over time.
+This script displays the [*Maroon*](https://chicagomaroon.com/)'s R code we used in the process of cleaning and processing data for [our project](https://chicagomaroon.github.io/data-visualizations/2025/uchicago-property/) on the University's property footprint over time.
 
 The dataset we compiled is available [here](https://drive.google.com/file/d/1LZ-jASBVvhj4Y5aN7GEAkoQvPRumb9Uo/view?usp=sharing) in GeoJSON format. This document references many other files (mostly spatial files for individual buildings we had to draw by hand), which we are happy to provide upon request. Please reach out to data\@chicagomaroon.com with any questions, concerns, or requests for further information.
 
