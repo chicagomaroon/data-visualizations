@@ -1638,7 +1638,7 @@ function bodyWaypoints() {
                 mapBody.flyTo({
                     center: isMobile
                         ? [-87.62082, 41.795837]
-                        : [-87.622389, 41.794497],
+                        : [-87.626, 41.794497],
                     zoom: 14.5,
                     bearing: 0,
                     duration: zoomSpeed
