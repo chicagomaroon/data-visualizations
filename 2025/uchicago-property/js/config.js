@@ -204,6 +204,7 @@ const config = [
                 id: '4.6',
                 text: `
                 During the early 2000s, the University formulated a new plan to reimagine residential life on campus by constructing new housing, dining, and recreational facilities within walking distance of the central quadrangles. New facilities included a transformed student center in the Reynolds Club and Ratner Athletics Center, the first new athletics facility built on campus since 1935. In 2002, the Max Palevsky Residential Commons were built, beginning a pattern of large dorms built on campus; in subsequent years, three more large dorms were built on campus. These additions brought necessities and leisure <a href = "https://chicagomaroon.com/42601/grey-city/the-case-of-the-checkerboard-blues/" target = "_blank">closer to campus</a>.`
+
             },
             {
                 id: '4.7',
