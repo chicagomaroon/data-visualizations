@@ -899,7 +899,7 @@ function introWaypoints() {
             } else {
             }
         },
-        offset: '30%'
+        offset: isMobile ? '10%' : '30%'
     });
 
     new Waypoint({

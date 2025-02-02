@@ -641,7 +641,11 @@ img-comparison-slider:focus {
     }
 
     #scroll-down {
-        bottom: 20px;
+        bottom: 25px;
+    }
+
+    #step1 {
+        margin-top: 30vh;
     }
 
     #step2,
