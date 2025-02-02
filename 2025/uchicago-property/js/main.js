@@ -227,17 +227,22 @@ function fadeInLayer(layer, start, end, increment, time) {
     // go both directions
     if (start > end) {
         increment = -increment;
-        last = start;
+        let timer = setInterval(function () {
+            if (opacity <= end) {
+                clearInterval(timer);
+            }
+            layer.style.opacity = opacity;
+            opacity += increment;
+        }, time);
     } else {
-        last = end;
+        let timer = setInterval(function () {
+            if (opacity >= end) {
+                clearInterval(timer);
+            }
+            layer.style.opacity = opacity;
+            opacity += increment;
+        }, time);
     }
-    let timer = setInterval(function () {
-        if (opacity >= last) {
-            clearInterval(timer);
-        }
-        layer.style.opacity = opacity;
-        opacity += increment;
-    }, time);
 }
 
 function changeTimelineYear(targetYear) {
@@ -882,6 +887,25 @@ function introWaypoints() {
         element: document.getElementById('step1'),
         handler: function (direction) {
             if (direction == 'down') {
+                // fade scroll-down
+                console.log('fade');
+                fadeInLayer(
+                    document.getElementById('scroll-down'),
+                    1,
+                    0,
+                    0.005,
+                    4
+                );
+            } else {
+            }
+        },
+        offset: '30%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('step1'),
+        handler: function (direction) {
+            if (direction == 'down') {
             } else {
                 filterOpacity(mapIntro, 'endLayer', false);
                 filterOpacity(mapIntro, 'startLayer', true);
@@ -891,6 +915,13 @@ function introWaypoints() {
                     zoom: 15.5,
                     duration: zoomSpeed
                 });
+                fadeInLayer(
+                    document.getElementById('scroll-down'),
+                    0,
+                    1,
+                    0.005,
+                    4
+                );
             }
         },
         offset: '1%'
