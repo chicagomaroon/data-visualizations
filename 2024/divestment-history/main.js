@@ -362,6 +362,11 @@ transition = {
 
 async function init() {
     var data = await fetchData();
+
+    window.onbeforeunload = function() {
+        window.scrollTo(0,0)
+    }
+
     // console.log(data);
 
     var myPlot = document.getElementById('chart-div');
