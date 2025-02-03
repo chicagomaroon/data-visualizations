@@ -359,14 +359,15 @@ transition = {
 };
 
 // -------- MAIN --------
+var data;
 
 async function init() {
-    var data = await fetchData();
 
     window.onbeforeunload = function() {
         window.scrollTo(0,0)
     }
 
+    data = await fetchData();
     // console.log(data);
 
     var myPlot = document.getElementById('chart-div');
