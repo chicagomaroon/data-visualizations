@@ -109,9 +109,10 @@ With that being said, use the resources below as a starting place and reference 
     -   Continue to [Build Process for a Visualization](#build-process-for-a-visualization)
 -   Other tools include:
     -   Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
-    -   R and Python; For more data intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
-    -   For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps.
-    -   For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Ask Austin if you are interested in learning more. (More resources TK).
+    -   R and Python: For more data-intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
+    -   For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps. You can also use GeoJSON.io to draw on a map and get the coordinates as a .geojson file.
+    -   For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Austin developed a [D3 training](https://observablehq.com/d/c93d3eee860282c0) based on James Turk's Data Visualization course. Recommended prerequisites include HTML/CSS.
+    -   You may be interested in creating more accessible visuals for a broad audience. One option is to start with this short [introduction to accessibility on the web](https://github.com/notkarenyi/accessibility-demo).
 
 See the [resources][resources/] folder for additional material.
 
