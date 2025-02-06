@@ -128,12 +128,14 @@ See the [resources][resources/] folder for additional material.
     - If you'd like to see previously created example visuals, open [example-graphs.html](./example-graphs.html) from your local repository.
     - If you are using Highcharts, here is a lot of helpful documentation on the [options for creating charts](https://api.highcharts.com/highmaps/).
 1. Update the `meta_data.json` in your story's folder, which will look something like this:
+
     ```json
     {
         "title": "Example Visual",
         "description": "Describe your visual"
     }
     ```
+
     - Make sure the title you write in the `meta_data.json` file is the same as the title you give your visual in `main.js` and in `index.html`'s `<title>` tag.
 
 1. Run `npm run format` and make the changes that the output recommends. Also ensure the title, subtitle, and captions follow the requirements in the [Contribution Standards section](#titles-subtitles-and-captions). Ensure the chart and annotations still look correct at a width of ~700px. This is the width of the charts when online.
@@ -142,7 +144,6 @@ See the [resources][resources/] folder for additional material.
 1. Create a Pull Request to have your visual reviewed by committing and pushing your changes.
     - In your pull request, include a screenshot of the visual. Ensure the visual is ~700px.  
     - You can run `git status` to see which files in red have not been added. Then run `git add [file-name]` for each file to add them. Next run `git commit -m '[commit message]'` to commit your changes. Then run `git push` to push your changes. If this is your first commit, github may ask you to run a different command, which you should. Ex `git push --set-upstream origin [branch-name]`
-
 
 ## The Chicago Maroon’s Data Contribution and Style Guide
 

@@ -1,0 +1,283 @@
+This script displays the [*Maroon*](https://chicagomaroon.com/)'s R code we used in the process of cleaning and processing data for [our project](https://chicagomaroon.github.io/data-visualizations/2025/uchicago-property/) on the University's property footprint over time.
+
+The dataset we compiled is available [here](https://drive.google.com/file/d/1LZ-jASBVvhj4Y5aN7GEAkoQvPRumb9Uo/view?usp=sharing) in GeoJSON format. This document references many other files (mostly spatial files for individual buildings we had to draw by hand), which we are happy to provide upon request. Please reach out to data\@chicagomaroon.com with any questions, concerns, or requests for further information.
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+library(tidyverse)
+library(sf)
+library(osmdata)
+library(tmap)
+
+wd <- "[YOUR WORKING DIRECTORY]"
+
+# Get relevant bounding box
+community_areas <- st_read(paste0(wd, "/Sources/chicago_community_areas.geojson"))
+
+neighborhood_bbox <- community_areas %>% 
+  filter(community %in% c("GRAND BOULEVARD",
+                          "HYDE PARK", 
+                          "KENWOOD", 
+                          "OAKLAND",
+                          "WASHINGTON PARK", 
+                          "WOODLAWN")) %>%
+  st_union() %>%
+  st_bbox()
+
+# Note: "neighborhood" is a very large dataframe
+neighborhood <- opq(bbox = neighborhood_bbox) %>%
+  add_osm_feature(key = 'building') %>%
+  osmdata_sf()
+
+neighborhood_polygons <- neighborhood$osm_polygons %>% 
+  st_transform(st_crs(4326))
+neighborhood_multipolygons <- neighborhood$osm_multipolygons %>% 
+  st_transform(st_crs(4326))
+rm(neighborhood)
+# Note: the "osm_points" field doesn't seem to have any important info
+
+# Try converting polygons to multipolygons so we can combine everything into one table
+neighborhood_buildings <- neighborhood_polygons %>% st_cast("MULTIPOLYGON") %>% bind_rows(neighborhood_multipolygons)
+
+ggplot() + 
+  geom_sf(data = neighborhood_bbox %>% st_as_sfc()) + 
+  geom_sf(data = neighborhood_buildings)
+
+neighborhood_parking_lots <- opq(bbox = neighborhood_bbox) %>%
+  add_osm_feature(key = 'amenity', value = 'parking') %>%
+  osmdata_sf()
+
+neighborhood_parking_lots_polygons <- neighborhood_parking_lots$osm_polygons %>% 
+  st_transform(st_crs(4326))
+neighborhood_parking_lots_multipolygons <- neighborhood_parking_lots$osm_multipolygons %>% 
+  st_transform(st_crs(4326))
+
+# Add non-building/parking geometries by OSM ID
+query <- opq_osm_id(type = "way", id = c(
+  "140438500", # Lab School Field
+  "153090082", # Campus South Athletic Field
+  "166212110" # Field at Woodlawn Charter Campus
+)) %>% opq_string() %>% osmdata_sf()
+outliers <- query$osm_polygons %>% st_cast("MULTIPOLYGON") %>%
+  mutate(name = case_when(name == "Campus South Atheletic Field" ~ "Campus South Athletic Field",
+                          .default = name))
+rm(query)
+
+# Create full buildings/parking lot crosswalk within neighborhood bbox
+
+all_geometries <- bind_rows(neighborhood_buildings,
+                       neighborhood_parking_lots_polygons %>% st_cast("MULTIPOLYGON"),
+                       neighborhood_parking_lots_multipolygons,
+                       outliers) %>% 
+  mutate(id = row_number(), osm_id = as.numeric(osm_id))
+
+unique_ids <- all_geometries %>% st_drop_geometry() %>% 
+  select(id, osm_id) %>%
+  distinct(osm_id, .keep_all = TRUE) %>% 
+  select(id) %>% 
+  pull()
+
+# Make a crosswalk of all relevant geometries in the target area
+xwalk <- all_geometries %>% filter(id %in% unique_ids)
+
+# Remove unnecessary variables to save space
+rm(neighborhood, 
+   neighborhood_polygons, 
+   neighborhood_multipolygons, 
+   neighborhood_buildings, 
+   neighborhood_parking_lots_polygons, 
+   neighborhood_parking_lots_multipolygons, 
+   outliers,
+   all_geometries, 
+   unique_ids)
+```
+
+```{r message=FALSE, warning=FALSE}
+# Plot the crosswalk
+ggplot() + 
+  geom_sf(data = neighborhood_bbox %>% st_as_sfc()) + 
+  geom_sf(data = xwalk)
+```
+
+Now that we have a single table containing all of the relevant geometries in nearby neighborhoods, we turn to cleaning up anomalies in the OSM data (for example, Burton-Judson Hall and Cathey Dining Commons being one building), reading our hand-drawn geometries, and combining everything into one dataset.
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+# Separate BJ and Cathey
+bj_cathey <- xwalk %>% filter(osm_id == 1968186) %>% st_geometry() # Combined geometry
+cathey_template <- st_read(paste0(wd, "template_geometries/cathey.geojson")) # Geometry containing Cathey and none of BJ
+
+bj <- bj_cathey %>% st_difference(cathey_template) %>%
+  st_as_sf() %>% 
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 16, name = "Burton-Judson Courts") %>% 
+  rename(geometry = x)
+cathey <- bj_cathey %>% st_intersection(cathey_template) %>% 
+  st_as_sf() %>%
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 17, name = "Arley D. Cathey Dining Commons") %>% 
+  rename(geometry = x)
+
+# Add student wellness center
+lying_in_hospital <- xwalk %>% filter(osm_id == "144132398") %>% st_geometry()
+wellness_template <- st_read(paste0(wd, "template_geometries/wellness-center.geojson")) # Geometry containing wellness center and some of surrounding building
+
+wellness <- wellness_template %>% st_difference(lying_in_hospital) %>%
+  st_as_sf() %>% 
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 9, name = "Student Wellness Center") %>% 
+  select(custom_id, name)
+
+# Separate Snell and Hitchcock
+snitchcock <- xwalk %>% filter(osm_id == 154421807) %>% st_geometry() # Combined geometry
+snell_template <- st_read(paste0(wd, "template_geometries/snell.geojson")) # Geometry containing Snell and none of Hitchcock
+
+snell <- snitchcock %>% st_intersection(snell_template) %>%
+  st_as_sf() %>% 
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 18, name = "Snell Hall") %>% 
+  rename(geometry = x)
+hitchcock <- snitchcock %>% st_difference(snell_template) %>%
+  st_as_sf() %>% 
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 19, name = "Hitchcock Hall") %>% 
+  rename(geometry = x)
+
+# Separate 5439-45 and 5447-57 S Woodlawn
+wl_apartments <- xwalk %>% filter(osm_id == 211225247) %>% st_geometry() # Combined geometry
+wl_apartments_template <- st_read(paste0(wd, "template_geometries/5447-57-s-woodlawn.geojson")) # Geometry containing 5447-57 apartments and none of 39-45
+
+wl_39_45 <- wl_apartments %>% st_difference(wl_apartments_template) %>%
+  st_as_sf() %>% 
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 39, name = "5439-45 South Woodlawn Avenue") %>% 
+  rename(geometry = x)
+wl_47_57 <- wl_apartments %>% st_intersection(wl_apartments_template) %>%
+  st_as_sf() %>% 
+  st_cast("MULTIPOLYGON") %>% 
+  mutate(custom_id = 40, name = "5447-57 South Woodlawn Avenue") %>% 
+  rename(geometry = x)
+
+# Combine halves of Woodward Court
+woodward_court <- st_read(paste0(wd, "custom_geometries/woodward_court.geojson")) %>% 
+  st_union() %>% 
+  st_as_sf() %>% 
+  mutate(custom_id = 30, name = "Woodward Court") %>% 
+  rename(geometry = x)
+
+# Read hand-drawn geometries for former Stagg Field and Hyde Park Labs
+stagg_hp_labs <- st_read(paste0(wd, "custom_geometries/stagg-and-hydeparklabs.geojson")) %>%
+  st_transform(4326) %>%
+  st_cast("MULTIPOLYGON")
+
+# Read hand-drawn geometries and combine into one dataframe
+custom <- st_read(paste0(wd, "custom_geometries/custom_buildings_7_23_24.geojson")) %>%
+  st_transform(4326) %>%
+  st_cast("MULTIPOLYGON") %>%
+  select(custom_id, name) %>% 
+  bind_rows(bj, cathey, snell, hitchcock, wl_39_45, wl_47_57, woodward_court, stagg_hp_labs) %>% 
+  filter(custom_id != 9) %>% # Filter out old wellness center
+  bind_rows(wellness)
+
+# Read current buildings dataset
+current <- read_csv(paste0(wd, "spreadsheet_data/uchicago_buildings_1_27_25.csv")) %>%
+  filter(!is.na(osm_id) | !is.na(custom_id)) # If there's no ID, we don't have the geometry prepared for this building, so we exclude it
+
+# Join data with geometries
+property <- current %>% left_join(xwalk %>% bind_rows(custom) %>%
+                                    select(osm_id, custom_id),
+                                  by = c("osm_id", "custom_id")) %>%
+  mutate(id = coalesce(osm_id, custom_id) %>% as.character()) %>%
+  st_as_sf() %>% 
+  st_make_valid()
+
+property <- property %>% cbind(property %>% st_geometry() %>% 
+                                 st_point_on_surface() %>% 
+                                 st_coordinates() %>% 
+                                 as_tibble() %>% 
+                                 rename(c(lon = X, lat = Y)))
+
+# Download property in GeoJSON format
+st_write(property, paste0(wd, "results/property_1_27_25.geojson"))
+```
+
+```{r message=FALSE, warning=FALSE}
+ggplot() + 
+  geom_sf(data = neighborhood_bbox %>% st_as_sfc()) + 
+  geom_sf(data = property)
+```
+
+Finally, we run various transformations on `property` to create the public dataset and the display dataset for the story.
+
+```{r message=FALSE, warning=FALSE, results='hide'}
+# Create public version of dataset ---------------------------------------------
+public_dataset <- property %>% filter(maybe_not_owned_by_uni == FALSE) %>%
+  mutate(year_bought = as.numeric(year_bought),
+         year_built = as.numeric(year_built),
+         year_destroyed = as.numeric(year_destroyed),
+         year_sold = as.numeric(year_sold)) %>% 
+  select(id, 
+         osm_id, 
+         custom_id, 
+         name, 
+         other_name, 
+         address, 
+         earliest_year_seen, 
+         latest_year_seen, 
+         year_bought, 
+         year_built, 
+         year_destroyed, 
+         year_sold, 
+         year_start_guess, 
+         year_end_guess, 
+         currently_owned, 
+         currently_exists, 
+         missing_year_info, 
+         year_source, 
+         building_source)
+
+st_write(public_dataset, paste0(wd, "results/public_dataset_1_27_25.geojson"), append = FALSE)
+
+# Summarize year info ----------------------------------------------------------
+
+property_with_years <- property %>% filter(maybe_not_owned_by_uni == FALSE) %>%
+  mutate(year_bought = as.numeric(year_bought),
+         year_built = as.numeric(year_built),
+         year_destroyed = as.numeric(year_destroyed),
+         year_sold = as.numeric(year_sold)) %>% 
+  mutate(year_start = case_when(!is.na(year_bought) ~ year_bought,
+                                !is.na(year_built) ~ year_built,
+                                !is.na(earliest_year_seen) ~ earliest_year_seen,
+                                .default = NA),
+         year_end = case_when(currently_owned == TRUE ~ 2025,
+                              !is.na(year_sold) ~ year_sold,
+                              !is.na(year_destroyed) ~ year_destroyed,
+                              !is.na(latest_year_seen) ~ latest_year_seen,
+                              .default = NA),
+         year_start_confirmed = year_start,
+         year_end_confirmed = year_end) %>%
+  select(id, osm_id, custom_id, 
+         name, address, 
+         earliest_year_seen, latest_year_seen, 
+         year_bought, year_built, year_destroyed, year_sold, 
+         year_start_guess, year_end_guess, 
+         year_start, year_end, year_start_confirmed, year_end_confirmed,
+         currently_owned, years_confirmed, 
+         quad_flag, recent_residential_sales, charter_schools_flag, commercial_buildings_flag, 
+         currently_exists,
+         lon, lat)
+
+# Make display dataset ---------------------------------------------------------
+
+property_display <- property_with_years %>% mutate(year_start = pmin(year_start, year_start_guess, na.rm = TRUE), year_end = pmax(year_end, year_end_guess, na.rm = TRUE)) %>%
+  select(-c(earliest_year_seen, 
+            latest_year_seen, 
+            year_bought, 
+            year_built, 
+            year_destroyed, 
+            year_sold, 
+            year_start_guess, 
+            year_end_guess, 
+            year_start_confirmed, 
+            year_end_confirmed))
+
+st_write(property_display, paste0(wd, "results/display_dataset_1_27_25.geojson"), append = FALSE)
+```
