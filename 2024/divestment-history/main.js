@@ -291,7 +291,7 @@ finalWP = new Waypoint({
 function createLayout() {
     return {
         title: {
-            text: 'Test'
+            text: 'Historical Divestment Movements at UChicago'
         },
         xaxis: {
             showgrid: true,
