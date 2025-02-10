@@ -10,13 +10,14 @@
 async function fetchData() {
     try {
         // get data from external source (github)
-        var response = await fetch('https://raw.githubusercontent.com/chicagomaroon/data-visualizations/refs/heads/divestment/2024/divestment-history/data.json');
+        var response = await fetch(
+            'https://raw.githubusercontent.com/chicagomaroon/data-visualizations/refs/heads/divestment/2024/divestment-history/data.json'
+        );
 
         var jsonData = await response.json();
 
         // console.log(jsonData)
-        return jsonData; 
-
+        return jsonData;
     } catch (error) {
         console.error('Error fetching JSON:', error);
     }
@@ -24,15 +25,12 @@ async function fetchData() {
 
 /**
  * Group data and define all traces
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis 
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
  * @param  {json} data Data loaded in a previous step
  * @param  {Array} name_vars Variable(s) to group by
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
-function processData(
-    data,
-    name_vars,
-) {
+function processData(data, name_vars) {
     try {
         colorbook = {
             Movement: {
@@ -165,8 +163,9 @@ function createWaypoint(div, mapping, traceindex) {
         if (direction == 'down') {
             // advance 10 years
             if (div == 'letters') {
-                Plotly.restyle(graphDiv, { visible: false }, [0]);
-                Plotly.restyle(graphDiv, { visible: true }, [1]);
+                console.log(traceindex)
+                Plotly.restyle(graphDiv, { visible: false }, [traceindex - 1]);
+                Plotly.restyle(graphDiv, { visible: true }, [traceindex]);
             }
 
             Plotly.animate(
@@ -382,8 +381,8 @@ async function init() {
 
     // we will edit this plot throughout the whole article
     Plotly.newPlot(
-        processData(data,['Movement','Administration','Type of Action','Admin Response']), 
         'chart-div',
+        processData(data, ['Movement', 'Type of Action', 'Admin Response']),
         createLayout(),
         config
     );
