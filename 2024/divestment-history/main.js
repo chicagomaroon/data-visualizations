@@ -62,6 +62,14 @@ function processData(
                 'Interview/forum': 'rgb(143, 57, 49)',
                 'Non-divestment support': 'rgb(138, 144, 69)',
                 'Ignore/refuse': 'rgb(88, 89, 63)'
+            },
+            'Administration': {
+                'Alivisatos': 'rgb(128, 0, 0)',
+                'Zimmer': 'rgb(193, 102, 34)',
+                'Randel': 'rgb(143, 57, 49)',
+                'Gray': 'rgb(138, 144, 69)',
+                'Wilson': 'rgb(88, 89, 63)',
+                Beadle: 'rgb(21, 95, 131)',
             }
         };
 
