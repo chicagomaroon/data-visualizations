@@ -255,7 +255,7 @@ adminWP = new Waypoint({
         document.getElementById('step1').style.backgroundColor='red'
         console.log('hello world')
     },
-    offset: '100%'
+    offset: '80%'
 });
 
 /**
@@ -280,7 +280,7 @@ finalWP = new Waypoint({
                 .style('opacity', 1);
         }
     },
-    offset: '50%'
+    offset: '100%'
 });
 
 /**
