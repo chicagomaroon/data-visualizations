@@ -304,6 +304,8 @@ function createLayout() {
         },
         yaxis: {
             showgrid: false,
+            ticktext: 'text'
+            // hoverinfo: none
         },
         hovermode: 'closest',
         hoverlabel: {
