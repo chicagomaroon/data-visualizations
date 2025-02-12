@@ -30,7 +30,7 @@ async function fetchData() {
  * @param  {Array} name_vars Variable(s) to group by
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
-function processData(data, name_vars) {
+function processData(data, name_var) {
     try {
         colorbook = {
             Movement: {
@@ -74,56 +74,52 @@ function processData(data, name_vars) {
         traces = [];
 
         // construct plotly "dataframe"
-        for (let i = 0; i < name_vars.length; i++) {
-            x = [];
-            names = [];
-            text = [];
-            name_var = name_vars[i];
+        x = [];
+        names = [];
+        text = [];
 
-            data.forEach(function (val) {
-                x.push(val['Date of Event']);
-                names.push(val[name_var]);
-                text.push(
-                    '<a href="' +
-                        val['Link'] +
-                        '" target="_blank">' +
-                        val['Source'].replaceAll('\n', '<br>') +
-                        '</a>'
-                );
-            });
+        data.forEach(function (val) {
+            x.push(val['Date of Event']);
+            names.push(val[name_var]);
+            text.push(
+                '<a href="' +
+                    val['Link'] +
+                    '" target="_blank">' +
+                    val['Source'].replaceAll('\n', '<br>') +
+                    '</a>'
+            );
+        });
 
-            traces.push({
-                type: 'box',
-                name: names,
-                x: x,
-                text: text,
-                boxpoints: 'all', // show points used in box plot
-                jitter: 1, // so points don't overlap
-                pointpos: 0, // center points
-                marker: {
-                    size: 15,
-                    opacity: 0.5
-                },
-                transforms: [
-                    {
-                        type: 'groupby',
-                        groups: names,
-                        // assign color based on group (cite: GPT)
-                        styles: names.map((group, i) => ({
-                            target: group,
-                            value: {
-                                marker: { color: colorbook[name_var][group] }
-                            }
-                        }))
-                    }
-                ],
-                fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
-                line: { color: 'rgba(0,0,0,0)' }, // remove box part of boxplot
-                hoverinfo: 'text',
-                hovertemplate: '%{text}<extra></extra>', // the <extra> tag removes any excess formatting
-                visible: false
-            });
-        }
+        traces.push({
+            type: 'box',
+            name: names,
+            x: x,
+            text: text,
+            boxpoints: 'all', // show points used in box plot
+            jitter: 1, // so points don't overlap
+            pointpos: 0, // center points
+            marker: {
+                size: 15,
+                opacity: 0.5
+            },
+            transforms: [
+                {
+                    type: 'groupby',
+                    groups: names,
+                    // assign color based on group (cite: GPT)
+                    styles: names.map((group, i) => ({
+                        target: group,
+                        value: {
+                            marker: { color: colorbook[name_var][group] }
+                        }
+                    }))
+                }
+            ],
+            fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
+            line: { color: 'rgba(0,0,0,0)' }, // remove box part of boxplot
+            hoverinfo: 'text',
+            hovertemplate: '%{text}<extra></extra>', // the <extra> tag removes any excess formatting
+        });
 
         // console.log(traces)
         return traces;
@@ -238,6 +234,32 @@ function createWaypoint(div, mapping, traceindex) {
         offset: '60%'
     });
 }
+
+/**
+ * Waypoints (scroll interactions) for article body.
+ * Cite:
+ * @param  {str} Name of HTML div to attach waypoint to
+ * @param  {json} mapping Maps div name to the proper zoom ranges
+ */
+function createNewSection(div, variable) {
+
+    new Waypoint({
+
+        element: document.getElementById(div),
+        handler: function () {
+            console.log('hello world');
+
+            Plotly.newPlot(
+                'chart-div',
+                processData(data, variable),
+                createLayout(),
+                config
+            );
+        },
+        offset: '80%'
+    });
+}
+
 
 /**
  * [bar description]
@@ -382,17 +404,19 @@ async function init() {
     var myPlot = document.getElementById('chart-div');
 
     // we will edit this plot throughout the whole article
-    Plotly.newPlot(
-        'chart-div',
-        processData(data, ['Movement', 'Type of Action', 'Admin Response']),
-        createLayout(),
-        config
-    );
+    createNewSection('palestine', 'Movement')
 
     myPlot.on('plotly_click', open_url);
     myPlot.on('plotly_hover', hide_box_hovers);
 
     // define waypoints (scroll reactions)
+    createWaypoint('palestine', zoom_mapping['Movement'], 0);
+    createWaypoint('fossil-fuels', zoom_mapping['Movement'], 0);
+    createWaypoint('uyghur-rights', zoom_mapping['Movement'], 0);
+    createWaypoint('labor-rights', zoom_mapping['Movement'], 0);
+    createWaypoint('sric', zoom_mapping['Movement'], 0);
+    createWaypoint('sudan', zoom_mapping['Movement'], 0);
+    createWaypoint('south-africa', zoom_mapping['Movement'], 0);
 
     let time_mapping = {
         palestine: { x: ['2012-1-1', '2026-1-1'], y: [0.5, 1.5] },
@@ -404,14 +428,11 @@ async function init() {
         'south-africa': { x: ['1966-1-1', '1980-1-1'], y: [5.5, 6.5] },
         all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
     };
+    createNewSection('letters', 'Type of Action')
 
-    createWaypoint('palestine', time_mapping, 0);
-    createWaypoint('fossil-fuels', time_mapping, 0);
-    createWaypoint('uyghur-rights', time_mapping, 0);
-    createWaypoint('labor-rights', time_mapping, 0);
-    createWaypoint('sric', time_mapping, 0);
-    createWaypoint('sudan', time_mapping, 0);
-    createWaypoint('south-africa', time_mapping, 0);
+    createWaypoint('letters', zoom_mapping['Type of Action'], 1);
+    createWaypoint('protest', zoom_mapping['Type of Action'], 1);
+    createWaypoint('other', zoom_mapping['Type of Action'], 1);
 
     let strat_mapping = {
         letters: { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
@@ -419,6 +440,8 @@ async function init() {
         other: { x: ['1966-1-1', '2026-1-1'], y: [1.5, 7.5] },
         all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
     };
+    
+    createNewSection('letters', 'Admin Response')
 
     createWaypoint('letters', strat_mapping, 1);
     createWaypoint('protest', strat_mapping, 1);
