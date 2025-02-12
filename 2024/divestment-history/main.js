@@ -146,23 +146,9 @@ function createWaypoint(div, mapping, traceindex) {
 
         // note: don't try to make this a constant as it needs to be calculated when the user gets to this point
         halfsize = Math.min(400, 50 * window.innerWidth);
-
-        Plotly.restyle(
-            graphDiv,
-            {
-                visible: true
-            },
-            [0]
-        );
-
-
+       
         if (direction == 'down') {
             // advance 10 years
-            if (div == 'letters') {
-                console.log(traceindex)
-                Plotly.restyle(graphDiv, { visible: false }, [traceindex - 1]);
-                Plotly.restyle(graphDiv, { visible: true }, [traceindex]);
-            }
 
             Plotly.animate(
                 graphDiv,
