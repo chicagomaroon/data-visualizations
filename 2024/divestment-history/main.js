@@ -150,7 +150,7 @@ function createWaypoint(div, mapping) {
     new Waypoint({
         element: document.getElementById(div),
         handler: handler,
-        offset: '60%'
+        offset: '10%'
     });
 }
 
@@ -399,7 +399,7 @@ async function init() {
                     .style('opacity', 1);
             }
         },
-        offset: '100%'
+        offset: '60%'
     });
 }
 
