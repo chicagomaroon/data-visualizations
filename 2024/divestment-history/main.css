@@ -1,7 +1,18 @@
+/* overall */
+
 body {
     line-height: 2em;
     font-size: 18px;
 }
+
+footer {
+    background-color: #800000;
+    padding: 60px;
+    color: white;
+    margin-top: 20vh;
+}
+
+/* text */
 
 h1 {
     font-size: 40;
@@ -19,17 +30,7 @@ hr {
     text-align: center;
 }
 
-.scroller {
-    margin-top: 50vh;
-    margin-bottom: 50vh;
-    width: 50%;
-    margin-left: 50%;
-}
-
-.scroller img {
-    width: 40vw;
-    border: 1px solid black;
-}
+/* intro */
 
 #pre-intro {
     background: black;
@@ -37,7 +38,6 @@ hr {
     padding: 5em;
     font-size: 20px;
 }
-
 
 .intro-quote {
     display: flex;
@@ -57,8 +57,6 @@ hr {
     margin: 0;
 }
 
-.admin {
-    align-items: flex-end;
 .attribution {
     opacity: 0;
     font-style: italic;
@@ -68,31 +66,41 @@ hr {
     color: white;
 }
 
+#bylines {
+    font-size: 16px;
 }
+
+/* .admin {
+    align-items: flex-end;
+} 
 
 .admin p {
     text-align: right;
     display: block;
-}
+} 
+*/
 
+/* chapters */
 
 #content {
     width: min(900px, 90%);
     margin: auto;
 }
 
-#chart-div {
-    position: sticky;
-    top: 30vh;
-    margin: auto;
+.scroller {
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+    width: 50%;
+    margin-left: 50%;
 }
 
-#bylines {
-    font-size: 16px;
+.scroller img {
+    width: 30vw;
+    border: 1px solid black;
+    margin: 1em 0;
+    padding: 1em 0;
 }
 
-figure {
-    margin: 0 !important;
 .quote {
     text-align: left;
     width: 60%;
@@ -105,13 +113,16 @@ blockquote {
     margin: 0 !important;
 }
 
-footer {
-    background-color: #800000;
-    padding: 60px;
-    color: white;
-    margin-top: 20vh;
 .quote p {
     margin: 0;
 }
 
+#chart-div {
+    position: sticky;
+    top: 30vh;
+    margin: auto;
+}
+
+figure {
+    margin: 0 !important;
 }
