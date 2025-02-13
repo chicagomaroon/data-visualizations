@@ -107,10 +107,14 @@ function createWaypoint(div, mapping) {
 
         // note: don't try to make this a constant as it needs to be calculated when the user gets to this point
         halfsize = Math.min(400, 50 * window.innerWidth);
+
+        let orderedkeys = [];
+        for (var key in mapping) {
+            orderedkeys.push(key);
+        }
        
         if (direction == 'down') {
-            // advance 10 years
-
+            // go to next key
             Plotly.animate(
                 graphDiv,
                 {
@@ -120,58 +124,26 @@ function createWaypoint(div, mapping) {
                         width: halfsize
                     }
                 },
-                {
-                    transition: transition
-                }
+                {  transition: transition }
             );
         } else {
-            // scroll up
+            // go back to the previous key
 
-            if (div == 'palestine') {
-                // top of story
-                layout = {
-                    xaxis: { range: mapping['all']['x'] },
-                    yaxis: { range: mapping['all']['y'] },
-                    width: 1000
-                };
-
-                Plotly.animate(
-                    graphDiv,
-                    { layout: layout },
-                    { transition: transition }
-                );
-            } else {
-                // move back 10 years
-
-                function minus10(year) {
-                    return parseInt(year.substring(0, 4)) + 10;
-                }
-
-                layout = {
-                    xaxis: {
-                        range: [
-                            minus10(mapping[div]['x'][0]) + '-1-1',
-                            minus10(mapping[div]['x'][1]) + '-1-1'
-                        ]
-                    },
-                    yaxis: {
-                        range: [
-                            mapping[div]['y'][0] - 1,
-                            mapping[div]['y'][1] - 1
-                        ]
-                    },
-                    width: halfsize
-                };
-
-                // console.log(minus10(timerange[1]))
-                if (minus10(mapping[div]['x'][1]) < 2028) {
-                    Plotly.animate(
-                        graphDiv,
-                        { layout: layout },
-                        { transition: transition }
-                    );
-                }
-            }
+            previousIndex = orderedkeys.indexOf(div)-1
+            previousKey = orderedkeys[previousIndex]
+            // add code for if scrolling to previous section
+            
+            Plotly.animate(
+                graphDiv,
+                {
+                    layout: {
+                        xaxis: { range: mapping[previousKey]['x'] },
+                        yaxis: { range: mapping[previousKey]['y'] },
+                        width: halfsize
+                    }
+                },
+                {  transition: transition }
+            );
         }
     }
 
