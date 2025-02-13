@@ -384,7 +384,7 @@ async function init() {
     createWaypoint('other-response', zoom_mapping['Admin Response'], 1);
 
     finalWP = new Waypoint({
-        element: document.getElementById('further-reading'),
+        element: document.getElementById('conclusion'),
         handler: function (direction) {
             if (direction == 'down') {
                 d3.selectAll('#chart-div')
