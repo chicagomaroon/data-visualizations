@@ -44,33 +44,6 @@ hr {
     flex-direction: column;
 }
 
-.quote {
-    text-align: left;
-    width: 60%;
-}
-
-.quote p {
-    margin: 0;
-}
-
-.admin {
-    align-items: flex-end;
-}
-
-.admin p {
-    text-align: right;
-    display: block;
-}
-
-.attribution {
-    margin: 0;
-}
-
-#content {
-    width: min(900px, 90%);
-    margin: auto;
-}
-
 .intro, #intro-quotes {
     width: max(700px, 70%);
     margin: auto;
@@ -78,6 +51,34 @@ hr {
 
 #intro-quotes {
     width: 60%;
+}
+
+.attribution {
+    margin: 0;
+}
+
+.admin {
+    align-items: flex-end;
+.attribution {
+    opacity: 0;
+    font-style: italic;
+}
+
+.attribution a {
+    color: white;
+}
+
+}
+
+.admin p {
+    text-align: right;
+    display: block;
+}
+
+
+#content {
+    width: min(900px, 90%);
+    margin: auto;
 }
 
 #chart-div {
@@ -92,6 +93,9 @@ hr {
 
 figure {
     margin: 0 !important;
+.quote {
+    text-align: left;
+    width: 60%;
 }
 
 blockquote {
@@ -106,4 +110,8 @@ footer {
     padding: 60px;
     color: white;
     margin-top: 20vh;
+.quote p {
+    margin: 0;
+}
+
 }
