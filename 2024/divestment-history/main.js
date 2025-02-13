@@ -179,51 +179,6 @@ function createNewSection(div, variable) {
     });
 }
 
-
-/**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
- */
-adminWP = new Waypoint({
-    // you can create a class 'active' with all css elements tied to the class instead of individual elements
-    
-    element: document.getElementById('step1'),
-    handler: function () {
-        // here add the plotly restyle
-        // plotly redraw
-        document.getElementById('step1').style.backgroundColor='red'
-        console.log('hello world')
-    },
-    offset: '80%'
-});
-
-/**
- * [bar description]
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
- * @param  {[type]} foo [description]
- * @return {[type]}     [description]
- */
-finalWP = new Waypoint({
-    element: document.getElementById('further-reading'),
-    handler: function (direction) {
-        if (direction == 'down') {
-            d3.selectAll('#chart-div')
-                .transition()
-                .duration(200)
-                .style('opacity', 0);
-            console.log('d3');
-        } else {
-            d3.selectAll('#chart-div')
-                .transition()
-                .duration(200)
-                .style('opacity', 1);
-        }
-    },
-    offset: '100%'
-});
-
 /**
  * Layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
@@ -414,6 +369,24 @@ async function init() {
     createWaypoint('meeting', zoom_mapping['Admin Response'], 1);
     createWaypoint('other-response', zoom_mapping['Admin Response'], 1);
 
+    finalWP = new Waypoint({
+        element: document.getElementById('further-reading'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.selectAll('#chart-div')
+                    .transition()
+                    .duration(200)
+                    .style('opacity', 0);
+                console.log('d3');
+            } else {
+                d3.selectAll('#chart-div')
+                    .transition()
+                    .duration(200)
+                    .style('opacity', 1);
+            }
+        },
+        offset: '100%'
+    });
 }
 
 // when page is loaded, define custom JS
