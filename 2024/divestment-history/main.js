@@ -351,7 +351,7 @@ async function init() {
             if (direction == 'down') {
                 d3.selectAll('.attribution')
                     .transition()
-                    .duration(800)
+                    .duration(10000)
                     .style('opacity', 1);
                 console.log('d3');
             }
