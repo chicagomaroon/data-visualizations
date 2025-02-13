@@ -339,8 +339,20 @@ async function init() {
 
     data = await fetchData();
     // console.log(data);
-
-    var myPlot = document.getElementById('chart-div');
+    
+    quoteWP = new Waypoint({
+        element: document.querySelector('#intro-quotes'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.selectAll('.attribution')
+                    .transition()
+                    .duration(800)
+                    .style('opacity', 1);
+                console.log('d3');
+            }
+        },
+        offset: '100%'
+    })
 
     // we will edit this plot throughout the whole article
     createNewSection('palestine', 'Movement')
