@@ -17,7 +17,7 @@ footer {
 h1 {
     font-size: 40;
     text-align: center;
-    padding-top: 20vh;
+    padding-top: 15vh;
     font-weight: 400;
 }
 
@@ -35,7 +35,7 @@ hr {
 #pre-intro {
     background: black;
     color: white;
-    padding: 5em;
+    padding: 4em;
     font-size: 20px;
 }
 
@@ -53,13 +53,18 @@ hr {
     width: 60%;
 }
 
-.attribution {
-    margin: 0;
+.quote {
+    text-align: left;
+    width: 70%;
+    line-height: 1.5em;
 }
 
 .attribution {
+    margin: 0;
     opacity: 0;
     font-style: italic;
+    width: 60%;
+    line-height: 1em;
 }
 
 .attribution a {
@@ -126,3 +131,8 @@ blockquote {
 figure {
     margin: 0 !important;
 }
+
+#further-reading {
+    margin-top: 20em;
+}
+
