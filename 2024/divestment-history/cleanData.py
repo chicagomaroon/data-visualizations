@@ -1,6 +1,9 @@
+#%% import
+
 import pandas as pd
 from datetime import datetime
 import re
+import numpy as np
 
 #%% load data
 
@@ -19,6 +22,39 @@ df['Day'] = [x.replace(year=2024) if x.month>8 else x.replace(year=2025) for x i
 
 df['Source'] = [re.sub(' . Chicago Maroon','',x) for x in df['Source']]
 df['Source'] = df['Source'].str.wrap(20)
+
+#%% analysis
+
+np.sum(df['Type of Action']=='Letter Writing') / len(df)
+
+df['Type of Action'].value_counts(normalize=True,dropna=False)
+
+# re map/simplify admin response values
+response_dict = {
+    np.nan:None,
+    'Interview/forum':'Public statement',
+    'Meeting/negotiation':'Negotiation',
+    'Arrest/punish':'Arrest',
+    'Ignore/refuse':None,
+    'Interview/meeting, Arrest':'Arrest',
+    'Non-divestment support':'Non-divestment support',
+    'Letter Writing':'Public statement',
+    'Police dispersal':None
+}
+
+df['Admin Response']=[response_dict[x] for x in df['Admin Response']]
+
+df['Admin Response'].value_counts(normalize=True,dropna=False)
+
+protest = df[df['Type of Action']=='Protest']
+
+# what % of protests resulted in arrest?
+protest['Admin Response'].value_counts(normalize=True,dropna=False)
+
+# what % of arrests occurred during the Alivisatos administration?
+arrest = df[df['Admin Response']=='Arrest/punish']
+
+arrest['Year'].value_counts(normalize=True,dropna=False)
 
 #%% create jitter amount
 
