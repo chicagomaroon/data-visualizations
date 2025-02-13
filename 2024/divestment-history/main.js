@@ -361,10 +361,16 @@ const zoom_mapping = {
     'Type of Action': {
         letters: { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
         protest: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        other: { x: ['1966-1-1', '2026-1-1'], y: [1.5, 7.5] },
+        'other-action': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 7.5] },
         all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
     },
-
+    'Admin Response': {
+        'police': { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
+        'meeting': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
+        'ignore': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 2.5] },
+        'other-response': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 7.5] },
+        'all': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
+    },
 }
 
 // -------- MAIN --------
@@ -400,14 +406,14 @@ async function init() {
 
     createWaypoint('letters', zoom_mapping['Type of Action'], 1);
     createWaypoint('protest', zoom_mapping['Type of Action'], 1);
-    createWaypoint('other', zoom_mapping['Type of Action'], 1);
-
+    createWaypoint('other-action', zoom_mapping['Type of Action'], 1);
     
-    createNewSection('letters', 'Admin Response')
+    createNewSection('police', 'Admin Response')
 
-    createWaypoint('letters', strat_mapping, 1);
-    createWaypoint('protest', strat_mapping, 1);
-    createWaypoint('other', strat_mapping, 1);
+    createWaypoint('police', zoom_mapping['Admin Response'], 1);
+    createWaypoint('meeting', zoom_mapping['Admin Response'], 1);
+    createWaypoint('other-response', zoom_mapping['Admin Response'], 1);
+
 }
 
 // when page is loaded, define custom JS
