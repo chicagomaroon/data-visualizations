@@ -167,13 +167,18 @@ function createNewSection(div, variable) {
         element: document.getElementById(div),
         handler: function () {
             console.log('hello world');
-
+            
+            var myPlot = document.getElementById('chart-div');
+            
             Plotly.newPlot(
                 'chart-div',
                 processData(data, variable),
                 createLayout(),
                 config
             );
+
+            myPlot.on('plotly_click', open_url);
+            myPlot.on('plotly_hover', hide_box_hovers);
         },
         offset: '80%'
     });
@@ -355,10 +360,7 @@ async function init() {
     })
 
     // we will edit this plot throughout the whole article
-    createNewSection('palestine', 'Movement')
-
-    myPlot.on('plotly_click', open_url);
-    myPlot.on('plotly_hover', hide_box_hovers);
+    createNewSection('chart-div', 'Movement')
 
     // define waypoints (scroll reactions)
     createWaypoint('palestine', zoom_mapping['Movement'], 0);
