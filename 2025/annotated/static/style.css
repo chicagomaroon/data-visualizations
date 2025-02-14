@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --main-bg-color: #4d0000;
+    --maroon_color: #800000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', sans-serif;
+}
+
+.header {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #e2e2e2;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+}
+
+.header img {
+    width: 200px;
+    margin: auto;
+}
+
+#title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+}
+
+#intro-text hr {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+#subtitle {
+    padding-block: 5px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+#bylines {
+    margin-block: 10px;
+}
+
+#byline {
+    font-family: Open Sans;
+    padding-block: 1px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.byline-link {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.byline-link:hover {
+    text-decoration: underline;
+}
+
+.article-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.intro hr {
+    opacity: 60%;
+}
+
+#intro-text {
+    width: 50%;
+    margin: auto;
+}
+
+.intro a {
+    text-decoration: underline;
+}
+
+.title-box {
+    margin: auto;
+}
+
+.title-box img {
+    width: 500px;
+    margin: auto;
+    margin-block: 25px;
+    margin-top: 70px;
+    display: block;
+}
+
+#content-container {
+    border-top: 1px solid #800000;
+    background-color: rgb(128, 0, 0, 0.1);
+    margin-top: 50px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+#doc-container {
+    position: relative;
+    margin: auto auto 28px;
+    max-width: 800px;
+    left: -200px;
+}
+
+.page {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+.page-image img {
+    height: auto;
+    max-width: 100%;
+}
+
+.page-highlights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.highlight {
+    position: relative;
+    background-color: #ffff1033;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.highlight.active {
+    background-color: #ffff104d;
+    border: 2px solid #ffe300;
+}
+
+#highlight-1 {
+    left: 8.59375%;
+    top: 44.1%;
+    width: 84.13165983606558%;
+    height: 11.691962174940901%;
+}
+
+#highlight-2 {
+    left: 8.59375%;
+    top: 44.1%;
+    width: 84.13165983606558%;
+    height: 11.691962174940901%;
+}
+
+.annotation-container {
+    left: calc(50% + 250px);
+    height: 100%;
+    top: 0;
+    position: absolute;
+}
+
+.sticky {
+    position: sticky;
+    top: 40px;
+    height: calc(100vh - 40px);
+}
+
+.annotation-card {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+}
+
+.annotation-card-inner {
+    left: 0;
+    position: relative;
+    height: auto;
+    top: 0;
+    max-height: calc(100vh - 90px);
+    width: 360px;
+    padding-top: 20px;
+    border: none;
+    border-left: 5px solid #800000;
+}
+
+.annotation-card-text {
+    padding: 0 20px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #444;
+    line-height: 21px;
+}
+
+.annotation-card-title {
+}
+
+@media (max-width: 1260px) {
+    .annotation-container {
+        left: calc(50% + 120px);
+    }
+
+    #doc-container {
+        max-width: 580px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .annotation-container {
+        left: calc(50% + 50px);
+    }
+}
