@@ -5,3 +5,4 @@ node_modules
 *.DS_Store
 .env
 data-analysis/private_data
+/2025/divestment-nlp/data
