@@ -51,14 +51,7 @@ With that being said, use the resources below as a starting place and reference 
     -   The best place to start is to find a previously created visual from the Maroon Team by opening [https://chicagomaroon.github.io/data-visualizations/example-graphs](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     -   If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
     -   Continue to [Build Process for a Visualization](#build-process-for-a-visualization)
--   Other tools include:
-    -   Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
-    -   R and Python: For more data-intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
-    -   For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps. You can also use GeoJSON.io to draw on a map and get the coordinates as a .geojson file.
-    -   For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Austin developed a [D3 training](https://observablehq.com/d/c93d3eee860282c0) based on James Turk's Data Visualization course. Recommended prerequisites include HTML/CSS.
-    -   You may be interested in creating more accessible visuals for a broad audience. One option is to start with this short [introduction to accessibility on the web](https://github.com/notkarenyi/accessibility-demo).
-
-See the [resources][resources/] folder for additional material.
+-   [Additional resources](#additional-resources)
 
 ## Build Process for a Visualization
 
@@ -134,3 +127,28 @@ Color palettes are based off the [UChicago style guide](https://news.uchicago.ed
 <img src="static/primary-colors.png" alt="UChicago primary colors."/>
 
 <img src="static/secondary-colors.png" alt="UChicago secondary colors."/>
+
+## Additional Resources
+
+### Tools
+
+-   Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
+-   R and Python: For more data-intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
+-   For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps. You can also use GeoJSON.io to draw on a map and get the coordinates as a .geojson file.
+-   For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Austin developed a [D3 training](https://observablehq.com/d/c93d3eee860282c0) based on James Turk's Data Visualization course. Recommended prerequisites include HTML/CSS.
+-   You may be interested in creating more accessible visuals for a broad audience. One option is to start with this short [introduction to accessibility on the web](https://github.com/notkarenyi/accessibility-demo).
+
+### Training
+
+See the [resources][resources/] folder for additional training materials.
+
+### Inspiration
+
+* [DataVis Gallery: Timelines](https://www.datavis.ca/gallery/timelines.php)
+* [Information is Beautiful](https://www.informationisbeautifulawards.com/showcase?page=1&type=awards)
+* [Interactive Journalism](https://github.com/wbkd/awesome-interactive-journalism)
+
+### Organizations
+
+* [IRE (Investigative Reporters and Editors)](https://www.ire.org/)
+* [NewsNerdery (Slack group)](https://newsnerdery.org/)
