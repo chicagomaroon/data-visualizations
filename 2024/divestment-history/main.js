@@ -150,8 +150,8 @@ function createWaypoint(div, mapping) {
     new Waypoint({
         element: document.getElementById(div),
         handler: handler,
-        offset: '10%'
     });
+            offset: '75%'
 }
 
 /**
@@ -160,7 +160,12 @@ function createWaypoint(div, mapping) {
  * @param  {str} Name of HTML div to attach waypoint to
  * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createNewSection(div, variable) {
+function createNewSection(
+    div, 
+    variable, 
+    direction,
+    offset='80%'
+) {
 
     new Waypoint({
 
@@ -180,7 +185,7 @@ function createNewSection(div, variable) {
             myPlot.on('plotly_click', open_url);
             myPlot.on('plotly_hover', hide_box_hovers);
         },
-        offset: '80%'
+        offset: offset
     });
 }
 
@@ -399,7 +404,7 @@ async function init() {
                     .style('opacity', 1);
             }
         },
-        offset: '60%'
+        offset: '90%'
     });
 }
 
