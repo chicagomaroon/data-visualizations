@@ -293,7 +293,8 @@ const colorbook = {
         'Legal Action': 'rgb(138, 144, 69)',
         'Research Report': 'rgb(88, 89, 63)',
         Debate: 'rgb(21, 95, 131)',
-        Forum: 'rgb(71, 181, 255))'
+        Forum: 'rgb(71, 181, 255))',
+        Informational: 'rgb(255, 51, 153)'
     },
     'Admin Response': {
         'Arrest/punish': 'rgb(128, 0, 0)',
@@ -331,9 +332,8 @@ const zoom_mapping = {
     },
     'Admin Response': {
         'police': { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
-        'meeting': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        'ignore': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 2.5] },
-        'other-response': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 7.5] },
+        'meeting': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 2.5] },
+        'other-response': { x: ['1966-1-1', '2026-1-1'], y: [6.5, 7.5] },
         'all': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
     },
 }
