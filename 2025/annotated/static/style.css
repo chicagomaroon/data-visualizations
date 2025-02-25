@@ -160,7 +160,7 @@ body {
 
 #highlight-2 {
     left: 8.59375%;
-    top: 44.1%;
+    top: 20%;
     width: 84.13165983606558%;
     height: 11.691962174940901%;
 }
@@ -183,6 +183,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     background-color: white;
+    transition: all 0.1s ease;
 }
 
 .annotation-card-inner {
