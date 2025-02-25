@@ -1,117 +1,1573 @@
 {
-"type": "FeatureCollection",
-"features": [
-{ "type": "Feature", "properties": { "university": "Princeton University", "year": 2015, "month": 4, "date": "April 2015", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -74.65769781299997, 40.34714142100006 ] } },
-{ "type": "Feature", "properties": { "university": "Purdue University System", "year": 2015, "month": 5, "date": "May 2015", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -86.914435, 40.428206 ] } },
-{ "type": "Feature", "properties": { "university": "Johns Hopkins University", "year": 2015, "month": 9, "date": "September 2015", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -76.620722724999951, 39.329807607000077 ] } },
-{ "type": "Feature", "properties": { "university": "American University", "year": 2015, "month": 9, "date": "September 2015", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -77.088947259999941, 38.93694264100003 ] } },
-{ "type": "Feature", "properties": { "university": "Chapman University", "year": 2015, "month": 9, "date": "September 2015", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -117.851480545999948, 33.79367792100004 ] } },
-{ "type": "Feature", "properties": { "university": "Michigan State University", "year": 2015, "month": 10, "date": "October 2015", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -84.473639, 42.72476 ] } },
-{ "type": "Feature", "properties": { "university": "University of Virginia College at Wise", "year": 2015, "month": 11, "date": "November 2015", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -82.558728308999946, 36.971468360000074 ] } },
-{ "type": "Feature", "properties": { "university": "University of Wisconsin System", "year": 2015, "month": 12, "date": "December 2015", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -89.405356462999976, 43.07385753300008 ] } },
-{ "type": "Feature", "properties": { "university": "Washington and Lee University", "year": 2015, "month": 12, "date": "December 2015", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -79.442868964999946, 37.788974406000079 ] } },
-{ "type": "Feature", "properties": { "university": "University of Minnesota", "year": 2016, "month": 3, "date": "March 2016", "adoption_type": "Affirmed by Faculty Body" }, "geometry": { "type": "Point", "coordinates": [ -93.235352117, 44.977886265000052 ] } },
-{ "type": "Feature", "properties": { "university": "City University of New York", "year": 2016, "month": 3, "date": "March 2016", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -73.973753276581519, 40.750816120643528 ] } },
-{ "type": "Feature", "properties": { "university": "Denison University", "year": 2016, "month": 4, "date": "April 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -82.520625100999951, 40.072582302000058 ] } },
-{ "type": "Feature", "properties": { "university": "Claremont McKenna College", "year": 2016, "month": 5, "date": "May 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -117.706414281999969, 34.101995411000075 ] } },
-{ "type": "Feature", "properties": { "university": "University of Missouri System", "year": 2016, "month": 3, "date": "May 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -92.341048, 38.936783 ] } },
-{ "type": "Feature", "properties": { "university": "The Citadel", "year": 2016, "month": 6, "date": "June 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -79.96139872699996, 32.796975019000058 ] } },
-{ "type": "Feature", "properties": { "university": "University of Southern Indiana", "year": 2016, "month": 8, "date": "August 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -87.677790243999937, 37.964248739000027 ] } },
-{ "type": "Feature", "properties": { "university": "Vanderbilt University", "year": 2016, "month": 8, "date": "August 2016", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -86.804874644999984, 36.144429824000042 ] } },
-{ "type": "Feature", "properties": { "university": "Washington University in St. Louis", "year": 2016, "month": 9, "date": "September 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -90.311638906999974, 38.648124992000078 ] } },
-{ "type": "Feature", "properties": { "university": "Columbia University", "year": 2016, "month": 9, "date": "September 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -73.961885107999933, 40.808285750000039 ] } },
-{ "type": "Feature", "properties": { "university": "Northern Illinois University", "year": 2016, "month": 10, "date": "October 2016", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -88.766064703999973, 41.933790925000039 ] } },
-{ "type": "Feature", "properties": { "university": "Eckerd College", "year": 2016, "month": 8, "date": "October 2016", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -82.687336733999985, 27.71472738500006 ] } },
-{ "type": "Feature", "properties": { "university": "Franklin & Marshall College", "year": 2017, "month": 2, "date": "February 2017", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -76.319037, 40.048045 ] } },
-{ "type": "Feature", "properties": { "university": "University of Maine System", "year": 2017, "month": 3, "date": "March 2017", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -68.669332, 44.899257 ] } },
-{ "type": "Feature", "properties": { "university": "University of Montana", "year": 2017, "month": 5, "date": "May 2017", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -113.98294, 46.861074 ] } },
-{ "type": "Feature", "properties": { "university": "University of Denver", "year": 2017, "month": 5, "date": "May 2017", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -104.961531700999956, 39.681439471000033 ] } },
-{ "type": "Feature", "properties": { "university": "Kenyon College", "year": 2017, "month": 3, "date": "May 2017", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -82.396215, 40.376828 ] } },
-{ "type": "Feature", "properties": { "university": "Georgetown University", "year": 2017, "month": 6, "date": "June 2017", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -77.073463234999963, 38.908809272000042 ] } },
-{ "type": "Feature", "properties": { "university": "State University of New York- University at Buffalo", "year": 2017, "month": 8, "date": "August 2017", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -78.880684388999953, 42.933699562000072 ] } },
-{ "type": "Feature", "properties": { "university": "Ashland University", "year": 2017, "month": 10, "date": "October 2017", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -82.320278562999988, 40.861615559000029 ] } },
-{ "type": "Feature", "properties": { "university": "California State University Channel Islands", "year": 2017, "month": 10, "date": "October 2017", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -119.043559894999987, 34.162949309000055 ] } },
-{ "type": "Feature", "properties": { "university": "University of North Carolina System", "year": 2017, "month": 12, "date": "December 2017", "adoption_type": "Affirmed by Board of Governors" }, "geometry": { "type": "Point", "coordinates": [ -79.030578, 35.909446 ] } },
-{ "type": "Feature", "properties": { "university": "University of Nebraska System", "year": 2018, "month": 1, "date": "January 2018", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -96.665203364999968, 40.827494241000068 ] } },
-{ "type": "Feature", "properties": { "university": "Middle Tennessee State University", "year": 2018, "month": 1, "date": "January 2018", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -86.367271206999987, 35.848111419000077 ] } },
-{ "type": "Feature", "properties": { "university": "Tennessee Technological University", "year": 2018, "month": 1, "date": "January 2018", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -85.503956863999974, 36.174659174000055 ] } },
-{ "type": "Feature", "properties": { "university": "Smith College", "year": 2018, "month": 2, "date": "February 2018", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -72.638094, 42.317933 ] } },
-{ "type": "Feature", "properties": { "university": "Ohio Wesleyan University", "year": 2018, "month": 4, "date": "April 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -83.069970233999982, 40.296602670000027 ] } },
-{ "type": "Feature", "properties": { "university": "Joliet Junior College", "year": 2018, "month": 4, "date": "April 2018", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -88.180984764999948, 41.500535203000027 ] } },
-{ "type": "Feature", "properties": { "university": "Southern Utah University", "year": 2018, "month": 5, "date": "May 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -113.070146, 37.674617 ] } },
-{ "type": "Feature", "properties": { "university": "University of Arkansas at Little Rock", "year": 2018, "month": 5, "date": "May 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -92.340573885999959, 34.723479317000056 ] } },
-{ "type": "Feature", "properties": { "university": "Gettysburg College", "year": 2018, "month": 5, "date": "May 2018", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -77.234533266999961, 39.835841493000032 ] } },
-{ "type": "Feature", "properties": { "university": "Ranger College", "year": 2018, "month": 5, "date": "May 2018", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -98.686181305, 32.45429828400006 ] } },
-{ "type": "Feature", "properties": { "university": "Utica College", "year": 2018, "month": 5, "date": "May 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -75.276332975999935, 43.094481405000067 ] } },
-{ "type": "Feature", "properties": { "university": "George Washington University", "year": 2018, "month": 6, "date": "June 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -77.046276868999939, 38.899096404000034 ] } },
-{ "type": "Feature", "properties": { "university": "Kettering University", "year": 2018, "month": 6, "date": "June 2018", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -83.713249008999981, 43.013493131000075 ] } },
-{ "type": "Feature", "properties": { "university": "Ohio University", "year": 2018, "month": 7, "date": "July 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -82.103503, 39.323839 ] } },
-{ "type": "Feature", "properties": { "university": "Suffolk University", "year": 2018, "month": 7, "date": "July 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -71.060984514999973, 42.358010209000042 ] } },
-{ "type": "Feature", "properties": { "university": "Arizona State University", "year": 2018, "month": 8, "date": "August 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -111.935499, 33.41728 ] } },
-{ "type": "Feature", "properties": { "university": "University of Colorado System", "year": 2018, "month": 9, "date": "September 2018", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -105.267061270999989, 40.004415065000046 ] } },
-{ "type": "Feature", "properties": { "university": "Colgate University", "year": 2018, "month": 10, "date": "October 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -75.53521769799994, 42.818175302000043 ] } },
-{ "type": "Feature", "properties": { "university": "Brandeis University", "year": 2018, "month": 10, "date": "October 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -71.254716062999933, 42.364947032000032 ] } },
-{ "type": "Feature", "properties": { "university": "University of Louisiana System", "year": 2018, "month": 10, "date": "October 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -91.188679, 30.459815 ] } },
-{ "type": "Feature", "properties": { "university": "Christopher Newport University", "year": 2018, "month": 11, "date": "November 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -76.495103927999935, 37.063330894000046 ] } },
-{ "type": "Feature", "properties": { "university": "George Mason University", "year": 2018, "month": 11, "date": "November 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -77.307939512999951, 38.83088028800006 ] } },
-{ "type": "Feature", "properties": { "university": "Louisiana State University System", "year": 2018, "month": 11, "date": "November 2018", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -92.414408562999938, 31.178615504000049 ] } },
-{ "type": "Feature", "properties": { "university": "South Dakota University System", "year": 2018, "month": 12, "date": "December 2018", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -96.926532760999976, 42.784676171000058 ] } },
-{ "type": "Feature", "properties": { "university": "University of Arizona", "year": 2018, "month": 12, "date": "December 2018", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -110.95008586199998, 32.232866128000069 ] } },
-{ "type": "Feature", "properties": { "university": "Michigan Technological University", "year": 2019, "month": 1, "date": "January 2019", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -88.546402548999936, 47.118300185000066 ] } },
-{ "type": "Feature", "properties": { "university": "Stetson University", "year": 2019, "month": 2, "date": "February 2019", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -81.300616023999964, 29.035366745000033 ] } },
-{ "type": "Feature", "properties": { "university": "Clark University", "year": 2019, "month": 2, "date": "February 2019", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -71.82363167799997, 42.250778319000062 ] } },
-{ "type": "Feature", "properties": { "university": "Nevada System of Higher Education", "year": 2019, "month": 3, "date": "March 2019", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -119.812259301999973, 39.551190926000061 ] } },
-{ "type": "Feature", "properties": { "university": "Cleveland State University", "year": 2019, "month": 3, "date": "March 2019", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -81.674355254999966, 41.502281363000066 ] } },
-{ "type": "Feature", "properties": { "university": "State University System of Florida", "year": 2019, "month": 4, "date": "April 2019", "adoption_type": "Affirmed by Board of Governors" }, "geometry": { "type": "Point", "coordinates": [ -84.301554, 30.443222 ] } },
-{ "type": "Feature", "properties": { "university": "Board of Regents, State of Iowa", "year": 2019, "month": 4, "date": "April 2019", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -93.65024, 42.025303 ] } },
-{ "type": "Feature", "properties": { "university": "University of Toledo", "year": 2019, "month": 4, "date": "April 2019", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -83.615935515, 41.657246401000066 ] } },
-{ "type": "Feature", "properties": { "university": "University System of Maryland", "year": 2019, "month": 6, "date": "June 2019", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -76.605568, 39.286064 ] } },
-{ "type": "Feature", "properties": { "university": "University of Akron", "year": 2019, "month": 6, "date": "June 2019", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -81.510328, 41.077768 ] } },
-{ "type": "Feature", "properties": { "university": "Miami University", "year": 2019, "month": 7, "date": "July 2019", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -84.731821116999981, 39.509641560000034 ] } },
-{ "type": "Feature", "properties": { "university": "Adrian College", "year": 2019, "month": 9, "date": "September 2019", "adoption_type": "Affirmed by Faculty Body" }, "geometry": { "type": "Point", "coordinates": [ -84.059911203999945, 41.898627719000046 ] } },
-{ "type": "Feature", "properties": { "university": "Case Western Reserve University", "year": 2019, "month": 11, "date": "November 2019", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -81.604892857999971, 41.504095491000044 ] } },
-{ "type": "Feature", "properties": { "university": "Ball State University", "year": 2020, "month": 1, "date": "January 2020", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -85.408777460999943, 40.199969944000031 ] } },
-{ "type": "Feature", "properties": { "university": "Southern Methodist University", "year": 2020, "month": 2, "date": "February 2020", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -96.784855249999964, 32.845254296000064 ] } },
-{ "type": "Feature", "properties": { "university": "Snow College", "year": 2020, "month": 4, "date": "April 2020", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -111.581542684999988, 39.361111723000079 ] } },
-{ "type": "Feature", "properties": { "university": "University of Alabama System", "year": 2020, "month": 6, "date": "June 2020", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -87.545766466999964, 33.214399658000048 ] } },
-{ "type": "Feature", "properties": { "university": "Jacksonville State University", "year": 2020, "month": 6, "date": "June 2020", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -85.766405991999989, 33.822163525000065 ] } },
-{ "type": "Feature", "properties": { "university": "Colorado Mesa University", "year": 2020, "month": 8, "date": "August 2020", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -108.55351779199998, 39.077842367000073 ] } },
-{ "type": "Feature", "properties": { "university": "Winthrop University", "year": 2020, "month": 8, "date": "August 2020", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -81.029884, 34.938394 ] } },
-{ "type": "Feature", "properties": { "university": "Jones County Junior College", "year": 2020, "month": 8, "date": "August 2020", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -89.199693883999942, 31.597161606000043 ] } },
-{ "type": "Feature", "properties": { "university": "Boston University", "year": 2020, "month": 10, "date": "October 2020", "adoption_type": "Affirmed by Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -71.09984, 42.349581 ] } },
-{ "type": "Feature", "properties": { "university": "University of Richmond", "year": 2020, "month": 12, "date": "December 2020", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -77.538797177999982, 37.577399333000074 ] } },
-{ "type": "Feature", "properties": { "university": "Kansas Board of Regents", "year": 2021, "month": 3, "date": "March 2021", "adoption_type": "Affirmed by Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -96.581077, 39.188616 ] } },
-{ "type": "Feature", "properties": { "university": "University of Virginia", "year": 2021, "month": 6, "date": "June 2021", "adoption_type": "Affirmed by Board of Visitors" }, "geometry": { "type": "Point", "coordinates": [ -78.511845, 38.033977 ] } },
-{ "type": "Feature", "properties": { "university": "Bowling Green State University", "year": 2021, "month": 7, "date": "July 2021", "adoption_type": "Officially adopted" }, "geometry": { "type": "Point", "coordinates": [ -83.637531, 41.377036 ] } },
-{ "type": "Feature", "properties": { "university": "St. Mary's University", "year": 2021, "month": 9, "date": "September 2021", "adoption_type": "Affirmed by Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -98.561289702999943, 29.453134829000078 ] } },
-{ "type": "Feature", "properties": { "university": "King University", "year": 2022, "month": 2, "date": "February 2022", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -82.156509342999982, 36.585989142000074 ] } },
-{ "type": "Feature", "properties": { "university": "University of Massachusetts Boston", "year": 2022, "month": 4, "date": "April 2022", "adoption_type": "Affirmed by the College of Science and Mathematics Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -71.039813772999935, 42.314331727000081 ] } },
-{ "type": "Feature", "properties": { "university": "Northwood University", "year": 2022, "month": 4, "date": "April 2022", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -84.276275930999986, 43.628995644000042 ] } },
-{ "type": "Feature", "properties": { "university": "Northern Arizona University", "year": 2022, "month": 5, "date": "May 2022", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -111.655559073999939, 35.188875211000038 ] } },
-{ "type": "Feature", "properties": { "university": "DePauw University", "year": 2022, "month": 5, "date": "May 2022", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -86.863556487999972, 39.639530250000064 ] } },
-{ "type": "Feature", "properties": { "university": "Wright State University", "year": 2022, "month": 6, "date": "June 2022", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -84.06488143699994, 39.780634022000072 ] } },
-{ "type": "Feature", "properties": { "university": "Youngstown State University", "year": 2022, "month": 6, "date": "June 2022", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -80.646887800999934, 41.105893975000072 ] } },
-{ "type": "Feature", "properties": { "university": "University of Cincinnati", "year": 2022, "month": 7, "date": "July 2022", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -84.514280195999959, 39.131158542000037 ] } },
-{ "type": "Feature", "properties": { "university": "Shawnee State University", "year": 2022, "month": 7, "date": "July 2022", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -82.995356562999973, 38.730909068000074 ] } },
-{ "type": "Feature", "properties": { "university": "Ohio State University", "year": 2022, "month": 8, "date": "August 2022", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -83.00879178799994, 39.999493432000065 ] } },
-{ "type": "Feature", "properties": { "university": "Wheaton College", "year": 2022, "month": 11, "date": "November 2022", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -71.184166882999989, 41.966813056000035 ] } },
-{ "type": "Feature", "properties": { "university": "University of Texas System", "year": 2022, "month": 11, "date": "November 2022", "adoption_type": "Affirmed by the Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -97.736463, 30.283809 ] } },
-{ "type": "Feature", "properties": { "university": "University of Oklahoma", "year": 2022, "month": 11, "date": "November 2022", "adoption_type": "Affirmed by the Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -97.44569235199998, 35.208069025000043 ] } },
-{ "type": "Feature", "properties": { "university": "Massachusetts Institute of Technology", "year": 2022, "month": 12, "date": "December 2022", "adoption_type": "Affirmed by Faculty Governance" }, "geometry": { "type": "Point", "coordinates": [ -71.092114580999976, 42.360095344000058 ] } },
-{ "type": "Feature", "properties": { "university": "Glendale Community College", "year": 2023, "month": 1, "date": "January 2023", "adoption_type": "Affirmed by the Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -118.228251181999951, 34.166421572000047 ] } },
-{ "type": "Feature", "properties": { "university": "Clemson University", "year": 2023, "month": 2, "date": "February 2023", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -82.834463, 34.677329 ] } },
-{ "type": "Feature", "properties": { "university": "Davidson College", "year": 2023, "month": 3, "date": "March 2023", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -80.845235827999943, 35.500006384000073 ] } },
-{ "type": "Feature", "properties": { "university": "University of Southern Mississippi", "year": 2023, "month": 3, "date": "March 2023", "adoption_type": "Affirmed by the Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -89.33791, 31.327499 ] } },
-{ "type": "Feature", "properties": { "university": "Virginia Tech", "year": 2023, "month": 3, "date": "March 2023", "adoption_type": "Affirmed by the Board of Visitors" }, "geometry": { "type": "Point", "coordinates": [ -80.419987832999936, 37.229906401000051 ] } },
-{ "type": "Feature", "properties": { "university": "University of South Carolina", "year": 2023, "month": 6, "date": "June 2023", "adoption_type": "Affirmed by the Board of Trustees" }, "geometry": { "type": "Point", "coordinates": [ -81.026916, 33.996677 ] } },
-{ "type": "Feature", "properties": { "university": "University of Tulsa", "year": 2023, "month": 9, "date": "September 2023", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -95.945175242999937, 36.151887443000078 ] } },
-{ "type": "Feature", "properties": { "university": "University of Wyoming", "year": 2023, "month": 12, "date": "December 2023", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -105.57204, 41.311943 ] } },
-{ "type": "Feature", "properties": { "university": "University of Michigan", "year": 2024, "month": 1, "date": "January 2024", "adoption_type": "Affirmed by the Board of Regents" }, "geometry": { "type": "Point", "coordinates": [ -83.736564, 42.27803 ] } },
-{ "type": "Feature", "properties": { "university": "Furman University", "year": 2024, "month": 2, "date": "February 2024", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -82.439302931999975, 34.924725729000045 ] } },
-{ "type": "Feature", "properties": { "university": "Emory University", "year": 2024, "month": 2, "date": "February 2024", "adoption_type": "Affirmed by the Emory College of Arts and Sciences Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -84.325817691999987, 33.793268061000049 ] } },
-{ "type": "Feature", "properties": { "university": "Syracuse University", "year": 2024, "month": 5, "date": "May 2024", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -76.13267, 43.039891 ] } },
-{ "type": "Feature", "properties": { "university": "Stanford University", "year": 2024, "month": 5, "date": "May 2024", "adoption_type": "Affirmed by the Faculty Senate" }, "geometry": { "type": "Point", "coordinates": [ -122.17504506299997, 37.432973802000049 ] } },
-{ "type": "Feature", "properties": { "university": "Northwestern University", "year": 2024, "month": 8, "date": "August 2024", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -87.673652840999978, 42.058377171000075 ] } },
-{ "type": "Feature", "properties": { "university": "Boise State University", "year": 2024, "month": 12, "date": "December 2024", "adoption_type": "Officially Adopted" }, "geometry": { "type": "Point", "coordinates": [ -116.205788933999941, 43.604403169000079 ] } }
-]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Princeton University",
+                "year": 2015,
+                "month": 4,
+                "date": "April 2015",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-74.65769781299997, 40.34714142100006]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Purdue University System",
+                "year": 2015,
+                "month": 5,
+                "date": "May 2015",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-86.914435, 40.428206]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Johns Hopkins University",
+                "year": 2015,
+                "month": 9,
+                "date": "September 2015",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-76.620722724999951, 39.329807607000077]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "American University",
+                "year": 2015,
+                "month": 9,
+                "date": "September 2015",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-77.088947259999941, 38.93694264100003]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Chapman University",
+                "year": 2015,
+                "month": 9,
+                "date": "September 2015",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-117.851480545999948, 33.79367792100004]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Michigan State University",
+                "year": 2015,
+                "month": 10,
+                "date": "October 2015",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.473639, 42.72476]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Virginia College at Wise",
+                "year": 2015,
+                "month": 11,
+                "date": "November 2015",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.558728308999946, 36.971468360000074]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Wisconsin System",
+                "year": 2015,
+                "month": 12,
+                "date": "December 2015",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-89.405356462999976, 43.07385753300008]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Washington and Lee University",
+                "year": 2015,
+                "month": 12,
+                "date": "December 2015",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-79.442868964999946, 37.788974406000079]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Minnesota",
+                "year": 2016,
+                "month": 3,
+                "date": "March 2016",
+                "adoption_type": "Affirmed by Faculty Body"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-93.235352117, 44.977886265000052]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "City University of New York",
+                "year": 2016,
+                "month": 3,
+                "date": "March 2016",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-73.973753276581519, 40.750816120643528]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Denison University",
+                "year": 2016,
+                "month": 4,
+                "date": "April 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.520625100999951, 40.072582302000058]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Claremont McKenna College",
+                "year": 2016,
+                "month": 5,
+                "date": "May 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-117.706414281999969, 34.101995411000075]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Missouri System",
+                "year": 2016,
+                "month": 3,
+                "date": "May 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-92.341048, 38.936783]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "The Citadel",
+                "year": 2016,
+                "month": 6,
+                "date": "June 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-79.96139872699996, 32.796975019000058]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Southern Indiana",
+                "year": 2016,
+                "month": 8,
+                "date": "August 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-87.677790243999937, 37.964248739000027]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Vanderbilt University",
+                "year": 2016,
+                "month": 8,
+                "date": "August 2016",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-86.804874644999984, 36.144429824000042]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Washington University in St. Louis",
+                "year": 2016,
+                "month": 9,
+                "date": "September 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-90.311638906999974, 38.648124992000078]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Columbia University",
+                "year": 2016,
+                "month": 9,
+                "date": "September 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-73.961885107999933, 40.808285750000039]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Northern Illinois University",
+                "year": 2016,
+                "month": 10,
+                "date": "October 2016",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-88.766064703999973, 41.933790925000039]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Eckerd College",
+                "year": 2016,
+                "month": 8,
+                "date": "October 2016",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.687336733999985, 27.71472738500006]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Franklin & Marshall College",
+                "year": 2017,
+                "month": 2,
+                "date": "February 2017",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-76.319037, 40.048045]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Maine System",
+                "year": 2017,
+                "month": 3,
+                "date": "March 2017",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-68.669332, 44.899257]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Montana",
+                "year": 2017,
+                "month": 5,
+                "date": "May 2017",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-113.98294, 46.861074]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Denver",
+                "year": 2017,
+                "month": 5,
+                "date": "May 2017",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-104.961531700999956, 39.681439471000033]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Kenyon College",
+                "year": 2017,
+                "month": 3,
+                "date": "May 2017",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.396215, 40.376828]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Georgetown University",
+                "year": 2017,
+                "month": 6,
+                "date": "June 2017",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-77.073463234999963, 38.908809272000042]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "State University of New York- University at Buffalo",
+                "year": 2017,
+                "month": 8,
+                "date": "August 2017",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-78.880684388999953, 42.933699562000072]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Ashland University",
+                "year": 2017,
+                "month": 10,
+                "date": "October 2017",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.320278562999988, 40.861615559000029]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "California State University Channel Islands",
+                "year": 2017,
+                "month": 10,
+                "date": "October 2017",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-119.043559894999987, 34.162949309000055]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of North Carolina System",
+                "year": 2017,
+                "month": 12,
+                "date": "December 2017",
+                "adoption_type": "Affirmed by Board of Governors"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-79.030578, 35.909446]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Nebraska System",
+                "year": 2018,
+                "month": 1,
+                "date": "January 2018",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-96.665203364999968, 40.827494241000068]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Middle Tennessee State University",
+                "year": 2018,
+                "month": 1,
+                "date": "January 2018",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-86.367271206999987, 35.848111419000077]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Tennessee Technological University",
+                "year": 2018,
+                "month": 1,
+                "date": "January 2018",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-85.503956863999974, 36.174659174000055]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Smith College",
+                "year": 2018,
+                "month": 2,
+                "date": "February 2018",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-72.638094, 42.317933]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Ohio Wesleyan University",
+                "year": 2018,
+                "month": 4,
+                "date": "April 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-83.069970233999982, 40.296602670000027]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Joliet Junior College",
+                "year": 2018,
+                "month": 4,
+                "date": "April 2018",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-88.180984764999948, 41.500535203000027]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Southern Utah University",
+                "year": 2018,
+                "month": 5,
+                "date": "May 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-113.070146, 37.674617]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Arkansas at Little Rock",
+                "year": 2018,
+                "month": 5,
+                "date": "May 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-92.340573885999959, 34.723479317000056]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Gettysburg College",
+                "year": 2018,
+                "month": 5,
+                "date": "May 2018",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-77.234533266999961, 39.835841493000032]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Ranger College",
+                "year": 2018,
+                "month": 5,
+                "date": "May 2018",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-98.686181305, 32.45429828400006]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Utica College",
+                "year": 2018,
+                "month": 5,
+                "date": "May 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-75.276332975999935, 43.094481405000067]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "George Washington University",
+                "year": 2018,
+                "month": 6,
+                "date": "June 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-77.046276868999939, 38.899096404000034]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Kettering University",
+                "year": 2018,
+                "month": 6,
+                "date": "June 2018",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-83.713249008999981, 43.013493131000075]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Ohio University",
+                "year": 2018,
+                "month": 7,
+                "date": "July 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.103503, 39.323839]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Suffolk University",
+                "year": 2018,
+                "month": 7,
+                "date": "July 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.060984514999973, 42.358010209000042]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Arizona State University",
+                "year": 2018,
+                "month": 8,
+                "date": "August 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-111.935499, 33.41728]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Colorado System",
+                "year": 2018,
+                "month": 9,
+                "date": "September 2018",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-105.267061270999989, 40.004415065000046]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Colgate University",
+                "year": 2018,
+                "month": 10,
+                "date": "October 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-75.53521769799994, 42.818175302000043]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Brandeis University",
+                "year": 2018,
+                "month": 10,
+                "date": "October 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.254716062999933, 42.364947032000032]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Louisiana System",
+                "year": 2018,
+                "month": 10,
+                "date": "October 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-91.188679, 30.459815]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Christopher Newport University",
+                "year": 2018,
+                "month": 11,
+                "date": "November 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-76.495103927999935, 37.063330894000046]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "George Mason University",
+                "year": 2018,
+                "month": 11,
+                "date": "November 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-77.307939512999951, 38.83088028800006]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Louisiana State University System",
+                "year": 2018,
+                "month": 11,
+                "date": "November 2018",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-92.414408562999938, 31.178615504000049]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "South Dakota University System",
+                "year": 2018,
+                "month": 12,
+                "date": "December 2018",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-96.926532760999976, 42.784676171000058]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Arizona",
+                "year": 2018,
+                "month": 12,
+                "date": "December 2018",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-110.95008586199998, 32.232866128000069]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Michigan Technological University",
+                "year": 2019,
+                "month": 1,
+                "date": "January 2019",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-88.546402548999936, 47.118300185000066]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Stetson University",
+                "year": 2019,
+                "month": 2,
+                "date": "February 2019",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-81.300616023999964, 29.035366745000033]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Clark University",
+                "year": 2019,
+                "month": 2,
+                "date": "February 2019",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.82363167799997, 42.250778319000062]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Nevada System of Higher Education",
+                "year": 2019,
+                "month": 3,
+                "date": "March 2019",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-119.812259301999973, 39.551190926000061]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Cleveland State University",
+                "year": 2019,
+                "month": 3,
+                "date": "March 2019",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-81.674355254999966, 41.502281363000066]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "State University System of Florida",
+                "year": 2019,
+                "month": 4,
+                "date": "April 2019",
+                "adoption_type": "Affirmed by Board of Governors"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.301554, 30.443222]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Board of Regents, State of Iowa",
+                "year": 2019,
+                "month": 4,
+                "date": "April 2019",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-93.65024, 42.025303]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Toledo",
+                "year": 2019,
+                "month": 4,
+                "date": "April 2019",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-83.615935515, 41.657246401000066]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University System of Maryland",
+                "year": 2019,
+                "month": 6,
+                "date": "June 2019",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-76.605568, 39.286064]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Akron",
+                "year": 2019,
+                "month": 6,
+                "date": "June 2019",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-81.510328, 41.077768]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Miami University",
+                "year": 2019,
+                "month": 7,
+                "date": "July 2019",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.731821116999981, 39.509641560000034]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Adrian College",
+                "year": 2019,
+                "month": 9,
+                "date": "September 2019",
+                "adoption_type": "Affirmed by Faculty Body"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.059911203999945, 41.898627719000046]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Case Western Reserve University",
+                "year": 2019,
+                "month": 11,
+                "date": "November 2019",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-81.604892857999971, 41.504095491000044]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Ball State University",
+                "year": 2020,
+                "month": 1,
+                "date": "January 2020",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-85.408777460999943, 40.199969944000031]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Southern Methodist University",
+                "year": 2020,
+                "month": 2,
+                "date": "February 2020",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-96.784855249999964, 32.845254296000064]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Snow College",
+                "year": 2020,
+                "month": 4,
+                "date": "April 2020",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-111.581542684999988, 39.361111723000079]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Alabama System",
+                "year": 2020,
+                "month": 6,
+                "date": "June 2020",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-87.545766466999964, 33.214399658000048]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Jacksonville State University",
+                "year": 2020,
+                "month": 6,
+                "date": "June 2020",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-85.766405991999989, 33.822163525000065]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Colorado Mesa University",
+                "year": 2020,
+                "month": 8,
+                "date": "August 2020",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-108.55351779199998, 39.077842367000073]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Winthrop University",
+                "year": 2020,
+                "month": 8,
+                "date": "August 2020",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-81.029884, 34.938394]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Jones County Junior College",
+                "year": 2020,
+                "month": 8,
+                "date": "August 2020",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-89.199693883999942, 31.597161606000043]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Boston University",
+                "year": 2020,
+                "month": 10,
+                "date": "October 2020",
+                "adoption_type": "Affirmed by Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.09984, 42.349581]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Richmond",
+                "year": 2020,
+                "month": 12,
+                "date": "December 2020",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-77.538797177999982, 37.577399333000074]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Kansas Board of Regents",
+                "year": 2021,
+                "month": 3,
+                "date": "March 2021",
+                "adoption_type": "Affirmed by Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-96.581077, 39.188616]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Virginia",
+                "year": 2021,
+                "month": 6,
+                "date": "June 2021",
+                "adoption_type": "Affirmed by Board of Visitors"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-78.511845, 38.033977]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Bowling Green State University",
+                "year": 2021,
+                "month": 7,
+                "date": "July 2021",
+                "adoption_type": "Officially adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-83.637531, 41.377036]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "St. Mary's University",
+                "year": 2021,
+                "month": 9,
+                "date": "September 2021",
+                "adoption_type": "Affirmed by Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-98.561289702999943, 29.453134829000078]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "King University",
+                "year": 2022,
+                "month": 2,
+                "date": "February 2022",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.156509342999982, 36.585989142000074]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Massachusetts Boston",
+                "year": 2022,
+                "month": 4,
+                "date": "April 2022",
+                "adoption_type": "Affirmed by the College of Science and Mathematics Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.039813772999935, 42.314331727000081]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Northwood University",
+                "year": 2022,
+                "month": 4,
+                "date": "April 2022",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.276275930999986, 43.628995644000042]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Northern Arizona University",
+                "year": 2022,
+                "month": 5,
+                "date": "May 2022",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-111.655559073999939, 35.188875211000038]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "DePauw University",
+                "year": 2022,
+                "month": 5,
+                "date": "May 2022",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-86.863556487999972, 39.639530250000064]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Wright State University",
+                "year": 2022,
+                "month": 6,
+                "date": "June 2022",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.06488143699994, 39.780634022000072]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Youngstown State University",
+                "year": 2022,
+                "month": 6,
+                "date": "June 2022",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-80.646887800999934, 41.105893975000072]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Cincinnati",
+                "year": 2022,
+                "month": 7,
+                "date": "July 2022",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.514280195999959, 39.131158542000037]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Shawnee State University",
+                "year": 2022,
+                "month": 7,
+                "date": "July 2022",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.995356562999973, 38.730909068000074]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Ohio State University",
+                "year": 2022,
+                "month": 8,
+                "date": "August 2022",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-83.00879178799994, 39.999493432000065]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Wheaton College",
+                "year": 2022,
+                "month": 11,
+                "date": "November 2022",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.184166882999989, 41.966813056000035]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Texas System",
+                "year": 2022,
+                "month": 11,
+                "date": "November 2022",
+                "adoption_type": "Affirmed by the Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-97.736463, 30.283809]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Oklahoma",
+                "year": 2022,
+                "month": 11,
+                "date": "November 2022",
+                "adoption_type": "Affirmed by the Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-97.44569235199998, 35.208069025000043]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Massachusetts Institute of Technology",
+                "year": 2022,
+                "month": 12,
+                "date": "December 2022",
+                "adoption_type": "Affirmed by Faculty Governance"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-71.092114580999976, 42.360095344000058]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Glendale Community College",
+                "year": 2023,
+                "month": 1,
+                "date": "January 2023",
+                "adoption_type": "Affirmed by the Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-118.228251181999951, 34.166421572000047]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Clemson University",
+                "year": 2023,
+                "month": 2,
+                "date": "February 2023",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.834463, 34.677329]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Davidson College",
+                "year": 2023,
+                "month": 3,
+                "date": "March 2023",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-80.845235827999943, 35.500006384000073]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Southern Mississippi",
+                "year": 2023,
+                "month": 3,
+                "date": "March 2023",
+                "adoption_type": "Affirmed by the Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-89.33791, 31.327499]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Virginia Tech",
+                "year": 2023,
+                "month": 3,
+                "date": "March 2023",
+                "adoption_type": "Affirmed by the Board of Visitors"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-80.419987832999936, 37.229906401000051]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of South Carolina",
+                "year": 2023,
+                "month": 6,
+                "date": "June 2023",
+                "adoption_type": "Affirmed by the Board of Trustees"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-81.026916, 33.996677]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Tulsa",
+                "year": 2023,
+                "month": 9,
+                "date": "September 2023",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-95.945175242999937, 36.151887443000078]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Wyoming",
+                "year": 2023,
+                "month": 12,
+                "date": "December 2023",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-105.57204, 41.311943]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "University of Michigan",
+                "year": 2024,
+                "month": 1,
+                "date": "January 2024",
+                "adoption_type": "Affirmed by the Board of Regents"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-83.736564, 42.27803]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Furman University",
+                "year": 2024,
+                "month": 2,
+                "date": "February 2024",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-82.439302931999975, 34.924725729000045]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Emory University",
+                "year": 2024,
+                "month": 2,
+                "date": "February 2024",
+                "adoption_type": "Affirmed by the Emory College of Arts and Sciences Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-84.325817691999987, 33.793268061000049]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Syracuse University",
+                "year": 2024,
+                "month": 5,
+                "date": "May 2024",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-76.13267, 43.039891]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Stanford University",
+                "year": 2024,
+                "month": 5,
+                "date": "May 2024",
+                "adoption_type": "Affirmed by the Faculty Senate"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-122.17504506299997, 37.432973802000049]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Northwestern University",
+                "year": 2024,
+                "month": 8,
+                "date": "August 2024",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-87.673652840999978, 42.058377171000075]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "university": "Boise State University",
+                "year": 2024,
+                "month": 12,
+                "date": "December 2024",
+                "adoption_type": "Officially Adopted"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [-116.205788933999941, 43.604403169000079]
+            }
+        }
+    ]
 }
