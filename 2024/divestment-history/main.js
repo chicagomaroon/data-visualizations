@@ -170,25 +170,48 @@ function createWaypoint(div, mapping) {
 function createNewSection(
     div, 
     variable, 
-    direction,
+    prev_var,
     offset='80%'
 ) {
 
     new Waypoint({
-
         element: document.getElementById(div),
-        handler: function () {
-            console.log('hello world');
-            
-            var myPlot = document.getElementById('chart-div');
-            
-            Plotly.newPlot(
-                'chart-div',
-                processData(data, variable),
-                createLayout(),
-                config
-            );
+        handler: function (direction) {
 
+            if (direction=='down') {
+                var myPlot = document.getElementById('chart-div');
+            
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(data, variable),
+                    createLayout(),
+                    config
+                );
+
+            } else {
+                var myPlot = document.getElementById('chart-div');
+            
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(data, prev_var),
+                    createLayout(),
+                    config
+                );
+
+                // TODO: go to last group of previous section
+                // Plotly.animate(
+                //     graphDiv,
+                //     {
+                //         layout: {
+                //             xaxis: { range: mapping[div]['x'] },
+                //             yaxis: { range: mapping[div]['y'] },
+                //             width: halfsize
+                //         }
+                //     },
+                //     {  transition: transition }
+                // );
+            }         
+            
             myPlot.on('plotly_click', open_url);
             myPlot.on('plotly_hover', hide_box_hovers);
         },
@@ -379,7 +402,7 @@ async function init() {
     })
 
     // we will edit this plot throughout the whole article
-    createNewSection('chart-div', 'Movement')
+    createNewSection('bylines', 'Movement', prev_var='Movement', offset='100%')
 
     // define waypoints (scroll reactions)
     createWaypoint('palestine', zoom_mapping['Movement'], 0);
@@ -390,13 +413,13 @@ async function init() {
     createWaypoint('sudan', zoom_mapping['Movement'], 0);
     createWaypoint('south-africa', zoom_mapping['Movement'], 0);
 
-    createNewSection('letters', 'Type of Action')
+    createNewSection('letters', 'Type of Action', prev_var='Movement')
 
     createWaypoint('letters', zoom_mapping['Type of Action'], 1);
     createWaypoint('protest', zoom_mapping['Type of Action'], 1);
     createWaypoint('other-action', zoom_mapping['Type of Action'], 1);
     
-    createNewSection('police', 'Admin Response')
+    createNewSection('admin', 'Admin Response', prev_var='Type of Action')
 
     createWaypoint('police', zoom_mapping['Admin Response'], 1);
     createWaypoint('meeting', zoom_mapping['Admin Response'], 1);
