@@ -126,8 +126,8 @@ function createWaypoint(div, mapping) {
                 graphDiv,
                 {
                     layout: {
-                        xaxis: { range: section['all']['x'] },
-                        yaxis: { range: section['all']['y'] },
+                        xaxis: { range: mapping['all']['x'] },
+                        yaxis: { range: mapping['all']['y'] },
                         width: halfsize
                     }
                 },
