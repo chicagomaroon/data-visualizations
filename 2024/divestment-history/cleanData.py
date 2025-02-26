@@ -63,15 +63,16 @@ df['Type of Action']=[response_dict[x] for x in df['Type of Action']]
 # re map/simplify admin response values
 response_dict = {
     np.nan:None,
-    'Interview/forum':'Information dissemination',
+    'Interview/forum':'Public response',
     'Interview/forum, Meeting/negotiation':'Negotiation',
     'Meeting/negotiation':'Negotiation',
     'Disciplinary action':'Disciplinary action',
     'Ignore/refuse':None,
     'Arrest':'Arrest',
     'Non-divestment support':'Non-divestment support',
-    'Letter Writing':'Letter writing',
-    'Police dispersal':None
+    'Police dispersal':None,
+    'Letter writing':'Public response',
+    'Letter Writing':'Public response'
 }
 
 df['Admin Response']=[response_dict[x] for x in df['Admin Response']]
