@@ -29,7 +29,7 @@ np.sum(df['Type of Action']=='Letter Writing') / len(df)
 
 df['Type of Action'].value_counts(normalize=True,dropna=False)
 
-# re map/simplify admin response values
+# re map/simplify movement values
 response_dict = {
     np.nan:None,
     'General Transparency':'SRIC',
@@ -42,6 +42,23 @@ response_dict = {
 }
 
 df['Movement']=[response_dict[x] for x in df['Movement']]
+
+# re map/simplify tactic values
+response_dict = {
+    np.nan:None,
+    'Protest':'Protest',
+    'Letter Writing':'Letter writing',
+    'Pledge/Resolution':'Resolution',
+    'Letter Writing, Protest':'Protest',
+    'Legal Action':'Legal action',
+    'Lecture/Debate':'Public event',
+    'Research Report':'Research report',
+    'Pledge/Resolution, Letter Writing':'Resolution',
+    'Protest, Letter Writing':'Protest',
+    'Lecture/Debate, Letter Writing':'Public event',
+}
+
+df['Type of Action']=[response_dict[x] for x in df['Type of Action']]
 
 # re map/simplify admin response values
 response_dict = {
