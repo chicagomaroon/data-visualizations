@@ -130,6 +130,12 @@ body {
     max-width: 100%;
 }
 
+.page-image#report {
+    height: 500px;
+    width: 100%;
+    background-color: #800000;
+}
+
 .page-highlights {
     position: absolute;
     top: 0;
