@@ -157,8 +157,8 @@ function createWaypoint(div, mapping) {
     new Waypoint({
         element: document.getElementById(div),
         handler: handler,
+        offset: '75%'
     });
-            offset: '75%'
 }
 
 /**
