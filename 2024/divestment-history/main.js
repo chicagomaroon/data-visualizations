@@ -334,11 +334,11 @@ const colorbook = {
         'Public event': 'rgb(21, 95, 131)',
     },
     'Admin Response': {
-        'Arrest/punish': 'rgb(128, 0, 0)',
-        'Meeting/negotiation': 'rgb(193, 102, 34)',
-        'Interview/forum': 'rgb(143, 57, 49)',
+        'Arrest': 'rgb(128, 0, 0)',
+        'Disciplinary action': 'rgb(88, 89, 63)',
+        'Negotiation': 'rgb(193, 102, 34)',
+        'Public response': 'rgb(143, 57, 49)',
         'Non-divestment support': 'rgb(138, 144, 69)',
-        'Ignore/refuse': 'rgb(88, 89, 63)'
     },
     'Administration': {
         'Alivisatos': 'rgb(128, 0, 0)',
@@ -364,14 +364,14 @@ const zoom_mapping = {
     'Type of Action': {
         letters: { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
         protest: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        'other-action': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 7.5] },
-        all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
+        'other-action': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 5.5] },
+        all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 6.5] }
     },
     'Admin Response': {
-        'police': { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
-        'meeting': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 2.5] },
-        'other-response': { x: ['1966-1-1', '2026-1-1'], y: [6.5, 7.5] },
-        'all': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
+        'meeting': { x: ['1966-1-1', '2026-1-1'], y: [2.5, 4.5] },
+        'police': { x: ['1966-1-1', '2026-1-1'], y: [0.5, 2.5] },
+        'other-response': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
+        'all': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 4.5] }
     },
 }
 
@@ -421,8 +421,8 @@ async function init() {
     
     createNewSection('admin', 'Admin Response', prev_var='Type of Action')
 
-    createWaypoint('police', zoom_mapping['Admin Response'], 1);
     createWaypoint('meeting', zoom_mapping['Admin Response'], 1);
+    createWaypoint('police', zoom_mapping['Admin Response'], 1);
     createWaypoint('other-response', zoom_mapping['Admin Response'], 1);
 
     finalWP = new Waypoint({
