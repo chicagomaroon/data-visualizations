@@ -197,7 +197,10 @@ function createNewSection(
 function createLayout() {
     return {
         title: {
-            text: 'Historical Divestment Movements at UChicago'
+            text: 'Divestment Activism Events at UChicago',
+            subtitle: {
+                text: 'Click a data point to go to its source'
+            },
         },
         xaxis: {
             showgrid: true,
