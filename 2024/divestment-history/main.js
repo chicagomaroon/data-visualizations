@@ -126,7 +126,19 @@ function createWaypoint(div, mapping) {
                 },
                 {  transition: transition }
             );
-        } else {
+        } else if (div=='palestine') {
+            // go to next key
+            Plotly.animate(
+                graphDiv,
+                {
+                    layout: {
+                        xaxis: { range: section['all']['x'] },
+                        yaxis: { range: section['all']['y'] },
+                        width: halfsize
+                    }
+                },
+                {  transition: transition }
+            );
             // go back to the previous key
 
             previousIndex = orderedkeys.indexOf(div)-1
