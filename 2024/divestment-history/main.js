@@ -319,19 +319,17 @@ const colorbook = {
         'Labor rights': 'rgb(138, 144, 69)',
         SRIC: 'rgb(88, 89, 63)',
         Sudan: 'rgb(21, 95, 131)',
-        // 'rgb(53, 14, 32)',
-        'South Africa': 'rgb(71, 181, 255)'
+        'South Africa': 'rgb(53, 14, 32)',
+        // 'rgb(71, 181, 255)'
         // 'rgb(255, 51, 153)'
     },
     'Type of Action': {
-        'Letter Writing': 'rgb(128, 0, 0)',
+        'Letter writing': 'rgb(128, 0, 0)',
         Protest: 'rgb(193, 102, 34)',
-        'Pledge/Resolution': 'rgb(143, 57, 49)',
-        'Legal Action': 'rgb(138, 144, 69)',
-        'Research Report': 'rgb(88, 89, 63)',
-        Debate: 'rgb(21, 95, 131)',
-        Forum: 'rgb(71, 181, 255))',
-        Informational: 'rgb(255, 51, 153)'
+        'Resolution': 'rgb(143, 57, 49)',
+        'Legal action': 'rgb(138, 144, 69)',
+        'Research report': 'rgb(88, 89, 63)',
+        'Public event': 'rgb(21, 95, 131)',
     },
     'Admin Response': {
         'Arrest/punish': 'rgb(128, 0, 0)',
@@ -352,13 +350,13 @@ const colorbook = {
 
 const zoom_mapping = {
     'Movement': {
-        palestine: { x: ['2012-1-1', '2026-1-1'], y: [0.5, 1.5] },
-        'fossil-fuels': { x: ['2012-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        'uyghur-rights': { x: ['2014-1-1', '2018-1-1'], y: [1.5, 2.5] },
-        'labor-rights': { x: ['2006-1-1', '2016-1-1'], y: [2.5, 3.5] },
-        sric: { x: ['2006-1-1', '2012-1-1'], y: [3.5, 4.5] },
+        palestine: { x: ['2012-1-1', '2026-1-1'], y: [-0.5, 0.5] },
+        'fossil-fuels': { x: ['2012-1-1', '2026-1-1'], y: [0.5, 1.5] },
+        'labor-rights': { x: ['2006-1-1', '2016-1-1'], y: [1.5, 2.5] },
+        'uyghur-rights': { x: ['2014-1-1', '2018-1-1'], y: [2.5, 3.5] },
+        sric: { x: ['2008-1-1', '2012-1-1'], y: [3.5, 4.5] },
         sudan: { x: ['2004-1-1', '2010-1-1'], y: [4.5, 5.5] },
-        'south-africa': { x: ['1966-1-1', '1980-1-1'], y: [5.5, 6.5] },
+        'south-africa': { x: ['1966-1-1', '1981-1-1'], y: [5.5, 6.5] },
         all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
     }, 
     'Type of Action': {
