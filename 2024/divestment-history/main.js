@@ -102,9 +102,9 @@ function createWaypoint(div, mapping) {
         // note: don't try to make this a constant as it needs to be calculated when the user gets to this point
         halfsize = Math.min(400, 50 * window.innerWidth);
 
-        let orderedkeys = [];
+        let orderedKeys = [];
         for (var key in mapping) {
-            orderedkeys.push(key);
+            orderedKeys.push(key);
         }
        
         if (direction == 'down') {
@@ -135,8 +135,8 @@ function createWaypoint(div, mapping) {
             );
             // go back to the previous key
 
-            previousIndex = orderedkeys.indexOf(div)-1
-            previousKey = orderedkeys[previousIndex]
+            previousIndex = orderedKeys.indexOf(div)-1
+            previousKey = orderedKeys[previousIndex]
             // add code for if scrolling to previous section
             
             Plotly.animate(
