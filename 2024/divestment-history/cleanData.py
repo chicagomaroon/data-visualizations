@@ -32,6 +32,20 @@ df['Type of Action'].value_counts(normalize=True,dropna=False)
 # re map/simplify admin response values
 response_dict = {
     np.nan:None,
+    'General Transparency':'SRIC',
+    'Labor Rights':'Labor rights',
+    'Uyghur Rights':'Uyghur rights',
+    'Palestine':'Palestine',
+    'Fossil fuels':'Fossil fuels',
+    'Sudan':'Sudan',
+    'South Africa':'South Africa',
+}
+
+df['Movement']=[response_dict[x] for x in df['Movement']]
+
+# re map/simplify admin response values
+response_dict = {
+    np.nan:None,
     'Interview/forum':'Information dissemination',
     'Interview/forum, Meeting/negotiation':'Negotiation',
     'Meeting/negotiation':'Negotiation',
