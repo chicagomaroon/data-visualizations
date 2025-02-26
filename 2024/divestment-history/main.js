@@ -201,6 +201,7 @@ function createLayout() {
             subtitle: {
                 text: 'Click a data point to go to its source'
             },
+            x: 0
         },
         font: {
             family: 'serif'
