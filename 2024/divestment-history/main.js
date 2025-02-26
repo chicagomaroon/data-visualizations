@@ -133,6 +133,7 @@ function createWaypoint(div, mapping) {
                 },
                 {  transition: transition }
             );
+        } else if (!classList.match('first')) {
             // go back to the previous key
 
             previousIndex = orderedKeys.indexOf(div)-1
