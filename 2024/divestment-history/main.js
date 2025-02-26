@@ -108,6 +108,9 @@ function createWaypoint(div, mapping) {
         for (var key in mapping) {
             orderedKeys.push(key);
         }
+
+        // https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
+        let classList = document.getElementById(div).className
        
         if (direction == 'down') {
             // go to next key
