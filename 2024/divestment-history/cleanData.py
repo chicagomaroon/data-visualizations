@@ -32,13 +32,14 @@ df['Type of Action'].value_counts(normalize=True,dropna=False)
 # re map/simplify admin response values
 response_dict = {
     np.nan:None,
-    'Interview/forum':'Public statement',
+    'Interview/forum':'Information dissemination',
+    'Interview/forum, Meeting/negotiation':'Negotiation',
     'Meeting/negotiation':'Negotiation',
-    'Arrest/punish':'Arrest',
+    'Disciplinary action':'Disciplinary action',
     'Ignore/refuse':None,
-    'Interview/meeting, Arrest':'Arrest',
+    'Arrest':'Arrest',
     'Non-divestment support':'Non-divestment support',
-    'Letter Writing':'Public statement',
+    'Letter Writing':'Letter writing',
     'Police dispersal':None
 }
 
