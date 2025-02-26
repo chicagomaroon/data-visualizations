@@ -89,12 +89,6 @@ function processData(data, name_var) {
     }
 }
 
-// async function makeTimeline(
-
-// ) {
-
-// }
-
 /**
  * Waypoints (scroll interactions) for article body.
  * Cite:
