@@ -202,6 +202,9 @@ function createLayout() {
                 text: 'Click a data point to go to its source'
             },
         },
+        font: {
+            family: 'serif'
+        },
         xaxis: {
             showgrid: true,
             showline: true,
