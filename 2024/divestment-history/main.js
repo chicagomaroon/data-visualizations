@@ -40,15 +40,17 @@ function processData(data, name_var) {
         text = [];
 
         data.forEach(function (val) {
-            x.push(val['Date of Event']);
-            names.push(val[name_var]);
-            text.push(
-                '<a href="' +
-                    val['Link'] +
-                    '" target="_blank">' +
-                    val['Source'].replaceAll('\n', '<br>') +
-                    '</a>'
-            );
+            if (val[name_var]) {
+                x.push(val['Date of Event']);
+                names.push(val[name_var]);
+                text.push(
+                    '<a href="' +
+                        val['Link'] +
+                        '" target="_blank">' +
+                        val['Source'].replaceAll('\n', '<br>') +
+                        '</a>'
+                );
+            }
         });
 
         traces.push({
