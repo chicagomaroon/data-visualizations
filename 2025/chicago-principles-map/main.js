@@ -1,5 +1,4 @@
 const STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
-// 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
 const USA = [-98.35, 39.5];
 let popup;
 
