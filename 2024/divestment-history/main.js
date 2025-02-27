@@ -143,7 +143,6 @@ function createWaypoint(div, mapping) {
 
             previousIndex = orderedKeys.indexOf(div)-1
             previousKey = orderedKeys[previousIndex]
-            // add code for if scrolling to previous section
             
             Plotly.animate(
                 graphDiv,
@@ -246,14 +245,12 @@ function createLayout() {
             showline: true,
             range: ['1966-1-1', '2026-1-1'],
             type: 'date',
-            // https://community.plotly.com/t/date-tick-formatting/11081/5
             dtick: 'M12',
             ticklabelstep: 4
         },
         yaxis: {
             showgrid: false,
             ticktext: 'text'
-            // hoverinfo: none
         },
         hovermode: 'closest',
         hoverlabel: {
@@ -307,7 +304,6 @@ config = {
         'zoom2d'
     ],
     responsive: true
-    // scrollZoom: true
 };
 
 transition = {
