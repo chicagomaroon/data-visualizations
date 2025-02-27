@@ -34,7 +34,8 @@ map.on('load', async () => {
         layout: {},
         paint: {
             'circle-color': '#800000',
-            'circle-radius': 8
+            'circle-radius': 7,
+            'circle-opacity': 0.6
         },
         filter: ['>=', 'year', 2015]
     });
