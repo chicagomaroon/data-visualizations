@@ -234,7 +234,7 @@ function createLayout() {
         title: {
             text: 'Divestment Activism Events at UChicago',
             subtitle: {
-                text: 'Click a data point to visit source article'
+                text: 'Click a data point to visit the source article.'
             },
             x: 0
         },
