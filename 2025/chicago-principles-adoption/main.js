@@ -93,7 +93,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: 'Over 110 universities across the country have adopted these documents since 2016.',
+        text: 'Over 110 universities across the country have adopted similar documents since 2016.',
         align: 'center',
         style: {
             fontSize: '15px'
