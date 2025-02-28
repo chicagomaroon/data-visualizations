@@ -47,7 +47,7 @@ def main():
             try:
                 r.html.render(sleep=10)
             except RuntimeError as e:
-                print(f"Need more sleep for {site}: {e}")
+                print(f"Did you forget to run this from the command line? Need more sleep for {site}: {e}")
                 continue
             soup = bs(r.html.html, "html.parser")
             highlights = soup.find_all('div', class_='BookReaderSearchHilite')
