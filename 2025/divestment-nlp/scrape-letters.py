@@ -74,7 +74,11 @@ def main():
         else: # for modern pieces, they mostly follow the same format
             r = requests.get(site)
             soup = bs(r.content, 'html.parser')
-            story = soup.select('.sno-story-container')[0]
+            try:
+                story = soup.select('.sno-story-container')[0]
+            except IndexError as e:
+                print(f"Using fallback for story {site}: {e}")
+                story = soup.select('#sno-main-content')[0]
             df.loc[i,'Text']=story.get_text()
 
     today = re.sub('[^0-9\\-]','',str(datetime.today()))
