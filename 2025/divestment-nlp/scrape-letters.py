@@ -1,3 +1,5 @@
+# DO NOT RUN IN IPYTHON KERNEL OR ELSE THE SCRAPE WILL NOT WORK
+
 #%% import
 
 import requests
