@@ -37,7 +37,7 @@ def main():
         # if i<45:
         #     continue
 
-        print(f"Scraping: {site}--------------------------------------")
+        print(f"Scraping: {site} ({i}/{len(df)})--------------------------------------")
         if 'campub' in site: # for archive pieces, read text from images
             # https://stackoverflow.com/questions/8049520/how-can-i-scrape-a-page-with-dynamic-content-created-by-javascript-in-python
             # https://stackoverflow.com/questions/78023508/python-request-html-is-not-downloading-chromium
