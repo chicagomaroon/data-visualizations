@@ -29,6 +29,8 @@ def main():
         # had to run several times to fill in all rows
         if not isinstance(df.at[i,'Text'],float) and len(df.at[i,'Text'])>2:
             continue
+        if isinstance(df.at[i,'Link'],float) or ('uchicagogate' in df.at[i,'Link']) or ('http' not in df.at[i,'Link']):
+            continue
 
         # if i<45:
         #     continue
