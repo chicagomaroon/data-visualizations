@@ -7,7 +7,7 @@ from requests_html import HTMLSession
 from io import BytesIO
 import pytesseract
 from PIL import Image
-from datetime import datetime
+from datetime import date
 import re
 
 #%% load data
@@ -81,7 +81,8 @@ def main():
                 story = soup.select('#sno-main-content')[0]
             df.loc[i,'Text']=story.get_text()
 
-    today = re.sub('[^0-9\\-]','',str(datetime.today()))
+    today = re.sub('[^0-9\\-]','',str(date.today()))
+    print('Done scraping!')
     try:
         df.to_excel(f'scrape-{today}.xlsx')
     except Exception as e:
