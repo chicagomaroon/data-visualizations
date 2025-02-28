@@ -44,7 +44,11 @@ def main():
             session = HTMLSession()
             r = session.get(site) # bs can't get js content
             # https://stackoverflow.com/questions/59665773/why-render-requests-html-doesnt-scrape-dynamic-content
-            r.html.render(sleep=10)
+            try:
+                r.html.render(sleep=10)
+            except RuntimeError as e:
+                print(f"Need more sleep for {site}: {e}")
+                continue
             soup = bs(r.html.html, "html.parser")
             highlights = soup.find_all('div', class_='BookReaderSearchHilite')
             session.close()
