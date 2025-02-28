@@ -84,7 +84,7 @@ def main():
     today = re.sub('[^0-9\\-]','',str(date.today()))
     print('Done scraping!')
     try:
-        df.to_excel(f'scrape-{today}.xlsx')
+        df.to_excel(f'scrape-{today}.xlsx',index=False)
     except Exception as e:
         with open(f'log-{today}.txt', 'w', encoding='utf-8') as f:
             f.write('\n\n\n'.join(df['Text'].values))
