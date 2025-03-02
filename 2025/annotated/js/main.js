@@ -1,4 +1,7 @@
 //https://www.nytimes.com/interactive/2025/02/13/us/doc-annotation-memo-from-bove.html
+// todo
+// overlapping ones
+// why is mobile so weirds?
 
 let active_highlight = document.querySelector('.highlight.active');
 let next_highlight;
@@ -14,7 +17,7 @@ document.querySelectorAll('.highlight').forEach((highlight) => {
     });
 });
 
-for (let i = 1; i < 17; i++) {
+for (let i = 0; i < 17; i++) {
     new Waypoint({
         element: document.querySelector(`#highlight-${i}`),
         handler: function (direction) {
@@ -44,7 +47,7 @@ for (let i = 1; i < 17; i++) {
                 }
             }
         },
-        offset: '50%'
+        offset: '40%'
     });
 }
 
