@@ -33,10 +33,19 @@ body {
 
 #title {
     font-family: 'Playfair Display', serif;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 500;
     line-height: 1.3;
     text-align: center;
+    margin-bottom: 15px;
+}
+
+#subtitle {
+    padding-block: 5px;
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.3;
 }
 
 #intro-text hr {
@@ -61,7 +70,7 @@ body {
     font-family: Open Sans;
     padding-block: 1px;
     font-size: 12px;
-    text-align: center;
+    text-align: left;
 }
 
 .byline-link {
@@ -97,7 +106,7 @@ body {
 }
 
 .title-box img {
-    width: 500px;
+    width: 400px;
     margin: auto;
     margin-block: 25px;
     margin-top: 70px;
@@ -123,6 +132,22 @@ body {
 .page {
     position: relative;
     margin-bottom: 28px;
+}
+
+#page-report {
+    background-color: #fcf9f6;
+}
+
+#report {
+    padding: 100px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-size: 18px;
+}
+
+#report-title {
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .page-image img {
@@ -159,16 +184,110 @@ body {
 
 #highlight-1 {
     left: 8.59375%;
-    top: 44.1%;
+    top: 17%;
     width: 84.13165983606558%;
-    height: 11.691962174940901%;
+    height: 2.5%;
 }
 
 #highlight-2 {
     left: 8.59375%;
-    top: 20%;
+    top: 23.3%;
     width: 84.13165983606558%;
-    height: 11.691962174940901%;
+    height: 5%;
+}
+
+#highlight-3 {
+    left: 8.59375%;
+    top: 27.3%;
+    width: 84.13165983606558%;
+    height: 11%;
+}
+#highlight-4 {
+    left: 8.59375%;
+    top: 27.3%;
+    width: 84.13165983606558%;
+    height: 0;
+}
+#highlight-5 {
+    left: 8.59375%;
+    top: 27.3%;
+    width: 84.13165983606558%;
+    height: 0;
+}
+#highlight-6 {
+    left: 8.59375%;
+    top: 27.3%;
+    width: 84.13165983606558%;
+    height: 0;
+}
+#highlight-7 {
+    left: 8.59375%;
+    top: 27.3%;
+    width: 84.13165983606558%;
+    height: 0;
+}
+
+#highlight-8 {
+    left: 8.59375%;
+    top: 31%;
+    width: 84.13165983606558%;
+    height: 2.5%;
+}
+
+#highlight-9 {
+    left: 8.59375%;
+    top: 35.2%;
+    width: 84.13165983606558%;
+    height: 5%;
+}
+
+#highlight-10 {
+    left: 8.59375%;
+    top: 53.8%;
+    width: 84.13165983606558%;
+    height: 5%;
+}
+
+#highlight-11 {
+    left: 8.59375%;
+    top: 57.8%;
+    width: 84.13165983606558%;
+    height: 5%;
+}
+
+#highlight-12 {
+    left: 8.59375%;
+    top: 34.3%;
+    width: 84.13165983606558%;
+    height: 5%;
+}
+
+#highlight-13 {
+    left: 8.59375%;
+    top: 57%;
+    width: 84.13165983606558%;
+    height: 10%;
+}
+
+#highlight-14 {
+    left: 8.59375%;
+    top: 71.5%;
+    width: 84.13165983606558%;
+    height: 5%;
+}
+
+#highlight-15 {
+    left: 8.59375%;
+    top: 19%;
+    width: 84.13165983606558%;
+    height: 10%;
+}
+
+#highlight-16 {
+    left: 8.59375%;
+    top: 46%;
+    width: 84.13165983606558%;
+    height: 23%;
 }
 
 .annotation-container {
@@ -199,7 +318,7 @@ body {
     top: 0;
     max-height: calc(100vh - 90px);
     width: 360px;
-    padding-top: 20px;
+    padding-block: 20px;
     border: none;
     border-left: 5px solid #800000;
 }
@@ -209,10 +328,34 @@ body {
     font-size: 16px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #444;
-    line-height: 21px;
+    line-height: 20px;
+    animation: fadeIn 0.2s ease-in-out forwards;
 }
 
-.annotation-card-title {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.2s ease-in-out forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.2s ease-in-out forwards;
 }
 
 @media (max-width: 1260px) {
