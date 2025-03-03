@@ -6,3 +6,7 @@ node_modules
 .env
 data-analysis/private_data
 /2025/divestment-nlp/data
+/2025/divestment-nlp/*.xlsx
+!scrape.xlsx
+/2025/divestment-nlp/*.txt
+*.pyc
