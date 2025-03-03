@@ -232,6 +232,8 @@ class Scraper:
         """
 
         for i, row in self.input_data.iterrows():
+            site = row['Link']
+
             if row['Text']:
                 # skip if there is information in the row already (if rerun)
                 continue
