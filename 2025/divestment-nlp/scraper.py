@@ -136,7 +136,7 @@ class Scraper:
 
         print(f"Output created with size: {len(output)}")
 
-        return output
+        return [x for x in output if len(x)>10]
 
     def get_all_text(self, img_bytes):
         """
