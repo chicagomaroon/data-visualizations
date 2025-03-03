@@ -18,6 +18,13 @@ from requests_html import HTMLSession
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\notka\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
 
 
+class ScraperError(Exception):
+    """
+    In cases that will affect all rows, stop the script
+    """
+    pass
+
+
 class Scraper:
 
     def __init__(self, input_data, chunks=False, test_archive=False):
@@ -129,6 +136,10 @@ class Scraper:
         https://stackoverflow.com/questions/43403086/opening-image-file-from-url-with-pil-for-text-recognition-with-pytesseract
         """
 
+        try:
+            text = pytesseract.image_to_string(img_bytes)
+        except Exception as e:
+            raise ScraperError(e)
         # print('\n'.join(text.split('\n')[:5]))
         print(f"Length of extracted text: {len(text)}")
         return text
@@ -149,6 +160,8 @@ class Scraper:
 
         except Exception as e:
             print(f"Could not decode image with data {img_bytes}")
+            raise ScraperError(e)
+
         contours, _ = cv2.findContours(
             cv2_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
         )[-2:]
