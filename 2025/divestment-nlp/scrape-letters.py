@@ -22,7 +22,7 @@ def main():
             chunks=True,
             test_archive=test_archive,
         )
-    elif len(sys.argv) == 1:
+    elif len([x for x in sys.argv if x!='test_archive'])==1:
         data = pd.read_csv('data.csv')
 
         # get only rows of interest
