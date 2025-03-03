@@ -61,13 +61,14 @@ body {
 #intro-text hr {
     margin-top: 30px;
     margin-bottom: 20px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.273);
+    opacity: 60%;
 }
 
 #byline {
     padding-block: 1px;
     margin-block: 2px;
-    font-size: 13px;
+    font-size: 14px;
     text-align: left;
 }
 
@@ -165,7 +166,7 @@ body {
 
 .highlight.active {
     background-color: #ffff104d;
-    border: 2px solid #ffe300;
+    border: 3px solid #ffe300;
 }
 
 #highlight-1 {
@@ -183,60 +184,64 @@ body {
 }
 
 #highlight-3 {
-    left: 8.59375%;
-    top: 27.3%;
-    width: 84.13165983606558%;
-    height: 11%;
+    left: 27.5%;
+    top: 26.7%;
+    width: 25.5%;
+    height: 2.5%;
 }
+
 #highlight-4 {
-    left: 8.59375%;
-    top: 27.3%;
-    width: 84.13165983606558%;
-    height: 0;
+    left: 53.5%;
+    top: 24.6%;
+    width: 28%;
+    height: 2.5%;
 }
+
 #highlight-5 {
-    left: 8.59375%;
-    top: 27.3%;
-    width: 84.13165983606558%;
-    height: 0;
+    left: 11%;
+    top: 24.3%;
+    width: 81.5%;
+    height: 4.3%;
 }
+
 #highlight-6 {
-    left: 8.59375%;
-    top: 27.3%;
-    width: 84.13165983606558%;
-    height: 0;
+    left: 19%;
+    top: 24.2%;
+    width: 67%;
+    height: 2.5%;
 }
+
 #highlight-7 {
-    left: 8.59375%;
-    top: 27.3%;
-    width: 84.13165983606558%;
-    height: 0;
+    left: 15%;
+    top: 23.8%;
+    width: 61.5%;
+    height: 2.5%;
 }
 
 #highlight-8 {
     left: 8.59375%;
-    top: 31%;
+    top: 28%;
     width: 84.13165983606558%;
     height: 2.5%;
 }
 
 #highlight-9 {
     left: 8.59375%;
-    top: 35.2%;
+    top: 29.5%;
     width: 84.13165983606558%;
     height: 5%;
 }
 
 #highlight-10 {
     left: 8.59375%;
-    top: 53.8%;
+    top: 50.5%;
     width: 84.13165983606558%;
     height: 5%;
 }
 
 #highlight-11 {
     left: 8.59375%;
-    top: 57.8%;
+    top: 54.3%;
     width: 84.13165983606558%;
     height: 5%;
 }
@@ -276,7 +281,7 @@ body {
     height: 23%;
 }
 
-#highlight-0 {
+#highlight-17 {
     left: 8.59375%;
     top: 32%;
     width: 84.13165983606558%;
@@ -318,10 +323,9 @@ body {
 
 .annotation-card-text {
     padding: 0 20px;
-    font-size: 16px;
+    font-size: 17px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #444;
-    line-height: 20px;
     animation: fadeIn 0.2s ease-in-out forwards;
 }
 
@@ -368,15 +372,45 @@ body {
 }
 
 @media (max-width: 800px) {
+    .annotation-container {
+        left: 0;
+        width: 100%;
+    }
+
+    #doc-container {
+        left: 0;
+    }
+
+    .sticky {
+        top: 0;
+    }
+    .annotation-card {
+        top: 80%;
+    }
+
+    .annotation-card-inner {
+        border: 5px solid #800000;
+        width: 100%;
+    }
+
+    .annotation-card-text {
+        font-size: 15px;
+    }
+
     .header img {
         width: 60%;
     }
     #intro-text {
-        width: 100%;
+        width: 90%;
     }
 
     #title {
-        font-size: 30px;
+        font-size: 28px;
+    }
+
+    .title-box img {
+        width: 50%;
+        margin-top: 10px;
     }
 
     .title-container {

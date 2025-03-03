@@ -6,6 +6,7 @@
 let active_highlight = document.querySelector('.highlight.active');
 let next_highlight;
 let config;
+let currentHighlightIndex = 1;
 
 document.querySelectorAll('.highlight').forEach((highlight) => {
     highlight.addEventListener('click', (e) => {
@@ -17,7 +18,7 @@ document.querySelectorAll('.highlight').forEach((highlight) => {
     });
 });
 
-for (let i = 0; i < 17; i++) {
+for (let i = 1; i < 18; i++) {
     new Waypoint({
         element: document.querySelector(`#highlight-${i}`),
         handler: function (direction) {
@@ -27,6 +28,7 @@ for (let i = 0; i < 17; i++) {
                     console.log(`highlight-${i}`);
                     next_highlight = document.querySelector(`#highlight-${i}`);
                     activateNextHighlight(next_highlight);
+                    currentHighlightIndex = parseInt(i);
 
                     updateAnnotationCard(config[i]);
                 }
@@ -36,6 +38,7 @@ for (let i = 0; i < 17; i++) {
                     console.log(`highlight-${i}`);
                     next_highlight = document.querySelector(`#highlight-${i}`);
                     activateNextHighlight(next_highlight);
+                    currentHighlightIndex = parseInt(i);
                 } else {
                     console.log(`highlight-${i - 1}`);
                     next_highlight = document.querySelector(
@@ -47,7 +50,7 @@ for (let i = 0; i < 17; i++) {
                 }
             }
         },
-        offset: '40%'
+        offset: '45%'
     });
 }
 
@@ -96,4 +99,23 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     };
     init();
+});
+// Add event listener for keydown events to switch between highlights
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowRight') {
+        console.log(currentHighlightIndex);
+        currentHighlightIndex++;
+        const nextHighlight = document.querySelector(
+            `#highlight-${currentHighlightIndex}`
+        );
+        activateNextHighlight(nextHighlight);
+        updateAnnotationCard(config[currentHighlightIndex]);
+    } else if (event.key === 'ArrowLeft') {
+        currentHighlightIndex--;
+        const prevHighlight = document.querySelector(
+            `#highlight-${currentHighlightIndex}`
+        );
+        activateNextHighlight(prevHighlight);
+        updateAnnotationCard(config[currentHighlightIndex]);
+    }
 });
