@@ -11,11 +11,12 @@ from scraper import Scraper
 def main():
 
     if sys.argv[0] == 'rerun':
+        data = pd.read_excel('scrape-2025-02-27.xlsx', index_col=None)
         scraper = Scraper(
-            input_data=pd.read_excel('scrape-2025-02-27.xlsx', index_col=None),
+            input_data=data,
             chunks=True,
         )
-    elif not len(sys.argv):
+    elif len(sys.argv) == 1:
         data = pd.read_csv('data.csv')
 
         # get only rows of interest
@@ -30,14 +31,17 @@ def main():
             ) else False for x in data['Admin Response']
         ]
         data = data[letter_action or public_response]
+        data = data.reset_index()
 
         scraper = Scraper(
-            input_data=data.reset_index(),
+            input_data=data,
             chunks=True,
         )
     else:
-        return 'Invalid input, try again'
+        print('Invalid input, try again')
+        return
 
+    print(f"Initialized scraper with data\n{data}")
     scraper.process_all()
 
 # %% main
