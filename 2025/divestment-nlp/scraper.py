@@ -198,6 +198,7 @@ class Scraper:
             dilated_img, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
 
         chunks = []
+        print(f"{len(contours)} chunks discovered (not all are viable)")
         for i, contour in enumerate(contours):
             x, y, w, h = cv2.boundingRect(contour)
             if w > 700 and h > 150 and w < 2000:
@@ -212,9 +213,9 @@ class Scraper:
                     raise ScraperError(e)
                 chunks.append(str((x, y, w, h)) + ' !BBOX! ' + chunk_text)
 
-                if i == 0:
-                    img = Image.fromarray(chunk)
-                    img.show()
+                # if i == 0:
+                #     img = Image.fromarray(chunk)
+                #     img.show()
 
         # cv2.waitKey(0)
         return chunks
