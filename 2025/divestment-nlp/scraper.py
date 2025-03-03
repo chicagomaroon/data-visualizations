@@ -161,20 +161,31 @@ class Scraper:
         try:
             img_array = np.frombuffer(img_bytes.read(), np.uint8)
             cv2_img = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
-            # img_array = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
+            # apply threshold to push everything to black and white
+            _,cv2_img2=cv2.threshold(cv2_img, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+            # img = Image.fromarray(cv2_img2)
+            # img.show()
+            rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (12, 20))
+            cv2_img31 = cv2.dilate(cv2_img2, rect_kernel, iterations = 1)
+            rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 12))
+            cv2_img32 = cv2.dilate(cv2_img2, rect_kernel, iterations = 1)
+            cv2_img4=cv2_img31+cv2_img32
+            # _,cv2_img4=cv2.threshold(cv2_img3, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+            # img = Image.fromarray(cv2_img4)
+            # img.show()
 
         except Exception as e:
             print(f"Could not decode image with data {img_bytes}")
             raise ScraperError(e)
-
-        contours, _ = cv2.findContours(
-            cv2_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
-        )[-2:]
+        
+        contours, _ = cv2.findContours(cv2_img4, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
 
         chunks = []
-        for contour in contours:
+        for i,contour in enumerate(contours):
             x, y, w, h = cv2.boundingRect(contour)
-            chunk = cv2_img[y:y+h, x:x+w]
+            if w>700 and h>150 and w<2000:
+                chunk = cv2_img[y:y+h, x:x+w]
+                _, chunk_array = cv2.imencode('.jpg', chunk)
                 try:
                     # chunk_bytes = chunk_array.tobytes()
                     # chunk_utf8 = chunk_bytes.decode('utf-16-be').encode('utf-8') 
