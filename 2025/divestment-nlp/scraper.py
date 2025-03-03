@@ -61,7 +61,7 @@ class Scraper:
             story = soup.select('#sno-main-content')[0]
         tags = story.find_all()
 
-        if self.output_format=='chunks':
+        if self.output_format == 'chunks':
             return [tag.get_text() for tag in tags]
         else:
             return story.get_text()
@@ -162,14 +162,15 @@ class Scraper:
             img_array = np.frombuffer(img_bytes.read(), np.uint8)
             cv2_img = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
             # apply threshold to push everything to black and white
-            _,cv2_img2=cv2.threshold(cv2_img, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+            _, cv2_img2 = cv2.threshold(
+                cv2_img, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
             # img = Image.fromarray(cv2_img2)
             # img.show()
             rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (12, 20))
-            cv2_img31 = cv2.dilate(cv2_img2, rect_kernel, iterations = 1)
+            cv2_img31 = cv2.dilate(cv2_img2, rect_kernel, iterations=1)
             rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 12))
-            cv2_img32 = cv2.dilate(cv2_img2, rect_kernel, iterations = 1)
-            cv2_img4=cv2_img31+cv2_img32
+            cv2_img32 = cv2.dilate(cv2_img2, rect_kernel, iterations=1)
+            cv2_img4 = cv2_img31+cv2_img32
             # _,cv2_img4=cv2.threshold(cv2_img3, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
             # img = Image.fromarray(cv2_img4)
             # img.show()
@@ -177,25 +178,26 @@ class Scraper:
         except Exception as e:
             print(f"Could not decode image with data {img_bytes}")
             raise ScraperError(e)
-        
-        contours, _ = cv2.findContours(cv2_img4, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
+
+        contours, _ = cv2.findContours(
+            cv2_img4, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
 
         chunks = []
-        for i,contour in enumerate(contours):
+        for i, contour in enumerate(contours):
             x, y, w, h = cv2.boundingRect(contour)
-            if w>700 and h>150 and w<2000:
+            if w > 700 and h > 150 and w < 2000:
                 chunk = cv2_img[y:y+h, x:x+w]
                 _, chunk_array = cv2.imencode('.jpg', chunk)
                 try:
                     # chunk_bytes = chunk_array.tobytes()
-                    # chunk_utf8 = chunk_bytes.decode('utf-16-be').encode('utf-8') 
+                    # chunk_utf8 = chunk_bytes.decode('utf-16-be').encode('utf-8')
                     chunk_bytes = BytesIO(chunk_array)
                     chunk_text = self.get_all_text(chunk_bytes)
                 except Exception as e:
                     raise ScraperError(e)
                 chunks.append(chunk_text)
 
-                if i==0:
+                if i == 0:
                     img = Image.fromarray(chunk)
                     img.show()
 
