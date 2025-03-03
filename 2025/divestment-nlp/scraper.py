@@ -166,6 +166,9 @@ class Scraper:
         Chunks image using bounding boxes (a computer vision technique)
         Get text within each chunk by calling get_all_text()
 
+        TODO: replace with pytesseract 
+        https://stackoverflow.com/questions/28591117/how-do-i-segment-a-document-using-tesseract-then-output-the-resulting-bounding-b
+
         Sources:
         https://stackoverflow.com/questions/21104664/extract-all-bounding-boxes-using-opencv-python
         https://stackoverflow.com/questions/64629197/why-numpy-tobytes-method-return-not-only-hex-digits-but-also-additional-chara
