@@ -149,6 +149,8 @@ class Scraper:
         except Exception as e:
             raise ScraperError(e)
         # print('\n'.join(text.split('\n')[:5]))
+        if len(text)<50:
+            return ''
         print(f"Length of extracted text: {len(text)}")
         return text
 
