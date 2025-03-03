@@ -62,7 +62,7 @@ class Scraper:
         except IndexError as e:
             print(f"Using fallback for story {site}: {e}")
             story = soup.select('#sno-main-content')[0]
-        tags = story.find_all()
+        tags = story.find_all('p')
 
         if self.output_format == 'chunks':
             return [tag.get_text() for tag in tags]
