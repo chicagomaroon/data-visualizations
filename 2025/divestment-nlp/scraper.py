@@ -244,7 +244,7 @@ class Scraper:
             if isinstance(site, float) or ('uchicagogate' in site) or ('http' not in site):
                 # skip if invalid link
                 continue
-            if self.test_archive and not 'campub' in site and self.input_data['Text'].apply(tuple).nunique()>1:
+            if self.test_archive and (not 'campub' in site or self.input_data['Text'].apply(str).nunique()>1):
                 continue
 
             print(f"Scraping site ({i}/{len(self.input_data)}): {site} -----")
