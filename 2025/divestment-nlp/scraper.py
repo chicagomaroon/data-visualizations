@@ -44,7 +44,6 @@ class Scraper:
 
         self.input_data = input_data
         self.input_data['Text'] = None
-        self.input_data['BBOX'] = None
         self.test_archive = test_archive
         if chunks:
             self.output_format = 'chunks'
