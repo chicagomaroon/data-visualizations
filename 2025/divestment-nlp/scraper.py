@@ -268,7 +268,8 @@ class Scraper:
                     print(e)
                     continue
 
-            print(f"This row now has content of length: {len(self.input_data.at[i,'Text'])}")
+            if self.input_data.at[i,'Text'] is not None:
+                print(f"This row now has content of length: {len(self.input_data.at[i,'Text'])}")
 
         print('Done scraping!')
         self.export_results()
