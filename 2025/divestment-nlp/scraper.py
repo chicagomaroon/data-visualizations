@@ -246,7 +246,7 @@ class Scraper:
             print(f"Scraping site ({i}/{len(self.input_data)}): {site} -----")
             if 'campub' in site:  # for archive pieces, read text from images
                 try:
-                    row['Text'] = self.process_archive(site)
+                    self.input_data.at[i,'Text'] = self.process_archive(site)
                 except ScraperError as e:
                     self.export_results()
                     raise e
@@ -256,7 +256,7 @@ class Scraper:
 
             else:  # for modern pieces, they mostly follow the same format
                 try:
-                    row['Text'] = self.process_site(site)
+                    self.input_data.at[i,'Text'] = self.process_site(site)
                 except ScraperError as e:
                     self.export_results()
                     raise e
