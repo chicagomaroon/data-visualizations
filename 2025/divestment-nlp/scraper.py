@@ -113,19 +113,19 @@ class Scraper:
                 page = highlight.previous_sibling
                 print(f"Found image: {page['src']}")
                 img_bytes = requests.get(page['src'])
-                img = Image.open(BytesIO(img_bytes.content))
+
                 # print(img)
 
                 if self.output_format == 'chunks':
-                    output += self.get_bboxes(img)
+                    output += self.get_bboxes(img_bytes)
                 else:
-                    output += [self.get_all_text(img)]
+                    output += [self.get_all_text(img_bytes)]
 
             return output
         except Exception as e:
             print(e)
 
-    def get_all_text(self, img):
+    def get_all_text(self, img_bytes):
         """
         OCR all text from the image of the page using PyTesseract
 
@@ -133,12 +133,13 @@ class Scraper:
         https://stackoverflow.com/questions/43403086/opening-image-file-from-url-with-pil-for-text-recognition-with-pytesseract
         """
 
+        img = Image.open(BytesIO(img_bytes.content))
         text = pytesseract.image_to_string(img)
         # print('\n'.join(text.split('\n')[:5]))
         print(f"Length of extracted text: {len(text)}")
         return text
 
-    def get_bboxes(self, img):
+    def get_bboxes(self, img_bytes):
         """
         Chunks image using bounding boxes (a computer vision technique)
         Get text within each chunk by calling get_all_text()
@@ -147,17 +148,19 @@ class Scraper:
         https://stackoverflow.com/questions/21104664/extract-all-bounding-boxes-using-opencv-python
         """
 
-        cv2_img = cv2.imread(img)
-        gray = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
+        img_array = cv2.imdecode(img_bytes, cv2.IMREAD_GRAYSCALE)
+        # img_array = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
         contours, _ = cv2.findContours(
-            gray, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
+            img_array, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
         )[-2:]
 
         chunks = []
-        for i, contour in enumerate(contours):
+        for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
-            chunk = cv2_img[y:y+h, x:x+w]
-            chunks.append(self.get_all_text(chunk))
+            chunk = img_array[y:y+h, x:x+w]
+            _, chunk_bytes = cv2.imencode('.jpg', chunk)
+            chunk_text = self.get_all_text(chunk_bytes)
+            chunks.append(chunk_text)
 
         # cv2.waitKey(0)
         return chunks
