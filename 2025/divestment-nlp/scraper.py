@@ -7,9 +7,9 @@ from datetime import date
 from io import BytesIO
 
 import cv2
+import numpy as np
 import pytesseract
 import requests
-import numpy as np
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from requests_html import HTMLSession
@@ -98,9 +98,7 @@ class Scraper:
         highlights = soup.find_all('div', class_='BookReaderSearchHilite')
 
         if not len(highlights):
-            print(
-                f"No highlights found on page. The length of the soup is {len(soup)}",
-            )
+            print(f"No highlights found on page. Length of soup {len(soup)}")
             return
 
         output = []
@@ -131,8 +129,6 @@ class Scraper:
         https://stackoverflow.com/questions/43403086/opening-image-file-from-url-with-pil-for-text-recognition-with-pytesseract
         """
 
-        img = Image.open(BytesIO(img_bytes.content))
-        text = pytesseract.image_to_string(img)
         # print('\n'.join(text.split('\n')[:5]))
         print(f"Length of extracted text: {len(text)}")
         return text
@@ -194,22 +190,35 @@ class Scraper:
             if row['Text']:
                 # skip if there is information in the row already (if rerun)
                 continue
-            site = row['Link']
             if isinstance(site, float) or ('uchicagogate' in site) or ('http' not in site):
                 # skip if invalid link
                 continue
             if self.test_archive and not 'campub' in site:
                 continue
 
-
             print(
                 f"Scraping: {site} ({i}/{len(self.df)})----------------------",
             )
+            print(f"Scraping site ({i}/{len(self.input_data)}): {site} -----")
             if 'campub' in site:  # for archive pieces, read text from images
-                row['Text'] = self.process_archive(site)
+                try:
+                    row['Text'] = self.process_archive(site)
+                except ScraperError as e:
+                    self.export_results()
+                    raise e
+                except Exception as e:
+                    print(e)
+                    continue
 
             else:  # for modern pieces, they mostly follow the same format
-                row['Text'] = self.process_site(site)
+                try:
+                    row['Text'] = self.process_site(site)
+                except ScraperError as e:
+                    self.export_results()
+                    raise e
+                except Exception as e:
+                    print(e)
+                    continue
 
         print('Done scraping!')
         self.export_results()
