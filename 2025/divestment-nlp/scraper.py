@@ -25,7 +25,7 @@ class Scraper:
         Chunks are useful for further text analysis within documents
         """
 
-        if not input_data['Link']:
+        if 'Link' not in input_data.columns:
             print(
                 f"Please ensure your input file has a column named Link. None found in {input_data.columns}",
             )
