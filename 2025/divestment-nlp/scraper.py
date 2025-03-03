@@ -60,7 +60,11 @@ class Scraper:
             print(f"Using fallback for story {site}: {e}")
             story = soup.select('#sno-main-content')[0]
         tags = story.find_all()
-        return story.get_text(), tags
+
+        if self.output_format=='chunks':
+            return [tag.get_text() for tag in tags]
+        else:
+            return story.get_text()
 
     def cook_soup(self, site):
         """
