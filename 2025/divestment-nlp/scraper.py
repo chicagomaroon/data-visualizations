@@ -227,7 +227,7 @@ class Scraper:
             )
         except Exception as e:
             with open(f'log-{str(date.today())}.txt', 'w', encoding='utf-8') as f:
-                f.write('\n\n\n'.join(self.input_data['Text'].values))
+                f.write('\n\n\n'.join(self.input_data['Text'].apply(str).values))
             print(e)
 
     def process_all(self):
