@@ -166,21 +166,21 @@ class Scraper:
                 cv2_img, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
             # img = Image.fromarray(cv2_img2)
             # img.show()
-            rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (12, 20))
-            cv2_img31 = cv2.dilate(cv2_img2, rect_kernel, iterations=1)
-            rect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 12))
-            cv2_img32 = cv2.dilate(cv2_img2, rect_kernel, iterations=1)
-            cv2_img4 = cv2_img31+cv2_img32
-            # _,cv2_img4=cv2.threshold(cv2_img3, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
-            # img = Image.fromarray(cv2_img4)
-            # img.show()
-
         except Exception as e:
             print(f"Could not decode image with data {img_bytes}")
             raise ScraperError(e)
 
+        # pass filters for better processing (higher level bboxes)
+        hrect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (12, 20))
+        hfilter = cv2.dilate(cv2_img2, hrect_kernel, iterations=1)
+        vrect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 12))
+        vfilter = cv2.dilate(cv2_img2, vrect_kernel, iterations=1)
+        dilated_img = hfilter+vfilter
+        # _,dilated_img=cv2.threshold(cv2_img3, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+        # img = Image.fromarray(dilated_img)
+        # img.show()
         contours, _ = cv2.findContours(
-            cv2_img4, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
+            dilated_img, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
 
         chunks = []
         for i, contour in enumerate(contours):
