@@ -19,7 +19,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\notka\AppData\Local\Programs\
 
 class Scraper:
 
-    def __init__(self, input_data, chunks=False):
+    def __init__(self, input_data, chunks=False, test_archive=False):
         """
         Create a Scraper object and decide if we are outputting just the full text or chunks
         Chunks are useful for further text analysis within documents
@@ -33,6 +33,7 @@ class Scraper:
 
         self.input_data = input_data
         self.input_data['Text'] = None
+        self.test_archive = test_archive
         if chunks:
             self.output_format = 'chunks'
         else:
@@ -191,9 +192,9 @@ class Scraper:
             if isinstance(site, float) or ('uchicagogate' in site) or ('http' not in site):
                 # skip if invalid link
                 continue
+            if self.test_archive and not 'campub' in site:
+                continue
 
-            # if i<45:
-            #     continue
 
             print(
                 f"Scraping: {site} ({i}/{len(self.df)})----------------------",

@@ -10,11 +10,17 @@ from scraper import Scraper
 
 def main():
 
+    if 'test_archive' in sys.argv:
+        test_archive = True
+    else:
+        test_archive = False
+
     if sys.argv[0] == 'rerun':
         data = pd.read_excel('scrape-2025-02-27.xlsx', index_col=None)
         scraper = Scraper(
             input_data=data,
             chunks=True,
+            test_archive=test_archive,
         )
     elif len(sys.argv) == 1:
         data = pd.read_csv('data.csv')
@@ -36,6 +42,7 @@ def main():
         scraper = Scraper(
             input_data=data,
             chunks=True,
+            test_archive=test_archive,
         )
     else:
         print('Invalid input, try again')
