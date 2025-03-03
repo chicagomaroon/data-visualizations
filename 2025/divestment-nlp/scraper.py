@@ -9,6 +9,7 @@ from io import BytesIO
 import cv2
 import pytesseract
 import requests
+import numpy as np
 from bs4 import BeautifulSoup as bs
 from PIL import Image
 from requests_html import HTMLSession
@@ -102,28 +103,25 @@ class Scraper:
             )
             return
 
-        try:
+        output = []
 
-            output = []
+        # print(soup)
+        # print(soup.find('div', id_='BookReader'))
+        for highlight in highlights:
+            print(highlight)
+            page = highlight.previous_sibling
+            print(f"Found image: {page['src']}")
+            img = requests.get(page['src']).content
+            img_bytes = img_bytes = Image.open(BytesIO(img))
 
-            # print(soup)
-            # print(soup.find('div', id_='BookReader'))
-            for highlight in highlights:
-                print(highlight)
-                page = highlight.previous_sibling
-                print(f"Found image: {page['src']}")
-                img_bytes = requests.get(page['src'])
+            # print(img)
 
-                # print(img)
+            if self.output_format == 'chunks':
+                output += self.get_bboxes(img_bytes)
+            else:
+                output += [self.get_all_text(img_bytes)]
 
-                if self.output_format == 'chunks':
-                    output += self.get_bboxes(img_bytes)
-                else:
-                    output += [self.get_all_text(img_bytes)]
-
-            return output
-        except Exception as e:
-            print(e)
+        return output
 
     def get_all_text(self, img_bytes):
         """
@@ -148,8 +146,13 @@ class Scraper:
         https://stackoverflow.com/questions/21104664/extract-all-bounding-boxes-using-opencv-python
         """
 
-        img_array = cv2.imdecode(img_bytes, cv2.IMREAD_GRAYSCALE)
-        # img_array = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
+        try:
+            img_array = np.frombuffer(img_bytes, np.uint8)
+            cv2_img = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
+            # img_array = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
+
+        except Exception as e:
+            print(f"Could not decode image with data {img_bytes}")
         contours, _ = cv2.findContours(
             img_array, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
         )[-2:]
