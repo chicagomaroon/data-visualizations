@@ -7,7 +7,7 @@
 from __future__ import annotations
 
 import re
-from transformers import BertTokenizer, BertModel
+from sentence_transformers import SentenceTransformer
 import pandas as pd
 import sklearn
 
@@ -21,23 +21,24 @@ df = pd.read_excel('scrape.xlsx', index_col=None)
 
 #%% get BERT embeddings
 # These will be used as the node features in the graph
+# Using Sentence-BERT as it has semantically meaningful and comparable embeddings https://sbert.net/
 
-# Load BERT tokenizer and model
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertModel.from_pretrained('bert-base-uncased')
+# 1. Load a pretrained Sentence Transformer model
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
-# Tokenize and encode text using batch_encode_plus
-# The function returns a dictionary containing the token IDs and attention masks
-encoding = tokenizer.batch_encode_plus( [text],# List of input texts
-    padding=True,              # Pad to the maximum sequence length
-    truncation=True,           # Truncate to the maximum sequence length if necessary
-    return_tensors='pt',      # Return PyTorch tensors
-    add_special_tokens=True    # Add special tokens CLS and SEP
-)
+# 2. Calculate embeddings by calling model.encode()
+embeddings = model.encode(df['Text'])
+print(embeddings.shape)
+# [3, 384]
+
+# pd.DataFrame({'embeddings':embeddings}).to_excel('embeddings.xlsx')
 
 #%% calculate embedding cosine weights 
 # Cosine similarity of BERT embeddings is used as edge weights
 
+# 3. Calculate the embedding similarities
+similarities = model.similarity(embeddings, embeddings)
+print(similarities)
 
 #%% calculate bbox weights
 
