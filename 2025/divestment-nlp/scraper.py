@@ -133,6 +133,8 @@ class Scraper:
             else:
                 output += [self.get_all_text(img_bytes)]
 
+        print(f"Output created with size: {len(output)}")
+
         return output
 
     def get_all_text(self, img_bytes):
@@ -242,7 +244,7 @@ class Scraper:
             if isinstance(site, float) or ('uchicagogate' in site) or ('http' not in site):
                 # skip if invalid link
                 continue
-            if self.test_archive and not 'campub' in site:
+            if self.test_archive and not 'campub' in site and self.input_data['Text'].apply(tuple).nunique()>1:
                 continue
 
             print(f"Scraping site ({i}/{len(self.input_data)}): {site} -----")
@@ -265,6 +267,8 @@ class Scraper:
                 except Exception as e:
                     print(e)
                     continue
+
+            print(f"This row now has content of length: {len(self.input_data.at[i,'Text'])}")
 
         print('Done scraping!')
         self.export_results()
