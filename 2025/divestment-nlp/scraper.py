@@ -21,6 +21,9 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Users\notka\AppData\Local\Programs\
 class ScraperError(Exception):
     """
     In cases that will affect all rows, stop the script
+
+    Sources:
+    https://stackoverflow.com/questions/1319615/proper-way-to-declare-custom-exceptions-in-modern-python
     """
     pass
 
@@ -156,6 +159,8 @@ class Scraper:
 
         Sources:
         https://stackoverflow.com/questions/21104664/extract-all-bounding-boxes-using-opencv-python
+        https://stackoverflow.com/questions/64629197/why-numpy-tobytes-method-return-not-only-hex-digits-but-also-additional-chara
+        https://www.geeksforgeeks.org/text-detection-and-extraction-using-opencv-and-ocr/
         """
 
         try:
@@ -236,9 +241,6 @@ class Scraper:
             if self.test_archive and not 'campub' in site:
                 continue
 
-            print(
-                f"Scraping: {site} ({i}/{len(self.df)})----------------------",
-            )
             print(f"Scraping site ({i}/{len(self.input_data)}): {site} -----")
             if 'campub' in site:  # for archive pieces, read text from images
                 try:
