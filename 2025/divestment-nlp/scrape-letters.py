@@ -16,7 +16,7 @@ def main():
         test_archive = False
 
     if sys.argv[0] == 'rerun':
-        data = pd.read_excel('scrape-2025-02-27.xlsx', index_col=None)
+        data = pd.read_excel('scrape-2025-03-02.xlsx', index_col=None)
         scraper = Scraper(
             input_data=data,
             chunks=True,
@@ -48,7 +48,7 @@ def main():
         print('Invalid input, try again')
         return
 
-    print(f"Initialized scraper with data\n{data}")
+    print(f"Initialized scraper with data\n{data.head()}")
     scraper.process_all()
 
 # %% main
