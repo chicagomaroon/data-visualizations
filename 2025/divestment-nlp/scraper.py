@@ -121,7 +121,7 @@ class Scraper:
             page = highlight.previous_sibling
             print(f"Found image: {page['src']}")
             img = requests.get(page['src']).content
-            img_bytes = img_bytes = Image.open(BytesIO(img))
+            img_bytes = BytesIO(img)
 
             # print(img)
 
@@ -141,7 +141,8 @@ class Scraper:
         """
 
         try:
-            text = pytesseract.image_to_string(img_bytes)
+            jpg = Image.open(img_bytes)
+            text = pytesseract.image_to_string(jpg)
         except Exception as e:
             raise ScraperError(e)
         # print('\n'.join(text.split('\n')[:5]))
@@ -158,7 +159,7 @@ class Scraper:
         """
 
         try:
-            img_array = np.frombuffer(img_bytes, np.uint8)
+            img_array = np.frombuffer(img_bytes.read(), np.uint8)
             cv2_img = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
             # img_array = cv2.cvtColor(cv2_img, cv2.COLOR_BGR2GRAY)
 
@@ -174,9 +175,18 @@ class Scraper:
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
             chunk = cv2_img[y:y+h, x:x+w]
-            _, chunk_bytes = cv2.imencode('.jpg', chunk)
-            chunk_text = self.get_all_text(chunk_bytes)
-            chunks.append(chunk_text)
+                try:
+                    # chunk_bytes = chunk_array.tobytes()
+                    # chunk_utf8 = chunk_bytes.decode('utf-16-be').encode('utf-8') 
+                    chunk_bytes = BytesIO(chunk_array)
+                    chunk_text = self.get_all_text(chunk_bytes)
+                except Exception as e:
+                    raise ScraperError(e)
+                chunks.append(chunk_text)
+
+                if i==0:
+                    img = Image.fromarray(chunk)
+                    img.show()
 
         # cv2.waitKey(0)
         return chunks
