@@ -150,13 +150,13 @@ class Scraper:
         except Exception as e:
             print(f"Could not decode image with data {img_bytes}")
         contours, _ = cv2.findContours(
-            img_array, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
+            cv2_img, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE,
         )[-2:]
 
         chunks = []
         for contour in contours:
             x, y, w, h = cv2.boundingRect(contour)
-            chunk = img_array[y:y+h, x:x+w]
+            chunk = cv2_img[y:y+h, x:x+w]
             _, chunk_bytes = cv2.imencode('.jpg', chunk)
             chunk_text = self.get_all_text(chunk_bytes)
             chunks.append(chunk_text)
