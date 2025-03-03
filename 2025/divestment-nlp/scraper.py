@@ -211,7 +211,7 @@ class Scraper:
                     img.show()
 
         # cv2.waitKey(0)
-        return chunks
+        return [x for x in chunks if len(x)]
 
     def export_results(self):
         """
