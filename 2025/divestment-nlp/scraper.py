@@ -121,9 +121,14 @@ class Scraper:
         # print(soup)
         # print(soup.find('div', id_='BookReader'))
         for highlight in highlights:
-            print(highlight)
-            page = highlight.previous_sibling
-            print(f"Found image: {page['src']}")
+            try:
+                print(highlight)
+                page = highlight.previous_sibling
+                print(f"Found image: {page['src']}")
+            except KeyError as e:
+                print(f"Previous sibling is also highlight: {page}\n{e}")
+                continue
+            
             img = requests.get(page['src']).content
             img_bytes = BytesIO(img)
 
