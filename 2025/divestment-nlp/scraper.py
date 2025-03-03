@@ -167,13 +167,15 @@ class Scraper:
         """
 
         # expand the column of lists so that there is 1 row per chunk
-        self.df = self.df.explode('Text')
+        self.input_data = self.input_data.explode('Text')
 
         try:
-            self.df.to_excel(f'scrape-{str(date.today())}.xlsx', index=False)
+            self.input_data.to_excel(
+                f'scrape-{str(date.today())}.xlsx', index=False,
+            )
         except Exception as e:
             with open(f'log-{str(date.today())}.txt', 'w', encoding='utf-8') as f:
-                f.write('\n\n\n'.join(self.df['Text'].values))
+                f.write('\n\n\n'.join(self.input_data['Text'].values))
             print(e)
 
     def process_all(self):
@@ -181,7 +183,7 @@ class Scraper:
         Loop through all the URLs listed in the input file
         """
 
-        for i, row in self.df.iterrows():
+        for i, row in self.input_data.iterrows():
             if row['Text']:
                 # skip if there is information in the row already (if rerun)
                 continue
