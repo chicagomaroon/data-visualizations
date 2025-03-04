@@ -11,6 +11,8 @@ df = df.loc[[not (isinstance(x,float) or len(re.sub('[^A-Za-z]','',x))<80) for x
 df['BBOX'] = [re.split(' !BBOX! ',x)[0] if 'BBOX' in x else '' for x in df['Text']]
 df['Text'] = [re.split(' !BBOX! ',x)[1] if 'BBOX' in x else x for x in df['Text']]
 
+df = df.drop_duplicates('Text')
+
 df.to_excel('scrape.xlsx',index=None)
 
 # def unpack(row):
