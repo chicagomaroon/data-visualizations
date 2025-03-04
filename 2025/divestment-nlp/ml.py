@@ -140,6 +140,6 @@ tsne = TSNE(
     n_components=2, 
     learning_rate='auto',
     init='random', perplexity=3
-).fit_transform(similarities)
+).fit_transform(sc.affinity_matrix_)
 
 plt.scatter(tsne[:,0],tsne[:,1],c=sc.labels_)
