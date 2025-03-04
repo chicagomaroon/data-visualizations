@@ -33,13 +33,19 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 4. Download node which will allow you to run Javascript, the programming language we use to write our visualizations in:
 
     - [node.js](https://nodejs.org/en) `v20.9.0`
-        - To install the correct version, open the terminal and run:
-            1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash` . If you are getting error "should not accept aliases with slashes" (likely if you are on Windows) try using `nvm-setup.exe` from the [Windows release site](https://github.com/coreybutler/nvm-windows/releases).
+        - For Mac or Linux:
+            1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash`.
             2. Install the correct version of Node `nvm install 20.9.0`. If you are getting error of nvm not recognized then run `source ~/.nvm/nvm.sh` and then run above again.
             3. Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`
             4. Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`
-
-5. After you have cloned the repo and downloaded Node, go to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once
+            5. After you have cloned the repo and downloaded Node, go to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once.
+        - For Windows:
+            - Install and run `nvm-setup.exe` from the [NVM for Windows release site](https://github.com/coreybutler/nvm-windows/releases).
+            - Search for `git bash` in your applications and open it. If you don't have it, install it from the [Git for Windows release site](https://git-scm.com/downloads/win).
+            - In this terminal, run the command `nvm install 20.9.0`
+            - Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`
+            - Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`
+            - After you have cloned the repo and downloaded Node, navigate to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once.
 
 ### Tools and Skills to Review
 
@@ -51,13 +57,7 @@ With that being said, use the resources below as a starting place and reference 
     -   The best place to start is to find a previously created visual from the Maroon Team by opening [https://chicagomaroon.github.io/data-visualizations/example-graphs](./example-graphs.html) from your local repository. This will have example charts and links to the accompanying code to review. When creating a data visualization, finding a chart similar to what you’re trying to develop and working off the existing JavaScript code linked.
     -   If there is not an example similar to what you want to create, review the [`Demos` tab](https://www.highcharts.com/demo/) on the Highcharts website and review the code. You can find the code for that specific visual under the `View Code` or `Copy JS code` tabs under the visualization.
     -   Continue to [Build Process for a Visualization](#build-process-for-a-visualization)
--   Other tools include:
-    -   Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
-    -   R and Python; For more data intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
-    -   For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps.
-    -   For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Ask Austin if you are interested in learning more. (More resources TK).
-
-See the [resources][resources/] folder for additional material.
+-   [Additional resources](#additional-resources)
 
 ## Build Process for a Visualization
 
@@ -133,3 +133,28 @@ Color palettes are based off the [UChicago style guide](https://news.uchicago.ed
 <img src="static/primary-colors.png" alt="UChicago primary colors."/>
 
 <img src="static/secondary-colors.png" alt="UChicago secondary colors."/>
+
+## Additional Resources
+
+### Tools
+
+-   Google Sheets: Often the best tool to work with csv's or any tabular data is Google Sheets. You can review, filter, and pivot the data as well as make draft visuals
+-   R and Python: For more data-intensive projects, you may want to consider using R or Python. See examples in the [data-analysis](https://github.com/chicagomaroon/data-visualizations/tree/main/data-analysis) folder.
+-   For mapping, we have used [Leaflet](https://leafletjs.com/), an open-source JavaScript library, for mobile-friendly interactive maps. You can also use GeoJSON.io to draw on a map and get the coordinates as a .geojson file.
+-   For more customizable, interactive visualizations, [D3.js](https://observablehq.com/@d3/gallery?utm_source=d3js-org&utm_medium=nav&utm_campaign=try-observable) has become a popular package. There is a steep learning curve for this tool but gives you total control over your visuals. Austin developed a [D3 training](https://observablehq.com/d/c93d3eee860282c0) based on James Turk's Data Visualization course. Recommended prerequisites include HTML/CSS.
+-   You may be interested in creating more accessible visuals for a broad audience. One option is to start with this short [introduction to accessibility on the web](https://github.com/notkarenyi/accessibility-demo).
+
+### Training
+
+See the [resources][resources/] folder for additional training materials.
+
+### Inspiration
+
+-   [DataVis Gallery: Timelines](https://www.datavis.ca/gallery/timelines.php)
+-   [Information is Beautiful](https://www.informationisbeautifulawards.com/showcase?page=1&type=awards)
+-   [Interactive Journalism](https://github.com/wbkd/awesome-interactive-journalism)
+
+### Organizations
+
+-   [IRE (Investigative Reporters and Editors)](https://www.ire.org/)
+-   [NewsNerdery (Slack group)](https://newsnerdery.org/)
