@@ -33,13 +33,19 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
 4. Download node which will allow you to run Javascript, the programming language we use to write our visualizations in:
 
     - [node.js](https://nodejs.org/en) `v20.9.0`
-        - To install the correct version, open the terminal and run:
-            1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash` . If you are getting error "should not accept aliases with slashes" (likely if you are on Windows) try using `nvm-setup.exe` from the [Windows release site](https://github.com/coreybutler/nvm-windows/releases).
+        - For Mac or Linux:
+            1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash`.
             2. Install the correct version of Node `nvm install 20.9.0`. If you are getting error of nvm not recognized then run `source ~/.nvm/nvm.sh` and then run above again.
             3. Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`
             4. Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`
-
-5. After you have cloned the repo and downloaded Node, go to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once
+            5. After you have cloned the repo and downloaded Node, go to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once.
+        - For Windows:
+            - Install and run `nvm-setup.exe` from the [NVM for Windows release site](https://github.com/coreybutler/nvm-windows/releases).
+            - Search for `git bash` in your applications and open it. If you don't have it, install it from the [Git for Windows release site](https://git-scm.com/downloads/win).
+            - In this terminal, run the command `nvm install 20.9.0`
+            - Set this version as the default by running `nvm alias default 20.9.0` and `nvm use 20.9.0`
+            - Confirm the correct version is installed by running `node -v`. This should return `v20.9.0`
+            - After you have cloned the repo and downloaded Node, navigate to the base folder of the `data-visualizations` repository and run the command `npm ci` to install all package dependencies. You will only need to do this once.
 
 ### Tools and Skills to Review
 
