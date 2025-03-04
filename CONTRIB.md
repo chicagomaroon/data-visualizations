@@ -144,11 +144,11 @@ See the [resources][resources/] folder for additional training materials.
 
 ### Inspiration
 
-* [DataVis Gallery: Timelines](https://www.datavis.ca/gallery/timelines.php)
-* [Information is Beautiful](https://www.informationisbeautifulawards.com/showcase?page=1&type=awards)
-* [Interactive Journalism](https://github.com/wbkd/awesome-interactive-journalism)
+-   [DataVis Gallery: Timelines](https://www.datavis.ca/gallery/timelines.php)
+-   [Information is Beautiful](https://www.informationisbeautifulawards.com/showcase?page=1&type=awards)
+-   [Interactive Journalism](https://github.com/wbkd/awesome-interactive-journalism)
 
 ### Organizations
 
-* [IRE (Investigative Reporters and Editors)](https://www.ire.org/)
-* [NewsNerdery (Slack group)](https://newsnerdery.org/)
+-   [IRE (Investigative Reporters and Editors)](https://www.ire.org/)
+-   [NewsNerdery (Slack group)](https://newsnerdery.org/)
