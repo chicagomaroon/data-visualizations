@@ -9,7 +9,11 @@ from __future__ import annotations
 import re
 from sentence_transformers import SentenceTransformer
 import pandas as pd
-import sklearn
+from sklearn.cluster import SpectralClustering
+import igraph as ig
+import numpy as np
+from sklearn.metrics import silhouette_score
+from sklearn.cluster import KMeans
 
 # with open('log-021825.txt',encoding='utf-8') as f:
 #     txt = f.read()
@@ -53,6 +57,16 @@ print(similarities)
 
 #%% replication: use spectral clustering from sklearn
 
+sc = SpectralClustering(
+    n_clusters=20, # ~5 arguments, plus 3 catchall
+    affinity='precomputed', 
+    n_init=100,
+    assign_labels='discretize',
+    verbose=True
+)
+
+df['Args']=sc.fit_predict(similarities)  
+
 #%% experiment: use GNN
 
 # PyG package which enables use of message passing, normalization, etc.
@@ -60,7 +74,19 @@ print(similarities)
 
 #%% comparison: use k-means clustering from sklearn
 
-#%% quantitative evaluation: diversity, cohesion, 
+kmeans = KMeans(
+    n_clusters=20,
+    max_iter=100,
+    n_init=1,
+    random_state=1,
+).fit(similarities)
+
+#%% quantitative evaluation: silhouette score (cohesion + separation)
+
+labels = sc.labels_
+silhouette_score(similarities, labels, metric='euclidean')
+
+
 
 #%% qualitative evaluation
 
