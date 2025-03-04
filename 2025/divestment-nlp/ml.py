@@ -104,7 +104,9 @@ sc = SpectralClustering(
 
 # how do I incorporate node features?
 # this constructs Laplacian and applies kernel
-df['Args'] = sc.fit_predict(g)
+df['Args'] = sc.fit_predict(
+    similarities
+)
 
 # %% experiment: use GNN
 
