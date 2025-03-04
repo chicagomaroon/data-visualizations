@@ -8,6 +8,7 @@ import igraph as ig
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from sklearn.model_selection import train_test_split
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from sklearn.cluster import SpectralClustering
@@ -98,21 +99,35 @@ g.vs['metadata'] = metadata
 
 # %% replication: use spectral clustering from sklearn
 
-# TODO: tune?
-sc = SpectralClustering(
-    n_clusters=20,  # ~5 arguments, plus 3 catchall
-    affinity='precomputed',
-    # eigen_solver='arpack',
-    n_init=100,
-    assign_labels='discretize',
-    verbose=True,
-)
+def train_sc(n):
+    sc = SpectralClustering(
+        n_clusters=n,
+        affinity='precomputed',
+        # eigen_solver='arpack',
+        n_init=100,
+        assign_labels='discretize',
+        verbose=True,
+    )
+    # TODO: how do I incorporate node features?
+    # this constructs Laplacian and applies kernel
+    df['Args'] = sc.fit_predict(
+        similarities,
+    )
+    return sc.labels_, sc.affinity_matrix_
 
-# TODO: how do I incorporate node features?
-# this constructs Laplacian and applies kernel
-df['Args'] = sc.fit_predict(
-    similarities,
-)
+# TODO: cross validation - not sure how to do unsupervised with sklearn
+scores = []
+train_test_split
+
+for n in range(4,15):
+    labels, _ = train_sc(n)
+    score = silhouette_score(similarities, labels, metric='euclidean')
+    scores.append(score)
+
+best = np.argmax(np.asarray(scores)) + 4
+print(best)
+
+sc_labels,sc_affinity = train_sc(best)
 
 # %% experiment: use GNN
 
