@@ -1,0 +1,82 @@
+html,
+body {
+    margin: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin: 0;
+}
+
+#sidebar .subheader {
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+#sidebar {
+    position: absolute;
+    width: auto;
+    max-width: 325px;
+    top: 25px;
+    height: fit-content;
+    border-radius: 10px;
+    left: 25px;
+    background-color: #420000;
+    opacity: 0.9;
+    color: white;
+    padding: 20px;
+    font-family: 'Georgia', sans-serif;
+}
+
+input[type='range'] {
+    accent-color: #ffa319;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    background-color: #ffa319;
+}
+
+.popup-content {
+    font-family: 'Georgia, sans-serif';
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.popup-title {
+    font-size: 18px;
+    margin: 0;
+    color: #800000;
+}
+
+.popup-date,
+.popup-type {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        width: none;
+
+        max-width: none;
+        left: 5px;
+        top: 5;
+        bottom: 5px;
+    }
+
+    #sidebar h1 {
+        font-size: 16px;
+    }
+
+    #sidebar .subheader {
+        font-size: 10px;
+    }
+}
