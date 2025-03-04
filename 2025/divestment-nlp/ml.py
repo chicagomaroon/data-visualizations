@@ -46,8 +46,11 @@ similarities = model.similarity(embeddings, embeddings)
 # https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering
 # apply (normalized) heat kernel
 # negative similarities are not solvable
-beta = 1  # tune?
-similarities = np.exp(-beta * similarities / similarities.std())
+# shouldn't I apply kernel after creating Laplacian? but Laplacian creator needs positive values only
+def heat_kernel(A,beta = 1): # tune?
+    return np.exp(-beta * A / A.std())
+
+similarities = heat_kernel(similarities)
 print(similarities)
 # shouldn't the diagonal be 1?
 # why is this pushing higher values lower?
