@@ -1,66 +1,71 @@
-//https://www.nytimes.com/interactive/2025/02/13/us/doc-annotation-memo-from-bove.html
+// inspired by https://www.nytimes.com/interactive/2025/02/13/us/doc-annotation-memo-from-bove.html
 // todo
-// overlapping ones
-// why is mobile so weirds?
 
+// -------------- constants --------------
 let active_highlight = document.querySelector('.highlight.active');
 let next_highlight;
 let config;
 let currentHighlightIndex = 1;
+let isMobile = window.innerWidth < 1075;
+let mobileOffset = isMobile ? 30 : 0;
 
-document.querySelectorAll('.highlight').forEach((highlight) => {
-    highlight.addEventListener('click', (e) => {
-        if (highlight.classList.contains('active')) {
-            highlight.classList.remove('active');
-        } else {
-            highlight.classList.add('active');
-        }
-    });
-});
+// isMobile = true;
 
-for (let i = 1; i < 18; i++) {
-    new Waypoint({
-        element: document.querySelector(`#highlight-${i}`),
-        handler: function (direction) {
-            if (direction == 'down') {
-                if (i != 1) {
-                    // make active
-                    console.log(`highlight-${i}`);
-                    next_highlight = document.querySelector(`#highlight-${i}`);
-                    activateNextHighlight(next_highlight);
-                    currentHighlightIndex = parseInt(i);
+if (isMobile) {
+    //change logo to black
+    document.querySelector('#maroon-logo').src =
+        'static/images/transparent-nameplate-small.png';
+}
+// -------------- waypoints --------------
 
-                    updateAnnotationCard(config[i]);
-                }
-            } else {
-                if (i == 1) {
-                    // make active
-                    console.log(`highlight-${i}`);
-                    next_highlight = document.querySelector(`#highlight-${i}`);
-                    activateNextHighlight(next_highlight);
-                    currentHighlightIndex = parseInt(i);
+function createWaypoint() {
+    for (let i = 1; i < 18; i++) {
+        new Waypoint({
+            element: document.querySelector(`#highlight-${i}`),
+            handler: function (direction) {
+                if (direction == 'down') {
+                    if (i != 1) {
+                        // make active
+                        next_highlight = document.querySelector(
+                            `#highlight-${i}`
+                        );
+                        activateNextHighlight(next_highlight);
+                        currentHighlightIndex = parseInt(i);
+
+                        updateAnnotationCard(config[i]);
+                    }
                 } else {
-                    console.log(`highlight-${i - 1}`);
-                    next_highlight = document.querySelector(
-                        `#highlight-${i - 1}`
-                    );
-                    activateNextHighlight(next_highlight);
+                    if (i == 1) {
+                        // make active
+                        next_highlight = document.querySelector(
+                            `#highlight-${i}`
+                        );
+                        activateNextHighlight(next_highlight);
+                        currentHighlightIndex = parseInt(i);
+                    } else {
+                        next_highlight = document.querySelector(
+                            `#highlight-${i - 1}`
+                        );
+                        activateNextHighlight(next_highlight);
 
-                    updateAnnotationCard(config[i - 1]);
+                        updateAnnotationCard(config[i - 1]);
+                    }
                 }
-            }
-        },
-        offset: '45%'
-    });
+            },
+            offset: offset(i)
+        });
+    }
 }
 
-// function to deactive current highlight and active next highlight
-function activateNextHighlight(next_highlight) {
-    if (active_highlight.classList.contains('active')) {
-        active_highlight.classList.remove('active');
+// ------ functions ---------
+
+function offset(i) {
+    if (i <= 3) {
+        value = 55 - mobileOffset;
+    } else {
+        value = 45 - mobileOffset;
     }
-    active_highlight = next_highlight;
-    active_highlight.classList.add('active');
+    return String(value) + '%';
 }
 
 function updateAnnotationCard(newText) {
@@ -87,10 +92,57 @@ function updateAnnotationCard(newText) {
         }, 200);
     }, 200);
 }
+
+// function to deactive current highlight and active next highlight
+function activateNextHighlight(next_highlight) {
+    if (active_highlight.classList.contains('active')) {
+        active_highlight.classList.remove('active');
+    }
+    active_highlight = next_highlight;
+    active_highlight.classList.add('active');
+}
+
+// -------- event listeners ---------
+
+function addEventListeners() {
+    document.querySelectorAll('.highlight').forEach((highlight) => {
+        highlight.addEventListener('click', (e) => {
+            if (highlight.classList.contains('active')) {
+                highlight.classList.remove('active');
+            } else {
+                highlight.classList.add('active');
+            }
+        });
+    });
+
+    // Add event listener for keydown events to switch between highlights
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            console.log(currentHighlightIndex);
+            currentHighlightIndex++;
+            const nextHighlight = document.querySelector(
+                `#highlight-${currentHighlightIndex}`
+            );
+            activateNextHighlight(nextHighlight);
+            updateAnnotationCard(config[currentHighlightIndex]);
+        } else if (event.key === 'ArrowLeft') {
+            currentHighlightIndex--;
+            const prevHighlight = document.querySelector(
+                `#highlight-${currentHighlightIndex}`
+            );
+            activateNextHighlight(prevHighlight);
+            updateAnnotationCard(config[currentHighlightIndex]);
+        }
+    });
+}
+
+// ------- init --------
+
 function init() {
     config = JSON.parse(sessionStorage.getItem('config'));
-    console.log(config);
     document.querySelector('.annotation-card-text').innerHTML = config[1];
+    createWaypoint();
+    addEventListeners();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -99,23 +151,4 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     };
     init();
-});
-// Add event listener for keydown events to switch between highlights
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') {
-        console.log(currentHighlightIndex);
-        currentHighlightIndex++;
-        const nextHighlight = document.querySelector(
-            `#highlight-${currentHighlightIndex}`
-        );
-        activateNextHighlight(nextHighlight);
-        updateAnnotationCard(config[currentHighlightIndex]);
-    } else if (event.key === 'ArrowLeft') {
-        currentHighlightIndex--;
-        const prevHighlight = document.querySelector(
-            `#highlight-${currentHighlightIndex}`
-        );
-        activateNextHighlight(prevHighlight);
-        updateAnnotationCard(config[currentHighlightIndex]);
-    }
 });
