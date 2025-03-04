@@ -5,17 +5,14 @@
 from __future__ import annotations
 
 import igraph as ig
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from sklearn.cluster import SpectralClustering
-from sklearn.metrics import silhouette_score
 from sklearn.manifold import TSNE
-
-# with open('log-021825.txt',encoding='utf-8') as f:
-#     txt = f.read()
+from sklearn.metrics import silhouette_score
 
 # %% read data
 # Each row is a chunk
@@ -46,14 +43,16 @@ similarities = model.similarity(embeddings, embeddings)
 # https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering
 # apply (normalized) heat kernel
 # negative similarities are not solvable
-# shouldn't I apply kernel after creating Laplacian? but Laplacian creator needs positive values only
-def heat_kernel(A,beta = 1): # tune?
+# TODO: shouldn't I apply kernel after creating Laplacian? but Laplacian creator needs positive values only
+
+
+def heat_kernel(A, beta=1):  # tune?
     return np.exp(-beta * A / A.std())
+
 
 similarities = heat_kernel(similarities)
 print(similarities)
-# shouldn't the diagonal be 1?
-# why is this pushing higher values lower?
+# TODO: shouldn't the diagonal be 1? why is this pushing higher values lower?
 
 # similarities[similarities < .1] = 0
 
@@ -76,16 +75,13 @@ print(similarities)
 # print(np.count_nonzero(a))
 
 g = ig.Graph.Weighted_Adjacency(
-    similarities.numpy()
+    similarities.numpy(),
 )
 
 # add node features
 # https://stackoverflow.com/questions/36713082/add-vertex-attributes-to-a-weighted-igraph-graph-in-python
 g.vs['link'] = df['Link']
 g.vs['title'] = df['Source']
-
-# shouldn't the diagonal be 1?
-# why is this pushing higher values lower?
 
 # ig.Graph(
 #     n=df['Text'],
@@ -94,18 +90,20 @@ g.vs['title'] = df['Source']
 
 # %% replication: use spectral clustering from sklearn
 
+# TODO: tune?
 sc = SpectralClustering(
     n_clusters=20,  # ~5 arguments, plus 3 catchall
     affinity='precomputed',
+    # eigen_solver='arpack',
     n_init=100,
     assign_labels='discretize',
     verbose=True,
 )
 
-# how do I incorporate node features?
+# TODO: how do I incorporate node features?
 # this constructs Laplacian and applies kernel
 df['Args'] = sc.fit_predict(
-    similarities
+    similarities,
 )
 
 # %% experiment: use GNN
@@ -134,12 +132,16 @@ print(score)
 
 # %% qualitative evaluation
 
-# visualize with t-SNE https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html
+# visualize spectral clustering results with t-SNE
 
 tsne = TSNE(
-    n_components=2, 
+    n_components=2,
     learning_rate='auto',
-    init='random', perplexity=3
+    init='random', perplexity=3,
 ).fit_transform(sc.affinity_matrix_)
 
-plt.scatter(tsne[:,0],tsne[:,1],c=sc.labels_)
+plt.scatter(tsne[:, 0], tsne[:, 1], c=sc.labels_)
+
+# TODO: how do I then make interpretable results from eigenvectors if I used embeddings?
+
+# %%
