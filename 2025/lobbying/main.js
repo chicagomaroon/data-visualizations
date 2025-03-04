@@ -13,7 +13,7 @@ Highcharts.chart('chart-div', {
     colors: ['#800000', '#FFA319', '#C16622', '#8F3931', '#8A9045', '#58593F'],
 
     title: {
-        text: 'Money spent on lobbying from 1998-2024',
+        text: 'Money Spent on Federal Lobbying from 1998 to 2024',
         align: 'center'
     },
     subtitle: {
