@@ -1,5 +1,4 @@
 // inspired by https://www.nytimes.com/interactive/2025/02/13/us/doc-annotation-memo-from-bove.html
-// todo
 
 // -------------- constants --------------
 let active_highlight = document.querySelector('.highlight.active');
