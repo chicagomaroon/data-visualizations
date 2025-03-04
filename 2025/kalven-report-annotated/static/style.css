@@ -10,7 +10,7 @@
 }
 
 body {
-    height: 100%;
+    height: 100dvh;
     margin: 0;
     padding: 0;
     font-family: 'Georgia', sans-serif;
@@ -385,6 +385,84 @@ body {
     width: 80%;
 }
 
+#footer {
+    padding-block: 50px;
+}
+
+.more-title {
+    font-size: 24px;
+    text-align: left;
+    font-family: Georgia, serif;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.more-container {
+    width: 70%;
+    margin: auto;
+}
+
+.more-articles {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: stretch; /* Make all containers the same height */
+    width: 100%;
+}
+
+.article-container-outer {
+    display: flex;
+    flex-direction: column;
+    width: 30%; /* Adjust as needed for spacing */
+}
+
+.article-container-outer a {
+    text-decoration: none;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Optional: for visual separation */
+    border-radius: 8px; /* Optional: for rounded corners */
+    overflow: hidden; /* Ensure content doesn't overflow the container */
+    background: #eeeeee;
+}
+
+.article-container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.article-container:hover .article-img img {
+    transform: scale(1.1);
+}
+
+.article-container a {
+    display: block;
+}
+
+.article-img {
+    margin: auto;
+    width: 150px;
+    height: 100%;
+    overflow: hidden; /* Clip images that exceed the container */
+}
+
+.article-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.article-title {
+    height: 50%;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.35em;
+    padding: 15px 15px;
+    color: #000000;
+    text-decoration: none;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -505,10 +583,6 @@ body {
         background-color: rgba(128, 0, 0, 0.2);
     }
 
-    /* .header img {
-        width: 60%;
-        max-width: 300px;
-    } */
     #intro-text {
         width: 90%;
     }
@@ -536,5 +610,17 @@ body {
 
     #subtitle {
         font-size: 20px;
+    }
+
+    .more-articles {
+        flex-direction: column; /* Stack article containers */
+    }
+
+    .article-container-outer {
+        width: 100%;
+    }
+
+    .article-container {
+        margin-bottom: 20px; /* Add spacing between articles */
     }
 }
