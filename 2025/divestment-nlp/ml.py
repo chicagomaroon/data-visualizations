@@ -67,14 +67,13 @@ print(similarities)
 
 # construct complete graph of all possible connections between all nodes
 # https://stackoverflow.com/questions/29655111/igraph-graph-from-numpy-or-pandas-adjacency-matrix
-a = np.ones(similarities.shape)
 
 # make matrix more sparse by
 # a[similarities < .2] = 0
 # print(np.count_nonzero(a))
 
-g = ig.Graph.Adjacency(
-    a.tolist(),
+g = ig.Graph.Weighted_Adjacency(
+    similarities.numpy()
 )
 
 # add node features
@@ -82,8 +81,8 @@ g = ig.Graph.Adjacency(
 g.vs['link'] = df['Link']
 g.vs['title'] = df['Source']
 
-# add weights from cosine sim
-g.es['weight'] = similarities
+# shouldn't the diagonal be 1?
+# why is this pushing higher values lower?
 
 # ig.Graph(
 #     n=df['Text'],
@@ -100,7 +99,9 @@ sc = SpectralClustering(
     verbose=True,
 )
 
-df['Args'] = sc.fit_predict(similarities)
+# how do I incorporate node features?
+# this constructs Laplacian and applies kernel
+df['Args'] = sc.fit_predict(g)
 
 # %% experiment: use GNN
 
