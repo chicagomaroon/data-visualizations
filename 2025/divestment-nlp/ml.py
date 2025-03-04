@@ -22,6 +22,8 @@ from sklearn.cluster import KMeans
 # Each row is a chunk
 
 df = pd.read_excel('scrape.xlsx', index_col=None)
+# df = df.loc[df['Source']=="The University and South Africa connections"]
+# df = df.reset_index(drop=True)
 
 #%% get BERT embeddings
 # These will be used as the node features in the graph
@@ -33,7 +35,6 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 # 2. Calculate embeddings by calling model.encode()
 embeddings = model.encode(df['Text'])
 print(embeddings.shape)
-# [3, 384]
 
 # pd.DataFrame({'embeddings':embeddings}).to_excel('embeddings.xlsx')
 
@@ -42,7 +43,17 @@ print(embeddings.shape)
 
 # 3. Calculate the embedding similarities
 similarities = model.similarity(embeddings, embeddings)
+
+# https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering
+# apply (normalized) heat kernel
+# negative similarities are not solvable
+beta = 1 # tune?
+similarities = np.exp(-beta * similarities / similarities.std())
 print(similarities)
+# shouldn't the diagonal be 1?
+# why is this pushing higher values lower?
+
+# similarities[similarities < .1] = 0
 
 #%% calculate bbox weights
 
@@ -54,6 +65,31 @@ print(similarities)
 # 
 
 #%% create graph
+
+# construct complete graph of all possible connections between all nodes
+# https://stackoverflow.com/questions/29655111/igraph-graph-from-numpy-or-pandas-adjacency-matrix
+a = np.ones(similarities.shape)
+
+# make matrix more sparse by 
+# a[similarities < .2] = 0
+# print(np.count_nonzero(a))
+
+g = ig.Graph.Adjacency(
+    a.tolist()
+)
+
+# add node features
+# https://stackoverflow.com/questions/36713082/add-vertex-attributes-to-a-weighted-igraph-graph-in-python
+g.vs["link"] = df['Link']
+g.vs["title"] = df['Source']
+
+# add weights from cosine sim
+g.es['weight'] = similarities
+
+# ig.Graph(
+#     n=df['Text'],
+#     e=similarities
+# )
 
 #%% replication: use spectral clustering from sklearn
 
