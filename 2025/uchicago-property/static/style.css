@@ -121,7 +121,7 @@ body {
     margin-block: 15px;
 }
 
-#menu-subtext {
+.menu-subtext {
     font-size: 13px;
     font-family: Georgia;
 }
@@ -135,7 +135,7 @@ body {
     margin-top: 10px;
     padding: 1rem;
     overflow-y: scroll;
-    max-height: 50vh;
+    max-height: 35vh;
 }
 #methodology a:hover {
     text-decoration: underline;
