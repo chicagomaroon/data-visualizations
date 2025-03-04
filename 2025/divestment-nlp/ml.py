@@ -21,16 +21,21 @@ df = pd.read_excel('scrape.xlsx', index_col=None)
 # df = df.loc[df['Source']=="The University and South Africa connections"]
 # df = df.reset_index(drop=True)
 
+df['Metadata'] = df['Administration'] + ' ' + df['Publication'] + ' ' + df['Date of Event'] + ' ' + df['Source'] + ' ' + df['Link']
+
 # %% get BERT embeddings
 # These will be used as the node features in the graph
 # Using Sentence-BERT as it has semantically meaningful and comparable embeddings https://sbert.net/
 
 # 1. Load a pretrained Sentence Transformer model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+sbert = SentenceTransformer('all-MiniLM-L6-v2')
 
 # 2. Calculate embeddings by calling model.encode()
-embeddings = model.encode(df['Text'])
+embeddings = sbert.encode(df['Text'])
 print(embeddings.shape)
+
+metadata = sbert.encode(df['Metadata'])
+print(metadata.shape)
 
 # pd.DataFrame({'embeddings':embeddings}).to_excel('embeddings.xlsx')
 
@@ -38,7 +43,7 @@ print(embeddings.shape)
 # Cosine similarity of BERT embeddings is used as edge weights
 
 # 3. Calculate the embedding similarities
-similarities = model.similarity(embeddings, embeddings)
+similarities = sbert.similarity(embeddings, embeddings)
 
 # https://scikit-learn.org/stable/modules/clustering.html#spectral-clustering
 # apply (normalized) heat kernel
@@ -80,8 +85,7 @@ g = ig.Graph.Weighted_Adjacency(
 
 # add node features
 # https://stackoverflow.com/questions/36713082/add-vertex-attributes-to-a-weighted-igraph-graph-in-python
-g.vs['link'] = df['Link']
-g.vs['title'] = df['Source']
+g.vs['metadata'] = metadata
 
 # ig.Graph(
 #     n=df['Text'],
