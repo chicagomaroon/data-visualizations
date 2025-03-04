@@ -4,15 +4,15 @@
 # %% imports
 from __future__ import annotations
 
-import re
-
 import igraph as ig
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import KMeans
 from sklearn.cluster import SpectralClustering
 from sklearn.metrics import silhouette_score
+from sklearn.manifold import TSNE
 
 # with open('log-021825.txt',encoding='utf-8') as f:
 #     txt = f.read()
@@ -125,9 +125,21 @@ kmeans = KMeans(
 # %% quantitative evaluation: silhouette score (cohesion + separation)
 
 labels = sc.labels_
-silhouette_score(similarities, labels, metric='euclidean')
+score = silhouette_score(similarities, labels, metric='euclidean')
+print(score)
 
+labels = kmeans.labels_
+score = silhouette_score(similarities, labels, metric='euclidean')
+print(score)
 
 # %% qualitative evaluation
 
 # visualize with t-SNE https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html
+
+tsne = TSNE(
+    n_components=2, 
+    learning_rate='auto',
+    init='random', perplexity=3
+).fit_transform(similarities)
+
+plt.scatter(tsne[:,0],tsne[:,1],c=sc.labels_)
