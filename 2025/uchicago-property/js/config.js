@@ -255,18 +255,16 @@ const config = [
                 While the University has emphasized the positive impact the projects will have on the local economy, some residents are concerned about <a href = "https://www.theguardian.com/us-news/2023/feb/15/obama-center-chicago-south-side-residents-fear-displacement" target = "_blank">rising rent</a>  and how much benefit will reach the community as opposed to <a href = "https://blockclubchicago.org/2022/12/27/as-investors-buy-more-homes-around-the-obama-presidential-center-gentrification-worries-soar/" target = "_blank">investors</a>.
                 `
             },
-
             {
                 id: '6.2',
                 text: `
                 When the <i>Maroon</i> asked the University how it is addressing community distrust, it stated that it “is committed to creating opportunities to listen to community residents, providing direct access to University leaders, and proactively sharing information of interest” through <a href = "https://civicengagement.uchicago.edu/about" target = "_blank">“wide-ranging programs</a> to support the local community.” It cited recently published <a href = "https://civicengagement.uchicago.edu/news/maps-of-university-owned-properties-in-washington-park-woodlawn-and-hyde-park-now-available" target = "_blank">maps</a> of University-owned properties in South Side neighborhoods in an effort to “help address misconceptions and foster transparency.”`
             },
-
             {
                 id: '6.3',
                 text: `
-                However, recent actions leave many wary of the University’s commitments.
-                The opening of the Woodlawn Charter School in 2018 on 63rd Street broke the University’s <a href = "https://chicagomaroon.com/25412/news/uchicago-charter-schools-opens-new-woodlawn-campus/" target = "_blank">decades-old agreement</a> with The Woodlawn Organization to not develop past 61st Street and further into Woodlawn.
+                However, recent actions leave many wary of the University’s commitments. The <a href = "https://chicagomaroon.com/7086/news/woodlawn-site-approved-for-u-of-c-charter-school-2/" target = "_blank">opening of the Woodlawn Charter School</a> in 2006 on 64th Street called into question the University’s decades-old agreement with The Woodlawn Organization to not develop past 61st Street and further into Woodlawn, according to Eldred. In a statement to the <i>Maroon</i>, the University wrote that the opening and a subsequent 2016 relocation were "the result of numerous discussions with local residents and elected officials, and both plans had the support and approval from the community, Aldermen, and Chicago Public Schools." 
+                
                 In 2020, former President Zimmer and incoming President Paul Alivisatos committed to exploring and addressing the University’s historical relationship with its surrounding neighborhoods by launching the <a href = "https://news.uchicago.edu/story/council-examine-history-relationship-between-university-chicago-and-south-side-communities">Council on UChicago/Community Relations</a>, tasked with examining the historical relationship between the University and its South Side neighbors. In 2023, after the Council’s first two years, it stated that it was <a href ='https://chicagomaroon.com/40648/news/community-relations-council-tries-to-tackle-public-safety-and-displacement/' target = "_blank">not yet prepared to engage meaningfully with the public</a>, but that outreach could begin soon. There have been no public updates since.`
             },
             {
