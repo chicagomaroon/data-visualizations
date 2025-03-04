@@ -170,7 +170,21 @@ tsne = TSNE(
     init='random', perplexity=3,
 ).fit_transform(sc.affinity_matrix_)
 
-plt.scatter(tsne[:, 0], tsne[:, 1], c=sc.labels_)
+plt.scatter(tsne[:, 0], tsne[:, 1], label=sc.labels_, c=sc.labels_, cmap=plt.get_cmap('tab20'))
+plt.show()
+
+plt.figure(figsize=(5, 15))
+plt.grid(axis='y')
+plt.yticks(range(df.index.min(), df.index.max() + 1, 5))
+plt.scatter(
+    # df['BBOX'], 
+    sc.labels_, 
+    df.index,
+    # df['Link'], # TODO: try grouping by Link
+    c=sc.labels_, 
+    cmap=plt.get_cmap('tab20')
+)
+plt.show()
 
 # TODO: how do I then make interpretable results from eigenvectors if I used embeddings?
 
