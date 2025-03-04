@@ -175,8 +175,7 @@ kmeans = KMeans(
 
 # %% quantitative evaluation: silhouette score (cohesion + separation)
 
-labels = sc.labels_
-score = silhouette_score(similarities, labels, metric='euclidean')
+score = silhouette_score(similarities, sc_labels, metric='euclidean')
 print(score)
 
 labels = kmeans.labels_
@@ -191,9 +190,9 @@ tsne = TSNE(
     n_components=2,
     learning_rate='auto',
     init='random', perplexity=3,
-).fit_transform(sc.affinity_matrix_)
+).fit_transform(affinity)
 
-plt.scatter(tsne[:, 0], tsne[:, 1], label=sc.labels_, c=sc.labels_, cmap=plt.get_cmap('tab20'))
+plt.scatter(tsne[:, 0], tsne[:, 1], label=sc_labels, c=sc_labels, cmap=plt.get_cmap('tab20'))
 plt.show()
 
 plt.figure(figsize=(5, 15))
@@ -201,10 +200,10 @@ plt.grid(axis='y')
 plt.yticks(range(df.index.min(), df.index.max() + 1, 5))
 plt.scatter(
     # df['BBOX'], 
-    sc.labels_, 
+    sc_labels, 
     df.index,
     # df['Link'], # TODO: try grouping by Link
-    c=sc.labels_, 
+    c=sc_labels, 
     cmap=plt.get_cmap('tab20')
 )
 plt.show()
