@@ -371,6 +371,15 @@ body {
     animation: fadeIn 0.2s ease-in-out forwards;
 }
 
+.annotation-card-text a {
+    color: #800000;
+    text-decoration: none;
+}
+
+.annotation-card-text a:hover {
+    text-decoration: underline;
+}
+
 #annotation-logo {
     content: '';
     position: absolute;
