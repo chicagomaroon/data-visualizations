@@ -12,6 +12,7 @@ import pytesseract
 import requests
 from bs4 import BeautifulSoup as bs
 from PIL import Image
+from tesserocr import PyTessBaseAPI, RIL, iterate_level, PSM
 from requests_html import HTMLSession
 
 # otherwise pytesseract doesn't work
@@ -130,19 +131,21 @@ class Scraper:
             
             img = requests.get(page['src']).content
             img_bytes = BytesIO(img)
+            jpg = Image.open(img_bytes)
+            # jpg = Image.open('test.jpg')
 
             # print(img)
 
             if self.output_format == 'chunks':
-                output += self.get_bboxes(img_bytes)
+                output += self.get_bboxes(jpg)
             else:
-                output += [self.get_all_text(img_bytes)]
+                output += [self.get_all_text(jpg)]
 
         print(f"Output created with size: {len(output)}")
 
         return [x for x in output if len(x)>10]
 
-    def get_all_text(self, img_bytes):
+    def get_all_text(self, jpg):
         """
         OCR all text from the image of the page using PyTesseract
 
@@ -151,7 +154,6 @@ class Scraper:
         """
 
         try:
-            jpg = Image.open(img_bytes)
             text = pytesseract.image_to_string(jpg)
         except Exception as e:
             raise ScraperError(e)
@@ -161,65 +163,79 @@ class Scraper:
         print(f"Length of extracted text: {len(text)}")
         return text
 
-    def get_bboxes(self, img_bytes):
+    def crop_image(image, bbox):
         """
-        Chunks image using bounding boxes (a computer vision technique)
+        Crop the image to the specified bounding box.
+
+        Parameters:
+        image (PIL.Image): The image to crop.
+        bbox (list): The bounding box coordinates [(x1, y1), (x2, y2), (x3, y3), (x4, y4)].
+
+        Returns:
+        PIL.Image: The cropped image.
+
+        Source: GitHub Copilot
+        """
+        # Convert bounding box coordinates to integers
+        bbox = [(int(x), int(y)) for x, y in bbox]
+
+        # Determine the minimum and maximum x and y coordinates
+        min_x = min(x for x, _ in bbox)
+        max_x = max(x for x, _ in bbox)
+        min_y = min(y for _, y in bbox)
+        max_y = max(y for _, y in bbox)
+
+        # Crop the image using the bounding box coordinates
+        cropped_image = image.crop((min_x, min_y, max_x, max_y))
+
+        return cropped_image
+
+    def find_centroid(self, bbox):
+        """
+        Find the centroid of the bounding box.
+
+        Parameters:
+        bbox (list): The bounding box coordinates [(x1, y1), (x2, y2), (x3, y3), (x4, y4)].
+
+        Returns:
+        tuple: The centroid coordinates (cx, cy).
+
+        Source: GitHub Copilot
+        """
+        x_coords = [x for x, _ in bbox]
+        y_coords = [y for _, y in bbox]
+        cx = sum(x_coords) / len(x_coords)
+        cy = sum(y_coords) / len(y_coords)
+        return (cx, cy)
+
+    def get_bboxes(self, jpg):
+        """
+        Chunks image using bounding boxes from tesseract OCR
         Get text within each chunk by calling get_all_text()
 
-        TODO: replace with pytesseract 
-        https://stackoverflow.com/questions/28591117/how-do-i-segment-a-document-using-tesseract-then-output-the-resulting-bounding-b
-
         Sources:
-        https://stackoverflow.com/questions/21104664/extract-all-bounding-boxes-using-opencv-python
-        https://stackoverflow.com/questions/64629197/why-numpy-tobytes-method-return-not-only-hex-digits-but-also-additional-chara
-        https://www.geeksforgeeks.org/text-detection-and-extraction-using-opencv-and-ocr/
+        https://stackoverflow.com/questions/28591117/how-do-i-segment-a-document-using-tesseract-then-output-the-resulting-bounding-b
         """
 
+        chunks = []
         try:
-            img_array = np.frombuffer(img_bytes.read(), np.uint8)
-            cv2_img = cv2.imdecode(img_array, cv2.IMREAD_GRAYSCALE)
-            # apply threshold to push everything to black and white
-            _, cv2_img2 = cv2.threshold(
-                cv2_img, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
-            # img = Image.fromarray(cv2_img2)
-            # img.show()
+            with PyTessBaseAPI(path='C:/Program Files (x86)/Tesseract-OCR/tessdata') as api:
+                api.SetImage(jpg)
+                api.SetPageSegMode(PSM.AUTO_ONLY)
+                iterator = api.AnalyseLayout()
+                for w in iterate_level(iterator, RIL.BLOCK):
+                    if w is not None and w.BlockType:
+                        bbox = w.BlockPolygon()
+                        text = self.get_all_text(
+                                self.crop_image(jpg, bbox),
+                                )
+                        chunks.append(
+                            str(self.find_centroid(bbox)) + text,
+                        )
         except Exception as e:
-            print(f"Could not decode image with data {img_bytes}")
+            print(f"Could not decode image with data {jpg}")
             raise ScraperError(e)
 
-        # pass filters for better processing (higher level bboxes)
-        hrect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (12, 20))
-        hfilter = cv2.dilate(cv2_img2, hrect_kernel, iterations=1)
-        vrect_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (30, 12))
-        vfilter = cv2.dilate(cv2_img2, vrect_kernel, iterations=1)
-        dilated_img = hfilter+vfilter
-        # _,dilated_img=cv2.threshold(cv2_img3, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
-        # img = Image.fromarray(dilated_img)
-        # img.show()
-        contours, _ = cv2.findContours(
-            dilated_img, cv2.RETR_EXTERNAL,  cv2.CHAIN_APPROX_NONE)
-
-        chunks = []
-        print(f"{len(contours)} chunks discovered (not all are viable)")
-        for i, contour in enumerate(contours):
-            x, y, w, h = cv2.boundingRect(contour)
-            if w > 700 and h > 150 and w < 2000:
-                chunk = cv2_img[y:y+h, x:x+w]
-                _, chunk_array = cv2.imencode('.jpg', chunk)
-                try:
-                    # chunk_bytes = chunk_array.tobytes()
-                    # chunk_utf8 = chunk_bytes.decode('utf-16-be').encode('utf-8')
-                    chunk_bytes = BytesIO(chunk_array)
-                    chunk_text = self.get_all_text(chunk_bytes)
-                except Exception as e:
-                    raise ScraperError(e)
-                chunks.append(str((x, y, w, h)) + ' !BBOX! ' + chunk_text)
-
-                # if i == 0:
-                #     img = Image.fromarray(chunk)
-                #     img.show()
-
-        # cv2.waitKey(0)
         return chunks
 
     def export_results(self):
