@@ -23,6 +23,7 @@ df = df.loc[[
     ) for x in df['Text']
 ]]
 
+# drop duplicates to reduce computation
 df = df.drop_duplicates('Text')
 
 # split by paragraph
@@ -49,5 +50,37 @@ df = df.explode(['Index','Text'])
 #     re.split(' !BBOX! ', x)[1]
 #     if 'BBOX' in x else x for x in df['Text']
 # ]
+
+# drop duplicates again after we split out paragraphs
+df = df.drop_duplicates('Text')
+
+# remove stopwords (I'm not interested in clustering on specific causes)
+stopwords = [
+    'Wilson',
+    'Hanna',
+    'Holborn.*',
+    'Gray',
+    'Zimmerman.*',
+    'Alivisatos.*',
+    'Sudan',
+    'Darfur',
+    '[Cc]limate change',
+    '[Oo]il',
+    '[Cc]oal',
+    '[Rr]enewable energy',
+    'Palestin.*',
+    'Israel.*',
+    'South Africa',
+    'Afrikaan.*',
+    'Uyghur',
+    'SRIC',
+    'Hei',
+    'HEI',
+]
+regex = r'\b|\b'.join(stopwords)
+df['Text'] = [re.sub(regex, '', x) for x in df['Text']]
+
+print(df['Text'].head())
+print(df.shape)
 
 df.to_excel('scrape-clean.xlsx', index=None)
