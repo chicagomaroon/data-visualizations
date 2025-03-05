@@ -449,6 +449,7 @@ body {
     border-radius: 8px; /* Optional: for rounded corners */
     overflow: hidden; /* Ensure content doesn't overflow the container */
     background: #eeeeee;
+    height: 300px;
 }
 
 .article-container:hover {
@@ -465,7 +466,6 @@ body {
 .article-img {
     margin: auto;
     width: 150px;
-    height: 100%;
     overflow: hidden; /* Clip images that exceed the container */
 }
 
