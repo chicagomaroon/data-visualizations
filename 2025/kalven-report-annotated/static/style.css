@@ -69,6 +69,15 @@ body {
     opacity: 60%;
 }
 
+#intro-text a {
+    color: #800000;
+    text-decoration: none;
+}
+
+#intro-text a:hover {
+    text-decoration: underline;
+}
+
 #intro-text {
     width: 50%;
     margin: auto;
@@ -194,7 +203,6 @@ body {
     position: relative;
     background-color: #ffff1033;
     border: 2px solid transparent;
-    cursor: pointer;
     transition: all 0.1s ease;
 }
 
@@ -204,16 +212,16 @@ body {
 }
 
 #highlight-1 {
-    left: 8.59375%;
+    left: 10%;
     top: 17%;
-    width: 84.13165983606558%;
+    width: 78%;
     height: 2.5%;
 }
 
 #highlight-2 {
-    left: 8.4%;
+    left: 10%;
     top: 23.1%;
-    width: 84.4%;
+    width: 78%;
     height: 5%;
 }
 
@@ -232,9 +240,9 @@ body {
 }
 
 #highlight-5 {
-    left: 11%;
+    left: 10%;
     top: 24%;
-    width: 81.5%;
+    width: 79%;
     height: 4.5%;
 }
 
@@ -253,72 +261,72 @@ body {
 }
 
 #highlight-8 {
-    left: 8.59375%;
+    left: 10%;
     top: 27.5%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 2.5%;
 }
 
 #highlight-9 {
-    left: 8.59375%;
+    left: 10%;
     top: 29.2%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 5%;
 }
 
 #highlight-10 {
-    left: 8.59375%;
+    left: 10%;
     top: 50.3%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 5%;
 }
 
 #highlight-11 {
-    left: 8.59375%;
+    left: 10%;
     top: 54%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 5%;
 }
 
 #highlight-12 {
-    left: 8.59375%;
+    left: 10%;
     top: 34.3%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 5%;
 }
 
 #highlight-13 {
-    left: 8.59375%;
+    left: 10%;
     top: 57%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 10%;
 }
 
 #highlight-14 {
-    left: 8.59375%;
+    left: 10%;
     top: 71.5%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 5%;
 }
 
 #highlight-15 {
-    left: 8.59375%;
+    left: 10%;
     top: 19%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 10%;
 }
 
 #highlight-16 {
-    left: 8.59375%;
+    left: 10%;
     top: 46%;
-    width: 84.13165983606558%;
+    width: 79%;
     height: 23%;
 }
 
 #highlight-17 {
-    left: 8.59375%;
+    left: 8%;
     top: 32%;
-    width: 84.13165983606558%;
+    width: 84%;
     height: 9%;
 }
 
@@ -396,6 +404,11 @@ body {
     color: #000000;
     font-weight: 400;
     margin-bottom: 20px;
+}
+
+.more-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .more-container {
