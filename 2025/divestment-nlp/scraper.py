@@ -44,7 +44,8 @@ class Scraper:
             raise Exception
 
         self.input_data = input_data
-        self.input_data['Text'] = None
+        if not 'Text' in self.input_data.columns:
+            self.input_data['Text'] = None
         self.test_archive = test_archive
         if chunks:
             self.output_format = 'chunks'
@@ -263,7 +264,7 @@ class Scraper:
         for i, row in self.input_data.iterrows():
             site = row['Link']
 
-            if row['Text']:
+            if not isinstance(row['Text'], float) and len(row['Text']):
                 # skip if there is information in the row already (if rerun)
                 continue
             if isinstance(site, float) or ('uchicagogate' in site) or ('http' not in site):
