@@ -30,7 +30,7 @@ Deep Modularity Network (DMoN) layer implementation as presented in
 DMoN optimizes modularity clustering objective in a fully unsupervised regime.
 """
 
-class DMoN(nn.Module):
+class DMoN(nn.Linear):
     """Implementation of Deep Modularity Network (DMoN) layer in PyTorch.
 
     Deep Modularity Network (DMoN) layer implementation as presented in
@@ -140,7 +140,7 @@ def build_dmon(input_features, input_graph, input_adjacency, n_clusters, archite
         collapse_regularization=collapse_regularization,
         dropout_rate=dropout_rate
     )([output, input_adjacency])
-    return nn.Module(
+    return nn.Linear(
         inputs=[input_features, input_graph, input_adjacency],
         outputs=[pool, pool_assignment]
     )
@@ -150,7 +150,7 @@ def build_dmon(input_features, input_graph, input_adjacency, n_clusters, archite
 Modifications include the skip-connection and changing the nonlinearity to SeLU.
 """
 
-class GCN(nn.Module):
+class GCN(nn.Linear):
     """Implementation of Graph Convolutional Network (GCN) layer in PyTorch.
 
     Attributes:
