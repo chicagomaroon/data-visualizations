@@ -338,50 +338,66 @@ def build_dmon(input_features, input_graph, input_adjacency):
         inputs=[input_features, input_graph, input_adjacency],
         outputs=[pool, pool_assignment])
 
-# Load and process the data (convert node features to dense, normalize the
-# graph, convert it to Tensorflow sparse tensor.
-adjacency, features, labels, label_indices = load_npz(FLAGS.graph_path)
-features = features.todense()
-n_nodes = adjacency.shape[0]
-feature_size = features.shape[1]
-graph = convert_scipy_sparse_to_sparse_tensor(adjacency)
-graph_normalized = convert_scipy_sparse_to_sparse_tensor(
-    utils.normalize_graph(adjacency.copy()))
+# Example usage
+n_nodes = 100  # Example number of nodes
+feature_size = 128  # Example feature size
+n_clusters = 10  # Example number of clusters
+architecture = [64, 32]  # Example architecture
+collapse_regularization = 0.1
+dropout_rate = 0.5
 
-# Create model input placeholders of appropriate size
-input_features = tf.keras.layers.Input(shape=(feature_size,))
-input_graph = tf.keras.layers.Input((n_nodes,), sparse=True)
-input_adjacency = tf.keras.layers.Input((n_nodes,), sparse=True)
+# Create input tensors
+input_features = torch.randn((n_nodes, feature_size))
+input_graph = torch.sparse_coo_tensor(indices=[[0, 1], [1, 0]], values=[1, 1], size=(n_nodes, n_nodes))
+input_adjacency = torch.sparse_coo_tensor(indices=[[0, 1], [1, 0]], values=[1, 1], size=(n_nodes, n_nodes))
 
-model = build_dmon(input_features, input_graph, input_adjacency)
+# Build the DMoN model
+model = build_dmon(input_features, input_graph, input_adjacency, n_clusters, architecture, collapse_regularization, dropout_rate)
+
+# Example forward pass
+output = model(input_features, input_graph, input_adjacency)
+print(output)
 
 # Computes the gradients wrt. the sum of losses, returns a list of them.
+import torch
+import torch.optim as optim
+from sklearn.metrics import normalized_mutual_info_score
+
+# Define the gradient computation function
 def grad(model, inputs):
-with tf.GradientTape() as tape:
-    _ = model(inputs, training=True)
+    model.train()
+    optimizer.zero_grad()
+    features, graph_normalized, graph = inputs
+    outputs = model(features, graph_normalized, graph)
     loss_value = sum(model.losses)
-return model.losses, tape.gradient(loss_value, model.trainable_variables)
+    loss_value.backward()
+    return model.losses, [param.grad for param in model.parameters()]
 
-optimizer = tf.keras.optimizers.Adam(FLAGS.learning_rate)
-model.compile(optimizer, None)
+# Define the optimizer
+learning_rate = 0.001  # Example learning rate
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-for epoch in range(FLAGS.n_epochs):
-loss_values, grads = grad(model, [features, graph_normalized, graph])
-optimizer.apply_gradients(zip(grads, model.trainable_variables))
-print(f'epoch {epoch}, losses: ' +
-        ' '.join([f'{loss_value.numpy():.4f}' for loss_value in loss_values]))
+# Training loop
+n_epochs = 100  # Example number of epochs
+for epoch in range(n_epochs):
+    loss_values, grads = grad(model, [input_features, input_graph, input_adjacency])
+    optimizer.step()
+    print(f'epoch {epoch}, losses: ' +
+          ' '.join([f'{loss_value.item():.4f}' for loss_value in loss_values]))
 
-# Obtain the cluster assignments.
-_, assignments = model([features, graph_normalized, graph], training=False)
+# Obtain the cluster assignments
+model.eval()
+with torch.no_grad():
+    _, assignments = model(input_features, input_graph, input_adjacency)
 assignments = assignments.numpy()
-clusters = assignments.argmax(axis=1)  # Convert soft to hard clusters.
+clusters = assignments.argmax(axis=1)  # Convert soft to hard clusters
 
-# Prints some metrics used in the paper.
+# Prints some metrics used in the paper
 print('Conductance:', metrics.conductance(adjacency, clusters))
 print('Modularity:', metrics.modularity(adjacency, clusters))
 print(
     'NMI:',
-    sklearn.metrics.normalized_mutual_info_score(
+    normalized_mutual_info_score(
         labels, clusters[label_indices], average_method='arithmetic'))
 precision = metrics.pairwise_precision(labels, clusters[label_indices])
 recall = metrics.pairwise_recall(labels, clusters[label_indices])
