@@ -568,6 +568,10 @@ body {
         width: 100%;
     }
 
+    #content-container {
+        padding-bottom: 200px;
+    }
+
     #doc-container {
         left: 0;
     }
