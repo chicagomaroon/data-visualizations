@@ -223,8 +223,6 @@ Deep Modularity Network (DMoN) layer implementation as presented in
 "Graph Clustering with Graph Neural Networks" in a form of TF 2.0 Keras layer.
 DMoN optimizes modularity clustering objective in a fully unsupervised regime.
 """
-from typing import List
-from typing import Tuple
 
 class DMoN(nn.Module):
     """Implementation of Deep Modularity Network (DMoN) layer in PyTorch.
@@ -254,7 +252,8 @@ class DMoN(nn.Module):
         self.do_unpooling = do_unpooling
 
         self.transform = nn.Sequential(
-            nn.Linear(in_features, n_clusters),
+            # number of in features
+            nn.Linear(384, n_clusters),
             nn.Dropout(dropout_rate)
         )
 
@@ -316,7 +315,7 @@ class DMoN(nn.Module):
             features_pooled = torch.mm(assignments_pooling, features_pooled)
         return features_pooled, assignments
 
-def build_dmon(input_features, input_graph, input_adjacency):
+def build_dmon(input_features, input_graph, input_adjacency, n_clusters, architecture, collapse_regularization, dropout_rate):
     """Builds a Deep Modularity Network (DMoN) model from the PyTorch inputs.
 
     Args:
@@ -328,12 +327,13 @@ def build_dmon(input_features, input_graph, input_adjacency):
         Built PyTorch DMoN model.
     """
     output = input_features
-    for n_channels in FLAGS.architecture:
-        output = gcn.GCN(n_channels)([output, input_graph])
+    for n_channels in architecture:
+        output = GCN(n_channels)([output, input_graph])
     pool, pool_assignment = DMoN(
-        FLAGS.n_clusters,
-        collapse_regularization=FLAGS.collapse_regularization,
-        dropout_rate=FLAGS.dropout_rate)([output, input_adjacency])
+        n_clusters,
+        collapse_regularization=collapse_regularization,
+        dropout_rate=dropout_rate
+    )([output, input_adjacency])
     return nn.Module(
         inputs=[input_features, input_graph, input_adjacency],
         outputs=[pool, pool_assignment])
@@ -359,10 +359,6 @@ output = model(input_features, input_graph, input_adjacency)
 print(output)
 
 # Computes the gradients wrt. the sum of losses, returns a list of them.
-import torch
-import torch.optim as optim
-from sklearn.metrics import normalized_mutual_info_score
-
 # Define the gradient computation function
 def grad(model, inputs):
     model.train()
