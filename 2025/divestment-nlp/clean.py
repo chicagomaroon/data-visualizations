@@ -9,6 +9,9 @@ df = pd.read_excel('scrape.xlsx')
 print(df['Text'].head())
 df['Index'] = None
 
+# 
+df['Source'] = [x.strip(' – Chicago Maroon') if isinstance(x,str) else x for x in df['Source']]
+
 # Replace bad characters in df['Text']
 # cite: Github Copilot
 df['Text'] = df['Text'].str.replace(r'[^A-Za-z0-9\s.,!?\'"-]', '', regex=True)
@@ -25,6 +28,7 @@ df = df.loc[[
 
 # drop duplicates to reduce computation
 df = df.drop_duplicates('Text')
+df.reset_index(drop=True, inplace=True)
 
 # split by paragraph
 for i,row in df.iterrows():
@@ -32,9 +36,9 @@ for i,row in df.iterrows():
     lines = row['Text']
     # print(lines[:200])
     if 'campub' in row['Link']:
-        lines = re.sub('\n([^\n])', '\\1',lines)
-    lines = re.split('\n[\n\s]*',lines)
-    lines = [x for x in lines if len(re.sub('[^A-Za-z]', '', x)) > 80]
+        lines = re.sub(r'\n([^\n])', '\\1',lines)
+    lines = re.split(r'\n[\n\s]*',lines)
+    lines = [x for x in lines if len(re.sub(r'[^A-Za-z]', '', x)) > 80]
     # print(lines[:200])
     df.at[i,'Text'] = lines
     df.at[i,'Index'] = list(range(len(lines)))
@@ -53,29 +57,37 @@ df = df.explode(['Index','Text'])
 
 # drop duplicates again after we split out paragraphs
 df = df.drop_duplicates('Text')
+df.reset_index(drop=True, inplace=True)
 
 # remove stopwords (I'm not interested in clustering on specific causes)
 stopwords = [
+    'UCAN',
+    'SFCC',
+    'SJP',
+    'SOUL',
+    'STAND',
     'Wilson',
     'Hanna',
-    'Holborn.*',
+    "Holborn",
     'Gray',
-    'Zimmerman.*',
-    'Alivisatos.*',
+    'Zimmerman',
+    'Alivisatos',
     'Sudan',
     'Darfur',
     '[Cc]limate change',
     '[Oo]il',
     '[Cc]oal',
     '[Rr]enewable energy',
-    'Palestin.*',
-    'Israel.*',
+    '[Ff]ossil fuels',
+    'Palestin[eian]{,3}',
+    'Israeli*',
+    'Gazan*',
+    'West Bank',
     'South Africa',
-    'Afrikaan.*',
+    'Afrikaan(er)*',
     'Uyghur',
     'SRIC',
     'Hei',
-    'HEI',
 ]
 regex = r'\b|\b'.join(stopwords)
 df['Text'] = [re.sub(regex, '', x) for x in df['Text']]
