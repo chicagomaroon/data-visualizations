@@ -415,11 +415,6 @@ body {
     margin-bottom: 20px;
 }
 
-.more-title:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
 .more-container {
     width: 70%;
     margin: auto;
