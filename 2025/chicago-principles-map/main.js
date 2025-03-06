@@ -1,5 +1,5 @@
 const STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
-const USA = [-98.35, 39.5];
+const USA = [-98.35, 44];
 let popup;
 
 // check if mobile
@@ -10,7 +10,7 @@ var map = new maplibregl.Map({
     style: STYLE,
     // middle of USA
     center: USA,
-    zoom: isMobile ? 3 : 3.5, // starting zoom
+    zoom: isMobile ? 3 : 3.1, // starting zoom
     pitchWithRotate: false,
     dragRotate: false,
     touchZoomRotate: false

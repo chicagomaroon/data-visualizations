@@ -15,18 +15,26 @@ body {
 }
 
 #sidebar .subheader {
-    font-size: 15px;
-    margin: 10px 0;
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.map-overlay-inner p {
+    margin-block: 10px;
+}
+
+#menu-subtext {
+    margin-block: 10px;
 }
 
 #sidebar {
     position: absolute;
     width: auto;
-    max-width: 325px;
-    top: 25px;
+    max-width: 400px;
+    top: 10px;
     height: fit-content;
     border-radius: 10px;
-    left: 25px;
+    left: 10px;
     background-color: #420000;
     opacity: 0.9;
     color: white;
