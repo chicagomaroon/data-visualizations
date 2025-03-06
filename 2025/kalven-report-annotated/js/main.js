@@ -104,16 +104,6 @@ function activateNextHighlight(next_highlight) {
 // -------- event listeners ---------
 
 function addEventListeners() {
-    document.querySelectorAll('.highlight').forEach((highlight) => {
-        highlight.addEventListener('click', (e) => {
-            if (highlight.classList.contains('active')) {
-                highlight.classList.remove('active');
-            } else {
-                highlight.classList.add('active');
-            }
-        });
-    });
-
     // Add event listener for keydown events to switch between highlights
     document.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowRight') {
