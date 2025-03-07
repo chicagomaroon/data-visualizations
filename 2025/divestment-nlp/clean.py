@@ -14,6 +14,7 @@ df['Source'] = [x.strip(' – Chicago Maroon') if isinstance(x,str) else x for x
 
 # Replace bad characters in df['Text']
 # cite: Github Copilot
+df['Text'] = df['Text'].str.replace('’', "'")
 df['Text'] = df['Text'].str.replace(r'[^A-Za-z0-9\s.,!?\'"-]', '', regex=True)
 
 # filter out empty or short rows
@@ -36,7 +37,7 @@ for i,row in df.iterrows():
     lines = row['Text']
     # print(lines[:200])
     if 'campub' in row['Link']:
-        lines = re.sub(r'\n([^\n])', '\\1',lines)
+        lines = re.sub(r'\n([^\n])', ' \\1',lines)
     lines = re.split(r'\n[\n\s]*',lines)
     lines = [x for x in lines if len(re.sub(r'[^A-Za-z]', '', x)) > 80]
     # print(lines[:200])
@@ -70,7 +71,7 @@ stopwords = [
     'Hanna',
     "Holborn",
     'Gray',
-    'Zimmerman',
+    'Zimmer',
     'Alivisatos',
     'Sudan',
     'Darfur',
@@ -83,7 +84,8 @@ stopwords = [
     'Israeli*',
     'Gazan*',
     'West Bank',
-    'South Africa',
+    'South African*',
+    'African*',
     'Afrikaan(er)*',
     'Uyghur',
     'SRIC',
@@ -92,7 +94,11 @@ stopwords = [
 regex = r'\b|\b'.join(stopwords)
 df['Text'] = [re.sub(regex, '', x) for x in df['Text']]
 
+df['Text'] = df['Text'].str.replace(r'(a-z)-[\n ]+(a-z)', '\\1\\2', regex=True) # replace weird line breaks
+df['Text'] = df['Text'].str.replace(r'- ', '', regex=True) # replace weird line breaks
+
 print(df['Text'].head())
 print(df.shape)
+print(df['Text'].sample(10).values)
 
 df.to_excel('scrape-clean.xlsx', index=None)
