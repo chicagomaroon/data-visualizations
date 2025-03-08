@@ -58,12 +58,19 @@ sbert = SentenceTransformer('all-MiniLM-L6-v2')
 embeddings = sbert.encode(df['Text'])
 print(embeddings.shape)
 
+np.save('embeddings.npy', embeddings)
+
 metadata = sbert.encode(df['Metadata'])
 print(metadata.shape)
 
+np.save('metadata.npy', metadata)
+
+#%%
 # 2 minutes
 newsembeds = sbert.encode(newsgroups_train.data)
 print(newsembeds.shape)
+
+np.save('newsembeds.npy', newsembeds)
 
 # pd.DataFrame({'embeddings':embeddings}).to_excel('embeddings.xlsx')
 
