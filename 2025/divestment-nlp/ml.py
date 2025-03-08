@@ -293,7 +293,7 @@ tsne = TSNE(
     perplexity=3,
 ).fit_transform(sc_affinity)
 
-plt.scatter(tsne[:, 0], tsne[:, 1], label=k_labels, c=k_labels, cmap=plt.get_cmap('tab20'))
+plt.scatter(tsne[:, 0], tsne[:, 1], label=k_labels, c=k_labels, cmap=plt.get_cmap('tab10'))
 plt.show()
 
 plt.figure(figsize=(5, 15))
@@ -304,7 +304,7 @@ plt.scatter(
     df['Index'],
     [x[-50:] for x in df['Source']], # TODO: try grouping by Link
     c=k_labels, 
-    cmap=plt.get_cmap('tab20')
+    cmap=plt.get_cmap('tab10')
 )
 plt.show()
 
