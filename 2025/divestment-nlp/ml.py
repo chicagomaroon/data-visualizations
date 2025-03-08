@@ -105,8 +105,8 @@ A=A*beta
 
 # %% calculate combined weights
 
-combined = A + np.asarray(similarities)
-combined = np.round(combined, 5)
+combined = (A + np.asarray(similarities)) / 2
+combined = np.round(combined, 5) # introduce some sparsity by pushing near-zero values to 0
 print(combined)
 
 # %% create graph
