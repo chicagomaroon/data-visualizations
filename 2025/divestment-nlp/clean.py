@@ -16,6 +16,8 @@ df['Source'] = [x.strip(' – Chicago Maroon') if isinstance(x,str) else x for x
 # cite: Github Copilot
 df['Text'] = df['Text'].str.replace('’', "'")
 df['Text'] = df['Text'].str.replace(r'[^A-Za-z0-9\s.,!?\'"-]', '', regex=True)
+df['Text'] = df['Text'].str.replace(r'([a-z])-[\n ]+([a-z])', '\\1\\2', regex=True) # replace weird line breaks
+print(df['Text'].sample(10).values)
 
 # filter out empty or short rows
 # 80 is 80% the length of the average sentence
@@ -75,18 +77,18 @@ stopwords = [
     'Alivisatos',
     'Sudan',
     'Darfur',
-    '[Cc]limate change',
+    '([Cc]limate change)',
     '[Oo]il',
     '[Cc]oal',
-    '[Rr]enewable energy',
-    '[Ff]ossil fuels',
+    '([Rr]enewable energy)',
+    '([Ff]ossil fuels)',
     'Palestin[eian]{,3}',
-    'Israeli*',
-    'Gazan*',
-    'West Bank',
-    'South African*',
-    'African*',
-    'Afrikaan(er)*',
+    'Israeli?',
+    'Gazan?',
+    '(West Bank)',
+    '(South African?)',
+    'African?',
+    'Afrikaan(er)?',
     'Uyghur',
     'SRIC',
     'Hei',
