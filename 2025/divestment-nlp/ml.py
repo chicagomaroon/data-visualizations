@@ -89,7 +89,7 @@ similarities = sbert.similarity(embeddings, embeddings)
 
 block_sizes=df.groupby('Link').size().values.cumsum()
 
-A=np.diag([1]*embeddings.shape[0])
+A=np.zeros(embeddings.shape) # no self-connections
 for i in range(A.shape[0]):
     for j in range(A.shape[1]):
         ok1 = (i-j)==1 and i not in block_sizes
