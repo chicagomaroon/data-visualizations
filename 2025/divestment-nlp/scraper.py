@@ -15,7 +15,7 @@ from PIL import Image
 from tesserocr import PyTessBaseAPI, RIL, iterate_level, PSM
 from requests_html import HTMLSession
 
-# otherwise pytesseract doesn't work
+# location of tesseract program install, otherwise pytesseract doesn't work
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\notka\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
 
 

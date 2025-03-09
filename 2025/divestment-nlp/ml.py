@@ -114,8 +114,8 @@ print(combined)
 # construct complete graph of all possible connections between all nodes
 # https://stackoverflow.com/questions/29655111/igraph-graph-from-numpy-or-pandas-adjacency-matrix
 
-# make matrix more sparse by
-# a[similarities < .2] = 0
+# make matrix more sparse? by flattening small values to 0
+# similarities[similarities < .2] = 0
 # print(np.count_nonzero(a))
 
 g = ig.Graph.Weighted_Adjacency(
