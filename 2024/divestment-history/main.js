@@ -387,17 +387,37 @@ async function init() {
     // console.log(data);
     
     quoteWP = new Waypoint({
-        element: document.querySelector('#intro-quotes'),
+        element: document.querySelector('#transition'),
         handler: function (direction) {
             if (direction == 'down') {
                 d3.selectAll('.attribution')
                     .transition()
-                    .duration(10000)
+                    .duration(2000)
                     .style('opacity', 1);
-                console.log('d3');
+                console.log('quotes');
             }
         },
         offset: '100%'
+    })
+
+    quoteDoneWP = new Waypoint({
+        element: document.querySelector('#transition'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.selectAll('#intro-quotes')
+                    .transition()
+                    .duration(1000)
+                    .style('opacity', 0);
+                console.log('quotes');
+            } else {
+                d3.selectAll('#intro-quotes')
+                    .transition()
+                    .duration(500)
+                    .style('opacity', 1);
+                console.log('quotes');
+            }
+        },
+        offset: '25%'
     })
 
     // we will edit this plot throughout the whole article

@@ -41,6 +41,7 @@ hr {
     color: white;
     padding: 4em;
     font-size: 20px;
+    height: 150vh;
 }
 
 .intro-quote {
@@ -48,19 +49,24 @@ hr {
     flex-direction: column;
 }
 
+#intro-quotes {
+    position: fixed;
+    top: 5vh;
+    left: 20vw;
+}
+
 .intro, #intro-quotes {
-    width: max(700px, 70%);
     margin: auto;
 }
 
 #intro-quotes {
-    width: 60%;
+    width: max(700px, 70%);
 }
 
 .quote {
     text-align: left;
     width: 70%;
-    line-height: 1.5em;
+    line-height: 1.2em;
 }
 
 .attribution {
