@@ -141,3 +141,60 @@ figure {
     margin-top: 20em;
 }
 
+@media (width < 800px) {
+        
+    #pre-intro {
+        padding: 2em;
+        font-size: 15px;
+        height: 150vh;
+    }
+
+    #intro-quotes {
+        position: fixed;
+        top: 5vh;
+        left: 5vw;
+    }
+
+    #intro-quotes {
+        width: 90%;
+    }
+
+    .quote {
+        width: 95%;
+        line-height: 1.2em;
+    }
+
+    .attribution {
+        width: 75%;
+    }
+
+    #content {
+        width: 95%;
+    }
+
+    .scroller {
+        margin-top: 5vh;
+        width: 95%;
+        margin-left: 2%;
+    }
+    
+    p, .scroller, #further-reading, #methodology {
+        font-size: 14px;
+        line-height: 2em;
+    }
+
+    .scroller img {
+        width: 90vw;
+    }
+
+    blockquote {
+        font-size: 16px;
+    }
+
+    #chart-div {
+        position: sticky;
+        top: 0vh;
+        margin: auto;
+    }
+}
+
