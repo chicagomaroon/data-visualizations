@@ -392,7 +392,7 @@ async function init() {
             if (direction == 'down') {
                 d3.selectAll('.attribution')
                     .transition()
-                    .duration(2000)
+                    .duration(1500)
                     .style('opacity', 1);
                 console.log('quotes');
             }
