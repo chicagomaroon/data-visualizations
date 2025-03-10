@@ -407,13 +407,15 @@ async function init() {
                 d3.selectAll('#intro-quotes')
                     .transition()
                     .duration(500)
-                    .style('opacity', 0);
+                    .style('opacity', 0)
+                    .style('display', 'none');
                 console.log('quotes');
             } else {
                 d3.selectAll('#intro-quotes')
                     .transition()
                     .duration(500)
-                    .style('opacity', 1);
+                    .style('opacity', 1)
+                    .style('display', 'show');
                 console.log('quotes');
             }
         },
@@ -451,13 +453,15 @@ async function init() {
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(200)
-                    .style('opacity', 0);
+                    .style('opacity', 0)
+                    .style('display', 'none');
                 console.log('d3');
             } else {
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(200)
-                    .style('opacity', 1);
+                    .style('opacity', 1)
+                    .style('display', 'show');
             }
         },
         offset: '90%'
