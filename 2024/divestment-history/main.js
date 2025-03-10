@@ -406,7 +406,7 @@ async function init() {
             if (direction == 'down') {
                 d3.selectAll('#intro-quotes')
                     .transition()
-                    .duration(1000)
+                    .duration(500)
                     .style('opacity', 0);
                 console.log('quotes');
             } else {
