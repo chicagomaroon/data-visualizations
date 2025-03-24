@@ -48,23 +48,40 @@ hr {
     padding: 4em;
     font-size: 20px;
     height: 150vh;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    z-index: 100;
 }
 
 .intro-quote {
     display: flex;
     flex-direction: column;
+    margin: -1em 0;
+/* relative to view height */
 }
 
 #intro-quotes {
     position: fixed;
     top: 5vh;
-    left: 15vw;
+    left: 20vw;
 }
 
 .intro, #intro-quotes, #methodology, #conclusion, #further-reading {
     margin: auto;
     width: max(600px, 50vw);
 }
+
+#methodology {
+    font-size: 14px;
+    line-height: 1.5em;
+    margin: 4em auto;
+}
+
+.intro {
+    margin-bottom: 50vh;
+    z-index: 50;
+    margin-top: 100vh;
 }
 
 #intro-quotes {
