@@ -68,20 +68,22 @@ hr {
 }
 
 #intro-quotes {
-    width: max(700px, 70%);
+    width: max(700px, 60%);
+    height: 100vh;
 }
 
 .quote {
     text-align: left;
-    width: 70%;
+    width: 50%;
     line-height: 1.2em;
+
 }
 
 .attribution {
     margin: 0;
     opacity: 0;
     font-style: italic;
-    width: 60%;
+    width: 40%;
     line-height: 1em;
 }
 
