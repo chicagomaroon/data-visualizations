@@ -202,19 +202,6 @@ function createNewSection(
                     createLayout(),
                     config
                 );
-
-                // TODO: go to last group of previous section
-                // Plotly.animate(
-                //     graphDiv,
-                //     {
-                //         layout: {
-                //             xaxis: { range: mapping[div]['x'] },
-                //             yaxis: { range: mapping[div]['y'] },
-                //             width: halfsize
-                //         }
-                //     },
-                //     {  transition: transition }
-                // );
             }         
             
             myPlot.on('plotly_click', open_url);
