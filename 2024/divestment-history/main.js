@@ -286,13 +286,7 @@ function hide_box_hovers(data) {
 // ------- CONSTANTS ------
 
 config = {
-    modeBarButtonsToRemove: [
-        'select2d',
-        'pan2d',
-        'lasso2d',
-        'autoscale',
-        'zoom2d'
-    ],
+    displayModeBar: false,
     responsive: true
 };
 
