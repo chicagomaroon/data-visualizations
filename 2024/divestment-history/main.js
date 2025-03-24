@@ -257,7 +257,6 @@ function createLayout() {
         hoverlabel: {
             bgcolor: 'white'
         },
-        height: 400,
         showlegend: false,
         margin: {
             l: 120,
