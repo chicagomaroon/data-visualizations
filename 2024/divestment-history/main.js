@@ -171,9 +171,13 @@ function createNewSection(
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
+            var myPlot = document.getElementById('chart-div');
 
             if (direction=='down') {
-                var myPlot = document.getElementById('chart-div');
+                
+                d3.selectAll('#chart-div')
+                    .style('opacity', 100);
+
             
                 Plotly.newPlot(
                     'chart-div',
@@ -181,6 +185,13 @@ function createNewSection(
                     createLayout(),
                     config
                 );
+
+            } else if (prev_var=='Movement') {
+                d3.selectAll('#chart-div')
+                    .transition()
+                    .duration(500)
+                    .style('opacity', 0);
+                console.log(prev_var);
 
             } else {
                 var myPlot = document.getElementById('chart-div');
@@ -388,26 +399,29 @@ async function init() {
         element: document.querySelector('#transition'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.selectAll('#intro-quotes')
+                d3.selectAll('#pre-intro')
                     .transition()
                     .duration(500)
                     .style('opacity', 0)
-                    .style('display', 'none');
-                console.log('quotes');
+                    .on('end', function () {
+                        // After the transition, set display to 'none'
+                        d3.selectAll('#pre-intro').style('display', 'none');
+                    });
+                console.log('hide quotes');
             } else {
-                d3.selectAll('#intro-quotes')
+                d3.selectAll('#pre-intro')
                     .transition()
                     .duration(500)
-                    .style('opacity', 1)
-                    .style('display', 'show');
-                console.log('quotes');
+                    .style('opacity', 100)
+                    .style('display', 'block');
+                console.log('show quotes');
             }
         },
         offset: '25%'
     })
 
     // we will edit this plot throughout the whole article
-    createNewSection('bylines', 'Movement', prev_var='Movement', offset='100%')
+    createNewSection('bylines', 'Movement', prev_var='Movement', offset='16%')
 
     // define waypoints (scroll reactions)
     createWaypoint('palestine', zoom_mapping['Movement'], 0);
