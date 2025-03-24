@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 /* overall */
 
 body {
-    line-height: 2em;
+    line-height: 1.75em;
     font-size: 18px;
+    font-family: 'Georgia', serif;
+    /* background-color: #ffff00; */
 }
 
 footer {
@@ -20,9 +24,11 @@ a {
 
 h1 {
     font-size: 40;
+    line-height: 1em;
     text-align: center;
     padding-top: 15vh;
     font-weight: 400;
+    font-family: 'Playfair Display', serif;
 }
 
 hr {
@@ -117,10 +123,11 @@ hr {
 }
 
 blockquote {
-    font-weight: 1000;
+    font-weight: 400;
     line-height: 1.2em;
     font-size: 26px;
     margin: 0 !important;
+    font-family: 'Georgia', serif;
 }
 
 .quote p {
