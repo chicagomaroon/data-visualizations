@@ -118,8 +118,8 @@ hr {
 .scroller {
     margin-top: 50vh;
     margin-bottom: 50vh;
-    width: 50%;
-    margin-left: 50%;
+    background-color: #fefedc;
+    padding: 2em;
 }
 
 .scroller img {
