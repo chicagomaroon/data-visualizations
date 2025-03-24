@@ -194,7 +194,6 @@ function createNewSection(
                 console.log(prev_var);
 
             } else {
-                var myPlot = document.getElementById('chart-div');
             
                 Plotly.newPlot(
                     'chart-div',
