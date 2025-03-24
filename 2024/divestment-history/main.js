@@ -409,25 +409,25 @@ async function init() {
     createNewSection('bylines', 'Movement', prev_var='Movement', offset='16%')
 
     // define waypoints (scroll reactions)
-    createWaypoint('palestine', zoom_mapping['Movement'], 0);
-    createWaypoint('fossil-fuels', zoom_mapping['Movement'], 0);
-    createWaypoint('uyghur-rights', zoom_mapping['Movement'], 0);
-    createWaypoint('labor-rights', zoom_mapping['Movement'], 0);
-    createWaypoint('sric', zoom_mapping['Movement'], 0);
-    createWaypoint('sudan', zoom_mapping['Movement'], 0);
-    createWaypoint('south-africa', zoom_mapping['Movement'], 0);
+    createWaypoint('palestine', zoom_mapping['Movement']);
+    createWaypoint('fossil-fuels', zoom_mapping['Movement']);
+    createWaypoint('uyghur-rights', zoom_mapping['Movement']);
+    createWaypoint('labor-rights', zoom_mapping['Movement']);
+    createWaypoint('sric', zoom_mapping['Movement']);
+    createWaypoint('sudan', zoom_mapping['Movement']);
+    createWaypoint('south-africa', zoom_mapping['Movement']);
 
     createNewSection('letters', 'Type of Action', prev_var='Movement')
 
-    createWaypoint('letters', zoom_mapping['Type of Action'], 1);
-    createWaypoint('protest', zoom_mapping['Type of Action'], 1);
-    createWaypoint('other-action', zoom_mapping['Type of Action'], 1);
+    createWaypoint('letters', zoom_mapping['Type of Action']);
+    createWaypoint('protest', zoom_mapping['Type of Action']);
+    createWaypoint('other-action', zoom_mapping['Type of Action']);
     
     createNewSection('admin', 'Admin Response', prev_var='Type of Action')
 
-    createWaypoint('meeting', zoom_mapping['Admin Response'], 1);
-    createWaypoint('police', zoom_mapping['Admin Response'], 1);
-    createWaypoint('other-response', zoom_mapping['Admin Response'], 1);
+    createWaypoint('meeting', zoom_mapping['Admin Response']);
+    createWaypoint('police', zoom_mapping['Admin Response']);
+    createWaypoint('other-response', zoom_mapping['Admin Response']);
 
     finalWP = new Waypoint({
         element: document.getElementById('conclusion'),
