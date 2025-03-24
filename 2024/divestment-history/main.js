@@ -101,9 +101,6 @@ function createWaypoint(div, mapping) {
     function handler(direction) {
         graphDiv = document.getElementById('chart-div');
 
-        // note: don't try to make this a constant as it needs to be calculated when the user gets to this point
-        halfsize = Math.min(400, 50 * window.innerWidth);
-
         let orderedKeys = [];
         for (var key in mapping) {
             orderedKeys.push(key);
@@ -118,22 +115,17 @@ function createWaypoint(div, mapping) {
                 graphDiv,
                 {
                     layout: {
-                        xaxis: { range: mapping[div]['x'] },
                         yaxis: { range: mapping[div]['y'] },
-                        width: halfsize
                     }
                 },
                 {  transition: transition }
             );
         } else if (div=='palestine') {
-            // go to next key
             Plotly.animate(
                 graphDiv,
                 {
                     layout: {
-                        xaxis: { range: mapping['all']['x'] },
                         yaxis: { range: mapping['all']['y'] },
-                        width: halfsize
                     }
                 },
                 {  transition: transition }
@@ -148,9 +140,7 @@ function createWaypoint(div, mapping) {
                 graphDiv,
                 {
                     layout: {
-                        xaxis: { range: mapping[previousKey]['x'] },
                         yaxis: { range: mapping[previousKey]['y'] },
-                        width: halfsize
                     }
                 },
                 {  transition: transition }
@@ -351,26 +341,26 @@ const colorbook = {
 
 const zoom_mapping = {
     'Movement': {
-        palestine: { x: ['2012-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        'fossil-fuels': { x: ['2012-1-1', '2026-1-1'], y: [0.5, 1.5] },
-        'labor-rights': { x: ['2006-1-1', '2016-1-1'], y: [1.5, 2.5] },
-        'uyghur-rights': { x: ['2014-1-1', '2018-1-1'], y: [2.5, 3.5] },
-        sric: { x: ['2008-1-1', '2012-1-1'], y: [3.5, 4.5] },
-        sudan: { x: ['2004-1-1', '2010-1-1'], y: [4.5, 5.5] },
-        'south-africa': { x: ['1966-1-1', '1981-1-1'], y: [5.5, 6.5] },
-        all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 7.5] }
+        palestine: { y: [-0.5, 0.5] },
+        'fossil-fuels': { y: [0.5, 1.5] },
+        'labor-rights': { y: [1.5, 2.5] },
+        'uyghur-rights': { y: [2.5, 3.5] },
+        sric: { y: [3.5, 4.5] },
+        sudan: { y: [4.5, 5.5] },
+        'south-africa': { y: [5.5, 6.5] },
+        all: { y: [-0.5, 7.5] }
     }, 
     'Type of Action': {
-        letters: { x: ['1966-1-1', '2026-1-1'], y: [0.5, 1.5] },
-        protest: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        'other-action': { x: ['1966-1-1', '2026-1-1'], y: [1.5, 5.5] },
-        all: { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 6.5] }
+        letters: { y: [0.5, 1.5] },
+        protest: { y: [-0.5, 0.5] },
+        'other-action': { y: [1.5, 5.5] },
+        all: { y: [-0.5, 6.5] }
     },
     'Admin Response': {
-        'meeting': { x: ['1966-1-1', '2026-1-1'], y: [2.5, 4.5] },
-        'police': { x: ['1966-1-1', '2026-1-1'], y: [0.5, 2.5] },
-        'other-response': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 0.5] },
-        'all': { x: ['1966-1-1', '2026-1-1'], y: [-0.5, 4.5] }
+        'meeting': { y: [2.5, 4.5] },
+        'police': { y: [0.5, 2.5] },
+        'other-response': { y: [-0.5, 0.5] },
+        'all': { y: [-0.5, 4.5] }
     },
 }
 
