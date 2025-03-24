@@ -107,35 +107,35 @@ function createWaypoint(div, mapping) {
         }
 
         // https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
-        let classList = document.getElementById(div).className
-       
+        let classList = document.getElementById(div).className;
+
         if (direction == 'down') {
             // go to next key
             Plotly.animate(
                 graphDiv,
                 {
                     layout: {
-                        yaxis: { range: mapping[div]['y'] },
+                        yaxis: { range: mapping[div]['y'] }
                     }
                 },
-                {  transition: transition }
+                { transition: transition }
             );
         } else if (div=='palestine') {
             Plotly.animate(
                 graphDiv,
                 {
                     layout: {
-                        yaxis: { range: mapping['all']['y'] },
+                        yaxis: { range: mapping['all']['y'] }
                     }
                 },
-                {  transition: transition }
+                { transition: transition }
             );
         } else if (!classList.match('first')) {
             // go back to the previous key
 
-            previousIndex = orderedKeys.indexOf(div)-1
-            previousKey = orderedKeys[previousIndex]
-            
+            previousIndex = orderedKeys.indexOf(div) - 1;
+            previousKey = orderedKeys[previousIndex];
+
             Plotly.animate(
                 graphDiv,
                 {
@@ -143,7 +143,7 @@ function createWaypoint(div, mapping) {
                         yaxis: { range: mapping[previousKey]['y'] },
                     }
                 },
-                {  transition: transition }
+                { transition: transition }
             );
         }
     }
@@ -178,31 +178,27 @@ function createNewSection(
                 d3.selectAll('#chart-div')
                     .style('opacity', 100);
 
-            
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, variable),
                     createLayout(),
                     config
                 );
-
-            } else if (prev_var=='Movement') {
+            } else if (prev_var == 'Movement') {
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(500)
                     .style('opacity', 0);
                 console.log(prev_var);
-
             } else {
-            
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
                     createLayout(),
                     config
                 );
-            }         
-            
+            }
+
             myPlot.on('plotly_click', open_url);
             myPlot.on('plotly_hover', hide_box_hovers);
         },
@@ -246,7 +242,7 @@ function createLayout() {
         showlegend: false,
         margin: {
             l: 120,
-            r: 0,
+            r: 0
         }
     };
 }
@@ -300,37 +296,37 @@ const colorbook = {
         'Labor rights': 'rgb(138, 144, 69)',
         SRIC: 'rgb(88, 89, 63)',
         Sudan: 'rgb(21, 95, 131)',
-        'South Africa': 'rgb(53, 14, 32)',
+        'South Africa': 'rgb(53, 14, 32)'
         // 'rgb(71, 181, 255)'
         // 'rgb(255, 51, 153)'
     },
     'Type of Action': {
         'Letter writing': 'rgb(128, 0, 0)',
         Protest: 'rgb(193, 102, 34)',
-        'Resolution': 'rgb(143, 57, 49)',
+        Resolution: 'rgb(143, 57, 49)',
         'Legal action': 'rgb(138, 144, 69)',
         'Research report': 'rgb(88, 89, 63)',
-        'Public event': 'rgb(21, 95, 131)',
+        'Public event': 'rgb(21, 95, 131)'
     },
     'Admin Response': {
-        'Arrest': 'rgb(128, 0, 0)',
+        Arrest: 'rgb(128, 0, 0)',
         'Disciplinary action': 'rgb(88, 89, 63)',
-        'Negotiation': 'rgb(193, 102, 34)',
+        Negotiation: 'rgb(193, 102, 34)',
         'Public response': 'rgb(143, 57, 49)',
-        'Non-divestment support': 'rgb(138, 144, 69)',
+        'Non-divestment support': 'rgb(138, 144, 69)'
     },
-    'Administration': {
-        'Alivisatos': 'rgb(128, 0, 0)',
-        'Zimmer': 'rgb(193, 102, 34)',
-        'Randel': 'rgb(143, 57, 49)',
-        'Gray': 'rgb(138, 144, 69)',
-        'Wilson': 'rgb(88, 89, 63)',
-        Beadle: 'rgb(21, 95, 131)',
+    Administration: {
+        Alivisatos: 'rgb(128, 0, 0)',
+        Zimmer: 'rgb(193, 102, 34)',
+        Randel: 'rgb(143, 57, 49)',
+        Gray: 'rgb(138, 144, 69)',
+        Wilson: 'rgb(88, 89, 63)',
+        Beadle: 'rgb(21, 95, 131)'
     }
 };
 
 const zoom_mapping = {
-    'Movement': {
+    Movement: {
         palestine: { y: [-0.5, 0.5] },
         'fossil-fuels': { y: [0.5, 1.5] },
         'labor-rights': { y: [1.5, 2.5] },
@@ -339,7 +335,7 @@ const zoom_mapping = {
         sudan: { y: [4.5, 5.5] },
         'south-africa': { y: [5.5, 6.5] },
         all: { y: [-0.5, 7.5] }
-    }, 
+    },
     'Type of Action': {
         letters: { y: [0.5, 1.5] },
         protest: { y: [-0.5, 0.5] },
@@ -347,12 +343,12 @@ const zoom_mapping = {
         all: { y: [-0.5, 6.5] }
     },
     'Admin Response': {
-        'meeting': { y: [2.5, 4.5] },
-        'police': { y: [0.5, 2.5] },
+        meeting: { y: [2.5, 4.5] },
+        police: { y: [0.5, 2.5] },
         'other-response': { y: [-0.5, 0.5] },
-        'all': { y: [-0.5, 4.5] }
-    },
-}
+        all: { y: [-0.5, 4.5] }
+    }
+};
 
 // -------- MAIN --------
 var data;
@@ -365,7 +361,7 @@ async function init() {
 
     data = await fetchData();
     // console.log(data);
-    
+
     quoteWP = new Waypoint({
         element: document.querySelector('#transition'),
         handler: function (direction) {
@@ -378,7 +374,7 @@ async function init() {
             }
         },
         offset: '100%'
-    })
+    });
 
     quoteDoneWP = new Waypoint({
         element: document.querySelector('#transition'),
@@ -403,7 +399,7 @@ async function init() {
             }
         },
         offset: '25%'
-    })
+    });
 
     // we will edit this plot throughout the whole article
     createNewSection('bylines', 'Movement', prev_var='Movement', offset='16%')
@@ -417,13 +413,13 @@ async function init() {
     createWaypoint('sudan', zoom_mapping['Movement']);
     createWaypoint('south-africa', zoom_mapping['Movement']);
 
-    createNewSection('letters', 'Type of Action', prev_var='Movement')
+    createNewSection('letters', 'Type of Action', (prev_var = 'Movement'));
 
     createWaypoint('letters', zoom_mapping['Type of Action']);
     createWaypoint('protest', zoom_mapping['Type of Action']);
     createWaypoint('other-action', zoom_mapping['Type of Action']);
-    
-    createNewSection('admin', 'Admin Response', prev_var='Type of Action')
+
+    createNewSection('admin', 'Admin Response', (prev_var = 'Type of Action'));
 
     createWaypoint('meeting', zoom_mapping['Admin Response']);
     createWaypoint('police', zoom_mapping['Admin Response']);
