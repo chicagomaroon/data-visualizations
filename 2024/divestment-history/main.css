@@ -61,8 +61,10 @@ hr {
     left: 15vw;
 }
 
-.intro, #intro-quotes {
+.intro, #intro-quotes, #methodology, #conclusion, #further-reading {
     margin: auto;
+    width: max(600px, 50vw);
+}
 }
 
 #intro-quotes {
@@ -103,9 +105,14 @@ hr {
 
 /* chapters */
 
+#chapters {
+    width: 35vw;
+    margin-left: 62vw;
+    position: relative;
+}
+
 #content {
-    width: min(900px, 90%);
-    margin: auto;
+    margin-top: 150vh;
 }
 
 .scroller {
@@ -135,9 +142,11 @@ blockquote {
 }
 
 #chart-div {
-    position: sticky;
-    top: 30vh;
-    margin: auto;
+    position: fixed;
+    width: 60vw;
+    top: 0;
+    left: 10px;
+    z-index: 1;
 }
 
 figure {
