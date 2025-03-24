@@ -236,7 +236,7 @@ function createLayout() {
             subtitle: {
                 text: 'Click a data point to visit the source article.'
             },
-            x: 0
+            x: 0.14
         },
         font: {
             family: 'serif'
@@ -260,8 +260,8 @@ function createLayout() {
         height: 400,
         showlegend: false,
         margin: {
-            l: 100,
-            r: 0
+            l: 120,
+            r: 0,
         }
     };
 }
