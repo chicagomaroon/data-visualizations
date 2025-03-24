@@ -93,7 +93,6 @@ hr {
     text-align: left;
     width: 50%;
     line-height: 1.2em;
-
 }
 
 .attribution {
@@ -116,12 +115,12 @@ hr {
 
 .admin {
     align-items: flex-end;
-} 
+}
 
 .admin p {
     text-align: right;
     display: block;
-} 
+}
 
 /* chapters */
 
@@ -142,11 +141,12 @@ hr {
     padding: 2em;
 }
 
-.scroller img, figure {
+.scroller img,
+figure {
     width: 30vw;
     /* border: 1px solid black; */
     background-color: white;
-    box-shadow: 0 0 1em #DDDDDD;
+    box-shadow: 0 0 1em #dddddd;
     margin: 1em 0;
     padding: 1em 0;
 }
@@ -184,7 +184,6 @@ figure {
 }
 
 @media (width < 800px) {
-        
     #pre-intro {
         padding: 2em;
         font-size: 15px;
@@ -219,8 +218,11 @@ figure {
         width: 95%;
         margin-left: 2%;
     }
-    
-    p, .scroller, #further-reading, #methodology {
+
+    p,
+    .scroller,
+    #further-reading,
+    #methodology {
         font-size: 14px;
         line-height: 2em;
     }
@@ -239,4 +241,3 @@ figure {
         margin: auto;
     }
 }
-
