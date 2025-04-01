@@ -1,34 +1,37 @@
 <html lang="en">
-  <head>
-    <title>Building Locations Map</title>
-    <style>
-      #map {
-        height: 100%;
-      }
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: 'Georgia', 'serif';
-      }
-      .gm-style {
-        font-family: 'Georgia', 'serif';
-      }
-      /* You can add additional styling as needed */
-    </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  </head>
-  <body>
-    <div id="map"></div>
+    <head>
+        <title>Building Locations Map</title>
+        <style>
+            #map {
+                height: 100%;
+            }
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Georgia', 'serif';
+            }
+            .gm-style {
+                font-family: 'Georgia', 'serif';
+            }
+            /* You can add additional styling as needed */
+        </style>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    </head>
+    <body>
+        <div id="map"></div>
 
-    <!-- Google Maps API -->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpeWblpOWHSdujc28GrDmOsPQPLTtDpdQ&callback=initMap&v=weekly&loading=async"></script>
+        <!-- Google Maps API -->
+        <script
+            async
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpeWblpOWHSdujc28GrDmOsPQPLTtDpdQ&callback=initMap&v=weekly&loading=async"
+        ></script>
 
-    <!-- PapaParse Library for CSV parsing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+        <!-- PapaParse Library for CSV parsing -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
-    <!-- External JavaScript file -->
-    <script src="main.js" type="text/javascript"></script>
-  </body>
+        <!-- External JavaScript file -->
+        <script src="main.js" type="text/javascript"></script>
+    </body>
 </html>
