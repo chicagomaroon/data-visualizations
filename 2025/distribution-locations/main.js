@@ -15,7 +15,7 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow();
 
     // Parse the CSV file
-    Papa.parse('locations.csv', {
+    Papa.parse('./distribution-locations/locations.csv', {
         download: true,
         header: true, // Use first row as header
         complete: function (results) {
