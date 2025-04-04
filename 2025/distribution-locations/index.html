@@ -2,20 +2,28 @@
     <head>
         <title>Building Locations Map</title>
         <style>
-            #map {
-                height: 100%;
-            }
-            html,
-            body {
+            html, body {
                 height: 100%;
                 margin: 0;
                 padding: 0;
-                font-family: 'Georgia', 'serif';
+                font-family: 'Georgia', serif;
+                display: flex;
+                flex-direction: column;
+            }
+            #title {
+                padding: 15px;
+                text-align: center;
+                background-color: #f8f8f8;
+                font-size: 24px;
+                font-weight: bold;
+                border-bottom: 1px solid #ddd;
+            }
+            #map {
+                flex: 1; /* Fill remaining space */
             }
             .gm-style {
-                font-family: 'Georgia', 'serif';
+                font-family: 'Georgia', serif;
             }
-            /* You can add additional styling as needed */
         </style>
         <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     </head>
