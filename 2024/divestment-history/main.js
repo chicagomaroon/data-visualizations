@@ -279,12 +279,12 @@ function hide_box_hovers(data) {
 
 // ------- CONSTANTS ------
 
-config = {
+const config = {
     displayModeBar: false,
     responsive: true
 };
 
-transition = {
+const transition = {
     duration: 400,
     easing: 'linear'
 };
