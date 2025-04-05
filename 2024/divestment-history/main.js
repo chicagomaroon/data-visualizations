@@ -1,4 +1,15 @@
 //TODO
+// add images/news clippings from archives to illustrate historical aspect
+// finish writing...
+// add differentiated symbols for accessibility - maybe
+// might have to manually define jitter... I imagine more of an abstract timeline where points repel each other
+// at least a white outline around each marker?
+// I think the way the intro could work is an arbitrarily arranged plotly graph with text annotations, which are re-arranged in the next waypoint to actual dates (and points?)
+// you can create a class 'active' with all css elements tied to the class instead of individual elements
+// try full page graphic and text on top of graphic
+// try group labels in graphic instead of axis
+// maybe remove lines altogether? ask
+// change the scale of years when scroll/zoom?
 
 // ------------------ DATA ------------------
 // Fetch JSON data
@@ -64,7 +75,7 @@ function processData(data, name_var) {
             marker: {
                 size: 15,
                 opacity: 0.5,
-                cliponaxis: false, // Allow points to extend beyond the axis boundaries
+                cliponaxis: false // Allow points to extend beyond the axis boundaries
             },
             transforms: [
                 {
@@ -82,7 +93,7 @@ function processData(data, name_var) {
             fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
             line: { color: 'rgba(0,0,0,0)' }, // remove box part of boxplot
             hoverinfo: 'text',
-            hovertemplate: '%{text}<extra></extra>', // the <extra> tag removes any excess formatting
+            hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
         });
 
         // console.log(traces)
@@ -121,7 +132,8 @@ function createWaypoint(div, mapping, offset = '80%') {
                 },
                 { transition: transition }
             );
-        } else if (div=='palestine') {
+            console.log(div);
+        } else if (div == 'palestine') {
             Plotly.animate(
                 graphDiv,
                 {
@@ -131,6 +143,7 @@ function createWaypoint(div, mapping, offset = '80%') {
                 },
                 { transition: transition }
             );
+            console.log('first key');
         } else if (!classList.match('first')) {
             // go back to the previous key
 
@@ -141,11 +154,12 @@ function createWaypoint(div, mapping, offset = '80%') {
                 graphDiv,
                 {
                     layout: {
-                        yaxis: { range: mapping[previousKey]['y'] },
+                        yaxis: { range: mapping[previousKey]['y'] }
                     }
                 },
                 { transition: transition }
             );
+            console.log('prev key');
         }
     }
 
@@ -162,22 +176,15 @@ function createWaypoint(div, mapping, offset = '80%') {
  * @param  {str} Name of HTML div to attach waypoint to
  * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createNewSection(
-    div, 
-    variable, 
-    prev_var,
-    offset='80%'
-) {
-
+function createNewSection(div, variable, prev_var, offset = '80%') {
+    // console.log(processData(data, variable));
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
             var myPlot = document.getElementById('chart-div');
 
-            if (direction=='down') {
-                
-                d3.selectAll('#chart-div')
-                    .style('opacity', 100);
+            if (direction == 'down') {
+                d3.selectAll('#chart-div').style('opacity', 100);
 
                 Plotly.newPlot(
                     'chart-div',
@@ -224,6 +231,7 @@ function createLayout() {
         },
         font: {
             family: 'serif'
+            // switch to georgia
         },
         xaxis: {
             showgrid: true,
@@ -356,10 +364,9 @@ const zoom_mapping = {
 var data;
 
 async function init() {
-
-    window.onbeforeunload = function() {
-        window.scrollTo(0,0)
-    }
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
 
     data = await fetchData();
     // console.log(data);
