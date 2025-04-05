@@ -211,12 +211,6 @@ figure {
     }
 
     #intro-quotes {
-        position: fixed;
-        top: 5vh;
-        left: 5vw;
-    }
-
-    #intro-quotes {
         width: 90%;
     }
 
@@ -227,10 +221,6 @@ figure {
 
     .attribution {
         width: 75%;
-    }
-
-    #content {
-        width: 95%;
     }
 
     .scroller {
@@ -253,11 +243,5 @@ figure {
 
     blockquote {
         font-size: 16px;
-    }
-
-    #chart-div {
-        position: sticky;
-        top: 0vh;
-        margin: auto;
     }
 }
