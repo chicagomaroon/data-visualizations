@@ -393,17 +393,14 @@ async function init() {
                     .transition()
                     .duration(500)
                     .style('opacity', 0)
-                    .on('end', function () {
-                        // After the transition, set display to 'none'
-                        d3.selectAll('#pre-intro').style('display', 'none');
-                    });
+                    .style('z-index', '-1');
                 console.log('hide quotes');
             } else {
                 d3.selectAll('#pre-intro')
                     .transition()
                     .duration(500)
                     .style('opacity', 100)
-                    .style('display', 'block');
+                    .style('z-index', '100');
                 console.log('show quotes');
             }
         },
