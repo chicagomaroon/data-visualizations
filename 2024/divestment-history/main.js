@@ -63,7 +63,8 @@ function processData(data, name_var) {
             pointpos: 0, // center points
             marker: {
                 size: 15,
-                opacity: 0.5
+                opacity: 0.5,
+                cliponaxis: false, // Allow points to extend beyond the axis boundaries
             },
             transforms: [
                 {
