@@ -40,6 +40,10 @@ hr {
     text-align: center;
 }
 
+.cursor-crosshair {
+    cursor: pointer !important;
+}
+
 /* intro */
 
 #pre-intro {
