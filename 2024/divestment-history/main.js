@@ -98,7 +98,7 @@ function processData(data, name_var) {
  * @param  {str} Name of HTML div to attach waypoint to
  * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createWaypoint(div, mapping) {
+function createWaypoint(div, mapping, offset = '80%') {
     function handler(direction) {
         graphDiv = document.getElementById('chart-div');
 
@@ -152,7 +152,7 @@ function createWaypoint(div, mapping) {
     new Waypoint({
         element: document.getElementById(div),
         handler: handler,
-        offset: '75%'
+        offset: offset
     });
 }
 
