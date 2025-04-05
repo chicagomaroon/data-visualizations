@@ -186,12 +186,11 @@ function createNewSection(
                     config
                 );
                 console.log('New section created at: ' + div);
-            } else if (prev_var == 'Movement') {
+            } else if (prev_var == 'Top') {
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(500)
                     .style('opacity', 0);
-                console.log('Going to previous section: ' + prev_var);
             } else {
                 Plotly.newPlot(
                     'chart-div',
@@ -199,6 +198,7 @@ function createNewSection(
                     createLayout(),
                     config
                 );
+                console.log('Going to previous section: ' + prev_var);
             }
 
             myPlot.on('plotly_click', open_url);
@@ -404,7 +404,12 @@ async function init() {
     });
 
     // we will edit this plot throughout the whole article
-    createNewSection('bylines', 'Movement', prev_var='Movement', offset='16%')
+    createNewSection(
+        'transition',
+        'Movement',
+        prev_var = 'Top',
+        offset = '50%'
+    );
 
     // define waypoints (scroll reactions)
     createWaypoint('palestine', zoom_mapping['Movement']);
