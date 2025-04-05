@@ -434,13 +434,15 @@ async function init() {
                     .duration(200)
                     .style('opacity', 0)
                     .style('display', 'none');
-                console.log('d3');
+                console.log('Hiding chart div');
             } else {
+                d3.selectAll('#chart-div')
+                    .style('display', 'block')
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(200)
-                    .style('opacity', 1)
-                    .style('display', 'show');
+                    .style('opacity', 1);
+                console.log('Showing chart div');
             }
         },
         offset: '90%'
