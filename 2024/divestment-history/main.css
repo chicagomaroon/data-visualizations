@@ -67,7 +67,15 @@ hr {
     left: 20vw;
 }
 
-.intro, #intro-quotes, #methodology, #conclusion, #further-reading {
+.intro,
+#intro-quotes {
+    margin: auto;
+    width: max(600px, 60vw);
+}
+
+#methodology,
+#conclusion,
+#further-reading {
     margin: auto;
     width: max(600px, 50vw);
 }
