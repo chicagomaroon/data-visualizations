@@ -412,7 +412,7 @@ async function init() {
         'transition',
         'Movement',
         prev_var = 'Top',
-        offset = '50%'
+        offset = '80%'
     );
 
     // define waypoints (scroll reactions)
