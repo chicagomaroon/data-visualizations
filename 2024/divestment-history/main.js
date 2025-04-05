@@ -185,12 +185,13 @@ function createNewSection(
                     createLayout(),
                     config
                 );
+                console.log('New section created at: ' + div);
             } else if (prev_var == 'Movement') {
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(500)
                     .style('opacity', 0);
-                console.log(prev_var);
+                console.log('Going to previous section: ' + prev_var);
             } else {
                 Plotly.newPlot(
                     'chart-div',
