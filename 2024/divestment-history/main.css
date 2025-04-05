@@ -51,9 +51,7 @@ hr {
     color: white;
     padding: 4em;
     font-size: 20px;
-    height: 150vh;
-    position: fixed;
-    width: 100vw;
+    position: sticky;
     top: 0;
     z-index: 100;
 }
@@ -62,13 +60,7 @@ hr {
     display: flex;
     flex-direction: column;
     margin: -1em 0;
-/* relative to view height */
-}
-
-#intro-quotes {
-    position: fixed;
-    top: 5vh;
-    left: 20vw;
+    /* relative to view height */
 }
 
 .intro,
