@@ -237,6 +237,9 @@ function createLayout() {
         margin: {
             l: 120,
             r: 0
+    font: {
+        family: 'Georgia'
+    },
         }
     };
 }
