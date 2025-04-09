@@ -189,7 +189,7 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, variable),
-                    createLayout(),
+                    Layout,
                     config
                 );
                 console.log('New section created at: ' + div);
@@ -202,7 +202,7 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
-                    createLayout(),
+                    Layout,
                     config
                 );
                 console.log('Going to previous section: ' + prev_var);
@@ -218,11 +218,10 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
 /**
  * Layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
- * @return {json} Layout object for plotly
  */
-function createLayout() {
-    return {
-        title: {
+const Layout = {
+    title: {
+        text: 'Divestment Activism Events at UChicago',
         x: 0.18,
         font: {
             size: 24
@@ -233,18 +232,35 @@ function createLayout() {
                 size: 14
             },
         },
-        showlegend: false,
-        margin: {
-            l: 120,
-            r: 0
+    },
     font: {
         family: 'Georgia'
     },
+    xaxis: {
+        showgrid: true,
+        showline: true,
+        range: ['1966-1-1', '2026-1-1'],
+        type: 'date',
+        dtick: 'M12',
+        ticklabelstep: 4,
+    },
+    yaxis: {
+        showgrid: false,
+        ticktext: 'text',
         tickfont: {
             size: 14,
         }
-    };
-}
+    },
+    hovermode: 'closest',
+    hoverlabel: {
+        bgcolor: 'white'
+    },
+    showlegend: false,
+    margin: {
+        l: 120,
+        r: 0
+    }
+};
 
 /**
  * When you click on a data point, it should open the URL linked in the hover text in a new tab.
