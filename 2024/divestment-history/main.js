@@ -342,26 +342,26 @@ const colorbook = {
 
 const zoom_mapping = {
     Movement: {
-        palestine: { y: [-0.5, 0.5] },
-        'fossil-fuels': { y: [0.5, 1.5] },
-        'labor-rights': { y: [1.5, 2.5] },
-        'uyghur-rights': { y: [2.5, 3.5] },
-        sric: { y: [3.5, 4.5] },
-        sudan: { y: [4.5, 5.5] },
-        'south-africa': { y: [5.5, 6.5] },
-        all: { y: [-0.5, 7.5] }
+        palestine: { y: [-0.25, 0.25] },
+        'fossil-fuels': { y: [0.75, 1.25] },
+        'labor-rights': { y: [1.75, 2.25] },
+        'uyghur-rights': { y: [2.75, 3.25] },
+        sric: { y: [3.75, 4.25] },
+        sudan: { y: [4.75, 5.25] },
+        'south-africa': { y: [5.75, 6.25] },
+        all: { y: [-0.25, 7.25] }
     },
     'Type of Action': {
-        letters: { y: [0.5, 1.5] },
-        protest: { y: [-0.5, 0.5] },
-        'other-action': { y: [1.5, 5.5] },
-        all: { y: [-0.5, 6.5] }
+        letters: { y: [0.75, 1.25] },
+        protest: { y: [-0.25, 0.25] },
+        'other-action': { y: [1.75, 5.25] },
+        all: { y: [-0.25, 6.25] }
     },
     'Admin Response': {
-        meeting: { y: [2.5, 4.5] },
-        police: { y: [0.5, 2.5] },
-        'other-response': { y: [-0.5, 0.5] },
-        all: { y: [-0.5, 4.5] }
+        meeting: { y: [2.75, 4.25] },
+        police: { y: [0.75, 2.25] },
+        'other-response': { y: [-0.25, 0.25] },
+        all: { y: [-0.25, 4.25] }
     }
 };
 
