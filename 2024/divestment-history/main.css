@@ -245,9 +245,18 @@ figure {
         width: 100vw;
     }
 
-    .quote {
-        width: 95%;
-        line-height: 1.2em;
+    .intro p {
+        margin-top: 5vh !important;
+    }
+
+    .intro {
+        width: 90%;
+        margin: auto;
+    }
+    
+    .intro-quote {
+        width: 80%;
+        margin: 0;
     }
 
     .attribution {
