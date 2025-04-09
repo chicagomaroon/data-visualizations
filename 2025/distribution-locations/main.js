@@ -15,7 +15,7 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow();
 
     // Parse the CSV file
-    Papa.parse('locations.csv', {
+    Papa.parse('locations_updated.csv', {
         download: true,
         header: true, // Use first row as header
         complete: function (results) {
@@ -36,7 +36,8 @@ function initMap() {
                 let content = `
           <div>
             <h3>${row['Building Name']}</h3>
-            <p>${row['Address']}</p>
+            <p><strong>Address:</strong> ${row['Address']}</p>
+            <p><strong>Comment:</strong> ${row['Comment']}</p>
           </div>
         `;
 
