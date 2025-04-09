@@ -34,11 +34,11 @@ function initMap() {
 
                 // Create the content for the info window with building name and address
                 let content = `
-          <div>
-            <h3>${row['Name']}</h3>
+        <div>
+             <h3>${row['Name']}</h3>
             <p><strong>Address:</strong> ${row['Location']}</p>
-            <p></strong> ${row['Comment']}</p>
-          </div>
+             ${row['Comment'] ? `<p><strong>Pick-Up Notes:</strong> ${row['Comment']}</p>` : ''}
+        </div>
         `;
 
                 // Add a click listener to show the info window when the marker is clicked
