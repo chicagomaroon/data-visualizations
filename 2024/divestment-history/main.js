@@ -258,8 +258,8 @@ const Layout = {
     showlegend: false,
     margin: {
         l: 120,
-        r: 0
     }
+        r: 15,
 };
 
 /**
