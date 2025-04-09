@@ -32,7 +32,8 @@ h1 {
 }
 
 hr {
-    margin: 2em 0;
+    margin: 2em auto;
+    width: 80%;
 }
 
 #subtitle {
