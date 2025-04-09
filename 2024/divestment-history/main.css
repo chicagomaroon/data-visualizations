@@ -71,10 +71,7 @@ hr {
     margin: -1em 0;
 }
 
-.intro,
-#intro-quotes {
-    margin: auto;
-    width: max(600px, 60vw);
+.intro {
     height: 100vh;
 }
 
