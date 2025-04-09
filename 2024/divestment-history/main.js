@@ -259,6 +259,7 @@ const Layout = {
     margin: {
         l: 120,
         r: 15,
+    }
 };
 
 /**
