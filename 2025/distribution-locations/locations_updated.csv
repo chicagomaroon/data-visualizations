@@ -1,39 +1,38 @@
-Name,Location ,Person,Date Checked,# of Issues Left,Notes,,Comment
-Arley D Cathey Dining Commons,6031 S Ellis Ave,,,,,,
-Baker Dining Hall,"5501 S University Ave, Chicago, IL 60637",,,,,,
-Bartlett Dining Hall,"5640 S University, Chicago IL 60637",,,,,,Box in lobby
-Cafe 53,"1369 E 53rd St, Chicago, IL 60615",,,,,,Lobby
-Campus North Dormitory,"5500 S University Ave, Chicago, IL 60637",,,,,,Hand to Front Desk
-Center for Environmental and Urban Studies,"1155 E 60th St, Chicago, IL 60637",,,,,,Lobby
-Chicago Maroon Office,"1212 E 59th St Chicago IL 60637 (Basement, or leave with front desk)",,,,,,Lobby
-Cobb Hall,"5811 S Ellis Ave, Chicago, IL 60637",,,,,,Lobby
-Crerar Library,"5730 S Ellis Ave, Chicago IL 60637",,,,,,Box in lobby
-Harper Library,"1116 E 59th St, Chicago, IL 60637",,,,,,Lobby
-Hutchinson Commons,"5706 S University, Chicago IL 60636",,,,,,Box on first floor
-Hutchinson Commons,"1226 E 53rd St, Chicago IL 60615",,,,,,Lobby
-Ida Noyes Hall,"1212 E 59th St, Chicago IL 60637",,,,,,Box on 2nd floor
-International House,"1414 E 59th St, Chicago IL 60637",,,,,,Lobby
-Jimmy's Woodlawn Tap,"1519 E 55th St, Chicago IL 60637",,,,,,Lobby
-Logan Center for the Arts,"915 E 60th St, Chicago IL 60637",,,,,,Lobby
-Max P Central,"1101 E 56th St, Chicago, IL 60637",,,,,,Box in lobby
-Max P East,"1101 E 56th St, Chicago, IL 60637",,,,,,Lobby
-Max P West,"1101 E 56th St, Chicago, IL 60637",,,,,,Lobby
-Medici,"1327 E 57th St, Chicago, IL 60637",,,,,,Store
-Philz Coffee,1425 E 53rd St Chicago IL 60615,,,,,,Lobby
-Quadrangle Club,"1155 E 57th St, Chicago IL 60637",,,,,,Wall-mounted box in Cafe
-Ratner Athletic Center,"5530 S Ellis Ave, Chicago IL 60637",,,,,,Lobby
-Regenstein Library ,"1100 E 57th St, Chicago, IL 60637",,,,,,Box in basement
-Renee Granville-Grossman Residential Commons,6031 S Ellis Ave,,,,,,Lobby
-Saieh Hall ,"5757 S University Ave, Chicago IL 60637",,1/17,42,,,Lobby
-SemCoOp,"5751 S Woodlawn Ave, Chicago, IL 60637",,,,,,1st floor
-Snell-Hitchcock,"1009 E 57th St, Chicago IL 60637",,,,,,Lobby
-Starbucks (53rd),1530 E 53rd St Chicago IL 60615,,,,,,
-Starbucks (55th),"1174 E 55th St, Chicago IL 60615",,,,,,
-Stuart Hall,"5835 S Greenwood Ave, Chicago IL 60637",,,15,,,
-The Study UChicago,1227 East 60th Street,,,,,,
-Trader Joe's,"1528 E 55th St, Chicago IL 60615",,,,,,
-UChicago Institute of Politics,"5707 S Woodlawn, Chicago IL 60637",,,,,,
-Woodlawn Dining Commons,1156 E 61st Street Chicago IL 60615,,,,,,
-Woodlawn Residential Commons,1156 E 61st Street Chicago IL 60615,,,,,,
-Booth School of Business,"5807 S Woodlawn Ave, Chicago, IL 60637",,,,,,
-Harris Cafe in The Keller Center,"1307 E 60th St Chicago, IL 60637",Nathan,1/16/24,0,"Need to recheck next issue, either all gone or none in the first place",,
+Name,Location ,Person,Date Checked,Latitude,Longitude,,Comment
+Arley D Cathey Dining Commons,"6031 S Ellis Ave, Chicago, IL 60637",,,41.78530807,-87.60038752,,
+Baker Dining Hall,"5501 S University Ave, Chicago, IL 60637",,,41.79460805,-87.59853524,,
+Bartlett Dining Hall,"5640 S University, Chicago, IL 60637",,,41.79209186,-87.59825325,,Box in lobby
+Cafe 53,"1369 E 53rd St, Chicago, IL 60615",,,41.79950073,-87.59241523,,Lobby
+Campus North Dormitory,"5500 S University Ave, Chicago, IL 60637",,,41.79472825,-87.59839296,,Hand to Front Desk
+Center for Environmental and Urban Studies,"1155 E 60th St, Chicago, IL 60637",,,41.78855296,-87.59816399,,Lobby
+Chicago Maroon Office,"1212 E 59th St, Chicago, IL 60637",,,41.78813297,-87.59560119,,Lobby
+Cobb Hall,"5811 S Ellis Ave, Chicago, IL 60637",,,41.78912416,-87.60087036,,Lobby
+Crerar Library,"5730 S Ellis Ave, Chicago, IL 60637",,,41.79065996,-87.60287546,,Box in lobby
+Harper Library,"1116 E 59th St, Chicago, IL 60637",,,41.78809116,-87.59963425,,Lobby
+Hutchinson Commons,"5706 S University, Chicago, IL 60636",,,41.79133035,-87.59865383,,Box on first floor
+Ida Noyes Hall,"1212 E 59th St, Chicago, IL 60637",,,41.78812697,-87.59559407,,Box on 2nd floor
+International House,"1414 E 59th St, Chicago, IL 60637",,,41.78861562,-87.591124,,Lobby
+Jimmy's Woodlawn Tap,"1172 E 55th St, Chicago, IL 60615",,,41.795191,-87.596835,,Lobby
+Logan Center for the Arts,"915 E 60th St, Chicago, IL 60637",,,41.78572927,-87.6038694,,Lobby
+Max P Central,"1101 E 56th St, Chicago, IL 60637",,,41.79309676,-87.59989302,,Box in lobby
+Max P East,"1101 E 56th St, Chicago, IL 60637",,,41.79309676,-87.59989302,,Lobby
+Max P West,"1101 E 56th St, Chicago, IL 60637",,,41.79309676,-87.59989302,,Lobby
+Medici,"1327 E 57th St, Chicago, IL 60637",,,41.79135596,-87.59369253,,Store
+Philz Coffee,"1425 E 53rd St Chicago, IL 60615",,,41.79996809,-87.59056214,,Lobby
+Quadrangle Club,"1155 E 57th St, Chicago, IL 60637",,,41.79106705,-87.5976016,,Wall-mounted box in Cafe
+Ratner Athletic Center,"5530 S Ellis Ave, Chicago, IL 60637",,,41.79425466,-87.60161306,,Lobby
+Regenstein Library ,"1100 E 57th St, Chicago, IL 60637",,,41.79238296,-87.60003983,,Box in basement
+Renee Granville-Grossman Residential Commons,"6031 S Ellis Ave, Chicago, IL 60637",,,41.78472557,-87.60040261,,Lobby
+Saieh Hall ,"5757 S University Ave, Chicago, IL 60637",,17-Jan,41.79000616,-87.59728728,,Lobby
+Seminary Co-Op,"5751 S Woodlawn Ave, Chicago, IL 60637",,,41.79024926,-87.59614453,,1st floor
+Snell-Hitchcock,"1009 E 57th St, Chicago, IL 60637",,,41.79122476,-87.6005054,,Lobby
+Starbucks (53rd),"1530 E 53rd St, Chicago, IL 60615",,,41.80031839,-87.58764545,,
+Starbucks (55th),"1174 E 55th St, Chicago, IL 60615",,,41.79592543,-87.59605769,,
+Stuart Hall,"5835 S Greenwood Ave, Chicago, IL 60637",,,41.78856856,-87.59904566,,
+The Study UChicago,"1227 East 60th Street, Chicago, IL 60637",,,41.78609407,-87.59516549,,
+Trader Joe's,"1528 E 55th St, Chicago, IL 60615",,,41.796506,-87.588394,,
+UChicago Institute of Politics,"5707 S Woodlawn, Chicago, IL 60637",,,41.79135305,-87.59618759,,
+Woodlawn Dining Commons,"1156 E 61st Street Chicago, IL 60615",,,41.78490417,-87.59720576,,
+Woodlawn Residential Commons,"1156 E 61st Street Chicago, IL 60615",,,41.78445557,-87.5971699,,
+Booth School of Business,"5807 S Woodlawn Ave, Chicago, IL 60637",,,41.78994463,-87.59632936,,
+Harris Cafe in The Keller Center,"1307 E 60th St, Chicago, IL 60637",Nathan,1/16/24,41.785689,-87.594053,,
