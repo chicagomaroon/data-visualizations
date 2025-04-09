@@ -29,14 +29,14 @@ function initMap() {
                 let marker = new google.maps.Marker({
                     position: { lat: lat, lng: lng },
                     map: map,
-                    title: row['Building Name']
+                    title: row['Name']
                 });
 
                 // Create the content for the info window with building name and address
                 let content = `
           <div>
-            <h3>${row['Building Name']}</h3>
-            <p><strong>Address:</strong> ${row['Address']}</p>
+            <h3>${row['Name']}</h3>
+            <p><strong>Address:</strong> ${row['Location']}</p>
             <p><strong>Comment:</strong> ${row['Comment']}</p>
           </div>
         `;
