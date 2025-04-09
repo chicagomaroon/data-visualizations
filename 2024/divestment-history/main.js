@@ -222,7 +222,7 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
 const Layout = {
     title: {
         text: 'Divestment Activism Events at UChicago',
-        x: 0.18,
+        x: 0.14,
         font: {
             size: 24
         },
