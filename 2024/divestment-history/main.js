@@ -223,31 +223,15 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
 function createLayout() {
     return {
         title: {
-            text: 'Divestment Activism Events at UChicago',
-            subtitle: {
-                text: 'Click a data point to visit the source article.'
-            },
-            x: 0.14
-        },
+        x: 0.18,
         font: {
-            family: 'serif'
-            // switch to georgia
+            size: 24
         },
-        xaxis: {
-            showgrid: true,
-            showline: true,
-            range: ['1966-1-1', '2026-1-1'],
-            type: 'date',
-            dtick: 'M12',
-            ticklabelstep: 4
-        },
-        yaxis: {
-            showgrid: false,
-            ticktext: 'text'
-        },
-        hovermode: 'closest',
-        hoverlabel: {
-            bgcolor: 'white'
+        subtitle: {
+            text: 'Click a data point to visit the source article.',
+            font: {
+                size: 14
+            },
         },
         showlegend: false,
         margin: {
