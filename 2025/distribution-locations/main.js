@@ -37,7 +37,11 @@ function initMap() {
         <div>
              <h3>${row['Name']}</h3>
             <p><strong>Address:</strong> ${row['Location']}</p>
-             ${row['Comment'] ? `<p><strong>Pick-Up Notes:</strong> ${row['Comment']}</p>` : ''}
+             ${
+                 row['Comment']
+                     ? `<p><strong>Pick-Up Notes:</strong> ${row['Comment']}</p>`
+                     : ''
+             }
         </div>
         `;
 
