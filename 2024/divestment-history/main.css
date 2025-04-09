@@ -227,7 +227,7 @@ figure {
     }
 
     #pre-intro {
-        padding: 2em;
+        padding: 2em 0;
         font-size: 15px;
         height: 150vh;
     }
