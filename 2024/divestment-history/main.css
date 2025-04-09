@@ -108,9 +108,13 @@ hr {
 }
 
 .quote {
-    text-align: left;
-    width: 50%;
+    text-align: justify;
+    width: 50vw;
     line-height: 1.2em;
+}
+
+.admin .attribution {
+    text-align: right;
 }
 
 .attribution {
