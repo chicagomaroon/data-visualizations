@@ -290,8 +290,10 @@ figure {
         font-size: 14px;
     }
 
-    .scroller img {
+    #further-reading,
+    #methodology {
         width: 90vw;
+        margin: 70vh 0;
     }
 
     blockquote {
