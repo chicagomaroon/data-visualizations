@@ -150,8 +150,9 @@ hr {
 .scroller {
     margin-top: 50vh;
     margin-bottom: 50vh;
-    background-color: #fefedc;
+    /* background-color: #fefedc; */
     padding: 2em;
+    box-shadow: 0 0 1em #dedede;
 }
 
 .scroller img,
