@@ -247,6 +247,11 @@ figure {
         width: 100vw;
     }
 
+    #chapters {
+        width: 100vw;
+        margin: 0;
+    }
+
     .intro p {
         margin-top: 5vh !important;
     }
