@@ -232,8 +232,10 @@ figure {
         height: 150vh;
     }
 
-    #intro-quotes {
-        width: 90%;
+    #chart-div {
+        height: 50vh !important;
+    }
+
     .plotly {
         position: absolute;
         left: 0;
