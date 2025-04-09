@@ -402,9 +402,9 @@ async function init() {
             } else {
                 d3.selectAll('#pre-intro')
                     .transition()
-                    .duration(500)
-                    .style('opacity', 100)
-                    .style('z-index', '100');
+                    .duration(0)
+                    .style('z-index', '100')
+                    .style('opacity', 100);
                 console.log('show quotes');
             }
         },
