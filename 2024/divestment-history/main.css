@@ -271,9 +271,10 @@ figure {
     }
 
     .scroller {
-        margin-top: 5vh;
-        width: 95%;
-        margin-left: 2%;
+        width: 80vw;
+        margin: 50vh auto;
+    }
+
     .scroller img {
         max-height: 30vh;
         margin: 0 auto;
