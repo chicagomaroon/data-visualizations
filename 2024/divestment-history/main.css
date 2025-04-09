@@ -234,6 +234,12 @@ figure {
 
     #intro-quotes {
         width: 90%;
+    .plotly {
+        position: absolute;
+        left: 0;
+        margin-top: -15px !important;
+    }
+    
     }
 
     .quote {
