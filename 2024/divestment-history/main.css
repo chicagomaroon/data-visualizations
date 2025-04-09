@@ -214,6 +214,18 @@ figure {
 }
 
 @media (width < 800px) {
+    body {
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    #subtitle {
+        font-size: 20px;
+    }
+
     #pre-intro {
         padding: 2em;
         font-size: 15px;
