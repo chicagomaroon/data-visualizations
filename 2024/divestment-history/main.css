@@ -269,6 +269,13 @@ figure {
         margin-top: 5vh;
         width: 95%;
         margin-left: 2%;
+    .scroller img {
+        max-height: 30vh;
+        margin: 0 auto;
+        margin-top: 1em;
+        display: block;
+        width: auto;
+    }
     }
 
     p,
