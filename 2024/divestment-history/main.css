@@ -166,6 +166,12 @@ figure {
     padding: 1em 0;
 }
 
+
+figcaption {
+    font-family: 'Playfair Display', serif;
+    text-align: right;
+}
+
 figure {
     padding: 1em;
 }
