@@ -224,7 +224,7 @@ const Layout = {
         text: 'Divestment Activism Events at UChicago',
         x: 0.14,
         font: {
-            size: 24
+            size: 20
         },
         subtitle: {
             text: 'Click a data point to visit the source article.',
