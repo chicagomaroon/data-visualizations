@@ -69,7 +69,7 @@ hr {
 .intro-quote {
     display: flex;
     flex-direction: column;
-    margin: -1em 0;
+    width: 100%;
 }
 
 .intro {
