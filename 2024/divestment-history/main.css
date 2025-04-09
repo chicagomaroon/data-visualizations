@@ -158,7 +158,6 @@ hr {
 
 .scroller img,
 figure {
-    width: 30vw;
     /* border: 1px solid black; */
     background-color: white;
     box-shadow: 0 0 1em #dddddd;
@@ -166,6 +165,9 @@ figure {
     padding: 1em 0;
 }
 
+.scroller img {
+    width: 100%;
+}
 
 figcaption {
     font-family: 'Playfair Display', serif;
