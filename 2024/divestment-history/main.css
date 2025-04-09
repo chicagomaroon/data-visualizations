@@ -67,6 +67,7 @@ hr {
 #intro-quotes {
     margin: auto;
     width: max(600px, 60vw);
+    height: 100vh;
 }
 
 #methodology,
