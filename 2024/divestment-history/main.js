@@ -240,6 +240,8 @@ function createLayout() {
     font: {
         family: 'Georgia'
     },
+        tickfont: {
+            size: 14,
         }
     };
 }
