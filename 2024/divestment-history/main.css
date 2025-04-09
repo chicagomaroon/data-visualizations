@@ -240,6 +240,9 @@ figure {
         margin-top: -15px !important;
     }
     
+    #chart-div, #intro-quotes, #background, .content {
+        margin: 0;
+        width: 100vw;
     }
 
     .quote {
