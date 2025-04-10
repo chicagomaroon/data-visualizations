@@ -29,7 +29,11 @@ function initMap() {
                 let marker = new google.maps.Marker({
                     position: { lat: lat, lng: lng },
                     map: map,
-                    title: row['Name']
+                    title: row['Name'],
+                    icon: {
+                        url: "2025/distribution-locations/maroon_logo_m_black.svg",
+                        scaledSize: new google.maps.Size(32, 32) // adjust the size as needed
+                    }
                 });
 
                 // Create the content for the info window with building name and address
