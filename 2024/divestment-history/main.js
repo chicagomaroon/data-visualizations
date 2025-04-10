@@ -409,15 +409,15 @@ async function init() {
                 console.log('show quotes');
             }
         },
-        offset: '25%'
+        offset: '-10%'
     });
 
     // we will edit this plot throughout the whole article
     createNewSection(
-        'transition',
+        'causes',
         'Movement',
         prev_var = 'Top',
-        offset = '80%'
+        offset = '110%'
     );
 
     // define waypoints (scroll reactions)
