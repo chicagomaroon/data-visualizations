@@ -1,3 +1,7 @@
+/* TODO: */
+/* look up examples of block quotes styling: change font */
+/* separate quotes more and two tone and year bigger */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* overall */
@@ -8,7 +12,11 @@ body {
     font-family: 'Georgia', serif;
 }
 
-a, a:hover, a:active, a:visited, a:focus {
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
     color: #800000;
 }
 
@@ -74,7 +82,8 @@ hr {
     height: 100vh;
 }
 
-.non-scroller, .section-header {
+.non-scroller,
+.section-header {
     margin: auto;
     width: max(600px, 50vw);
 }
@@ -95,9 +104,10 @@ hr {
     color: white;
 }
 
-#background {    
+#background {
     /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
-    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .6)), url('images/south-africa.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+        url('images/south-africa.jpg');
     background-size: cover;
     background-position: bottom;
     height: 100vh;
@@ -148,7 +158,8 @@ hr {
     position: relative;
 }
 
-#content, #chapters {
+#content,
+#chapters {
     margin-top: 100vh;
 }
 
@@ -168,7 +179,7 @@ hr {
 figure {
     /* border: 1px solid black; */
     background-color: white;
-    box-shadow: 0 0 1em #dddddd;
+    box-shadow: 0 0 1em #eeeeee;
     margin: 1em 0;
     padding: 1em 0;
 }
@@ -206,7 +217,6 @@ blockquote {
     position: fixed;
     width: 60vw;
     top: 0;
-    left: 10px;
     z-index: 1;
 }
 
@@ -218,13 +228,18 @@ figure {
     margin-top: 20em;
 }
 
+.conclusion {
+    margin: 4em auto; 
+    width: 50%;
+}
+
 @media (width < 800px) {
     body {
         margin: 0;
     }
 
     h1 {
-        font-size: 40px;
+        font-size: 32px;
     }
 
     #subtitle {
@@ -232,7 +247,7 @@ figure {
     }
 
     #pre-intro {
-        padding: 2em 0;
+        padding: 0;
         font-size: 15px;
         height: 150vh;
     }
@@ -246,14 +261,21 @@ figure {
         left: 0;
         margin-top: -15px !important;
     }
-    
-    #chart-div, #intro-quotes, #background, .content {
+
+    #chart-div,
+    #intro-quotes,
+    #background,
+    .content {
         margin: 0;
         width: 100vw;
     }
 
     #intro-quotes {
         padding: 0;
+    }
+
+    .quote {
+        width: 80vw;
     }
 
     #chapters {
@@ -269,9 +291,9 @@ figure {
         width: 90%;
         margin: auto;
     }
-    
+
     .intro-quote {
-        width: 80%;
+        width: 90%;
         margin: 0;
     }
 
@@ -297,7 +319,8 @@ figure {
         font-size: 14px;
     }
 
-    .non-scroller, .section-header {
+    .non-scroller,
+    .section-header {
         width: 90vw;
         margin: 50vh auto;
     }
@@ -309,8 +332,13 @@ figure {
     .main-svg {
         height: 360px !important;
     }
-        
+
     #content {
         margin-top: 20vh;
+    }
+
+    .conclusion {
+        width: 90%;
+        margin-bottom: 0;
     }
 }

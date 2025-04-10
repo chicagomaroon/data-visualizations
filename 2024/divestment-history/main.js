@@ -3,7 +3,6 @@
 // might have to manually define jitter... I imagine more of an abstract timeline where points repel each other
 // at least a white outline around each marker?
 // I think the way the intro could work is an arbitrarily arranged plotly graph with text annotations, which are re-arranged in the next waypoint to actual dates (and points?)
-// try full page graphic and text on top of graphic
 // try group labels in graphic instead of axis
 // maybe remove lines altogether? ask
 // experiment with transitions
@@ -42,12 +41,8 @@ function hideChart() {
 }
 
 function showChart() {
-    d3.selectAll('#chart-div')
-        .style('display', 'block');
-    d3.selectAll('#chart-div')
-        .transition()
-        .duration(200)
-        .style('opacity', 1);
+    d3.selectAll('#chart-div').style('display', 'block');
+    d3.selectAll('#chart-div').transition().duration(200).style('opacity', 1);
 }
 
 /**
@@ -202,7 +197,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
 
             if (direction == 'down') {
                 showChart();
-                
+
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, variable),
@@ -226,29 +221,33 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                 hideChart();
             } else {
                 // go to last key of previous section
-                        
+
                 let orderedKeys = [];
                 for (var key in mapping[prev_var]) {
                     orderedKeys.push(key);
                 }
-                    
+
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
                     layout,
                     config
                 );
-                
+
                 Plotly.animate(
                     myPlot,
                     {
                         layout: {
-                            yaxis: { range: mapping[prev_var][orderedKeys.at(-1)]['y'] }
+                            yaxis: {
+                                range: mapping[prev_var][orderedKeys.at(-1)][
+                                    'y'
+                                ]
+                            }
                         }
                     },
                     { transition: transition }
                 );
-                
+
                 console.log('Going to previous section: ' + prev_var);
             }
 
@@ -304,8 +303,8 @@ const layout = {
             text: 'Click a data point to visit the source article.',
             font: {
                 size: 14
-            },
-        },
+            }
+        }
     },
     font: {
         family: 'Georgia'
@@ -316,13 +315,13 @@ const layout = {
         range: ['1964-1-1', '2027-1-1'],
         type: 'date',
         dtick: 'M60',
-        ticklabelstep: 1,
+        ticklabelstep: 1
     },
     yaxis: {
         showgrid: false,
         ticktext: 'text',
         tickfont: {
-            size: 14,
+            size: 14
         }
     },
     hovermode: 'closest',
@@ -332,7 +331,7 @@ const layout = {
     showlegend: false,
     margin: {
         l: 120,
-        r: 15,
+        r: 15
     }
 };
 
@@ -393,19 +392,19 @@ const zoom_mapping = {
         'uyghur-rights': { y: [2.75, 3.25] },
         sric: { y: [3.75, 4.25] },
         sudan: { y: [4.75, 5.25] },
-        'south-africa': { y: [5.75, 6.25] },
+        'south-africa': { y: [5.75, 6.25] }
     },
     'Type of Action': {
         all: { y: [-0.5, 5.5] },
         letters: { y: [0.75, 1.25] },
         protest: { y: [-0.25, 0.25] },
-        'other-action': { y: [1.5, 5.5] },
+        'other-action': { y: [1.5, 5.5] }
     },
     'Admin Response': {
         all: { y: [-0.5, 4.5] },
         meeting: { y: [2.75, 4.25] },
         police: { y: [0.75, 2.25] },
-        'other-response': { y: [-0.25, 0.25] },
+        'other-response': { y: [-0.25, 0.25] }
     }
 };
 
@@ -428,7 +427,7 @@ async function init() {
                     .transition()
                     .duration(1500)
                     .style('opacity', 1);
-                console.log('quotes');
+                // console.log('quotes');
             }
         },
         offset: '100%'
@@ -460,9 +459,9 @@ async function init() {
     createNewSection(
         'causes',
         'Movement',
-        prev_var = 'Top', 
-        mapping = zoom_mapping,
-        offset = '110%'
+        (prev_var = 'Top'),
+        (mapping = zoom_mapping),
+        (offset = '110%')
     );
 
     // define waypoints (scroll reactions)
@@ -474,13 +473,23 @@ async function init() {
     createWaypoint('sudan', zoom_mapping['Movement']);
     createWaypoint('south-africa', zoom_mapping['Movement']);
 
-    createNewSection('actions', 'Type of Action', (prev_var = 'Movement'), mapping = zoom_mapping);
+    createNewSection(
+        'actions',
+        'Type of Action',
+        (prev_var = 'Movement'),
+        (mapping = zoom_mapping)
+    );
 
     createWaypoint('letters', zoom_mapping['Type of Action']);
     createWaypoint('protest', zoom_mapping['Type of Action']);
     createWaypoint('other-action', zoom_mapping['Type of Action']);
 
-    createNewSection('admin', 'Admin Response', (prev_var = 'Type of Action'), mapping = zoom_mapping);
+    createNewSection(
+        'admin',
+        'Admin Response',
+        (prev_var = 'Type of Action'),
+        (mapping = zoom_mapping)
+    );
 
     createWaypoint('meeting', zoom_mapping['Admin Response']);
     createWaypoint('police', zoom_mapping['Admin Response']);
