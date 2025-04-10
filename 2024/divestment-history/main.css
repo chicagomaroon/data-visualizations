@@ -228,7 +228,7 @@ figure {
     margin-top: 20em;
 }
 
-.conclusion {
+#what-next {
     margin: 4em auto; 
     width: 50%;
 }
@@ -337,7 +337,7 @@ figure {
         margin-top: 20vh;
     }
 
-    .conclusion {
+    #what-next {
         width: 90%;
         margin-bottom: 0;
     }
