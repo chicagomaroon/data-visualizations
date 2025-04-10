@@ -250,6 +250,10 @@ figure {
         width: 100vw;
     }
 
+    #intro-quotes {
+        padding: 0;
+    }
+
     #chapters {
         width: 100vw;
         margin: 0;
