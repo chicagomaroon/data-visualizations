@@ -315,7 +315,10 @@ const layout = {
         range: ['1964-1-1', '2027-1-1'],
         type: 'date',
         dtick: 'M60',
-        ticklabelstep: 1
+        ticklabelstep: 1,
+        tickfont: {
+            size: 14
+        }
     },
     yaxis: {
         showgrid: false,
