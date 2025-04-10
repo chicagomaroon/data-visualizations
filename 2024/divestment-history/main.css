@@ -330,11 +330,25 @@ figure {
     }
 
     .main-svg {
-        height: 360px !important;
+        height: 320px !important;
+    }
+
+    text.gtitle {
+        font-size: 16px !important;
+        x: 20;
+    }
+
+    text.gtitle-subtitle {
+        font-size: 12px !important;
+        x: 20;
     }
 
     #content {
         margin-top: 20vh;
+    }
+
+    .ytick text {
+        font-size: 12px !important;
     }
 
     #what-next {
