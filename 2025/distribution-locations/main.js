@@ -27,8 +27,7 @@ function initMap() {
 
                 // Create an <img> element for the SVG
                 const img = document.createElement('img');
-                img.src =
-                    '/Users/jonathandavidoff/Documents/GitHub/data-visualizations/2025/distribution-locations/maroon_logo_m_black.svg';
+                img.src = 'maroon_logo_m_black.svg';
                 img.style.width = '32px';
                 img.style.height = '32px';
 
