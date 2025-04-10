@@ -470,6 +470,7 @@ async function init() {
 
     createNewSection('actions', 'Type of Action', (prev_var = 'Movement'), mapping = zoom_mapping);
 
+    createWaypoint('letters', zoom_mapping['Type of Action']);
     createWaypoint('protest', zoom_mapping['Type of Action']);
     createWaypoint('other-action', zoom_mapping['Type of Action']);
 
