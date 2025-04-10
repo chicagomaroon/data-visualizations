@@ -365,6 +365,7 @@ const colorbook = {
 
 const zoom_mapping = {
     Movement: {
+        all: { y: [-0.5, 6.5] },
         palestine: { y: [-0.25, 0.25] },
         'fossil-fuels': { y: [0.75, 1.25] },
         'labor-rights': { y: [1.75, 2.25] },
@@ -372,19 +373,18 @@ const zoom_mapping = {
         sric: { y: [3.75, 4.25] },
         sudan: { y: [4.75, 5.25] },
         'south-africa': { y: [5.75, 6.25] },
-        all: { y: [-0.25, 7.25] }
     },
     'Type of Action': {
+        all: { y: [-0.5, 5.5] },
         letters: { y: [0.75, 1.25] },
         protest: { y: [-0.25, 0.25] },
-        'other-action': { y: [1.75, 5.25] },
-        all: { y: [-0.25, 6.25] }
+        'other-action': { y: [1.5, 5.5] },
     },
     'Admin Response': {
+        all: { y: [-0.5, 4.5] },
         meeting: { y: [2.75, 4.25] },
         police: { y: [0.75, 2.25] },
         'other-response': { y: [-0.25, 0.25] },
-        all: { y: [-0.25, 4.25] }
     }
 };
 
