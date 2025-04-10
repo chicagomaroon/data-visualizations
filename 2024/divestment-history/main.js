@@ -195,7 +195,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, variable),
-                    Layout,
+                    layout,
                     config
                 );
 
@@ -229,7 +229,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
-                    Layout,
+                    layout,
                     config
                 );
                 
@@ -287,7 +287,7 @@ function hide_box_hovers(data) {
  * layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
  */
-const Layout = {
+const layout = {
     title: {
         text: 'Divestment Activism Events at UChicago',
         x: 0.14,
