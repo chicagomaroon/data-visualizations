@@ -113,7 +113,7 @@ function processData(data, name_var) {
  */
 function createWaypoint(div, mapping, offset = '80%') {
     function handler(direction) {
-        graphDiv = document.getElementById('chart-div');
+        myPlot = document.getElementById('chart-div');
 
         let orderedKeys = [];
         for (var key in mapping) {
@@ -126,7 +126,7 @@ function createWaypoint(div, mapping, offset = '80%') {
         if (direction == 'down') {
             // go to next key
             Plotly.animate(
-                graphDiv,
+                myPlot,
                 {
                     layout: {
                         yaxis: { range: mapping[div]['y'] }
@@ -137,7 +137,7 @@ function createWaypoint(div, mapping, offset = '80%') {
             console.log(div);
         } else if (div == 'palestine') {
             Plotly.animate(
-                graphDiv,
+                myPlot,
                 {
                     layout: {
                         yaxis: { range: mapping['all']['y'] }
@@ -153,7 +153,7 @@ function createWaypoint(div, mapping, offset = '80%') {
             previousKey = orderedKeys[previousIndex];
 
             Plotly.animate(
-                graphDiv,
+                myPlot,
                 {
                     layout: {
                         yaxis: { range: mapping[previousKey]['y'] }
