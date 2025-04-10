@@ -1,15 +1,14 @@
 //TODO
-// add images/news clippings from archives to illustrate historical aspect
-// finish writing...
 // add differentiated symbols for accessibility - maybe
 // might have to manually define jitter... I imagine more of an abstract timeline where points repel each other
 // at least a white outline around each marker?
 // I think the way the intro could work is an arbitrarily arranged plotly graph with text annotations, which are re-arranged in the next waypoint to actual dates (and points?)
-// you can create a class 'active' with all css elements tied to the class instead of individual elements
 // try full page graphic and text on top of graphic
 // try group labels in graphic instead of axis
 // maybe remove lines altogether? ask
-// change the scale of years when scroll/zoom?
+// experiment with transitions
+// too much space at the bottom
+// the bottom should be in a box
 
 // ------------------ DATA ------------------
 // Fetch JSON data
@@ -226,6 +225,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                 // if going back to intro, hide chart
                 hideChart();
             } else {
+                // go to last key of previous section
                         
                 let orderedKeys = [];
                 for (var key in mapping[prev_var]) {
