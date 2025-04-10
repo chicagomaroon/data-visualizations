@@ -132,11 +132,6 @@ function createWaypoint(div, mapping, offset = '80%') {
     function handler(direction) {
         myPlot = document.getElementById('chart-div');
 
-        let orderedKeys = [];
-        for (var key in mapping) {
-            orderedKeys.push(key);
-        }
-
         // https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
         let classList = document.getElementById(div).className;
 
@@ -165,6 +160,11 @@ function createWaypoint(div, mapping, offset = '80%') {
             console.log('first key');
         } else if (!classList.match('first')) {
             // go back to the previous key
+
+            let orderedKeys = [];
+            for (var key in mapping) {
+                orderedKeys.push(key);
+            }
 
             previousIndex = orderedKeys.indexOf(div) - 1;
             previousKey = orderedKeys[previousIndex];
@@ -232,9 +232,6 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                     orderedKeys.push(key);
                 }
                     
-                previousKey = orderedKeys.at(-1);
-                console.log('previous key:' + previousKey);
-
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
@@ -246,7 +243,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                     myPlot,
                     {
                         layout: {
-                            yaxis: { range: mapping[prev_var][previousKey]['y'] }
+                            yaxis: { range: mapping[prev_var][orderedKeys.at(-1)]['y'] }
                         }
                     },
                     { transition: transition }
