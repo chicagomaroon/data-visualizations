@@ -287,7 +287,7 @@ figure {
         margin: 0 auto;
         margin-top: 1em;
         display: block;
-        width: auto;
+        max-width: fit-content;
     }
 
     .scroller,
