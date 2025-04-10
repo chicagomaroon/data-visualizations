@@ -351,7 +351,7 @@ const colorbook = {
         'Disciplinary action': 'rgb(88, 89, 63)',
         Negotiation: 'rgb(193, 102, 34)',
         'Public response': 'rgb(143, 57, 49)',
-        'Non-divestment support': 'rgb(138, 144, 69)'
+        'Non-<br>divestment<br>support': 'rgb(138, 144, 69)'
     },
     Administration: {
         Alivisatos: 'rgb(128, 0, 0)',

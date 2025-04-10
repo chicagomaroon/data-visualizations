@@ -69,7 +69,7 @@ response_dict = {
     'Disciplinary action':'Disciplinary action',
     'Ignore/refuse':None,
     'Arrest':'Arrest',
-    'Non-divestment support':'Non-divestment support',
+    'Non-divestment support':'Non-<br>divestment<br>support',
     'Police dispersal':None,
     'Letter writing':'Public response',
     'Letter Writing':'Public response'
