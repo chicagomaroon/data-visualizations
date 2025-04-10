@@ -177,6 +177,10 @@ figure {
     width: 100%;
 }
 
+.caption {
+    font-size: 12px;
+}
+
 figcaption {
     font-family: 'Playfair Display', serif;
     text-align: right;
