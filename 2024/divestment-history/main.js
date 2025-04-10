@@ -309,8 +309,8 @@ const Layout = {
         showline: true,
         range: ['1966-1-1', '2027-1-1'],
         type: 'date',
-        dtick: 'M12',
-        ticklabelstep: 4,
+        dtick: 'M60',
+        ticklabelstep: 1,
     },
     yaxis: {
         showgrid: false,
