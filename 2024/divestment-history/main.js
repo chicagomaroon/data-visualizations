@@ -185,8 +185,13 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
             var myPlot = document.getElementById('chart-div');
 
             if (direction == 'down') {
-                d3.selectAll('#chart-div').style('opacity', 100);
-
+                d3.selectAll('#chart-div')
+                    .style('display', 'block')
+                d3.selectAll('#chart-div')
+                    .transition()
+                    .duration(200)
+                    .style('opacity', 1);
+                
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, variable),
@@ -208,8 +213,9 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
             } else if (prev_var == 'Top') {
                 d3.selectAll('#chart-div')
                     .transition()
-                    .duration(500)
-                    .style('opacity', 0);
+                    .duration(200)
+                    .style('opacity', 0)
+                    .style('display', 'none');
             } else {
                 Plotly.newPlot(
                     'chart-div',
