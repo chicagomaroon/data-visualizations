@@ -313,7 +313,7 @@ const layout = {
     xaxis: {
         showgrid: true,
         showline: true,
-        range: ['1966-1-1', '2027-1-1'],
+        range: ['1964-1-1', '2027-1-1'],
         type: 'date',
         dtick: 'M60',
         ticklabelstep: 1,
