@@ -59,7 +59,9 @@ function processData(data, name_var) {
                         val['Link'] +
                         '" target="_blank">' +
                         val['Source'].replaceAll('\n', '<br>') +
-                        '</a>'
+                        '</a>' +
+                        '<br>' +
+                        val['Year']
                 );
             }
         });
