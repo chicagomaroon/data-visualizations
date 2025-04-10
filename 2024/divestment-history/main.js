@@ -217,6 +217,15 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                     .style('opacity', 0)
                     .style('display', 'none');
             } else {
+                        
+                let orderedKeys = [];
+                for (var key in mapping[prev_var]) {
+                    orderedKeys.push(key);
+                }
+                    
+                previousKey = orderedKeys.at(-1);
+                console.log('previous key:' + previousKey);
+
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
