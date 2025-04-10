@@ -34,6 +34,23 @@ async function fetchData() {
     }
 }
 
+function hideChart() {
+    d3.selectAll('#chart-div')
+        .transition()
+        .duration(200)
+        .style('opacity', 0)
+        .style('display', 'none');
+}
+
+function showChart() {
+    d3.selectAll('#chart-div')
+        .style('display', 'block');
+    d3.selectAll('#chart-div')
+        .transition()
+        .duration(200)
+        .style('opacity', 1);
+}
+
 /**
  * Group data and define all traces
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
@@ -185,12 +202,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
             var myPlot = document.getElementById('chart-div');
 
             if (direction == 'down') {
-                d3.selectAll('#chart-div')
-                    .style('display', 'block')
-                d3.selectAll('#chart-div')
-                    .transition()
-                    .duration(200)
-                    .style('opacity', 1);
+                showChart();
                 
                 Plotly.newPlot(
                     'chart-div',
@@ -211,11 +223,8 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
 
                 console.log('New section created at: ' + div);
             } else if (prev_var == 'Top') {
-                d3.selectAll('#chart-div')
-                    .transition()
-                    .duration(200)
-                    .style('opacity', 0)
-                    .style('display', 'none');
+                // if going back to intro, hide chart
+                hideChart();
             } else {
                         
                 let orderedKeys = [];
@@ -484,19 +493,10 @@ async function init() {
         element: document.getElementById('conclusion'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.selectAll('#chart-div')
-                    .transition()
-                    .duration(200)
-                    .style('opacity', 0)
-                    .style('display', 'none');
+                hideChart();
                 console.log('Hiding chart div');
             } else {
-                d3.selectAll('#chart-div')
-                    .style('display', 'block')
-                d3.selectAll('#chart-div')
-                    .transition()
-                    .duration(200)
-                    .style('opacity', 1);
+                showChart();
                 console.log('Showing chart div');
             }
         },
