@@ -16,8 +16,8 @@ footer {
     margin-top: 20vh;
 }
 
-a {
-    color: #2365f1;
+a, a:hover, a:active, a:visited, a:focus {
+    color: #800000;
 }
 
 /* text */
