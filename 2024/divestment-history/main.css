@@ -76,9 +76,7 @@ hr {
     height: 100vh;
 }
 
-#methodology,
-#conclusion,
-#further-reading {
+.non-scroller, .section-header {
     margin: auto;
     width: max(600px, 50vw);
 }
@@ -291,10 +289,9 @@ figure {
         font-size: 14px;
     }
 
-    #further-reading,
-    #methodology {
+    .non-scroller, .section-header {
         width: 90vw;
-        margin: 70vh 0;
+        margin: 50vh auto;
     }
 
     blockquote {
