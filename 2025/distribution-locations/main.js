@@ -25,15 +25,18 @@ function initMap() {
                 let lat = parseFloat(row['Latitude']);
                 let lng = parseFloat(row['Longitude']);
 
-                // Create a marker for this location
-                let marker = new google.maps.Marker({
+                // Create an <img> element for the SVG
+                const img = document.createElement('img');
+                img.src = '2025/distribution-locations/maroon_logo_m_black.svg';
+                img.style.width = '32px';
+                img.style.height = '32px';
+
+                // Create an AdvancedMarkerElement using the image
+                const marker = new google.maps.marker.AdvancedMarkerElement({
                     position: { lat: lat, lng: lng },
                     map: map,
                     title: row['Name'],
-                    icon: {
-                        url: "2025/distribution-locations/maroon_logo_m_black.svg",
-                        scaledSize: new google.maps.Size(32, 32) // adjust the size as needed
-                    }
+                    content: img
                 });
 
                 // Create the content for the info window with building name and address
