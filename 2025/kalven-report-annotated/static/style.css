@@ -1,0 +1,646 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --main-bg-color: #4d0000;
+    --maroon_color: #800000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', sans-serif;
+    width: 100%;
+}
+
+.header-container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    margin-bottom: 50px;
+}
+
+.header-title-container {
+    flex: 1; /* Takes up half the space */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: var(--main-bg-color);
+}
+.header-img {
+    flex: 1; /* Takes up half the space */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    background-color: #f0f0ef;
+}
+
+.header-maroon {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header-maroon img {
+    width: 220px;
+    margin: auto;
+}
+
+#header-title {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 500px;
+    margin: auto;
+}
+
+.header-img img {
+    width: 100%; /* Make sure the image doesn't overflow */
+    height: 100%; /* Make sure the image doesn't overflow */
+    object-fit: scale-down; /* Scale the image */
+}
+
+.intro hr {
+    opacity: 60%;
+}
+
+#intro-text a {
+    color: #800000;
+    text-decoration: none;
+}
+
+#intro-text a:hover {
+    text-decoration: underline;
+}
+
+#intro-text {
+    width: 50%;
+    margin: auto;
+}
+
+#title {
+    font-size: 45px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+    margin-bottom: 15px;
+    color: white;
+}
+
+#subtitle {
+    padding-block: 5px;
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: white;
+}
+
+#intro-text hr {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.273);
+    opacity: 60%;
+}
+
+#byline {
+    padding-block: 1px;
+    margin-block: 2px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.byline-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #800000;
+}
+
+.byline-link:hover {
+    text-decoration: underline;
+}
+
+.article-text {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.title-box {
+    margin: auto;
+}
+
+.title-box img {
+    width: 100%;
+    margin: auto;
+    display: block;
+    transform: rotate(270deg);
+}
+
+#content-container {
+    border-top: 1px solid #800000;
+    background-color: rgb(128, 0, 0, 0.1);
+    margin-top: 50px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+#doc-container {
+    position: relative;
+    margin: auto auto 28px;
+    max-width: 800px;
+    left: -200px;
+}
+
+.page {
+    position: relative;
+    margin-bottom: 28px;
+}
+
+#page-report {
+    background-color: #fcf9f6;
+}
+
+#report {
+    padding: 100px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-size: 18px;
+}
+
+#report-title {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.page-image img {
+    height: auto;
+    max-width: 100%;
+}
+
+.page-image#report {
+    height: 500px;
+    width: 100%;
+    background-color: #800000;
+}
+
+.page-highlights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.highlight {
+    position: relative;
+    background-color: #ffff1033;
+    border: 2px solid transparent;
+    transition: all 0.1s ease;
+}
+
+.highlight.active {
+    background-color: #ffff104d;
+    border: 3px solid #ffe300;
+}
+
+#highlight-1 {
+    left: 10%;
+    top: 17%;
+    width: 78%;
+    height: 2.5%;
+}
+
+#highlight-2 {
+    left: 10%;
+    top: 23.1%;
+    width: 78%;
+    height: 5%;
+}
+
+#highlight-3 {
+    left: 27.3%;
+    top: 26.7%;
+    width: 26%;
+    height: 2.5%;
+}
+
+#highlight-4 {
+    left: 53.2%;
+    top: 24.3%;
+    width: 28.4%;
+    height: 2.5%;
+}
+
+#highlight-5 {
+    left: 10%;
+    top: 24%;
+    width: 79%;
+    height: 4.5%;
+}
+
+#highlight-6 {
+    left: 19%;
+    top: 23.8%;
+    width: 67%;
+    height: 2.5%;
+}
+
+#highlight-7 {
+    left: 15%;
+    top: 23.5%;
+    width: 61.5%;
+    height: 2.5%;
+}
+
+#highlight-8 {
+    left: 10%;
+    top: 27.5%;
+    width: 79%;
+    height: 2.5%;
+}
+
+#highlight-9 {
+    left: 10%;
+    top: 29.2%;
+    width: 79%;
+    height: 5%;
+}
+
+#highlight-10 {
+    left: 10%;
+    top: 50.3%;
+    width: 79%;
+    height: 5%;
+}
+
+#highlight-11 {
+    left: 10%;
+    top: 54%;
+    width: 79%;
+    height: 5%;
+}
+
+#highlight-12 {
+    left: 10%;
+    top: 34.3%;
+    width: 79%;
+    height: 5%;
+}
+
+#highlight-13 {
+    left: 10%;
+    top: 57%;
+    width: 79%;
+    height: 10%;
+}
+
+#highlight-14 {
+    left: 10%;
+    top: 71.5%;
+    width: 79%;
+    height: 5%;
+}
+
+#highlight-15 {
+    left: 10%;
+    top: 19%;
+    width: 79%;
+    height: 10%;
+}
+
+#highlight-16 {
+    left: 10%;
+    top: 46%;
+    width: 79%;
+    height: 23%;
+}
+
+#highlight-17 {
+    left: 8%;
+    top: 32%;
+    width: 84%;
+    height: 9%;
+}
+
+.annotation-container {
+    left: calc(50% + 250px);
+    height: 100%;
+    top: 0;
+    position: absolute;
+}
+
+.sticky {
+    position: sticky;
+    top: 40px;
+    height: calc(100vh - 40px);
+}
+
+.annotation-card {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    transition: all 0.1s ease;
+}
+
+.annotation-card-inner {
+    left: 0;
+    position: relative;
+    height: auto;
+    top: 0;
+    max-height: calc(100vh - 90px);
+    width: 400px;
+    padding: 18px;
+    border: none;
+    border-left: 5px solid #800000;
+}
+
+.annotation-card-text {
+    padding: 0 20px;
+    font-size: 17px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #444;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+.annotation-card-text a {
+    color: #800000;
+    text-decoration: none;
+}
+
+.annotation-card-text a:hover {
+    text-decoration: underline;
+}
+
+#annotation-logo {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgba(128, 0, 0, 0.2);
+}
+
+#annotation-logo-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#annotation-logo-c img {
+    width: 80%;
+}
+
+#footer {
+    padding-block: 50px;
+}
+
+.more-title {
+    font-size: 24px;
+    text-align: left;
+    font-family: Georgia, serif;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.more-container {
+    width: 70%;
+    margin: auto;
+}
+
+.more-articles {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: stretch; /* Make all containers the same height */
+    width: 100%;
+}
+
+.article-container-outer {
+    display: flex;
+    flex-direction: column;
+    width: 30%; /* Adjust as needed for spacing */
+}
+
+.article-container-outer a {
+    text-decoration: none;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc; /* Optional: for visual separation */
+    border-radius: 8px; /* Optional: for rounded corners */
+    overflow: hidden; /* Ensure content doesn't overflow the container */
+    background: #eeeeee;
+    height: 300px;
+}
+
+.article-container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.article-container:hover .article-img img {
+    transform: scale(1.1);
+}
+
+.article-container a {
+    display: block;
+}
+
+.article-img {
+    margin: auto;
+    width: 150px;
+    overflow: hidden; /* Clip images that exceed the container */
+}
+
+.article-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.article-title {
+    height: 50%;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.35em;
+    padding: 15px 15px;
+    color: #000000;
+    text-decoration: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.2s ease-in-out forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+@media (max-width: 1350px) {
+    .annotation-container {
+        left: calc(50% + 120px);
+    }
+
+    #doc-container {
+        max-width: 580px;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    /* change header */
+
+    .header-container {
+        flex-direction: column; /* Stack the title container below the image */
+        height: auto; /* Adjust height to fit content */
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .header-img img {
+        width: auto;
+        max-height: 60vh;
+    }
+
+    .header-title-container {
+        margin-top: 20px;
+        width: 100%; /* Take full width */
+        order: 2; /* Push to the bottom */
+        background-color: white;
+    }
+
+    #title,
+    #subtitle {
+        color: black;
+    }
+
+    .header-maroon {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-maroon img {
+        width: 200px;
+        height: auto;
+    }
+
+    #header-title {
+        width: 90%;
+    }
+
+    .annotation-container {
+        left: 0;
+        width: 100%;
+    }
+
+    #content-container {
+        padding-bottom: 200px;
+    }
+
+    #doc-container {
+        left: 0;
+    }
+
+    .sticky {
+        top: 0;
+    }
+    .annotation-card {
+        top: 80%;
+    }
+
+    .annotation-card-inner {
+        border: 5px solid #800000;
+        width: 100%;
+    }
+
+    .annotation-card-text {
+        font-size: 15px;
+    }
+
+    #annotation-logo {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: rgba(128, 0, 0, 0.2);
+    }
+
+    #intro-text {
+        width: 90%;
+    }
+
+    #title {
+        font-size: 28px;
+    }
+
+    .title-box img {
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    .title-container {
+        padding-top: 50px;
+    }
+
+    .title-box {
+        flex-direction: column;
+    }
+
+    #byline {
+        font-size: 13px;
+    }
+
+    #subtitle {
+        font-size: 20px;
+    }
+
+    .more-articles {
+        flex-direction: column; /* Stack article containers */
+    }
+
+    .article-container-outer {
+        width: 100%;
+    }
+
+    .article-container {
+        margin-bottom: 20px; /* Add spacing between articles */
+    }
+}
