@@ -254,7 +254,37 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
 }
 
 /**
- * Layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
+ * When you click on a data point, it should open the URL linked in the hover text in a new tab.
+ * Cite: GPT
+ * @param {json} data Data sensed from plotly hover event
+ */
+function open_url(data) {
+    var info = data.points[0];
+    var url = info.text.match(/href="(.*)" /);
+    // console.log(url[1])
+
+    window.open(url[1], '_blank').focus();
+}
+
+/**
+ * For plotly boxplots, hovering over the boxplot will show its summary statistics. Because I am using boxplots only for the built-in jitter function, keeping the points and hiding the box part, I need to disable the summary statistic hover.
+ * Cite: GPT
+ * @param {json} data Data sensed from plotly hover event
+ */
+function hide_box_hovers(data) {
+    hoverLayer = document.querySelector('.hoverlayer');
+
+    if (data.points.length == 7) {
+        hoverLayer.style.display = 'none';
+    } else {
+        hoverLayer.style.display = 'block';
+    }
+}
+
+// ------- CONSTANTS ------
+
+/**
+ * layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
  */
 const Layout = {
@@ -299,36 +329,6 @@ const Layout = {
         r: 15,
     }
 };
-
-/**
- * When you click on a data point, it should open the URL linked in the hover text in a new tab.
- * Cite: GPT
- * @param {json} data Data sensed from plotly hover event
- */
-function open_url(data) {
-    var info = data.points[0];
-    var url = info.text.match(/href="(.*)" /);
-    // console.log(url[1])
-
-    window.open(url[1], '_blank').focus();
-}
-
-/**
- * For plotly boxplots, hovering over the boxplot will show its summary statistics. Because I am using boxplots only for the built-in jitter function, keeping the points and hiding the box part, I need to disable the summary statistic hover.
- * Cite: GPT
- * @param {json} data Data sensed from plotly hover event
- */
-function hide_box_hovers(data) {
-    hoverLayer = document.querySelector('.hoverlayer');
-
-    if (data.points.length == 7) {
-        hoverLayer.style.display = 'none';
-    } else {
-        hoverLayer.style.display = 'block';
-    }
-}
-
-// ------- CONSTANTS ------
 
 const config = {
     displayModeBar: false,
