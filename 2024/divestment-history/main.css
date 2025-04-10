@@ -282,10 +282,8 @@ figure {
         width: auto;
     }
 
-    p,
     .scroller,
-    #further-reading,
-    #methodology {
+    .non-scroller {
         font-size: 14px;
     }
 
