@@ -1,4 +1,15 @@
 //TODO
+// add images/news clippings from archives to illustrate historical aspect
+// finish writing...
+// add differentiated symbols for accessibility - maybe
+// might have to manually define jitter... I imagine more of an abstract timeline where points repel each other
+// at least a white outline around each marker?
+// I think the way the intro could work is an arbitrarily arranged plotly graph with text annotations, which are re-arranged in the next waypoint to actual dates (and points?)
+// you can create a class 'active' with all css elements tied to the class instead of individual elements
+// try full page graphic and text on top of graphic
+// try group labels in graphic instead of axis
+// maybe remove lines altogether? ask
+// change the scale of years when scroll/zoom?
 
 // ------------------ DATA ------------------
 // Fetch JSON data
@@ -63,7 +74,8 @@ function processData(data, name_var) {
             pointpos: 0, // center points
             marker: {
                 size: 15,
-                opacity: 0.5
+                opacity: 0.5,
+                cliponaxis: false // Allow points to extend beyond the axis boundaries
             },
             transforms: [
                 {
@@ -81,7 +93,7 @@ function processData(data, name_var) {
             fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
             line: { color: 'rgba(0,0,0,0)' }, // remove box part of boxplot
             hoverinfo: 'text',
-            hovertemplate: '%{text}<extra></extra>', // the <extra> tag removes any excess formatting
+            hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
         });
 
         // console.log(traces)
@@ -97,7 +109,7 @@ function processData(data, name_var) {
  * @param  {str} Name of HTML div to attach waypoint to
  * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createWaypoint(div, mapping) {
+function createWaypoint(div, mapping, offset = '80%') {
     function handler(direction) {
         graphDiv = document.getElementById('chart-div');
 
@@ -120,7 +132,8 @@ function createWaypoint(div, mapping) {
                 },
                 { transition: transition }
             );
-        } else if (div=='palestine') {
+            console.log(div);
+        } else if (div == 'palestine') {
             Plotly.animate(
                 graphDiv,
                 {
@@ -130,6 +143,7 @@ function createWaypoint(div, mapping) {
                 },
                 { transition: transition }
             );
+            console.log('first key');
         } else if (!classList.match('first')) {
             // go back to the previous key
 
@@ -140,18 +154,19 @@ function createWaypoint(div, mapping) {
                 graphDiv,
                 {
                     layout: {
-                        yaxis: { range: mapping[previousKey]['y'] },
+                        yaxis: { range: mapping[previousKey]['y'] }
                     }
                 },
                 { transition: transition }
             );
+            console.log('prev key');
         }
     }
 
     new Waypoint({
         element: document.getElementById(div),
         handler: handler,
-        offset: '75%'
+        offset: offset
     });
 }
 
@@ -161,42 +176,36 @@ function createWaypoint(div, mapping) {
  * @param  {str} Name of HTML div to attach waypoint to
  * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createNewSection(
-    div, 
-    variable, 
-    prev_var,
-    offset='80%'
-) {
-
+function createNewSection(div, variable, prev_var, offset = '80%') {
+    // console.log(processData(data, variable));
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
             var myPlot = document.getElementById('chart-div');
 
-            if (direction=='down') {
-                
-                d3.selectAll('#chart-div')
-                    .style('opacity', 100);
+            if (direction == 'down') {
+                d3.selectAll('#chart-div').style('opacity', 100);
 
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, variable),
-                    createLayout(),
+                    Layout,
                     config
                 );
-            } else if (prev_var == 'Movement') {
+                console.log('New section created at: ' + div);
+            } else if (prev_var == 'Top') {
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(500)
                     .style('opacity', 0);
-                console.log(prev_var);
             } else {
                 Plotly.newPlot(
                     'chart-div',
                     processData(data, prev_var),
-                    createLayout(),
+                    Layout,
                     config
                 );
+                console.log('Going to previous section: ' + prev_var);
             }
 
             myPlot.on('plotly_click', open_url);
@@ -209,43 +218,49 @@ function createNewSection(
 /**
  * Layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
- * @return {json} Layout object for plotly
  */
-function createLayout() {
-    return {
-        title: {
-            text: 'Divestment Activism Events at UChicago',
-            subtitle: {
-                text: 'Click a data point to visit the source article.'
-            },
-            x: 0.14
-        },
+const Layout = {
+    title: {
+        text: 'Divestment Activism Events at UChicago',
+        x: 0.14,
         font: {
-            family: 'serif'
+            size: 20
         },
-        xaxis: {
-            showgrid: true,
-            showline: true,
-            range: ['1966-1-1', '2026-1-1'],
-            type: 'date',
-            dtick: 'M12',
-            ticklabelstep: 4
+        subtitle: {
+            text: 'Click a data point to visit the source article.',
+            font: {
+                size: 14
+            },
         },
-        yaxis: {
-            showgrid: false,
-            ticktext: 'text'
-        },
-        hovermode: 'closest',
-        hoverlabel: {
-            bgcolor: 'white'
-        },
-        showlegend: false,
-        margin: {
-            l: 120,
-            r: 0
+    },
+    font: {
+        family: 'Georgia'
+    },
+    xaxis: {
+        showgrid: true,
+        showline: true,
+        range: ['1966-1-1', '2027-1-1'],
+        type: 'date',
+        dtick: 'M12',
+        ticklabelstep: 4,
+    },
+    yaxis: {
+        showgrid: false,
+        ticktext: 'text',
+        tickfont: {
+            size: 14,
         }
-    };
-}
+    },
+    hovermode: 'closest',
+    hoverlabel: {
+        bgcolor: 'white'
+    },
+    showlegend: false,
+    margin: {
+        l: 120,
+        r: 15,
+    }
+};
 
 /**
  * When you click on a data point, it should open the URL linked in the hover text in a new tab.
@@ -277,12 +292,12 @@ function hide_box_hovers(data) {
 
 // ------- CONSTANTS ------
 
-config = {
+const config = {
     displayModeBar: false,
     responsive: true
 };
 
-transition = {
+const transition = {
     duration: 400,
     easing: 'linear'
 };
@@ -327,26 +342,26 @@ const colorbook = {
 
 const zoom_mapping = {
     Movement: {
-        palestine: { y: [-0.5, 0.5] },
-        'fossil-fuels': { y: [0.5, 1.5] },
-        'labor-rights': { y: [1.5, 2.5] },
-        'uyghur-rights': { y: [2.5, 3.5] },
-        sric: { y: [3.5, 4.5] },
-        sudan: { y: [4.5, 5.5] },
-        'south-africa': { y: [5.5, 6.5] },
-        all: { y: [-0.5, 7.5] }
+        palestine: { y: [-0.25, 0.25] },
+        'fossil-fuels': { y: [0.75, 1.25] },
+        'labor-rights': { y: [1.75, 2.25] },
+        'uyghur-rights': { y: [2.75, 3.25] },
+        sric: { y: [3.75, 4.25] },
+        sudan: { y: [4.75, 5.25] },
+        'south-africa': { y: [5.75, 6.25] },
+        all: { y: [-0.25, 7.25] }
     },
     'Type of Action': {
-        letters: { y: [0.5, 1.5] },
-        protest: { y: [-0.5, 0.5] },
-        'other-action': { y: [1.5, 5.5] },
-        all: { y: [-0.5, 6.5] }
+        letters: { y: [0.75, 1.25] },
+        protest: { y: [-0.25, 0.25] },
+        'other-action': { y: [1.75, 5.25] },
+        all: { y: [-0.25, 6.25] }
     },
     'Admin Response': {
-        meeting: { y: [2.5, 4.5] },
-        police: { y: [0.5, 2.5] },
-        'other-response': { y: [-0.5, 0.5] },
-        all: { y: [-0.5, 4.5] }
+        meeting: { y: [2.75, 4.25] },
+        police: { y: [0.75, 2.25] },
+        'other-response': { y: [-0.25, 0.25] },
+        all: { y: [-0.25, 4.25] }
     }
 };
 
@@ -354,10 +369,9 @@ const zoom_mapping = {
 var data;
 
 async function init() {
-
-    window.onbeforeunload = function() {
-        window.scrollTo(0,0)
-    }
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
 
     data = await fetchData();
     // console.log(data);
@@ -384,25 +398,27 @@ async function init() {
                     .transition()
                     .duration(500)
                     .style('opacity', 0)
-                    .on('end', function () {
-                        // After the transition, set display to 'none'
-                        d3.selectAll('#pre-intro').style('display', 'none');
-                    });
+                    .style('z-index', '-1');
                 console.log('hide quotes');
             } else {
                 d3.selectAll('#pre-intro')
                     .transition()
-                    .duration(500)
-                    .style('opacity', 100)
-                    .style('display', 'block');
+                    .duration(0)
+                    .style('z-index', '100')
+                    .style('opacity', 100);
                 console.log('show quotes');
             }
         },
-        offset: '25%'
+        offset: '-10%'
     });
 
     // we will edit this plot throughout the whole article
-    createNewSection('bylines', 'Movement', prev_var='Movement', offset='16%')
+    createNewSection(
+        'causes',
+        'Movement',
+        prev_var = 'Top',
+        offset = '110%'
+    );
 
     // define waypoints (scroll reactions)
     createWaypoint('palestine', zoom_mapping['Movement']);
@@ -415,7 +431,6 @@ async function init() {
 
     createNewSection('letters', 'Type of Action', (prev_var = 'Movement'));
 
-    createWaypoint('letters', zoom_mapping['Type of Action']);
     createWaypoint('protest', zoom_mapping['Type of Action']);
     createWaypoint('other-action', zoom_mapping['Type of Action']);
 
@@ -434,13 +449,15 @@ async function init() {
                     .duration(200)
                     .style('opacity', 0)
                     .style('display', 'none');
-                console.log('d3');
+                console.log('Hiding chart div');
             } else {
+                d3.selectAll('#chart-div')
+                    .style('display', 'block')
                 d3.selectAll('#chart-div')
                     .transition()
                     .duration(200)
-                    .style('opacity', 1)
-                    .style('display', 'show');
+                    .style('opacity', 1);
+                console.log('Showing chart div');
             }
         },
         offset: '90%'
