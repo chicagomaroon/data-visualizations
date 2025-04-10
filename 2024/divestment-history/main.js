@@ -178,8 +178,7 @@ function createWaypoint(div, mapping, offset = '80%') {
  * @param  {str} Name of HTML div to attach waypoint to
  * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createNewSection(div, variable, prev_var, offset = '80%') {
-    // console.log(processData(data, variable));
+function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
@@ -194,6 +193,17 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
                     Layout,
                     config
                 );
+
+                Plotly.animate(
+                    myPlot,
+                    {
+                        layout: {
+                            yaxis: { range: mapping[variable]['all']['y'] }
+                        }
+                    },
+                    { transition: transition }
+                );
+
                 console.log('New section created at: ' + div);
             } else if (prev_var == 'Top') {
                 d3.selectAll('#chart-div')
@@ -207,6 +217,17 @@ function createNewSection(div, variable, prev_var, offset = '80%') {
                     Layout,
                     config
                 );
+                
+                Plotly.animate(
+                    myPlot,
+                    {
+                        layout: {
+                            yaxis: { range: mapping[prev_var][previousKey]['y'] }
+                        }
+                    },
+                    { transition: transition }
+                );
+                
                 console.log('Going to previous section: ' + prev_var);
             }
 
@@ -418,7 +439,8 @@ async function init() {
     createNewSection(
         'causes',
         'Movement',
-        prev_var = 'Top',
+        prev_var = 'Top', 
+        mapping = zoom_mapping,
         offset = '110%'
     );
 
@@ -431,12 +453,12 @@ async function init() {
     createWaypoint('sudan', zoom_mapping['Movement']);
     createWaypoint('south-africa', zoom_mapping['Movement']);
 
-    createNewSection('letters', 'Type of Action', (prev_var = 'Movement'));
+    createNewSection('actions', 'Type of Action', (prev_var = 'Movement'), mapping = zoom_mapping);
 
     createWaypoint('protest', zoom_mapping['Type of Action']);
     createWaypoint('other-action', zoom_mapping['Type of Action']);
 
-    createNewSection('admin', 'Admin Response', (prev_var = 'Type of Action'));
+    createNewSection('admin', 'Admin Response', (prev_var = 'Type of Action'), mapping = zoom_mapping);
 
     createWaypoint('meeting', zoom_mapping['Admin Response']);
     createWaypoint('police', zoom_mapping['Admin Response']);
