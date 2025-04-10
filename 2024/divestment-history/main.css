@@ -150,8 +150,12 @@ hr {
     position: relative;
 }
 
-#content {
-    margin-top: 120vh;
+#content, #chapters {
+    margin-top: 100vh;
+}
+
+.section-header {
+    width: 35vw;
 }
 
 .scroller {
@@ -298,5 +302,9 @@ figure {
 
     .main-svg {
         height: 360px !important;
+    }
+        
+    #content {
+        margin-top: 20vh;
     }
 }
