@@ -105,25 +105,46 @@ async function initMap() {
             content: container
 });
   
-          const content = `
-            <div>
-              <h3>${row["Name"]}</h3>
-              <p><strong>Address:</strong> ${row["Location"]}</p>
-              ${
-                row["Comment"]
-                  ? `<p><strong>Pick-Up Notes:</strong> ${row["Comment"]}</p>`
-                  : ""
-              }
-            </div>
-          `;
+  //         const content = `
+  //           <div>
+  //             <h3>${row["Name"]}</h3>
+  //             <p><strong>Address:</strong> ${row["Location"]}</p>
+  //             ${
+  //               row["Comment"]
+  //                 ? `<p><strong>Pick-Up Notes:</strong> ${row["Comment"]}</p>`
+  //                 : ""
+  //             }
+  //           </div>
+  //         `;
   
-          marker.addEventListener("gmp-click", () => {
-            infoWindow.setContent(content);
-            infoWindow.open(map, marker);
-          });
-        });
-      }
+  //         marker.addEventListener("gmp-click", () => {
+  //           infoWindow.setContent(content);
+  //           infoWindow.open(map, marker);
+  //         });
+  //       });
+  //     }
+  //   });
+  // }
+  
+  // initMap();
+
+                  // Create the content for the info window with building name and address
+                let content = `
+              <div>
+        <h3>${row['Name']}</h3>
+        <p><strong>Address:</strong> ${row['Location']}</p>
+        ${row['Comment'] ? `<p><strong>Pick-Up Notes:</strong> ${row['Comment']}</p>` : ''}
+              </div>
+`;
+
+                // Add a click listener to show the info window when the marker is clicked
+                marker.addListener('gmp-click', function () {
+                    infoWindow.setContent(content);
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
     });
-  }
-  
-  initMap();
+}
+
+initMap();
