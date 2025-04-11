@@ -92,9 +92,11 @@ async function initMap() {
                 container.style.pointerEvents = 'auto';
 
                 const img = document.createElement('img');
-                img.src = 'maroon_logo_m_black.svg';
-                img.style.width = '32px';
-                img.style.height = '32px';
+                // img.src = 'maroon_logo_m_black.svg';
+                // img.src = 'Maroon Map Pin (2).svg';
+                img.src = 'maroon_map_pin.svg';
+                img.style.width = '50px';
+                img.style.height = '50px';
                 img.style.pointerEvents = 'auto';
                 container.appendChild(img);
                 const marker = new AdvancedMarkerElement({
