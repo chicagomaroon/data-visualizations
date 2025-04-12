@@ -186,10 +186,10 @@ hr {
 
 .scroller img,
 figure {
-    /* border: 1px solid black; */
+    border: 1px solid #4d0000;
     background-color: white;
-    box-shadow: 0 0 1em #eeeeee;
-    margin: 1em 0;
+    /* box-shadow: 0 0 1em #eeeeee; */
+    margin: 1em 0 0 0;
     padding: 1em 0;
 }
 
