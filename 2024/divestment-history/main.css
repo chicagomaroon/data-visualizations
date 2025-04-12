@@ -12,13 +12,7 @@ body {
     font-family: 'Georgia', serif;
 }
 
-.year {
-    font-size: 40px;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    font-style: normal;
-    line-height: 1em;
-}
+/* text */
 
 a,
 a:hover,
@@ -27,8 +21,6 @@ a:visited,
 a:focus {
     color: #800000;
 }
-
-/* text */
 
 h1 {
     font-size: 50px;
@@ -91,16 +83,12 @@ hr {
     height: 100vh;
 }
 
-.non-scroller,
-.section-header {
-    margin: auto;
-    width: max(600px, 50vw);
-}
-
-#methodology {
-    font-size: 14px;
-    line-height: 1.2em;
-    margin: 4em auto;
+.year {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    line-height: 1em;
 }
 
 .intro {
@@ -122,6 +110,10 @@ hr {
     height: 100vh;
     z-index: 1000;
     position: relative;
+}
+
+.quote p {
+    margin: 0;
 }
 
 .quote {
@@ -160,6 +152,18 @@ hr {
 }
 
 /* chapters */
+
+.non-scroller,
+.section-header {
+    margin: auto;
+    width: max(600px, 50vw);
+}
+
+#methodology {
+    font-size: 14px;
+    line-height: 1.2em;
+    margin: 4em auto;
+}
 
 #chapters {
     width: 35vw;
@@ -230,10 +234,6 @@ blockquote {
     font-family: 'Georgia', serif;
 }
 
-.quote p {
-    margin: 0;
-}
-
 #chart-div {
     position: fixed;
     width: 60vw;
@@ -254,10 +254,17 @@ figure {
     width: 50%;
 }
 
+/* mobile */
+
 @media (width < 800px) {
+
+    /* overall */
+
     body {
         margin: 0;
     }
+
+    /* text */
 
     h1 {
         font-size: 32px;
@@ -267,27 +274,11 @@ figure {
         font-size: 20px;
     }
 
+    /* intro */
+
     #pre-intro {
         padding: 0;
         font-size: 15px;
-    }
-
-    #chart-div {
-        height: 50vh !important;
-    }
-
-    .plotly {
-        position: absolute;
-        left: 0;
-        margin-top: -15px !important;
-    }
-
-    #chart-div,
-    #intro-quotes,
-    #background,
-    .content {
-        margin: 0;
-        width: 100vw;
     }
 
     #intro-quotes {
@@ -297,11 +288,6 @@ figure {
 
     .quote {
         width: 80vw;
-    }
-
-    #chapters {
-        width: 100vw;
-        margin: 0;
     }
 
     .intro p {
@@ -324,6 +310,21 @@ figure {
 
     .year {
         font-size: 28px;
+    }
+
+    /* chapters */
+
+    #chart-div,
+    #intro-quotes,
+    #background,
+    .content {
+        margin: 0;
+        width: 100vw;
+    }
+
+    #chapters {
+        width: 100vw;
+        margin: 0;
     }
 
     .scroller {
@@ -353,7 +354,28 @@ figure {
     blockquote {
         font-size: 16px;
     }
+    
+    #content {
+        margin-top: 20vh;
+    }
 
+    #what-next {
+        width: 90%;
+        margin-bottom: 0;
+    }
+
+    /* chart */
+
+    #chart-div {
+        height: 50vh !important;
+    }
+
+    .plotly {
+        position: absolute;
+        left: 0;
+        margin-top: -15px !important;
+    }
+    
     .main-svg {
         height: 330px !important;
     }
@@ -368,16 +390,7 @@ figure {
         x: 20;
     }
 
-    #content {
-        margin-top: 20vh;
-    }
-
     .ytick text {
         font-size: 12px !important;
-    }
-
-    #what-next {
-        width: 90%;
-        margin-bottom: 0;
     }
 }
