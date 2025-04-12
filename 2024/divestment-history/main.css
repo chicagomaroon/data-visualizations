@@ -210,6 +210,12 @@ figcaption {
 
 figure {
     padding: 1em;
+    background-color: #4d0000;
+    color: white;
+}
+
+figure a, figure a:hover, figure a:active, figure a:visited, figure a:focus {
+    color: white;
 }
 
 blockquote {
