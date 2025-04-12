@@ -204,6 +204,8 @@ figure {
 figcaption {
     font-family: 'Playfair Display', serif;
     text-align: right;
+    line-height: 1.2em;
+    margin-top: 5px;
 }
 
 figure {
