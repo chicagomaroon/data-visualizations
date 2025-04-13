@@ -257,7 +257,6 @@ figure {
 /* mobile */
 
 @media (width < 800px) {
-
     /* overall */
 
     body {
@@ -354,7 +353,7 @@ figure {
     blockquote {
         font-size: 16px;
     }
-    
+
     #content {
         margin-top: 20vh;
     }
@@ -375,7 +374,7 @@ figure {
         left: 0;
         margin-top: -15px !important;
     }
-    
+
     .main-svg {
         height: 330px !important;
     }
