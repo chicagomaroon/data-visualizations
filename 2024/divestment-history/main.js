@@ -10,7 +10,6 @@
 // the bottom should be in a box
 
 // ------------------ DATA ------------------
-// Fetch JSON data
 
 /**
  * Load data from external URL location
