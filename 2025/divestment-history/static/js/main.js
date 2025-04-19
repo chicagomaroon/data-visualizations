@@ -7,9 +7,7 @@
 async function fetchData() {
     try {
         // get data from external source (github)
-        var response = await fetch(
-            'https://raw.githubusercontent.com/chicagomaroon/data-visualizations/refs/heads/divestment/2024/divestment-history/data.json'
-        );
+        var response = await fetch('data/data.json');
 
         var jsonData = await response.json();
 
