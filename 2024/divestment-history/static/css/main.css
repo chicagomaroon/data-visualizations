@@ -104,7 +104,7 @@ hr {
 #background {
     /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-        url('images/south-africa.jpg');
+        url('../../images/south-africa.jpg');
     background-size: cover;
     background-position: bottom;
     height: 100vh;
