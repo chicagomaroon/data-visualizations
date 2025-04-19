@@ -31,6 +31,7 @@ h2 {
     font-family: 'Playfair Display', serif;
     font-size: 30px;
     line-height: 1.2em;
+    width: 60%;
 }
 
 hr {
@@ -320,7 +321,7 @@ figure {
         margin: 0;
     }
 
-    .scroller {
+    .scroller, h2 {
         width: 80vw;
         margin: 50vh auto;
     }
