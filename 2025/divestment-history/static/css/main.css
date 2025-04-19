@@ -324,9 +324,11 @@ figure {
         margin: 0;
     }
 
-    .scroller,
-    h2 {
-        width: 80vw;
+    .scroller, h2 {
+        width: 80%;
+    }
+
+    .scroller {
         margin: 50vh auto;
     }
 
@@ -374,9 +376,9 @@ figure {
         margin-top: -15px !important;
     }
 
-    .main-svg {
+    /* .main-svg {
         height: 330px !important;
-    }
+    } */
 
     text.gtitle {
         font-size: 16px !important;
