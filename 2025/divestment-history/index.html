@@ -1,0 +1,860 @@
+<html lang="en">
+    <head>
+        <title>50 Years of Divestment Movements at UChicago</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            property="og:title"
+            content="50 Years of Divestment Movements at UChicago"
+        />
+        <meta
+            property="og:image"
+            content="static/images/divestment-history.gif"
+        />
+        <meta property="og:site_name" content="The Chicago Maroon" />
+        <meta
+            property="og:description"
+            content="In an interactive timeline, Grey City uncovers a history of divestment activism from the Maroon's archives."
+        />
+        <meta
+            property="og:url"
+            content="https://chicagomaroon.github.io/data-visualizations/2025/divestment-history/"
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:article:author" content="Karen Yi, Riley Morrison" />
+        <link rel="icon" href="static/images/maroon_logo_m_white.svg" />
+        <!-- external builds -->
+        <script src="static/js/noframework.waypoints.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script
+            src="https://cdn.plot.ly/plotly-2.35.2.min.js"
+            charset="utf-8"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="static/css/main.css" />
+    </head>
+
+    <body>
+        <div id="background">
+            <div class="intro">
+                <a href="https://chicagomaroon.com/">
+                    <img
+                        height="50"
+                        style="margin: 2em auto; width: 100%"
+                        alt="The Chicago Maroon"
+                        src="images/maroon_logo_white.svg"
+                    />
+                </a>
+                <h1>
+                    50 Years of Divestment Movements <br />
+                    at UChicago
+                </h1>
+                <div id="subtitle">
+                    In an interactive timeline, Grey City uncovers a history of
+                    divestment activism from the <i>Maroon</i>'s archives.
+                </div>
+                <!-- talk to editors about subhead -->
+                <hr />
+                <div id="bylines">
+                    <div class="byline" id="byline">
+                        Written by
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/karen-yi/"
+                            >Karen Yi</a
+                        >
+                    </div>
+                    <div class="byline" id="byline">
+                        Data compiled by
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/karen-yi/"
+                            >Karen Yi</a
+                        >
+                        and
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/riley-morrison/"
+                            >Riley Morrison</a
+                        >
+                    </div>
+                    <div class="byline" id="byline">
+                        Design and development by
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/karen-yi/"
+                            >Karen Yi</a
+                        >
+                    </div>
+                    April 21, 2025
+                </div>
+
+                <p
+                    style="
+                        text-align: center;
+                        padding: 20px 0;
+                        font-size: 3em;
+                        margin-top: 10vh;
+                        color: rgb(225, 225, 225);
+                    "
+                >
+                    <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                </p>
+            </div>
+        </div>
+
+        <div id="pre-intro">
+            <div id="intro-quotes">
+                <div class="intro-quote">
+                    <p class="quote">
+                        "The funds of the university come under the
+                        responsibility of a group of trustees...These resources
+                        are to be used not in ways that they may find as
+                        individuals most attractive, but as ways that speak to
+                        the responsibility they have for the long-term health
+                        and preservation of the resources of
+                        the&nbsp;institution."
+                    </p>
+                    <p class="attribution">
+                        -
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1985-1029;query=divest#page/3/mode/1up/search/come+under"
+                            target="_blank"
+                            >Hanna Holborn Gray</a
+                        >, 10th president of the University of Chicago
+                        <br />
+                        <span class="year">1985</span>
+                    </p>
+                </div>
+                <div class="intro-quote admin">
+                    <p class="quote">
+                        "The University cannot remain neutral with events that
+                        are contrary to 'paramount social values.' We believe
+                        that genocide threatens paramount social&nbsp;values."
+                    </p>
+                    <p class="attribution">
+                        -
+                        <a
+                            href="https://chicagomaroon.com/7293/news/students-administrators-meet-over-darfur-policy-2/"
+                            target="_blank"
+                            >Rebecca Shi</a
+                        >, student activist
+                        <br />
+                        <span class="year">2006</span>
+                    </p>
+                </div>
+                <div class="intro-quote">
+                    <p class="quote">
+                        "I will say that I think academic boycotts per se,
+                        depending upon what you are talking [about], are
+                        problematic, and problematic for the spirit of what the
+                        University of Chicago&nbsp;is about."
+                    </p>
+                    <p class="attribution">
+                        -
+                        <a
+                            href="https://chicagomaroon.com/23311/news/zimmer-zigs-zags-around-campus-issues-maroon/"
+                            target="_blank"
+                            >Robert Zimmer</a
+                        >, 13th president of the University of Chicago
+                        <br />
+                        <span class="year">2016</span>
+                    </p>
+                </div>
+                <div class="intro-quote admin">
+                    <p class="quote">
+                        "The University has used the Kalven Report as a kind of
+                        shield and hasn't really engaged as much as it might in
+                        these&nbsp;things."
+                    </p>
+                    <p class="attribution">
+                        -
+                        <a
+                            href="https://chicagomaroon.com/25934/news/history-behind-kalven-report/"
+                            target="_blank"
+                            >Jamie Kalven</a
+                        >, son of Kalven Report Committee Chairman Harry Kalven
+                        <br />
+                        <span class="year">2018</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="transition" style="height: 1px"></div>
+        <div id="content">
+            <div class="non-scroller" id="intro-text">
+                <p>
+                    On April 29, 2024, pro-Palestine students at the University
+                    of Chicago
+                    <a
+                        href="https://www.theguardian.com/world/2024/apr/26/pro-palestinian-protests-college-campuses"
+                        >joined</a
+                    >
+                    over 40 other universities across the nation in forming an
+                    encampment to protest the war in Gaza. Members of the
+                    encampment supported
+                    <a href="https://www.uchicagounited.org/diso-2024/ucup"
+                        >withdrawing</a
+                    >
+                    the university's investments from weapons manufacturers and
+                    the Israeli government in order to pressure the latter to
+                    <a
+                        href="https://blueprint.uchicago.edu/organization/sjpalestine"
+                        >improve</a
+                    >
+                    living conditions in Gaza.
+                </p>
+                <p>
+                    At first glance, onlookers might assume that the encampment
+                    had sprung up out of nowhere. Indeed, online searches for
+                    the word "divestment"
+                    <a
+                        href="https://trends.google.com/trends/explore?geo=US-IL&q=%2Fm%2F03wglt"
+                        >spiked</a
+                    >
+                    that week, indicating curiosity and even confusion about
+                    protesters' demands. To better understand the context behind
+                    the recent surge in activism, the <i>Maroon's</i> data desk
+                    dove into our digital archives.
+                </p>
+                <p>
+                    The <i>Maroon's</i> records reveal that the history of
+                    divestment activism at UChicago spans seven major causes,
+                    various approaches to activism, and a wide range of
+                    responses from the University administration. According to
+                    the archives, students first protested for divestment on
+                    January 24, 1967, when 200 protestors picketed in front of
+                    Continental Illinois Bank to oppose the University's
+                    investments in the South African apartheid government.
+                </p>
+                <p>
+                    Later that year, a committee appointed by University of
+                    Chicago President George Beadle released the
+                    <a
+                        href="https://chicagomaroon.github.io/data-visualizations/2025/kalven-report-annotated/"
+                        >Kalven Report</a
+                    >, a document which recommended that academic institutions
+                    refrain from taking official stances on social issues in
+                    order to protect free speech.
+                </p>
+                <p>
+                    For the next half century, members of the campus community
+                    attempted, through writing letters, holding rallies, and
+                    even filing legal complaints, to help shape the moral
+                    direction of the university through its purse. In response,
+                    the University administration has cited the Kalven Report as
+                    the primary reason that it has abstained from substantially
+                    engaging on the divestment issue. The ultimate outcome of
+                    this deadlock seems to hinge on a fundamental question: What
+                    right does the campus community have to exert influence over
+                    its institution?
+                </p>
+                <p>
+                    Scroll below to explore UChicago's history of divestment
+                    activism, starting from the present day and going back to
+                    the 1960s.
+                </p>
+            </div>
+            <div id="chapters">
+                <div class="section-header" id="causes">
+                    <h2>I. What causes did organizers promote?</h2>
+                </div>
+                <div class="scroller first" id="palestine">
+                    <h4>2010s-Present - Palestine</h4>
+                    <p>
+                        A series of letters to the editor
+                        <a
+                            href="https://chicagomaroon.com/17451/viewpoints/op-ed/ahistorical-activism-flawed/"
+                            >for</a
+                        >
+                        and
+                        <a
+                            href="https://chicagomaroon.com/17381/viewpoints/column/the-flaws-of-ahistorical-activism-2/"
+                            >against</a
+                        >
+                        divestment in 2013 are the first records of
+                        Palestine-related divestment activism, marking over a
+                        decade since this idea was broached on campus. Momentum
+                        has since built steadily, until last year's encampment.
+                    </p>
+                </div>
+
+                <div class="scroller" id="fossil-fuels">
+                    <h4>2010s-Present - Climate change</h4>
+                    <p>
+                        Beginning around 2012, the fossil fuel divestment
+                        movement triggered the most intensive divestment
+                        activism on campus in decades. Related student
+                        organizations have steadily grown, multiplied, and
+                        evolved, from the
+                        <a
+                            href="https://chicagomaroon.com/20804/viewpoints/letter/letter-ucan-demands-that-trustees-consider-divestment/"
+                            >University Climate Action Network</a
+                        >
+                        in 2012 to
+                        <a
+                            href="https://chicagomaroon.com/16484/news/students-push-for-climate-concious-divestment/"
+                            >Stop Funding Climate Change</a
+                        >
+                        in 2013 to the
+                        <a
+                            href="https://chicagomaroon.com/32600/special-issue/editors-note-4/"
+                            >Environmental Justice Task Force</a
+                        >
+                        in 2021.
+                    </p>
+                    <img
+                        src="images/sfcc.png"
+                        alt="Students push for climate-concious divestment"
+                    />
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="uyghur-rights">
+                    <h4>2016 - Uyghur rights</h4>
+                    <p>
+                        Students in the College Council
+                        <a
+                            href="https://chicagomaroon.com/22121/news/divestment-by-bluechips-divestment-from-china-on-cc-agenda/"
+                            >passed</a
+                        >
+                        a resolution for the University to divest from China due
+                        to the country's treatment of Uyghurs, a Muslim minority
+                        ethnic group, and Tibetans.
+                    </p>
+                </div>
+
+                <div class="scroller" id="labor-rights">
+                    <h4>2010s - Labor rights</h4>
+                    <p>
+                        A national movement
+                        <a
+                            href="https://www.thenation.com/article/archive/students-take-private-equity-fund-hei/"
+                            >emerged</a
+                        >
+                        against the company HEI Hotels and Resorts, which
+                        activists accused of union suppression. The University
+                        of Chicago had $50 million
+                        <a
+                            href="https://chicagomaroon.com/2868/news/activists-criticize-university-endowment-investments/"
+                            >invested</a
+                        >
+                        in the company at the time.
+                    </p>
+                    <img
+                        src="images/labor.png"
+                        alt="Headline: Inspired by Brown, activists push for HEI non-investment"
+                    />
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="sric">
+                    <h4>2010s - Socially Responsible Investment Committee</h4>
+                    <p>
+                        Since divestment activism began, the Finance Committee
+                        of the University Board of Trustees has
+                        <a
+                            href="https://chicagomaroon.com/32600/special-issue/editors-note-4/"
+                            >overseen</a
+                        >
+                        university investments. To this day, this body does not
+                        have student, faculty, or staff representation.
+                    </p>
+                    <p>
+                        In an effort to establish a more systemic approach to
+                        divestment-related activism, students and faculty
+                        <a
+                            href="https://chicagomaroon.com/13207/viewpoints/op-ed/investing-in-evil/"
+                            >campaigned</a
+                        >
+                        for the creation of a Socially Responsible Investment
+                        Committee (SRIC) to review current and potential
+                        university investments. No agreement was reached with
+                        the university administration.
+                    </p>
+                    <p>
+                        The last known mention of SRIC
+                        <a
+                            href="https://chicagomaroon.com/17509/news/students-to-relaunch-sric-campaign-by-meeting-with-cio/"
+                            >occurred</a
+                        >
+                        in 2013, indicating that the committee is no longer
+                        active.
+                    </p>
+                </div>
+
+                <div class="scroller" id="sudan">
+                    <h4>2000s - Sudan</h4>
+                    <p>
+                        Students
+                        <a
+                            href="https://chicagomaroon.com/6173/news/activists-submit-new-proposals-to-admin/"
+                            >met</a
+                        >
+                        with the administration multiple times to discuss
+                        divestment from Sudan, where wartime human rights
+                        violations are still
+                        <a
+                            href="https://www.hrw.org/world-report/2024/country-chapters/sudan"
+                            >occurring</a
+                        >
+                        twenty years later. No agreement was reached with the
+                        university administration.
+                    </p>
+                    <img
+                        src="images/sudan.png"
+                        alt="Headline: Students, administrators meet over Darfur policy"
+                    />
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="south-africa">
+                    <h4>1960s-1980s - South Africa</h4>
+                    <figure>
+                        <blockquote>
+                            "The protest against U.S. involvement in South
+                            Africa has a long history."
+                        </blockquote>
+                        <figcaption>
+                            -
+                            <a
+                                href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1979-0227;query=divest#page/1/mode/1up"
+                                >Curtis Black</a
+                            >, <i>Maroon</i> reporter, 1978
+                        </figcaption>
+                    </figure>
+                    <p>
+                        In 1967, years before the word "divestment" was used to
+                        describe such movements, 200 students picketed outside
+                        Continental Illinois Bank to protest the University's
+                        holdings in South Africa, which were managed by the
+                        bank. 24 protestors were
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1967-0124;query=continental%20illinois#page/1/mode/1up/search/arrest"
+                            >arrested</a
+                        >
+                        within the day.
+                    </p>
+                    <!-- <img
+                        src="images/southafrica.png"
+                        alt="Headline: 200 Picket Bank; Police Arrest 24"
+                    />
+                    <figcaption class="caption">
+                        <i>Maroon</i> Archive
+                    </figcaption> -->
+                </div>
+
+                <div class="scroller">
+                    <p>
+                        The <i>Maroon</i> archives show few other mentions of
+                        divestment until ten years later, when momentum gathered
+                        at campuses across the country.
+                    </p>
+                    <p>
+                        By then, trustees were split: while some agreed with the
+                        cause, others decidedly did not. Some had overtly racist
+                        justifications for opposing divestment.
+                    </p>
+                    <figure>
+                        <blockquote>
+                            "The University's been doing the same thing
+                            [investing only in white businesses] on the South
+                            Side since 1954. No one said anything about that,
+                            why is everyone getting upset about a few million
+                            blacks in South Africa?"
+                        </blockquote>
+                        <figcaption>
+                            -
+                            <a
+                                href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1978-0331;query=same%20thing%20on%20the%20south%20side#page/4/mode/1up"
+                                >Allison Dunham</a
+                            >, spokesperson for the University of Chicago Board
+                            of Trustees, 1978
+                        </figcaption>
+                    </figure>
+                </div>
+
+                <div class="section-header first" id="actions">
+                    <h2>II. How did organizers achieve their goals?</h2>
+                </div>
+
+                <div class="scroller" id="letters">
+                    <p>
+                        Of the 151 instances of divestment-related activism
+                        found in the Maroon's archives, 47% can be categorized
+                        as letter-writing, including open letters,
+                        opinion-editorials, letters to the editor, and
+                        petitions. The Maroon's own editorial board has issued
+                        opinions during different divestment movements,
+                        including a piece
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1985-0510;query=divest#page/1/mode/1up/search/divest"
+                            >in favor of</a
+                        >
+                        divesting from South Africa and one
+                        <a
+                            href="https://chicagomaroon.com/8905/viewpoints/editorial/an-imperfect-union/"
+                            >against</a
+                        >
+                        divesting from Sudan.
+                    </p>
+                    <img
+                        src="images/editorial-against.png"
+                        alt="Headline: An imperfect union"
+                    />
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="protest">
+                    <p>
+                        Since the turn of the century, students increasingly
+                        turned to
+                        <a
+                            href="https://chicagomaroon.com/25616/news/students-lead-nodapl-protest-divestment-rally-gu-2/"
+                            >rallies</a
+                        >&mdash;and
+                        <a
+                            href="https://chicagomaroon.com/42194/news/breaking-pro-palestine-protestors-launch-encampment-on-quad/"
+                            >encampments</a
+                        >. Still, demonstrations are not a new tactic; the first
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1967-0124;query=continental%20illinois#page/7/mode/1up"
+                            >recorded</a
+                        >
+                        divestment action at UChicago was a picket line in 1967.
+                        Overall, protests constituted 35% of divestment actions.
+                    </p>
+                </div>
+
+                <div class="scroller" id="other-action">
+                    <p>
+                        The remaining 18% of actions included several long-term
+                        projects. In 1978, a student
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1978-0207;query=divest#page/2/mode/1up/search/divest"
+                            >analyzed</a
+                        >
+                        UChicago stocks invested in South Africa and found that
+                        the school had not profited from its investments. In
+                        1986, the Student Advisory Committee to the President
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1986-0425;query=divest#page/6/mode/1up/search/divest"
+                            >prepared</a
+                        >
+                        a more formal report on divestment from South Africa.
+                        And in 2014, climate activists at UChicago
+                        <a
+                            href="https://docs.google.com/document/d/177yYpQTxJP_M2GhpQ6C8vAU4kPPVnSQ8wWLxwPMPN-Y/edit?tab=t.0"
+                            >wrote</a
+                        >
+                        a 59-page report, commissioned by then-President Zimmer,
+                        on the practical and moral arguments for and against
+                        divestment. In 2023, UChicago Environmental Justice Task
+                        Force
+                        <a
+                            href="https://chicagomaroon.com/40389/news/uchicago-board-of-trustees-accused-of-violating-illinois-law-with-fossil-fuel-investments/"
+                            >filed</a
+                        >
+                        a legal complaint against the Board of Trustees with the
+                        office of the Illinois Attorney General.
+                    </p>
+                    <img
+                        src="images/legal-complaint.png"
+                        alt="Headline: UChicago Board of Trustees Accused of Violating Illinois Law with Fossil Fuel Investments"
+                    />
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="section-header first" id="admin">
+                    <h2>III. How did the administration respond?</h2>
+                </div>
+
+                <div class="scroller">
+                    <p>
+                        Recorded history of divestment movements at UChicago
+                        spanned six administrations, from George Beadle, the
+                        seventh president of UChicago, to Paul Alivisatos, the
+                        13th president. Each administration had its own
+                        approach, from choosing to directly engage with students
+                        to disregarding their efforts.
+                    </p>
+                </div>
+
+                <div class="scroller" id="meeting">
+                    Most of the time, various administrations refused to take
+                    action in response to campus activism. However, at least
+                    once per major movement, campus administration has agreed to
+                    give interviews with student newspapers, published opinion
+                    essays explaining their stance, or presented at public
+                    forums organized by pro-divestment groups. On a few
+                    occasions, such as during the
+                    <a
+                        href="https://chicagomaroon.com/4395/news/trustee-discusses-community-relations-at-forum/"
+                        >Sudan</a
+                    >
+                    and
+                    <a
+                        href="https://chicagomaroon.com/5546/news/inspired-by-brown-activists-push-for-hei-non-investment/"
+                        >workers' rights</a
+                    >
+                    movements, campus groups successfully gained an audience
+                    with the administration to negotiate for divestment
+                    directly.
+                </div>
+
+                <div class="scroller" id="police">
+                    <p>
+                        17% of major divestment-related protests documented in
+                        the Maroon have resulted in the arrest of student
+                        protestors by university or city police, for a total of
+                        six arrests. Half of these arrests occurred during the
+                        Alivisatos administration.
+                    </p>
+                    <p>
+                        The University has used disciplinary action only twice,
+                        and never in conjunction with police action.
+                    </p>
+                    <img
+                        src="images/arrest.png"
+                        alt="Headline: UCPD Arrests Protesters Engaged in Admissions Office Sit-In and Faculty Members"
+                    />
+                    <figcaption class="caption">
+                        <i>Maroon</i> Archive
+                    </figcaption>
+                </div>
+
+                <div class="scroller">
+                    <p>
+                        Regardless of the protestors' strategies, the
+                        administration's response, or the benefiting cause, not
+                        a single dollar has been divested in the 57 years since
+                        the first group of students picketed Continental
+                        Illinois Bank.
+                    </p>
+                    <p>
+                        It is difficult to determine whether campus activism
+                        directly caused successive administrations to take
+                        action or if these actions were at all effective in
+                        addressing the intended issues. Yet, many policy changes
+                        have been passed in the intervening years that support
+                        students' championed causes in other ways.
+                    </p>
+                </div>
+
+                <div class="scroller" id="other-response">
+                    <p>
+                        In 1985, after 18 years of campus activism, President
+                        Gray signed a partnership with South African
+                        universities to increase opportunities for South African
+                        students in America, as well as to conduct research into
+                        social change in the country. In 2007, the Zimmer
+                        administration
+                        <a
+                            href="https://chicagomaroon.com/6327/news/u-of-c-decides-not-to-divest-from-sudan/"
+                            >established</a
+                        >
+                        a support fund of $200,000 for research on Sudan, part
+                        of which later
+                        <a
+                            href="https://chicagomaroon.com/7120/news/lost-boys-find-support-at-u-of-c/"
+                            >supported</a
+                        >
+                        the nonprofit Lost Boys Rebuilding Southern Sudan. In
+                        2021, eight years after the formation of the first
+                        fossil fuel divestment-related student group at
+                        UChicago, President Alivisatos announced a faculty group
+                        focused on sustainability. And in 2024, following a week
+                        of campus protests, Vice Provost Baicker agreed to
+                        <a
+                            href="https://chicagomaroon.com/44764/news/pro-palestine-faculty-and-staff-accuse-university-of-breaking-gazan-scholars-promise-university-disputes-claim/"
+                            >start</a
+                        >
+                        a Gaza Scholars at Risk Initiative, which would support
+                        up to 8 scholars affected by the war in Gaza. In each of
+                        these cases, activists criticized the concessions as
+                        insufficient,
+                        <a
+                            href="https://campub.lib.uchicago.edu/view/?docId=mvol-0004-1986-0808;query=divest#page/17/mode/1up"
+                            >disingenuous</a
+                        >, or
+                        <a
+                            href="https://chicagomaroon.com/44764/news/pro-palestine-faculty-and-staff-accuse-university-of-breaking-gazan-scholars-promise-university-disputes-claim/"
+                            >falsely promised</a
+                        >.
+                    </p>
+                    <img
+                        src="images/scholarship.png"
+                        alt="Headline: Scholarships seen as hypocritical"
+                    />
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+            </div>
+
+            <div id="chart-div" style="height: 100vh"></div>
+
+            <div class="section-header" id="what-next">
+                <h2>IV. What next?</h2>
+            </div>
+
+            <div
+                class="non-scroller"
+                id="conclusion"
+                style="margin-top: 4em; margin-bottom: 8em"
+            >
+                <p>
+                    University President Paul Alivisatos sent the following text
+                    in an email to the student body on April 29, 2024:
+                </p>
+                <figure>
+                    <blockquote>
+                        I believe the protesters should also consider that an
+                        encampment, with all the etymological connections of the
+                        word to military origins, is a way of using force of a
+                        kind rather than reason to persuade others. For a short
+                        period of time, however, the impact of a modest
+                        encampment does not differ so much from a conventional
+                        rally or march.
+                    </blockquote>
+                    <figcaption>
+                        -
+                        <a
+                            href="https://chicagomaroon.com/42199/news/live-updates-pro-palestine-encampment-on-quad/"
+                            >Paul Alivisatos</a
+                        >, 14th president of the University of Chicago, 2024
+                    </figcaption>
+                </figure>
+                <p>
+                    With only the above email as context, a member of campus
+                    might have assumed that last year's demonstrations had no
+                    precedent beyond pro-Palestine activism. Yet the Maroon's
+                    archives reveal a longer history, in which campus activists
+                    used various forms of reason to persuade the administration
+                    to divest. It seems at times as if history is repeating
+                    itself, as each new generation rediscovers divestment and
+                    each new administration blocks it. Universities are
+                    certainly peculiar environments: excluding staff and
+                    faculty, they are some of the only institutions with almost
+                    one-hundred percent turnover every four years. Institutional
+                    knowledge is incredibly difficult to retain. And yet, this
+                    constant churn of ideas may be a double-edged sword:
+                    universities are also historically at the forefront of
+                    social change.
+                </p>
+                <p>
+                    While the University of Chicago administration was the first
+                    to
+                    <a
+                        href="https://provost.uchicago.edu/sites/default/files/documents/reports/KalvenRprt_0.pdf"
+                        >adopt</a
+                    >
+                    the idea of institutional neutrality among colleges, in the
+                    fifty years since, campus activists have persisted in
+                    arguing that the administration cannot practice the
+                    neutrality it preaches. As divestment organizing continues
+                    and universities across the U.S. search for examples of how
+                    to respond, UChicago's action—or lack of it—could set the
+                    precedent for years to come.
+                    <img src="images/maroon_logo_m_black.svg" height="12px" />
+                </p>
+            </div>
+
+            <div
+                class="non-scroller"
+                id="further-reading"
+                style="margin-bottom: 4em; margin-top: 0"
+            >
+                <h2>Further reading</h2>
+                <ul>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/22421/grey-city/history-disrupting-peace/"
+                            target="_blank"
+                            >A History of Disrupting the Peace - The Maroon</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/28856/grey-city/past-present-future-fossil-fuel-divestment-uchicago/"
+                            target="_blank"
+                            >The Past, Present, and Future of Fossil Fuel
+                            Divestment at UChicago - The Maroon</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/43139/grey-city/a-brief-history-of-occupying-buildings-and-camping-on-the-quad-at-uchicago/"
+                            target="_blank"
+                            >A Brief History of Occupying Buildings and Camping
+                            on the Quad at UChicago - The Maroon</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/43956/news/uchicago-united-for-palestine-2023-24/"
+                            target="_blank"
+                            >UChicago United for Palestine, 2023–24 - The
+                            Maroon</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <div class="non-scroller" id="methodology">
+                <div class="line-break"></div>
+                <h2>Methodology</h2>
+                <p>
+                    This project focused on pro-divestment activism and the
+                    administration's response. Student- or faculty-led
+                    counter-activism events were not included due to project
+                    scope. A pro-divestment activism event was defined as
+                    follows: 1. all articles from the Maroon website or
+                    digitized archives which contained the word "divest" from
+                    search results; 2. had divestment as the main subject,
+                    excluding meta-commentary on effective strategies for
+                    divestment activism or histories of divestment activism; 3.
+                    defined divestment as withdrawing current investments, not
+                    declining to renew contracts or other related topics; 4.
+                    could be defined as a discrete instance, whether as a news
+                    event or a publication, excluding duplicate coverage of the
+                    same event; 5. were located on UChicago campus or involved
+                    UChicago students, excluding reporting about other schools
+                    or Chicago city politics.
+                </p>
+
+                <p>
+                    <a
+                        href="https://drive.google.com/file/d/1KSWc5LtNL38iAuIN1uxjU7w8ve7zd5Mh/view?usp=sharing"
+                        >Access the data</a
+                    >
+                    for this project.
+                </p>
+                <p>
+                    Find the
+                    <a
+                        href="https://github.com/chicagomaroon/data-visualizations/tree/main/2025/divestment-history"
+                        >code for this project</a
+                    >
+                    on GitHub.
+                </p>
+            </div>
+        </div>
+        <hr />
+        <!-- EXTERNAL JS FILES -->
+        <script src="static/js/main.js" type="text/javascript"></script>
+    </body>
+</html>
