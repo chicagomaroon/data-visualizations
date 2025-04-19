@@ -6,6 +6,7 @@ body {
     line-height: 1.6em;
     font-size: 16px;
     font-family: 'Georgia', serif;
+    margin: 0;
 }
 
 /* text */
@@ -168,6 +169,7 @@ hr {
     width: 35vw;
     margin-left: 62vw;
     position: relative;
+    overflow-x: hidden;
 }
 
 #content,
@@ -266,6 +268,7 @@ figure {
 
     #subtitle {
         font-size: 20px;
+        width: 80%;
     }
 
     /* intro */
