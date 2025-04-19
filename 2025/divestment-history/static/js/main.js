@@ -13,7 +13,7 @@ async function fetchData() {
 
         var jsonData = await response.json();
 
-        console.log(jsonData)
+        console.log(jsonData);
         return jsonData;
     } catch (error) {
         console.error('Error fetching JSON:', error);
