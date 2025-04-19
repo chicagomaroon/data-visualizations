@@ -1,14 +1,3 @@
-//TODO
-// add differentiated symbols for accessibility - maybe
-// might have to manually define jitter... I imagine more of an abstract timeline where points repel each other
-// at least a white outline around each marker?
-// I think the way the intro could work is an arbitrarily arranged plotly graph with text annotations, which are re-arranged in the next waypoint to actual dates (and points?)
-// try group labels in graphic instead of axis
-// maybe remove lines altogether? ask
-// experiment with transitions
-// too much space at the bottom
-// the bottom should be in a box
-
 // ------------------ DATA ------------------
 
 /**
