@@ -8,12 +8,12 @@ async function fetchData() {
     try {
         // get data from external source (github)
         var response = await fetch(
-            'https://raw.githubusercontent.com/chicagomaroon/data-visualizations/refs/heads/divestment/2024/divestment-history/data.json'
+            'https://raw.githubusercontent.com/chicagomaroon/data-visualizations/refs/heads/divestment/2025/divestment-history/data.json'
         );
 
         var jsonData = await response.json();
 
-        // console.log(jsonData)
+        console.log(jsonData)
         return jsonData;
     } catch (error) {
         console.error('Error fetching JSON:', error);
