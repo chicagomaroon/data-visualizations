@@ -331,7 +331,8 @@ figure {
         margin: 0;
     }
 
-    .scroller, h2 {
+    .scroller,
+    h2 {
         width: 80%;
     }
 
