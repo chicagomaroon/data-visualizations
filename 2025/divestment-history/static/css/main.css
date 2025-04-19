@@ -11,6 +11,13 @@ body {
 
 /* text */
 
+.fa {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(225, 225, 225);
+    width: 100%;
+}
+
 a,
 a:hover,
 a:active,
