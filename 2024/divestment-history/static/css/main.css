@@ -35,12 +35,14 @@ h2 {
 
 hr {
     margin: 2em auto;
-    width: 80%;
+    width: 50%;
 }
 
 #subtitle {
     font-size: 28;
     text-align: center;
+    width: 50%;
+    margin: 0 auto;
 }
 
 .cursor-crosshair {
@@ -247,7 +249,7 @@ figure {
 
 #what-next {
     margin: 4em auto;
-    width: 50%;
+    width: max(600px, 50vw);
 }
 
 /* mobile */
