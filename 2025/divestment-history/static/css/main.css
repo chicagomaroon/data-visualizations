@@ -44,7 +44,6 @@ h2 {
 
 hr {
     margin: 2em auto;
-    width: 50%;
 }
 
 #subtitle {
@@ -276,6 +275,10 @@ figure {
     #subtitle {
         font-size: 20px;
         width: 80%;
+    }
+
+    hr {
+        width: 100%;
     }
 
     /* intro */
