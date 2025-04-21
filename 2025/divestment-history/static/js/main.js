@@ -21,14 +21,14 @@ async function fetchData() {
 function hideChart() {
     d3.selectAll('#chart-div')
         .transition()
-        .duration(200)
+        .duration(300)
         .style('opacity', 0)
         .style('display', 'none');
 }
 
 function showChart() {
     d3.selectAll('#chart-div').style('display', 'block');
-    d3.selectAll('#chart-div').transition().duration(200).style('opacity', 1);
+    d3.selectAll('#chart-div').transition().duration(300).style('opacity', 1);
 }
 
 /**
