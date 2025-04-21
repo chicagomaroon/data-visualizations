@@ -179,7 +179,8 @@ hr {
     overflow-x: hidden;
 }
 
-#content, #intro-text {
+#content,
+#intro-text {
     margin-top: 20vh;
 }
 

@@ -426,8 +426,7 @@ async function init() {
         element: document.querySelector('#transition'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.selectAll('#pre-intro')
-                    .style('position', 'relative');
+                d3.selectAll('#pre-intro').style('position', 'relative');
                 console.log('hide quotes');
             }
         },
