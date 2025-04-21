@@ -344,7 +344,8 @@ figure {
         margin: 0 auto;
         margin-top: 1em;
         display: block;
-        max-width: fit-content;
+        width: fit-content;
+        max-width: 100%;
     }
 
     .scroller,
