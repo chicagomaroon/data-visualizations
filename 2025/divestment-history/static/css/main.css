@@ -44,7 +44,6 @@ h2 {
 
 hr {
     margin: 2em auto;
-    width: 50%;
 }
 
 #subtitle {
@@ -278,6 +277,11 @@ figure {
         width: 80%;
     }
 
+    hr {
+        width: 90% !important;
+        max-width: 100vw;
+    }
+
     /* intro */
 
     #pre-intro {
@@ -368,7 +372,7 @@ figure {
     }
 
     #content {
-        margin-top: 30vh;
+        margin-top: 40vh;
     }
 
     #what-next {
