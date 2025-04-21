@@ -149,7 +149,8 @@ hr {
     text-align: center;
 }
 
-.byline a {
+.byline a,
+.attribution a {
     text-decoration: underline;
 }
 
