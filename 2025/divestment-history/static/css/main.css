@@ -11,6 +11,13 @@ body {
 
 /* text */
 
+.fa {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(225, 225, 225);
+    width: 100%;
+}
+
 a,
 a:hover,
 a:active,
@@ -37,7 +44,6 @@ h2 {
 
 hr {
     margin: 2em auto;
-    width: 50%;
 }
 
 #subtitle {
@@ -60,7 +66,7 @@ hr {
     position: sticky;
     top: 0;
     z-index: 100;
-    height: 125vh;
+    height: 100vh;
 }
 
 #intro-quotes {
@@ -143,6 +149,10 @@ hr {
     text-align: center;
 }
 
+.byline a {
+    text-decoration: underline;
+}
+
 .admin {
     align-items: flex-end;
 }
@@ -166,21 +176,25 @@ hr {
 }
 
 #chapters {
-    width: 35vw;
+    width: 33vw;
+    padding: 0 15px;
     margin-left: 62vw;
     position: relative;
     overflow-x: hidden;
 }
 
 #content,
+#intro-text {
+    margin-top: 20vh;
+}
+
 #chapters {
-    margin-top: 100vh;
+    margin-top: 90vh;
 }
 
 .scroller {
     margin-top: 50vh;
     margin-bottom: 50vh;
-    /* background-color: #fefedc; */
     padding: 2em;
     box-shadow: 0 0 1em #dedede;
 }
@@ -271,11 +285,17 @@ figure {
         width: 80%;
     }
 
+    hr {
+        width: 90% !important;
+        max-width: 100vw;
+    }
+
     /* intro */
 
     #pre-intro {
         padding: 0;
         font-size: 15px;
+        height: 100vh;
     }
 
     #intro-quotes {
@@ -301,6 +321,10 @@ figure {
         margin: 0;
     }
 
+    #intro-text {
+        margin-bottom: 10vh;
+    }
+
     .attribution {
         width: 90%;
     }
@@ -314,7 +338,7 @@ figure {
     #chart-div,
     #intro-quotes,
     #background,
-    .content {
+    #content {
         margin: 0;
         width: 100vw;
     }
@@ -322,12 +346,18 @@ figure {
     #chapters {
         width: 100vw;
         margin: 0;
+        padding: 0;
+        background: #eeeeee;
     }
 
     .scroller,
     h2 {
-        width: 80vw;
-        margin: 50vh auto;
+        width: 80%;
+    }
+
+    .scroller {
+        margin: 25vh auto;
+        background: white;
     }
 
     .scroller img {
@@ -335,7 +365,8 @@ figure {
         margin: 0 auto;
         margin-top: 1em;
         display: block;
-        max-width: fit-content;
+        width: fit-content;
+        max-width: 100%;
     }
 
     .scroller,
@@ -353,10 +384,6 @@ figure {
         font-size: 16px;
     }
 
-    #content {
-        margin-top: 20vh;
-    }
-
     #what-next {
         width: 90%;
         margin-bottom: 0;
@@ -365,7 +392,7 @@ figure {
     /* chart */
 
     #chart-div {
-        height: 50vh !important;
+        height: 40vh !important;
     }
 
     .plotly {
@@ -374,9 +401,9 @@ figure {
         margin-top: -15px !important;
     }
 
-    .main-svg {
+    /* .main-svg {
         height: 330px !important;
-    }
+    } */
 
     text.gtitle {
         font-size: 16px !important;
