@@ -338,7 +338,8 @@ figure {
         background: #eeeeee;
     }
 
-    .scroller, h2 {
+    .scroller,
+    h2 {
         width: 80%;
     }
 
