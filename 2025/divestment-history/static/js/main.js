@@ -427,21 +427,11 @@ async function init() {
         handler: function (direction) {
             if (direction == 'down') {
                 d3.selectAll('#pre-intro')
-                    .transition()
-                    .duration(500)
-                    .style('opacity', 0)
-                    .style('z-index', '-1');
+                    .style('position', 'relative');
                 console.log('hide quotes');
-            } else {
-                d3.selectAll('#pre-intro')
-                    .transition()
-                    .duration(0)
-                    .style('z-index', '100')
-                    .style('opacity', 100);
-                console.log('show quotes');
             }
         },
-        offset: '-10%'
+        offset: '30%'
     });
 
     // we will edit this plot throughout the whole article
@@ -450,7 +440,7 @@ async function init() {
         'Movement',
         (prev_var = 'Top'),
         (mapping = zoom_mapping),
-        (offset = '110%')
+        (offset = '90%')
     );
 
     // define waypoints (scroll reactions)
