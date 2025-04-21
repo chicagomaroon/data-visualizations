@@ -149,6 +149,10 @@ hr {
     text-align: center;
 }
 
+.byline a {
+    text-decoration: underline;
+}
+
 .admin {
     align-items: flex-end;
 }
