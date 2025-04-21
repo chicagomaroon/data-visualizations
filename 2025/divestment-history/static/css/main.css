@@ -350,6 +350,7 @@ figure {
         margin-top: 1em;
         display: block;
         width: fit-content;
+        max-width: 100%;
     }
 
     .scroller,
