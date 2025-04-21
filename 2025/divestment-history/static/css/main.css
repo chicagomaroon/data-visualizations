@@ -173,7 +173,8 @@ hr {
 }
 
 #chapters {
-    width: 35vw;
+    width: 33vw;
+    padding: 0 15px;
     margin-left: 62vw;
     position: relative;
     overflow-x: hidden;
@@ -187,7 +188,6 @@ hr {
 .scroller {
     margin-top: 50vh;
     margin-bottom: 50vh;
-    /* background-color: #fefedc; */
     padding: 2em;
     box-shadow: 0 0 1em #dedede;
 }
@@ -283,6 +283,7 @@ figure {
     #pre-intro {
         padding: 0;
         font-size: 15px;
+        height: 100vh;
     }
 
     #intro-quotes {
@@ -338,7 +339,8 @@ figure {
     }
 
     .scroller {
-        margin: 50vh auto;
+        margin: 25vh auto;
+        background: white;
     }
 
     .scroller img {
@@ -366,7 +368,7 @@ figure {
     }
 
     #content {
-        margin-top: 20vh;
+        margin-top: 30vh;
     }
 
     #what-next {
@@ -377,7 +379,7 @@ figure {
     /* chart */
 
     #chart-div {
-        height: 50vh !important;
+        height: 40vh !important;
     }
 
     .plotly {
