@@ -298,7 +298,7 @@ const layout = {
     xaxis: {
         showgrid: true,
         showline: true,
-        range: ['1964-1-1', '2027-1-1'],
+        range: ['1964-6-1', '2026-1-1'],
         type: 'date',
         dtick: 'M60',
         ticklabelstep: 1,
@@ -376,10 +376,10 @@ const zoom_mapping = {
     Movement: {
         all: { y: [-0.5, 6.5] },
         palestine: { y: [-0.25, 0.25] },
-        'fossil-fuels': { y: [0.75, 1.25] },
-        'labor-rights': { y: [1.75, 2.25] },
-        'uyghur-rights': { y: [2.75, 3.25] },
-        sric: { y: [3.75, 4.25] },
+        'fossil-fuels': { y: [0.5, 1.5] },
+        'labor-rights': { y: [1.25, 2.75] },
+        'uyghur-rights': { y: [2.25, 3.75] },
+        sric: { y: [3.5, 4.5] },
         sudan: { y: [4.75, 5.25] },
         'south-africa': { y: [5.75, 6.25] }
     },
@@ -391,8 +391,8 @@ const zoom_mapping = {
     },
     'Admin Response': {
         all: { y: [-0.5, 4.5] },
-        meeting: { y: [2.75, 4.25] },
-        police: { y: [0.75, 2.25] },
+        meeting: { y: [2.25, 4.75] },
+        police: { y: [0.25, 2.75] },
         'other-response': { y: [-0.25, 0.25] }
     }
 };
