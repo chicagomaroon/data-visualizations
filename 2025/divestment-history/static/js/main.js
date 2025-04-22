@@ -493,7 +493,7 @@ async function init() {
         'Movement',
         (prev_var = 'Top'),
         (mapping = zoom_mapping),
-        (offset = '100%')
+        (offset = '70%')
     );
 
     // define waypoints (scroll reactions)
