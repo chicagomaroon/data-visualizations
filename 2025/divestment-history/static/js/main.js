@@ -220,7 +220,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                         showarrow: false,
                         font: {
                             color: '#8a8a8a'
-                        },
+                        }
                     });
                 }
             }
