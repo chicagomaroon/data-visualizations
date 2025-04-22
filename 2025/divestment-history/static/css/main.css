@@ -208,7 +208,6 @@ hr {
 figure {
     border: 1px solid #4d0000;
     background-color: white;
-    /* box-shadow: 0 0 1em #eeeeee; */
     margin: 1em 0 0 0;
     padding: 1em 0;
 }
@@ -365,12 +364,13 @@ figure {
     }
 
     .scroller img {
-        max-height: 30vh;
         margin: 0 auto;
         margin-top: 1em;
         display: block;
-        width: fit-content;
+        max-height: 30vh;
         max-width: 100%;
+        width: auto !important;
+        object-fit: contain;
     }
 
     .scroller,
