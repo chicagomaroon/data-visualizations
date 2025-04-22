@@ -112,6 +112,11 @@ function createWaypoint(div, mapping, offset = '80%') {
     function handler(direction) {
         myPlot = document.getElementById('chart-div');
 
+        Plotly.relayout(myPlot, {
+            shapes: [], // clear shapes from admin section
+            annotations: [] // clear notes from admin section
+        });
+
         // https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
         let classList = document.getElementById(div).className;
 
@@ -181,6 +186,42 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
         handler: function (direction) {
             var myPlot = document.getElementById('chart-div');
 
+            shapes = [];
+            annotes = [];
+
+            if (variable == 'Admin Response') {
+                for (var president in history) {
+                    start = new Date(history[president]['x'][0]);
+                    end = new Date(history[president]['x'][1]);
+                    shapes.push({
+                        type: 'rect',
+                        x0: start,
+                        y0: -1,
+                        x1: end,
+                        y1: 7,
+                        line: {
+                            width: 1,
+                            color: '#aaaaaa'
+                        },
+                        fillcolor: 'rgba(0,0,0,0)'
+                        // layer: 'below',
+                        // opacity: .1
+                    });
+                    mid = new Date(
+                        start.getFullYear() +
+                            (end.getFullYear() - start.getFullYear()) / 2,
+                        6,
+                        1
+                    );
+                    annotes.push({
+                        x: mid,
+                        y: -0.5,
+                        text: president,
+                        showarrow: false
+                    });
+                }
+            }
+
             if (direction == 'down') {
                 showChart();
 
@@ -195,7 +236,9 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                     myPlot,
                     {
                         layout: {
-                            yaxis: { range: mapping[variable]['all']['y'] }
+                            yaxis: { range: mapping[variable]['all']['y'] },
+                            shapes: shapes,
+                            annotations: annotes
                         }
                     },
                     { transition: transition }
@@ -337,15 +380,12 @@ const transition = {
 const colorbook = {
     Movement: {
         Palestine: 'rgb(128, 0, 0)',
-        // 'rgb(255, 163, 25)',
         'Fossil fuels': 'rgb(193, 102, 34)',
         'Uyghur rights': 'rgb(143, 57, 49)',
         'Labor rights': 'rgb(138, 144, 69)',
         SRIC: 'rgb(88, 89, 63)',
         Sudan: 'rgb(21, 95, 131)',
         'South Africa': 'rgb(53, 14, 32)'
-        // 'rgb(71, 181, 255)'
-        // 'rgb(255, 51, 153)'
     },
     'Type of Action': {
         'Letter writing': 'rgb(128, 0, 0)',
@@ -393,8 +433,19 @@ const zoom_mapping = {
         all: { y: [-0.75, 4.5] },
         meeting: { y: [2.3, 4.75] },
         police: { y: [0.3, 2.75] },
-        'other-response': { y: [-1, .75] }
+        'other-response': { y: [-1, 0.75] }
     }
+};
+
+const history = {
+    Beadle: { x: ['1963-1-1', '1968-1-1'] },
+    Levi: { x: ['1968-1-1', '1975-1-1'] },
+    Wilson: { x: ['1975-1-1', '1978-8-1'] },
+    Gray: { x: ['1978-8-1', '1993-1-1'] },
+    Sonnenschein: { x: ['1993-1-1', '2000-1-1'] },
+    Randel: { x: ['2000-1-1', '2006-1-1'] },
+    Zimmer: { x: ['2006-1-1', '2021-1-1'] },
+    Alivisatos: { x: ['2021-1-1', '2026-6-1'] }
 };
 
 // -------- MAIN --------

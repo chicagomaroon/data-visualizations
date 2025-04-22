@@ -416,6 +416,10 @@ figure {
         x: 20;
     }
 
+    text.annotation-text {
+        font-size: 6px !important;
+    }
+
     .ytick text {
         font-size: 12px !important;
     }
