@@ -217,7 +217,10 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                         x: mid,
                         y: -0.5,
                         text: president,
-                        showarrow: false
+                        showarrow: false,
+                        font: {
+                            color: '#8a8a8a'
+                        },
                     });
                 }
             }
