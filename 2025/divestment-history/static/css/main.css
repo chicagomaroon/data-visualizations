@@ -87,6 +87,10 @@ hr {
 
 .intro {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .year {
@@ -110,9 +114,9 @@ hr {
 #background {
     /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-        url('../../images/south-africa.jpg');
+        url('../../images/collage.png');
     background-size: cover;
-    background-position: bottom;
+    background-position: center;
     height: 100vh;
     z-index: 1000;
     position: relative;
@@ -149,7 +153,8 @@ hr {
     text-align: center;
 }
 
-.byline a {
+.byline a,
+.attribution a {
     text-decoration: underline;
 }
 
@@ -185,11 +190,11 @@ hr {
 
 #content,
 #intro-text {
-    margin-top: 20vh;
+    margin-top: 30vh;
 }
 
 #chapters {
-    margin-top: 90vh;
+    margin-top: 10vh;
 }
 
 .scroller {
@@ -322,7 +327,7 @@ figure {
     }
 
     #intro-text {
-        margin-bottom: 10vh;
+        margin: 10vh auto;
     }
 
     .attribution {
@@ -338,14 +343,13 @@ figure {
     #chart-div,
     #intro-quotes,
     #background,
-    #content {
+    #content,
+    #chapters {
         margin: 0;
         width: 100vw;
     }
 
     #chapters {
-        width: 100vw;
-        margin: 0;
         padding: 0;
         background: #eeeeee;
     }
@@ -389,6 +393,11 @@ figure {
         margin-bottom: 0;
     }
 
+    #methodology {
+        font-size: 12px;
+        line-height: 1.5em;
+    }
+
     /* chart */
 
     #chart-div {
@@ -413,6 +422,10 @@ figure {
     text.gtitle-subtitle {
         font-size: 12px !important;
         x: 20;
+    }
+
+    text.annotation-text {
+        font-size: 6px !important;
     }
 
     .ytick text {
