@@ -190,7 +190,7 @@ hr {
 
 #content,
 #intro-text {
-    margin-top: 20vh;
+    margin-top: 30vh;
 }
 
 #chapters {
@@ -327,7 +327,7 @@ figure {
     }
 
     #intro-text {
-        margin-bottom: 10vh;
+        margin: 10vh auto;
     }
 
     .attribution {
@@ -343,14 +343,13 @@ figure {
     #chart-div,
     #intro-quotes,
     #background,
-    #content {
+    #content,
+    #chapters {
         margin: 0;
         width: 100vw;
     }
 
     #chapters {
-        width: 100vw;
-        margin: 0;
         padding: 0;
         background: #eeeeee;
     }
