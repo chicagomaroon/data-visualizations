@@ -393,6 +393,11 @@ figure {
         margin-bottom: 0;
     }
 
+    #methodology {
+        font-size: 12px;
+        line-height: 1.5em;
+    }
+
     /* chart */
 
     #chart-div {
