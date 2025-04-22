@@ -390,10 +390,10 @@ const zoom_mapping = {
         'other-action': { y: [1.5, 5.5] }
     },
     'Admin Response': {
-        all: { y: [-0.5, 4.5] },
-        meeting: { y: [2.25, 4.75] },
-        police: { y: [0.25, 2.75] },
-        'other-response': { y: [-0.25, 0.25] }
+        all: { y: [-0.75, 4.5] },
+        meeting: { y: [2.3, 4.75] },
+        police: { y: [0.3, 2.75] },
+        'other-response': { y: [-1, .75] }
     }
 };
 
@@ -419,7 +419,7 @@ async function init() {
                 // console.log('quotes');
             }
         },
-        offset: '100%'
+        offset: '90%'
     });
 
     quoteDoneWP = new Waypoint({
@@ -430,7 +430,7 @@ async function init() {
                 console.log('hide quotes');
             }
         },
-        offset: '30%'
+        offset: '70%'
     });
 
     // we will edit this plot throughout the whole article
@@ -439,7 +439,7 @@ async function init() {
         'Movement',
         (prev_var = 'Top'),
         (mapping = zoom_mapping),
-        (offset = '80%')
+        (offset = '100%')
     );
 
     // define waypoints (scroll reactions)
