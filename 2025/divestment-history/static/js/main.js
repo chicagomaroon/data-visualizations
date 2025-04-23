@@ -329,12 +329,12 @@ const layout = {
         text: 'Divestment Activism Events at UChicago',
         x: 0.14,
         font: {
-            size: 20
+            size: 14 + window.screen.width / 300
         },
         subtitle: {
             text: 'Click a data point to visit the source article.',
             font: {
-                size: 14
+                size: 10 + window.screen.width / 300
             }
         }
     },
@@ -349,14 +349,14 @@ const layout = {
         dtick: 'M60',
         ticklabelstep: 1,
         tickfont: {
-            size: 14
+            size: 10 + window.screen.width / 300
         }
     },
     yaxis: {
         showgrid: false,
         ticktext: 'text',
         tickfont: {
-            size: 14
+            size: 10 + window.screen.width / 300
         }
     },
     hovermode: 'closest',
@@ -365,8 +365,10 @@ const layout = {
     },
     showlegend: false,
     margin: {
-        l: 120,
-        r: 15
+        l: 100 + window.screen.width / 50,
+        r: 10,
+        b: 50,
+        t: 70
     }
 };
 
