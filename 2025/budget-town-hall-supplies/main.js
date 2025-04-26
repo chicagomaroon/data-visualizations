@@ -41,7 +41,7 @@ Highcharts.chart('chart-div', {
     // },
 
     tooltip: {
-        valueDecimals: 0,
+        valueDecimals: 1,
         valuePrefix: '$',
         valueSuffix: 'B'
     },
@@ -66,10 +66,11 @@ Highcharts.chart('chart-div', {
                 fontSize: '16px'
             }
         },
+        showLastLabel: false,
         title: {
             enabled: false
         },
-        tickPositions: [0, 0.2, 0.4, 0.6, 0.8, 1, 1.2]
+        tickPositions: [0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.3]
     },
 
     series: [
