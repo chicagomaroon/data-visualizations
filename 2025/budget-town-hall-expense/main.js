@@ -31,7 +31,7 @@ Highcharts.chart('chart-div', {
     },
 
     title: {
-        text: 'Operating Revenue, Fiscal Year 2025',
+        text: 'Operating Expenses, Fiscal Year 2025',
         align: 'center'
     },
 
@@ -80,14 +80,13 @@ Highcharts.chart('chart-div', {
                 }
             ],
             data: [
-                { name: 'Auxiliaries', y: 6 },
-                { name: 'Other income', y: 9 },
-                { name: 'Deficit', y: 6 },
-                { name: 'Tuition and fees', y: 20 },
-                { name: 'Federal grants<br>and contracts', y: 18 },
-                { name: 'Private gifts', y: 5 },
-                { name: 'Endowment payout', y: 5 },
-                { name: 'Patient care', y: 13 }
+                { name: 'Academic salaries', y: 26 },
+                { name: 'Benefits', y: 12 },
+                { name: 'Supplies, services,<br>and other', y: 20 },
+                { name: 'Depreciation', y: 7 },
+                { name: 'Interest', y: 4 },
+                { name: 'Utilities, alterations,<br>and repairs', y: 2 },
+                { name: 'Staff salaries', y: 29 }
             ]
         }
     ]
