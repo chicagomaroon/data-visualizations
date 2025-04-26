@@ -61,7 +61,7 @@ Highcharts.chart('chart-div', {
 
     series: [
         {
-            innerSize: '60%', // donut
+            // innerSize: '60%', // donut
             dataLabels: [
                 {
                     enabled: true,
