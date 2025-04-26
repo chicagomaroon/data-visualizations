@@ -41,14 +41,14 @@ Highcharts.chart('chart-div', {
     // },
 
     tooltip: {
-        valueDecimals: 0,
+        valueDecimals: 1,
         valuePrefix: '$',
-        valueSuffix: 'M'
+        valueSuffix: 'B'
     },
 
     accessibility: {
         valuePrefix: '$',
-        valueSuffix: 'M'
+        valueSuffix: 'B'
     },
 
     legend: {
@@ -61,7 +61,7 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         labels: {
-            format: '${text}M',
+            format: '${text}B',
             style: {
                 fontSize: '16px'
             }
@@ -70,16 +70,16 @@ Highcharts.chart('chart-div', {
         title: {
             enabled: false
         },
-        tickPositions: [0, 400, 800, 1200, 1600, 2000, 2400, 2600]
+        tickPositions: [0, .4, .8, 1.2, 1.6, 2, 2.4, 2.6]
     },
 
     series: [
         {
             name: 'Expenses',
-            data: [2221, 2371, 2378],
+            data: [2.221, 2.371, 2.378],
             dataLabels: {
                 enabled: true,
-                format: '${point.y}M'
+                format: '${point.y}B'
             }
         }
     ]
