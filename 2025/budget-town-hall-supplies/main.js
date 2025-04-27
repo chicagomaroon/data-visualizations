@@ -70,7 +70,7 @@ Highcharts.chart('chart-div', {
         title: {
             enabled: false
         },
-        tickPositions: [0, 200, 400, 600, 800, 1000, 1200]
+        tickPositions: [0, 200, 400, 600, 800, 1000, 1200, 1300]
     },
 
     series: [
