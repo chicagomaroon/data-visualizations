@@ -76,7 +76,7 @@ Highcharts.chart('chart-div', {
     series: [
         {
             name: 'Expenses',
-            data: [2221, 2371, 2378],
+            data: [2221, 2371, { y: 2378, color: '#155F83' }],
             dataLabels: {
                 enabled: true,
                 format: '${point.y}M'

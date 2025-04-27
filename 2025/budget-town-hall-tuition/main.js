@@ -75,7 +75,7 @@ Highcharts.chart('chart-div', {
     series: [
         {
             name: 'Revenue',
-            data: [610, 696, 689],
+            data: [610, 696, { y: 689, color: '#155F83' }],
             dataLabels: {
                 enabled: true,
                 format: '${point.y}M'
