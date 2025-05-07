@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Building Locations Map</title>
+        <style>
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map {
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+
+        <!-- Load Google Maps API -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpeWblpOWHSdujc28GrDmOsPQPLTtDpdQ&libraries=marker&v=weekly"></script>
+
+        <!-- Load PapaParse -->
+        <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+        <!-- Load your JavaScript module -->
+        <script type="module" src="main.js"></script>
+    </body>
+</html>
