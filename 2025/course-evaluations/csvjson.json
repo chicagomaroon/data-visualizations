@@ -1,0 +1,2004 @@
+[
+  {
+    "Course Code": "AKKD 10501",
+    "Category": "Language",
+    "Course Name": "Introduction to Babylonian I",
+    "Average of Average Hours": 10,
+    "Average of Sentiment Score": 0.157
+  },
+  {
+    "Course Code": "AKKD 10502",
+    "Category": "Language",
+    "Course Name": "Introduction to Babylonian II",
+    "Average of Average Hours": 13.66,
+    "Average of Sentiment Score": 0.074
+  },
+  {
+    "Course Code": "AKKD 10503",
+    "Category": "Language",
+    "Course Name": "Introduction to Babylonian III",
+    "Average of Average Hours": 14.5,
+    "Average of Sentiment Score": 0.183
+  },
+  {
+    "Course Code": "ARAB 10101",
+    "Category": "Language",
+    "Course Name": "Elementary Arabic I",
+    "Average of Average Hours": 5.24,
+    "Average of Sentiment Score": 0.246
+  },
+  {
+    "Course Code": "ARAB 10102",
+    "Category": "Language",
+    "Course Name": "Elementary Arabic II",
+    "Average of Average Hours": 6.16,
+    "Average of Sentiment Score": 0.250
+  },
+  {
+    "Course Code": "ARAB 10103",
+    "Category": "Language",
+    "Course Name": "Elementary Arabic III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.224
+  },
+  {
+    "Course Code": "ARAB 20101",
+    "Category": "Language",
+    "Course Name": "Intermediate Arabic I",
+    "Average of Average Hours": 5.54,
+    "Average of Sentiment Score": 0.239
+  },
+  {
+    "Course Code": "ARAB 20102",
+    "Category": "Language",
+    "Course Name": "Intermediate Arabic II",
+    "Average of Average Hours": 6.5,
+    "Average of Sentiment Score": 0.208
+  },
+  {
+    "Course Code": "ARAB 20103",
+    "Category": "Language",
+    "Course Name": "Intermediate Arabic III",
+    "Average of Average Hours": 10,
+    "Average of Sentiment Score": 0.267
+  },
+  {
+    "Course Code": "ARME 10101",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Armenian I",
+    "Average of Average Hours": 3.66,
+    "Average of Sentiment Score": 0.286
+  },
+  {
+    "Course Code": "ARTH 10100",
+    "Category": "Arts",
+    "Course Name": "Introduction to Art",
+    "Average of Average Hours": 3.44,
+    "Average of Sentiment Score": 0.294
+  },
+  {
+    "Course Code": "ARTV 10100",
+    "Category": "Arts",
+    "Course Name": "Visual Language: On Images",
+    "Average of Average Hours": 4.943,
+    "Average of Sentiment Score": 0.225
+  },
+  {
+    "Course Code": "ARTV 10200",
+    "Category": "Arts",
+    "Course Name": "Visual Language: On Objects",
+    "Average of Average Hours": 4.451666667,
+    "Average of Sentiment Score": 0.181333333
+  },
+  {
+    "Course Code": "ARTV 10300",
+    "Category": "Arts",
+    "Course Name": "Visual Language: On Time and Space",
+    "Average of Average Hours": 4.665714286,
+    "Average of Sentiment Score": 0.222571429
+  },
+  {
+    "Course Code": "ASLG 10100",
+    "Category": "Language",
+    "Course Name": "American Sign Language I",
+    "Average of Average Hours": 4.855,
+    "Average of Sentiment Score": 0.2345
+  },
+  {
+    "Course Code": "ASLG 10200",
+    "Category": "Language",
+    "Course Name": "American Sign Language II",
+    "Average of Average Hours": 4.855,
+    "Average of Sentiment Score": 0.2085
+  },
+  {
+    "Course Code": "ASLG 10300",
+    "Category": "Language",
+    "Course Name": "American Sign Language III",
+    "Average of Average Hours": 5.805,
+    "Average of Sentiment Score": 0.2385
+  },
+  {
+    "Course Code": "ASTR 12600",
+    "Category": "Language",
+    "Course Name": "Matter, Energy, Space, and Time",
+    "Average of Average Hours": 5.94,
+    "Average of Sentiment Score": 0.207
+  },
+  {
+    "Course Code": "ASTR 12610",
+    "Category": "Language",
+    "Course Name": "Black Holes",
+    "Average of Average Hours": 7.175,
+    "Average of Sentiment Score": 0.2075
+  },
+  {
+    "Course Code": "ASTR 12620",
+    "Category": "Language",
+    "Course Name": "The Big Bang",
+    "Average of Average Hours": 6.11,
+    "Average of Sentiment Score": 0.248
+  },
+  {
+    "Course Code": "ASTR 12700",
+    "Category": "Language",
+    "Course Name": "Stars",
+    "Average of Average Hours": 6.18,
+    "Average of Sentiment Score": 0.215
+  },
+  {
+    "Course Code": "ASTR 12710",
+    "Category": "Language",
+    "Course Name": "Galaxies",
+    "Average of Average Hours": 8.07,
+    "Average of Sentiment Score": 0.201
+  },
+  {
+    "Course Code": "ASTR 12720",
+    "Category": "Language",
+    "Course Name": "Exoplanets",
+    "Average of Average Hours": 3.89,
+    "Average of Sentiment Score": 0.222
+  },
+  {
+    "Course Code": "ASTR 18200",
+    "Category": "Language",
+    "Course Name": "The Origin and Evolution of the Universe",
+    "Average of Average Hours": 4.56,
+    "Average of Sentiment Score": 0.257
+  },
+  {
+    "Course Code": "BANG 10300",
+    "Category": "Language",
+    "Course Name": "First-Year Bangla (Bengali) III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.199
+  },
+  {
+    "Course Code": "BIOS 10130",
+    "Category": "Biological Science",
+    "Course Name": "Principles of Biology",
+    "Average of Average Hours": 5.271666667,
+    "Average of Sentiment Score": 0.171833333
+  },
+  {
+    "Course Code": "BIOS 10140",
+    "Category": "Biological Science",
+    "Course Name": "Inquiry-based Exploration of Biology",
+    "Average of Average Hours": 6.314166667,
+    "Average of Sentiment Score": 0.167458333
+  },
+  {
+    "Course Code": "BIOS 10500",
+    "Category": "Biological Science",
+    "Course Name": "Metabolism and Exercise�",
+    "Average of Average Hours": 5.91,
+    "Average of Sentiment Score": 0.183
+  },
+  {
+    "Course Code": "BIOS 10501",
+    "Category": "Biological Science",
+    "Course Name": "Systems of the Human Body",
+    "Average of Average Hours": 11.55,
+    "Average of Sentiment Score": 0.173
+  },
+  {
+    "Course Code": "BIOS 10602",
+    "Category": "Biological Science",
+    "Course Name": "Multiscale Modeling of Biological Systems I",
+    "Average of Average Hours": 11.56,
+    "Average of Sentiment Score": 0.176
+  },
+  {
+    "Course Code": "BIOS 10603",
+    "Category": "Biological Science",
+    "Course Name": "Multiscale Modeling of Biological Systems II",
+    "Average of Average Hours": 10.36,
+    "Average of Sentiment Score": 0.129
+  },
+  {
+    "Course Code": "BIOS 11125",
+    "Category": "Biological Science",
+    "Course Name": "Life Through a Genomic Lens",
+    "Average of Average Hours": 3.61,
+    "Average of Sentiment Score": 0.2
+  },
+  {
+    "Course Code": "BIOS 11136",
+    "Category": "Biological Science",
+    "Course Name": "Introduction to Complex Trait Genetics",
+    "Average of Average Hours": 2.92,
+    "Average of Sentiment Score": 0.223
+  },
+  {
+    "Course Code": "BIOS 11137",
+    "Category": "Biological Science",
+    "Course Name": "Phenotypes and Genotypes",
+    "Average of Average Hours": 3.61,
+    "Average of Sentiment Score": 0.191
+  },
+  {
+    "Course Code": "BIOS 11140",
+    "Category": "Biological Science",
+    "Course Name": "Biotechnology for the 21st Century",
+    "Average of Average Hours": 5.37,
+    "Average of Sentiment Score": 0.1345
+  },
+  {
+    "Course Code": "BIOS 12114",
+    "Category": "Biological Science",
+    "Course Name": "Nutritional Science",
+    "Average of Average Hours": 6.44,
+    "Average of Sentiment Score": 0.175
+  },
+  {
+    "Course Code": "BIOS 12115",
+    "Category": "Biological Science",
+    "Course Name": "Responses of Cardiopulmonary System to Stress",
+    "Average of Average Hours": 5.5,
+    "Average of Sentiment Score": 0.202
+  },
+  {
+    "Course Code": "BIOS 12117",
+    "Category": "Biological Science",
+    "Course Name": "Your Inner Fish: The Deep History of the Human Body",
+    "Average of Average Hours": 8.43,
+    "Average of Sentiment Score": 0.175
+  },
+  {
+    "Course Code": "BIOS 12121",
+    "Category": "Biological Science",
+    "Course Name": "Physiology in Extreme Environments",
+    "Average of Average Hours": 4.17,
+    "Average of Sentiment Score": 0.166
+  },
+  {
+    "Course Code": "BIOS 13111",
+    "Category": "Biological Science",
+    "Course Name": "Natural History of North American Deserts",
+    "Average of Average Hours": 3.69,
+    "Average of Sentiment Score": 0.187
+  },
+  {
+    "Course Code": "BIOS 13128",
+    "Category": "Biological Science",
+    "Course Name": "Plant-Animal Interactions",
+    "Average of Average Hours": 5.26,
+    "Average of Sentiment Score": 0.258
+  },
+  {
+    "Course Code": "BIOS 13132",
+    "Category": "Biological Science",
+    "Course Name": "Ecology in the Anthropocene",
+    "Average of Average Hours": 4.97,
+    "Average of Sentiment Score": 0.1335
+  },
+  {
+    "Course Code": "BIOS 13134",
+    "Category": "Biological Science",
+    "Course Name": "It's Not Easy Being Green: An Introduction to Plant Biology",
+    "Average of Average Hours": 4.17,
+    "Average of Sentiment Score": 0.286
+  },
+  {
+    "Course Code": "BIOS 13140",
+    "Category": "Biological Science",
+    "Course Name": "The Public and Private Lives of Insects",
+    "Average of Average Hours": 3.645,
+    "Average of Sentiment Score": 0.223
+  },
+  {
+    "Course Code": "BIOS 14112",
+    "Category": "Biological Science",
+    "Course Name": "From Fossils to Fermi's Paradox: Origin and Evolution of Intelligent Life",
+    "Average of Average Hours": 5,
+    "Average of Sentiment Score": 0.202
+  },
+  {
+    "Course Code": "BIOS 14117",
+    "Category": "Biological Science",
+    "Course Name": "The Science and Art of Vision",
+    "Average of Average Hours": 3.125,
+    "Average of Sentiment Score": 0.2045
+  },
+  {
+    "Course Code": "BIOS 15115",
+    "Category": "Biological Science",
+    "Course Name": "Cancer Biology: How Good Cells Go Bad",
+    "Average of Average Hours": 4.5,
+    "Average of Sentiment Score": 0.1945
+  },
+  {
+    "Course Code": "BIOS 15126",
+    "Category": "Biological Science",
+    "Course Name": "Plants, Pathogens, and People",
+    "Average of Average Hours": 3.21,
+    "Average of Sentiment Score": 0.179
+  },
+  {
+    "Course Code": "BIOS 15127",
+    "Category": "Biological Science",
+    "Course Name": "Plants, Pathogens, and People",
+    "Average of Average Hours": 4.83,
+    "Average of Sentiment Score": 0.233
+  },
+  {
+    "Course Code": "BPRO 28800",
+    "Category": "Biological Science",
+    "Course Name": "From Fossils to Fermi's Paradox: Origin and Evolution of Intelligent Life",
+    "Average of Average Hours": 3.72,
+    "Average of Sentiment Score": 0.244
+  },
+  {
+    "Course Code": "CHEM 12400",
+    "Category": "Physical Science",
+    "Course Name": "The Chemistry of Big Problems",
+    "Average of Average Hours": 6.2,
+    "Average of Sentiment Score": 0.192
+  },
+  {
+    "Course Code": "CHEM 12600",
+    "Category": "Physical Science",
+    "Course Name": "The Chemistry of Food and Cooking",
+    "Average of Average Hours": 6.41,
+    "Average of Sentiment Score": 0.212
+  },
+  {
+    "Course Code": "CHEM 12900",
+    "Category": "Physical Science",
+    "Course Name": "The Chemistry of Artist's Materials",
+    "Average of Average Hours": 4.05,
+    "Average of Sentiment Score": 0.241
+  },
+  {
+    "Course Code": "CHIN 10100",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Chinese I",
+    "Average of Average Hours": 8.7175,
+    "Average of Sentiment Score": 0.17
+  },
+  {
+    "Course Code": "CHIN 10200",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Chinese II",
+    "Average of Average Hours": 9.25,
+    "Average of Sentiment Score": 0.184
+  },
+  {
+    "Course Code": "CHIN 10300",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Chinese III",
+    "Average of Average Hours": 8.026666667,
+    "Average of Sentiment Score": 0.190333333
+  },
+  {
+    "Course Code": "CHIN 11100",
+    "Category": "Language",
+    "Course Name": "First-Year Chinese for Bilingual Speakers I",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.164
+  },
+  {
+    "Course Code": "CHIN 11200",
+    "Category": "Language",
+    "Course Name": "First-Year Chinese for Bilingual Speakers II",
+    "Average of Average Hours": 5.33,
+    "Average of Sentiment Score": 0.145
+  },
+  {
+    "Course Code": "CHIN 11300",
+    "Category": "Language",
+    "Course Name": "First-Year Chinese for Bilingual Speakers III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.187
+  },
+  {
+    "Course Code": "CHIN 20100",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Chinese I",
+    "Average of Average Hours": 8.71,
+    "Average of Sentiment Score": 0.2005
+  },
+  {
+    "Course Code": "CHIN 20200",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Chinese II",
+    "Average of Average Hours": 10,
+    "Average of Sentiment Score": 0.1825
+  },
+  {
+    "Course Code": "CHIN 20300",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Chinese III",
+    "Average of Average Hours": 8.25,
+    "Average of Sentiment Score": 0.2225
+  },
+  {
+    "Course Code": "CMST 14400",
+    "Category": "Arts",
+    "Course Name": "Film and the Moving Image",
+    "Average of Average Hours": 3.318666667,
+    "Average of Sentiment Score": 0.2526
+  },
+  {
+    "Course Code": "CRWR 18200",
+    "Category": "Arts",
+    "Course Name": "Poetry and the Human III",
+    "Average of Average Hours": 4.9275,
+    "Average of Sentiment Score": 0.28875
+  },
+  {
+    "Course Code": "DATA 11800",
+    "Category": "Mathematical Science",
+    "Course Name": "Introduction to Data Science I",
+    "Average of Average Hours": 9.984285714,
+    "Average of Sentiment Score": 0.178714286
+  },
+  {
+    "Course Code": "EGPT 10101",
+    "Category": "Language",
+    "Course Name": "Introduction to Middle Egyptian Hieroglyphs I�",
+    "Average of Average Hours": 8,
+    "Average of Sentiment Score": 0.266
+  },
+  {
+    "Course Code": "EGPT 10102",
+    "Category": "Language",
+    "Course Name": "Introduction to Middle Egyptian Hieroglyphs II",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.221
+  },
+  {
+    "Course Code": "EGPT 10103",
+    "Category": "Language",
+    "Course Name": "Introduction to Middle Egyptian Hieroglyphs III",
+    "Average of Average Hours": 5.33,
+    "Average of Sentiment Score": 0.197
+  },
+  {
+    "Course Code": "FREN 10100",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary French I",
+    "Average of Average Hours": 8.608571429,
+    "Average of Sentiment Score": 0.177142857
+  },
+  {
+    "Course Code": "FREN 10200",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary French II",
+    "Average of Average Hours": 9.245,
+    "Average of Sentiment Score": 0.234666667
+  },
+  {
+    "Course Code": "FREN 10300",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary French III",
+    "Average of Average Hours": 6.135,
+    "Average of Sentiment Score": 0.225
+  },
+  {
+    "Course Code": "FREN 10402",
+    "Category": "Language",
+    "Course Name": "Heritage French : Developing Foundational Skills",
+    "Average of Average Hours": 8.42,
+    "Average of Sentiment Score": 0.258
+  },
+  {
+    "Course Code": "FREN 20100",
+    "Category": "Language",
+    "Course Name": "French Language, History, and Culture I",
+    "Average of Average Hours": 7.833333333,
+    "Average of Sentiment Score": 0.185333333
+  },
+  {
+    "Course Code": "FREN 20200",
+    "Category": "Language",
+    "Course Name": "French Language, History, and Culture II",
+    "Average of Average Hours": 5.708,
+    "Average of Sentiment Score": 0.182
+  },
+  {
+    "Course Code": "FREN 20300",
+    "Category": "Language",
+    "Course Name": "French Language, History, and Culture III",
+    "Average of Average Hours": 7.306666667,
+    "Average of Sentiment Score": 0.195666667
+  },
+  {
+    "Course Code": "GEOS 13900",
+    "Category": "Biological Science",
+    "Course Name": "Biological Evolution",
+    "Average of Average Hours": 4.95,
+    "Average of Sentiment Score": 0.251
+  },
+  {
+    "Course Code": "GEOS 25600",
+    "Category": "Physical Science",
+    "Course Name": "Getting Something for Nothing",
+    "Average of Average Hours": 3.15,
+    "Average of Sentiment Score": 0.199
+  },
+  {
+    "Course Code": "GNSE 15002",
+    "Category": "Civilization Studies",
+    "Course Name": "Gender and Sexuality in World Civilizations I",
+    "Average of Average Hours": 5.794545455,
+    "Average of Sentiment Score": 0.239363636
+  },
+  {
+    "Course Code": "GNSE 15003",
+    "Category": "Civilization Studies",
+    "Course Name": "Gender and Sexuality in World Civilizations II",
+    "Average of Average Hours": 6.123,
+    "Average of Sentiment Score": 0.2049
+  },
+  {
+    "Course Code": "GREK 10100",
+    "Category": "Language",
+    "Course Name": "Introduction to Attic Greek I",
+    "Average of Average Hours": 7.25,
+    "Average of Sentiment Score": 0.193
+  },
+  {
+    "Course Code": "GREK 10200",
+    "Category": "Language",
+    "Course Name": "Introduction to Attic Greek II",
+    "Average of Average Hours": 12.085,
+    "Average of Sentiment Score": 0.1735
+  },
+  {
+    "Course Code": "GREK 10300",
+    "Category": "Language",
+    "Course Name": "Introduction to Attic Greek III",
+    "Average of Average Hours": 10,
+    "Average of Sentiment Score": 0.22
+  },
+  {
+    "Course Code": "GREK 20100",
+    "Category": "Language",
+    "Course Name": "Intermediate Greek I",
+    "Average of Average Hours": 7.085,
+    "Average of Sentiment Score": 0.1885
+  },
+  {
+    "Course Code": "GREK 20300",
+    "Category": "Language",
+    "Course Name": "Intermediate Greek III",
+    "Average of Average Hours": 12.5,
+    "Average of Sentiment Score": 0.24
+  },
+  {
+    "Course Code": "GRMN 10100",
+    "Category": "Language",
+    "Course Name": "Elementary German for Beginners I",
+    "Average of Average Hours": 4.165,
+    "Average of Sentiment Score": 0.18475
+  },
+  {
+    "Course Code": "GRMN 10200",
+    "Category": "Language",
+    "Course Name": "Elementary German for Beginners II",
+    "Average of Average Hours": 5.185,
+    "Average of Sentiment Score": 0.21675
+  },
+  {
+    "Course Code": "GRMN 10300",
+    "Category": "Language",
+    "Course Name": "Elementary German for Beginners III",
+    "Average of Average Hours": 6.05,
+    "Average of Sentiment Score": 0.2025
+  },
+  {
+    "Course Code": "HEBR 10501",
+    "Category": "Language",
+    "Course Name": "Introductory Modern Hebrew I",
+    "Average of Average Hours": 5.75,
+    "Average of Sentiment Score": 0.189
+  },
+  {
+    "Course Code": "HEBR 10503",
+    "Category": "Language",
+    "Course Name": "Introductory Modern Hebrew III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.197
+  },
+  {
+    "Course Code": "HEBR 20501",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Hebrew I",
+    "Average of Average Hours": 6.16,
+    "Average of Sentiment Score": 0.222
+  },
+  {
+    "Course Code": "HEBR 20502",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Hebrew II",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.178
+  },
+  {
+    "Course Code": "HIND 10100",
+    "Category": "Language",
+    "Course Name": "First-Year Hindi I",
+    "Average of Average Hours": 5.5,
+    "Average of Sentiment Score": 0.221
+  },
+  {
+    "Course Code": "HIND 10200",
+    "Category": "Language",
+    "Course Name": "First-Year Hindi II",
+    "Average of Average Hours": 3.25,
+    "Average of Sentiment Score": 0.217
+  },
+  {
+    "Course Code": "HIND 10300",
+    "Category": "Language",
+    "Course Name": "First-Year Hindi III",
+    "Average of Average Hours": 3.66,
+    "Average of Sentiment Score": 0.221
+  },
+  {
+    "Course Code": "HIPS 18401",
+    "Category": "Civilization Studies",
+    "Course Name": "Science, Culture, and Society in Western Civilization II: History of Medicine 1500 to 1900",
+    "Average of Average Hours": 5.76,
+    "Average of Sentiment Score": 0.212
+  },
+  {
+    "Course Code": "HIST 10101",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to African Civilization I",
+    "Average of Average Hours": 5.835,
+    "Average of Sentiment Score": 0.1745
+  },
+  {
+    "Course Code": "HIST 10102",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to African Civilization II",
+    "Average of Average Hours": 5.75,
+    "Average of Sentiment Score": 0.1875
+  },
+  {
+    "Course Code": "HIST 10103",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to African Civilization III",
+    "Average of Average Hours": 3.75,
+    "Average of Sentiment Score": 0.256
+  },
+  {
+    "Course Code": "HIST 11701",
+    "Category": "Civilization Studies",
+    "Course Name": "Jewish Civilization I: Ancient Beginnings to Medieval Period",
+    "Average of Average Hours": 5.226666667,
+    "Average of Sentiment Score": 0.201666667
+  },
+  {
+    "Course Code": "HIST 13001",
+    "Category": "Civilization Studies",
+    "Course Name": "History of European Civilization I",
+    "Average of Average Hours": 6.9025,
+    "Average of Sentiment Score": 0.2015
+  },
+  {
+    "Course Code": "HIST 13002",
+    "Category": "Civilization Studies",
+    "Course Name": "History of European Civilization II",
+    "Average of Average Hours": 6.938571429,
+    "Average of Sentiment Score": 0.215285714
+  },
+  {
+    "Course Code": "HIST 13003",
+    "Category": "Civilization Studies",
+    "Course Name": "History of European Civilization III",
+    "Average of Average Hours": 6.665,
+    "Average of Sentiment Score": 0.27
+  },
+  {
+    "Course Code": "HIST 13100",
+    "Category": "Civilization Studies",
+    "Course Name": "History of Western Civilization I",
+    "Average of Average Hours": 2.5,
+    "Average of Sentiment Score": 0.175
+  },
+  {
+    "Course Code": "HIST 13200",
+    "Category": "Civilization Studies",
+    "Course Name": "History of Western Civilization II",
+    "Average of Average Hours": 3.33,
+    "Average of Sentiment Score": 0.203
+  },
+  {
+    "Course Code": "HIST 13500",
+    "Category": "Civilization Studies",
+    "Course Name": "America in World Civilization I",
+    "Average of Average Hours": 7.17,
+    "Average of Sentiment Score": 0.208333333
+  },
+  {
+    "Course Code": "HIST 13600",
+    "Category": "Civilization Studies",
+    "Course Name": "America in World Civilization II",
+    "Average of Average Hours": 7.226,
+    "Average of Sentiment Score": 0.1926
+  },
+  {
+    "Course Code": "HIST 13700",
+    "Category": "Civilization Studies",
+    "Course Name": "America in World Civilization III",
+    "Average of Average Hours": 6.844,
+    "Average of Sentiment Score": 0.2188
+  },
+  {
+    "Course Code": "HIST 13900",
+    "Category": "Civilization Studies",
+    "Course Name": "Russia and Eurasia: Empires, Societies, Cultures I",
+    "Average of Average Hours": 7.555,
+    "Average of Sentiment Score": 0.19575
+  },
+  {
+    "Course Code": "HIST 14000",
+    "Category": "Civilization Studies",
+    "Course Name": "Russia and Eurasia: Empires, Societies, Cultures II",
+    "Average of Average Hours": 6.5775,
+    "Average of Sentiment Score": 0.22325
+  },
+  {
+    "Course Code": "HIST 14100",
+    "Category": "Civilization Studies",
+    "Course Name": "Russia and Eurasia: Empires, Societies, Cultures III",
+    "Average of Average Hours": 5.44,
+    "Average of Sentiment Score": 0.222
+  },
+  {
+    "Course Code": "HIST 16700",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Mediterranean World I",
+    "Average of Average Hours": 8.335,
+    "Average of Sentiment Score": 0.222
+  },
+  {
+    "Course Code": "HIST 16800",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Mediterranean World II",
+    "Average of Average Hours": 6.925,
+    "Average of Sentiment Score": 0.174
+  },
+  {
+    "Course Code": "HIST 16900",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Mediterranean World III",
+    "Average of Average Hours": 4.665,
+    "Average of Sentiment Score": 0.187
+  },
+  {
+    "Course Code": "HIST 17521",
+    "Category": "Civilization Studies",
+    "Course Name": "Energy in World Civilizations I",
+    "Average of Average Hours": 6.73,
+    "Average of Sentiment Score": 0.245
+  },
+  {
+    "Course Code": "HIST 17522",
+    "Category": "Civilization Studies",
+    "Course Name": "Energy in World Civilizations II",
+    "Average of Average Hours": 9.42,
+    "Average of Sentiment Score": 0.278
+  },
+  {
+    "Course Code": "HIST 18301",
+    "Category": "Civilization Studies",
+    "Course Name": "Colonizations I: Colonialism,\nEnslavement and Resistance in the Atlantic World",
+    "Average of Average Hours": 6.763333333,
+    "Average of Sentiment Score": 0.196833333
+  },
+  {
+    "Course Code": "HUMA 11000",
+    "Category": "Humanities",
+    "Course Name": "Readings in World Literature I",
+    "Average of Average Hours": 5.813846154,
+    "Average of Sentiment Score": 0.208923077
+  },
+  {
+    "Course Code": "HUMA 11100",
+    "Category": "Humanities",
+    "Course Name": "Readings in World Literature II",
+    "Average of Average Hours": 6.481538462,
+    "Average of Sentiment Score": 0.223538462
+  },
+  {
+    "Course Code": "HUMA 11200",
+    "Category": "Humanities",
+    "Course Name": "Readings in World Literature III",
+    "Average of Average Hours": 5.68,
+    "Average of Sentiment Score": 0.166
+  },
+  {
+    "Course Code": "HUMA 11500",
+    "Category": "Humanities",
+    "Course Name": "Philosophical Perspectives I",
+    "Average of Average Hours": 6.65625,
+    "Average of Sentiment Score": 0.2149375
+  },
+  {
+    "Course Code": "HUMA 11600",
+    "Category": "Humanities",
+    "Course Name": "Philosophical Perspectives II",
+    "Average of Average Hours": 6.53625,
+    "Average of Sentiment Score": 0.217
+  },
+  {
+    "Course Code": "HUMA 11700",
+    "Category": "Humanities",
+    "Course Name": "Philosophical Perspectives III",
+    "Average of Average Hours": 5.6425,
+    "Average of Sentiment Score": 0.23175
+  },
+  {
+    "Course Code": "HUMA 12050",
+    "Category": "Humanities",
+    "Course Name": "Greece and Rome: Texts, Traditions, Transformations I",
+    "Average of Average Hours": 7.707,
+    "Average of Sentiment Score": 0.223
+  },
+  {
+    "Course Code": "HUMA 12150",
+    "Category": "Humanities",
+    "Course Name": "Greece and Rome: Texts, Traditions, Transformations II",
+    "Average of Average Hours": 6.376666667,
+    "Average of Sentiment Score": 0.192888889
+  },
+  {
+    "Course Code": "HUMA 12300",
+    "Category": "Humanities",
+    "Course Name": "Human Being and Citizen I",
+    "Average of Average Hours": 7.093529412,
+    "Average of Sentiment Score": 0.203058824
+  },
+  {
+    "Course Code": "HUMA 12400",
+    "Category": "Humanities",
+    "Course Name": "Human Being and Citizen II",
+    "Average of Average Hours": 6.108823529,
+    "Average of Sentiment Score": 0.217823529
+  },
+  {
+    "Course Code": "HUMA 12500",
+    "Category": "Humanities",
+    "Course Name": "Human Being and Citizen III",
+    "Average of Average Hours": 6.99,
+    "Average of Sentiment Score": 0.192
+  },
+  {
+    "Course Code": "HUMA 14000",
+    "Category": "Humanities",
+    "Course Name": "Reading Cultures: Collection, Travel, Exchange I",
+    "Average of Average Hours": 7.31,
+    "Average of Sentiment Score": 0.218363636
+  },
+  {
+    "Course Code": "HUMA 14100",
+    "Category": "Humanities",
+    "Course Name": "Reading Cultures: Collection, Travel, Exchange II",
+    "Average of Average Hours": 6.753636364,
+    "Average of Sentiment Score": 0.214545455
+  },
+  {
+    "Course Code": "HUMA 14200",
+    "Category": "Humanities",
+    "Course Name": "Reading Cultures: Collection, Travel, Exchange III",
+    "Average of Average Hours": 6.59,
+    "Average of Sentiment Score": 0.277
+  },
+  {
+    "Course Code": "HUMA 16000",
+    "Category": "Humanities",
+    "Course Name": "Media Aesthetics: Image, Text, Sound I",
+    "Average of Average Hours": 6.093333333,
+    "Average of Sentiment Score": 0.207666667
+  },
+  {
+    "Course Code": "HUMA 16100",
+    "Category": "Humanities",
+    "Course Name": "Media Aesthetics: Image, Text, Sound II",
+    "Average of Average Hours": 6.375,
+    "Average of Sentiment Score": 0.207
+  },
+  {
+    "Course Code": "HUMA 16200",
+    "Category": "Humanities",
+    "Course Name": "Media Aesthetics: Image, Text, Sound III",
+    "Average of Average Hours": 6.55,
+    "Average of Sentiment Score": 0.200666667
+  },
+  {
+    "Course Code": "HUMA 17000",
+    "Category": "Humanities",
+    "Course Name": "Language and the Human I",
+    "Average of Average Hours": 7.21625,
+    "Average of Sentiment Score": 0.19875
+  },
+  {
+    "Course Code": "HUMA 17100",
+    "Category": "Humanities",
+    "Course Name": "Language and the Human II",
+    "Average of Average Hours": 6.0225,
+    "Average of Sentiment Score": 0.199375
+  },
+  {
+    "Course Code": "HUMA 17200",
+    "Category": "Humanities",
+    "Course Name": "Language and the Human III",
+    "Average of Average Hours": 8.06,
+    "Average of Sentiment Score": 0.275
+  },
+  {
+    "Course Code": "HUMA 18000",
+    "Category": "Humanities",
+    "Course Name": "Poetry and the Human I",
+    "Average of Average Hours": 5.565454545,
+    "Average of Sentiment Score": 0.210272727
+  },
+  {
+    "Course Code": "HUMA 18100",
+    "Category": "Humanities",
+    "Course Name": "Poetry and the Human II",
+    "Average of Average Hours": 6.9225,
+    "Average of Sentiment Score": 0.215333333
+  },
+  {
+    "Course Code": "HUMA 18200",
+    "Category": "Humanities",
+    "Course Name": "Poetry and the Human III",
+    "Average of Average Hours": 5.25,
+    "Average of Sentiment Score": 0.199
+  },
+  {
+    "Course Code": "ITAL 10100",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Italian I",
+    "Average of Average Hours": 6.7475,
+    "Average of Sentiment Score": 0.19725
+  },
+  {
+    "Course Code": "ITAL 10200",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Italian II",
+    "Average of Average Hours": 5.41,
+    "Average of Sentiment Score": 0.231
+  },
+  {
+    "Course Code": "ITAL 10300",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Italian III",
+    "Average of Average Hours": 5.416666667,
+    "Average of Sentiment Score": 0.274333333
+  },
+  {
+    "Course Code": "ITAL 20100",
+    "Category": "Language",
+    "Course Name": "Italian Language, History, and Culture I",
+    "Average of Average Hours": 8,
+    "Average of Sentiment Score": 0.3215
+  },
+  {
+    "Course Code": "ITAL 20200",
+    "Category": "Language",
+    "Course Name": "Italian Language, History, and Culture II",
+    "Average of Average Hours": 7.71,
+    "Average of Sentiment Score": 0.304
+  },
+  {
+    "Course Code": "ITAL 20300",
+    "Category": "Language",
+    "Course Name": "Italian Language, History, and Culture III",
+    "Average of Average Hours": 4.64,
+    "Average of Sentiment Score": 0.269
+  },
+  {
+    "Course Code": "JAPN 10100",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Japanese I",
+    "Average of Average Hours": 9.2475,
+    "Average of Sentiment Score": 0.17375
+  },
+  {
+    "Course Code": "JAPN 10200",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Japanese II",
+    "Average of Average Hours": 7.875,
+    "Average of Sentiment Score": 0.16425
+  },
+  {
+    "Course Code": "JAPN 10300",
+    "Category": "Language",
+    "Course Name": "Elementary Modern Japanese III",
+    "Average of Average Hours": 9.636666667,
+    "Average of Sentiment Score": 0.213
+  },
+  {
+    "Course Code": "JAPN 20200",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Japanese II",
+    "Average of Average Hours": 12,
+    "Average of Sentiment Score": 0.169
+  },
+  {
+    "Course Code": "JAPN 20300",
+    "Category": "Language",
+    "Course Name": "Intermediate Modern Japanese III",
+    "Average of Average Hours": 10.75,
+    "Average of Sentiment Score": 0.18
+  },
+  {
+    "Course Code": "JWSC 12001",
+    "Category": "Civilization Studies",
+    "Course Name": "Jewish Civilization II",
+    "Average of Average Hours": 9.766666667,
+    "Average of Sentiment Score": 0.176
+  },
+  {
+    "Course Code": "KORE 10100",
+    "Category": "Language",
+    "Course Name": "Introduction to the Korean Language I",
+    "Average of Average Hours": 8.666666667,
+    "Average of Sentiment Score": 0.232
+  },
+  {
+    "Course Code": "KORE 10200",
+    "Category": "Language",
+    "Course Name": "Introduction to the Korean Language II",
+    "Average of Average Hours": 7.75,
+    "Average of Sentiment Score": 0.1995
+  },
+  {
+    "Course Code": "KORE 10300",
+    "Category": "Language",
+    "Course Name": "Introduction to the Korean Language III",
+    "Average of Average Hours": 8.25,
+    "Average of Sentiment Score": 0.251
+  },
+  {
+    "Course Code": "KORE 20100",
+    "Category": "Language",
+    "Course Name": "Intermediate Korean I",
+    "Average of Average Hours": 7.5,
+    "Average of Sentiment Score": 0.2115
+  },
+  {
+    "Course Code": "KORE 20200",
+    "Category": "Language",
+    "Course Name": "Intermediate Korean II",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.206
+  },
+  {
+    "Course Code": "KORE 20300",
+    "Category": "Language",
+    "Course Name": "Intermediate Korean III",
+    "Average of Average Hours": 5.33,
+    "Average of Sentiment Score": 0.258
+  },
+  {
+    "Course Code": "KREY 12201",
+    "Category": "Language",
+    "Course Name": "Krey�l for Speakers of Romance Languages I",
+    "Average of Average Hours": 3.75,
+    "Average of Sentiment Score": 0.233
+  },
+  {
+    "Course Code": "KREY 12301",
+    "Category": "Language",
+    "Course Name": "Krey�l for Speakers of Romance Languages II",
+    "Average of Average Hours": 6.25,
+    "Average of Sentiment Score": 0.208
+  },
+  {
+    "Course Code": "LATN 10100",
+    "Category": "Language",
+    "Course Name": "Introduction to Classical Latin I",
+    "Average of Average Hours": 8.22,
+    "Average of Sentiment Score": 0.2125
+  },
+  {
+    "Course Code": "LATN 10200",
+    "Category": "Language",
+    "Course Name": "Introduction to Classical Latin II",
+    "Average of Average Hours": 7.75,
+    "Average of Sentiment Score": 0.2485
+  },
+  {
+    "Course Code": "LATN 10300",
+    "Category": "Language",
+    "Course Name": "Introduction to Classical Latin III",
+    "Average of Average Hours": 5.75,
+    "Average of Sentiment Score": 0.23
+  },
+  {
+    "Course Code": "LATN 20100",
+    "Category": "Language",
+    "Course Name": "Intermediate Latin I",
+    "Average of Average Hours": 8.75,
+    "Average of Sentiment Score": 0.1565
+  },
+  {
+    "Course Code": "LATN 20200",
+    "Category": "Language",
+    "Course Name": "Intermediate Latin II",
+    "Average of Average Hours": 10.125,
+    "Average of Sentiment Score": 0.208
+  },
+  {
+    "Course Code": "LATN 20300",
+    "Category": "Language",
+    "Course Name": "Intermediate Latin III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.228
+  },
+  {
+    "Course Code": "MATH 13100",
+    "Category": "Mathematical Science",
+    "Course Name": "Elementary Functions and Calculus I",
+    "Average of Average Hours": 5.716666667,
+    "Average of Sentiment Score": 0.126666667
+  },
+  {
+    "Course Code": "MATH 13200",
+    "Category": "Mathematical Science",
+    "Course Name": "Elementary Functions and Calculus II",
+    "Average of Average Hours": 5.12,
+    "Average of Sentiment Score": 0.134
+  },
+  {
+    "Course Code": "MATH 15100",
+    "Category": "Mathematical Science",
+    "Course Name": "Calculus I",
+    "Average of Average Hours": 5.26,
+    "Average of Sentiment Score": 0.113
+  },
+  {
+    "Course Code": "MATH 15200",
+    "Category": "Mathematical Science",
+    "Course Name": "Calculus II",
+    "Average of Average Hours": 5.755,
+    "Average of Sentiment Score": 0.1745
+  },
+  {
+    "Course Code": "MATH 16100",
+    "Category": "Mathematical Science",
+    "Course Name": "Honors Calculus I",
+    "Average of Average Hours": 11.39,
+    "Average of Sentiment Score": 0.191
+  },
+  {
+    "Course Code": "MATH 16110",
+    "Category": "Mathematical Science",
+    "Course Name": "Honors Calculus I (IBL)",
+    "Average of Average Hours": 12.84,
+    "Average of Sentiment Score": 0.2235
+  },
+  {
+    "Course Code": "MATH 16200",
+    "Category": "Mathematical Science",
+    "Course Name": "Honors Calculus II",
+    "Average of Average Hours": 10.442,
+    "Average of Sentiment Score": 0.179
+  },
+  {
+    "Course Code": "MATH 16210",
+    "Category": "Mathematical Science",
+    "Course Name": "Honors Calculus II (IBL)",
+    "Average of Average Hours": 13.945,
+    "Average of Sentiment Score": 0.23175
+  },
+  {
+    "Course Code": "MDVL 20100",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to the Civilizations of South Asia I",
+    "Average of Average Hours": 3.5,
+    "Average of Sentiment Score": 0.244
+  },
+  {
+    "Course Code": "MDVL 20601",
+    "Category": "Civilization Studies",
+    "Course Name": "Islamic Thought and Literature I",
+    "Average of Average Hours": 6.035,
+    "Average of Sentiment Score": 0.243
+  },
+  {
+    "Course Code": "MDVL 20602",
+    "Category": "Civilization Studies",
+    "Course Name": "Islamic Thought and Literature II",
+    "Average of Average Hours": 3,
+    "Average of Sentiment Score": 0.2415
+  },
+  {
+    "Course Code": "MUSI 10100",
+    "Category": "Arts",
+    "Course Name": "Introduction to Western Art Music",
+    "Average of Average Hours": 4.79875,
+    "Average of Sentiment Score": 0.211375
+  },
+  {
+    "Course Code": "MUSI 10200",
+    "Category": "Arts",
+    "Course Name": "Introduction to World Music",
+    "Average of Average Hours": 4.046666667,
+    "Average of Sentiment Score": 0.211222222
+  },
+  {
+    "Course Code": "MUSI 10300",
+    "Category": "Arts",
+    "Course Name": "Introduction to Music: Materials and Design",
+    "Average of Average Hours": 4.951428571,
+    "Average of Sentiment Score": 0.211857143
+  },
+  {
+    "Course Code": "MUSI 10400",
+    "Category": "Arts",
+    "Course Name": "Introduction to Music: Analysis and Criticism",
+    "Average of Average Hours": 4.978333333,
+    "Average of Sentiment Score": 0.209833333
+  },
+  {
+    "Course Code": "NEHC 20004",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Near Eastern Thought and Literature I",
+    "Average of Average Hours": 4.29,
+    "Average of Sentiment Score": 0.24
+  },
+  {
+    "Course Code": "NEHC 20005",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Near Eastern Thought and Literature II",
+    "Average of Average Hours": 3.75,
+    "Average of Sentiment Score": 0.222
+  },
+  {
+    "Course Code": "NEHC 20006",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Near Eastern Thought and Literature III",
+    "Average of Average Hours": 7.12,
+    "Average of Sentiment Score": 0.191
+  },
+  {
+    "Course Code": "NEHC 20011",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Empires I: The Hittite Empire",
+    "Average of Average Hours": 3.69,
+    "Average of Sentiment Score": 0.218
+  },
+  {
+    "Course Code": "NEHC 20012",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Empires II: The Ottoman Empire",
+    "Average of Average Hours": 7.19,
+    "Average of Sentiment Score": 0.232
+  },
+  {
+    "Course Code": "NEHC 20013",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Empires III :The Egyptian Empire of the New Kingdom",
+    "Average of Average Hours": 5.28,
+    "Average of Sentiment Score": 0.216
+  },
+  {
+    "Course Code": "NEHC 20014",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Empires IV: the Achaemenid Empire",
+    "Average of Average Hours": 4,
+    "Average of Sentiment Score": 0.257
+  },
+  {
+    "Course Code": "NEHC 20016",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Empires VI: The Assyrian Empire",
+    "Average of Average Hours": 5,
+    "Average of Sentiment Score": 0.247
+  },
+  {
+    "Course Code": "NEHC 20017",
+    "Category": "Civilization Studies",
+    "Course Name": "Ancient Empires VII: Sumerians and Akkadians",
+    "Average of Average Hours": 2.95,
+    "Average of Sentiment Score": 0.217
+  },
+  {
+    "Course Code": "NEHC 20603",
+    "Category": "Civilization Studies",
+    "Course Name": "Islamic Thought & Lit III - Education, Students and Protests in the modern MENA",
+    "Average of Average Hours": 6.69,
+    "Average of Sentiment Score": 0.2205
+  },
+  {
+    "Course Code": "NORW 10100",
+    "Category": "Language",
+    "Course Name": "First-Year Norwegian I",
+    "Average of Average Hours": 4.86,
+    "Average of Sentiment Score": 0.269
+  },
+  {
+    "Course Code": "NORW 10200",
+    "Category": "Language",
+    "Course Name": "First-Year Norwegian II",
+    "Average of Average Hours": 5,
+    "Average of Sentiment Score": 0.286
+  },
+  {
+    "Course Code": "NORW 10300",
+    "Category": "Language",
+    "Course Name": "First-Year Norwegian III",
+    "Average of Average Hours": 5.33,
+    "Average of Sentiment Score": 0.243
+  },
+  {
+    "Course Code": "PERS 10101",
+    "Category": "Language",
+    "Course Name": "Elementary Persian I",
+    "Average of Average Hours": 4.5,
+    "Average of Sentiment Score": 0.327
+  },
+  {
+    "Course Code": "PERS 10102",
+    "Category": "Language",
+    "Course Name": "Elementary Persian II",
+    "Average of Average Hours": 4.5,
+    "Average of Sentiment Score": 0.265
+  },
+  {
+    "Course Code": "PERS 10103",
+    "Category": "Language",
+    "Course Name": "Elementary Persian III",
+    "Average of Average Hours": 5,
+    "Average of Sentiment Score": 0.279
+  },
+  {
+    "Course Code": "PERS 20101",
+    "Category": "Language",
+    "Course Name": "Intermediate Persian I",
+    "Average of Average Hours": 8.66,
+    "Average of Sentiment Score": 0.215
+  },
+  {
+    "Course Code": "PERS 20102",
+    "Category": "Language",
+    "Course Name": "Intermediate Persian II",
+    "Average of Average Hours": 8.25,
+    "Average of Sentiment Score": 0.243
+  },
+  {
+    "Course Code": "PERS 20103",
+    "Category": "Language",
+    "Course Name": "Intermediate Persian III",
+    "Average of Average Hours": 4.85,
+    "Average of Sentiment Score": 0.224
+  },
+  {
+    "Course Code": "PHSC 10100",
+    "Category": "Physical Science",
+    "Course Name": "Origin and Evolution of the Solar System and the Earth",
+    "Average of Average Hours": 4.52,
+    "Average of Sentiment Score": 0.152
+  },
+  {
+    "Course Code": "PHSC 10800",
+    "Category": "Physical Science",
+    "Course Name": "Earth as a Planet: Exploring Our Place in the Universe",
+    "Average of Average Hours": 5.83,
+    "Average of Sentiment Score": 0.196
+  },
+  {
+    "Course Code": "PHSC 11000",
+    "Category": "Physical Science",
+    "Course Name": "Environmental History of the Earth",
+    "Average of Average Hours": 7.1,
+    "Average of Sentiment Score": 0.196
+  },
+  {
+    "Course Code": "PHSC 11600",
+    "Category": "Physical Science",
+    "Course Name": "Physics for Future Presidents: Fundamental Concepts and Applications",
+    "Average of Average Hours": 5.23,
+    "Average of Sentiment Score": 0.216
+  },
+  {
+    "Course Code": "PHSC 11700",
+    "Category": "Physical Science",
+    "Course Name": "Physics for Future Presidents: Energy and Sustainability",
+    "Average of Average Hours": 4.52,
+    "Average of Sentiment Score": 0.213
+  },
+  {
+    "Course Code": "PHSC 11800",
+    "Category": "Physical Science",
+    "Course Name": "Physics and Contemporary Architecture",
+    "Average of Average Hours": 3.68,
+    "Average of Sentiment Score": 0.19
+  },
+  {
+    "Course Code": "PHSC 13400",
+    "Category": "Physical Science",
+    "Course Name": "Global Warming: Understanding the Forecast",
+    "Average of Average Hours": 3.555,
+    "Average of Sentiment Score": 0.258
+  },
+  {
+    "Course Code": "PHSC 13410",
+    "Category": "Physical Science",
+    "Course Name": "Global Warming: Understanding the Forecast (Flipped Class)",
+    "Average of Average Hours": 3.253076923,
+    "Average of Sentiment Score": 0.194
+  },
+  {
+    "Course Code": "PHSC 13600",
+    "Category": "Physical Science",
+    "Course Name": "Natural Hazards",
+    "Average of Average Hours": 8.11,
+    "Average of Sentiment Score": 0.121
+  },
+  {
+    "Course Code": "POLI 10103",
+    "Category": "Language",
+    "Course Name": "First-Year Polish I",
+    "Average of Average Hours": 10.33,
+    "Average of Sentiment Score": 0.226
+  },
+  {
+    "Course Code": "PORT 10100",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Portuguese I",
+    "Average of Average Hours": 9.5,
+    "Average of Sentiment Score": 0.299
+  },
+  {
+    "Course Code": "PORT 10200",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Portuguese II",
+    "Average of Average Hours": 10.75,
+    "Average of Sentiment Score": 0.305
+  },
+  {
+    "Course Code": "PORT 10300",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Portuguese III",
+    "Average of Average Hours": 5.75,
+    "Average of Sentiment Score": 0.331
+  },
+  {
+    "Course Code": "RDIN 16200",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to Latin American\nCivilization II",
+    "Average of Average Hours": 6.14,
+    "Average of Sentiment Score": 0.242
+  },
+  {
+    "Course Code": "RLST 20315",
+    "Category": "Civilization Studies",
+    "Course Name": "Anicient Empires V: The Umayyad",
+    "Average of Average Hours": 4.38,
+    "Average of Sentiment Score": 0.256
+  },
+  {
+    "Course Code": "RUSS 10103",
+    "Category": "Language",
+    "Course Name": "First-Year Russian I",
+    "Average of Average Hours": 8.083333333,
+    "Average of Sentiment Score": 0.204
+  },
+  {
+    "Course Code": "RUSS 10203",
+    "Category": "Language",
+    "Course Name": "First-Year Russian II",
+    "Average of Average Hours": 8.25,
+    "Average of Sentiment Score": 0.228
+  },
+  {
+    "Course Code": "RUSS 20103",
+    "Category": "Language",
+    "Course Name": "Second-Year Russian I",
+    "Average of Average Hours": 8.33,
+    "Average of Sentiment Score": 0.229
+  },
+  {
+    "Course Code": "RUSS 20203",
+    "Category": "Language",
+    "Course Name": "Second-Year Russian II",
+    "Average of Average Hours": 9.915,
+    "Average of Sentiment Score": 0.241
+  },
+  {
+    "Course Code": "RUSS 20303",
+    "Category": "Language",
+    "Course Name": "Second-Year Russian III",
+    "Average of Average Hours": 11.5,
+    "Average of Sentiment Score": 0.205
+  },
+  {
+    "Course Code": "SALC 20200",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to the Civilizations of South Asia II",
+    "Average of Average Hours": 8.5,
+    "Average of Sentiment Score": 0.269
+  },
+  {
+    "Course Code": "SALC 20702",
+    "Category": "Civilization Studies",
+    "Course Name": "Colonizations III: Decolonization, Revolution, Freedom",
+    "Average of Average Hours": 6.207142857,
+    "Average of Sentiment Score": 0.24
+  },
+  {
+    "Course Code": "SALC 24002",
+    "Category": "Civilization Studies",
+    "Course Name": "Colonizations II: Imperial Expansion, Anti-Imperialism, and Nation in Asia",
+    "Average of Average Hours": 6.942,
+    "Average of Sentiment Score": 0.1836
+  },
+  {
+    "Course Code": "SANS 10100",
+    "Category": "Language",
+    "Course Name": "First-Year Sanskrit I",
+    "Average of Average Hours": 6.38,
+    "Average of Sentiment Score": 0.208
+  },
+  {
+    "Course Code": "SANS 10200",
+    "Category": "Language",
+    "Course Name": "First-Year Sanskrit II",
+    "Average of Average Hours": 10.33,
+    "Average of Sentiment Score": 0.219
+  },
+  {
+    "Course Code": "SANS 10300",
+    "Category": "Language",
+    "Course Name": "First-Year Sanskrit III",
+    "Average of Average Hours": 5.07,
+    "Average of Sentiment Score": 0.247
+  },
+  {
+    "Course Code": "SANS 20300",
+    "Category": "Language",
+    "Course Name": "Second-Year Sanskrit III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.203
+  },
+  {
+    "Course Code": "SOSC 11400",
+    "Category": "Social Sciences",
+    "Course Name": "Power, Identity, Resistance I",
+    "Average of Average Hours": 9.730952381,
+    "Average of Sentiment Score": 0.180857143
+  },
+  {
+    "Course Code": "SOSC 11500",
+    "Category": "Social Sciences",
+    "Course Name": "Power, Identity, Resistance II",
+    "Average of Average Hours": 10.555,
+    "Average of Sentiment Score": 0.1881
+  },
+  {
+    "Course Code": "SOSC 11600",
+    "Category": "Social Sciences",
+    "Course Name": "Power, Identity, Resistance III",
+    "Average of Average Hours": 9.667368421,
+    "Average of Sentiment Score": 0.203526316
+  },
+  {
+    "Course Code": "SOSC 12400",
+    "Category": "Social Sciences",
+    "Course Name": "Self, Culture, and Society I",
+    "Average of Average Hours": 7.807142857,
+    "Average of Sentiment Score": 0.191964286
+  },
+  {
+    "Course Code": "SOSC 12500",
+    "Category": "Social Sciences",
+    "Course Name": "Self, Culture, and Society II",
+    "Average of Average Hours": 7.2,
+    "Average of Sentiment Score": 0.211821429
+  },
+  {
+    "Course Code": "SOSC 12600",
+    "Category": "Social Sciences",
+    "Course Name": "Self, Culture, and Society III",
+    "Average of Average Hours": 6.783,
+    "Average of Sentiment Score": 0.2149
+  },
+  {
+    "Course Code": "SOSC 13100",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry I",
+    "Average of Average Hours": 6.518,
+    "Average of Sentiment Score": 0.2116
+  },
+  {
+    "Course Code": "SOSC 13110",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Formal Theory I",
+    "Average of Average Hours": 12.5,
+    "Average of Sentiment Score": 0.083
+  },
+  {
+    "Course Code": "SOSC 13200",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry II",
+    "Average of Average Hours": 4.714,
+    "Average of Sentiment Score": 0.2234
+  },
+  {
+    "Course Code": "SOSC 13210",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Formal Theory II",
+    "Average of Average Hours": 3.65,
+    "Average of Sentiment Score": 0.093
+  },
+  {
+    "Course Code": "SOSC 13220",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Spatial Analysis I",
+    "Average of Average Hours": 11.79,
+    "Average of Sentiment Score": 0.196
+  },
+  {
+    "Course Code": "SOSC 13300",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry III",
+    "Average of Average Hours": 5.692,
+    "Average of Sentiment Score": 0.224
+  },
+  {
+    "Course Code": "SOSC 13310",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Formal Theory III",
+    "Average of Average Hours": 6.88,
+    "Average of Sentiment Score": 0.206
+  },
+  {
+    "Course Code": "SOSC 13320",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Spatial Analysis III",
+    "Average of Average Hours": 12.5,
+    "Average of Sentiment Score": 0.231
+  },
+  {
+    "Course Code": "SOSC 14100",
+    "Category": "Social Sciences",
+    "Course Name": "Mind I",
+    "Average of Average Hours": 6.368333333,
+    "Average of Sentiment Score": 0.2275
+  },
+  {
+    "Course Code": "SOSC 14200",
+    "Category": "Social Sciences",
+    "Course Name": "Mind II",
+    "Average of Average Hours": 5.527222222,
+    "Average of Sentiment Score": 0.209222222
+  },
+  {
+    "Course Code": "SOSC 14300",
+    "Category": "Social Sciences",
+    "Course Name": "Mind III",
+    "Average of Average Hours": 5.632777778,
+    "Average of Sentiment Score": 0.233111111
+  },
+  {
+    "Course Code": "SOSC 15100",
+    "Category": "Social Sciences",
+    "Course Name": "Classics of Social and Political Thought I",
+    "Average of Average Hours": 8.375,
+    "Average of Sentiment Score": 0.204916667
+  },
+  {
+    "Course Code": "SOSC 15200",
+    "Category": "Social Sciences",
+    "Course Name": "Classics of Social and Political Thought II",
+    "Average of Average Hours": 7.443333333,
+    "Average of Sentiment Score": 0.210333333
+  },
+  {
+    "Course Code": "SOSC 15300",
+    "Category": "Social Sciences",
+    "Course Name": "Classics of Social and Political Thought III",
+    "Average of Average Hours": 7.405454545,
+    "Average of Sentiment Score": 0.193363636
+  },
+  {
+    "Course Code": "SOSC 16100",
+    "Category": "Social Sciences",
+    "Course Name": "Global Society I",
+    "Average of Average Hours": 9.25,
+    "Average of Sentiment Score": 0.173375
+  },
+  {
+    "Course Code": "SOSC 16200",
+    "Category": "Social Sciences",
+    "Course Name": "Global Society II",
+    "Average of Average Hours": 7.02875,
+    "Average of Sentiment Score": 0.192625
+  },
+  {
+    "Course Code": "SOSC 16300",
+    "Category": "Social Sciences",
+    "Course Name": "Global Society III",
+    "Average of Average Hours": 9.34375,
+    "Average of Sentiment Score": 0.19725
+  },
+  {
+    "Course Code": "SOSC 17100",
+    "Category": "Social Sciences",
+    "Course Name": "Religion: Cosmos, Conscience, and Community I",
+    "Average of Average Hours": 7.29,
+    "Average of Sentiment Score": 0.2135
+  },
+  {
+    "Course Code": "SOSC 17200",
+    "Category": "Social Sciences",
+    "Course Name": "Religion: Cosmos, Conscience, and Community II",
+    "Average of Average Hours": 7.31875,
+    "Average of Sentiment Score": 0.21725
+  },
+  {
+    "Course Code": "SOSC 17300",
+    "Category": "Social Sciences",
+    "Course Name": "Religion: Cosmos, Conscience, and Community III",
+    "Average of Average Hours": 6.20125,
+    "Average of Sentiment Score": 0.20975
+  },
+  {
+    "Course Code": "SOSC 18400",
+    "Category": "Social Sciences",
+    "Course Name": "Democracy: Equality, Liberty, and the Dilemmas of Self-Government I",
+    "Average of Average Hours": 7.805,
+    "Average of Sentiment Score": 0.209
+  },
+  {
+    "Course Code": "SOSC 18500",
+    "Category": "Social Sciences",
+    "Course Name": "Democracy: Equality, Liberty, and the Dilemmas of Self-Government II",
+    "Average of Average Hours": 7.3375,
+    "Average of Sentiment Score": 0.191
+  },
+  {
+    "Course Code": "SOSC 18600",
+    "Category": "Social Sciences",
+    "Course Name": "Democracy: Equality, Liberty, and the Dilemmas of Self-Government III",
+    "Average of Average Hours": 8.5075,
+    "Average of Sentiment Score": 0.21
+  },
+  {
+    "Course Code": "SOSC 24900",
+    "Category": "Civilization Studies",
+    "Course Name": "Human Rights in World Civilizations I",
+    "Average of Average Hours": 6.125,
+    "Average of Sentiment Score": 0.194
+  },
+  {
+    "Course Code": "SOSC 24901",
+    "Category": "Civilization Studies",
+    "Course Name": "Human Rights in World Civilizations II",
+    "Average of Average Hours": 4.068,
+    "Average of Sentiment Score": 0.1886
+  },
+  {
+    "Course Code": "SOSC 26100",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to Latin American Civilization I",
+    "Average of Average Hours": 15,
+    "Average of Sentiment Score": 0.178
+  },
+  {
+    "Course Code": "SOSC 26300",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to Latin American Civilization III",
+    "Average of Average Hours": 10.56,
+    "Average of Sentiment Score": 0.196
+  },
+  {
+    "Course Code": "SPAN 10100",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Spanish I",
+    "Average of Average Hours": 6.166,
+    "Average of Sentiment Score": 0.2255
+  },
+  {
+    "Course Code": "SPAN 10200",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Spanish II",
+    "Average of Average Hours": 5.55125,
+    "Average of Sentiment Score": 0.2170625
+  },
+  {
+    "Course Code": "SPAN 10300",
+    "Category": "Language",
+    "Course Name": "Beginning Elementary Spanish III",
+    "Average of Average Hours": 6.157272727,
+    "Average of Sentiment Score": 0.202090909
+  },
+  {
+    "Course Code": "SPAN 20100",
+    "Category": "Language",
+    "Course Name": "Spanish Language, History, and Culture I",
+    "Average of Average Hours": 7.392,
+    "Average of Sentiment Score": 0.2379
+  },
+  {
+    "Course Code": "SPAN 20102",
+    "Category": "Language",
+    "Course Name": "Language, History, and Culture for Heritage Speakers I",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.208
+  },
+  {
+    "Course Code": "SPAN 20200",
+    "Category": "Language",
+    "Course Name": "Spanish Language, History, and Culture II",
+    "Average of Average Hours": 5.46,
+    "Average of Sentiment Score": 0.2599
+  },
+  {
+    "Course Code": "SPAN 20300",
+    "Category": "Language",
+    "Course Name": "Spanish Language, History, and Culture III",
+    "Average of Average Hours": 6.276666667,
+    "Average of Sentiment Score": 0.185833333
+  },
+  {
+    "Course Code": "SPAN 20302",
+    "Category": "Language",
+    "Course Name": "Language, History, and Culture for Heritage Speakers II/III",
+    "Average of Average Hours": 5.31,
+    "Average of Sentiment Score": 0.2135
+  },
+  {
+    "Course Code": "STAT 20000",
+    "Category": "Mathematical Science",
+    "Course Name": "Elementary Statistics",
+    "Average of Average Hours": 7.13,
+    "Average of Sentiment Score": 0.1555
+  },
+  {
+    "Course Code": "STAT 22000",
+    "Category": "Mathematical Science",
+    "Course Name": "Statistical Methods and Applications",
+    "Average of Average Hours": 9.426,
+    "Average of Sentiment Score": 0.1675
+  },
+  {
+    "Course Code": "SWAH 25200",
+    "Category": "Language",
+    "Course Name": "Swahili I",
+    "Average of Average Hours": 5.83,
+    "Average of Sentiment Score": 0.185
+  },
+  {
+    "Course Code": "TAML 10100",
+    "Category": "Language",
+    "Course Name": "First-Year Tamil I",
+    "Average of Average Hours": 4.5,
+    "Average of Sentiment Score": 0.273
+  },
+  {
+    "Course Code": "TAML 10200",
+    "Category": "Language",
+    "Course Name": "First-Year Tamil II",
+    "Average of Average Hours": 4.5,
+    "Average of Sentiment Score": 0.239
+  },
+  {
+    "Course Code": "TAML 10300",
+    "Category": "Language",
+    "Course Name": "First-Year Tamil III",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0
+  },
+  {
+    "Course Code": "TAPS 10100",
+    "Category": "Arts",
+    "Course Name": "Drama: Embodiment and Transformation",
+    "Average of Average Hours": 3.68,
+    "Average of Sentiment Score": 0.271666667
+  },
+  {
+    "Course Code": "TAPS 10200",
+    "Category": "Arts",
+    "Course Name": "Acting Fundamentals",
+    "Average of Average Hours": 3.54,
+    "Average of Sentiment Score": 0.236545455
+  },
+  {
+    "Course Code": "TAPS 10300",
+    "Category": "Arts",
+    "Course Name": "Text and Performance",
+    "Average of Average Hours": 3.78,
+    "Average of Sentiment Score": 0.220857143
+  },
+  {
+    "Course Code": "TAPS 10800",
+    "Category": "Arts",
+    "Course Name": "Contemporary Dance Practices",
+    "Average of Average Hours": 4.12,
+    "Average of Sentiment Score": 0.235
+  },
+  {
+    "Course Code": "TAPS 10900",
+    "Category": "Arts",
+    "Course Name": "Moving and Thinking / Thinking and Moving",
+    "Average of Average Hours": 3.614,
+    "Average of Sentiment Score": 0.2312
+  },
+  {
+    "Course Code": "TURK 10101",
+    "Category": "Language",
+    "Course Name": "Beginning Modern Turkish I",
+    "Average of Average Hours": 13.66,
+    "Average of Sentiment Score": 0.2
+  },
+  {
+    "Course Code": "TURK 10102",
+    "Category": "Language",
+    "Course Name": "Beginning Modern Turkish II",
+    "Average of Average Hours": 13.66,
+    "Average of Sentiment Score": 0.226
+  },
+  {
+    "Course Code": "TURK 10501",
+    "Category": "Language",
+    "Course Name": "Intro to Turkic Languages I",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.215
+  },
+  {
+    "Course Code": "TURK 20102",
+    "Category": "Language",
+    "Course Name": "Intermediate Turkish II",
+    "Average of Average Hours": 5.33,
+    "Average of Sentiment Score": 0.211
+  },
+  {
+    "Course Code": "URDU 10100",
+    "Category": "Language",
+    "Course Name": "First-Year Urdu I",
+    "Average of Average Hours": 4.5,
+    "Average of Sentiment Score": 0.225
+  },
+  {
+    "Course Code": "URDU 10200",
+    "Category": "Language",
+    "Course Name": "First-Year Urdu II",
+    "Average of Average Hours": 5.75,
+    "Average of Sentiment Score": 0.212
+  },
+  {
+    "Course Code": "YDDH 10100",
+    "Category": "Language",
+    "Course Name": "Elementary Yiddish for Beginners I",
+    "Average of Average Hours": 7,
+    "Average of Sentiment Score": 0.217
+  },
+  {
+    "Course Code": "YDDH 10200",
+    "Category": "Language",
+    "Course Name": "Elementary Yiddish for Beginners II",
+    "Average of Average Hours": 5.33,
+    "Average of Sentiment Score": 0.195
+  }
+]
