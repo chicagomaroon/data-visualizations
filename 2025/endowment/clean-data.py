@@ -83,16 +83,37 @@ for i,investment in enumerate(investments):
                 ('NonVoting', Int64),
             ]
             lines = data.split('SHARED NONE')[-1].split('Other Managers')[0].splitlines()
-            lines = [re.sub('^\\d+', '', row) for row in lines]
-            cells = []
+            # remove line numbers
+            lines = [re.sub('^\\d+ *', '', row) for row in lines]
+            rows = []
             for line in lines:
                 if len(line.strip()):
                     line = re.sub(r'\s+', ' ', line)
-                    cell = line.rsplit(' ',10)
-                    if not re.search('^\\d',cell[2]):
-                        cell = (line + ' 0').rsplit(' ',10)
-                    cells.append(cell)
-            rows = cells
+                    cell = []
+
+                    # split line into cells from right to left
+                    patterns = [
+                        '(\\d{1,6})',
+                        '(\\d{1,6})',
+                        '(\\d{1,6})',
+                        '(\\d{1,2})',
+                        '([OtherSole]{4,6})',
+                        '([SH]{2})',
+                        '(\\d{2,7})',
+                        '(\\d{3,7})',
+                        '([A-Z\\d]{8,9})',
+                        '((A)|([AB]* *[COM|BEN|ADR]+))',
+                    ]
+
+                    for pattern in patterns:
+                        split = line.rsplit(' ', 1)
+                        if re.search(pattern, split[-1]):
+                            cell.append(split[-1])
+                            line = split[0]
+                        else:
+                            cell.append(None)
+                    cell.append(line.strip()) # rest of the line is issuer
+                    rows.append(cell[::-1])
         elif '----' in data: # eg 1999
             print(f"Using --------- : {date}")
             
