@@ -1,7 +1,10 @@
+Highcharts.setOptions({
+  colors: ['#800000'] // all dots begin with maroon
+});
+
 fetch("csvjson.json")
   .then((response) => response.json())
   .then((data) => {
-    // Group data by category
     const categoryMap = {};
 
     data.forEach((d) => {
@@ -14,11 +17,11 @@ fetch("csvjson.json")
         x: parseFloat(d["Average of Average Hours"]),
         y: parseFloat(d["Average of Sentiment Score"]),
         name: d["Course Name"],
-        color: '#800000' // Set maroon as default
+        originalColor: "#800000",
+        color: "#800000"
       });
     });
 
-    // Turn category map into series
     const seriesData = Object.entries(categoryMap).map(([category, points]) => ({
       name: category,
       data: points,
@@ -27,13 +30,16 @@ fetch("csvjson.json")
       }
     }));
 
-    const chart = Highcharts.chart("chart-div", {
+    Highcharts.chart("container", {
       chart: {
         type: "scatter",
         zoomType: "xy"
       },
       title: {
-        text: "Core Curriculum: Hours vs Sentiment"
+        text: "The Core, Ranked"
+      },
+      subtitle: {
+        text: "Each dot shows a core class by hours worked and sentiment."
       },
       xAxis: {
         title: { text: "Average Hours Worked per Week" }
@@ -41,39 +47,47 @@ fetch("csvjson.json")
       yAxis: {
         title: { text: "Average Sentiment Score" }
       },
+      legend: {
+        enabled: true
+      },
       tooltip: {
         formatter: function () {
           return `<b>${this.point.name}</b><br>` +
-                 `Hours: ${Highcharts.numberFormat(this.point.x, 3)}<br>` +
+                 `Hours: ${Highcharts.numberFormat(this.point.x, 2)}<br>` +
                  `Sentiment: ${Highcharts.numberFormat(this.point.y, 3)}`;
         }
       },
-      legend: {
-        enabled: false
-      },
       plotOptions: {
         series: {
-          point: {
-            events: {
-              mouseOver: function () {
-                const hoveredCategory = this.series.name;
-                chart.series.forEach(s => {
-                  s.points.forEach(p => {
-                    p.update({
-                      color: s.name === hoveredCategory ? '#800000' : '#D6D6CE'
-                    }, false);
-                  });
+          events: {
+            legendItemClick: function () {
+              const selectedSeries = this;
+              seriesData.forEach(series => {
+                series.data.forEach(point => {
+                  point.update({
+                    color: series.name === selectedSeries.name ? "#800000" : "#D6D6CE"
+                  }, false);
                 });
-                chart.redraw();
-              },
-              mouseOut: function () {
-                chart.series.forEach(s => {
-                  s.points.forEach(p => {
-                    p.update({ color: '#800000' }, false);
-                  });
-                });
-                chart.redraw();
+              });
+              Highcharts.charts[0].redraw();
+              return false;
+            }
+          }
+        },
+        scatter: {
+          marker: {
+            radius: 4,
+            states: {
+              hover: {
+                enabled: true,
+                lineColor: '#333'
               }
+            }
+          },
+          states: {
+            inactive: {
+              enabled: true,
+              opacity: 0.15
             }
           }
         }
@@ -81,4 +95,6 @@ fetch("csvjson.json")
       series: seriesData
     });
   })
-  .catch((err) => console.error("Error loading JSON:", err));
+  .catch((err) => {
+    console.error("Error loading csvjson.json:", err);
+  });
