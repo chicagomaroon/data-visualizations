@@ -131,7 +131,7 @@ for i,investment in enumerate(investments):
                 ('NonVoting', Int64),
             ]
             lines = re.split('-+\\s*\\n',data)[-1].splitlines()
-            lines = [re.sub('^\\d+', '', row) for row in lines]
+            lines = [re.sub('^\\d+ *', '', row) for row in lines]
             # cite: copilot
             if len(lines[2].rsplit(' ',10))<10:
                 rows = [cells[i] + cells[i + 1] for i in range(0, len(cells), 2)]
@@ -145,7 +145,7 @@ for i,investment in enumerate(investments):
         else: # eg sep 2008
             print(f"Using missing case: {date}")
             lines = data.split('SHARED NONE')[-1].splitlines()
-            lines = [re.sub('^\\d+ ', '', row) for row in lines]
+            lines = [re.sub('^\\d+ *', '', row) for row in lines]
             cells = [re.split(' +',line.strip('</pre>')) for line in lines if len(line.strip()) and not re.search('</.+>',line)]
             # cite: copilot
             rows = rows[:-3]  # remove last rows
