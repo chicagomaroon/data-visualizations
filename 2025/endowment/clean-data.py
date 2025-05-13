@@ -166,6 +166,14 @@ for i,investment in enumerate(investments):
             print(rows)
             print(f"{i} {date} filing has row mismatch: {e}")
             raise e
+        
+    # if 2021 or later, divide value by 1000
+    # cover pages state that reports past this date are reported in dollars instead of thousands 
+    # https://www.sec.gov/Archives/edgar/data/314957/000110465924034451/xslForm13F_X02/primary_doc.xml
+    if date >= datetime(2020, 12, 1).date():
+        df = df.with_columns(
+            (pl.col('Value') / 1000).cast(Int64).alias('Value')
+        )
 
     # add date column
     df = df.with_columns(
