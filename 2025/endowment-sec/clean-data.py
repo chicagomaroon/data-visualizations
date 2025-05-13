@@ -36,7 +36,9 @@ investments = filings.filter(form="13F-HR")
 sec = pl.DataFrame()
 
 for i,investment in enumerate(investments):
-    print(i)
+    # if i<40:
+    #     continue
+    # print(i)
     data = investment.obj()
 
     try:
@@ -149,8 +151,10 @@ for i,investment in enumerate(investments):
             cells = [re.split(' +',line.strip('</pre>')) for line in lines if len(line.strip()) and not re.search('</.+>',line)]
             # cite: copilot
             rows = rows[:-3]  # remove last rows
+
         try:
             
+            print(rows[0])
             df = pl.DataFrame(
                 rows,
                 schema=schema
@@ -179,6 +183,8 @@ for i,investment in enumerate(investments):
     df = df.with_columns(
         pl.lit(date).alias("Date")
     )
+
+    # print(df)
 
     sec = pl.concat([sec, df],how="diagonal")
 
