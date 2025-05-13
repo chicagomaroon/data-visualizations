@@ -10,7 +10,7 @@ from datetime import datetime
 
 import polars as pl
 from polars import String, Int64, Date, ShapeError, ComputeError
-from plotnine import ggplot, geom_line, geom_point, aes, xlab, ylab, ggtitle
+from plotnine import ggplot, geom_line, geom_point, aes, xlab, ylab, ggtitle, theme, element_text, scale_x_date, theme_minimal
 
 import camelot
 from edgar import *
@@ -184,16 +184,28 @@ for i,investment in enumerate(investments):
 
 sec.write_csv("13F-HR.csv")
 
-#%% explore data
+#%% explore total holdings over time
+
+sec = pl.read_csv("13F-HR.csv")
 
 # value means market value in $1000s
-amounts = sec.group_by('Date').agg(pl.col('Value').sum() * 1000)
+amounts = sec.group_by('Date').agg(pl.col('Value').sum()/1000)
 
-ggplot(amounts) + \
-    geom_line(aes(x="Date", y="Value"), alpha=1) + \
-    geom_point(aes(x="Date", y="Value"), alpha=1) + \
-    ggtitle("UChicago 13F-HR filings") + \
-    xlab("Date") + ylab("Value")
+(ggplot(amounts) +
+    geom_point(aes(x="Date", y="Value"), alpha=1) +
+    geom_line(aes(x="Date", y="Value"), alpha=1) +
+    ggtitle("UChicago 13F-HR filings") +
+    xlab("Date") + ylab("Value in millions of dollars") +
+    scale_x_date(date_labels="%Y-%m", date_breaks="1 year") +
+    theme_minimal() +
+    theme(
+        axis_text_x=element_text(rotation=90, hjust=1)
+    )
+)
+
+#%% explore which stocks are held
+
+
 
 #%%
 
