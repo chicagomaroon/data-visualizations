@@ -55,7 +55,7 @@ Highcharts.chart('chart-div', {
         series: {
             pointStart: 2017,
             marker: {
-                enabled: false
+                enabled: true
             },
             lineWidth: 3
         }
