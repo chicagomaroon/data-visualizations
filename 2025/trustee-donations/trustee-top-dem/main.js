@@ -13,10 +13,10 @@ Highcharts.setOptions({
 
 const pacs = [
     'Democratic National<br/>Committee',
-    'Biden For President',
-    'Hilary Clinton<br/>Presidential Campaign',
+    'Joe Biden',
+    'Hilary Clinton',
     'DSCC',
-    'Harris For President'
+    'Kamala Harris'
 ];
 
 const demData = [1936650, 1043975, 899716, 838259, 582206];

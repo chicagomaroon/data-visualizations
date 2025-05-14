@@ -12,11 +12,11 @@ Highcharts.setOptions({
 });
 
 const pacs = [
-    'McCormick',
-    'Haley',
+    'Dave McCormick',
+    'Nikki Haley',
     'NRSC',
     'Americans for Prosperity',
-    'Trump'
+    'Donald Trump'
 ];
 
 const repData = [2134691, 1189980, 1131500, 1100000, 1005000];
