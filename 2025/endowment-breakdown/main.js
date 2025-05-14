@@ -46,86 +46,44 @@ Highcharts.chart('chart-div', {
       'M',
         nodeFormat: '{point.name}: ${point.sum:.1f}M'
     },
-    // series: [{
-    //     keys: ['from', 'to', 'weight'],
-        
-    //     nodes: [
-    //         {
-    //             id: 'Total assets',
-    //             color: '#800000',
-    //             offset: 0
-    //         },
-            
-    //         {
-    //             id: 'Net assets',
-    //             color: '#C16622',
-    //             // column: 2,
-    //             offset: -20
-    //         },
-    //         {
-    //             id: 'Restricted',
-    //             color: '#74ffe7',
-    //             // column: 3,
-    //             offset: -10
-    //         },
-    //         {
-    //             id: 'Unrestricted',
-    //             color: '#8cff74',
-    //             // column: 3,
-    //             offset: 0
-    //         },
-    //         {
-    //             id: 'Liabilities',
-    //             color: '#FFA319',
-    //             // column: 3,
-    //             offset: 20
-    //         },
-    //     ],
 
-    //     data: [
-    //         ['Net assets', 'Restricted', 3402069],
-    //         ['Net assets', 'Unrestricted', 8187634],
-    //         ['Total assets', 'Net assets', 11589703],
-    //         ['Total assets', 'Liabilities', 8746043],
-    //     ],
-    //     type: 'sankey',
-    //     name: 'Budget'
-    // }]
     series: [{
         keys: ['from', 'to', 'weight'],
-        
+
         // nodes: [
         //     {
         //         id: 'Total assets',
         //         color: '#800000',
-        //         offset: 0
-        //     },
-            
-        //     {
-        //         id: 'Net assets',
-        //         color: '#C16622',
-        //         // column: 2,
-        //         offset: -20
         //     },
         //     {
-        //         id: 'Restricted',
-        //         color: '#74ffe7',
-        //         // column: 3,
-        //         offset: -10
+        //         id: 'Total assets',
+        //         color: '#800000',
         //     },
         //     {
-        //         id: 'Unrestricted',
-        //         color: '#8cff74',
-        //         // column: 3,
-        //         offset: 0
+        //         id: 'Total assets',
+        //         color: '#800000',
         //     },
         //     {
-        //         id: 'Liabilities',
-        //         color: '#FFA319',
-        //         // column: 3,
-        //         offset: 20
+        //         id: 'Total assets',
+        //         color: '#800000',
         //     },
-        // ],
+        //     {
+        //         id: 'Total assets',
+        //         color: '#800000',
+        //     },
+        //     {
+        //         id: 'Total assets',
+        //         color: '#800000',
+        //     },
+        //     {
+        //         id: 'Total assets',
+        //         color: '#800000',
+        //     },
+        //     {
+        //         id: 'Total assets',
+        //         color: '#800000',
+        //     },
+        // ]
 
         data: [
             ['Total assets<br>(excluding hospital)', 'Revenue with restrictions', 338.2],
