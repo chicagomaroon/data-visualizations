@@ -46,6 +46,12 @@ Highcharts.chart('chart-div', {
     },
 
     plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true,
+                allowOverlap: false,
+            },
+        },
         series: {
             pointStart: 2017,
             marker: {
