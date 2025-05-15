@@ -90,6 +90,10 @@ Highcharts.chart('chart-div', {
                 enabled: false,
                 format: '${y:,.0f}'
             }
+        },
+        series: {
+            groupPadding: 0,
+            pointPadding: 0.05
         }
     },
 

@@ -82,6 +82,10 @@ Highcharts.chart('chart-div', {
                     fontWeight: 'bold'
                 }
             }
+        },
+        series: {
+            groupPadding: 0,
+            pointPadding: 0.05
         }
     },
 

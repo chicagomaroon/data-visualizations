@@ -15,7 +15,7 @@ const pacs = [
     'Dave McCormick',
     'Nikki Haley',
     'NRSC',
-    'Americans for Prosperity',
+    'Americans for<br/>Prosperity',
     'Donald Trump'
 ];
 
@@ -80,6 +80,10 @@ Highcharts.chart('chart-div', {
                     fontWeight: 'bold'
                 }
             }
+        },
+        series: {
+            groupPadding: 0,
+            pointPadding: 0.05
         }
     },
 
