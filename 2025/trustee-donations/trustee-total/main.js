@@ -53,7 +53,7 @@ Highcharts.chart('chart-div', {
     xAxis: {
         categories: years,
         title: {
-            text: 'Election Cycle'
+            text: ''
         }
     },
 
@@ -108,12 +108,12 @@ Highcharts.chart('chart-div', {
     series: [
         {
             name: 'Democratic Donations',
-            type: 'spline',
+            type: 'line',
             data: demData
         },
         {
             name: 'Republican Donations',
-            type: 'spline',
+            type: 'line',
             data: repData
         }
     ]
