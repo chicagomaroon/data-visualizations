@@ -68,7 +68,7 @@ Highcharts.chart('chart-div', {
                 {
                     name: 'Pursuing Graduate or Professional School',
                     y: 30
-                },
+                }
             ]
         }
     ]
