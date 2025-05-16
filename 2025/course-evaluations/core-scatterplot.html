@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>The Core, Ranked</title>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-</head>
-<body>
-  <div id="container" style="height: 600px; min-width: 310px;"></div>
-  <script src="main.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>The Core, Ranked</title>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+
+        <style>
+            body {
+                font-family: 'Georgia', serif;
+            }
+
+            .highcharts-root {
+                font-family: 'Georgia', serif !important;
+            }
+
+            #chart-div {
+                width: 100%;
+                height: 400px;
+            }
+
+            #container {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script src="main.js"></script>
+    </body>
 </html>
