@@ -46,7 +46,7 @@ Highcharts.chart('chart-div', {
         align: 'center'
     },
     subtitle: {
-        text: "UChicago trustees' donations to Republican candidates increased considerably in the 2023–24 cycle.",
+        text: "UChicago trustees' donations to Republican candidates increased considerably in the 2023-24 cycle.",
         align: 'center'
     },
 
