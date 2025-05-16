@@ -24,7 +24,10 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Employment by Industry'
+        text: 'Employment by Industry',
+        style: {
+            color: '#000000'
+        }
     },
     tooltip: {
         valueSuffix: '%'

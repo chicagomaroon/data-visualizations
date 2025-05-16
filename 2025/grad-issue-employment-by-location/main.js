@@ -12,7 +12,10 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Where is the Class of 2025 Going?'
+        text: 'Where is the Class of 2025 Going?',
+        style: {
+            color: '#000000'
+        }
     },
     tooltip: {
         valueSuffix: '%'

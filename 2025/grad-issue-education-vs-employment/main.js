@@ -23,7 +23,10 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Student Plans After Graduation'
+        text: 'Student Plans After Graduation',
+        style: {
+            color: '#000000'
+        }
     },
     tooltip: {
         valueSuffix: '%'
