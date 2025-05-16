@@ -68,7 +68,7 @@ Highcharts.chart('chart-div', {
         min: 0,
         max: 100,
         stackLabels: {
-            enabled: true,
+            enabled: false,
             style: {
                 fontWeight: 'bold'
             }
