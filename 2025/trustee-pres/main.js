@@ -9,15 +9,15 @@ Highcharts.setOptions({
 });
 
 cycles = [
-    '1991-92',
-    '1995-96',
-    '1999-00',
-    '2003-04',
-    '2007-08',
-    '2011-12',
-    '2015-16',
-    '2019-20',
-    '2023-24'
+    '1991–92',
+    '1995–96',
+    '1999–00',
+    '2003–04',
+    '2007–08',
+    '2011–12',
+    '2015–16',
+    '2019–20',
+    '2023–24'
 ];
 
 demCount = [2, 1, 7, 5, 22, 11, 16, 14, 12];
@@ -68,11 +68,11 @@ Highcharts.chart('chart-div', {
 
     series: [
         {
-            name: 'Number of Trustees giving to Democrats',
+            name: 'Number of trustees giving to Democrats',
             data: demCount
         },
         {
-            name: 'Number of Trustees giving to Republicans',
+            name: 'Number of trustees giving to Republicans',
             data: repCount
         }
     ]
