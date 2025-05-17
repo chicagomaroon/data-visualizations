@@ -26,6 +26,10 @@ Highcharts.chart('chart-div', {
         text: 'Acceptance Rate by Graduation Year'
     },
 
+    subtitle: {
+        text: 'The acceptance rate has decreased by roughly half over the past decade, from the class of 2017 to the class of 2028.'
+    },
+
     legend: {
         enabled: false
     },
@@ -38,26 +42,19 @@ Highcharts.chart('chart-div', {
 
     xAxis: {
         title: {
-            text: 'Graduation Year'
+            text: ''
         },
-        lineWidth: 0,
-        minorGridLineWidth: 0,
-        lineColor: 'transparent'
+        minorTickLength: 0,
+        tickLength: 0,
     },
 
     plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true,
-                allowOverlap: false,
-            },
-        },
         series: {
             pointStart: 2017,
             marker: {
-                enabled: true
+                enabled: false
             },
-            lineWidth: 3
+            lineWidth: 2
         }
     },
 
@@ -66,9 +63,9 @@ Highcharts.chart('chart-div', {
             return (
                 'The ' +
                 this.series.name.toLowerCase() +
-                ' for the Class of <b>' +
+                ' for the class of <b>' +
                 this.x +
-                '</b> is: <b>' +
+                '</b> was: <b>' +
                 this.y +
                 '%</b>'
             );
