@@ -24,7 +24,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Employment by Industry',
+        text: 'A Breakdown of Employment Plans by Industry',
         style: {
             color: '#000000'
         }

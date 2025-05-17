@@ -23,7 +23,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Student Plans After Graduation',
+        text: 'Declared Post-Graduation Plans Among the Class of 2025',
         style: {
             color: '#000000'
         }

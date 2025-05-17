@@ -12,7 +12,7 @@ Highcharts.chart('chart-div', {
         type: 'pie'
     },
     title: {
-        text: 'Where is the Class of 2025 Going?',
+        text: 'The Most Popular Post-Graduation Locations for the Class of 2025',
         style: {
             color: '#000000'
         }
