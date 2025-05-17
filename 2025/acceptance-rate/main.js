@@ -72,6 +72,36 @@ Highcharts.chart('chart-div', {
         }
     },
 
+    annotations: [{
+          draggable: '',
+            labelOptions: {
+                borderRadius: 0,
+                backgroundColor: 'rgba(255, 255, 255, 0)',
+                borderWidth: 0,
+                borderColor: '#AAA'},
+    labels: [{
+        point: {
+            xAxis: 0,
+            yAxis: 0,
+            x: 0, // 2017 is pointStart, so index 0
+            y: 8.81
+        },
+        text: 'Highest: 8.81% (2017)'
+    }, {
+        point: {
+            xAxis: 0,
+            yAxis: 0,
+            x: 11, // 2017 + 11 = 2028
+            y: 4.48
+        },
+        text: 'Lowest: 4.48% (2028)'
+    }],
+    labelOptions: {
+        align: 'right',
+        verticalAlign: 'top'
+    }
+}],
+
     series: [
         {
             name: 'Acceptance rate',
