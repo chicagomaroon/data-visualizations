@@ -15,22 +15,29 @@ Highcharts.chart('chart-div', {
     chart: {
         type: 'bar'
     },
+
     title: {
-        text: 'Applicant Pool by Graduation Year',
-        align: 'center',
-        style: {
-            fontSize: '20px'
-        }
+        text: 'Admitted Students and Applicants by Graduation Year',
+        align: 'center'
     },
     
+     subtitle: {
+        text: 'The number of admitted students has decreased as the number of applicants has increased over the past decade, from the class of 2017 to the class of 2028.'
+    },
+
     xAxis: {
+        tickInterval: 1,
+        minorTickLength: 0,
+        tickLength: 0,
         min: 2017,
         max: 2028,
         title: {
-            text: 'Graduation Year'
+            text: ''
         }
     },
+    
     yAxis: {
+        tickInterval: 5000,
         title: {
             text: ''
         },
@@ -38,15 +45,16 @@ Highcharts.chart('chart-div', {
         minorGridLineWidth: 0,
         lineColor: 'transparent'
     },
+
     tooltip: {
         formatter: function () {
             return (
                 'The number of ' +
                 this.series.name.toLowerCase() +
-                ' for the Class of <b>' +
+                ' for the class of <b>' +
                 this.x +
-                '</b> is: <b>' +
-                this.y
+                '</b> was: <b>' +
+                Highcharts.numberFormat(this.y, 0)
             );
         }
     },
@@ -55,12 +63,6 @@ Highcharts.chart('chart-div', {
         reversed: true
     },
     plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true,
-                allowOverlap: false,
-            }
-        },
         series: {
             pointStart: 2017,
             stacking: 'normal',
