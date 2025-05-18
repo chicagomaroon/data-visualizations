@@ -27,7 +27,7 @@ Highcharts.chart('chart-div', {
     },
 
     subtitle: {
-        text: 'The acceptance rate has decreased by roughly half over the past decade, from the class of 2017 to the class of 2028.'
+        text: 'The acceptance rate has decreased by roughly half over the past decade.'
     },
 
     legend: {
