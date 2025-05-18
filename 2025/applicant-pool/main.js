@@ -22,7 +22,7 @@ Highcharts.chart('chart-div', {
     },
     
      subtitle: {
-        text: 'The number of admitted students has decreased as the number of applicants has increased over the past decade, from the class of 2017 to the class of 2028.'
+        text: 'The number of admitted students has decreased as the number of applicants has increased over the past decade.'
     },
 
     xAxis: {
