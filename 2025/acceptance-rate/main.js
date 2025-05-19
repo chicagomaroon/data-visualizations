@@ -26,6 +26,10 @@ Highcharts.chart('chart-div', {
         text: 'Acceptance Rate by Graduation Year'
     },
 
+    subtitle: {
+        text: 'The acceptance rate has decreased by roughly half over the past decade.'
+    },
+
     legend: {
         enabled: false
     },
@@ -38,26 +42,19 @@ Highcharts.chart('chart-div', {
 
     xAxis: {
         title: {
-            text: 'Graduation Year'
+            text: ''
         },
-        lineWidth: 0,
-        minorGridLineWidth: 0,
-        lineColor: 'transparent'
+        minorTickLength: 0,
+        tickLength: 0,
     },
 
     plotOptions: {
-        line: {
-            dataLabels: {
-                enabled: true,
-                allowOverlap: false,
-            },
-        },
         series: {
             pointStart: 2017,
             marker: {
-                enabled: true
+                enabled: false
             },
-            lineWidth: 3
+            lineWidth: 2
         }
     },
 
@@ -66,14 +63,44 @@ Highcharts.chart('chart-div', {
             return (
                 'The ' +
                 this.series.name.toLowerCase() +
-                ' for the Class of <b>' +
+                ' for the class of <b>' +
                 this.x +
-                '</b> is: <b>' +
+                '</b> was: <b>' +
                 this.y +
                 '%</b>'
             );
         }
     },
+
+    annotations: [{
+          draggable: '',
+            labelOptions: {
+                borderRadius: 0,
+                backgroundColor: 'rgba(255, 255, 255, 0)',
+                borderWidth: 0,
+                borderColor: '#AAA'},
+    labels: [{
+        point: {
+            xAxis: 0,
+            yAxis: 0,
+            x: 0, // 2017 is pointStart, so index 0
+            y: 8.81
+        },
+        text: 'Highest: 8.81% (2017)'
+    }, {
+        point: {
+            xAxis: 0,
+            yAxis: 0,
+            x: 11, // 2017 + 11 = 2028
+            y: 4.48
+        },
+        text: 'Lowest: 4.48% (2028)'
+    }],
+    labelOptions: {
+        align: 'right',
+        verticalAlign: 'top'
+    }
+}],
 
     series: [
         {
