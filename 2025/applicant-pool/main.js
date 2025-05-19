@@ -20,8 +20,8 @@ Highcharts.chart('chart-div', {
         text: 'Admitted Students and Applicants by Graduation Year',
         align: 'center'
     },
-    
-     subtitle: {
+
+    subtitle: {
         text: 'The number of admitted students has decreased as the number of applicants has increased over the past decade.'
     },
 
@@ -35,7 +35,7 @@ Highcharts.chart('chart-div', {
             text: ''
         }
     },
-    
+
     yAxis: {
         tickInterval: 5000,
         title: {
@@ -71,42 +71,27 @@ Highcharts.chart('chart-div', {
             }
         }
     },
-    
+
     series: [
         {
             name: 'Applicants',
             label: {
                 enabled: false
             },
-            data: [30369,
-                27503,
-                30162,
-                31484,
-                27694,
-                32291,
-                34900,
-                34372,
-                37977,
-                37522,
-                38800,
-                43612]
+            data: [
+                30369, 27503, 30162, 31484, 27694, 32291, 34900, 34372, 37977,
+                37522, 38800, 43612
+            ]
         },
-        {name: 'Admitted Students',
+        {
+            name: 'Admitted Students',
             label: {
                 enabled: false
             },
-            data: [2676,
-                2304,
-                2356,
-                2499,
-                2419,
-                2329,
-                2065,
-                2511,
-                2460,
-                2041,
-                1849,
-                1955]
+            data: [
+                2676, 2304, 2356, 2499, 2419, 2329, 2065, 2511, 2460, 2041,
+                1849, 1955
+            ]
         }
     ]
 });

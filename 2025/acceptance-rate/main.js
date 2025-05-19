@@ -45,7 +45,7 @@ Highcharts.chart('chart-div', {
             text: ''
         },
         minorTickLength: 0,
-        tickLength: 0,
+        tickLength: 0
     },
 
     plotOptions: {
@@ -72,35 +72,41 @@ Highcharts.chart('chart-div', {
         }
     },
 
-    annotations: [{
-          draggable: '',
+    annotations: [
+        {
+            draggable: '',
             labelOptions: {
                 borderRadius: 0,
                 backgroundColor: 'rgba(255, 255, 255, 0)',
                 borderWidth: 0,
-                borderColor: '#AAA'},
-    labels: [{
-        point: {
-            xAxis: 0,
-            yAxis: 0,
-            x: 0, // 2017 is pointStart, so index 0
-            y: 8.81
-        },
-        text: 'Highest: 8.81% (2017)'
-    }, {
-        point: {
-            xAxis: 0,
-            yAxis: 0,
-            x: 11, // 2017 + 11 = 2028
-            y: 4.48
-        },
-        text: 'Lowest: 4.48% (2028)'
-    }],
-    labelOptions: {
-        align: 'right',
-        verticalAlign: 'top'
-    }
-}],
+                borderColor: '#AAA'
+            },
+            labels: [
+                {
+                    point: {
+                        xAxis: 0,
+                        yAxis: 0,
+                        x: 0, // 2017 is pointStart, so index 0
+                        y: 8.81
+                    },
+                    text: 'Highest: 8.81% (2017)'
+                },
+                {
+                    point: {
+                        xAxis: 0,
+                        yAxis: 0,
+                        x: 11, // 2017 + 11 = 2028
+                        y: 4.48
+                    },
+                    text: 'Lowest: 4.48% (2028)'
+                }
+            ],
+            labelOptions: {
+                align: 'right',
+                verticalAlign: 'top'
+            }
+        }
+    ],
 
     series: [
         {
@@ -108,7 +114,10 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
-            data: [8.81, 8.38, 7.81, 7.94, 8.73, 7.21, 5.92, 7.31, 6.48, 5.44, 4.78, 4.48]
+            data: [
+                8.81, 8.38, 7.81, 7.94, 8.73, 7.21, 5.92, 7.31, 6.48, 5.44,
+                4.78, 4.48
+            ]
         }
     ]
 });
