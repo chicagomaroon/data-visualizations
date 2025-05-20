@@ -44,7 +44,7 @@ Highcharts.chart('chart-div', {
                 {
                     enabled: true,
                     distance: -40,
-                    format: '{point.percentage:.1f}%',
+                    format: '{point.percentage:.0f}%',
                     style: {
                         fontSize: '0.8em',
                         textOutline: 'none',

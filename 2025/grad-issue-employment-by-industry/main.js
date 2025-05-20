@@ -40,22 +40,8 @@ Highcharts.chart('chart-div', {
             dataLabels: [
                 {
                     enabled: true,
-                    distance: 20
-                },
-                {
-                    enabled: true,
-                    distance: -40,
-                    format: '{point.percentage}%',
-                    style: {
-                        fontSize: '0.8em',
-                        textOutline: 'none',
-                        opacity: 1
-                    },
-                    filter: {
-                        operator: '>',
-                        property: 'percentage',
-                        value: 10
-                    }
+                    distance: 20,
+                    format: `<b>{point.key}: {point.y}%</b>`
                 }
             ]
         }
@@ -74,7 +60,7 @@ Highcharts.chart('chart-div', {
                     y: 13
                 },
                 {
-                    name: 'Corporate/Business',
+                    name: 'Corporate and Business',
                     y: 6
                 },
                 {
@@ -86,7 +72,7 @@ Highcharts.chart('chart-div', {
                     y: 35
                 },
                 {
-                    name: 'Government/Public Policy and Administration',
+                    name: 'Government, Public Policy, and Administration',
                     y: 4
                 },
                 {
@@ -102,7 +88,7 @@ Highcharts.chart('chart-div', {
                     y: 3
                 },
                 {
-                    name: 'Non-Profit and Social Services',
+                    name: 'Nonprofit and Social Services',
                     y: 3
                 },
                 {
