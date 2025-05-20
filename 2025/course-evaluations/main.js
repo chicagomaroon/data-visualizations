@@ -41,7 +41,7 @@ fetch('csvjson.json')
             })
         );
 
-        Highcharts.chart('container', {
+        Highcharts.chart('chart-div', {
             chart: {
                 type: 'scatter',
                 zoomType: 'xy',
@@ -167,7 +167,7 @@ fetch('csvjson.json')
                             chart.customArrows.push(
                                 chart.renderer
                                     .text(
-                                        'DECREASING\nHOURS',
+                                        'Less\nHours Worked',
                                         chart.plotLeft + 20,
                                         chart.yAxis[0].toPixels(0) - 10
                                     )
@@ -180,7 +180,7 @@ fetch('csvjson.json')
                             chart.customArrows.push(
                                 chart.renderer
                                     .text(
-                                        'INCREASING\nHOURS',
+                                        'More\nHours Worked',
                                         chart.plotLeft + chart.plotWidth - 170,
                                         chart.yAxis[0].toPixels(0) - 10
                                     )
@@ -193,7 +193,7 @@ fetch('csvjson.json')
                             chart.customArrows.push(
                                 chart.renderer
                                     .text(
-                                        'INCREASING\nSENTIMENT',
+                                        'More\nPositive',
                                         chart.xAxis[0].toPixels(8) + 15,
                                         chart.plotTop + 20
                                     )
@@ -206,7 +206,7 @@ fetch('csvjson.json')
                             chart.customArrows.push(
                                 chart.renderer
                                     .text(
-                                        'DECREASING\nSENTIMENT',
+                                        'Less\nPositive',
                                         chart.xAxis[0].toPixels(8) + 15,
                                         chart.plotTop + chart.plotHeight - 10
                                     )
@@ -279,7 +279,7 @@ fetch('csvjson.json')
             yAxis: {
                 min: 0,
                 max: 0.4,
-                tickPositions: [-0.1, 0, 0.1, 0.2, 0.3, 0.4],
+                tickPositions: [0, 0.1, 0.2, 0.3, 0.4],
                 gridLineWidth: 1,
                 gridLineColor: '#d6d6ce',
                 gridLineDashStyle: 'Dot',
