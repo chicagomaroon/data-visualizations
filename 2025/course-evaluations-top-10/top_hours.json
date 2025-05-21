@@ -1,0 +1,62 @@
+[
+  {
+    "Course Code": "SOSC 26100",
+    "Category": "Civilization Studies",
+    "Course Name": "Introduction to Latin American Civilization I",
+    "Average of Average Hours": 15
+  },
+  {
+    "Course Code": "AKKD 10503",
+    "Category": "Language",
+    "Course Name": "Introduction to Babylonian III",
+    "Average of Average Hours": 14.5
+  },
+  {
+    "Course Code": "MATH 16210",
+    "Category": "Mathematical Science",
+    "Course Name": "Honors Calculus II (IBL)",
+    "Average of Average Hours": 13.945
+  },
+  {
+    "Course Code": "AKKD 10502",
+    "Category": "Language",
+    "Course Name": "Introduction to Babylonian II",
+    "Average of Average Hours": 13.66
+  },
+  {
+    "Course Code": "TURK 10101",
+    "Category": "Language",
+    "Course Name": "Beginning Modern Turkish I",
+    "Average of Average Hours": 13.66
+  },
+  {
+    "Course Code": "TURK 10102",
+    "Category": "Language",
+    "Course Name": "Beginning Modern Turkish II",
+    "Average of Average Hours": 13.66
+  },
+  {
+    "Course Code": "MATH 16110",
+    "Category": "Mathematical Science",
+    "Course Name": "Honors Calculus I (IBL)",
+    "Average of Average Hours": 12.84
+  },
+  {
+    "Course Code": "GREK 20300",
+    "Category": "Language",
+    "Course Name": "Intermediate Greek III",
+    "Average of Average Hours": 12.5
+  },
+  {
+    "Course Code": "SOSC 13110",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Formal Theory I",
+    "Average of Average Hours": 12.5
+  },
+  {
+    "Course Code": "SOSC 13320",
+    "Category": "Social Sciences",
+    "Course Name": "Social Science Inquiry: Spatial Analysis III",
+    "Average of Average Hours": 12.5
+  }
+]
