@@ -26,7 +26,7 @@ Highcharts.chart('chart-div', {
         type: 'bar'
     },
     title: {
-        text: 'Turnout for the 2025 Spring USG Election by Position',
+        text: 'Student Body Turnout for the 2025 Spring USG Election by Position',
         align: 'center'
     },
     xAxis: {
@@ -76,7 +76,7 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
-            color: '#767676',
+            color: '#dddddd',
             legendIndex: 2,
             data: [88, 88, 88, 88, 88]
         },
