@@ -33,9 +33,9 @@ Highcharts.chart('chart-div', {
         categories: [
             'Executive Slate',
             'Trustee',
-            'VP for Advocacy',
-            'VP for Campus Life',
-            'VP for Student Affairs'
+            'VP of Advocacy',
+            'VP of Campus Life',
+            'VP of Student Affairs'
         ]
     },
     yAxis: {
@@ -65,7 +65,9 @@ Highcharts.chart('chart-div', {
     },
     tooltip: {
         formatter: function () {
-            return `<b>${this.y}%</b> ${this.series.name.toLowerCase()}<br>for <b>${this.key}</b>`;
+            return `<b>${
+                this.y
+            }%</b> ${this.series.name.toLowerCase()}<br>for <b>${this.key}</b>`;
         }
     },
     series: [
@@ -93,6 +95,6 @@ Highcharts.chart('chart-div', {
             },
             legendIndex: 0,
             data: [11, 8, 7, 7, 4]
-        },
+        }
     ]
 });

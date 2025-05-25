@@ -21,9 +21,9 @@ Highcharts.chart('chart-div', {
         '#FF3399'
     ],
 
-    // All code for your chart goes here
     title: {
-        text: 'USG Spring Election Turnout Rate Over Time'
+        text: 'USG Spring Election Turnout Rate Over Time',
+        style: { color: 'black' }
     },
 
     legend: {
@@ -32,52 +32,76 @@ Highcharts.chart('chart-div', {
 
     yAxis: {
         title: {
-            text: 'Turnout Rate (% of undergrad. pop.)'
+            text: 'Turnout Rate (% of undergrad. pop.)',
+            style: { color: 'black' }
         },
-        gridLineColor: 'transparent',
         labels: {
-            enabled: false
+            enabled: true,
+            format: `{text}%`
         },
-        plotLines: [{
-            color: 'gray',
-            fontColor: 'gray',
-            width: 1,
-            value: 73,
-            label: {
-                text: '73% turnout (2016)',
-                align: 'center',
-                x: 80,
-                y: -5
+        plotLines: [
+            {
+                color: 'gray',
+                fontColor: 'gray',
+                width: 1,
+                value: 73,
+                label: {
+                    text: '73% turnout (2016)',
+                    align: 'center',
+                    x: 10,
+                    y: -5
+                }
+            },
+            {
+                color: 'gray',
+                width: 1,
+                value: 12,
+                label: {
+                    text: '12% turnout (2025)',
+                    align: 'right',
+                    x: -10,
+                    y: 15
+                }
             }
-        },
-        {
-            color: 'gray',
-            width: 1,
-            value: 20,
-            label: {
-                text: '20% turnout',
-                align: 'left',
-                x: 10,
-                y: -5
-            }
-        },
-        {
-            color: 'gray',
-            width: 1,
-            value: 12,
-            label: {
-                text: '12% turnout (2025)',
-                align: 'right',
-                x: -10,
-                y: 15
-            }
-        }]
+        ]
     },
 
     xAxis: {
         title: {
-            text: 'Election year'
-        }
+            text: 'Election Year',
+            style: { color: 'black' }
+        },
+        breaks: [
+            {
+                from: 2009,
+                to: 2013,
+                breakSize: 0
+            }
+        ],
+        tickPositions: [
+            2006, 2007, 2008, 2009, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+            2021, 2022, 2023, 2024, 2025
+        ],
+        labels: {
+            rotation: -30
+        },
+        plotBands: [
+            {
+                from: 2013,
+                to: 2014,
+                color: '#eeeeee',
+                label: {
+                    rotation: 90,
+                    style: {
+                        color: '#888888'
+                    },
+                    text: 'Data unavailable for 2010-2013',
+                    verticalAlign: 'middle',
+                    x: -4.2,
+                    y: 0
+                }
+            }
+        ]
     },
 
     plotOptions: {
@@ -102,7 +126,8 @@ Highcharts.chart('chart-div', {
             label: {
                 enabled: false
             },
-            data: [41,
+            data: [
+                41,
                 41,
                 37,
                 32,
@@ -121,7 +146,8 @@ Highcharts.chart('chart-div', {
                 12,
                 15,
                 19,
-                12,]
+                12
+            ]
         }
-    ],
+    ]
 });

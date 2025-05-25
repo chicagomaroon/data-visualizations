@@ -34,7 +34,7 @@ Highcharts.chart('chart-div', {
             'First-Years',
             'Second-Years',
             'Third-Years',
-            'Fourth-Years',
+            'Fourth-Years'
         ]
     },
     yAxis: {
