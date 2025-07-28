@@ -48,8 +48,8 @@ Highcharts.chart('chart-div', {
     },
 
     series: [{
-        keys: ['from', 'to', 'weight'],
-
+        keys: [ 'to','from', 'weight'],
+            
         // nodes: [
         //     {
         //         id: 'Total assets',
