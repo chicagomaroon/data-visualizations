@@ -245,7 +245,7 @@ def get_holdings(site, ticker=None):
     driver.maximize_window()
 
     data = []
-    for i in range(51):
+    for i in range(pages):
         time.sleep(1)  # wait for the page to load
         try:
             turn_page = driver.find_element(By.TAG_NAME, 'select')
@@ -273,22 +273,32 @@ def get_holdings(site, ticker=None):
         for i in d:
             if 'Ticker' not in i:
                 try:
-                    ticker = re.search('^[A-Z]+',i)[0]
-                    tickers.append(ticker)
-                    percents.append(re.search('(\\d+\\.\\d+) %',i)[0].strip(' %'))
-                    companies.append(re.search(' [A-Z][a-z &\\.]+ \\d',i.strip(ticker))[0][1:-2])
+                    ticker_i = re.search('^[A-Z\\.\\d]+',i)[0]
+                    tickers.append(ticker_i)
                 except Exception as e:
-                    print(f"Error parsing line: {i} - {e}")
-                    continue
+                    print(f"Error parsing ticker: {i} - {e}")
+                    break
+                
+                percents.append(re.search('(\\d+\\.\\d+) %',i)[0].strip(' %'))
+
+                try:
+                    companies.append(re.search(' [A-Z][A-Za-z &\\.\\(\\)\'/]+(\\d|—)',i.strip().strip(ticker_i + '—'))[0][1:-2].strip())
+                except Exception as e:
+                    print(f"Error parsing company: {i} - {e}")
+                    break                
 
     df = pd.DataFrame({
         'ticker':tickers,
         'percent':percents,
+        'company':companies
     })
-    df['amt'] = df['percent'].astype(float) /100 * sec.loc[(sec['Ticker']==ticker) & (sec['Date']=='2025-03-31'),'Value'].values[0] * 1000
+    uc_investment = sec.loc[(sec['Ticker']==ticker) & (sec['Date']=='2025-03-31'),'Value'].values[0] * 1000
+    df['amt'] = df['percent'].astype(float) /100 * uc_investment
     df.to_csv(f"holdings-{ticker}.csv", index=False)
 
-# get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/voo#portfolio-composition",ticker='VOO')
+    driver.quit()
+
+get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/voo#portfolio-composition",ticker='VOO')
 get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/vt#portfolio-composition",ticker='VT')
 
 
