@@ -303,3 +303,26 @@ get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/prof
 
 
 # %%
+
+def clean_names(x):
+    x = str(x)
+    x = x.replace(' Inc.','')
+    x = x.replace(' Co.','')
+    x = x.replace(' Corp.','')
+    x = x.replace(' Ltd.','')
+    return x
+
+voo = pd.read_csv("holdings-VOO.csv")
+vt = pd.read_csv("holdings-VT.csv")
+sipri = pd.read_excel('SIPRI-Top-100-2002-2023.xlsx', sheet_name='2023', skiprows=3)
+voo['company'] = voo['company'].apply(clean_names)
+vt['company'] = vt['company'].apply(clean_names)    
+sipri['Company (c) '] = sipri['Company (c) '].apply(clean_names)
+
+voo_sipri = voo.merge(sipri,how='left',left_on='company',right_on='Company (c) ')
+voo_sipri = voo_sipri.loc[~voo_sipri['Country (d)'].isna()]
+vt_sipri = vt.merge(sipri,how='left',left_on='company',right_on='Company (c) ')
+vt_sipri = vt_sipri.loc[~vt_sipri['Country (d)'].isna()]
+voo_sipri.amt.sum() + vt_sipri.amt.sum()
+
+# %%
