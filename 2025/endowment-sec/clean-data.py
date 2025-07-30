@@ -222,3 +222,74 @@ for file in os.listdir("statements"):
     # tables.export('foo.csv', f='csv', compress=True) 
 
 # %%
+import requests
+# from requests_html import HTMLSession
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup as bs
+from selenium.webdriver.support.ui import Select
+import time
+import re
+
+# session = HTMLSession()
+# r = session.get(site)
+
+def get_holdings(site, ticker=None):
+    driver = webdriver.Firefox()
+
+    driver.get(site)
+    elem = driver.find_element(By.XPATH, "//*[text()='Portfolio composition']")
+    elem.send_keys(Keys.RETURN)
+    driver.execute_script("document.body.style.zoom='15%'")
+    driver.maximize_window()
+
+    data = []
+    for i in range(51):
+        time.sleep(1)  # wait for the page to load
+        try:
+            turn_page = driver.find_element(By.TAG_NAME, 'select')
+            
+
+            # Select the nth option (e.g., 3rd option, index starts at 0)
+            Select(turn_page).select_by_index(i)  # 2 for the 3rd option
+
+            # Find the first <h5> with text "Holding details"
+            h5_elem = driver.find_element(By.XPATH, "//h5[contains(text(), 'Holding details')]")
+
+            # Find the first <div> following this <h5>
+            div_elem = h5_elem.find_element(By.XPATH, "following-sibling::div[1]")
+
+            table = div_elem.find_elements(By.TAG_NAME, 'table')
+            data.append(table[0].text.split('\n'))
+        except Exception as e:
+            print(f"Error: {e}")
+            continue
+
+    tickers = []
+    percents = []
+    companies = []
+    for d in data:
+        for i in d:
+            if 'Ticker' not in i:
+                try:
+                    ticker = re.search('^[A-Z]+',i)[0]
+                    tickers.append(ticker)
+                    percents.append(re.search('(\\d+\\.\\d+) %',i)[0].strip(' %'))
+                    companies.append(re.search(' [A-Z][a-z &\\.]+ \\d',i.strip(ticker))[0][1:-2])
+                except Exception as e:
+                    print(f"Error parsing line: {i} - {e}")
+                    continue
+
+    df = pd.DataFrame({
+        'ticker':tickers,
+        'percent':percents,
+    })
+    df['amt'] = df['percent'].astype(float) /100 * sec.loc[(sec['Ticker']==ticker) & (sec['Date']=='2025-03-31'),'Value'].values[0] * 1000
+    df.to_csv(f"holdings-{ticker}.csv", index=False)
+
+# get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/voo#portfolio-composition",ticker='VOO')
+get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/vt#portfolio-composition",ticker='VT')
+
+
+# %%
