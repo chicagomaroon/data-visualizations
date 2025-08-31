@@ -95,16 +95,16 @@ for i,investment in enumerate(investments):
 
                     # split line into cells from right to left
                     patterns = [
-                        '(\\d{1,6})',
-                        '(\\d{1,6})',
-                        '(\\d{1,6})',
-                        '(\\d{1,2})',
-                        '([OtherSole]{4,6})',
-                        '([SH]{2})',
-                        '(\\d{2,7})',
-                        '(\\d{3,7})',
-                        '([A-Z\\d]{8,9})',
-                        '((A)|([AB]* *[COM|BEN|ADR]+))',
+                        "(\\d{1,6})",
+                        "(\\d{1,6})",
+                        "(\\d{1,6})",
+                        "(\\d{1,2})",
+                        "([OtherSole]{4,6})",
+                        "([SH]{2})",
+                        "(\\d{2,7})",
+                        "(\\d{1,7})",
+                        "([A-Z\\d]{8,9})",
+                        "((A)|([AB]* *[COM|BEN|ADR]+))",
                     ]
 
                     for pattern in patterns:
