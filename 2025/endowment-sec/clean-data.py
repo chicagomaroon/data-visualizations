@@ -2,12 +2,13 @@
 Use SEC API to download all UChicago SEC filings since 1994
 """
 
-#%% imports
+# %% imports
 
 import os
 import re
 from datetime import datetime
 
+import pandas as pd
 import polars as pl
 from polars import String, Int64, Date, ShapeError, ComputeError
 from plotnine import (
@@ -27,7 +28,11 @@ from plotnine import (
 import camelot
 from edgar import *
 
-#%% SEC filings
+# %% 990T filings from IRS via ProPublica API
+
+# response=requests.get('https://projects.propublica.org/nonprofits/api/v2/organizations/362177139.json')
+
+# %% SEC filings
 # cite: https://pypi.org/project/edgartools/
 
 # 2. Tell the SEC who you are (required by SEC regulations)
@@ -37,17 +42,18 @@ set_identity("karenyi@uchicago.edu")
 company = Company("0000314957")
 
 # 4. Get company filings
-filings = company.get_filings() 
+filings = company.get_filings()
 
 # 5. Filter by form 13F-HR
 # https://www.sec.gov/data-research/sec-markets-data/form-13f-data-sets
+# https://www.sec.gov/files/form13f.pdf
 investments = filings.filter(form="13F-HR")
 
-#%% save filings
+# %% save filings
 
 sec = pl.DataFrame()
 
-for i,investment in enumerate(investments):
+for i, investment in enumerate(investments):
     # if i<40:
     #     continue
     # print(i)
@@ -210,9 +216,10 @@ for i,investment in enumerate(investments):
 
 sec.write_csv("13F-HR.csv")
 
-#%% explore total holdings over time
+# %% explore total holdings over time
 
-sec = pl.read_csv("13F-HR.csv")
+sec = pd.read_csv("13F-HR.csv")
+# sec[pd.to_datetime(sec['Date'])>datetime(2025,2,1)]
 
 # value means market value in $1000s
 amounts = sec.groupby("Date").agg({"Value": lambda x: sum(x) / 1000}).reset_index()
@@ -255,14 +262,15 @@ top10 = (
 )
 
 
+# %% explore which stocks are held
 
-#%%
+
+# %%
 
 for file in os.listdir("statements"):
-        
-    tables = camelot.read_pdf(os.path.join("statements",file))
+    tables = camelot.read_pdf(os.path.join("statements", file))
     print(tables)
-    # tables.export('foo.csv', f='csv', compress=True) 
+    # tables.export('foo.csv', f='csv', compress=True)
 
 # %%
 
@@ -294,6 +302,7 @@ fs = fs.groupby(["year", "type"]).agg({"amount": "sum"}).reset_index()
 
 # %% scrape holdings of index funds
 import requests
+
 # from requests_html import HTMLSession
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -306,7 +315,9 @@ import re
 # session = HTMLSession()
 # r = session.get(site)
 
-def get_holdings(site, ticker=None):
+
+# note: this is JUST 1 quarter in 2025, for now
+def get_holdings(site, ticker=None, pages=51):
     driver = webdriver.Firefox()
 
     driver.get(site)
@@ -319,20 +330,21 @@ def get_holdings(site, ticker=None):
     for i in range(pages):
         time.sleep(1)  # wait for the page to load
         try:
-            turn_page = driver.find_element(By.TAG_NAME, 'select')
-            
+            turn_page = driver.find_element(By.TAG_NAME, "select")
 
             # Select the nth option (e.g., 3rd option, index starts at 0)
             Select(turn_page).select_by_index(i)  # 2 for the 3rd option
 
             # Find the first <h5> with text "Holding details"
-            h5_elem = driver.find_element(By.XPATH, "//h5[contains(text(), 'Holding details')]")
+            h5_elem = driver.find_element(
+                By.XPATH, "//h5[contains(text(), 'Holding details')]"
+            )
 
             # Find the first <div> following this <h5>
             div_elem = h5_elem.find_element(By.XPATH, "following-sibling::div[1]")
 
-            table = div_elem.find_elements(By.TAG_NAME, 'table')
-            data.append(table[0].text.split('\n'))
+            table = div_elem.find_elements(By.TAG_NAME, "table")
+            data.append(table[0].text.split("\n"))
         except Exception as e:
             print(f"Error: {e}")
             continue
@@ -342,58 +354,73 @@ def get_holdings(site, ticker=None):
     companies = []
     for d in data:
         for i in d:
-            if 'Ticker' not in i:
+            if "Ticker" not in i:
                 try:
-                    ticker_i = re.search('^[A-Z\\.\\d]+',i)[0]
+                    ticker_i = re.search("^[A-Z\\.\\d]+", i)[0]
                     tickers.append(ticker_i)
                 except Exception as e:
                     print(f"Error parsing ticker: {i} - {e}")
                     break
-                
-                percents.append(re.search('(\\d+\\.\\d+) %',i)[0].strip(' %'))
+
+                percents.append(re.search("(\\d+\\.\\d+) %", i)[0].strip(" %"))
 
                 try:
-                    companies.append(re.search(' [A-Z][A-Za-z &\\.\\(\\)\'/]+(\\d|—)',i.strip().strip(ticker_i + '—'))[0][1:-2].strip())
+                    companies.append(
+                        re.search(
+                            " [A-Z][A-Za-z &\\.\\(\\)'/]+(\\d|—)",
+                            i.strip().strip("—").strip(ticker_i),
+                        )[0][1:-2].strip()
+                    )
                 except Exception as e:
                     print(f"Error parsing company: {i} - {e}")
-                    break                
+                    break
 
-    df = pd.DataFrame({
-        'ticker':tickers,
-        'percent':percents,
-        'company':companies
-    })
-    uc_investment = sec.loc[(sec['Ticker']==ticker) & (sec['Date']=='2025-03-31'),'Value'].values[0] * 1000
-    df['amt'] = df['percent'].astype(float) /100 * uc_investment
+    df = pd.DataFrame({"ticker": tickers, "percent": percents, "company": companies})
+    uc_investment = (
+        sec.loc[
+            (sec["Ticker"] == ticker) & (sec["Date"] == "2025-03-31"), "Value"
+        ].values[0]
+        * 1000
+    )
+    df["amt"] = df["percent"].astype(float) / 100 * uc_investment
     df.to_csv(f"holdings-{ticker}.csv", index=False)
 
     driver.quit()
 
-get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/voo#portfolio-composition",ticker='VOO')
-get_holdings(site = "https://investor.vanguard.com/investment-products/etfs/profile/vt#portfolio-composition",ticker='VT')
+
+get_holdings(
+    site="https://investor.vanguard.com/investment-products/etfs/profile/voo#portfolio-composition",
+    ticker="VOO",
+)
+get_holdings(
+    site="https://investor.vanguard.com/investment-products/etfs/profile/vt#portfolio-composition",
+    ticker="VT",
+)
 
 
 # %%
 
+
 def clean_names(x):
     x = str(x)
-    x = x.replace(' Inc.','')
-    x = x.replace(' Co.','')
-    x = x.replace(' Corp.','')
-    x = x.replace(' Ltd.','')
+    x = x.replace(" Inc.", "")
+    x = x.replace(" Co.", "")
+    x = x.replace(" Corp.", "")
+    x = x.replace(" Ltd.", "")
     return x
+
 
 voo = pd.read_csv("holdings-VOO.csv")
 vt = pd.read_csv("holdings-VT.csv")
-sipri = pd.read_excel('SIPRI-Top-100-2002-2023.xlsx', sheet_name='2023', skiprows=3)
-voo['company'] = voo['company'].apply(clean_names)
-vt['company'] = vt['company'].apply(clean_names)    
-sipri['Company (c) '] = sipri['Company (c) '].apply(clean_names)
+sipri = pd.read_excel("SIPRI-Top-100-2002-2023.xlsx", sheet_name="2023", skiprows=3)
+voo["company"] = voo["company"].apply(clean_names)
+vt["company"] = vt["company"].apply(clean_names)
+sipri["Company (c) "] = sipri["Company (c) "].apply(clean_names)
 
-voo_sipri = voo.merge(sipri,how='left',left_on='company',right_on='Company (c) ')
-voo_sipri = voo_sipri.loc[~voo_sipri['Country (d)'].isna()]
-vt_sipri = vt.merge(sipri,how='left',left_on='company',right_on='Company (c) ')
-vt_sipri = vt_sipri.loc[~vt_sipri['Country (d)'].isna()]
+voo_sipri = voo.merge(sipri, how="left", left_on="company", right_on="Company (c) ")
+voo_sipri = voo_sipri.loc[~voo_sipri["Country (d)"].isna()]
+vt_sipri = vt.merge(sipri, how="left", left_on="company", right_on="Company (c) ")
+vt_sipri = vt_sipri.loc[~vt_sipri["Country (d)"].isna()]
 voo_sipri.amt.sum() + vt_sipri.amt.sum()
 
 # %%
