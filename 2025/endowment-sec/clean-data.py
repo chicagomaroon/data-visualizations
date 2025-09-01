@@ -296,9 +296,13 @@ type_dict = {
 for k, v in type_dict.items():
     fs.loc[fs["type"].str.contains(k, na=False), "type"] = v
 
-fs["type"].unique()
+# consolidate regrouped groups
+fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
 
-fs = fs.groupby(["year", "type"]).agg({"amount": "sum"}).reset_index()
+(
+    ggplot(fs, aes(x="year", y="percent"))
+    + geom_line(aes(color="type", line_type="type"))
+)
 
 # %% scrape holdings of index funds
 import requests
