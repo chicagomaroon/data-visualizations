@@ -10,7 +10,19 @@ from datetime import datetime
 
 import polars as pl
 from polars import String, Int64, Date, ShapeError, ComputeError
-from plotnine import ggplot, geom_line, geom_point, aes, xlab, ylab, ggtitle, theme, element_text, scale_x_date, theme_minimal
+from plotnine import (
+    ggplot,
+    geom_line,
+    geom_point,
+    aes,
+    xlab,
+    ylab,
+    ggtitle,
+    theme,
+    element_text,
+    scale_x_date,
+    theme_minimal,
+)
 
 import camelot
 from edgar import *
@@ -195,21 +207,44 @@ sec.write_csv("13F-HR.csv")
 sec = pl.read_csv("13F-HR.csv")
 
 # value means market value in $1000s
-amounts = sec.group_by('Date').agg(pl.col('Value').sum()/1000)
+amounts = sec.groupby("Date").agg({"Value": lambda x: sum(x) / 1000}).reset_index()
+amounts["Date"] = pd.to_datetime(amounts["Date"])
 
-(ggplot(amounts) +
-    geom_point(aes(x="Date", y="Value"), alpha=1) +
-    geom_line(aes(x="Date", y="Value"), alpha=1) +
-    ggtitle("UChicago 13F-HR filings") +
-    xlab("Date") + ylab("Value in millions of dollars") +
-    scale_x_date(date_labels="%Y-%m", date_breaks="1 year") +
-    theme_minimal() +
-    theme(
-        axis_text_x=element_text(rotation=90, hjust=1)
-    )
+amounts.to_csv("annual-totals.csv")
+
+(
+    ggplot(amounts)
+    + geom_point(aes(x="Date", y="Value"), alpha=1)
+    + geom_line(aes(x="Date", y="Value"), alpha=1)
+    + scale_x_date(date_labels="%Y-%m", date_breaks="1 year")
+    + ggtitle("UChicago 13F-HR filings")
+    + xlab("Date")
+    + ylab("Value in millions of dollars")
+    + theme_minimal()
+    + theme(axis_text_x=element_text(rotation=90, hjust=1))
 )
 
-#%% explore which stocks are held
+# %% visualize by company
+
+top10 = (
+    sec.groupby("Issuer")
+    .agg({"Value": lambda x: sum(x) / 1000})
+    .sort_values("Value", descending=True)
+    .head(5)
+)
+
+
+(
+    ggplot(sec.filter(pl.col("Issuer").is_in(top10["Issuer"])))
+    + geom_point(aes(x="Date", y="Value", color="Issuer"), alpha=1)
+    + geom_line(aes(x="Date", y="Value", color="Issuer"), alpha=1)
+    + ggtitle("UChicago 13F-HR filings")
+    + xlab("Date")
+    + ylab("Value in thousands of dollars")
+    + scale_x_date(date_labels="%Y-%m", date_breaks="1 year")
+    + theme_minimal()
+    + theme(axis_text_x=element_text(rotation=90, hjust=1))
+)
 
 
 
