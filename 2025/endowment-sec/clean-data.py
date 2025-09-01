@@ -222,6 +222,34 @@ for file in os.listdir("statements"):
     # tables.export('foo.csv', f='csv', compress=True) 
 
 # %%
+
+fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
+
+# categorize types into broader categories
+type_dict = {
+    "Domestic": "Public equity",
+    "International": "Public equity",
+    "Stocks": "Public equity",
+    "Global public equities": "Public equity",
+    "High yield": "Bonds",
+    "Cash equivalent": "Bonds",
+    "Absolute return": "Hedge funds",
+    "Fixed income": "Bonds",
+    "Equity oriented": "Private equity",
+    "Diversifying": "Private equity",
+    "Hedge funds": "Private equity",
+    "Assets held by trustee": "Funds in trust",
+}
+
+
+for k, v in type_dict.items():
+    fs.loc[fs["type"].str.contains(k, na=False), "type"] = v
+
+fs["type"].unique()
+
+fs = fs.groupby(["year", "type"]).agg({"amount": "sum"}).reset_index()
+
+# %% scrape holdings of index funds
 import requests
 # from requests_html import HTMLSession
 from selenium import webdriver
