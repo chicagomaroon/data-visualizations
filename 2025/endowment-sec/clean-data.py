@@ -427,4 +427,136 @@ vt_sipri = vt.merge(sipri, how="left", left_on="company", right_on="Company (c) 
 vt_sipri = vt_sipri.loc[~vt_sipri["Country (d)"].isna()]
 voo_sipri.amt.sum() + vt_sipri.amt.sum()
 
-# %%
+# %% parse 990 data
+
+foreignInvestments = []
+administrativeExpenses = []
+bonds = []
+conflictsOfInterest = []
+for file in os.listdir("990"):
+    # if file.endswith(".pdf"):
+    #     tables = camelot.read_pdf(os.path.join("990", file), pages="all")
+    #     print(tables)
+    # tables.export('foo.csv', f='csv', compress=True)
+    if file.endswith(".xml"):
+        with open(os.path.join("990", file), "r", encoding="utf-8") as f:
+            my_xml = f.read()
+
+        # Use xmltodict to parse and convert
+        # the XML document
+        data = xmltodict.parse(my_xml)["Return"]
+        ret = data["ReturnData"]
+        year = data["ReturnHeader"].get("TaxPeriodEndDt") or data["ReturnHeader"].get(
+            "TaxPeriodEndDate"
+        )
+        print(year)
+
+        F = ret.get("IRS990ScheduleF", None)
+        F = F.get(
+            "AcctsActvsOutUSTable",
+            F.get("AccountActivitiesOutsideUSGrp", {}),
+        )
+        F = [
+            x
+            for x in F
+            if x.get(
+                "TypeOfActivity",
+                x.get(
+                    "TypeOfActivitiesConducted",
+                    x.get("TypeOfActivitiesConductedTxt", {}),
+                ),
+            )
+            in ["INVESTMENTS", "Investments"]
+        ]
+        for x in F:
+            x["Year"] = year
+        foreignInvestments += F
+
+        D = ret.get("IRS990ScheduleD", None)
+        D = D.get("CurrentYear", D.get("CYEndwmtFundGrp", {}))
+        administrativeExpenses.append(
+            {
+                "Year": year,
+                "AdministrativeExpenses": D.get(
+                    "AdministrativeExpenses", D.get("AdministrativeExpensesAmt", {})
+                ),
+            }
+        )
+
+        for key in [
+            "TaxExemptBondsIssuesGrp",
+            "Form990ScheduleKPartI",
+            "Form990ScheduleKPartII",
+            "Form990ScheduleKPartIII",
+        ]:
+            K = (
+                ret.get("IRS990ScheduleK", [])
+                + ret.get("IRS990ScheduleK1", [])
+                + ret.get("IRS990ScheduleK2", [])
+                + ret.get("IRS990ScheduleK3", [])
+            )
+            K = [x.get(key) for x in K if x.get(key)]
+            # Unnest so K_flat is always a flat list of dicts
+            K_flat = []
+            for x in K:
+                if isinstance(x, dict):
+                    x["Year"] = year
+                    K_flat.append(x)
+                elif isinstance(x, list):
+                    for i in x:
+                        if isinstance(i, dict):
+                            i["Year"] = year
+                            K_flat.append(i)
+            bonds += K_flat
+
+        L = ret.get("IRS990ScheduleL", None)
+        L = L.get("BusTrInvolveInterestedPrsnGrp", L.get("", {}))
+        for x in L:
+            x["Year"] = year
+            x["NameOfInterested"] = x["NameOfInterested"].get("BusinessName") or x[
+                "NameOfInterested"
+            ].get("PersonNm")
+            if isinstance(x["NameOfInterested"], dict):
+                x["NameOfInterested"] = x["NameOfInterested"].get(
+                    "BusinessNameLine1"
+                ) or x["NameOfInterested"].get("BusinessNameLine1Txt")
+
+        conflictsOfInterest += L
+
+
+# %% save 990 data
+def rename_keys(d, rename_map):
+    return {rename_map.get(k, k): v for k, v in d.items()}
+
+
+pd.DataFrame(conflictsOfInterest).to_csv("conflicts-of-interest.csv", index=False)
+
+rename_bonds = {
+    "CUSIPNum": "CUSIPNumber",
+    "IssuePrice": "IssuePriceAmt",
+    "OnBehalfOfIssuerInd": "OnBehalfOfIssuer",
+    "PoolFinancingInd": "PoolFinancing",
+    "BondIssuedDt": "DateIssued",
+    "DefeasedInd": "Defeased",
+    "IssuerEIN": "BondIssuerEIN",
+    "PurposeDesc": "DescriptionOfPurpose",
+    # "PercentageOfPrvtBusinessReUBI": "BondIssuerEIN",
+}
+pd.DataFrame([rename_keys(x, rename_bonds) for x in bonds]).to_csv(
+    "bonds.csv", index=False
+)
+
+pd.DataFrame(administrativeExpenses).to_csv("administrative-expenses.csv", index=False)
+
+rename_fi = {
+    "TypeOfActivitiesConductedTxt": "TypeOfActivity",
+    "TypeOfActivitiesConducted": "TypeOfActivity",
+    "RegionTxt": "Region",
+    "RegionTotalExpendituresAmt": "TotalExpenditures",
+    # "PercentageOfPrvtBusinessReUBI": "BondIssuerEIN",
+}
+pd.DataFrame([rename_keys(x, rename_fi) for x in foreignInvestments]).to_csv(
+    "foreign-investments.csv", index=False
+)
+
+# pd.DataFrame().to_csv("990-schedules.csv", index=False)
