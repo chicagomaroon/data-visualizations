@@ -9,6 +9,7 @@ import re
 from datetime import datetime
 import xmltodict
 import yfinance as yf
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 import pandas as pd
 import polars as pl
@@ -543,10 +544,19 @@ sec_2025 = pd.concat(
     ]
 )
 sec_2025["Issuer"] = sec_2025["Issuer"].str.upper()
+sec_2025["Issuer"] = sec_2025["Issuer"].str.replace(" INC.", "")
+
 # there are overlapping stocks across funds
 sec_2025 = (
     sec_2025.groupby(["Issuer"])
-    .agg({"Thousands": "sum", "Ticker": "first"})
+    .agg(
+        {
+            "Thousands": "sum",
+            "Ticker": "first",
+            # "Industry": "first",
+            # "Summary": "first",
+        }
+    )
     .reset_index()
 )[["Issuer", "Ticker", "Thousands"]]
 
@@ -567,14 +577,38 @@ sec_2025.to_csv("sec-industries-2025-4.csv", index=False)
 plot_df = (
     sec_2025[~sec_2025["Industry"].isna()]
     .groupby("Industry")
-    .agg({"Thousands": "sum"})
+    .agg(
+        {
+            "Thousands": "sum",
+            "Summary": lambda x: ", ".join(x),
+            "Issuer": lambda x: ", ".join(x),
+        }
+    )
     .reset_index()
     .sort_values("Thousands", ascending=False)
 )
 
+# Cite: Copilot
+tfidf = TfidfVectorizer(stop_words="english", max_features=1000)
+tfidf_matrix = tfidf.fit_transform(plot_df["Summary"].fillna(""))
+# Get feature names (words)
+feature_names = tfidf.get_feature_names_out()
+
+# Extract top words for each summary
+top_words = []
+for row in tfidf_matrix:
+    # Get indices of top words sorted by TF-IDF score
+    sorted_indices = row.toarray().flatten().argsort()[::-1]
+    top_word_indices = sorted_indices[:15]
+    top_words.append([feature_names[i] for i in top_word_indices])
+
+# Add top words to the DataFrame
+plot_df["TopWords"] = top_words
+plot_df["Issuer"] = plot_df["Issuer"].str.title()
+
 (
     ggplot(
-        plot_df[plot_df["Thousands"] > 0.1],
+        plot_df[plot_df["Thousands"] > 1],
         aes("reorder(Industry, Thousands)", "Thousands"),
     )
     + geom_col()
