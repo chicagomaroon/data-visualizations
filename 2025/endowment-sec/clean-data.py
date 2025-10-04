@@ -7,6 +7,8 @@ Use SEC API to download all UChicago SEC filings since 1994
 import os
 import re
 from datetime import datetime
+import xmltodict
+import yfinance as yf
 
 import pandas as pd
 import polars as pl
@@ -15,6 +17,7 @@ from plotnine import (
     ggplot,
     geom_line,
     geom_point,
+    geom_col,
     aes,
     xlab,
     ylab,
@@ -23,17 +26,20 @@ from plotnine import (
     element_text,
     scale_x_date,
     theme_minimal,
+    coord_flip,
 )
 
-import camelot
+# import camelot
 from edgar import *
 
 # %% 990T filings from IRS via ProPublica API
 
+# unused because data is not very detailed
 # response=requests.get('https://projects.propublica.org/nonprofits/api/v2/organizations/362177139.json')
 
 # %% SEC filings
 # cite: https://pypi.org/project/edgartools/
+# alternative: https://github.com/zpetan/sec-13f-portfolio-python
 
 # 2. Tell the SEC who you are (required by SEC regulations)
 set_identity("karenyi@uchicago.edu")
@@ -209,17 +215,20 @@ for i, investment in enumerate(investments):
 
     # add date column
     df = df.with_columns(pl.lit(date).alias("Date"))
+    df["Thousands"] = df["Value"]
+    df["Issuer"] = df["Issuer"].str.upper()
 
     # print(df)
 
     sec = pl.concat([sec, df], how="diagonal")
 
-sec.write_csv("13F-HR.csv")
+# sec.write_csv("13F-HR.csv")
 
 # %% explore total holdings over time
 
 sec = pd.read_csv("13F-HR.csv")
 # sec[pd.to_datetime(sec['Date'])>datetime(2025,2,1)]
+sec["Date"] = pd.to_datetime(sec["Date"])
 
 # value means market value in $1000s
 amounts = sec.groupby("Date").agg({"Value": lambda x: sum(x) / 1000}).reset_index()
@@ -243,19 +252,24 @@ amounts.to_csv("annual-totals.csv")
 
 top10 = (
     sec.groupby("Issuer")
-    .agg({"Value": lambda x: sum(x) / 1000})
-    .sort_values("Value", descending=True)
+    .agg({"SharesPrnAmount": "max", "Ticker": "first"})
+    .sort_values("SharesPrnAmount", ascending=False)
     .head(5)
+    .reset_index()
+    # .rename(columns={"Value": "Total in Millions"})
 )
 
-
+# TODO: for summarizing things like shares over time, wouldn't sum not make sense because some of the shares are held continually over time? therefore do a lagged difference and then sum?
+# TODO: visualize by industry
+# TODO: combine with private data? how?
+# TODO: verify via SharesPrnAmt that shares is correlated with value, ie UChicago is genuinely investing more
 (
-    ggplot(sec.filter(pl.col("Issuer").is_in(top10["Issuer"])))
-    + geom_point(aes(x="Date", y="Value", color="Issuer"), alpha=1)
-    + geom_line(aes(x="Date", y="Value", color="Issuer"), alpha=1)
+    ggplot(sec.loc[[x in top10["Issuer"].unique() for x in sec["Issuer"]]])
+    + geom_point(aes(x="Date", y="SharesPrnAmount", color="Issuer"), alpha=1)
+    + geom_line(aes(x="Date", y="SharesPrnAmount", color="Issuer"), alpha=1)
     + ggtitle("UChicago 13F-HR filings")
     + xlab("Date")
-    + ylab("Value in thousands of dollars")
+    + ylab("Shares")
     + scale_x_date(date_labels="%Y-%m", date_breaks="1 year")
     + theme_minimal()
     + theme(axis_text_x=element_text(rotation=90, hjust=1))
@@ -265,31 +279,41 @@ top10 = (
 # %% explore which stocks are held
 
 
-# %%
+# %% get all statements
 
-for file in os.listdir("statements"):
-    tables = camelot.read_pdf(os.path.join("statements", file))
-    print(tables)
-    # tables.export('foo.csv', f='csv', compress=True)
+# unused because manual copying was easier than camelot parsing
+# alternative: https://tabula-py.readthedocs.io/en/latest/
+# statements_dir = "../endowment-breakdown/financial-statements"
+# for file in os.listdir(statements_dir):
+#     tables = camelot.read_pdf(os.path.join(statements_dir, file))
+#     print(tables)
+#     # tables.export('foo.csv', f='csv', compress=True)
 
-# %%
+# %% get parsed financial statements
 
 fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
 
 # categorize types into broader categories
 type_dict = {
-    "Domestic": "Public equity",
-    "International": "Public equity",
-    "Stocks": "Public equity",
-    "Global public equities": "Public equity",
+    "Domestic": "Public equities",
+    "International": "Public equities",
+    "Stocks": "Public equities",  # TODO: actually this comprises public and private so maybe exclude pre 2000
+    "Global public equities": "Public equities",
     "High yield": "Bonds",
     "Cash equivalent": "Bonds",
-    "Absolute return": "Hedge funds",
     "Fixed income": "Bonds",
-    "Equity oriented": "Private equity",
-    "Diversifying": "Private equity",
-    "Hedge funds": "Private equity",
-    "Assets held by trustee": "Funds in trust",
+    "Absolute return": "Private equities",  # hedge funds may be public or private
+    "Equity oriented": "Private equities",  # hedge funds may be public or private
+    "Diversifying": "Private equities",  # hedge funds may be public or private
+    "Private equity": "Private equities",
+    # "Assets held by trustee": "Funds in trust",
+    # for now, to simplify graph, class most as other
+    "Assets held by trustee": "Other",
+    "Funds in trust": "Other",
+    "Natural resources": "Other",
+    "Private debt": "Other",
+    "Real assets": "Other",
+    "Real estate": "Other",
 }
 
 
@@ -298,6 +322,7 @@ for k, v in type_dict.items():
 
 # consolidate regrouped groups
 fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
+fs.to_csv("types.csv", index=False)
 
 (
     ggplot(fs, aes(x="year", y="percent"))
@@ -321,14 +346,40 @@ import re
 
 
 # note: this is JUST 1 quarter in 2025, for now
-def get_holdings(site, ticker=None, pages=51):
+def get_holdings(company="vanguard", ticker=None, pages=51):
+    sites = {
+        "vanguard": f"https://investor.vanguard.com/investment-products/etfs/profile/{ticker.lower()}#portfolio-composition",
+        "ishares": f"https://www.ishares.com/us/products/239726/{ticker.lower()}",
+    }
+    tabs = {
+        "vanguard": "Portfolio composition",
+        "ishares": "Holdings",
+    }
+    headings = {
+        "vanguard": "Holding detailss",
+        "ishares": "Holdings",
+    }
+    headingtypes = {
+        "vanguard": "h5",
+        "ishares": "h2",
+    }
+    percents = {
+        "vanguard": "(\\d+\\.\\d+) %",
+        "ishares": "\\d+\\.\\d\\d",
+    }
+    companies = {
+        "vanguard": " [A-Z][A-Za-z &\\.\\(\\)'/]+(\\d|—)",
+        "ishares": "^ [A-Z][A-Za-z &\\.\\(\\)'/]+ (\\$)",
+    }
+
     driver = webdriver.Firefox()
 
-    driver.get(site)
-    elem = driver.find_element(By.XPATH, "//*[text()='Portfolio composition']")
-    elem.send_keys(Keys.RETURN)
+    driver.get(sites[company])
     driver.execute_script("document.body.style.zoom='15%'")
     driver.maximize_window()
+    elem = driver.find_element(By.XPATH, f"//*[text()='{tabs[company]}']")
+    elem.send_keys(Keys.RETURN)
+    driver.execute_script("document.body.style.zoom='15%'")
 
     data = []
     for i in range(pages):
@@ -341,14 +392,19 @@ def get_holdings(site, ticker=None, pages=51):
 
             # Find the first <h5> with text "Holding details"
             h5_elem = driver.find_element(
-                By.XPATH, "//h5[contains(text(), 'Holding details')]"
+                By.XPATH,
+                f"//{headingtypes[company]}[contains(text(), '{headings[company]}')]",
             )
 
             # Find the first <div> following this <h5>
             div_elem = h5_elem.find_element(By.XPATH, "following-sibling::div[1]")
 
             table = div_elem.find_elements(By.TAG_NAME, "table")
-            data.append(table[0].text.split("\n"))
+            if len(table[0].text):
+                t = 0
+            else:
+                t = 3
+            data.append(table[t].text.split("\n"))
         except Exception as e:
             print(f"Error: {e}")
             continue
@@ -366,13 +422,13 @@ def get_holdings(site, ticker=None, pages=51):
                     print(f"Error parsing ticker: {i} - {e}")
                     break
 
-                percents.append(re.search("(\\d+\\.\\d+) %", i)[0].strip(" %"))
+                percents.append(re.search(percents[company], i)[0].strip(" %"))
 
                 try:
                     companies.append(
                         re.search(
-                            " [A-Z][A-Za-z &\\.\\(\\)'/]+(\\d|—)",
-                            i.strip().strip("—").strip(ticker_i),
+                            companies[company],
+                            i.strip().strip("—").strip(ticker_i).strip(" $"),
                         )[0][1:-2].strip()
                     )
                 except Exception as e:
@@ -381,9 +437,9 @@ def get_holdings(site, ticker=None, pages=51):
 
     df = pd.DataFrame({"ticker": tickers, "percent": percents, "company": companies})
     uc_investment = (
-        sec.loc[
-            (sec["Ticker"] == ticker) & (sec["Date"] == "2025-03-31"), "Value"
-        ].values[0]
+        sec.sort_values("Date", ascending=False)
+        .loc[(sec["Ticker"] == ticker), "Value"]
+        .values[0]
         * 1000
     )
     df["amt"] = df["percent"].astype(float) / 100 * uc_investment
@@ -392,14 +448,46 @@ def get_holdings(site, ticker=None, pages=51):
     driver.quit()
 
 
+# vanguard
+# get_holdings(
+#     ticker="VOO",
+# )
+# get_holdings(
+#     ticker="VT",
+# )
+# get_holdings(
+#     ticker="VCLT",
+# )
+# get_holdings(
+#     ticker="BND",
+# )
+
+# ishares
 get_holdings(
-    site="https://investor.vanguard.com/investment-products/etfs/profile/voo#portfolio-composition",
-    ticker="VOO",
+    ticker="IVV",
 )
 get_holdings(
-    site="https://investor.vanguard.com/investment-products/etfs/profile/vt#portfolio-composition",
-    ticker="VT",
+    ticker="IEFA",
 )
+get_holdings(
+    ticker="IEMG",
+)
+
+# individual stocks, not portfolios
+# get_holdings(
+#     ticker="NLY",
+# )
+# get_holdings(
+#     ticker="LQD",
+# )
+# get_holdings(
+#     ticker="NKGN",
+# )
+# gulf canada no longer exists, was oil
+# AMR corp no longer exists, was airlines
+
+# TODO: switch to yfinance for top holdings (it's nice to see all holdings but not practical for all funds)
+yf.Ticker("VT").funds_data.top_holdings
 
 
 # %%
@@ -415,7 +503,11 @@ def clean_names(x):
 
 
 voo = pd.read_csv("holdings-VOO.csv")
+voo["source"] = "VOO"
 vt = pd.read_csv("holdings-VT.csv")
+vt["source"] = "VT"
+all_holdings = pd.concat([voo, vt])
+
 sipri = pd.read_excel("SIPRI-Top-100-2002-2023.xlsx", sheet_name="2023", skiprows=3)
 voo["company"] = voo["company"].apply(clean_names)
 vt["company"] = vt["company"].apply(clean_names)
@@ -426,6 +518,68 @@ voo_sipri = voo_sipri.loc[~voo_sipri["Country (d)"].isna()]
 vt_sipri = vt.merge(sipri, how="left", left_on="company", right_on="Company (c) ")
 vt_sipri = vt_sipri.loc[~vt_sipri["Country (d)"].isna()]
 voo_sipri.amt.sum() + vt_sipri.amt.sum()
+
+
+# %% merge stocks with 500 industry info
+
+# TODO: need to match rough percentage of each industry to portfolios
+# then group by year and report percentage of each industry per year
+# but I only have makeup of holdings for 2 funds for 1 year, so can't compare over time
+sec_2025 = pd.concat(
+    [
+        sec[
+            (~sec["Ticker"].isin(["VOO", "VT"]))
+            # take the most recent filing, idk how to aggregate over time as idk if new or total holdings
+            & (sec["Date"] == datetime(2025, 3, 31))
+        ],
+        all_holdings.rename(
+            columns={
+                "percent": "Thousands",
+                # "source": "Ticker",
+                "company": "Issuer",
+                "ticker": "Ticker",
+            }
+        ),
+    ]
+)
+sec_2025["Issuer"] = sec_2025["Issuer"].str.upper()
+# there are overlapping stocks across funds
+sec_2025 = (
+    sec_2025.groupby(["Issuer"])
+    .agg({"Thousands": "sum", "Ticker": "first"})
+    .reset_index()
+)[["Issuer", "Ticker", "Thousands"]]
+
+sec_2025["Summary"] = None
+
+for ticker in sorted(list(set(sec_2025["Ticker"].unique()) - set([None]))):
+    print(ticker)
+    # if sec_2025.loc[sec_2025["Ticker"] == ticker, "Industry"].isna().values[0]:
+    #     sec_2025.loc[sec_2025["Ticker"] == ticker, "Industry"] = yf.Ticker(
+    #         ticker
+    #     ).info.get("industry", None)
+    sec_2025.loc[sec_2025["Ticker"] == ticker, "Summary"] = yf.Ticker(ticker).info.get(
+        "longBusinessSummary", None
+    )
+
+sec_2025.to_csv("sec-industries-2025-4.csv", index=False)
+
+plot_df = (
+    sec_2025[~sec_2025["Industry"].isna()]
+    .groupby("Industry")
+    .agg({"Thousands": "sum"})
+    .reset_index()
+    .sort_values("Thousands", ascending=False)
+)
+
+(
+    ggplot(
+        plot_df[plot_df["Thousands"] > 0.1],
+        aes("reorder(Industry, Thousands)", "Thousands"),
+    )
+    + geom_col()
+    + coord_flip()
+)
 
 # %% parse 990 data
 
