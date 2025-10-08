@@ -207,12 +207,12 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
           return  matchingCategory ? 685 + matchingCategory[2] * 50 : d.y0
         })
         .attr('width', d => {
-          const outerWidth = d.x1 - d.x0;
-          return (d.data.Actual_Amount / d.data.Grant_Amount) * outerWidth;
+          const matchingCategory = bottomCategories.flat().find(c => c[0] === d.data.Category);
+          return  matchingCategory ? d.data.Actual_Amount/10000: (d.data.Actual_Amount / d.data.Grant_Amount) * (d.x1-d.x0)
         })
         .attr('height', d => {
-          const outerHeight = d.y1 - d.y0;
-          return (d.data.Actual_Amount / d.data.Grant_Amount) * outerHeight;
+          const matchingCategory = bottomCategories.flat().find(c => c[0] === d.data.Category);
+          return  matchingCategory ? d.data.Actual_Amount/10000: (d.data.Actual_Amount / d.data.Grant_Amount) * (d.y1-d.y0)
         })
         .style("stroke", "none")
         .style("fill", d => colorScale.current(d.data.Category))
@@ -534,8 +534,9 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
     const g = d3.select(svgRef.current).select("g");
     removeTooltipEvents(outerRectsRef.current);
     removeTooltipEvents(innerRectsRef.current);
-    if (step < 2) {
+    if (step < 3) {
       // Initial state
+      updateHighlighted([], duration, 1);
       innerRectChange(outerRectsRef, 1, duration);
       innerRectChange(innerRectsRef, 0, duration);
       innerRectChange(grantValuesRef, 1, duration);
@@ -550,34 +551,34 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setOpacity(grantTitlesRef, "", 0, duration);
       setOpacity(categoryTitlesRef, "", 1, duration);
 
-    } else if (2 <= step && step < 3) {
+    } else if (3 <= step && step < 4) {
       innerRectChange(outerRectsRef, .3, duration);
       innerRectChange(innerRectsRef, 1, duration);
       innerRectChange(grantValuesRef, 1, duration);
       innerRectChange(grantNewValuesRef, 0, duration);
-    } else if (3 <= step && step <= 5) {
+    } else if (4 <= step && step <= 6) {
       innerRectChange(outerRectsRef, .3, duration);
       innerRectChange(innerRectsRef, 1, duration);
-      innerRectChange(grantValuesRef, 0, duration);
-      innerRectChange(grantNewValuesRef, 1, duration);
+      innerRectChange(grantValuesRef, 0, 1000);
+      innerRectChange(grantNewValuesRef, 1, 1000);
       g.transition()
       .duration(duration)
       .attr("transform", "translate(0,0) scale(1)");
       setOpacity(categoryTotalsRef, "", 1, duration);
       setOpacity(grantTitlesRef, "", 0, duration);
       setOpacity(categoryTitlesRef, "", 1, duration);
-    } else if (6 <= step && step < 7) {
+    } else if (6 < step && step <= 7) {
       zoomChangeEffect(duration, 0, -1000, 2.2, "Understanding political economy", "national security");
-    } else if (7 <= step && step < 8) {
+    } else if (7 < step && step <= 9) {
       zoomChangeEffect(duration, 0, -1000, 2.2, "Understanding political economy", "national security");
       setOpacity(grantValuesRef, "Understanding political economy", 0, duration, 0);
       setOpacity(grantNewValuesRef, "Understanding political economy", 0, duration, 1);
       setOpacity(outerRectsRef, "Understanding political economy", 0.1, duration, .3);
       setOpacity(innerRectsRef, "Understanding political economy", 0, duration, 1);
     }
-    else if (8 <= step && step < 10) {
+    else if (10 <= step && step < 11) {
       zoomChangeEffect(duration, -1040, -2500, 4.8, "Understanding the Impact", "national security");
-    } else if (10 <= step && step < 11) {
+    } else if (11 <= step && step <= 12) {
       zoomChangeEffect(duration, -1040, -2500, 4.8, "Understanding the Impact", "national security");
       setOpacity(grantValuesRef, "Understanding the Impact", 0, duration, 0);
       setOpacity(grantNewValuesRef, "Understanding the Impact", 0, duration, 1);
@@ -586,7 +587,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setFontAndOpacity(grantNewValuesRef, "Spatiotemporal models", 0, duration, 1, true);
       setFontAndOpacity(grantValuesRef, "Spatiotemporal models", 0, duration, 1, true);
     }
-    else if (11 <= step && step < 12) {
+    else if (13 <= step && step < 14) {
       if (duration == 0) {
         reZoomChangeEffect(0, 0, -620, -54700, 70, "Spatiotemporal models", "neuroscience");
       } else if (direction == "down") {
@@ -594,17 +595,17 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       } else {
         zoomChangeEffect(duration, -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
       }
-    } else if (12 <= step && step < 13) {
+    } else if (14 <= step && step < 15) {
         zoomChangeEffect(duration, -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
-    } else if (13 <= step && step < 14) {
+    } else if (15 <= step && step < 16) {
       zoomChangeEffect(duration,  -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
       setOpacity(grantValuesRef, "Spatiotemporal models", 0, duration, 0);
       setFontAndOpacity(grantNewValuesRef, "Spatiotemporal models", 0, duration);
       setOpacity(outerRectsRef, "Spatiotemporal models", 0.1, duration, .3);
       setOpacity(innerRectsRef, "Spatiotemporal models", 0, duration, 1);
-      updateHighlighted([], 0, 1);
+
     }
-    else if (14 <= step && step < 15) {
+    else if (16 <= step && step < 17) {
       innerRectChange(outerRectsRef, .1, duration);
       innerRectChange(innerRectsRef, .1, duration);
       updateHighlighted(highlighted);
@@ -681,7 +682,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
   }, [currentStepIndex]);
 
   useEffect(() => {
-    if (currentStepIndex >= 14) {
+    if (currentStepIndex >= 24) {
       updateHighlighted(highlighted);
     }
   }, [highlighted]);
