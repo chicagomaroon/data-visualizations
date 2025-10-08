@@ -576,9 +576,9 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setOpacity(outerRectsRef, "Understanding political economy", 0.1, duration, .3);
       setOpacity(innerRectsRef, "Understanding political economy", 0, duration, 1);
     }
-    else if (10 <= step && step < 11) {
+    else if (10 <= step && step < 12) {
       zoomChangeEffect(duration, -1040, -2500, 4.8, "Understanding the Impact", "national security");
-    } else if (11 <= step && step <= 12) {
+    } else if (12 <= step && step <= 13) {
       zoomChangeEffect(duration, -1040, -2500, 4.8, "Understanding the Impact", "national security");
       setOpacity(grantValuesRef, "Understanding the Impact", 0, duration, 0);
       setOpacity(grantNewValuesRef, "Understanding the Impact", 0, duration, 1);
@@ -587,7 +587,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setFontAndOpacity(grantNewValuesRef, "Spatiotemporal models", 0, duration, 1, true);
       setFontAndOpacity(grantValuesRef, "Spatiotemporal models", 0, duration, 1, true);
     }
-    else if (13 <= step && step < 14) {
+    else if (14 <= step && step < 15) {
       if (duration == 0) {
         reZoomChangeEffect(0, 0, -620, -54700, 70, "Spatiotemporal models", "neuroscience");
       } else if (direction == "down") {
@@ -595,7 +595,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       } else {
         zoomChangeEffect(duration, -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
       }
-    } else if (14 <= step && step < 15) {
+    } else if (15 <= step && step < 16) {
         zoomChangeEffect(duration, -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
     } else if (15 <= step && step < 16) {
       zoomChangeEffect(duration,  -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);

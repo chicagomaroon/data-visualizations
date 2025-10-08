@@ -117,23 +117,23 @@ const ScrollTest = ({ height }) => {
             ))}
           </div>
           <TreemapAnimations currentStepIndex={currentStepIndex + 1} direction={direction} scrollY={scrollY} />
-          <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollTwo} start={5} height={ height }/>
+          <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollTwo} start={6} height={ height }/>
           <div className="inner_body_container">
             <div className="body_text_container">
               {bodyTwo.map((text, index) => (
                 <p className="body_font" key={index} dangerouslySetInnerHTML={{ __html: text }} />
               ))}
               </div>
-              <TreemapAnimations currentStepIndex={currentStepIndex + 1} direction={direction} scrollY={scrollY} />
-              <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollThree} start={7} height={ height }/>
+              <TreemapAnimations currentStepIndex={currentStepIndex + 2} direction={direction} scrollY={scrollY} />
+              <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollThree} start={8} height={ height }/>
               <div className="inner_body_container">
                   <div className="body_text_container">
                   {bodyThree.map((text, index) => (
                     <p className="body_font" key={index} dangerouslySetInnerHTML={{ __html: text }} />
                   ))}
                   </div>
-                  <TreemapAnimations currentStepIndex={currentStepIndex + 1} direction={direction} scrollY={scrollY} />
-                  <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollFour} start={10} height={ height }/>
+                  <TreemapAnimations currentStepIndex={currentStepIndex + 3} direction={direction} scrollY={scrollY} />
+                  <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollFour} start={11} height={ height }/>
                   <div className="inner_body_container">
                       <div className="body_text_container">
                       {bodyFour.map((text, index) => (

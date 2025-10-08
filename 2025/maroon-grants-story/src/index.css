@@ -4,22 +4,20 @@
   box-sizing: border-box;
 }
 
-
-
 #root {
   width: 100%;
   min-height: 100vh;
-} 
-
-a:focus {
-    color: #800000;
 }
 
-html, body {
+a:focus {
+  color: #800000;
+}
+
+html,
+body {
   width: 100%;
   margin: 0;
   padding: 0;
-
 }
 
 body {
@@ -55,7 +53,6 @@ a {
   line-height: 2em;
 }
 
-
 .contentdiv {
   position: relative;
   margin-top: 20px;
@@ -79,12 +76,12 @@ a {
 .button_label {
   position: absolute;
   left: 50%;
-  line-height:20px;
+  line-height: 20px;
   transform: translateX(-50%);
   font-size: 16px;
   top: 12px;
-  color: #0A8F4E;
-  background-color: #DFE3C4;
+  color: #0a8f4e;
+  background-color: #dfe3c4;
   white-space: nowrap;
 }
 
@@ -97,19 +94,19 @@ a {
   margin-right: auto;
   margin-top: 2.1px;
   width: 25px;
-  border: 2px solid #393A33;
+  border: 2px solid #393a33;
   height: 42px;
   z-index: 1;
   border-radius: 50%;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .agency_option {
   position: relative;
-  border: 1px solid #393A33;
+  border: 1px solid #393a33;
   height: 25px;
   width: 100%;
-  background-color: #DFE3C4;
+  background-color: #dfe3c4;
 }
 
 .grant_button_container {
@@ -128,10 +125,10 @@ a {
 
 .grant_button {
   position: relative;
-  background-color: #DFE3C4;
-  border: 2px solid #393A33;
+  background-color: #dfe3c4;
+  border: 2px solid #393a33;
   text-align: center;
-  color: #393A33;
+  color: #393a33;
   width: 140px;
   height: 50.5px;
   transition: transform 0.2s ease;
@@ -141,7 +138,7 @@ a {
 
 @media (hover: hover) and (pointer: fine) {
   .grant_button:hover {
-    transform: translateY(-5px);
+      transform: translateY(-5px);
   }
 }
 
@@ -177,7 +174,7 @@ a {
 #header {
   color: white;
   box-sizing: border-box;
-  background-color: rgba(36, 65, 83, .9);
+  background-color: rgba(36, 65, 83, 0.9);
   border-radius: 10px;
   padding: 1vh 2vh;
   margin: 0;
@@ -198,7 +195,7 @@ a {
 
 #subhead {
   margin-top: 3vh;
-  background-color: rgba(36, 65, 83, .9);
+  background-color: rgba(36, 65, 83, 0.9);
   border-radius: 10px;
   color: white;
   font-weight: normal;
@@ -208,7 +205,7 @@ a {
 #maroon {
   fill: white;
   width: 400px;
-  top:0px;
+  top: 0px;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -217,7 +214,7 @@ a {
 }
 
 #intro-bg {
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -228,67 +225,65 @@ a {
 
 @media screen and (max-width: 750px) {
   .headerdiv {
-    width: 90% !important;
-    padding: 0 !important;
+      width: 90% !important;
+      padding: 0 !important;
   }
 
   #intro-content {
-    width: 90% !important;
+      width: 90% !important;
   }
 
   #header {
-    position: relative !important;
-    padding: 0 !important;
-    font-size: 35px !important;
+      position: relative !important;
+      padding: 0 !important;
+      font-size: 35px !important;
   }
 
   #maroon {
-    width: 350px !important;
+      width: 350px !important;
   }
 
   #subhead {
-    position: relative !important;
-    padding: 0 !important;
-    font-size: 20px !important;
+      position: relative !important;
+      padding: 0 !important;
+      font-size: 20px !important;
   }
-
 }
 
 @media screen and (max-height: 600px) {
   #header {
-    font-size: 40px;
+      font-size: 40px;
   }
 
   #subhead {
-    font-size: 20px;
+      font-size: 20px;
   }
 
   #arrow {
-    bottom: 10px;
+      bottom: 10px;
   }
 }
 
 @media screen and (max-height: 500px) {
   #header {
-    font-size: 30px;
+      font-size: 30px;
   }
 
   #subhead {
-    font-size: 20px;
+      font-size: 20px;
   }
 
   #arrow {
-    display: none !important;
+      display: none !important;
   }
 
   #intro-content {
-    top: 62vh !important;
+      top: 62vh !important;
   }
 
   #maroon {
-    margin-top: 10px !important;
+      margin-top: 10px !important;
   }
-
 }
 
 .byline {
@@ -317,7 +312,6 @@ a {
   font-weight: bold;
   color: #850611;
 }
-
 
 #separator {
   position: relative;
@@ -351,7 +345,7 @@ a {
   margin-right: auto;
   padding-top: 5px;
   padding-left: 20px;
-  padding-right: 20px; 
+  padding-right: 20px;
 
   display: flex;
   flex-direction: column;
@@ -368,7 +362,6 @@ a {
   right: 0;
 }
 
-
 .pre_body_container {
   position: relative;
   margin-top: 50px;
@@ -379,7 +372,6 @@ a {
   left: 0;
   right: 0;
 }
-
 
 .inner_body_container {
   position: absolute;
@@ -399,7 +391,6 @@ a {
   margin-bottom: 20px;
 }
 
-
 .is_relative {
   position: relative;
 }
@@ -408,9 +399,7 @@ a {
   position: relative;
   left: 5px;
   width: 20px;
-
 }
-
 
 .chart-svg {
   position: relative;
@@ -420,117 +409,119 @@ a {
   overflow: hidden;
 }
 
-
 @media screen and (max-width: 1000px) {
-
   .body_container {
-    width: 99%;
+      width: 99%;
   }
 
   .body_font {
-    font-size: 15px;
+      font-size: 15px;
   }
-  
 
   .pre_body_container {
-    width: 99%;
+      width: 99%;
   }
 
   .contentdiv {
-    width: 100%;
+      width: 100%;
   }
 }
-
-
 
 @media screen and (max-width: 500px) {
-
   .scroll__graphic {
-    width: 400px;
-    padding-left: 0px;
-    padding-right: 0px;
+      width: 400px;
+      padding-left: 0px;
+      padding-right: 0px;
   }
+}
+
+@media screen and (max-width: 365px) {
+
+#header {
+  font-size: 28px !important;
+}
+
+#subhead {
+  font-size: 17px !important;
+}
+
+.byline {
+  font-size: 14px !important;
+}
 
 }
 
-@media screen and (max-width: 360px) {
 
-  #header {
-    font-size: 30px !important;
-  }
+@media screen and (max-width: 400px) {
 
-  #subhead {
-    font-size: 15px !important;
-  }
-
+#header {
+  font-size: 35px;
 }
 
+#subhead {
+  font-size: 18px;
+}
+
+}
 
 
 @media screen and (max-width: 450px) {
-
   .text_container {
-    width: 100% !important;
+      width: 100% !important;
   }
 
   .scroll_container {
-    width: 90% !important;
+      width: 90% !important;
   }
 
   #maroon {
-    width: 300px !important;
+      width: 300px !important;
   }
 
   #arrow {
-    bottom: 5px !important;
+      bottom: 5px !important;
   }
 
-
   .scroll__graphic {
-    width: 95%;
-    top: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
+      width: 95%;
+      top: 0px;
+      padding-left: 0px;
+      padding-right: 0px;
   }
 
   .grant_button_container {
-    width: 90%;
-    gap: 15px;
+      width: 90%;
+      gap: 15px;
   }
 
   #agency_options {
-    margin-bottom: 0px !important;
+      margin-bottom: 0px !important;
   }
-  
+
   .grant_button {
-    width: 140px;
-    align-items: top;
-    height: 50px;
-    min-width: 50px;
-
+      width: 140px;
+      align-items: top;
+      height: 50px;
+      min-width: 50px;
   }
-  
+
   .button_label {
-    top: 12px;
+      top: 12px;
   }
-  
+
   .oval-dollar {
-    width: 20px;
-    height: 38px;
-    margin-top: 3.5px;
+      width: 20px;
+      height: 38px;
+      margin-top: 3.5px;
   }
 
-  
   #graphic_title {
-    position: relative;
-    top: 3vw;
-    font-size: 25px;
-    color: maroon;
+      position: relative;
+      top: 3vw;
+      font-size: 25px;
+      color: maroon;
   }
-
-  
 }
-
 
 #graphic-title-container {
   position: relative;
