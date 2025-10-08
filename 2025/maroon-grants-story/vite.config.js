@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/maroon-grants-story/',
+  base: '/2025/maroon-grants-story/',
   build: {
     rollupOptions: {
       input: {
