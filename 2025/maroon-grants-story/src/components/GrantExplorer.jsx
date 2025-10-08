@@ -303,8 +303,8 @@ const GrantExplorer = () => {
                     label="Chicago"
                 />
                 <GrantButton
-                    onClick={(label) => {
-                        onClickAction(label.label);
+                    onClick={() => {
+                        onClickAction('Minority');
                     }}
                     label="Minority Populations"
                     size={13}
