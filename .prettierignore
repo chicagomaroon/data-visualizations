@@ -1,0 +1,11 @@
+# File types to ignore
+*.min.js
+jquery*
+*bootstrap*
+README.md
+.github
+*.min.html
+
+# Directories and files to ignore
+2015/dev-files/raw-data.json
+static_imports/
