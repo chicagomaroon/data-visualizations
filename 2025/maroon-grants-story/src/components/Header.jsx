@@ -13,11 +13,10 @@ const Headline = () => {
 
 const Byline = () => {
   return (
-    <div className="headerdiv" style={{marginTop: "30px"}}>
-      <p className="byline">Written and Data Collected by: <a className="byline_link" href="https://chicagomaroon.com/staff_name/celeste-alcalay/">Celeste Alcalay</a> and <a className="byline_link" href="https://chicagomaroon.com/staff_name/gabriel-kraemer/">Gabriel Kraemer</a></p>
+    <div className="headerdiv" id="byline-container">
+      <p className="byline">Written and Data Collected by <a className="byline_link" href="https://chicagomaroon.com/staff_name/celeste-alcalay/">Celeste Alcalay</a> and <a className="byline_link" href="https://chicagomaroon.com/staff_name/gabriel-kraemer/">Gabriel Kraemer</a></p>
       <p className="byline">Graphics and Development by <a className="byline_link" href="https://chicagomaroon.com/staff_name/nolan-shaffer">Nolan Shaffer</a></p>
-      <p className="byline">September 1, 2025</p>
-      <FontAwesomeIcon icon={faAngleDoubleDown} color="white" id="arrow" size="3x"/>
+      <p className="byline">October 8, 2025</p>
     </div>
   )
 }
@@ -27,9 +26,12 @@ const Header = ({ height }) => {
   return (
     <div id="intro-container" style={{ height: height + "px" }}> 
       <img id="maroon" src="maroon_logo_white.svg"/>
-      <Headline/>
-      <div id="separator"></div>
-      <Byline/>
+      <div id="intro-content">
+        <Headline/>
+        <div id="separator"></div>
+        <Byline/>
+      </div>
+      <FontAwesomeIcon icon={faAngleDoubleDown} color="white" id="arrow" size="3x"/>
     </div>
   );
 };

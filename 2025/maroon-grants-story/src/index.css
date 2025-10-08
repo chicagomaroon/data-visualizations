@@ -5,6 +5,12 @@
 }
 
 
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+} 
+
 a:focus {
     color: #800000;
 }
@@ -41,14 +47,6 @@ h2 {
 
 a {
   color: #800000;
-}
-
-.headerdiv {
-  position: relative;
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 10;
 }
 
 .credits_font {
@@ -153,21 +151,69 @@ a {
   height: 50px;
 }
 
-#header{
-  margin-top: 150px;
-  color: white;
-  background-color: rgba(36, 65, 83, .8);
-}
-
 #intro-container {
-  height: 2px;
+  position: relative; /* make it the positioning context */
   background-image: url('/cover.jpg');
   background-size: cover;
   background-position: center center;
   width: 100vw;
-  margin: 0;
-  padding: 0;
+  height: 100vh;
   overflow: hidden;
+}
+
+#intro-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* perfectly centered */
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#header {
+  color: white;
+  box-sizing: border-box;
+  background-color: rgba(36, 65, 83, .9);
+  border-radius: 10px;
+  padding: 1vh 2vh;
+  margin: 0;
+  text-align: center;
+}
+
+.headerdiv {
+  position: relative;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 10;
+}
+
+#byline-container {
+  margin-top: 3vh;
+}
+
+#subhead {
+  margin-top: 3vh;
+  background-color: rgba(36, 65, 83, .9);
+  border-radius: 10px;
+  color: white;
+  font-weight: normal;
+  text-align: center;
+}
+
+#maroon {
+  fill: white;
+  width: 400px;
+  top:0px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 400px;
+  margin: 30px auto;
 }
 
 #intro-bg {
@@ -180,15 +226,69 @@ a {
   z-index: 0;
 }
 
+@media screen and (max-width: 750px) {
+  .headerdiv {
+    width: 90% !important;
+    padding: 0 !important;
+  }
 
+  #intro-content {
+    width: 90% !important;
+  }
 
-#subhead {
-  color: white;
-  background-color: rgba(36, 65, 83, 0.8);
-  font-weight: normal;
-  width: 100%;
-  margin: 10px auto;
-  text-align: center;
+  #header {
+    position: relative !important;
+    padding: 0 !important;
+    font-size: 35px !important;
+  }
+
+  #maroon {
+    width: 350px !important;
+  }
+
+  #subhead {
+    position: relative !important;
+    padding: 0 !important;
+    font-size: 20px !important;
+  }
+
+}
+
+@media screen and (max-height: 600px) {
+  #header {
+    font-size: 40px;
+  }
+
+  #subhead {
+    font-size: 20px;
+  }
+
+  #arrow {
+    bottom: 10px;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #header {
+    font-size: 30px;
+  }
+
+  #subhead {
+    font-size: 20px;
+  }
+
+  #arrow {
+    display: none !important;
+  }
+
+  #intro-content {
+    top: 62vh !important;
+  }
+
+  #maroon {
+    margin-top: 10px !important;
+  }
+
 }
 
 .byline {
@@ -199,43 +299,24 @@ a {
 }
 
 #arrow {
-  position: relative;
+  position: absolute;
   cursor: pointer;
   transition: transform 0.3s ease;
   display: block;
   left: 50%;
   z-index: 10;
   transform: translateX(-50%);
-  bottom: -200px;
+  bottom: 30px;
 }
 
 #arrow:hover {
   transform: translate(-50%, 5px);
 }
 
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-} 
-
 .byline_link {
   font-weight: bold;
   color: #850611;
 }
-
-#maroon {
-  position: relative;
-  fill: white;
-  width: 400px;
-  top:0px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  width: 400px;
-  margin: 30px auto;
-}
-
 
 
 #separator {
@@ -340,7 +421,7 @@ a {
 }
 
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1000px) {
 
   .body_container {
     width: 99%;
@@ -360,13 +441,6 @@ a {
   }
 }
 
-@media screen and (max-width: 620px) {
-
-  #arrow {
-    bottom: -100px;
-  }
-
-}
 
 
 @media screen and (max-width: 500px) {
@@ -379,30 +453,21 @@ a {
 
 }
 
-
-@media screen and (max-width: 650px) {
-
-  .headerdiv {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 60px;
-    width: 90%;
-  }
+@media screen and (max-width: 360px) {
 
   #header {
-    text-align: center !important;
+    font-size: 30px !important;
+  }
+
+  #subhead {
+    font-size: 15px !important;
   }
 
 }
 
-@media screen and (max-width: 450px) {
-  #maroon {
-    width: 90%;
-  }
 
-  #arrow {
-    bottom: -50px;
-  }
+
+@media screen and (max-width: 450px) {
 
   .text_container {
     width: 100% !important;
@@ -411,6 +476,15 @@ a {
   .scroll_container {
     width: 90% !important;
   }
+
+  #maroon {
+    width: 300px !important;
+  }
+
+  #arrow {
+    bottom: 5px !important;
+  }
+
 
   .scroll__graphic {
     width: 95%;
@@ -457,13 +531,6 @@ a {
   
 }
 
-@media screen and (max-width: 400px) {
-
-  #header {
-    font-size: 39px;
-    margin-top: 0px;
-  }
-}
 
 #graphic-title-container {
   position: relative;

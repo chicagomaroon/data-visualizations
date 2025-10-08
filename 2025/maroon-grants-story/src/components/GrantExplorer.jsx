@@ -253,7 +253,7 @@ const GrantExplorer = () => {
     <div>
       <div className="grant_button_container">
         <GrantButton onClick={(label) => {onClickAction(label.label)}} label="Chicago" />
-        <GrantButton onClick={(label) => {onClickAction(label.label)}} label="Minority Populations" size={13}/>
+        <GrantButton onClick={() => {onClickAction("Minority")}} label="Minority Populations" size={13}/>
       </div>
       <div className="grant_button_container" id="agency_options">
         <GrantOptions onClick={(label) => onClickAction(label.label)} label="Agency" clicked={clicked} />

@@ -105,6 +105,11 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
         d.Lost_Amount = d.Grant_Amount - d.Actual_Amount;
         d.Chicago = d.Chicago.toLowerCase().includes('y');
         d.Minority = d.Minority.toLowerCase().includes('y');
+        d.NIH = d.Agency === "NIH";
+        d.NSF = d.Agency === "NSF";
+        d.NEH = d.Agency === "NEH";
+        d.DOD = d.Agency === "DOD";
+        d.State = d.Agency === "State";
       });
 
       // Get unique categories to create parent nodes
@@ -455,98 +460,6 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setOpacity(grantNewValuesRef, "", 0, duration);
    } 
 
-//    const endDisplayEffect = (duration = 2000) => {
-//     const g = d3.select(svgRef.current).select("g");
-//     const tooltip = d3.select("body").select("div.d3-tooltip");
-    
-//     if (endDisplay) {
-//       g.transition()
-//         .duration(duration)
-//         .attr("transform", "translate(0,0) scale(1)");
-//       setOpacity(categoryTitlesRef, "educational", 1, duration);
-//       setOpacity(categoryTotalsRef, "educational", 1, duration);
-//       // setOpacity(grantTitlesRef, "Using Social", 1, duration);
-//       setOpacity(innerRectsRef, "", 1, duration);
-//       setOpacity(outerRectsRef, "Using Social", 0.3, duration);
-//       setOpacity(grantValuesRef, "", 0, duration);
-//       setOpacity(grantNewValuesRef, "", 1, duration);
-
-//       // Add tooltip functionality to both outer and inner rectangles
-//       const addTooltipEvents = (selection) => {
-//         selection
-//           .style("cursor", "pointer")
-//           .on("mouseover", function(event, d) {
-//             tooltip.style("visibility", "visible")
-//               .html(`
-//                 <strong>${d.data.Title}</strong><br/>
-//                 Category: ${d.data.Category}<br/>
-//                 Grant Amount: $${(d.data.Grant_Amount / 1000000).toFixed(2)}M<br/>
-//                 Actual Amount: $${(d.data.Actual_Amount / 1000000).toFixed(2)}M
-//               `)
-//           })
-//           .on("mousemove", function(event) {
-//             tooltip.style("top", (event.pageY - 10) + "px")
-//               .style("left", (event.pageX + 10) + "px")
-//           })
-//           .on("mouseout", function(event) {
-//             tooltip.style("visibility", "hidden")
-//           })
-//           .on("touchstart", function(event, d) {
-//             event.preventDefault();
-//             tooltip.style("visibility", "visible")
-//               .html(`
-//                 <strong>${d.data.Title}</strong><br/>
-//                 Category: ${d.data.Category}<br/>
-//                 Grant Amount: $${(d.data.Grant_Amount / 1000000).toFixed(2)}M<br/>
-//                 Actual Amount: $${(d.data.Actual_Amount / 1000000).toFixed(2)}M
-//               `)
-//           })
-//           .on("touchmove", function(event) {
-//             event.preventDefault();
-//             tooltip.style("top", (event.touches[0].clientY - 10) + "px")
-//               .style("left", (event.touches[0].clientX + 10) + "px")
-//           })
-//           .on("touchend", function(event) {
-//             event.preventDefault();
-//             tooltip.style("visibility", "hidden")
-//           });
-//       };
-
-//       if (outerRectsRef.current) {
-//         addTooltipEvents(outerRectsRef.current);
-//       }
-//       if (innerRectsRef.current) {
-//         addTooltipEvents(innerRectsRef.current);
-//       }
-
-//     } else {
-//       // Remove tooltip functionality from both outer and inner rectangles
-//       const removeTooltipEvents = (selection) => {
-//         selection
-//           .style("cursor", "default")
-//           .on("mouseover", null)
-//           .on("mousemove", null)
-//           .on("mouseout", null)
-//           .on("touchstart", null)
-//           .on("touchmove", null)
-//           .on("touchend", null);
-//       };
-
-//       if (outerRectsRef.current) {
-//         removeTooltipEvents(outerRectsRef.current);
-//       }
-//       if (innerRectsRef.current) {
-//         removeTooltipEvents(innerRectsRef.current);
-//       }
-//       tooltip.style("visibility", "hidden");
-//       reZoomChangeEffect(0);
-//     }
-//    }
-
-  //  const states = [initialState, outlaysState, outlaysAmountState, zoomedState, zoomedAmountState, reZoomed, endDisplay];
-  
-
-
   const innerRectChange = (selectionRef, opacity, duration) => {
     if (!selectionRef.current) return;
     selectionRef.current
@@ -556,9 +469,71 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
   };
 
 
+  const addTooltipEvents = (selection) => {
+    if (!selection) return;
+    const tooltip = d3.select("body").select("div.d3-tooltip");
+    selection
+      .style("cursor", "pointer")
+      .on("mouseover", function(event, d) {
+        tooltip
+          .style("visibility", "visible")
+          .html(`
+            <strong>${d.data.Title}</strong><br/>
+            Grant Amount: $${(d.data.Grant_Amount / 1000000).toFixed(2)}M<br/>
+            Delivered Amount: $${(d.data.Actual_Amount / 1000000).toFixed(2)}M
+          `);
+      })
+      .on("mousemove", function(event) {
+        tooltip
+          .style("top", (event.pageY - 10) + "px")
+          .style("left", (event.pageX + 10) + "px");
+      })
+      .on("mouseout", function() {
+        tooltip.style("visibility", "hidden");
+      })
+      .on("touchstart", function(event, d) {
+        event.preventDefault();
+        tooltip
+          .style("visibility", "visible")
+          .html(`
+            <strong>${d.data.Title}</strong><br/>
+            Grant Amount: $${(d.data.Grant_Amount / 1000000).toFixed(2)}M<br/>
+            Delivered Amount: $${(d.data.Actual_Amount / 1000000).toFixed(2)}M
+          `);
+      })
+      .on("touchmove", function(event) {
+        event.preventDefault();
+        const t = event.touches && event.touches[0];
+        if (!t) return;
+        tooltip
+          .style("top", (t.clientY - 10) + "px")
+          .style("left", (t.clientX + 10) + "px");
+      })
+      .on("touchend", function(event) {
+        event.preventDefault();
+        tooltip.style("visibility", "hidden");
+      });
+  };
+
+  const removeTooltipEvents = (selection) => {
+    if (!selection) return;
+    const tooltip = d3.select("body").select("div.d3-tooltip");
+    selection
+      .style("cursor", "default")
+      .on("mouseover", null)
+      .on("mousemove", null)
+      .on("mouseout", null)
+      .on("touchstart", null)
+      .on("touchmove", null)
+      .on("touchend", null);
+    tooltip.style("visibility", "hidden");
+  };
+
+
   const stateEffects = (step, direction, duration = 2000) => {
     const g = d3.select(svgRef.current).select("g");
-    updateHighlighted([]);
+    removeTooltipEvents(outerRectsRef.current);
+    removeTooltipEvents(innerRectsRef.current);
     if (step < 2) {
       // Initial state
       innerRectChange(outerRectsRef, 1, duration);
@@ -627,11 +602,11 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setFontAndOpacity(grantNewValuesRef, "Spatiotemporal models", 0, duration);
       setOpacity(outerRectsRef, "Spatiotemporal models", 0.1, duration, .3);
       setOpacity(innerRectsRef, "Spatiotemporal models", 0, duration, 1);
-      updateHighlighted([]);
+      updateHighlighted([], 0, 1);
     }
     else if (14 <= step && step < 15) {
-      innerRectChange(outerRectsRef, .05, duration);
-      innerRectChange(innerRectsRef, .05, duration);
+      innerRectChange(outerRectsRef, .1, duration);
+      innerRectChange(innerRectsRef, .1, duration);
       updateHighlighted(highlighted);
       innerRectChange(grantValuesRef, 0, duration);
       innerRectChange(grantNewValuesRef, 1, duration);
@@ -641,6 +616,8 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setOpacity(categoryTotalsRef, "", 1, duration);
       setOpacity(grantTitlesRef, "", 0, duration);
       setOpacity(categoryTitlesRef, "", 1, duration);
+      addTooltipEvents(outerRectsRef.current);
+      addTooltipEvents(innerRectsRef.current);
     }
   }
 
@@ -656,7 +633,8 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
     .style("opacity", opacity)
   }
 
-  const unsetHighlight = (selectionRef, duration, attributes) => {
+  const unsetHighlight = (selectionRef, duration, attributes, opacity) => {
+    console.log("ASDF", attributes)
     if (!selectionRef.current) return;
     selectionRef.current
     .filter(d => {
@@ -670,23 +648,30 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
     .transition()
     .duration(duration)
     .style("fill", d => colorScale.current(d.data.Category))
-    .style("opacity", .05);
+    .style("opacity", opacity);
   }
 
-
-  const filters = ["Chicago"];
-
-  const updateHighlighted = (highlightedList, duration = 500) => {
+  const agencies = ["NIH", "NSF", "NEH", "DOD", "State"];
+  
+  const updateHighlighted = (highlightedList, duration = 500, opacity = .1) => {
     if (highlightedList.includes("Chicago")) {
       setHighlight(outerRectsRef, ".9", duration, "Chicago", "#FF7070");
       setHighlight(innerRectsRef, "1", duration, "Chicago", "maroon");
     }
-    // if (highlightedList.includes("Minority Populations")) {
-    //   setHighlight(outerRectsRef, ".9", duration, "Minority", "#FF7070");
-    //   setHighlight(innerRectsRef, "1", duration, "Minority", "maroon");
-    // }
-    unsetHighlight(outerRectsRef, duration, filters);
-    unsetHighlight(innerRectsRef, duration, filters);
+    if (highlightedList.includes("Minority")) {
+      setHighlight(outerRectsRef, ".9", duration, "Minority", "skyblue");
+      setHighlight(innerRectsRef, "1", duration, "Minority", "blue");
+    }
+    if (agencies.some(agency => highlightedList.includes(agency))) {
+      agencies.forEach(agency => {
+        if (highlightedList.includes(agency)) {
+          setHighlight(outerRectsRef, ".9", duration, agency, "lightgreen");
+          setHighlight(innerRectsRef, "1", duration, agency, "green");
+        }
+      });
+    }
+    unsetHighlight(outerRectsRef, duration, highlightedList, opacity);
+    unsetHighlight(innerRectsRef, duration, highlightedList, opacity);
   }
 
 
@@ -696,31 +681,16 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
   }, [currentStepIndex]);
 
   useEffect(() => {
-    updateHighlighted(highlighted);
+    if (currentStepIndex >= 14) {
+      updateHighlighted(highlighted);
+    }
   }, [highlighted]);
 
-  // useEffect(() => {
-  //   opacityChangeEffect(2000, true);
-  // }, [actualTextChange]);
 
-  // useEffect(() => {
-  //   zoomChangeEffect();
-  // }, [isZoomed]);
-
-  // useEffect(() => {
-  //   zoomTitleChange();
-  // }, [isZoomTitleChange]);
-
-  // useEffect(() => {
-  //   reZoomChangeEffect();
-  // }, [reZoomed]);
-
-  // useEffect(() => {
-  //   endDisplayEffect();
-  // }, [endDisplay]);
 
       return (
         <div className="chart-container">
+          <p>{currentStepIndex}</p>
             <svg
               className="chart-svg"
               ref={svgRef}
