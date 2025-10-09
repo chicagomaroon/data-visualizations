@@ -16,17 +16,17 @@ const Credits = () => {
         <p className="credits_font">
           Find the <a href="">code for this project</a> on GitHub.
         </p>
-        <p className="credits_font">Read Methods
+        <p className="credits_font" id="method-show"onClick={() => setShowMethods(!showMethods)}>
           <FontAwesomeIcon
             icon={faCaretRight}
             size="lg"
-            color="maroon"
-            onClick={() => setShowMethods((prev) => !prev)}
+            onClick={() => setShowMethods(!showMethods)}
             style={{
               transition: 'transform 0.3s',
               transform: showMethods ? 'rotate(90deg)' : 'rotate(0deg)'
             }}
           />
+          Read about our Methodology
         </p>
         
         {showMethods && (

@@ -394,19 +394,6 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
         setOpacity(grantValuesRef, grant, 0, duration, 1);
       }
       }
-      // else {
-      //   g.transition()
-      //     .duration(duration)
-      //     .attr("transform", "translate(0,0) scale(1)");
-
-      //   opacityChangeEffect(2000, true);
-
-      //   setOpacity(categoryTotalsRef, "", 1, duration);
-      //   setOpacity(grantTitlesRef, "", 0, duration);
-      //   setOpacity(categoryTitlesRef, "", 1, duration);
-      // }
-  //  } 
-
 
 
     const setOpacity = (selectionRef, title, falseValue, duration, trueValue = 1) => {
