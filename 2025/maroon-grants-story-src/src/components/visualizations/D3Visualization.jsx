@@ -645,7 +645,6 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
   }
 
   const unsetHighlight = (selectionRef, duration, attributes, opacity) => {
-    console.log("ASDF", attributes)
     if (!selectionRef.current) return;
     selectionRef.current
     .filter(d => {

@@ -583,6 +583,12 @@ h2.section-header {
   text-decoration: underline;
 }
 
+#maroon_end {
+  width: 20px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
 .offset_container {
   position: relative;
   height: 80vh;

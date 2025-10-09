@@ -189,10 +189,11 @@ export const bodyNine = [
     
     "“This is the biggest grant I’d ever won—$350,000 is a lot for a humanities-based project,” he said. “The grant is helping you establish a whole team effort, which is kind of a novel thing for humanities research.… That kind of collaboration over long periods of time across institutions is really in jeopardy in ways that the University of Chicago itself, in the humanities, cannot fund.”",
     
-    "“It's going to mean that there's just not the same kind of innovation tackling problems like poverty and violence,” Blattman said. Still, he is optimistic in the long run and will find other routes forward.",
+    "“It's going to mean that there's just not the same kind of innovation tackling problems like poverty and violence,” Blattman said. Still, he is optimistic in the long run and will find other routes forward."
     
-    "“It's disappointing,” he said. “[But you] get back up the next morning, and you do the work, and you find another way to keep it going.”",
 ]
+
+export const end = "“It's disappointing,” he said. “[But you] get back up the next morning, and you do the work, and you find another way to keep it going.”"
 
 export const method = [
     'This analysis uses data from USAspending, a federal database of U.S. government <a href="https://www.usaspending.gov/">spending</a>; Grant Witness, which <a href="https://grant-witness.us/">tracks</a> terminated NIH and NSF grants; the list of reported <a href="https://doge.gov/savings">savings</a> on the Department of Government Efficiency website; a weekly updating list of terminated grants <a href="https://taggs.hhs.gov/Content/Data/HHS_Grants_Terminated.pdf">released</a> by the Department of Health and Human Services Tracking Accountability in Government Grants System (TAGGS); and funding agencies’ respective grant databases (<a href="https://reporter.nih.gov/">NIH RePORTER</a>, <a href="https://www.nsf.gov/awardsearch/simpleSearch.jsp">NSF Award Search</a>, <a href="https://apps.neh.gov/PublicQuery/Default.aspx">NEH Award Search</a>, and the <a href="https://dtic.dimensions.ai/discover/publication">Defense Technical Information Center), as well as from some researchers directly.',
