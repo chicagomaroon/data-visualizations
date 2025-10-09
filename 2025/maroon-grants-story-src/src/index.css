@@ -299,11 +299,14 @@ h2.section-header {
 
 @media screen and (max-height: 430px) {
   #header {
-      font-size: 2px !important;
+      font-size: 25px !important;
   }
 
   #subhead {
-      font-size: 15px !important;
+      font-size: 14px !important;
+  }
+  .byline {
+    font-size: 14px !important;
   }
 
   #arrow {
