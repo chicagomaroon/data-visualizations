@@ -71,7 +71,7 @@ export const TreemapAnimations = ({ currentStepIndex, scrollY, direction, highli
         }}>
         <h1
           id="graphic_title" 
-          style={{ opacity: 1 }}
+          style={{ opacity: 2.5-scrollY/500 }}
         >Terminated Federal Grants Identified by the <i>Maroon</i>
         </h1>
       </div>

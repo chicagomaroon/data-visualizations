@@ -160,14 +160,14 @@ h2.section-header {
   background-image: url('/cover.jpg');
   background-size: cover;
   background-position: center center;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   overflow: hidden;
 }
 
 #intro-content {
   position: absolute;
-  top: 50%;
+  top: 53dvh;
   left: 50%;
   transform: translate(-50%, -50%); /* perfectly centered */
   width: 80%;
@@ -183,8 +183,7 @@ h2.section-header {
   box-sizing: border-box;
   background-color: rgba(36, 65, 83, 0.9);
   border-radius: 10px;
-  padding: 1vh 2vh;
-  margin: 0;
+  margin-bottom: 5dvh;
   text-align: center;
 }
 
@@ -197,11 +196,11 @@ h2.section-header {
 }
 
 #byline-container {
-  margin-top: 3vh;
+  margin-top: 3dvh;
 }
 
 #subhead {
-  margin-top: 3vh;
+  margin-top: 3dvh;
   background-color: rgba(36, 65, 83, 0.9);
   border-radius: 10px;
   color: white;
@@ -230,97 +229,6 @@ h2.section-header {
   z-index: 0;
 }
 
-@media screen and (max-width: 750px) {
-  .headerdiv {
-      width: 90% !important;
-      padding: 0 !important;
-  }
-
-  #intro-content {
-      width: 90% !important;
-  }
-
-  #header {
-      position: relative !important;
-      padding: 0 !important;
-      font-size: 35px !important;
-  }
-
-  #maroon {
-      width: 350px !important;
-  }
-
-  #subhead {
-      position: relative !important;
-      padding: 0 !important;
-      font-size: 20px !important;
-  }
-}
-
-@media screen and (max-height: 680px) {
-  #header {
-      font-size: 30px !important;
-  }
-
-  #subhead {
-      font-size: 20px !important;
-  }
-
-  .byline {
-      font-size: 14px !important;
-  }
-
-  #arrow {
-      bottom: 10px;
-  }
-}
-
-@media screen and (max-height: 580px) {
-  #header {
-      font-size: 30px;
-  }
-
-  #subhead {
-      font-size: 20px;
-  }
-
-  #arrow {
-      display: none !important;
-  }
-
-  #intro-content {
-      top: 62vh !important;
-  }
-
-  #maroon {
-      margin-top: 10px !important;
-  }
-}
-
-@media screen and (max-height: 430px) {
-  #header {
-      font-size: 25px !important;
-  }
-
-  #subhead {
-      font-size: 14px !important;
-  }
-  .byline {
-    font-size: 14px !important;
-  }
-
-  #arrow {
-      display: none !important;
-  }
-
-  #intro-content {
-      top: 62vh !important;
-  }
-
-  #maroon {
-      margin-top: 10px !important;
-  }
-}
 
 .byline {
   font-size: 15px;
@@ -480,23 +388,9 @@ h2.section-header {
       padding-left: 0px;
       padding-right: 0px;
   }
-}
-
-@media screen and (max-width: 365px) {
-
-#header {
-  font-size: 28px !important;
-}
-
-#subhead {
-  font-size: 17px !important;
-}
-
-.byline {
-  font-size: 14px !important;
-}
 
 }
+
 
 
 @media screen and (max-width: 400px) {
@@ -526,7 +420,11 @@ h2.section-header {
   }
 
   #arrow {
-      bottom: 5px !important;
+      display: none !important;
+  }
+
+  #subhead {
+    display: none !important;
   }
 
   .scroll__graphic {
@@ -631,3 +529,117 @@ h2.section-header {
 .scroll_font {
   color: black;
 }
+
+
+@media screen and (max-width: 750px) {
+  .headerdiv {
+      width: 90%;
+      padding: 0;
+  }
+
+  #intro-content {
+      width: 90%;
+  }
+
+  #header {
+      position: relative;
+      padding: 0;
+      font-size: 35px;
+  }
+
+  #maroon {
+      width: 350px;
+  }
+
+  #subhead {
+      position: relative;
+      padding: 0;
+      font-size: 20px;
+  }
+}
+
+@media screen and (max-height: 680px) {
+  #header {
+      font-size: 30px;
+  }
+
+  #subhead {
+      font-size: 20px;
+  }
+
+  .byline {
+      line-spacing: 1em;
+  }
+
+  #arrow {
+      bottom: 10px;
+  }
+}
+
+@media screen and (max-height: 606px) {
+
+  #arrow {
+      display: none;
+  }
+}
+
+
+@media screen and (max-height: 430px) {
+  #header {
+      font-size: 6dvh !important;
+  }
+
+  #subhead {
+      font-size: 4dvh !important;
+  }
+
+  #intro-content {
+    top: 270px !important;
+  }
+
+  #arrow {
+      display: none;
+  }
+
+
+  #maroon {
+      margin-top: 10px;
+  }
+}
+
+
+@media screen and (max-height: 550px) {
+  #subhead {
+      display: none;
+      font-size: 3dvh !important;
+  }
+
+  .byline {
+    font-size: 3.1dvh !important;
+    margin: 0;
+  }
+
+  #separator {
+    margin-top: 0px !important;
+  }
+
+
+}
+
+@media screen and (max-height: 390px) {
+
+  #intro-content {
+    top: 180px !important;
+  }
+
+}
+
+
+@media screen and (max-height: 330px) {
+
+  #intro-content {
+    top: 180px !important;
+  }
+
+}
+
