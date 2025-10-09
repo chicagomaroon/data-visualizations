@@ -260,7 +260,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
         .style("font-family", "Georgia")
         .attr("fill", d => {
           const title = titleCase(d.data.Title);
-          return (title.includes("Spatiotemporal Models") || title.includes("Understanding Political Economy") || title.includes("Understanding the Impact")) ? "white" : "black";
+          return (title.includes("Spatiotemporal Models") || title.includes("Understanding Political Economy") || title.includes("Understanding the Impact")) ? "white" : "gray";
         })
         .style("opacity", 0);
 

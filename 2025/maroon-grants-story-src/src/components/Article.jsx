@@ -47,7 +47,7 @@ const Article = () => {
   return (
     <div id="rootparent">
       <Header height={height} />
-      <ScrollTest height={mobile ? height + 400 : height} />
+      <ScrollTest height={mobile ? height + 300 : height} />
     </div>
   );
 };
