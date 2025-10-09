@@ -357,7 +357,7 @@ const ScrollTest = ({ height }) => {
                                     </div>
                                     <div className="contentdiv"></div>
                                     <h2 className="section">
-                                        Highlight Grants by...
+                                        Highlight grants by...
                                     </h2>
                                     <GrantExplorer />
                                     <div className="contentdiv"></div>
