@@ -15,7 +15,10 @@ const Credits = () => {
         <p className="credits_font">
           Find the <a href="https://github.com/chicagomaroon/data-visualizations/tree/main/2025/maroon-grants-story-src">code for this project</a> on GitHub.
         </p>
-        <p className="credits_font" id="method-show"onClick={() => setShowMethods(!showMethods)}>
+        <p className="credits_font">
+          Cover Photo by <a href="https://chicagomaroon.com/staff_name/damian-almeida-baray/">Damian Almeida Baray</a>.
+        </p>
+        <p className="credits_font" id="method-show" onClick={() => setShowMethods(!showMethods)}>
           <FontAwesomeIcon
             icon={faCaretRight}
             size="lg"
@@ -25,7 +28,7 @@ const Credits = () => {
               transform: showMethods ? 'rotate(90deg)' : 'rotate(0deg)'
             }}
           />
-          Read about our Methodology
+          Read about our Methodology.
         </p>
         
         {showMethods && (
@@ -68,7 +71,7 @@ export const TreemapAnimations = ({ currentStepIndex, scrollY, direction, highli
         }}>
         <h1
           id="graphic_title" 
-          style={{ opacity: 2.5-scrollY/520 }}
+          style={{ opacity: 1 }}
         >Terminated Federal Grants Identified by the <i>Maroon</i>
         </h1>
       </div>

@@ -26,8 +26,8 @@ const isMobile = {
 }
 
 const Article = () => {
-  const [height, setHeight] = useState(window.innerHeight);
   const mobile = isMobile.any()
+  const [height, setHeight] = useState(mobile ? window.innerHeight + 500 : window.innerHeight);
 
 
   const handleResize = () => {

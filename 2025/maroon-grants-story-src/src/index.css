@@ -375,15 +375,14 @@ h2.section-header {
 .method-text {
   font-size: 10px;
   color: grey;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .credits_container {
-  position: absolute;
-  height: 100px;
   padding: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 }
+
 
 .scroll__graphic {
   position: sticky;
@@ -584,6 +583,9 @@ h2.section-header {
 
 #method-show {
   text-decoration: underline;
+  cursor: pointer;
+  margin-left: -8px;
+  margin-bottom: 10px;
 }
 
 #maroon_end {
