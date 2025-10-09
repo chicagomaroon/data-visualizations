@@ -4,7 +4,7 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/2025/maroon-grants-story/',
+  base: '/data-visualizations/2025/maroon-grants-story/',
   build: {
     outDir: 'dist',
     emptyOutDir: true,

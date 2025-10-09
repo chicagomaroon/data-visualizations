@@ -47,6 +47,13 @@ a {
   color: #800000;
 }
 
+h2.section-header {
+  color: maroon;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .credits_font {
   font-family: 'Playfair Display', serif;
   font-size: 15px;
@@ -250,13 +257,17 @@ a {
   }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 680px) {
   #header {
-      font-size: 40px;
+      font-size: 30px !important;
   }
 
   #subhead {
-      font-size: 20px;
+      font-size: 20px !important;
+  }
+
+  .byline {
+      font-size: 14px !important;
   }
 
   #arrow {
@@ -264,13 +275,35 @@ a {
   }
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 580px) {
   #header {
       font-size: 30px;
   }
 
   #subhead {
       font-size: 20px;
+  }
+
+  #arrow {
+      display: none !important;
+  }
+
+  #intro-content {
+      top: 62vh !important;
+  }
+
+  #maroon {
+      margin-top: 10px !important;
+  }
+}
+
+@media screen and (max-height: 430px) {
+  #header {
+      font-size: 2px !important;
+  }
+
+  #subhead {
+      font-size: 15px !important;
   }
 
   #arrow {
@@ -310,7 +343,7 @@ a {
 
 .byline_link {
   font-weight: bold;
-  color: #850611;
+  color: #FF7070;
 }
 
 #separator {
@@ -331,10 +364,22 @@ a {
   margin-bottom: 100px;
 }
 
+#methods {
+  font-size: 5px;
+  padding-bottom: 20px;
+}
+
+.method-text {
+  font-size: 10px;
+  color: grey;
+  margin-bottom: 20px;
+}
+
 .credits_container {
   position: absolute;
   height: 100px;
-  margin-top: 20px;
+  padding: 20px;
+  padding-bottom: 20px;
 }
 
 .scroll__graphic {
@@ -423,7 +468,7 @@ a {
   }
 
   .contentdiv {
-      width: 100%;
+      width: 90%;
   }
 }
 

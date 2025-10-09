@@ -252,13 +252,13 @@ const GrantExplorer = () => {
   return (
     <div>
       <div className="grant_button_container">
-        <GrantButton onClick={(label) => {onClickAction(label.label)}} label="Chicago" />
-        <GrantButton onClick={() => {onClickAction("Minority")}} label="Minority Populations" size={13}/>
+        <GrantButton onClick={(label) => {onClickAction("Chicago")}} label="Chicago-based" size={17}/>
+        <GrantButton onClick={() => {onClickAction("Minority")}} label="Minority Populations" size={14}/>
       </div>
       <div className="grant_button_container" id="agency_options">
         <GrantOptions onClick={(label) => onClickAction(label.label)} label="Agency" clicked={clicked} />
       </div>
-      <TreemapAnimations currentStepIndex={14} scrollY={10000} highlighted={highlighted} />
+      <TreemapAnimations currentStepIndex={20} scrollY={10000} highlighted={highlighted} />
     </div>
   )
 }

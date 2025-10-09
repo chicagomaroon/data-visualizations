@@ -248,6 +248,10 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
             title = "Spatiotemporal Models of Neural Coding in the Vestibular Periphery."
             wrapText(text, title, 2.8, width, .55, -7.2);
             return title;
+          } else if (title.includes("Florence Illuminated")) {
+            title = "Florence Illuminated: Visualizing the History of Art, Architecture, and Society."
+            wrapText(text, title, 3, width, 5, -8);
+            return title;
           } else {
             return ""
           }
@@ -440,7 +444,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       }
     }
 
-    const reZoomChangeEffect = (duration, duration2,x, y, scale, grant, category) => {
+    const reZoomChangeEffect = (duration, duration2,x, y, scale, grant, category, font=true) => {
       const g = d3.select(svgRef.current).select("g");
 
       g.transition()
@@ -456,7 +460,11 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       setOpacity(grantTitlesRef, grant, 0, duration);
       setOpacity(innerRectsRef, "", 0, duration);
       setOpacity(outerRectsRef, grant, 0.1, duration);
-      setFontAndOpacity(grantValuesRef, grant, 0, duration, 1);
+      if (font) {
+        setFontAndOpacity(grantValuesRef, grant, 0, duration, 1);
+      } else {
+        setOpacity(grantValuesRef, grant, 0, duration);
+      }
       setOpacity(grantNewValuesRef, "", 0, duration);
    } 
 
@@ -597,15 +605,30 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
       }
     } else if (15 <= step && step < 16) {
         zoomChangeEffect(duration, -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
-    } else if (15 <= step && step < 16) {
+    } else if (16 <= step && step <= 17) {
       zoomChangeEffect(duration,  -620, -54700, 70, "Spatiotemporal models", "neuroscience", true);
       setOpacity(grantValuesRef, "Spatiotemporal models", 0, duration, 0);
       setFontAndOpacity(grantNewValuesRef, "Spatiotemporal models", 0, duration);
       setOpacity(outerRectsRef, "Spatiotemporal models", 0.1, duration, .3);
       setOpacity(innerRectsRef, "Spatiotemporal models", 0, duration, 1);
 
-    }
-    else if (16 <= step && step < 17) {
+    } else if (18 <= step && step < 19) {
+      if (duration == 0) {
+        reZoomChangeEffect(0, 0, -3545, -4300, 10, "Florence Illuminated", "humanities", false);
+      } else if (direction == "down") {
+        reZoomChangeEffect(duration, 3000, -3545, -4300, 10, "Florence Illuminated", "humanities", false);
+      } else {
+        zoomChangeEffect(duration, -3545, -4300, 10, "Florence Illuminated", "humanities", false);
+      }
+      setOpacity(grantValuesRef, "Florence Illuminated", 0, duration, 1);
+    } else if (19 <= step && step < 20) {
+      zoomChangeEffect(duration, -3545, -4300, 10, "Florence Illuminated", "humanities", false);
+      setOpacity(grantValuesRef, "Florence Illuminated", 0, duration, 0);
+      setOpacity(grantNewValuesRef, "Florence Illuminated", 0, duration, 1);
+      setOpacity(outerRectsRef, "Florence Illuminated", 0.1, duration, .3);
+      setOpacity(innerRectsRef, "Florence Illuminated", 0, duration, 1);
+
+    } else if (20 <= step) {
       innerRectChange(outerRectsRef, .1, duration);
       innerRectChange(innerRectsRef, .1, duration);
       updateHighlighted(highlighted);
@@ -682,7 +705,7 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
   }, [currentStepIndex]);
 
   useEffect(() => {
-    if (currentStepIndex >= 24) {
+    if (currentStepIndex >= 20) {
       updateHighlighted(highlighted);
     }
   }, [highlighted]);
@@ -691,7 +714,6 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
 
       return (
         <div className="chart-container">
-          <p>{currentStepIndex}</p>
             <svg
               className="chart-svg"
               ref={svgRef}
