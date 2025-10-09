@@ -16,7 +16,7 @@ const Byline = () => {
     <div className="headerdiv" id="byline-container">
       <p className="byline">Written and Data Collected by <a className="byline_link" href="https://chicagomaroon.com/staff_name/celeste-alcalay/">Celeste Alcalay</a> and <a className="byline_link" href="https://chicagomaroon.com/staff_name/gabriel-kraemer/">Gabriel Kraemer</a></p>
       <p className="byline">Graphics and Development by <a className="byline_link" href="https://chicagomaroon.com/staff_name/nolan-shaffer">Nolan Shaffer</a></p>
-      <p className="byline">October 8, 2025</p>
+      <p className="byline">October 9, 2025</p>
     </div>
   )
 }

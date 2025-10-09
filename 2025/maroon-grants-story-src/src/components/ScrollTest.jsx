@@ -1,17 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { Scrollama, Step } from 'react-scrollama';
-import styled from 'styled-components';
 import D3Visualization from './visualizations/D3Visualization';
 import GrantExplorer from './GrantExplorer';
-import { preBody, scrollOne, bodyOne, scrollTwo, bodyTwo, scrollThree, bodyThree, scrollFour, bodyFour, scrollFive, bodyFive, bodySix } from '../../public/data/scrollContent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { preBody, scrollOne, bodyOne, scrollTwo, bodyTwo, scrollThree, bodyThree, scrollFour, bodyFour, scrollFive, bodyFive, bodySix, bodySeven, bodyEight, bodyNine, end, method } from '../../public/data/scrollContent';
 
 const Credits = () => {
+  const [showMethods, setShowMethods] = useState(false);
+
   return (
-    <div className="credits_container">
-      <p className="credits_font"><a href="">Access the data</a> for this project.</p>
-      <p className="credits_font">Find the <a href="">code for this project</a> on GitHub.</p>
+    <div>
+      <div className="credits_container">
+        <p className="credits_font">
+          Find the <a href="https://github.com/chicagomaroon/data-visualizations/tree/main/2025/maroon-grants-story-src">code for this project</a> on GitHub.
+        </p>
+        <p className="credits_font">
+          Cover Photo by <a href="https://chicagomaroon.com/staff_name/damian-almeida-baray/">Damian Almeida Baray</a>.
+        </p>
+        <p className="credits_font" id="method-show" onClick={() => setShowMethods(!showMethods)}>
+          <FontAwesomeIcon
+            icon={faCaretRight}
+            size="lg"
+            onClick={() => setShowMethods(!showMethods)}
+            style={{
+              transition: 'transform 0.3s',
+              transform: showMethods ? 'rotate(90deg)' : 'rotate(0deg)'
+            }}
+          />
+          Read about our Methodology.
+        </p>
+        
+        {showMethods && (
+          <div id="methods">
+            {method.map((text, index) => (
+              <p className="method-text" key={index} dangerouslySetInnerHTML={{ __html: text }} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
 const ScrollContainer = (props) => {
@@ -42,8 +71,8 @@ export const TreemapAnimations = ({ currentStepIndex, scrollY, direction, highli
         }}>
         <h1
           id="graphic_title" 
-          style={{ opacity: 2.5-scrollY/520 }}
-        >Terminated Federal Grants Identified by the <i>Maroon</i>.
+          style={{ opacity: 2.5-scrollY/500 }}
+        >Terminated Federal Grants Identified by the <i>Maroon</i>
         </h1>
       </div>
       <D3Visualization currentStepIndex={currentStepIndex} direction={direction} highlighted={highlighted} />
@@ -59,7 +88,7 @@ const ScrollTest = ({ height }) => {
 
   const [currentStepIndex, setCurrentStepIndex] = useState(() => {
     const saved = localStorage.getItem('currentStepIndex');
-    return (saved !== null & scrollY > 2000) ? parseInt(saved) : -1;
+    return (saved !== null && scrollY > 2000) ? parseInt(saved) : -1;
   });
   const [direction, setDirection] = useState(() => {
     const saved = localStorage.getItem('direction');
@@ -140,11 +169,31 @@ const ScrollTest = ({ height }) => {
                         <p className="body_font" key={index} dangerouslySetInnerHTML={{ __html: text }} />
                       ))}
                       </div>
-                    <div className="contentdiv"></div>
-                    <h2 className="section">Highlight Grants by...</h2>
-                    <GrantExplorer />
-                    <div className="contentdiv"></div>
-                    <Credits />
+                      <TreemapAnimations currentStepIndex={currentStepIndex + 4} direction={direction} scrollY={scrollY} />
+                      <ScrollContainer onStepEnter={onStepEnter} onStepExit={onStepExit} textArray={scrollFive} start={14} height={ height }/>
+                      <div className="inner_body_container">
+                          <div className="body_text_container">
+                          {bodyFive.map((text, index) => (
+                            <p className="body_font" key={index} dangerouslySetInnerHTML={{ __html: text }} />
+                          ))}
+                          <h2 className="section-header">{bodySix}</h2>
+                          {bodySeven.map((text, index) => (
+                            <p className="body_font" key={index} dangerouslySetInnerHTML={{ __html: text }} />
+                          ))}
+                          <h2 className="section-header">{bodyEight}</h2>
+                          {bodyNine.map((text, index) => (
+                            <p className="body_font" key={index} dangerouslySetInnerHTML={{ __html: text }} />
+                          ))}
+                          <p className="body_font">
+                            {end}<img id="maroon_end" src="maroon_logo_m_black.svg"/>
+                          </p>
+                          </div>
+                          <div className="contentdiv"></div>
+                          <h2 className="section">Highlight Grants by...</h2>
+                          <GrantExplorer />
+                          <div className="contentdiv"></div>
+                          <Credits />
+                      </div>
                   </div>
               </div>
           </div>

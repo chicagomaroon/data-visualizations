@@ -1,6 +1,6 @@
 # Maroon - Interactive Article with D3 Visualizations
 
-A React-based interactive article featuring scrolly-telling D3 visualizations.
+A React and Scrollama powered article visualizing cut UChicago federal grants.
 
 ## Project Structure
 
@@ -41,12 +41,3 @@ npm run build
 - Styled Components
 - React Scrollama (for scroll-based interactions)
 - Vite (build tool)
-
-## Development
-
-The project is set up with:
-- Modern React with hooks
-- D3.js for data visualizations
-- Styled Components for styling
-- Scrollama for scroll-based interactions
-- Vite for fast development and optimized builds

@@ -26,8 +26,8 @@ const isMobile = {
 }
 
 const Article = () => {
-  const [height, setHeight] = useState(window.innerHeight);
   const mobile = isMobile.any()
+  const [height, setHeight] = useState(window.innerHeight);
 
 
   const handleResize = () => {
@@ -47,7 +47,7 @@ const Article = () => {
   return (
     <div id="rootparent">
       <Header height={height} />
-      <ScrollTest height={height} />
+      <ScrollTest height={mobile ? height + 200 : height} />
     </div>
   );
 };
