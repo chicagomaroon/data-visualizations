@@ -1,18 +1,38 @@
 <html lang="en">
     <head>
-        <title>[PUT THE TITLE OF YOUR CHART HERE]</title>
-        <!-- PLACE ALL REPOSITORY CSS FILES IN A BRACKET LIKE THIS -->
-        <!-- build:css inline -->
-        <link rel="stylesheet" href="../../static/main.css" />
-        <!-- /build -->
+        <title>The UChicago Endowment, Explained</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="The UChicago Endowment, Explained" />
+        <meta property="og:image" content="images/divestment-history.gif" />
+        <meta property="og:site_name" content="The Chicago Maroon" />
+        <meta
+            property="og:description"
+            content="What is it? Why should you care? And what do we know about it, exactly?"
+        />
+        <meta
+            property="og:url"
+            content="https://chicagomaroon.github.io/data-visualizations/2025/divestment-history/"
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:article:author" content="Karen Yi" />
+        <link rel="icon" href="images/maroon_logo_m_white{ "[javascript]": {
+        "editor.formatOnSave": false } }.svg" />
+        <!-- external builds -->
+        <script src="static/js/noframework.waypoints.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script
+            src="https://cdn.plot.ly/plotly-2.35.2.min.js"
+            charset="utf-8"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="static/css/main.css" />
     </head>
 
     <body>
-        <div id="chart-div"></div>
-        <div id="chart-div2"></div>
-        <div id="chart-div3"></div>
-        <div id="chart-div4"></div>
-
         <!-- EXTERNAL JS FILES -->
         <!-- YOU LIKELY DO NOT NEED ALL OF THESE -->
         <!-- IF YOU AREN'T USING AN IMPORT, IT'S RECOMMENDED THAT YOU REMOVE IT -->
@@ -23,10 +43,514 @@
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <div id="background">
+            <div class="intro">
+                <a href="https://chicagomaroon.com/">
+                    <img
+                        height="50"
+                        style="margin: 2em auto; width: 100%"
+                        alt="The Chicago Maroon"
+                        src="images/maroon_logo_white.svg"
+                    />
+                </a>
+                <div>
+                    <h1>The UChicago Endowment, Explained</h1>
+                    <div id="subtitle">
+                        What is it? Why should you care? And what do we know
+                        about it, exactly?
+                    </div>
+                    <hr style="width: 50vw" />
+                    <div id="bylines" style="margin-top: 2em">
+                        <div class="byline" id="byline">
+                            Written, designed, and developed by
+                            <a
+                                class="byline-link"
+                                href="https://chicagomaroon.com/staff_name/karen-yi/"
+                                >Karen Yi</a
+                            >
+                        </div>
+                        December 1, 2025
+                    </div>
+                </div>
+                <i
+                    class="fa fa-angle-double-down"
+                    style="margin-bottom: 1em"
+                    aria-hidden="true"
+                ></i>
+            </div>
+        </div>
 
-        <!-- PLACE ALL REPOSITORY JS FILES IN A BRACKET LIKE THIS -->
-        <!-- build:js inline -->
-        <script src="main.js" type="text/javascript"></script>
-        <!-- /build -->
+        <div id="transition" style="height: 1px"></div>
+        <div id="content">
+            <div class="non-scroller" id="intro-text">
+                <p>
+                    In the past two years, several high-profile events have
+                    roiled campuses nationwide and caused increased scrutiny on
+                    university endowments. In 2023, campus organizers pressed
+                    for divestment from Israeli companies in response to the
+                    genocide in Gaza. Starting with President Trump's
+                    inauguration in January, once-reliable federal funding has
+                    become uncertain, causing many to believe universities
+                    should draw from their endowments to make up the loss. More
+                    generally, since elite universities overhauled their
+                    investment strategies starting around 1985, endowments have
+                    ballooned to controversial levels.
+                </p>
+                <p>
+                    It seems like everyone suddenly has an opinion about
+                    endowments. But for the less Booth-inclined, this piece aims
+                    to answer: what is an endowment, exactly? How does it work?
+                    Who controls it? And why should we care? Answering these
+                    questions is not easy for the University of Chicago, because
+                    private universities have minimal reporting requirements and
+                    are accountable mainly to their stakeholders rather than to
+                    the public at large. Still, the beginnings of a picture can
+                    be developed from what little information exists.
+                </p>
+                <p>
+                    The Maroon's data desk compiled datasets from three publicly
+                    available sources (XXX do we list what sources) to build the
+                    fullest picture to date of the University's endowment, which
+                    is one of the 20 largest private university endowments in
+                    the United States.
+                </p>
+            </div>
+            <div id="chapters">
+                <div class="scroller first" id="causes">
+                    <p>Click or hover over an event to explore further.</p>
+                </div>
+                <div class="section-header">
+                    <h2>I. What is an endowment?</h2>
+                </div>
+                <div class="scroller first" id="what-is-it">
+                    <p>
+                        University endowments are separate from student tuition.
+                        That's because universities' income consists of many
+                        sources with different restrictions. Tuition goes
+                        towards day-to-day operating expenses without getting
+                        invested; endowments, on the other hand, stem from
+                        private donors and are managed by investors.
+                    </p>
+
+                    <div id="chart-div1"></div>
+                    <div id="chart-div2"></div>
+                    <div id="chart-div3"></div>
+                    <div id="chart-div4"></div>
+                </div>
+
+                <div class="scroller" id="fossil-fuels">
+                    <p>
+                        At UChicago, donations are funneled into a pot called
+                        the Total Return Investment Pool, or TRIP. The TRIP is
+                        in turn invested into various equities and assets. The
+                        major distinction here is between public equities--what
+                        most people think of as "stocks"--and private equities,
+                        which involve individual donors, venture capitalists,
+                        and hedge funds. Because stock exchanges are regulated
+                        by the federal government, more data is available on
+                        public equities compared to private equities.
+                    </p>
+                    <!-- <img
+                        src="images/sfcc.png"
+                        alt="Students push for climate-concious divestment"
+                    /> -->
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="uyghur-rights">
+                    <p>
+                        Universities withdraw a percentage from this endowment
+                        to cover their remaining costs after tuition and other
+                        revenue are accounted for, about 4-5% per year. The
+                        remainder of the endowment is re-invested. In 2024, the
+                        University withdrew 5% of its endowment to support
+                        operating costs.
+                    </p>
+                    <p>
+                        Most of a university's endowment is typically
+                        restricted, which means that donors have put rules
+                        around what their donation can be used for. For example,
+                        the Pearson family moved to withdraw their funds from
+                        the Pearson Institute at UChicago due to alleged
+                        contract breaches in 2018.
+                    </p>
+                    <p>
+                        X% of UChicago's endowment consists of restricted funds.
+                        Still, well-endowed universities don't have their hands
+                        completely tied. "They should make clear that their
+                        formidable financial endowments are not there to simply
+                        be envied or admired," wrote Larry H. Summers earlier
+                        this year. "Part of their function is to be drawn down
+                        in the face of emergencies, and covering federal funding
+                        lapses surely counts as one. Believe me, a former
+                        president of Harvard, when I say that ways can be found
+                        in an emergency to deploy even parts of the endowment
+                        that have been earmarked by their donors for other
+                        uses."
+                    </p>
+                </div>
+
+                <div class="section-header first" id="actions">
+                    <h2>II. What do we know about the endowment?</h2>
+                </div>
+                <div class="scroller" id="labor-rights">
+                    <p>
+                        UChicago's endowment was valued at $10.4 billion in
+                        2024, the equivalent of 1.3 years' worth of revenue and
+                        one of the largest in the country (CITE).
+                    </p>
+                    <p>
+                        As for what the endowment is invested in… That's a
+                        little harder to see.
+                    </p>
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="letters">
+                    <p>
+                        UChicago is a private university. This means that while
+                        it must comply with general financial reporting
+                        requirements for nonprofits, it is not subject to the
+                        more stringent requirements for public universities. It
+                        has incentive to keep all this behind closed doors:
+                        information about investment strategies would give
+                        institutions a competitive edge over their peers. This
+                        is one reason why universities have in the past refused
+                        to comply with activists' demands for transparency,
+                        although the University has on some occasions fulfilled
+                        narrower requests. When the Associated Press asked 50
+                        public and private universities to provide information
+                        about their endowments, 39 schools refused and 4 did not
+                        respond. Even Congress has failed to glean information
+                        about endowments.
+                    </p>
+                    <p>
+                        Still, even for a private university, UChicago is
+                        exceptional: in 2023, Amnesty International rated the
+                        University as the least transparent among 10 peer
+                        institutions, with a score of 0 out of 40. The
+                        University appears to have stopped publishing even its
+                        Annual Report since 2022.
+                    </p>
+                    <p>
+                        All universities do have some information available, if
+                        one knows where to look.
+                    </p>
+                    <!-- <img
+                        src="images/editorial-against.png"
+                        alt="Headline: An imperfect union"
+                    /> -->
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="protest">
+                    <h4>SEC Form 13-F</h4>
+                    <p>
+                        The Securities and Exchanges Commission requires all
+                        entities with significant investments to report on the
+                        amounts and names of stocks traded on public U.S.
+                        exchanges.
+                    </p>
+                    <p>
+                        Data from the 13F reveals that UChicago invests mainly
+                        in the following public stocks:
+                    </p>
+                </div>
+
+                <div class="scroller" id="other-action">
+                    <h4>IRS Form 990-T</h4>
+                    <p>
+                        The Internal Revenue Service requires all nonprofits to
+                        file the 990-T tax form.
+                    </p>
+                    <p>
+                        Schedule L of the 990-T form requires universities to
+                        list conflicts of interest. This mostly indicates groups
+                        with which the university invests. The available data
+                        indicates that the University has worked with the
+                        following investment groups for at least 4 years and as
+                        long as 10 years. All of these groups had university
+                        ties in 2023, although data is not available for 2024
+                        (XXX due to changes in reporting requirements?).
+                    </p>
+                    <ul>
+                        <li>CareIT Health</li>
+                        <li>Lake Capital</li>
+                        <li>Man Group</li>
+                        <li>PIMCO</li>
+                        <li>The Carlyle Group</li>
+                        <li>Tishman Speyer Crown Equities</li>
+                        <li>Wealth Strategist Partners</li>
+                    </ul>
+                    <!-- <img
+                        src="images/legal-complaint.png"
+                        alt="Headline: UChicago Board of Trustees Accused of Violating Illinois Law with Fossil Fuel Investments"
+                    /> -->
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="scroller" id="other-action">
+                    <h4>Financial reports</h4>
+                    <p>
+                        To provide information to donors and other interested
+                        parties, the University maintains some self-reporting on
+                        its finances
+                    </p>
+                    <p>
+                        Data compiled from the past 20 years of financial
+                        reports reveals that the University has been
+                        increasingly investing in private equities over time.
+                    </p>
+                    <ul>
+                        <li>CareIT Health</li>
+                        <li>Lake Capital</li>
+                        <li>Man Group</li>
+                        <li>PIMCO</li>
+                        <li>The Carlyle Group</li>
+                        <li>Tishman Speyer Crown Equities</li>
+                        <li>Wealth Strategist Partners</li>
+                    </ul>
+                    <!-- <img
+                        src="images/legal-complaint.png"
+                        alt="Headline: UChicago Board of Trustees Accused of Violating Illinois Law with Fossil Fuel Investments"
+                    /> -->
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+
+                <div class="section-header first" id="admin">
+                    <h2>III. Who controls the endowment?</h2>
+                </div>
+
+                <div class="scroller" id="flowchart">
+                    <p>
+                        For decades, campus groups wishing to influence the
+                        University's finances have held protests targeting
+                        either the Board of Trustees or the University
+                        President, both to little success. To understand why
+                        organizers target these two groups, it may help to take
+                        a look at the flowchart below.
+                    </p>
+                </div>
+
+                <div class="scroller" id="meeting">
+                    <p>
+                        As this chart demonstrates, the Board of Trustees is
+                        ultimately the final decisionmaker about investment
+                        approaches. The Board of Trustees acts as a steering
+                        committee for the Office of Investments, which is
+                        responsible for overseeing the endowment and answers to
+                        the President. The campus community has three avenues
+                        for giving input to investment strategy: the Faculty
+                        Senate, a board comprising 51 elected faculty; the
+                        Graduate Council, with 6 executive members and elected
+                        representatives from the 12 graduate divisions; and
+                        Advisory Councils, which have 10-95 members across 14
+                        committees composed of "friends and alumni" of the
+                        University. None of these bodies currently have regular
+                        meetings with the Board of Trustees, although the
+                        Graduate Council held a quarterly "Student Perspectives
+                        Series" with the Board from 2016-2021.
+                    </p>
+                </div>
+
+                <div class="scroller" id="police">
+                    <p>
+                        The Office of Investments hires and communicates with
+                        external asset management firms. "Often, even the
+                        institutions themselves don’t know where their money
+                        goes, in part because they hire outside managers who
+                        constantly buy and sell investments. Additionally, many
+                        schools put their money into mutual or hedge funds,
+                        which in turn make other investments that can be kept
+                        confidential," reported the Associated Press in 2016.
+                    </p>
+                    <p>
+                        But ignorance is a choice, not a rule. According to
+                        Brenden O'Connell, an employee of a hedge-fund firm that
+                        manages university endowments, any institution with a
+                        separately managed account (SMA) can request
+                        restrictions on their investments. "An SMA would be
+                        customized for you, usually. So you can impose
+                        constraints, [such as] you don't want exposure to XYZ
+                        industries, and then the manager will tailor the
+                        portfolio accordingly". For example, UChicago could
+                        easily request that its endowment is not invested in
+                        fossil-fuel companies. Harvard did exactly this in 2021.
+                    </p>
+                    <!-- <img
+                        src="images/arrest.png"
+                        alt="Headline: UCPD Arrests Protesters Engaged in Admissions Office Sit-In and Faculty Members"
+                    /> -->
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i> Archive
+                    </figcaption>
+                </div>
+
+                <div class="scroller">
+                    <p>
+                        Similarly, former Trustee Tom Cole appeared to deflect
+                        responsibility for decisions regarding investments.
+                        Notes from a 2016 meeting summarized his remarks: "It
+                        would be unusual for a discussion of a potential Kalven
+                        exception to emerge from within the Board itself.
+                        Rather, it is the role of the president and the officers
+                        to transmit issues of concern to the trustees and that
+                        discussions subsequently occur at the Executive
+                        Committee level and then might come before the entire
+                        Board."
+                    </p>
+                    <p>
+                        Yet according to the official governing documents of the
+                        University of Chicago, as of May 2024, the President is
+                        actually "responsible, under the supervision of the
+                        Board, for the management of…investments, investment
+                        properties, and special property holdings in the
+                        neighborhood of the University" (emphasis added for
+                        clarity). In a 2015 interview, then-President Zimmer
+                        conceded: "Investments are the responsibility of the
+                        Board of Trustees…this is a Board matter, but if I had
+                        to report on my sense of the Board’s view of this—is
+                        that they’re unlikely to want to do that."
+                    </p>
+                </div>
+
+                <div class="scroller" id="other-response">
+                    <p>
+                        There is only one actor in the chart with greater or
+                        equal power to the Board: if donors specify that their
+                        donation cannot be used for a particular purpose, then
+                        the Office of Investments must comply.
+                    </p>
+                    <!-- <img
+                        src="images/scholarship.png"
+                        alt="Headline: Scholarships seen as hypocritical"
+                    /> -->
+                    <figcaption class="caption">
+                        <i>Chicago Maroon</i>
+                    </figcaption>
+                </div>
+            </div>
+
+            <div id="chart-div" style="height: 100vh; display: none"></div>
+
+            <div class="section-header" id="what-next">
+                <h2>IV. What next?</h2>
+            </div>
+
+            <div
+                class="non-scroller"
+                id="conclusion"
+                style="margin-top: 4em; margin-bottom: 8em"
+            >
+                <p>
+                    Amid all the recent concerns about the University's
+                    finances, whether through the lens of divestment, federal
+                    funding, or responsibility, the University has held
+                    steadfast in its refusal to share information with its
+                    campus community. In this emerging environment, it may
+                    benefit members of campus to become more familiar with just
+                    what goes on behind the scenes in the University of
+                    Chicago's very deep pockets.
+                </p>
+                <figure>
+                    <blockquote>
+                        I believe the protesters should also consider that an
+                        encampment, with all the etymological connections of the
+                        word to military origins, is a way of using force of a
+                        kind rather than reason to persuade others. For a short
+                        period of time, however, the impact of a modest
+                        encampment does not differ so much from a conventional
+                        rally or march.
+                    </blockquote>
+                    <figcaption>
+                        -
+                        <a
+                            href="https://chicagomaroon.com/42199/news/live-updates-pro-palestine-encampment-on-quad/"
+                            >Paul Alivisatos</a
+                        >, 14th president of the University of Chicago, 2024
+                    </figcaption>
+                </figure>
+            </div>
+
+            <hr style="width: max(600px, 50vw); margin-bottom: 4em" />
+
+            <div
+                class="non-scroller"
+                id="further-reading"
+                style="margin-bottom: 4em; margin-top: 0"
+            >
+                <h2>Further reading</h2>
+                <ul>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/22421/grey-city/history-disrupting-peace/"
+                            target="_blank"
+                            >A History of Disrupting the Peace</a
+                        >, by Srishti Kapur
+                    </li>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/28856/grey-city/past-present-future-fossil-fuel-divestment-uchicago/"
+                            target="_blank"
+                            >The Past, Present, and Future of Fossil Fuel
+                            Divestment at UChicago</a
+                        >, by the <i>Chicago Maroon</i>
+                    </li>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/43139/grey-city/a-brief-history-of-occupying-buildings-and-camping-on-the-quad-at-uchicago/"
+                            target="_blank"
+                            >A Brief History of Occupying Buildings and Camping
+                            on the Quad at UChicago</a
+                        >, by Eli Wizevich
+                    </li>
+                    <li>
+                        <a
+                            href="https://chicagomaroon.com/43956/news/uchicago-united-for-palestine-2023-24/"
+                            target="_blank"
+                            >UChicago United for Palestine, 2023-24</a
+                        >, by Katherine Weaver
+                    </li>
+                </ul>
+            </div>
+
+            <div class="non-scroller" id="methodology">
+                <div class="line-break"></div>
+                <h2>Methodology</h2>
+                <p></p>
+
+                <p>
+                    <a
+                        href="https://drive.google.com/file/d/1KSWc5LtNL38iAuIN1uxjU7w8ve7zd5Mh/view?usp=sharing"
+                        >Access the data</a
+                    >
+                    for this project.
+                </p>
+                <p>
+                    Find the
+                    <a
+                        href="https://github.com/chicagomaroon/data-visualizations/tree/main/2025/endowment-breakdown"
+                        >code for this project</a
+                    >
+                    on GitHub.
+                </p>
+                <p>
+                    Cover images: ,
+                    <i>Chicago Maroon</i> Archive
+                </p>
+            </div>
+        </div>
+        <!-- EXTERNAL JS FILES -->
+        <script src="static/js/main.js" type="text/javascript"></script>
     </body>
 </html>
