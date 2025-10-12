@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* overall */
+
+body {
+    line-height: 1.6em;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+    margin: 0;
+}
+
+/* text */
+
+.fa {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(225, 225, 225);
+    width: 100%;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+    color: #800000;
+}
+
+h1 {
+    font-size: 50px;
+    line-height: 1em;
+    text-align: center;
+    padding-top: 5vh;
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    line-height: 1.2em;
+    width: 60%;
+}
+
+hr {
+    margin: 2em auto;
+}
+
+#subtitle {
+    font-size: 28;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.cursor-crosshair {
+    cursor: pointer !important;
+}
+
+/* intro */
+
+#pre-intro {
+    background: black;
+    color: white;
+    font-size: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 100vh;
+}
+
+#intro-quotes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0 4em;
+}
+
+.intro-quote {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: -1em 0;
+}
+
+.intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.year {
+    font-size: 40px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    font-style: normal;
+    line-height: 1em;
+}
+
+.intro {
+    z-index: 1000;
+    position: relative;
+    color: white;
+}
+
+.intro a {
+    color: white;
+}
+
+#background {
+    /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+        url('../../images/collage.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    z-index: 1000;
+    position: relative;
+}
+
+.quote p {
+    margin: 0;
+}
+
+.quote {
+    text-align: justify;
+    width: 50vw;
+    line-height: 1.2em;
+}
+
+.admin .attribution {
+    text-align: right;
+}
+
+.attribution {
+    margin: 0;
+    opacity: 0;
+    font-style: italic;
+    width: 50%;
+    line-height: 1em;
+}
+
+.attribution a {
+    color: white;
+}
+
+#bylines {
+    font-size: 16px;
+    text-align: center;
+}
+
+.byline a,
+.attribution a {
+    text-decoration: underline;
+}
+
+.admin {
+    align-items: flex-end;
+}
+
+.admin p {
+    display: block;
+}
+
+/* chapters */
+
+.non-scroller,
+.section-header {
+    margin: auto;
+    width: max(600px, 50vw);
+}
+
+#methodology {
+    font-size: 14px;
+    line-height: 1.2em;
+    margin: 4em auto;
+}
+
+#chapters {
+    width: 33vw;
+    padding: 0 15px;
+    margin-left: 62vw;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#content,
+#intro-text {
+    margin-top: 30vh;
+}
+
+#chapters {
+    margin-top: 10vh;
+}
+
+.scroller {
+    margin-top: 50vh;
+    margin-bottom: 50vh;
+    padding: 2em;
+    box-shadow: 0 0 1em #dedede;
+}
+
+.scroller img,
+figure {
+    border: 1px solid #4d0000;
+    background-color: white;
+    margin: 1em 0 0 0;
+    padding: 1em 0;
+}
+
+.scroller img {
+    width: 100%;
+}
+
+.caption {
+    font-size: 12px;
+}
+
+figcaption {
+    font-family: 'Playfair Display', serif;
+    text-align: right;
+    line-height: 1.2em;
+    margin-top: 5px;
+}
+
+figure {
+    padding: 1em;
+    background-color: #4d0000;
+    color: white;
+}
+
+figure a,
+figure a:hover,
+figure a:active,
+figure a:visited,
+figure a:focus {
+    color: white;
+}
+
+blockquote {
+    font-weight: 400;
+    line-height: 1.2em;
+    font-size: 26px;
+    margin: 0 !important;
+    font-family: 'Georgia', serif;
+}
+
+#chart-div {
+    position: fixed;
+    width: 60vw;
+    top: 0;
+    z-index: 1;
+}
+
+figure {
+    margin: 0 !important;
+}
+
+#further-reading {
+    margin-top: 20em;
+}
+
+#what-next {
+    margin: 4em auto;
+    width: max(600px, 50vw);
+}
+
+/* mobile */
+
+@media (width < 800px) {
+    /* overall */
+
+    body {
+        margin: 0;
+    }
+
+    /* text */
+
+    h1 {
+        font-size: 32px;
+    }
+
+    #subtitle {
+        font-size: 20px;
+        width: 80%;
+    }
+
+    hr {
+        width: 90% !important;
+        max-width: 100vw;
+    }
+
+    /* intro */
+
+    #pre-intro {
+        padding: 0;
+        font-size: 15px;
+        height: 100vh;
+    }
+
+    #intro-quotes {
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .quote {
+        width: 80vw;
+    }
+
+    .intro p {
+        margin-top: 5vh !important;
+    }
+
+    .intro {
+        width: 90%;
+        margin: auto;
+    }
+
+    .intro-quote {
+        width: 90%;
+        margin: 0;
+    }
+
+    #intro-text {
+        margin: 10vh auto;
+    }
+
+    .attribution {
+        width: 90%;
+    }
+
+    .year {
+        font-size: 28px;
+    }
+
+    /* chapters */
+
+    #chart-div,
+    #intro-quotes,
+    #background,
+    #content,
+    #chapters {
+        margin: 0;
+        width: 100vw;
+    }
+
+    #chapters {
+        padding: 0;
+        background: #eeeeee;
+    }
+
+    .scroller,
+    h2 {
+        width: 80%;
+    }
+
+    .scroller {
+        margin: 25vh auto;
+        background: white;
+    }
+
+    .scroller img {
+        margin: 0 auto;
+        margin-top: 1em;
+        display: block;
+        max-height: 30vh;
+        max-width: 100%;
+        width: auto !important;
+        object-fit: contain;
+    }
+
+    .scroller,
+    .non-scroller {
+        font-size: 14px;
+    }
+
+    .non-scroller,
+    .section-header {
+        width: 90vw;
+        margin: 50vh auto;
+    }
+
+    blockquote {
+        font-size: 16px;
+    }
+
+    #what-next {
+        width: 90%;
+        margin-bottom: 0;
+    }
+
+    #methodology {
+        font-size: 12px;
+        line-height: 1.5em;
+    }
+
+    /* chart */
+
+    #chart-div {
+        height: 40vh !important;
+    }
+
+    .plotly {
+        position: absolute;
+        left: 0;
+        margin-top: -15px !important;
+    }
+
+    /* .main-svg {
+        height: 330px !important;
+    } */
+
+    text.gtitle {
+        font-size: 16px !important;
+        x: 20;
+    }
+
+    text.gtitle-subtitle {
+        font-size: 12px !important;
+        x: 20;
+    }
+
+    text.annotation-text {
+        font-size: 6px !important;
+    }
+
+    .ytick text {
+        font-size: 12px !important;
+    }
+}
