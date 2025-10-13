@@ -604,6 +604,70 @@ async function init() {
             } else {
                 showChart();
                 console.log('Showing chart div');
+                showChart();
+            }
+        },
+        offset: '90%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('board-of-trustees'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.select('#flowchart-trustees').style('fill', '#A42323');
+                d3.select('#flowchart-graduate').style('fill', '#A42323');
+                d3.select('#flowchart-faculty').style('fill', '#A42323');
+                d3.select('#flowchart-advisory').style('fill', '#A42323');
+            } else {
+                d3.select('#flowchart-trustees').style('fill', '#800000');
+                d3.select('#flowchart-graduate').style('fill', '#800000');
+                d3.select('#flowchart-faculty').style('fill', '#800000');
+                d3.select('#flowchart-advisory').style('fill', '#800000');
+            }
+        },
+        offset: '90%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('office-of-investments'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.select('#flowchart-office').style('fill', '#A42323');
+                d3.select('#flowchart-firm').style('fill', '#A42323');
+                d3.select('#flowchart-trustees').style('fill', '#800000');
+                d3.select('#flowchart-graduate').style('fill', '#800000');
+                d3.select('#flowchart-faculty').style('fill', '#800000');
+                d3.select('#flowchart-advisory').style('fill', '#800000');
+            } else {
+                d3.select('#flowchart-office').style('fill', '#800000');
+                d3.select('#flowchart-firm').style('fill', '#800000');
+            }
+        },
+        offset: '90%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('president'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.select('#flowchart-president').style('fill', '#A42323');
+                d3.select('#flowchart-office').style('fill', '#800000');
+                d3.select('#flowchart-firm').style('fill', '#800000');
+            } else {
+                d3.select('#flowchart-president').style('fill', '#800000');
+            }
+        },
+        offset: '90%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('donors'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                d3.select('#flowchart-donors').style('fill', '#A42323');
+                d3.select('#flowchart-president').style('fill', '#800000');
+            } else {
+                d3.select('#flowchart-donors').style('fill', '#800000');
             }
         },
         offset: '90%'
