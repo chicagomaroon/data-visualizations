@@ -249,11 +249,16 @@ blockquote {
     font-family: 'Georgia', serif;
 }
 
-#chart-div {
+#chart-div, #flowchart {
     position: fixed;
+    height: 100vh; 
     width: 60vw;
     top: 0;
     z-index: 1;
+}
+
+#flowchart {
+    padding: 2em;
 }
 
 figure {
@@ -340,6 +345,7 @@ figure {
     /* chapters */
 
     #chart-div,
+    #flowchart,
     #intro-quotes,
     #background,
     #content,
@@ -400,7 +406,7 @@ figure {
 
     /* chart */
 
-    #chart-div {
+    #chart-div, #flowchart {
         height: 40vh !important;
     }
 

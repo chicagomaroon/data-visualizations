@@ -270,6 +270,33 @@ function processData(data, name_var) {
     }
 }
 
+function hideChart(all = false) {
+    d3.selectAll('#chart-div')
+        .transition()
+        .duration(300)
+        .style('opacity', 0)
+        .style('display', 'none');
+    if (all) {
+        d3.selectAll('#flowchart')
+            .transition()
+            .duration(300)
+            .style('opacity', 0)
+            .style('display', 'none');
+    }
+}
+
+function showChart(all = false) {
+    d3.selectAll('#chart-div').style('display', 'block');
+    d3.selectAll('#chart-div').transition().duration(300).style('opacity', 1);
+    if (all) {
+        d3.selectAll('#flowchart').style('display', 'block');
+        d3.selectAll('#flowchart')
+            .transition()
+            .duration(300)
+            .style('opacity', 1);
+    }
+}
+
 /**
  * Waypoints (scroll interactions) for article body.
  * Cite:
@@ -595,14 +622,15 @@ async function init() {
     createWaypoint('protest');
     createWaypoint('other-action');
 
-    flowchartWP = new Waypoint({
-        element: document.getElementById('flowchart'),
+    new Waypoint({
+        element: document.getElementById('control'),
         handler: function (direction) {
             if (direction == 'down') {
                 console.log('Showing flow chart');
-                flowChart();
+                hideChart((all = true));
+
+                d3.selectAll('#flowchart').style('display', 'block');
             } else {
-                showChart();
                 console.log('Showing chart div');
                 showChart();
             }
@@ -677,10 +705,10 @@ async function init() {
         element: document.getElementById('conclusion'),
         handler: function (direction) {
             if (direction == 'down') {
-                hideChart();
+                hideChart((all = true));
                 console.log('Hiding chart div');
             } else {
-                showChart();
+                showChart((all = true));
                 console.log('Showing chart div');
             }
         },
