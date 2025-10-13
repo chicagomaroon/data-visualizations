@@ -1,0 +1,11 @@
+[
+    {"id":1,"x":0,"year":2023,"type":"Global public equities","total_thousands":11361166,"amount_thousands":3260354,"percent":0.29,"page":22,"recategorized":"Public equities"},
+    {"id":2,"x":26,"year":2023,"type":"Private equity","total_thousands":11361166,"amount_thousands":2909926,"percent":0.26,"page":22,"recategorized":"Private equities"},
+    {"id":3,"x":46,"year":2023,"type":"Absolute return","total_thousands":11361166,"amount_thousands":2292889,"percent":0.2,"page":22,"recategorized":"Hedge funds"},
+    {"id":4,"x":56,"year":2023,"type":"Fixed income","total_thousands":11361166,"amount_thousands":1086726,"percent":0.1,"page":22,"recategorized":"Bonds"},
+    {"id":5,"x":61,"year":2023,"type":"Natural resources","total_thousands":11361166, "amount_thousands":519102,"percent":0.05,"page":22,"recategorized":"Other"},
+    {"id":6,"x":65,"year":2023,"type":"Real estate","total_thousands":11361166,"amount_thousands":507731,"percent":0.04,"page":22,"recategorized":"Other"},
+    {"id":7,"x":69,"year":2023,"type":"Private debt","total_thousands":11361166,"amount_thousands":449800,"percent":0.04,"page":22,"recategorized":"Other"},   
+    {"id":8,"x":71,"year":2023,"type":"Funds in trust","total_thousands":11361166,    "amount_thousands":278127,"percent":0.02,"page":22,"recategorized":"Other"},
+    {"id":9,"x":72,"year":2023,"type":"Cash equivalents","total_thousands":11361166,"amount_thousands":56511,"percent":0.0,"page":22,"recategorized":"Cash equivalents"}
+]

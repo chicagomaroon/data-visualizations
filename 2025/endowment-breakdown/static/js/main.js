@@ -172,10 +172,10 @@ function sankeyChart() {
  * Load data from external URL location
  * @return {json} jsonData Data to be cleaned in a later step
  */
-async function fetchData() {
+async function fetchData(path) {
     try {
         // get data from external source (github)
-        var response = await fetch('data/data.json');
+        var response = await fetch('data/' + path);
 
         var jsonData = await response.json();
 
@@ -186,19 +186,6 @@ async function fetchData() {
     }
 }
 
-function hideChart() {
-    d3.selectAll('#chart-div')
-        .transition()
-        .duration(300)
-        .style('opacity', 0)
-        .style('display', 'none');
-}
-
-function showChart() {
-    d3.selectAll('#chart-div').style('display', 'block');
-    d3.selectAll('#chart-div').transition().duration(300).style('opacity', 1);
-}
-
 /**
  * Group data and define all traces
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
@@ -206,64 +193,82 @@ function showChart() {
  * @param  {Array} name_vars Variable(s) to group by
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
-function processData(data, name_var) {
+function processData(data, variable = 'type') {
+    xs = [];
+    ys = [];
+    widths = [];
+    names = [];
+    colors = [];
+    texts = [];
     try {
         traces = [];
 
         // construct plotly "dataframe"
-        x = [];
-        names = [];
-        text = [];
 
         data.forEach(function (val) {
-            if (val[name_var]) {
-                x.push(val['Date of Event']);
-                names.push(val[name_var]);
-                text.push(
-                    '<a href="' +
-                        val['Link'] +
-                        '" target="_blank">' +
-                        val['Source'].replaceAll('\n', '<br>') +
-                        '</a>' +
-                        '<br>' +
-                        val['Year']
-                );
-            }
+            xs.push(val['x'] / 100);
+            ys.push(100);
+            widths.push(val['amount_thousands'] / val['total_thousands']);
+            names.push(val[variable]);
+            colors.push(colorbook['Fund type'][val[variable]]);
+            texts.push(
+                val[variable] +
+                    ' (' +
+                    Math.round(
+                        (val['amount_thousands'] / val['total_thousands']) * 100
+                    ) +
+                    '%)'
+            );
+            // traces.push({
+            //     type: 'bar',
+            //     name: val['type'],
+            //     x: [100 / val['amount_thousands']],
+            //     y: [100],
+            //     width: (val['amount_thousands'] / val['total_thousands']) * 10
+            // });
         });
 
         traces.push({
-            type: 'box',
+            // stackgroup: 'one',
+            type: 'bar',
+            // name: val['type'],
+            // x: [val['type']],
+            // y: [100],
+            y: xs,
+            x: ys,
+            width: widths,
             name: names,
-            x: x,
-            text: text,
-            boxpoints: 'all', // show points used in box plot
-            jitter: 1, // so points don't overlap
-            pointpos: 0, // center points
             marker: {
-                size: 15,
-                opacity: 0.5,
-                cliponaxis: false // Allow points to extend beyond the axis boundaries
+                color: colors
             },
-            transforms: [
-                {
-                    type: 'groupby',
-                    groups: names,
-                    // assign color based on group (cite: GPT)
-                    styles: names.map((group, i) => ({
-                        target: group,
-                        value: {
-                            marker: { color: colorbook[name_var][group] }
-                        }
-                    }))
-                }
-            ],
-            fillcolor: 'rgba(0,0,0,0)', // remove box part of boxplot
-            line: { color: 'rgba(0,0,0,0)' }, // remove box part of boxplot
-            hoverinfo: 'text',
-            hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
+            text: texts,
+            orientation: 'h',
+            // width: [(val['amount_thousands'] / val['total_thousands']) * 10],
+            // text:
+            //     val['amount_thousands'] +
+            //     '(' +
+            //     Math.round(
+            //         (val['amount_thousands'] / val['total_thousands']) * 100
+            //     ) +
+            //     '%)'
+            // transforms: [
+            //     {
+            //         type: 'groupby',
+            //         groups: names,
+            //         // assign color based on group (cite: GPT)
+            //         styles: names.map((group, i) => ({
+            //             target: group,
+            //             value: {
+            //                 marker: { color: colorbook[name_var][group] }
+            //             }
+            //         }))
+            //     }
+            // ],
+            hoverinfo: 'text'
+            // hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
         });
 
-        // console.log(traces)
+        console.log(traces);
         return traces;
     } catch (error) {
         console.error('Error processing data: ', error);
@@ -307,18 +312,11 @@ function createWaypoint(div, mapping, offset = '80%') {
     function handler(direction) {
         myPlot = document.getElementById('chart-div');
 
-        bars = d3.selectAll('.bc-bar-inner');
-
         // https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
         let classList = document.getElementById(div).className;
 
         if (direction == 'down') {
             // go to next key
-            d3.selectAll('.bc-bar-inner.dw-rect').style(
-                'background',
-                'rgb(100, 0, 100) !important'
-            );
-
             console.log(div);
         } else if (div == 'palestine') {
             Plotly.animate(
@@ -377,22 +375,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
             if (direction == 'down') {
                 showChart();
 
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(data, variable),
-                    layout,
-                    config
-                );
-
-                Plotly.animate(
-                    myPlot,
-                    {
-                        layout: {
-                            yaxis: { range: mapping[variable]['all']['y'] }
-                        }
-                    },
-                    { transition: transition }
-                );
+                Plotly.newPlot('chart-div', processData(data), layout, config);
 
                 console.log('New section created at: ' + div);
             } else if (prev_var == 'Top') {
@@ -413,22 +396,21 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                     config
                 );
 
-                Plotly.animate(
-                    myPlot,
-                    {
-                        layout: {
-                            yaxis: {
-                                range: mapping[prev_var][orderedKeys.at(-1)][
-                                    'y'
-                                ]
-                            }
-                        }
-                    },
-                    { transition: transition }
-                );
-
                 console.log('Going to previous section: ' + prev_var);
             }
+
+            Plotly.animate(myPlot, {
+                layout: {
+                    xaxis: {
+                        showticklabels: false
+                    },
+                    margin: {
+                        l: 200,
+                        r: 200
+                    },
+                    width: 0.2
+                }
+            });
 
             myPlot.on('plotly_click', open_url);
             myPlot.on('plotly_hover', hide_box_hovers);
@@ -489,18 +471,16 @@ const layout = {
         family: 'Georgia'
     },
     xaxis: {
-        showgrid: true,
-        showline: true,
-        range: ['1964-6-1'],
-        type: 'date',
-        dtick: 'M60',
-        ticklabelstep: 1,
+        showgrid: false,
+        showline: false,
+        showticklabels: false,
         tickfont: {
             size: 14
         }
     },
     yaxis: {
         showgrid: false,
+        showticklabels: false,
         ticktext: 'text',
         tickfont: {
             size: 14
@@ -512,8 +492,8 @@ const layout = {
     },
     showlegend: false,
     margin: {
-        l: 120,
-        r: 15
+        l: 200,
+        r: 200
     }
 };
 
@@ -528,14 +508,16 @@ const transition = {
 };
 
 const colorbook = {
-    Movement: {
-        Palestine: 'rgb(128, 0, 0)',
-        'Fossil fuels': 'rgb(193, 102, 34)',
-        'Uyghur rights': 'rgb(143, 57, 49)',
-        'Labor rights': 'rgb(138, 144, 69)',
-        SRIC: 'rgb(88, 89, 63)',
-        Sudan: 'rgb(21, 95, 131)',
-        'South Africa': 'rgb(53, 14, 32)'
+    'Fund type': {
+        'Global public equities': 'rgb(128, 0, 0)',
+        'Private equity': 'rgb(193, 102, 34)',
+        'Absolute return': 'rgb(143, 57, 49)',
+        'Fixed income': 'rgb(138, 144, 69)',
+        'Natural resources': 'rgb(88, 89, 63)',
+        'Real estate': 'rgb(21, 95, 131)',
+        'Private debt': 'rgb(53, 14, 32)',
+        'Cash equivalents': 'rgb(100, 100, 100)',
+        'Funds in trust': 'rgb(0, 0, 0)'
     },
     'Type of Action': {
         'Letter writing': 'rgb(128, 0, 0)',
@@ -606,8 +588,8 @@ async function init() {
         window.scrollTo(0, 0);
     };
 
-    // data = await fetchData();
-    // console.log(data);
+    data = await fetchData('financial-statement-2023.json');
+    console.log(data);
 
     // we will edit this plot throughout the whole article
     createNewSection(
@@ -618,9 +600,45 @@ async function init() {
         (offset = '70%')
     );
 
-    createWaypoint('what-is-it');
-    createWaypoint('protest');
-    createWaypoint('other-action');
+    // createWaypoint('what-is-it');
+
+    new Waypoint({
+        element: document.getElementById('breakdown'),
+        handler: function (direction) {
+            myPlot = document.getElementById('chart-div');
+
+            if (direction == 'down') {
+                Plotly.animate(
+                    myPlot,
+                    {
+                        layout: {
+                            xaxis: {
+                                showticklabels: true,
+                                range: [0, 100]
+                            },
+                            margin: {
+                                l: 50,
+                                r: 0
+                            }
+                        }
+                    },
+                    { transition: transition }
+                );
+            } else {
+                Plotly.animate(myPlot, {
+                    layout: {
+                        xaxis: {
+                            showticklabels: false
+                        },
+                        margin: {
+                            l: 200,
+                            r: 200
+                        }
+                    }
+                });
+            }
+        }
+    });
 
     new Waypoint({
         element: document.getElementById('control'),
