@@ -38,7 +38,7 @@ from edgar import *
 # unused because data is not very detailed
 # response=requests.get('https://projects.propublica.org/nonprofits/api/v2/organizations/362177139.json')
 
-# %% SEC filings
+# %% get SEC filings
 # cite: https://pypi.org/project/edgartools/
 # alternative: https://github.com/zpetan/sec-13f-portfolio-python
 
@@ -224,12 +224,13 @@ for i, investment in enumerate(investments):
     sec = pl.concat([sec, df], how="diagonal")
 
 # sec.write_csv("13F-HR.csv")
-
-# %% explore total holdings over time
+# %% read in data
 
 sec = pd.read_csv("13F-HR.csv")
 # sec[pd.to_datetime(sec['Date'])>datetime(2025,2,1)]
 sec["Date"] = pd.to_datetime(sec["Date"])
+
+# %% explore total holdings over time
 
 # value means market value in $1000s
 amounts = sec.groupby("Date").agg({"Value": lambda x: sum(x) / 1000}).reset_index()
@@ -303,9 +304,9 @@ type_dict = {
     "High yield": "Bonds",
     "Cash equivalent": "Bonds",
     "Fixed income": "Bonds",
-    "Absolute return": "Private equities",  # hedge funds may be public or private
-    "Equity oriented": "Private equities",  # hedge funds may be public or private
-    "Diversifying": "Private equities",  # hedge funds may be public or private
+    "Absolute return": "Hedge funds",  # hedge funds may be public or private
+    "Equity oriented": "Hedge funds",  # hedge funds may be public or private
+    "Diversifying": "Hedge funds",  # hedge funds may be public or private
     "Private equity": "Private equities",
     # "Assets held by trustee": "Funds in trust",
     # for now, to simplify graph, class most as other
@@ -318,8 +319,10 @@ type_dict = {
 }
 
 
-for k, v in type_dict.items():
-    fs.loc[fs["type"].str.contains(k, na=False), "type"] = v
+fs["recategorized"] = fs["type"].replace(type_dict)
+data2023 = fs[fs["year"] == 2023]
+
+data2023.to_json("data/financial-statement-2023.json", orient="records")
 
 # consolidate regrouped groups
 fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
