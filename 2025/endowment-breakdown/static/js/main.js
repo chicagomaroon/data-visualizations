@@ -186,6 +186,34 @@ async function fetchData(path) {
     }
 }
 
+// Group and sum elements by type (cite: copilot)
+function groupAndSum(data, groupByKey) {
+    const groupedData = data.reduce((acc, curr) => {
+        const key = curr[groupByKey]; // Group by the specified key
+        if (!acc[key]) {
+            // If the group doesn't exist, initialize it with the current object
+            acc[key] = { ...curr, amount_thousands: 0 };
+        }
+        // Sum the values for the group
+        acc[key].amount_thousands += curr.amount_thousands;
+        return acc;
+    }, {});
+
+    // Convert the grouped object back into an array
+    const groupedArray = Object.values(groupedData);
+
+    // sort
+    groupedArray.sort((a, b) => b.amount_thousands - a.amount_thousands);
+
+    // Make cumulative x position variable
+    let cumulativeSum = 0;
+    groupedArray.forEach((item) => {
+        cumulativeSum += (item.amount_thousands / item.total_thousands) * 100;
+        item.x = cumulativeSum;
+    });
+    return groupedArray;
+}
+
 /**
  * Group data and define all traces
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
@@ -194,6 +222,10 @@ async function fetchData(path) {
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
 function processData(data, variable = 'type') {
+    const groupedData = groupAndSum(data, variable);
+
+    console.log('grouped', groupedData);
+
     xs = [];
     ys = [];
     widths = [];
@@ -205,7 +237,7 @@ function processData(data, variable = 'type') {
 
         // construct plotly "dataframe"
 
-        data.forEach(function (val) {
+        groupedData.forEach(function (val) {
             xs.push(val['x'] / 100);
             ys.push(100);
             widths.push(val['amount_thousands'] / val['total_thousands']);
@@ -219,21 +251,10 @@ function processData(data, variable = 'type') {
                     ) +
                     '%)'
             );
-            // traces.push({
-            //     type: 'bar',
-            //     name: val['type'],
-            //     x: [100 / val['amount_thousands']],
-            //     y: [100],
-            //     width: (val['amount_thousands'] / val['total_thousands']) * 10
-            // });
         });
 
         traces.push({
-            // stackgroup: 'one',
             type: 'bar',
-            // name: val['type'],
-            // x: [val['type']],
-            // y: [100],
             y: xs,
             x: ys,
             width: widths,
@@ -243,7 +264,6 @@ function processData(data, variable = 'type') {
             },
             text: texts,
             orientation: 'h',
-            // width: [(val['amount_thousands'] / val['total_thousands']) * 10],
             // text:
             //     val['amount_thousands'] +
             //     '(' +
@@ -251,19 +271,6 @@ function processData(data, variable = 'type') {
             //         (val['amount_thousands'] / val['total_thousands']) * 100
             //     ) +
             //     '%)'
-            // transforms: [
-            //     {
-            //         type: 'groupby',
-            //         groups: names,
-            //         // assign color based on group (cite: GPT)
-            //         styles: names.map((group, i) => ({
-            //             target: group,
-            //             value: {
-            //                 marker: { color: colorbook[name_var][group] }
-            //             }
-            //         }))
-            //     }
-            // ],
             hoverinfo: 'text'
             // hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
         });
@@ -517,7 +524,12 @@ const colorbook = {
         'Real estate': 'rgb(21, 95, 131)',
         'Private debt': 'rgb(53, 14, 32)',
         'Cash equivalents': 'rgb(100, 100, 100)',
-        'Funds in trust': 'rgb(0, 0, 0)'
+        'Funds in trust': 'rgb(0, 0, 0)',
+        'Public equities (stocks)': 'rgb(128, 0, 0)',
+        'Private equities (stocks)': 'rgb(193, 102, 34)',
+        Bonds: 'rgb(138, 144, 69)',
+        'Hedge funds': 'rgb(53, 14, 32)',
+        Other: 'rgb(21, 95, 131)'
     },
     'Type of Action': {
         'Letter writing': 'rgb(128, 0, 0)',
@@ -569,17 +581,6 @@ const zoom_mapping = {
     }
 };
 
-const history = {
-    Beadle: { x: ['1963-1-1', '1968-1-1'] },
-    Levi: { x: ['1968-1-1', '1975-1-1'] },
-    Wilson: { x: ['1975-1-1', '1978-8-1'] },
-    Gray: { x: ['1978-8-1', '1993-1-1'] },
-    Sonnenschein: { x: ['1993-1-1', '2000-1-1'] },
-    Randel: { x: ['2000-1-1', '2006-1-1'] },
-    Zimmer: { x: ['2006-1-1', '2021-1-1'] },
-    Alivisatos: { x: ['2021-1-1', '2026-6-1'] }
-};
-
 // -------- MAIN --------
 var data;
 
@@ -604,6 +605,22 @@ async function init() {
 
     new Waypoint({
         element: document.getElementById('breakdown'),
+        handler: function (direction) {
+            myPlot = document.getElementById('chart-div');
+
+            if (direction == 'down') {
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(data, (variable = 'recategorized')),
+                    layout,
+                    config
+                );
+            }
+        }
+    });
+
+    new Waypoint({
+        element: document.getElementById('categories'),
         handler: function (direction) {
             myPlot = document.getElementById('chart-div');
 
