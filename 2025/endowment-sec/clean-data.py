@@ -4,13 +4,24 @@ Use SEC API to download all UChicago SEC filings since 1994
 
 # %% imports
 
-import os
+# import requests
+# from requests_html import HTMLSession
+from nltk.corpus import stopwords
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import json
+
+# from bs4 import BeautifulSoup as bs
+from selenium.webdriver.support.ui import Select
+import time
 import re
+import os
 from datetime import datetime
 import xmltodict
 import yfinance as yf
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+import numpy as np
 import pandas as pd
 import polars as pl
 from polars import String, Int64, Date, ShapeError, ComputeError
@@ -23,9 +34,9 @@ from plotnine import (
     xlab,
     ylab,
     ggtitle,
-    theme,
-    element_text,
-    scale_x_date,
+    # theme,
+    # element_text,
+    # scale_x_date,
     theme_minimal,
     coord_flip,
 )
@@ -229,121 +240,120 @@ for i, investment in enumerate(investments):
 sec = pd.read_csv("13F-HR.csv")
 # sec[pd.to_datetime(sec['Date'])>datetime(2025,2,1)]
 sec["Date"] = pd.to_datetime(sec["Date"])
+sec["Year"] = sec["Date"].dt.year
+sec["ValueThousands"] = sec["Value"]
+sec["Issuer"] = sec["Issuer"].str.title()
 
 # %% explore total holdings over time
 
 # value means market value in $1000s
-amounts = sec.groupby("Date").agg({"Value": lambda x: sum(x) / 1000}).reset_index()
-amounts["Date"] = pd.to_datetime(amounts["Date"])
+amounts = (
+    sec.dropna(subset="ShareValueDiffThousands")
+    .groupby("Year")
+    .agg({"ShareValueDiffThousands": lambda x: sum(x) / 1000})
+    .reset_index()
+    .rename(columns={"ShareValueDiffThousands": "PurchasesMillions"})
+)
+# amounts["Year"] = pd.to_datetime(amounts["Year"])
 
 amounts.to_csv("annual-totals.csv")
 
 (
     ggplot(amounts)
-    + geom_point(aes(x="Date", y="Value"), alpha=1)
-    + geom_line(aes(x="Date", y="Value"), alpha=1)
-    + scale_x_date(date_labels="%Y-%m", date_breaks="1 year")
+    + geom_point(aes(x="Year", y="PurchasesMillions"), alpha=1)
+    + geom_line(aes(x="Year", y="PurchasesMillions"), alpha=1)
+    # + scale_x_date(date_labels="%Y", date_breaks="1 year")
     + ggtitle("UChicago 13F-HR filings")
-    + xlab("Date")
+    + xlab("PurchasesMillions")
     + ylab("Value in millions of dollars")
     + theme_minimal()
-    + theme(axis_text_x=element_text(rotation=90, hjust=1))
+    # + theme(axis_text_x=element_text(rotation=90, hjust=1))
 )
+
+# %% sec math
+
+# use both info of shares (purchases) and values (market value)
+
+# initialize a dummy first date for everyone at value 0
+unique_companies = sec.drop_duplicates("Ticker").sort_values("Ticker")
+sec = pd.concat(
+    [
+        sec,
+        pd.DataFrame(
+            {
+                "Issuer": unique_companies["Issuer"],
+                "Ticker": unique_companies["Ticker"],
+                "Date": [datetime(1950, 1, 1)] * len(unique_companies),
+                "SharesPrnAmount": [0] * len(unique_companies),
+                "ValueThousands": [0] * len(unique_companies),
+            }
+        ),
+    ]
+).reset_index(drop=True)
+
+# use lag to get differences over time
+sec["LaggedShares"] = (
+    sec.sort_values("Date").groupby("Issuer")["SharesPrnAmount"].shift(1)
+)
+sec["LaggedShares"] = sec["LaggedShares"].fillna(0)
+sec["SharesDiff"] = sec["SharesPrnAmount"] - sec["LaggedShares"]
+sec["ShareValue"] = sec["ValueThousands"] / sec["SharesPrnAmount"]
+sec["SharePurchases"] = [x if x > 0 else np.nan for x in sec["SharesDiff"]]
+sec["SharePurchaseValueThousands"] = round(sec["SharePurchases"] * sec["ShareValue"], 2)
+
+# inspect share value to ensure reasonable values
+print(round(sec["ShareValue"].describe(), 5) * 1000)
+# does the max value stock make sense?
+print(sec.iloc[sec["ShareValue"].idxmax()])
+
+# remove dummy rows
+sec = sec[sec["Date"] > datetime(1950, 1, 1)]
+
+sec.sort_values(["Issuer", "Date"])[
+    [
+        "Issuer",
+        "Ticker",
+        "Date",
+        "ShareValue",
+        "SharesDiff",
+        "SharesPrnAmount",
+        "LaggedShares",
+    ]
+]
 
 # %% visualize by company
 
+# top 10 by total shares actively purchased over time (not subtracting sold holdings)
 top10 = (
     sec.groupby("Issuer")
-    .agg({"SharesPrnAmount": "max", "Ticker": "first"})
-    .sort_values("SharesPrnAmount", ascending=False)
-    .head(5)
+    .agg({"SharePurchases": "sum", "Ticker": "first"})
+    .sort_values("SharePurchases", ascending=False)
+    .head(10)
     .reset_index()
     # .rename(columns={"Value": "Total in Millions"})
 )
 
-# TODO: for summarizing things like shares over time, wouldn't sum not make sense because some of the shares are held continually over time? therefore do a lagged difference and then sum?
+top10table = (
+    sec.loc[[(x in top10["Issuer"].unique()) for x in sec["Issuer"]]]
+    .dropna(subset=["SharePurchaseValueThousands"])
+    .groupby(["Issuer"])
+    .agg(
+        {
+            "Ticker": "first",
+            "SharePurchaseValueThousands": lambda x: round(sum(x), 2),
+            "Date": lambda x: list(x.dt.strftime("%Y-%m")),
+        }
+    )
+    .sort_values("SharePurchaseValueThousands", ascending=False)
+    .reset_index()
+)
+display(top10table)
+
 # TODO: visualize by industry
 # TODO: combine with private data? how?
-# TODO: verify via SharesPrnAmt that shares is correlated with value, ie UChicago is genuinely investing more
-(
-    ggplot(sec.loc[[x in top10["Issuer"].unique() for x in sec["Issuer"]]])
-    + geom_point(aes(x="Date", y="SharesPrnAmount", color="Issuer"), alpha=1)
-    + geom_line(aes(x="Date", y="SharesPrnAmount", color="Issuer"), alpha=1)
-    + ggtitle("UChicago 13F-HR filings")
-    + xlab("Date")
-    + ylab("Shares")
-    + scale_x_date(date_labels="%Y-%m", date_breaks="1 year")
-    + theme_minimal()
-    + theme(axis_text_x=element_text(rotation=90, hjust=1))
-)
-
-
-# %% explore which stocks are held
-
-
-# %% get all statements
-
-# unused because manual copying was easier than camelot parsing
-# alternative: https://tabula-py.readthedocs.io/en/latest/
-# statements_dir = "../endowment-breakdown/financial-statements"
-# for file in os.listdir(statements_dir):
-#     tables = camelot.read_pdf(os.path.join(statements_dir, file))
-#     print(tables)
-#     # tables.export('foo.csv', f='csv', compress=True)
-
-# %% get parsed financial statements
-
-fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
-
-# categorize types into broader categories
-type_dict = {
-    "Domestic": "Public equities",
-    "International": "Public equities",
-    "Stocks": "Public equities",  # TODO: actually this comprises public and private so maybe exclude pre 2000
-    "Global public equities": "Public equities",
-    "High yield": "Bonds",
-    "Cash equivalent": "Bonds",
-    "Fixed income": "Bonds",
-    "Absolute return": "Hedge funds",  # hedge funds may be public or private
-    "Equity oriented": "Hedge funds",  # hedge funds may be public or private
-    "Diversifying": "Hedge funds",  # hedge funds may be public or private
-    "Private equity": "Private equities",
-    # "Assets held by trustee": "Funds in trust",
-    # for now, to simplify graph, class most as other
-    "Assets held by trustee": "Other",
-    "Funds in trust": "Other",
-    "Natural resources": "Other",
-    "Private debt": "Other",
-    "Real assets": "Other",
-    "Real estate": "Other",
-}
-
-
-fs["recategorized"] = fs["type"].replace(type_dict)
-data2023 = fs[fs["year"] == 2023]
-
-data2023.to_json("data/financial-statement-2023.json", orient="records")
-
-# consolidate regrouped groups
-fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
-fs.to_csv("types.csv", index=False)
-
-(
-    ggplot(fs, aes(x="year", y="percent"))
-    + geom_line(aes(color="type", line_type="type"))
-)
 
 # %% scrape holdings of index funds
-import requests
 
-# from requests_html import HTMLSession
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from bs4 import BeautifulSoup as bs
-from selenium.webdriver.support.ui import Select
-import time
-import re
 
 # session = HTMLSession()
 # r = session.get(site)
@@ -440,13 +450,13 @@ def get_holdings(company="vanguard", ticker=None, pages=51):
                     break
 
     df = pd.DataFrame({"ticker": tickers, "percent": percents, "company": companies})
-    uc_investment = (
+    uc_invested_dollars = (
         sec.sort_values("Date", ascending=False)
         .loc[(sec["Ticker"] == ticker), "Value"]
         .values[0]
         * 1000
     )
-    df["amt"] = df["percent"].astype(float) / 100 * uc_investment
+    df["amt"] = df["percent"].astype(float) / 100 * uc_invested_dollars
     df.to_csv(f"holdings-{ticker}.csv", index=False)
 
     driver.quit()
@@ -493,8 +503,7 @@ get_holdings(
 # TODO: switch to yfinance for top holdings (it's nice to see all holdings but not practical for all funds)
 yf.Ticker("VT").funds_data.top_holdings
 
-
-# %%
+# %% read in yahoo holdings data
 
 
 def clean_names(x):
@@ -506,11 +515,26 @@ def clean_names(x):
     return x
 
 
-voo = pd.read_csv("holdings-VOO.csv")
+voo = pd.read_csv("yahoo/holdings-VOO.csv")
 voo["source"] = "VOO"
-vt = pd.read_csv("holdings-VT.csv")
+vt = pd.read_csv("yahoo/holdings-VT.csv")
 vt["source"] = "VT"
-all_holdings = pd.concat([voo, vt])
+all_holdings = (
+    pd.concat([voo, vt])
+    .rename(
+        columns={
+            "amt": "ValueThousands",
+            # "source": "Ticker",
+            "company": "Issuer",
+            "ticker": "Ticker",
+        }
+    )
+    .drop_duplicates()
+    .reset_index(drop=True)
+)
+all_holdings["ValueThousands"] = all_holdings["ValueThousands"] / 1000
+
+# %% sipri weapons manufacturing analysis
 
 sipri = pd.read_excel("SIPRI-Top-100-2002-2023.xlsx", sheet_name="2023", skiprows=3)
 voo["company"] = voo["company"].apply(clean_names)
@@ -529,71 +553,158 @@ voo_sipri.amt.sum() + vt_sipri.amt.sum()
 # TODO: need to match rough percentage of each industry to portfolios
 # then group by year and report percentage of each industry per year
 # but I only have makeup of holdings for 2 funds for 1 year, so can't compare over time
+
+# all holdings including generic index funds
+sec_2025 = sec[
+    # take the most recent filing, idk how to aggregate over time as idk if new or total holdings
+    sec["Year"] == 2025
+]
+
 sec_2025 = pd.concat(
     [
-        sec[
-            (~sec["Ticker"].isin(["VOO", "VT"]))
-            # take the most recent filing, idk how to aggregate over time as idk if new or total holdings
-            & (sec["Date"] == datetime(2025, 3, 31))
-        ],
-        all_holdings.rename(
-            columns={
-                "percent": "Thousands",
-                # "source": "Ticker",
-                "company": "Issuer",
-                "ticker": "Ticker",
-            }
-        ),
-    ]
+        # excluding generic index funds VOO/VT
+        sec_2025[~sec_2025["Ticker"].isin(["VOO", "VT"])],
+        # add in specific holdings for VOO/VT funds
+        all_holdings,
+    ],
+    axis=0,
+    ignore_index=True,
 )
-sec_2025["Issuer"] = sec_2025["Issuer"].str.upper()
-sec_2025["Issuer"] = sec_2025["Issuer"].str.replace(" INC.", "")
+sec_2025["Issuer"] = sec_2025["Issuer"].str.replace(" Inc.", "")
 
 # there are overlapping stocks across funds
 sec_2025 = (
-    sec_2025.groupby(["Issuer"])
+    sec_2025.groupby(["Ticker"])
     .agg(
         {
-            "Thousands": "sum",
-            "Ticker": "first",
+            # not using lagged purchase value because this is a snapshot
+            "ValueThousands": "sum",
+            # "Ticker": "first",
+            "Issuer": "first",
             # "Industry": "first",
             # "Summary": "first",
         }
     )
     .reset_index()
-)[["Issuer", "Ticker", "Thousands"]]
+)[["Issuer", "Ticker", "ValueThousands"]]
 
-sec_2025["Summary"] = None
+fp = "sec-industries-2025-5.csv"
+if os.path.exists(fp):
+    sec_2025 = pd.read_csv(fp)
 
-for ticker in sorted(list(set(sec_2025["Ticker"].unique()) - set([None]))):
-    print(ticker)
-    # if sec_2025.loc[sec_2025["Ticker"] == ticker, "Industry"].isna().values[0]:
-    #     sec_2025.loc[sec_2025["Ticker"] == ticker, "Industry"] = yf.Ticker(
-    #         ticker
-    #     ).info.get("industry", None)
-    sec_2025.loc[sec_2025["Ticker"] == ticker, "Summary"] = yf.Ticker(ticker).info.get(
-        "longBusinessSummary", None
-    )
+if "Industry" not in sec_2025.columns:
+    sec_2025["Industry"] = None
+if "Sector" not in sec_2025.columns:
+    sec_2025["Sector"] = None
+if "Summary" not in sec_2025.columns:
+    sec_2025["Summary"] = None
 
-sec_2025.to_csv("sec-industries-2025-4.csv", index=False)
+tickers = sec_2025["Ticker"]
+for ticker in sorted(list(set(tickers.unique()) - set([None, np.nan]))):
+    # note that we use the NA string to indicate missing data so that we don't try to re-fetch
+
+    try:
+        yf_info = yf.Ticker(ticker).info
+    except Exception as e:
+        print(f"{ticker} does not exist in Yahoo data: {e}")
+        continue
+
+    if sec_2025.loc[tickers == ticker, "Industry"].isna().values[0]:
+        print(ticker)
+        sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
+            "industry", "NA"
+        )
+        sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
+            "sector", "NA"
+        )
+        sec_2025.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
+            "longBusinessSummary", "NA"
+        )
+
+
+sec_2025.to_csv(fp, index=False)
+
+# %% analyze by sector
+
+sec_2025["Industry"] = sec_2025["Industry"].replace("NA", None)
+sec_2025["Sector"] = sec_2025["Sector"].replace("NA", None)
+sec_2025["Summary"] = sec_2025["Summary"].replace("NA", None)
+# duplicate column for individual company info
+sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
+sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
 
 plot_df = (
-    sec_2025[~sec_2025["Industry"].isna()]
-    .groupby("Industry")
+    sec_2025[~sec_2025["Sector"].isna()]
+    # make sure that the biggest companies get listed first
+    .sort_values("ValueThousands", ascending=False)
+    .groupby("Sector")
     .agg(
         {
-            "Thousands": "sum",
+            "ValueThousands": "sum",
+            "ValueDollars": lambda x: ["${:,.0f}".format(i) for i in x[:5]],
             "Summary": lambda x: ", ".join(x),
-            "Issuer": lambda x: ", ".join(x),
+            "Issuer": lambda x: list(x)[:5],
         }
     )
     .reset_index()
-    .sort_values("Thousands", ascending=False)
+    .sort_values("ValueThousands", ascending=False)
+)
+display(plot_df)
+
+# import nltk
+# nltk.download("stopwords")
+eng_stops = stopwords.words("english")
+# issuer_names = [i.lower() for x in plot_df["Issuer"] for i in x]
+# issuer_names = [i for x in issuer_names for i in x.split(" ")]
+# I cleaned this list manually for words that are not proper nouns
+with open("company-names.txt", "r", encoding="utf-8") as f:
+    proper_nouns = f.read().splitlines()
+
+
+# when finding words to describe each sector's companies, exclude proper nouns
+my_stops = (
+    eng_stops
+    + [
+        "company",
+        "segment",
+        "segments",
+        "parts",
+        "offers",
+        "services",
+        "provides",
+        "operates",
+        "test",
+        "founded",
+        "sells",
+        "specialty",
+        "com",
+        "million",
+        "approximately",
+        "including",
+        "also",
+        "well",
+        "based",
+        "headquartered",
+        "products",
+        "commercial",
+        "maintenance",
+        "components",
+        "solution",
+        "solutions",
+        "management",
+        "control",
+        "systems",
+        "united",
+        "states",
+    ]
+    + list(set(proper_nouns))
 )
 
 # Cite: Copilot
-tfidf = TfidfVectorizer(stop_words="english", max_features=1000)
-tfidf_matrix = tfidf.fit_transform(plot_df["Summary"].fillna(""))
+tfidf = TfidfVectorizer(stop_words=my_stops, max_features=1000, ngram_range=(1, 3))
+tfidf_matrix = tfidf.fit_transform(
+    plot_df["Summary"].fillna("").str.replace("\\d+", "", regex=True)
+)
 # Get feature names (words)
 feature_names = tfidf.get_feature_names_out()
 
@@ -602,21 +713,94 @@ top_words = []
 for row in tfidf_matrix:
     # Get indices of top words sorted by TF-IDF score
     sorted_indices = row.toarray().flatten().argsort()[::-1]
-    top_word_indices = sorted_indices[:15]
+    top_word_indices = sorted_indices[:10]
     top_words.append([feature_names[i] for i in top_word_indices])
 
 # Add top words to the DataFrame
 plot_df["TopWords"] = top_words
-plot_df["Issuer"] = plot_df["Issuer"].str.title()
+plot_df["TopWords"] = [", ".join(x) for x in plot_df["TopWords"]]
+
+plot_df["Top5"] = [
+    list(zip(row["Issuer"], row["ValueDollars"])) for _, row in plot_df.iterrows()
+]
+plot_df["Top5"] = [[f"{i[0]}: {i[1]}" for i in x] for x in plot_df["Top5"]]
+plot_df["Top5"] = ["<br>".join(x) for x in plot_df["Top5"]]
+# plot_df["Top5"] = [f"{row['Sector']}<br>{row['Top5']}" for _, row in plot_df.iterrows()]
+
+plot_df[["Issuer", "Ticker", "ValueThousands", "Top5", "TopWords"]].to_json(
+    "sec-industries-2025-sectors.xlsx", orient="records"
+)
+
+# of each of these top sectors, what are the individual companies and keywords
+
 
 (
     ggplot(
-        plot_df[plot_df["Thousands"] > 1],
-        aes("reorder(Industry, Thousands)", "Thousands"),
+        plot_df[plot_df["ValueThousands"] > 1],
+        aes("reorder(Sector, ValueThousands)", "ValueThousands"),
     )
     + geom_col()
     + coord_flip()
 )
+
+print(plot_df["TopWords"])
+print(plot_df["TopWords"][7])
+
+# %% explore which stocks are held
+
+
+# %% get all statements
+
+# unused because manual copying was easier than camelot parsing
+# alternative: https://tabula-py.readthedocs.io/en/latest/
+# statements_dir = "../endowment-breakdown/financial-statements"
+# for file in os.listdir(statements_dir):
+#     tables = camelot.read_pdf(os.path.join(statements_dir, file))
+#     print(tables)
+#     # tables.export('foo.csv', f='csv', compress=True)
+
+# %% get parsed financial statements
+
+fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
+
+# categorize types into broader categories
+type_dict = {
+    "Domestic": "Public equities",
+    "International": "Public equities",
+    "Stocks": "Public equities",  # TODO: actually this comprises public and private so maybe exclude pre 2000
+    "Global public equities": "Public equities",
+    "High yield": "Bonds",
+    "Cash equivalent": "Bonds",
+    "Fixed income": "Bonds",
+    "Absolute return": "Hedge funds",  # hedge funds may be public or private
+    "Equity oriented": "Hedge funds",  # hedge funds may be public or private
+    "Diversifying": "Hedge funds",  # hedge funds may be public or private
+    "Private equity": "Private equities",
+    # "Assets held by trustee": "Funds in trust",
+    # for now, to simplify graph, class most as other
+    "Assets held by trustee": "Other",
+    "Funds in trust": "Other",
+    "Natural resources": "Other",
+    "Private debt": "Other",
+    "Real assets": "Other",
+    "Real estate": "Other",
+}
+
+
+fs["recategorized"] = fs["type"].replace(type_dict)
+data2023 = fs[fs["year"] == 2023]
+
+data2023.to_json("data/financial-statement-2023.json", orient="records")
+
+# consolidate regrouped groups
+fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
+fs.to_csv("types.csv", index=False)
+
+(
+    ggplot(fs, aes(x="year", y="percent"))
+    + geom_line(aes(color="type", line_type="type"))
+)
+
 
 # %% parse 990 data
 
