@@ -176,7 +176,6 @@ async function fetchData(path) {
     try {
         // get data from external source (github)
         var response = await fetch('data/' + path);
-
         var jsonData = await response.json();
 
         // console.log(jsonData)
@@ -188,7 +187,7 @@ async function fetchData(path) {
 
 // Group and sum elements by type (cite: copilot)
 function groupAndSum(data, groupByKey) {
-    console.log('grouping by', groupByKey);
+    console.log('grouping by', groupByKey, data);
     const groupedData = data.reduce((acc, curr) => {
         const key = curr[groupByKey]; // Group by the specified key
         if (!acc[key]) {
@@ -206,19 +205,14 @@ function groupAndSum(data, groupByKey) {
     // sort by value
     groupedArray.sort((a, b) => b.amount_thousands - a.amount_thousands);
 
+    let total_thousands = 0;
+    groupedArray.forEach((d) => (total_thousands += d.amount_thousands));
+
     // Make cumulative x position variable
     let cumulativeSum = 0;
     groupedArray.forEach((item) => {
-        // if (
-        //     (item[groupByKey] === 'Absolute return') |
-        //     (item[groupByKey] === 'Fixed income') |
-        //     (item[groupByKey] === 'Other')
-        // ) {
-        //     cumulativeSum *= 1.15; // idk why the spacing is freaking out on me
-        // }
         item.x = cumulativeSum;
-
-        item.width = item.amount_thousands / item.total_thousands;
+        item.width = item.amount_thousands / total_thousands;
         cumulativeSum += item.width;
 
         item.label =
@@ -240,11 +234,10 @@ function groupAndSum(data, groupByKey) {
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
 function processData(data, variable = 'fund_type') {
-    if ((variable === 'fund_type') | (variable === 'recategorized')) {
-        data = groupAndSum(data, variable);
-    }
+    console.log('processing', data);
+    const groupedData = groupAndSum(data, variable);
 
-    console.log('grouped', data);
+    console.log('grouped', groupedData);
     try {
         traces = [];
 
@@ -252,18 +245,25 @@ function processData(data, variable = 'fund_type') {
 
         traces.push({
             type: 'bar',
-            x: data.map((d) => d.y),
-            y: data.map((d) => d.x),
-            width: data.map((d) => d.width),
-            name: data.map((d) => d[variable]),
+            x: groupedData.map((d) => d.y),
+            y: groupedData.map((d) => d.x),
+            width: groupedData.map((d) => d.width * 1.35),
+            name: groupedData.map((d) => d[variable]),
             marker: {
-                color: data.map((d) => colorbook[variable][d[variable]])
+                color: groupedData.map((d) => colorbook[variable][d[variable]])
             },
-            text: data.map((d) => d.label),
+            text: groupedData.map((d) => d.label),
             orientation: 'h',
             hoverinfo: 'text'
-            // hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
         });
+
+        if ('hoverinfo' in groupedData[0]) {
+            traces[0]['customdata'] = groupedData.map((d) => d.hoverinfo);
+            console.log(traces[0]['customdata']);
+            // traces[0]['hoverinfo'] = 'customdata';
+            traces[0]['hovertemplate'] =
+                'Top five companies and investment amounts:<br>%{customdata}<extra></extra>';
+        }
 
         console.log(traces);
         return traces;
@@ -303,9 +303,8 @@ function showChart(all = false) {
  * Waypoints (scroll interactions) for article body.
  * Cite:
  * @param  {str} Name of HTML div to attach waypoint to
- * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createWaypoint(div, mapping, offset = '80%') {
+function createWaypoint(div, offset = '80%') {
     function handler(direction) {
         myPlot = document.getElementById('chart-div');
 
@@ -316,36 +315,15 @@ function createWaypoint(div, mapping, offset = '80%') {
             // go to next key
             console.log(div);
         } else if (div == 'palestine') {
-            Plotly.animate(
-                myPlot,
-                {
-                    layout: {
-                        yaxis: { range: mapping['all']['y'] }
-                    }
-                },
-                { transition: transition }
-            );
             console.log('first key');
         } else if (!classList.match('first')) {
             // go back to the previous key
 
             let orderedKeys = [];
-            for (var key in mapping) {
-                orderedKeys.push(key);
-            }
 
             previousIndex = orderedKeys.indexOf(div) - 1;
             previousKey = orderedKeys[previousIndex];
 
-            Plotly.animate(
-                myPlot,
-                {
-                    layout: {
-                        yaxis: { range: mapping[previousKey]['y'] }
-                    }
-                },
-                { transition: transition }
-            );
             console.log('prev key');
         }
     }
@@ -361,9 +339,8 @@ function createWaypoint(div, mapping, offset = '80%') {
  * Waypoints (scroll interactions) for article body.
  * Cite:
  * @param  {str} Name of HTML div to attach waypoint to
- * @param  {json} mapping Maps div name to the proper zoom ranges
  */
-function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
+function createNewSection(div, data, variable, prev_var, offset = '80%') {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
@@ -372,7 +349,12 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
             if (direction == 'down') {
                 showChart();
 
-                Plotly.newPlot('chart-div', processData(data), layout, config);
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(data, variable),
+                    layout,
+                    config
+                );
 
                 console.log('New section created at: ' + div);
             } else if (prev_var == 'Top') {
@@ -382,7 +364,7 @@ function createNewSection(div, variable, prev_var, mapping, offset = '80%') {
                 // go to last key of previous section
 
                 let orderedKeys = [];
-                for (var key in mapping[prev_var]) {
+                for (var key in [prev_var]) {
                     orderedKeys.push(key);
                 }
 
@@ -554,31 +536,6 @@ const colorbook = {
     }
 };
 
-const zoom_mapping = {
-    Movement: {
-        all: { y: [-0.5, 6.5] },
-        palestine: { y: [-0.25, 0.25] },
-        'fossil-fuels': { y: [0.5, 1.5] },
-        'labor-rights': { y: [1.25, 2.75] },
-        'uyghur-rights': { y: [2.25, 3.75] },
-        sric: { y: [3.5, 4.5] },
-        sudan: { y: [4.75, 5.25] },
-        'south-africa': { y: [5.75, 6.25] }
-    },
-    'Type of Action': {
-        all: { y: [-0.5, 5.5] },
-        letters: { y: [0.75, 1.25] },
-        protest: { y: [-0.25, 0.25] },
-        'other-action': { y: [1.5, 5.5] }
-    },
-    'Admin Response': {
-        all: { y: [-0.75, 4.5] },
-        meeting: { y: [2.3, 4.75] },
-        police: { y: [0.3, 2.75] },
-        'other-response': { y: [-1, 0.75] }
-    }
-};
-
 // -------- MAIN --------
 var data;
 
@@ -588,18 +545,18 @@ async function init() {
     };
     // hideChart((all = true));
 
-    data = await fetchData('financial-statement-2023.json');
-    console.log(data);
+    fs = await fetchData('financial-statement-2023.json');
+    console.log(fs);
 
     sec = await fetchData('sec-sectors-2025.json');
     console.log(sec);
 
     // we will edit this plot throughout the whole article
     createNewSection(
-        'causes',
-        'Movement',
+        'what-is-it',
+        fs,
+        (variable = 'fund_type'),
         (prev_var = 'Top'),
-        (mapping = zoom_mapping),
         (offset = '70%')
     );
     // showChart();
@@ -614,7 +571,7 @@ async function init() {
             if (direction == 'down') {
                 Plotly.newPlot(
                     'chart-div',
-                    processData(data, (variable = 'recategorized')),
+                    processData(fs, (variable = 'recategorized')),
                     layout,
                     config
                 );
@@ -674,6 +631,14 @@ async function init() {
         }
     });
 
+    createNewSection(
+        'irs',
+        sec,
+        'sector',
+        (prev_var = 'Top'),
+        (offset = '70%')
+    );
+
     new Waypoint({
         element: document.getElementById('control'),
         handler: function (direction) {
@@ -683,8 +648,10 @@ async function init() {
 
                 d3.selectAll('#flowchart').style('display', 'block');
             } else {
-                console.log('Showing chart div');
+                console.log('Hiding flow chart');
                 showChart();
+
+                d3.selectAll('#flowchart').style('display', 'none');
             }
         },
         offset: '90%'
@@ -694,10 +661,10 @@ async function init() {
         element: document.getElementById('board-of-trustees'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.select('#flowchart-trustees').style('fill', '#A42323');
-                d3.select('#flowchart-graduate').style('fill', '#A42323');
-                d3.select('#flowchart-faculty').style('fill', '#A42323');
-                d3.select('#flowchart-advisory').style('fill', '#A42323');
+                d3.select('#flowchart-trustees').style('fill', '#d51d1dff');
+                d3.select('#flowchart-graduate').style('fill', '#d51d1dff');
+                d3.select('#flowchart-faculty').style('fill', '#d51d1dff');
+                d3.select('#flowchart-advisory').style('fill', '#d51d1dff');
             } else {
                 d3.select('#flowchart-trustees').style('fill', '#800000');
                 d3.select('#flowchart-graduate').style('fill', '#800000');
@@ -712,8 +679,8 @@ async function init() {
         element: document.getElementById('office-of-investments'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.select('#flowchart-office').style('fill', '#A42323');
-                d3.select('#flowchart-firm').style('fill', '#A42323');
+                d3.select('#flowchart-office').style('fill', '#d51d1dff');
+                d3.select('#flowchart-firm').style('fill', '#d51d1dff');
                 d3.select('#flowchart-trustees').style('fill', '#800000');
                 d3.select('#flowchart-graduate').style('fill', '#800000');
                 d3.select('#flowchart-faculty').style('fill', '#800000');
@@ -730,7 +697,7 @@ async function init() {
         element: document.getElementById('president'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.select('#flowchart-president').style('fill', '#A42323');
+                d3.select('#flowchart-president').style('fill', '#d51d1dff');
                 d3.select('#flowchart-office').style('fill', '#800000');
                 d3.select('#flowchart-firm').style('fill', '#800000');
             } else {
@@ -744,7 +711,7 @@ async function init() {
         element: document.getElementById('donors'),
         handler: function (direction) {
             if (direction == 'down') {
-                d3.select('#flowchart-donors').style('fill', '#A42323');
+                d3.select('#flowchart-donors').style('fill', '#d51d1dff');
                 d3.select('#flowchart-president').style('fill', '#800000');
             } else {
                 d3.select('#flowchart-donors').style('fill', '#800000');
@@ -757,10 +724,10 @@ async function init() {
         element: document.getElementById('conclusion'),
         handler: function (direction) {
             if (direction == 'down') {
-                hideChart((all = true));
+                d3.selectAll('#flowchart').style('display', 'none');
                 console.log('Hiding chart div');
             } else {
-                showChart((all = true));
+                d3.selectAll('#flowchart').style('display', 'block');
                 console.log('Showing chart div');
             }
         },
