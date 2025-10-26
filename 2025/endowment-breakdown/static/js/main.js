@@ -188,6 +188,7 @@ async function fetchData(path) {
 
 // Group and sum elements by type (cite: copilot)
 function groupAndSum(data, groupByKey) {
+    console.log('grouping by', groupByKey);
     const groupedData = data.reduce((acc, curr) => {
         const key = curr[groupByKey]; // Group by the specified key
         if (!acc[key]) {
@@ -202,15 +203,32 @@ function groupAndSum(data, groupByKey) {
     // Convert the grouped object back into an array
     const groupedArray = Object.values(groupedData);
 
-    // sort
+    // sort by value
     groupedArray.sort((a, b) => b.amount_thousands - a.amount_thousands);
 
     // Make cumulative x position variable
     let cumulativeSum = 0;
     groupedArray.forEach((item) => {
-        cumulativeSum += (item.amount_thousands / item.total_thousands) * 100;
+        // if (
+        //     (item[groupByKey] === 'Absolute return') |
+        //     (item[groupByKey] === 'Fixed income') |
+        //     (item[groupByKey] === 'Other')
+        // ) {
+        //     cumulativeSum *= 1.15; // idk why the spacing is freaking out on me
+        // }
         item.x = cumulativeSum;
+
+        item.width = item.amount_thousands / item.total_thousands;
+        cumulativeSum += item.width;
+
+        item.label =
+            item[groupByKey] + ' (' + Math.round(item.width * 100) + '%)';
+
+        console.log(
+            `Category: ${item[groupByKey]}, x: ${item.x}, width: ${item.width}`
+        );
     });
+
     return groupedArray;
 }
 
@@ -221,56 +239,28 @@ function groupAndSum(data, groupByKey) {
  * @param  {Array} name_vars Variable(s) to group by
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
-function processData(data, variable = 'type') {
-    const groupedData = groupAndSum(data, variable);
+function processData(data, variable = 'fund_type') {
+    if ((variable === 'fund_type') | (variable === 'recategorized')) {
+        data = groupAndSum(data, variable);
+    }
 
-    console.log('grouped', groupedData);
-
-    xs = [];
-    ys = [];
-    widths = [];
-    names = [];
-    colors = [];
-    texts = [];
+    console.log('grouped', data);
     try {
         traces = [];
 
         // construct plotly "dataframe"
 
-        groupedData.forEach(function (val) {
-            xs.push(val['x'] / 100);
-            ys.push(100);
-            widths.push(val['amount_thousands'] / val['total_thousands']);
-            names.push(val[variable]);
-            colors.push(colorbook['Fund type'][val[variable]]);
-            texts.push(
-                val[variable] +
-                    ' (' +
-                    Math.round(
-                        (val['amount_thousands'] / val['total_thousands']) * 100
-                    ) +
-                    '%)'
-            );
-        });
-
         traces.push({
             type: 'bar',
-            y: xs,
-            x: ys,
-            width: widths,
-            name: names,
+            x: data.map((d) => d.y),
+            y: data.map((d) => d.x),
+            width: data.map((d) => d.width),
+            name: data.map((d) => d[variable]),
             marker: {
-                color: colors
+                color: data.map((d) => colorbook[variable][d[variable]])
             },
-            text: texts,
+            text: data.map((d) => d.label),
             orientation: 'h',
-            // text:
-            //     val['amount_thousands'] +
-            //     '(' +
-            //     Math.round(
-            //         (val['amount_thousands'] / val['total_thousands']) * 100
-            //     ) +
-            //     '%)'
             hoverinfo: 'text'
             // hovertemplate: '%{text}<extra></extra>' // the <extra> tag removes any excess formatting
         });
@@ -515,7 +505,7 @@ const transition = {
 };
 
 const colorbook = {
-    'Fund type': {
+    fund_type: {
         'Global public equities': 'rgb(128, 0, 0)',
         'Private equity': 'rgb(193, 102, 34)',
         'Absolute return': 'rgb(143, 57, 49)',
@@ -524,20 +514,28 @@ const colorbook = {
         'Real estate': 'rgb(21, 95, 131)',
         'Private debt': 'rgb(53, 14, 32)',
         'Cash equivalents': 'rgb(100, 100, 100)',
-        'Funds in trust': 'rgb(0, 0, 0)',
+        'Funds in trust': 'rgb(0, 0, 0)'
+    },
+    recategorized: {
         'Public equities (stocks)': 'rgb(128, 0, 0)',
         'Private equities (stocks)': 'rgb(193, 102, 34)',
+
         Bonds: 'rgb(138, 144, 69)',
         'Hedge funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
     },
-    'Type of Action': {
-        'Letter writing': 'rgb(128, 0, 0)',
-        Protest: 'rgb(193, 102, 34)',
-        Resolution: 'rgb(143, 57, 49)',
-        'Legal action': 'rgb(138, 144, 69)',
-        'Research report': 'rgb(88, 89, 63)',
-        'Public event': 'rgb(21, 95, 131)'
+    sector: {
+        Technology: 'rgb(128, 0, 0)',
+        'Financial Services': 'rgb(193, 102, 34)',
+        'Consumer Cyclical': 'rgb(143, 57, 49)',
+        Healthcare: 'rgb(138, 144, 69)',
+        'Communication Services': 'rgb(88, 89, 63)',
+        Industrials: 'rgb(21, 95, 131)',
+        'Consumer Defensive': 'rgb(53, 14, 32)',
+        Energy: 'rgb(100, 100, 100)',
+        Utilities: 'rgb(0, 0, 0)',
+        'Basic Materials': 'rgb(128, 0, 0)',
+        'Real Estate': 'rgb(193, 102, 34)'
     },
     'Admin Response': {
         Arrest: 'rgb(128, 0, 0)',
@@ -588,9 +586,13 @@ async function init() {
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
     };
+    // hideChart((all = true));
 
     data = await fetchData('financial-statement-2023.json');
     console.log(data);
+
+    sec = await fetchData('sec-sectors-2025.json');
+    console.log(sec);
 
     // we will edit this plot throughout the whole article
     createNewSection(
@@ -600,6 +602,7 @@ async function init() {
         (mapping = zoom_mapping),
         (offset = '70%')
     );
+    // showChart();
 
     // createWaypoint('what-is-it');
 
@@ -639,20 +642,34 @@ async function init() {
                             }
                         }
                     },
-                    { transition: transition }
-                );
-            } else {
-                Plotly.animate(myPlot, {
-                    layout: {
-                        xaxis: {
-                            showticklabels: false
-                        },
-                        margin: {
-                            l: 200,
-                            r: 200
+                    {
+                        transition: {
+                            duration: 1000, // Increase duration for smoother transition
+                            easing: 'cubic-in-out' // Use a smoother easing function
                         }
                     }
-                });
+                );
+            } else {
+                Plotly.animate(
+                    myPlot,
+                    {
+                        layout: {
+                            xaxis: {
+                                showticklabels: false
+                            },
+                            margin: {
+                                l: 200,
+                                r: 200
+                            }
+                        }
+                    },
+                    {
+                        transition: {
+                            duration: 1000, // Increase duration for smoother transition
+                            easing: 'cubic-in-out' // Use a smoother easing function
+                        }
+                    }
+                );
             }
         }
     });
@@ -662,7 +679,7 @@ async function init() {
         handler: function (direction) {
             if (direction == 'down') {
                 console.log('Showing flow chart');
-                hideChart((all = true));
+                hideChart();
 
                 d3.selectAll('#flowchart').style('display', 'block');
             } else {
