@@ -298,6 +298,7 @@ sec["LaggedShares"] = (
 sec["LaggedShares"] = sec["LaggedShares"].fillna(0)
 sec["SharesDiff"] = sec["SharesPrnAmount"] - sec["LaggedShares"]
 sec["ShareValue"] = sec["ValueThousands"] / sec["SharesPrnAmount"]
+# TODO: very interesting that there are overall more sells than purchases. how is this possible to sell more shares than you have?
 sec["SharePurchases"] = [x if x > 0 else np.nan for x in sec["SharesDiff"]]
 sec["SharePurchaseValueThousands"] = round(sec["SharePurchases"] * sec["ShareValue"], 2)
 
@@ -723,13 +724,19 @@ plot_df["TopWords"] = [", ".join(x) for x in plot_df["TopWords"]]
 plot_df["Top5"] = [
     list(zip(row["Issuer"], row["ValueDollars"])) for _, row in plot_df.iterrows()
 ]
-plot_df["Top5"] = [[f"{i[0]}: {i[1]}" for i in x] for x in plot_df["Top5"]]
+plot_df["Top5"] = [[f"    {i[0]}: {i[1]}    " for i in x] for x in plot_df["Top5"]]
 plot_df["Top5"] = ["<br>".join(x) for x in plot_df["Top5"]]
 # plot_df["Top5"] = [f"{row['Sector']}<br>{row['Top5']}" for _, row in plot_df.iterrows()]
+plot_df["y"] = 100
 
-plot_df[["Issuer", "Ticker", "ValueThousands", "Top5", "TopWords"]].to_json(
-    "sec-industries-2025-sectors.xlsx", orient="records"
-)
+plot_df[["Sector", "ValueThousands", "Top5", "TopWords", "y"]].rename(
+    columns={
+        "Sector": "sector",
+        "Top5": "hoverinfo",
+        "ValueThousands": "amount_thousands",
+        "TopWords": "keywords",
+    }
+).to_json("../endowment-breakdown/data/sec-sectors-2025.json", orient="records")
 
 # of each of these top sectors, what are the individual companies and keywords
 
@@ -765,17 +772,17 @@ fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
 
 # categorize types into broader categories
 type_dict = {
-    "Domestic": "Public equities",
-    "International": "Public equities",
-    "Stocks": "Public equities",  # TODO: actually this comprises public and private so maybe exclude pre 2000
-    "Global public equities": "Public equities",
+    "Domestic": "Public equities (stocks)",
+    "International": "Public equities (stocks)",
+    "Stocks": "Public equities (stocks)",  # TODO: actually this comprises public and private so maybe exclude pre 2000
+    "Global public equities": "Public equities (stocks)",
     "High yield": "Bonds",
     "Cash equivalent": "Bonds",
     "Fixed income": "Bonds",
     "Absolute return": "Hedge funds",  # hedge funds may be public or private
     "Equity oriented": "Hedge funds",  # hedge funds may be public or private
     "Diversifying": "Hedge funds",  # hedge funds may be public or private
-    "Private equity": "Private equities",
+    "Private equity": "Private equities (stocks)",
     # "Assets held by trustee": "Funds in trust",
     # for now, to simplify graph, class most as other
     "Assets held by trustee": "Other",
@@ -786,15 +793,36 @@ type_dict = {
     "Real estate": "Other",
 }
 
+fs["fund_type"] = fs["type"]
+fs["recategorized"] = fs["fund_type"].replace(type_dict)
+fs["percent"] = fs["amount_thousands"] / fs["total_thousands"]
+fs["label"] = [
+    f"{x['fund_type']} ({round(x['percent'] * 100)}%)" for _, x in fs.iterrows()
+]
+data2023 = fs[fs["year"] == 2023].sort_values("percent", ascending=True)
+# data2023["width"] = data2023["percent"]
+# data2023["x"] = np.cumsum(data2023["width"]).round(2)
+data2023["y"] = 100
 
-fs["recategorized"] = fs["type"].replace(type_dict)
-data2023 = fs[fs["year"] == 2023]
-
-data2023.to_json("data/financial-statement-2023.json", orient="records")
+data2023[
+    [
+        # "x",
+        "y",
+        "fund_type",
+        # "width",
+        "recategorized",
+        "amount_thousands",
+        # "hoverinfo",
+    ]
+].to_json(
+    "../endowment-breakdown/data/financial-statement-2023.json",
+    orient="records",
+    lines=False,
+)
 
 # consolidate regrouped groups
-fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
-fs.to_csv("types.csv", index=False)
+# fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
+# fs.to_csv("types.csv", index=False)
 
 (
     ggplot(fs, aes(x="year", y="percent"))
