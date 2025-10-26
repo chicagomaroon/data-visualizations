@@ -254,15 +254,22 @@ function processData(data, variable = 'fund_type') {
             },
             text: groupedData.map((d) => d.label),
             orientation: 'h',
-            hoverinfo: 'text'
+            hoverinfo: 'text',
+            hoverlabel: {
+                // bgcolor: '#222', // background color
+                bordercolor: '#f1f1f1', // border color
+                font: {
+                    family: 'Playfair',
+                    size: 16,
+                    color: 'black' // text color
+                }
+            }
         });
 
         if ('hoverinfo' in groupedData[0]) {
             traces[0]['customdata'] = groupedData.map((d) => d.hoverinfo);
-            console.log(traces[0]['customdata']);
-            // traces[0]['hoverinfo'] = 'customdata';
             traces[0]['hovertemplate'] =
-                'Top five companies and investment amounts:<br>%{customdata}<extra></extra>';
+                ' <br>    Sector: %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>'; // extra tag removes trace label; spaces needed for fake padding
         }
 
         console.log(traces);
@@ -384,8 +391,8 @@ function createNewSection(div, data, variable, prev_var, offset = '80%') {
                         showticklabels: false
                     },
                     margin: {
-                        l: 200,
-                        r: 200
+                        l: 25,
+                        r: 300
                     },
                     width: 0.2
                 }
@@ -471,8 +478,8 @@ const layout = {
     },
     showlegend: false,
     margin: {
-        l: 200,
-        r: 200
+        l: 25,
+        r: 300
     }
 };
 
@@ -615,8 +622,8 @@ async function init() {
                                 showticklabels: false
                             },
                             margin: {
-                                l: 200,
-                                r: 200
+                                l: 25,
+                                r: 300
                             }
                         }
                     },
