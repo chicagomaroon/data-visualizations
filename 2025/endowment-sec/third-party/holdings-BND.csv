@@ -1,0 +1,109 @@
+ticker,percent,company,amt
+TNOTE,4.500,United States Treasury Note/Bond,1788930.0
+TNOTE,0.625,United States Treasury Note/Bond,248462.5
+TNOTE,1.125,United States Treasury Note/Bond,447232.5
+TNOTE,0.750,United States Treasury Note/Bond,298155.0
+TNOTE,3.125,United States Treasury Note/Bond,1242312.5
+WIT,4.375,United States Treasury Note/Bond,1739237.5
+TBOND,4.750,United States Treasury Note/Bond,1888315.0
+TNOTE,2.250,United States Treasury Note/Bond,894465.0
+TNOTE,0.875,United States Treasury Note/Bond,347847.50000000006
+TNOTE,1.250,United States Treasury Note/Bond,496925.0
+TNOTE,1.750,United States Treasury Note/Bond,695695.0000000001
+TNOTE,1.375,United States Treasury Note/Bond,546617.5
+TNOTE,0.625,United States Treasury Note/Bond,248462.5
+TNOTE,2.375,United States Treasury Note/Bond,944157.5
+TBOND,2.375,United States Treasury Note/Bond,944157.5
+TNOTE,4.375,United States Treasury Note/Bond,1739237.5
+TNOTE,1.875,United States Treasury Note/Bond,745387.5
+TNOTE,4.375,United States Treasury Note/Bond,1739237.5
+TNOTE,2.750,United States Treasury Note/Bond,1093235.0
+TNOTE,4.625,United States Treasury Note/Bond,1838622.5
+TBOND,2.875,United States Treasury Note/Bond,1142927.5
+TBOND,2.250,United States Treasury Note/Bond,894465.0
+TNOTE,1.250,United States Treasury Note/Bond,496925.0
+TNOTE,4.125,United States Treasury Note/Bond,1639852.5
+TNOTE,4.000,United States Treasury Note/Bond,1590160.0
+TBOND,1.875,United States Treasury Note/Bond,745387.5
+TNOTE,4.000,United States Treasury Note/Bond,1590160.0
+TNOTE,3.875,United States Treasury Note/Bond,1540467.5
+TNOTE,3.500,United States Treasury Note/Bond,1391390.0000000002
+TBOND,4.375,United States Treasury Note/Bond,1739237.5
+TBOND,2.875,United States Treasury Note/Bond,1142927.5
+TNOTE,3.750,United States Treasury Note/Bond,1490775.0
+TBOND,4.000,United States Treasury Note/Bond,1590160.0
+TNOTE,4.000,United States Treasury Note/Bond,1590160.0
+TNOTE,0.500,United States Treasury Note/Bond,198770.0
+TBOND,3.000,United States Treasury Note/Bond,1192620.0
+TBOND,1.375,United States Treasury Note/Bond,546617.5
+TBOND,3.000,United States Treasury Note/Bond,1192620.0
+TNOTE,3.125,United States Treasury Note/Bond,1242312.5
+TBOND,3.250,United States Treasury Note/Bond,1292005.0
+TBOND,1.375,United States Treasury Note/Bond,546617.5
+FHLB,3.250,Federal Home Loan Banks,1292005.0
+TBOND,2.000,United States Treasury Note/Bond,795080.0
+TNOTE,1.750,United States Treasury Note/Bond,695695.0000000001
+TBOND,3.750,United States Treasury Note/Bond,1490775.0
+TBOND,4.375,United States Treasury Note/Bond,1739237.5
+TBOND,1.125,United States Treasury Note/Bond,447232.5
+TBOND,3.000,United States Treasury Note/Bond,1192620.0
+TBOND,3.125,United States Treasury Note/Bond,1242312.5
+TBOND,2.750,United States Treasury Note/Bond,1093235.0
+TBOND,2.750,United States Treasury Note/Bond,1093235.0
+TNOTE,1.625,United States Treasury Note/Bond,646002.5
+TBOND,3.625,United States Treasury Note/Bond,1441082.5
+TBOND,2.250,United States Treasury Note/Bond,894465.0
+TBOND,2.500,United States Treasury Note/Bond,993850.0
+FHLMC,6.750,Federal Home Loan Mortgage Corp.,2683395.0
+TBOND,2.500,United States Treasury Note/Bond,993850.0
+TBOND,4.625,United States Treasury Note/Bond,1838622.5
+TBOND,2.875,United States Treasury Note/Bond,1142927.5
+TBOND,2.750,United States Treasury Note/Bond,1093235.0
+TBOND,3.875,United States Treasury Note/Bond,1540467.5
+TBOND,2.875,United States Treasury Note/Bond,1142927.5
+TBOND,3.000,United States Treasury Note/Bond,1192620.0
+TBOND,3.000,United States Treasury Note/Bond,1192620.0
+FNMA,0.875,Federal National Mortgage Assn.,347847.50000000006
+TBOND,2.500,United States Treasury Note/Bond,993850.0
+TBOND,3.125,United States Treasury Note/Bond,1242312.5
+TBOND,4.375,United States Treasury Note/Bond,1739237.5
+TBOND,4.750,United States Treasury Note/Bond,1888315.0
+TBOND,3.000,United States Treasury Note/Bond,1192620.0
+IBRD,3.875,International Bank for Reconstruction & Development,1540467.5
+BAC,2.687,Bank of America Corp.,1068189.98
+TBOND,4.500,United States Treasury Note/Bond,1788930.0
+BA,5.150,Boeing Co.,2047331.0000000002
+BAC,4.271,Bank of America Corp.,1697893.3399999999
+C,3.785,Citigroup Inc.,1504688.9000000001
+BAC,4.083,Bank of America Corp.,1623155.8200000003
+ILS,5.100,Illinois GO,2027453.9999999998
+CVS,5.050,CVS Health Corp.,2007576.9999999998
+TBOND,3.750,United States Treasury Note/Bond,1490775.0
+BAC,2.496,Bank of America Corp.,992259.84
+ABIBB,4.700,InBev Worldwide Inc.,1868438.0
+HD,5.875,Home Depot Inc.,2335547.5
+C,3.887,Citigroup Inc.,1545237.98
+WFC,5.013,Wells Fargo & Co.,1992868.02
+T,3.650,AT&T Inc.,1451021.0
+AVGO,2.450,Broadcom Inc.,973973.0
+BAC,3.593,Bank of America Corp.,1428361.22
+DT,8.750,Deutsche Telekom International Finance BV,3478475.0
+T,3.550,AT&T Inc.,1411266.9999999998
+BACR,7.437,Barclays plc,2956504.9800000004
+C,3.200,Citigroup Inc.,1272128.0
+CHTR,6.484,Charter Communications Operating LLC / Charter Communications Operating Capital,2577649.36
+VZ,2.355,Verizon Communications Inc.,936206.7000000001
+C,3.057,Citigroup Inc.,1215279.78
+BAC,2.087,Bank of America Corp.,829665.9800000001
+BAC,2.592,Bank of America Corp.,1030423.68
+BAC,4.183,Bank of America Corp.,1662909.82
+AER,3.300,AerCap Ireland Capital DAC / AerCap Global Aviation Trust,1311882.0
+IBRD,4.000,International Bank for Reconstruction & Development,1590160.0
+AMZN,3.150,Amazon.com Inc.,1252251.0
+AAPL,3.200,Apple Inc.,1272128.0
+BAC,2.299,Bank of America Corp.,913944.46
+WFC,5.574,Wells Fargo & Co.,2215887.96
+INTC,2.450,Intel Corp.,973973.0
+CVS,4.300,CVS Health Corp.,1709421.9999999998
+INTC,2.450,Intel Corp.,973973.0
+CVS,4.300,CVS Health Corp.,1709421.9999999998
