@@ -11,6 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import json
+from tqdm import tqdm
 
 # from bs4 import BeautifulSoup as bs
 from selenium.webdriver.support.ui import Select
@@ -244,33 +245,8 @@ sec["Year"] = sec["Date"].dt.year
 sec["ValueThousands"] = sec["Value"]
 sec["Issuer"] = sec["Issuer"].str.title()
 
-# %% explore total holdings over time
-
-# value means market value in $1000s
-amounts = (
-    sec.dropna(subset="ShareValueDiffThousands")
-    .groupby("Year")
-    .agg({"ShareValueDiffThousands": lambda x: sum(x) / 1000})
-    .reset_index()
-    .rename(columns={"ShareValueDiffThousands": "PurchasesMillions"})
-)
-# amounts["Year"] = pd.to_datetime(amounts["Year"])
-
-amounts.to_csv("annual-totals.csv")
-
-(
-    ggplot(amounts)
-    + geom_point(aes(x="Year", y="PurchasesMillions"), alpha=1)
-    + geom_line(aes(x="Year", y="PurchasesMillions"), alpha=1)
-    # + scale_x_date(date_labels="%Y", date_breaks="1 year")
-    + ggtitle("UChicago 13F-HR filings")
-    + xlab("PurchasesMillions")
-    + ylab("Value in millions of dollars")
-    + theme_minimal()
-    # + theme(axis_text_x=element_text(rotation=90, hjust=1))
-)
-
-# %% sec math
+# TODO: why is this 10,000K more than later subset?
+print(sec.loc[sec.Year == 2025].ValueThousands.sum())
 
 # use both info of shares (purchases) and values (market value)
 
@@ -322,6 +298,33 @@ sec.sort_values(["Issuer", "Date"])[
     ]
 ]
 
+# %% explore total holdings over time
+
+# value means market value in $1000s
+amounts = (
+    sec.dropna(subset="ShareValueDiffThousands")
+    .groupby("Year")
+    .agg({"ShareValueDiffThousands": lambda x: sum(x) / 1000})
+    .reset_index()
+    .rename(columns={"ShareValueDiffThousands": "PurchasesMillions"})
+)
+# amounts["Year"] = pd.to_datetime(amounts["Year"])
+
+amounts.to_csv("annual-totals.csv")
+
+(
+    ggplot(amounts)
+    + geom_point(aes(x="Year", y="PurchasesMillions"), alpha=1)
+    + geom_line(aes(x="Year", y="PurchasesMillions"), alpha=1)
+    # + scale_x_date(date_labels="%Y", date_breaks="1 year")
+    + ggtitle("UChicago 13F-HR filings")
+    + xlab("PurchasesMillions")
+    + ylab("Value in millions of dollars")
+    + theme_minimal()
+    # + theme(axis_text_x=element_text(rotation=90, hjust=1))
+)
+
+
 # %% visualize by company
 
 # top 10 by total shares actively purchased over time (not subtracting sold holdings)
@@ -361,7 +364,8 @@ display(top10table)
 
 
 # note: this is JUST 1 quarter in 2025, for now
-def get_holdings(company="vanguard", ticker=None, pages=51):
+def get_holdings(company, ticker, pages=51):
+    # TODO: cleanup and document this code
     sites = {
         "vanguard": f"https://investor.vanguard.com/investment-products/etfs/profile/{ticker.lower()}#portfolio-composition",
         "ishares": f"https://www.ishares.com/us/products/239726/{ticker.lower()}",
@@ -371,20 +375,12 @@ def get_holdings(company="vanguard", ticker=None, pages=51):
         "ishares": "Holdings",
     }
     headings = {
-        "vanguard": "Holding detailss",
+        "vanguard": "Holding details",
         "ishares": "Holdings",
     }
     headingtypes = {
         "vanguard": "h5",
         "ishares": "h2",
-    }
-    percents = {
-        "vanguard": "(\\d+\\.\\d+) %",
-        "ishares": "\\d+\\.\\d\\d",
-    }
-    companies = {
-        "vanguard": " [A-Z][A-Za-z &\\.\\(\\)'/]+(\\d|—)",
-        "ishares": "^ [A-Z][A-Za-z &\\.\\(\\)'/]+ (\\$)",
     }
 
     driver = webdriver.Firefox()
@@ -397,7 +393,7 @@ def get_holdings(company="vanguard", ticker=None, pages=51):
     driver.execute_script("document.body.style.zoom='15%'")
 
     data = []
-    for i in range(pages):
+    for i in tqdm(range(pages)):
         time.sleep(1)  # wait for the page to load
         try:
             turn_page = driver.find_element(By.TAG_NAME, "select")
@@ -424,31 +420,39 @@ def get_holdings(company="vanguard", ticker=None, pages=51):
             print(f"Error: {e}")
             continue
 
+    driver.quit()
+
+    return data
+
+
+def process_holdings(data, company, ticker):
+    percents_col = {
+        "vanguard": r"(\d+\.\d+) %",
+        "ishares": r"\d+\.\d\d",
+    }
+
     tickers = []
     percents = []
     companies = []
-    for d in data:
-        for i in d:
-            if "Ticker" not in i:
+    for row in data:
+        for cell in row:
+            if "Ticker" not in cell:
                 try:
-                    ticker_i = re.search("^[A-Z\\.\\d]+", i)[0]
+                    ticker_i = re.search(r"^[A-Z\.\d]+", cell.strip("— "))[0]
                     tickers.append(ticker_i)
                 except Exception as e:
-                    print(f"Error parsing ticker: {i} - {e}")
-                    break
+                    print(f"Error parsing ticker: {cell} - {e}")
+                    continue
 
-                percents.append(re.search(percents[company], i)[0].strip(" %"))
+                percents.append(re.search(percents_col[company], cell)[0].strip(" %"))
 
                 try:
                     companies.append(
-                        re.search(
-                            companies[company],
-                            i.strip().strip("—").strip(ticker_i).strip(" $"),
-                        )[0][1:-2].strip()
+                        re.sub(r"\d{5,}.*", "", cell).strip(ticker_i).strip()
                     )
                 except Exception as e:
-                    print(f"Error parsing company: {i} - {e}")
-                    break
+                    print(f"Error parsing company: {cell} - {e}")
+                    continue
 
     df = pd.DataFrame({"ticker": tickers, "percent": percents, "company": companies})
     uc_invested_dollars = (
@@ -457,54 +461,56 @@ def get_holdings(company="vanguard", ticker=None, pages=51):
         .values[0]
         * 1000
     )
+
     df["amt"] = df["percent"].astype(float) / 100 * uc_invested_dollars
-    df.to_csv(f"holdings-{ticker}.csv", index=False)
-
-    driver.quit()
+    df.to_csv(f"third-party/holdings-{ticker}.csv", index=False)
 
 
-# vanguard
-# get_holdings(
-#     ticker="VOO",
-# )
-# get_holdings(
-#     ticker="VT",
-# )
-# get_holdings(
-#     ticker="VCLT",
-# )
-# get_holdings(
-#     ticker="BND",
-# )
+# TODO: deal with companies that had errors processing
+
+for hold in [
+    # "VT",
+    # "VOO",
+    # "VCLT"
+    # "BND"
+]:
+    data = get_holdings(
+        company="vanguard",
+        ticker=hold,
+    )
+    process_holdings(data, company="vanguard", ticker=hold)
 
 # ishares
-get_holdings(
-    ticker="IVV",
-)
-get_holdings(
-    ticker="IEFA",
-)
-get_holdings(
-    ticker="IEMG",
-)
+for hold in [
+    # "IVV",
+    # "IEFA"
+    # "IEMG"
+]:
+    data = get_holdings(
+        company="ishares",
+        ticker=hold,
+    )
+    process_holdings(data, company="ishares", ticker=hold)
 
 # individual stocks, not portfolios
-# get_holdings(
-#     ticker="NLY",
-# )
-# get_holdings(
-#     ticker="LQD",
-# )
-# get_holdings(
-#     ticker="NKGN",
-# )
+
+for hold in [
+    # "NLY",
+    # "LQD"
+    # "NKGN"
+]:
+    data = get_holdings(
+        company="",
+        ticker=hold,
+    )
+    process_holdings(data, company="", ticker=hold)
 # gulf canada no longer exists, was oil
 # AMR corp no longer exists, was airlines
 
 # TODO: switch to yfinance for top holdings (it's nice to see all holdings but not practical for all funds)
-yf.Ticker("VT").funds_data.top_holdings
+# yf.Ticker("VT").funds_data.top_holdings
 
-# %% read in yahoo holdings data
+# %% read in third party sources holdings data
 
 
 def clean_names(x):
@@ -516,9 +522,9 @@ def clean_names(x):
     return x
 
 
-voo = pd.read_csv("yahoo/holdings-VOO.csv")
+voo = pd.read_csv("third-party/holdings-VOO.csv")
 voo["source"] = "VOO"
-vt = pd.read_csv("yahoo/holdings-VT.csv")
+vt = pd.read_csv("third-party/holdings-VT.csv")
 vt["source"] = "VT"
 all_holdings = (
     pd.concat([voo, vt])
@@ -593,6 +599,8 @@ fp = "sec-industries-2025-5.csv"
 if os.path.exists(fp):
     sec_2025 = pd.read_csv(fp)
 
+# %% read additional data if needed
+
 if "Industry" not in sec_2025.columns:
     sec_2025["Industry"] = None
 if "Sector" not in sec_2025.columns:
@@ -634,6 +642,13 @@ sec_2025["Summary"] = sec_2025["Summary"].replace("NA", None)
 sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
 sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
 
+print(
+    sec_2025.loc[sec_2025.Sector.isna()].ValueThousands.sum()
+    / sec_2025.ValueThousands.sum()
+    * 100,
+    "% of holdings (in terms of dollar amount) have no sector info",
+)
+
 plot_df = (
     sec_2025[~sec_2025["Sector"].isna()]
     # make sure that the biggest companies get listed first
@@ -642,7 +657,8 @@ plot_df = (
     .agg(
         {
             "ValueThousands": "sum",
-            "ValueDollars": lambda x: ["${:,.0f}".format(i) for i in x[:5]],
+            # round to the nearest thousand dollars (to indicate uncertainty)
+            "ValueDollars": lambda x: [f"${round(i)}" for i in x[:5]],
             "Summary": lambda x: ", ".join(x),
             "Issuer": lambda x: list(x)[:5],
         }
