@@ -1,5 +1,7 @@
 """
-Use SEC API to download all UChicago SEC filings since 1994
+- Use SEC API to download all UChicago SEC filings since 1994
+- Use Yahoo Finance as well as company-specific sites to - identify holdings and sector information for each holding
+Compile financial statements
 """
 
 # %% imports
@@ -50,7 +52,7 @@ from edgar import *
 # unused because data is not very detailed
 # response=requests.get('https://projects.propublica.org/nonprofits/api/v2/organizations/362177139.json')
 
-# %% get SEC filings
+# %% get sec filings
 # cite: https://pypi.org/project/edgartools/
 # alternative: https://github.com/zpetan/sec-13f-portfolio-python
 
@@ -68,7 +70,7 @@ filings = company.get_filings()
 # https://www.sec.gov/files/form13f.pdf
 investments = filings.filter(form="13F-HR")
 
-# %% save filings
+# %% save sec filings
 
 sec = pl.DataFrame()
 
@@ -236,7 +238,7 @@ for i, investment in enumerate(investments):
     sec = pl.concat([sec, df], how="diagonal")
 
 # sec.write_csv("13F-HR.csv")
-# %% read in data
+# %% read in downloaded sec data
 
 sec = pd.read_csv("13F-HR.csv")
 # sec[pd.to_datetime(sec['Date'])>datetime(2025,2,1)]
@@ -566,6 +568,7 @@ sec_2025 = sec[
     # take the most recent filing, idk how to aggregate over time as idk if new or total holdings
     sec["Year"] == 2025
 ]
+print(len(sec_2025))
 
 sec_2025 = pd.concat(
     [
@@ -594,12 +597,18 @@ sec_2025 = (
     )
     .reset_index()
 )[["Issuer", "Ticker", "ValueThousands"]]
+print(len(sec_2025))
+
+# %% read additional data if needed
 
 fp = "sec-industries-2025-5.csv"
 if os.path.exists(fp):
-    sec_2025 = pd.read_csv(fp)
-
-# %% read additional data if needed
+    prior = pd.read_csv(fp)
+    if len(prior) != len(sec_2025):
+        sec_2025 = sec_2025.merge(
+            prior[["Ticker", "Industry", "Sector", "Summary"]], on="Ticker", how="left"
+        )
+print(len(sec_2025))
 
 if "Industry" not in sec_2025.columns:
     sec_2025["Industry"] = None
@@ -612,23 +621,22 @@ tickers = sec_2025["Ticker"]
 for ticker in sorted(list(set(tickers.unique()) - set([None, np.nan]))):
     # note that we use the NA string to indicate missing data so that we don't try to re-fetch
 
-    try:
-        yf_info = yf.Ticker(ticker).info
-    except Exception as e:
-        print(f"{ticker} does not exist in Yahoo data: {e}")
+    if sec_2025.loc[tickers == ticker, "Industry"].values[0] == "NA":
+        continue
+    if len(yf.Ticker(ticker).info.keys()) < 2:
+        print(f"{ticker} does not exist in Yahoo data")
         continue
 
-    if sec_2025.loc[tickers == ticker, "Industry"].isna().values[0]:
-        print(ticker)
-        sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
-            "industry", "NA"
-        )
-        sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
-            "sector", "NA"
-        )
-        sec_2025.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
-            "longBusinessSummary", "NA"
-        )
+    print(ticker)
+    sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
+        "industry", "NA"
+    )
+    sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
+        "sector", "NA"
+    )
+    sec_2025.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
+        "longBusinessSummary", "NA"
+    )
 
 
 sec_2025.to_csv(fp, index=False)
@@ -643,9 +651,11 @@ sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
 sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
 
 print(
-    sec_2025.loc[sec_2025.Sector.isna()].ValueThousands.sum()
-    / sec_2025.ValueThousands.sum()
-    * 100,
+    round(
+        sec_2025.loc[sec_2025.Sector.isna()].ValueThousands.sum()
+        / sec_2025.ValueThousands.sum()
+        * 100
+    ),
     "% of holdings (in terms of dollar amount) have no sector info",
 )
 
@@ -732,6 +742,7 @@ for row in tfidf_matrix:
     sorted_indices = row.toarray().flatten().argsort()[::-1]
     top_word_indices = sorted_indices[:10]
     top_words.append([feature_names[i] for i in top_word_indices])
+print(top_words)
 
 # Add top words to the DataFrame
 plot_df["TopWords"] = top_words

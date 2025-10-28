@@ -1,0 +1,232 @@
+ticker,percent,company,amt
+ABIBB,4.900,InBev World wide Inc.,5649553.0
+CVS,5.050,CVS Health Corp.,5822498.5
+T,3.500,AT&T Inc.,4035395.0000000005
+GS,6.750,Goldman Sachs Group Inc.,7782547.500000001
+BA,5.805,Boeing Co.,6692990.85
+PFE,5.300,Pfizer Investment Enterprises Pte Ltd.,6110741.0
+WFC,5.013,Wells Fargo & Co.,5779838.61
+ABIBB,4.700,InBev Worldwide Inc.,5418959.0
+ABBV,4.250,AbbVie Inc.,4900122.5
+CVS,4.780,CVS Health Corp.,5511196.600000001
+BAC,4.083,Bank of America Corp.,4707576.510000001
+AMGN,5.650,Amgen Inc.,6514280.5
+ABBV,4.050,AbbVie Inc.,4669528.5
+ORCL,3.600,Oracle Corp.,4150692.0000000005
+AAPL,4.650,Apple Inc.,5361310.500000001
+BA,5.930,Boeing Co.,6837112.1
+CHTR,6.484,Charter Communications Operating LLC / Charter Communications Operating Capital,7475857.4799999995
+RTX,4.500,United Technologies Corp.,5188365.0
+ABT,4.900,Abbott Laboratories,5649553.0
+RDSALN,6.375,Shell International Finance BV,7350183.75
+AZN,6.450,AstraZeneca plc,7436656.5
+CVS,5.125,CVS Health Corp.,5908971.25
+BMY,4.250,Squibb Co.,4900122.5
+V,4.300,Visa Inc.,4957771.0
+AMGN,4.663,Amgen Inc.,5376299.11
+PFE,5.110,Pfizer Investment Enterprises Pte Ltd.,5891676.700000001
+ORCL,6.900,Oracle Corp.,7955493.000000001
+PFE,7.200,Pfizer Inc.,8301384.000000001
+GSK,6.375,GlaxoSmithKline Capital Inc.,7350183.75
+HD,5.875,Home Depot Inc.,6773698.75
+AMZN,4.050,Amazon.com Inc.,4669528.5
+MO,5.950,Altria Group Inc.,6860171.500000001
+GS,6.250,Goldman Sachs Group Inc.,7206062.5
+AMZN,3.875,Amazon.com Inc.,4467758.75
+VZ,3.700,Verizon Communications Inc.,4265989.000000001
+CHTR,4.800,Charter Communications Operating LLC / Charter Communications Operating Capital,5534256.0
+BPLN,3.000,BP Capital Markets America Inc.,3458910.0
+ORCL,5.375,Oracle Corp.,6197213.75
+BAC,4.330,Bank of America Corp.,4992360.1
+VZ,4.862,Verizon Communications Inc.,5605740.140000001
+TELEFO,7.045,Telefonica Emisiones SAU,8122673.649999999
+XOM,4.114,Exxon Mobil Corp.,4743318.579999999
+CI,4.800,Cigna Corp.,5534256.0
+COP,6.500,ConocoPhillips,7494305.0
+BAC,6.110,Bank of America Corp.,7044646.7
+MSFT,2.675,Microsoft Corp.,3084194.75
+MS,6.375,Morgan Stanley,7350183.75
+CSCO,5.900,Cisco Systems Inc.,6802523.0
+F,4.750,Ford Motor Co.,5476607.5
+RTX,6.400,RTX Corp.,7379008.0
+UNH,4.750,UnitedHealth Group Inc.,5476607.5
+GS,4.750,Goldman Sachs Group Inc.,5476607.5
+VZ,2.987,Verizon Communications Inc.,3443921.39
+PM,6.375,Philip Morris International Inc.,7350183.75
+ABBV,4.400,AbbVie Inc.,5073068.000000001
+SYY,6.600,Sysco Corp.,7609602.0
+META,4.450,Meta Platforms Inc.,5130716.500000001
+GS,5.150,Goldman Sachs Group Inc.,5937795.500000001
+BRKHEC,6.125,Berkshire Hathaway Energy Co.,7061941.25
+IBM,4.150,International Business Machines Corp.,4784825.5
+WFC,4.900,Wells Fargo & Co.,5649553.0
+MS,3.971,Morgan Stanley,4578443.87
+BABA,4.200,Alibaba Group Holding Ltd.,4842474.0
+KMI,5.550,Kinder Morgan Inc./DE,6398983.5
+TMUS,3.300,USA Inc.,3804801.0
+JPM,5.600,JPMorgan Chase & Co.,6456631.999999999
+T,3.500,AT&T Inc.,4035395.0000000005
+XOM,4.327,Exxon Mobil Corp.,4988901.19
+BACR,5.250,Barclays plc,6053092.5
+BRK,4.200,Berkshire Hathaway Finance Corp.,4842474.0
+PCG,6.750,Pacific Gas and Electric Co.,7782547.500000001
+CMCSA,4.700,Comcast Corp.,5418959.0
+DD,5.419,DuPont de Nemours Inc.,6247944.43
+AVGO,3.500,Broadcom Inc.,4035395.0000000005
+MPLX,4.500,MPLX LP,5188365.0
+BAC,5.875,Bank of America Corp.,6773698.75
+GILD,4.500,Gilead Sciences Inc.,5188365.0
+AAPL,3.450,Apple Inc.,3977746.5000000005
+HPQ,6.000,HP Inc.,6917820.0
+ORCL,3.800,Oracle Corp.,4381286.0
+TMUS,4.375,USA Inc.,5044243.75
+BAC,7.750,Bank of America Corp.,8935517.5
+JNJ,3.700,Johnson & Johnson,4265989.000000001
+MS,4.300,Morgan Stanley,4957771.0
+ORCL,3.850,Oracle Corp.,4438934.5
+HCA,4.625,HCA Inc.,5332486.25
+MRK,5.000,Merck & Co. Inc.,5764850.0
+TRPCN,6.100,TransCanada PipeLines Ltd.,7033117.0
+AMZN,4.950,Amazon.com Inc.,5707201.5
+LOW,5.625,Lowe's Cos. Inc.,6485456.25
+SO,4.400,Southern Co.,5073068.000000001
+TAP,4.200,Molson Coors Brewing Co.,4842474.0
+PYPL,5.050,PayPal Holdings Inc.,5822498.5
+ORCL,3.600,Oracle Corp.,4150692.0000000005
+META,5.750,Meta Platforms Inc.,6629577.5
+PSX,5.875,Phillips,6773698.75
+ENBCN,6.700,Enbridge Inc.,7724899.0
+BNSF,5.200,Burlington Northern Santa Fe LLC,5995444.000000001
+KHC,4.375,Kraft Heinz Foods Co.,5044243.75
+CMCSA,2.987,Comcast Corp.,3443921.39
+INTC,4.900,Intel Corp.,5649553.0
+EXC,5.600,Exelon Corp.,6456631.999999999
+MA,3.850,Mastercard Inc.,4438934.5
+GM,5.950,General Motors Co.,6860171.500000001
+MRK,5.150,Merck & Co. Inc.,5937795.500000001
+CMCSA,3.969,Comcast Corp.,4576137.93
+TXN,3.875,Texas Instruments Inc.,4467758.75
+T,4.500,AT&T Inc.,5188365.0
+RABOBK,5.250,Cooperatieve Rabobank UA,6053092.5
+BACR,4.950,Barclays plc,5707201.5
+UPS,6.200,United Parcel Service Inc.,7148414.0
+DIS,6.650,Walt Disney Co.,7667250.5
+CHTR,3.900,Charter Communications Operating LLC / Charter Communications Operating Capital,4496583.0
+PCG,4.500,Pacific Gas and Electric Co.,5188365.0
+BMY,6.400,Squibb Co.,7379008.0
+JPM,5.500,JPMorgan Chase & Co.,6341335.0
+ABBV,4.450,AbbVie Inc.,5130716.500000001
+DIS,2.750,Walt Disney Co.,3170667.5
+MPC,6.500,Marathon Petroleum Corp.,7494305.0
+GS,3.210,Goldman Sachs Group Inc.,3701033.6999999997
+ABT,4.750,Abbott Laboratories,5476607.5
+CRM,2.900,Salesforce Inc.,3343613.0
+WMT,4.500,Walmart Inc.,5188365.0
+MSFT,4.500,Microsoft Corp.,5188365.0
+KHC,4.875,Kraft Heinz Foods Co.,5620728.75
+DIS,5.400,Walt Disney Co.,6226038.000000001
+DIS,3.500,Walt Disney Co.,4035395.0000000005
+CI,4.800,Cigna Group,5534256.0
+C,4.750,Citigroup Inc.,5476607.5
+ABIBB,4.950,InBev Worldwide Inc.,5707201.5
+D,8.875,Virginia Electric & Power Co.,10232608.75
+WFC,4.650,Wells Fargo & Co.,5361310.500000001
+CVS,5.875,CVS Health Corp.,6773698.75
+RTX,5.375,RTX Corp.,6197213.75
+HD,4.250,Home Depot Inc.,4900122.5
+RDSALN,5.500,Shell International Finance BV,6341335.0
+DELL,8.100,Dell International LLC / EMC Corp.,9339057.0
+CVS,5.625,CVS Health Corp.,6485456.25
+MSFT,3.450,Microsoft Corp.,3977746.5000000005
+FOXA,5.476,Fox Corp.,6313663.720000001
+ELV,4.375,Anthem Inc.,5044243.75
+GILD,4.150,Gilead Sciences Inc.,4784825.5
+AMZN,3.250,Amazon.com Inc.,3747152.5
+BRKHEC,5.850,MidAmerican Energy Co.,6744874.5
+CHTR,5.250,Charter Communications Operating LLC / Charter Communications Operating Capital,6053092.5
+CP,3.100,Canadian Pacific Railway Co.,3574207.0
+AAPL,3.950,Apple Inc.,4554231.5
+CHTR,3.850,Charter Communications Operating LLC / Charter Communications Operating Capital,4438934.5
+ORCL,6.125,Oracle Corp.,7061941.25
+EPD,5.100,Enterprise Products Operating LLC,5880147.0
+TSN,5.100,Tyson Foods Inc.,5880147.0
+CMCSA,3.450,Comcast Corp.,3977746.5000000005
+META,4.650,Meta Platforms Inc.,5361310.500000001
+MPLX,5.500,MPLX LP,6341335.0
+TMUS,5.650,USA Inc.,6514280.5
+CEG,6.500,Constellation Energy Generation LLC,7494305.0
+GS,3.436,Goldman Sachs Group Inc.,3961604.9200000004
+GILD,4.600,Gilead Sciences Inc.,5303662.0
+WFC,3.900,Wells Fargo & Co.,4496583.0
+HCA,5.125,HCA Inc.,5908971.25
+MTNA,7.000,ArcelorMittal SA,8070790.000000001
+HCA,5.900,HCA Inc.,6802523.0
+HD,3.350,Home Depot Inc.,3862449.5
+LMT,5.700,Lockheed Martin Corp.,6571929.0
+CB,4.350,Chubb INA Holdings Inc.,5015419.5
+T,5.250,AT&T Inc.,6053092.5
+ET,6.125,Energy Transfer Partners LP,7061941.25
+FI,4.400,Fiserv Inc.,5073068.000000001
+NOVNVX,4.000,Novartis Capital Corp.,4611880.0
+HSBC,6.500,HSBC Holdings plc,7494305.0
+COP,5.300,ConocoPhillips Co.,6110741.0
+TELEFO,5.520,Telefonica Emisiones SAU,6364394.399999999
+GEHC,6.377,GE HealthCare Technologies Inc.,7352489.6899999995
+XOM,3.452,Exxon Mobil Corp.,3980052.4400000004
+TGT,4.800,Target Corp.,5534256.0
+MMC,4.900,Marsh & McLennan Cos. Inc.,5649553.0
+VZ,2.875,Verizon Communications Inc.,3314788.75
+UNH,5.200,UnitedHealth Group Inc.,5995444.000000001
+CMCSA,3.900,Comcast Corp.,4496583.0
+CMCSA,3.750,Comcast Corp.,4323637.5
+V,2.000,Visa Inc.,2305940.0
+CMCSA,3.999,Comcast Corp.,4610727.029999999
+ELV,4.650,Anthem Inc.,5361310.500000001
+AMGN,3.150,Amgen Inc.,3631855.5
+BMY,3.700,Squibb Co.,4265989.000000001
+DUK,5.400,Duke Energy Carolinas LLC,6226038.000000001
+WMB,6.300,Williams Cos. Inc.,7263711.0
+CMCSA,3.200,Comcast Corp.,3689504.0
+ORCL,5.550,Oracle Corp.,6398983.5
+MPLX,5.200,MPLX LP,5995444.000000001
+BNSF,4.450,Burlington Northern Santa Fe LLC,5130716.500000001
+NI,4.375,NiSource Finance Corp.,5044243.75
+T,4.300,AT&T Inc.,4957771.0
+AEP,5.400,AEP Transmission Co. LLC,6226038.000000001
+LOW,4.050,Lowe's Cos. Inc.,4669528.5
+CMS,3.100,Consumers Energy Co.,3574207.0
+BAC,2.972,Bank of America Corp.,3426626.84
+ONCRTX,4.950,Oncor Electric Delivery Co. LLC,5707201.5
+VTRS,3.850,Viatris Inc.,4438934.5
+UNH,3.250,UnitedHealth Group Inc.,3747152.5
+DUK,5.300,Duke Energy Carolinas LLC,6110741.0
+PSX,4.875,Phillips,5620728.75
+BRK,2.850,Berkshire Hathaway Finance Corp.,3285964.5
+TACHEM,3.175,Takeda Pharmaceutical Co. Ltd.,3660679.75
+AAPL,2.550,Apple Inc.,2940073.5
+AER,3.850,AerCap Ireland Capital DAC / AerCap Global Aviation Trust,4438934.5
+C,5.316,Citigroup Inc.,6129188.52
+DGELN,5.875,Diageo Capital plc,6773698.75
+AMAT,4.350,Applied Materials Inc.,5015419.5
+CSX,4.100,CSX Corp.,4727176.999999999
+MRK,4.000,Merck & Co. Inc.,4611880.0
+BNSF,4.450,Burlington Northern Santa Fe LLC,5130716.500000001
+NSC,5.350,Norfolk Southern Corp.,6168389.5
+HD,4.950,Home Depot Inc.,5707201.5
+MCD,6.300,McDonald's Corp.,7263711.0
+AXP,4.050,American Express Co.,4669528.5
+KMB,6.625,Corp.,7638426.25
+CAT,3.803,Caterpillar Inc.,4384744.91
+CEG,5.600,Exelon Generation Co. LLC,6456631.999999999
+INTC,5.700,Intel Corp.,6571929.0
+KMI,5.500,Kinder Morgan Energy Partners LP,6341335.0
+SUMIBK,6.184,Sumitomo Mitsui Financial Group Inc.,7129966.4799999995
+SPGI,3.700,S&P Global Inc.,4265989.000000001
+EMACN,4.750,Emera US Finance LP,5476607.5
+BNSF,4.150,Burlington Northern Santa Fe LLC,4784825.5
+CSX,3.800,CSX Corp.,4381286.0
+MO,3.700,Altria Group Inc.,4265989.000000001
+HSBC,6.500,HSBC Holdings plc,7494305.0
+BSX,4.700,Boston Scientific Corp.,5418959.0
+BAC,4.244,Bank of America Corp.,4893204.68
+BAC,4.244,Bank of America Corp.,4893204.68
