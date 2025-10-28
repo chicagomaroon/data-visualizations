@@ -631,7 +631,7 @@ for ticker in sorted(list(set(tickers.unique()) - set([None, np.nan]))):
     # note that we use the NA string to indicate missing data so that we don't try to re-fetch
 
     if sec_2025.loc[tickers == ticker, "Industry"].notna().values[0]:
-        print("Skipping", ticker)
+        print("Skipping", ticker, "existing info")
         continue
 
     if len(yf.Ticker(ticker).info.keys()) < 2:
@@ -641,10 +641,14 @@ for ticker in sorted(list(set(tickers.unique()) - set([None, np.nan]))):
         continue
 
     print("Getting info for", ticker)
-    sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get("industry")
-    sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get("sector")
+    sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
+        "industry", "missing"
+    )
+    sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
+        "sector", "missing"
+    )
     sec_2025.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
-        "longBusinessSummary"
+        "longBusinessSummary", "missing"
     )
 
 
@@ -658,6 +662,7 @@ sec_2025["Summary"] = sec_2025["Summary"].replace("missing", None)
 # duplicate column for individual company info
 sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
 sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
+sec_2025["Summary"] = sec_2025["Summary"].fillna("").str.replace("\\d+", "", regex=True)
 
 print(
     round(
@@ -669,7 +674,8 @@ print(
 )
 
 plot_df = (
-    sec_2025[~sec_2025["Sector"].isna()]
+    sec_2025[sec_2025.Summary.str.len() > 5]
+    .dropna(how="any")
     # make sure that the biggest companies get listed first
     .sort_values("ValueThousands", ascending=False)
     .groupby("Sector")
@@ -677,8 +683,8 @@ plot_df = (
         {
             "ValueThousands": "sum",
             # round to the nearest thousand dollars (to indicate uncertainty)
-            "ValueDollars": lambda x: [f"${round(i)}" for i in x[:5]],
-            "Summary": lambda x: ", ".join(x),
+            "ValueDollars": lambda x: [f"${round(i):,}" for i in x[:5]],
+            "Summary": lambda x: ",".join(x),
             "Issuer": lambda x: list(x)[:5],
         }
     )
@@ -738,9 +744,7 @@ my_stops = (
 
 # Cite: Copilot
 tfidf = TfidfVectorizer(stop_words=my_stops, max_features=1000, ngram_range=(1, 3))
-tfidf_matrix = tfidf.fit_transform(
-    plot_df["Summary"].fillna("").str.replace("\\d+", "", regex=True)
-)
+tfidf_matrix = tfidf.fit_transform(plot_df["Summary"])
 # Get feature names (words)
 feature_names = tfidf.get_feature_names_out()
 
