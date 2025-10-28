@@ -589,8 +589,8 @@ sec_2025 = (
         {
             # not using lagged purchase value because this is a snapshot
             "ValueThousands": "sum",
-            # "Ticker": "first",
             "Issuer": "first",
+            # "Ticker": "first",
             # "Industry": "first",
             # "Summary": "first",
         }
@@ -598,17 +598,26 @@ sec_2025 = (
     .reset_index()
 )[["Issuer", "Ticker", "ValueThousands"]]
 print(len(sec_2025))
+# print(sec_2025.Industry.isna().sum())
 
 # %% read additional data if needed
 
+prior_fp = "sec-industries-2025-41.csv"
 fp = "sec-industries-2025-5.csv"
 if os.path.exists(fp):
-    prior = pd.read_csv(fp)
-    if len(prior) != len(sec_2025):
-        sec_2025 = sec_2025.merge(
-            prior[["Ticker", "Industry", "Sector", "Summary"]], on="Ticker", how="left"
-        )
+    sec_2025 = pd.read_csv(fp)
+    prior = pd.read_csv(prior_fp)
+
+    sec_2025 = pd.concat(
+        [
+            sec_2025[~sec_2025.Ticker.isin(prior.loc[prior.Industry.notna()].Ticker)],
+            prior,
+        ]
+    )
 print(len(sec_2025))
+print(sec_2025.columns)
+print(sec_2025.Industry.isna().sum())
+display(sec_2025)
 
 if "Industry" not in sec_2025.columns:
     sec_2025["Industry"] = None
@@ -621,21 +630,21 @@ tickers = sec_2025["Ticker"]
 for ticker in sorted(list(set(tickers.unique()) - set([None, np.nan]))):
     # note that we use the NA string to indicate missing data so that we don't try to re-fetch
 
-    if sec_2025.loc[tickers == ticker, "Industry"].values[0] == "NA":
-        continue
-    if len(yf.Ticker(ticker).info.keys()) < 2:
-        print(f"{ticker} does not exist in Yahoo data")
+    if sec_2025.loc[tickers == ticker, "Industry"].notna().values[0]:
+        print("Skipping", ticker)
         continue
 
-    print(ticker)
-    sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
-        "industry", "NA"
-    )
-    sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
-        "sector", "NA"
-    )
+    if len(yf.Ticker(ticker).info.keys()) < 2:
+        sec_2025.loc[tickers == ticker, "Industry"] = "missing"
+        sec_2025.loc[tickers == ticker, "Sector"] = "missing"
+        sec_2025.loc[tickers == ticker, "Summary"] = "missing"
+        continue
+
+    print("Getting info for", ticker)
+    sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get("industry")
+    sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get("sector")
     sec_2025.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
-        "longBusinessSummary", "NA"
+        "longBusinessSummary"
     )
 
 
@@ -643,9 +652,9 @@ sec_2025.to_csv(fp, index=False)
 
 # %% analyze by sector
 
-sec_2025["Industry"] = sec_2025["Industry"].replace("NA", None)
-sec_2025["Sector"] = sec_2025["Sector"].replace("NA", None)
-sec_2025["Summary"] = sec_2025["Summary"].replace("NA", None)
+sec_2025["Industry"] = sec_2025["Industry"].replace("missing", None)
+sec_2025["Sector"] = sec_2025["Sector"].replace("missing", None)
+sec_2025["Summary"] = sec_2025["Summary"].replace("missing", None)
 # duplicate column for individual company info
 sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
 sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
