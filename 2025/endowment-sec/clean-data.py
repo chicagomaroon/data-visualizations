@@ -12,7 +12,12 @@ from nltk.corpus import stopwords
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-import json
+import pytesseract
+from pdf2image import (
+    convert_from_path,
+)  # chose this because it is OCR-based and handles individual pages
+
+# import json
 from tqdm import tqdm
 
 # from bs4 import BeautifulSoup as bs
@@ -876,12 +881,47 @@ foreignInvestments = []
 administrativeExpenses = []
 bonds = []
 conflictsOfInterest = []
+# TODO: still dont have pre 2013 non xml data
+# TODO: 2010 is partly missing: schedule L is required as missing but data cuts off at schedule I
+
+schedule_l = {}
 for file in os.listdir("990"):
-    # if file.endswith(".pdf"):
-    #     tables = camelot.read_pdf(os.path.join("990", file), pages="all")
-    #     print(tables)
+    # TODO: remove test filter
+    if file.endswith("2009.pdf") and (
+        "T" not in file
+    ):  # pre 2013 format for 990s, not 990-Ts
+        pages = convert_from_path(os.path.join("990", file))
+        for i in tqdm(range(len(pages))):
+            # skip first 50 pages as schedule L unlikely to be here
+            if i < 55:
+                continue
+
+            schedule_l["file"] = file
+            schedule_l["pages"] = []
+            schedule_l["text"] = []
+
+            text = pytesseract.image_to_string(pages[i])
+
+            matches = 0
+            # if a partial match detected, expand window of search to 2 pages in case of overflow
+            if ("schedule l" in text.lower()) or ("schedule o" in text.lower()):
+                text = pytesseract.image_to_string(
+                    pages[i]
+                ) + pytesseract.image_to_string(pages[i + 1])
+                text = text.replace("SCHEDULE 0", "SCHEDULE O")  # fix parsing typo
+
+                # both schedule L and O are mentioned on each relevant page because they are reliant on each other
+                if ("schedule l" in text.lower()) and ("schedule o" in text.lower()):
+                    schedule_l["pages"].append(f"{i}-{i + 1}")
+                    schedule_l["text"].append(text)
+                    print("Relevant page identified and parsed")
+                    matches += 1
+            # once we find both the schedule L page and the schedule O page we break
+            if matches > 1:
+                break
+
     # tables.export('foo.csv', f='csv', compress=True)
-    if file.endswith(".xml"):
+    if file.endswith(".xml"):  # post 2013 format
         with open(os.path.join("990", file), "r", encoding="utf-8") as f:
             my_xml = f.read()
 
@@ -952,6 +992,9 @@ for file in os.listdir("990"):
                             K_flat.append(i)
             bonds += K_flat
 
+        # this is just to get confirmation of involved parties. we can get the actual amounts from the preqin dataset
+        # may need to match on Part V text (split by sentence or other indicator)
+        # filter these to any that mention "university's investment"
         L = ret.get("IRS990ScheduleL", None)
         L = L.get("BusTrInvolveInterestedPrsnGrp", L.get("", {}))
         for x in L:
