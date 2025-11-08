@@ -48,6 +48,7 @@ from plotnine import (
     theme_minimal,
     coord_flip,
 )
+import json
 
 # import camelot
 from edgar import *
@@ -883,42 +884,151 @@ bonds = []
 conflictsOfInterest = []
 # TODO: still dont have pre 2013 non xml data
 # TODO: 2010 is partly missing: schedule L is required as missing but data cuts off at schedule I
+# TODO: when did schedule L get invented - I don't see any data before 2009 or in 2010
+
+
+def get_schedule_d(ret):
+    D = ret.get("IRS990ScheduleD", None)
+    D = D.get("CurrentYear", D.get("CYEndwmtFundGrp", {}))
+    return {
+        "Year": year,
+        "AdministrativeExpenses": D.get(
+            "AdministrativeExpenses", D.get("AdministrativeExpensesAmt", {})
+        ),
+    }
+
+
+def get_schedule_f(ret):
+    F = ret.get("IRS990ScheduleF", None)
+    F = F.get(
+        "AcctsActvsOutUSTable",
+        F.get("AccountActivitiesOutsideUSGrp", {}),
+    )
+    F = [
+        x
+        for x in F
+        if x.get(
+            "TypeOfActivity",
+            x.get(
+                "TypeOfActivitiesConducted",
+                x.get("TypeOfActivitiesConductedTxt", {}),
+            ),
+        )
+        in ["INVESTMENTS", "Investments"]
+    ]
+    for x in F:
+        x["Year"] = year
+    return F
+
+
+def get_schedule_k(ret):
+    for key in [
+        "TaxExemptBondsIssuesGrp",
+        "Form990ScheduleKPartI",
+        "Form990ScheduleKPartII",
+        "Form990ScheduleKPartIII",
+    ]:
+        K = (
+            ret.get("IRS990ScheduleK", [])
+            + ret.get("IRS990ScheduleK1", [])
+            + ret.get("IRS990ScheduleK2", [])
+            + ret.get("IRS990ScheduleK3", [])
+        )
+        K = [x.get(key) for x in K if x.get(key)]
+        # Unnest so K_flat is always a flat list of dicts
+        K_flat = []
+        for x in K:
+            if isinstance(x, dict):
+                x["Year"] = year
+                K_flat.append(x)
+            elif isinstance(x, list):
+                for i in x:
+                    if isinstance(i, dict):
+                        i["Year"] = year
+                        K_flat.append(i)
+
+        return K_flat
+
+
+def get_schedule_l(ret):
+    """
+    this is just to get confirmation of involved parties. we can get the actual amounts from the preqin dataset
+    may need to match on Part V text (split by sentence or other indicator)
+    filter these to any that mention "university's investment"
+    """
+
+    L = ret.get("IRS990ScheduleL", None)
+
+    partv = L.get("SupplementalInformationDetail", L.get("Form990ScheduleLPartV", {}))
+    if isinstance(partv, list):
+        partv = partv[1]
+    partv = partv.get("ExplanationTxt", partv.get("Explanation", {})).upper()
+
+    # split on periods following 3 or more letters or numbers
+    partv = re.split(r"((?<=[A-Z0-9]{3})\. )|(\.(?=[A-Z]))|( \. )", partv)
+    partv = [i for i in partv if (i is not None) and (len(i) > 5)]
+
+    # get all business transactions that involves interested persons or groups
+    L = L.get("BusTrInvolveInterestedPrsnGrp", L.get("", {}))
+    for x in L:
+        x["Year"] = year
+        x["NameOfInterested"] = x["NameOfInterested"].get("BusinessName") or x[
+            "NameOfInterested"
+        ].get("PersonNm")
+        if isinstance(x["NameOfInterested"], dict):
+            x["NameOfInterested"] = x["NameOfInterested"].get("BusinessNameLine1") or x[
+                "NameOfInterested"
+            ].get("BusinessNameLine1Txt")
+        # get all sentences matching first 10 letters of company
+        x["RelationshipDescriptionTxt"] = ". ".join(
+            [i for i in partv if x["NameOfInterested"].upper()[:10] in i]
+        )
+        x["Endowment"] = (
+            "university's investment" in x["RelationshipDescriptionTxt"].lower()
+        )
+
+    return L
+
 
 schedule_l = {}
 for file in os.listdir("990"):
-    # TODO: remove test filter
-    if file.endswith("2009.pdf") and (
-        "T" not in file
-    ):  # pre 2013 format for 990s, not 990-Ts
-        pages = convert_from_path(os.path.join("990", file))
-        for i in tqdm(range(len(pages))):
-            # skip first 50 pages as schedule L unlikely to be here
-            if i < 55:
-                continue
+    # if file.endswith(".pdf") and (
+    #     "T" not in file
+    # ):  # pre 2013 format for 990s, not 990-Ts
+    #     pages = convert_from_path(os.path.join("990", file))
 
-            schedule_l["file"] = file
-            schedule_l["pages"] = []
-            schedule_l["text"] = []
+    #     schedule_l["file"] = file
+    #     schedule_l["pages"] = []
+    #     schedule_l["text"] = []
 
-            text = pytesseract.image_to_string(pages[i])
+    #     for i in tqdm(range(len(pages))):
+    #         # skip first 50 pages as schedule L unlikely to be here
+    #         if i < 55:
+    #             continue
 
-            matches = 0
-            # if a partial match detected, expand window of search to 2 pages in case of overflow
-            if ("schedule l" in text.lower()) or ("schedule o" in text.lower()):
-                text = pytesseract.image_to_string(
-                    pages[i]
-                ) + pytesseract.image_to_string(pages[i + 1])
-                text = text.replace("SCHEDULE 0", "SCHEDULE O")  # fix parsing typo
+    #         text = pytesseract.image_to_string(pages[i])
 
-                # both schedule L and O are mentioned on each relevant page because they are reliant on each other
-                if ("schedule l" in text.lower()) and ("schedule o" in text.lower()):
-                    schedule_l["pages"].append(f"{i}-{i + 1}")
-                    schedule_l["text"].append(text)
-                    print("Relevant page identified and parsed")
-                    matches += 1
-            # once we find both the schedule L page and the schedule O page we break
-            if matches > 1:
-                break
+    #         matches = 0
+    #         # if a partial match detected, expand window of search to 2 pages in case of overflow
+    #         if ("schedule l" in text.lower()) or ("schedule o" in text.lower()):
+    #             text = pytesseract.image_to_string(
+    #                 pages[i]
+    #             ) + pytesseract.image_to_string(pages[i + 1])
+    #             text = text.replace("SCHEDULE 0", "SCHEDULE O")  # fix parsing typo
+    #             text = text.replace("ScheduleO", "SCHEDULE O")  # fix parsing typo
+
+    #             # both schedule L and O are mentioned on each relevant page because they are reliant on each other
+    #             if ("schedule l" in text.lower()) and ("schedule o" in text.lower()):
+    #                 schedule_l["pages"].append(f"{i}-{i + 1}")
+    #                 schedule_l["text"].append(text)
+    #                 print("Relevant page identified and parsed")
+    #                 matches += 1
+    #         # once we find both the schedule L page and the schedule O page we break
+    #         if matches > 1:
+    #             break
+
+    # with open("pdf990.json", "w") as f:
+    #     json.dump(schedule_l, f)
 
     # tables.export('foo.csv', f='csv', compress=True)
     if file.endswith(".xml"):  # post 2013 format
@@ -934,80 +1044,15 @@ for file in os.listdir("990"):
         )
         print(year)
 
-        F = ret.get("IRS990ScheduleF", None)
-        F = F.get(
-            "AcctsActvsOutUSTable",
-            F.get("AccountActivitiesOutsideUSGrp", {}),
-        )
-        F = [
-            x
-            for x in F
-            if x.get(
-                "TypeOfActivity",
-                x.get(
-                    "TypeOfActivitiesConducted",
-                    x.get("TypeOfActivitiesConductedTxt", {}),
-                ),
-            )
-            in ["INVESTMENTS", "Investments"]
-        ]
-        for x in F:
-            x["Year"] = year
-        foreignInvestments += F
+        # foreignInvestments.append(get_schedule_f(ret))
 
-        D = ret.get("IRS990ScheduleD", None)
-        D = D.get("CurrentYear", D.get("CYEndwmtFundGrp", {}))
-        administrativeExpenses.append(
-            {
-                "Year": year,
-                "AdministrativeExpenses": D.get(
-                    "AdministrativeExpenses", D.get("AdministrativeExpensesAmt", {})
-                ),
-            }
-        )
+        # administrativeExpenses.append(get_schedule_d(ret))
 
-        for key in [
-            "TaxExemptBondsIssuesGrp",
-            "Form990ScheduleKPartI",
-            "Form990ScheduleKPartII",
-            "Form990ScheduleKPartIII",
-        ]:
-            K = (
-                ret.get("IRS990ScheduleK", [])
-                + ret.get("IRS990ScheduleK1", [])
-                + ret.get("IRS990ScheduleK2", [])
-                + ret.get("IRS990ScheduleK3", [])
-            )
-            K = [x.get(key) for x in K if x.get(key)]
-            # Unnest so K_flat is always a flat list of dicts
-            K_flat = []
-            for x in K:
-                if isinstance(x, dict):
-                    x["Year"] = year
-                    K_flat.append(x)
-                elif isinstance(x, list):
-                    for i in x:
-                        if isinstance(i, dict):
-                            i["Year"] = year
-                            K_flat.append(i)
-            bonds += K_flat
+        # bonds.append(get_schedule_k(ret))
 
-        # this is just to get confirmation of involved parties. we can get the actual amounts from the preqin dataset
-        # may need to match on Part V text (split by sentence or other indicator)
-        # filter these to any that mention "university's investment"
-        L = ret.get("IRS990ScheduleL", None)
-        L = L.get("BusTrInvolveInterestedPrsnGrp", L.get("", {}))
-        for x in L:
-            x["Year"] = year
-            x["NameOfInterested"] = x["NameOfInterested"].get("BusinessName") or x[
-                "NameOfInterested"
-            ].get("PersonNm")
-            if isinstance(x["NameOfInterested"], dict):
-                x["NameOfInterested"] = x["NameOfInterested"].get(
-                    "BusinessNameLine1"
-                ) or x["NameOfInterested"].get("BusinessNameLine1Txt")
-
-        conflictsOfInterest += L
+        L = get_schedule_l(ret)
+        if len(L):
+            conflictsOfInterest += L
 
 
 # %% save 990 data
@@ -1015,7 +1060,28 @@ def rename_keys(d, rename_map):
     return {rename_map.get(k, k): v for k, v in d.items()}
 
 
-pd.DataFrame(conflictsOfInterest).to_csv("conflicts-of-interest.csv", index=False)
+coi = pd.DataFrame(conflictsOfInterest)
+coi.loc[coi["NameOfInterested"] == "LAKE CAPITAL", "NameOfInterested"] = (
+    "LAKE CAPITAL PARTNERS"
+)
+coi["TransactionAmt"] = coi["TransactionAmt"].fillna(0).astype(int)
+coi["Year"] = pd.to_datetime(coi["Year"]).dt.year
+coi = coi[coi["Endowment"] == True]
+coi = (
+    coi.groupby(["NameOfInterested", "Year"])
+    .agg({"TransactionAmt": "sum", "NameOfInterested": "first", "Year": "first"})
+    .reset_index(drop=True)
+)
+(
+    ggplot(coi)
+    + geom_line(aes(x="Year", y="TransactionAmt", color="NameOfInterested"))
+    + ggtitle("Conflicts of interest")
+    + xlab("TransactionAmt")
+    + ylab("Value in thousands of dollars")
+    + theme_minimal()
+)
+
+coi.to_csv("conflicts-of-interest.csv", index=False)
 
 rename_bonds = {
     "CUSIPNum": "CUSIPNumber",
