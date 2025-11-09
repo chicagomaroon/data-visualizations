@@ -8,162 +8,184 @@ Highcharts.setOptions({
     }
 });
 
-// Highcharts.chart('chart-div', {
-//     // Setting default colors
-//     colors: [
-//         '#800000',
-//         '#FFA319',
-//         '#C16622',
-//         '#8F3931',
-//         '#8A9045',
-//         '#58593F',
-//         '#155F83',
-//         '#350E20',
-//         '#47B5FF',
-//         '#FF3399'
-//     ],
-
+// cite: translated from highcharts with chatgpt
 function sankeyChart() {
-    Highcharts.chart('chart-div', {
+    // Node labels
+    const labels = [
+        'Total assets<br>(excluding hospital)', // 0
+        'Revenue with restrictions', // 1
+        'Endowment payout with restrictions', // 2
+        'Private gifts', // 3
+        'Revenue<br>without restrictions<br>(excluding hospital)', // 4
+        'Total operating revenue', // 5
+        'Total nonoperating revenue', // 6
+        'Investment return without restrictions', // 7
+        'Other nonoperating revenue', // 8
+        'Investment return with restrictions', // 9
+        'Net tuition', // 10
+        'Endowment payout<br>without restrictions', // 11
+        'Government grants and contracts', // 12
+        'Private gifts, grants, and contracts', // 13
+        'Other operating revenue' // 14
+    ];
+
+    // Define links as [sourceName, targetName, value]
+    const linksData = [
+        [
+            'Total assets<br>(excluding hospital)',
+            'Revenue with restrictions',
+            338.2
+        ],
+        [
+            'Revenue with restrictions',
+            'Endowment payout with restrictions',
+            0.9
+        ],
+        ['Revenue with restrictions', 'Private gifts', 406.4],
+        [
+            'Revenue with restrictions',
+            'Investment return with restrictions',
+            136.9
+        ],
+        [
+            'Total assets<br>(excluding hospital)',
+            'Revenue<br>without restrictions<br>(excluding hospital)',
+            3387.2
+        ],
+        [
+            'Revenue<br>without restrictions<br>(excluding hospital)',
+            'Total operating revenue',
+            3285.9
+        ],
+        [
+            'Revenue<br>without restrictions<br>(excluding hospital)',
+            'Total nonoperating revenue',
+            101.4
+        ],
+        [
+            'Total nonoperating revenue',
+            'Investment return without restrictions',
+            66.0
+        ],
+        ['Total nonoperating revenue', 'Other nonoperating revenue', 35.4],
+        ['Total operating revenue', 'Net tuition', 611.3],
+        ['Total operating revenue', 'Government grants and contracts', 561.3],
+        [
+            'Total operating revenue',
+            'Private gifts, grants, and contracts',
+            293.2
+        ],
+        [
+            'Total operating revenue',
+            'Endowment payout<br>without restrictions',
+            565.7
+        ],
+        ['Total operating revenue', 'Other operating revenue', 1254.4]
+    ];
+
+    // Manual x/y positions — tuned to avoid crossings
+    const x = [
+        0.0, // Total assets (source)
+        0.2, // Revenue with restrictions
+        0.9, // Endowment payout with restrictions
+        0.9, // Private gifts
+        0.2, // Revenue without restrictions
+        0.4, // Total operating revenue
+        0.4, // Total nonoperating revenue
+        0.9, // Investment return without restrictions
+        0.9, // Other nonoperating revenue
+        0.9, // Investment return with restrictions
+        0.9, // Net tuition
+        0.9, // Endowment payout (unrestricted)
+        0.9, // Government grants
+        0.9, // Private gifts, grants, and contracts
+        0.9 // Other operating revenue
+    ];
+
+    const y = [
+        0.5, // Total assets
+        0.8, // Revenue with restrictions
+        0.96, // Endowment payout (restricted)
+        0.85, // Private gifts (restricted)
+        0.3, // Revenue without restrictions
+        0.29, // Total operating revenue
+        0.65, // Total nonoperating revenue
+        0.72, // Investment return (unrestricted)
+        0.75, // Other nonoperating revenue
+        0.92, // Investment return (restricted)
+        0.25, // Net tuition
+        0.38, // Endowment payout (unrestricted)
+        0.51, // Government grants
+        0.61, // Private gifts, grants, and contracts
+        0.05 // Other operating revenue
+    ];
+
+    // Map node names to indices
+    const nodeIndex = {};
+    labels.forEach((label, i) => (nodeIndex[label] = i));
+
+    const sources = linksData.map((d) => nodeIndex[d[0]]);
+    const targets = linksData.map((d) => nodeIndex[d[1]]);
+    const values = linksData.map((d) => d[2]);
+
+    const data = {
+        type: 'sankey',
+        orientation: 'h',
+        node: {
+            x: x,
+            y: y,
+            label: labels,
+            pad: 15,
+            thickness: 20,
+            line: { color: 'black', width: 0.5 },
+            hoverinfo: 'none',
+            color: [
+                // color the endowment related ones and leave the rest
+                '#800000',
+                '#800000',
+                '#d51d1dff',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#d51d1dff',
+                '#800000',
+                '#800000',
+                '#800000'
+            ]
+        },
+        link: {
+            source: sources,
+            target: targets,
+            value: values,
+            hovertemplate: '%{target.label}: $%{value:.00f}M<extra></extra>'
+        }
+    };
+
+    const layout = {
         title: {
-            // text: 'UChicago Budget, Fiscal Year 2024'
             text: 'Revenue, Fiscal Year 2024'
         },
-        subtitle: {
-            text: 'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.'
-        },
-        accessibility: {
-            point: {
-                valueDescriptionFormat:
-                    '{index}. {point.from} to {point.to}, ' + '{point.weight}.'
-            }
-        },
-        tooltip: {
-            headerFormat: null,
-            pointFormat:
-                '{point.fromNode.name} to {point.toNode.name}: ${point.weight:.1f}' +
-                'M',
-            nodeFormat: '{point.name}: ${point.sum:.1f}M'
-        },
-
-        series: [
+        annotations: [
             {
-                keys: ['to', 'from', 'weight'],
-
-                // nodes: [
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                //     {
-                //         id: 'Total assets',
-                //         color: '#800000',
-                //     },
-                // ]
-
-                data: [
-                    [
-                        'Total assets<br>(excluding hospital)',
-                        'Revenue with restrictions',
-                        338.2
-                    ],
-                    [
-                        'Revenue with restrictions',
-                        'Endowment payout with restrictions',
-                        0.9
-                    ],
-                    ['Revenue with restrictions', 'Private gifts', 406.4],
-                    [
-                        'Revenue with restrictions',
-                        'Investment return with restrictions',
-                        136.9
-                    ],
-
-                    // ['Budget', 'Revenue without restrictions', 7638.3],
-                    [
-                        'Total assets<br>(excluding hospital)',
-                        'Revenue without restrictions<br>(excluding hospital)',
-                        3387.2
-                    ],
-                    // ['Revenue without restrictions', 'Total operating revenue', 7536.9],
-                    [
-                        'Revenue without restrictions<br>(excluding hospital)',
-                        'Total operating revenue',
-                        3285.9
-                    ],
-                    ['Total operating revenue', 'Net tuition', 611.3],
-                    [
-                        'Total operating revenue',
-                        'Government grants and contracts',
-                        561.3
-                    ],
-                    [
-                        'Total operating revenue',
-                        'Private gifts, grants, and contracts',
-                        293.2
-                    ],
-                    [
-                        'Total operating revenue',
-                        'Endowment payout without restrictions',
-                        565.7
-                    ],
-                    // ['Total operating revenue', 'Net patient services', 4251.0],
-                    [
-                        'Total operating revenue',
-                        'Other operating revenue',
-                        1254.4
-                    ],
-                    // ['Revenue without restrictions', 'Total nonoperating revenue', 101.4],
-                    [
-                        'Revenue without restrictions<br>(excluding hospital)',
-                        'Total nonoperating revenue',
-                        101.4
-                    ],
-                    [
-                        'Total nonoperating revenue',
-                        'Investment return without restrictions',
-                        66.0
-                    ],
-                    [
-                        'Total nonoperating revenue',
-                        'Other nonoperating revenue',
-                        35.4
-                    ]
-
-                    // ['Budget', 'Expenses', 7730.6], // negative
-                    // ['Expenses', 'Total operating expenses', 7730.6],
-                    // ['Total operating expenses', 'Salaries and benefits', 4212.9],
-                    // ['Total operating expenses', 'Other expenses', 3517.7],
-                ],
-                type: 'sankey',
-                name: 'Budget'
+                text: 'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="">UChicago financial statement 2023</a>',
+                xref: 'paper',
+                yref: 'paper',
+                x: 0,
+                y: -0.05,
+                showarrow: false,
+                font: { size: 12, color: 'gray' },
+                align: 'left'
             }
-        ]
-    });
+        ],
+        font: { size: 12, color: 'black' }
+    };
+
+    Plotly.newPlot('chart-div', [data], layout);
 }
 
 // ------------------ DATA ------------------
@@ -569,6 +591,15 @@ async function init() {
     // showChart();
 
     // createWaypoint('what-is-it');
+
+    new Waypoint({
+        element: document.getElementById('withdraw'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                sankeyChart();
+            }
+        }
+    });
 
     new Waypoint({
         element: document.getElementById('breakdown'),
