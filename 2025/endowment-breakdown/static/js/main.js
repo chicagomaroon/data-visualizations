@@ -345,7 +345,15 @@ function createWaypoint(div, offset = '80%') {
  * Cite:
  * @param  {str} Name of HTML div to attach waypoint to
  */
-function createNewSection(div, data, variable, prev_var, offset = '80%') {
+function createNewSection(
+    div,
+    data,
+    variable,
+    prev_var,
+    title = '',
+    caption = '',
+    offset = '80%'
+) {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
@@ -389,10 +397,26 @@ function createNewSection(div, data, variable, prev_var, offset = '80%') {
                         showticklabels: false
                     },
                     margin: {
-                        l: 25,
-                        r: 300
+                        // t: 0
+                        //     l: 25,
+                        //     r: 300
                     },
-                    width: 0.2
+                    title: {
+                        text: title
+                    },
+                    annotations: [
+                        {
+                            text: caption,
+                            xref: 'paper',
+                            yref: 'paper',
+                            x: 0,
+                            y: -0.02, // move below the x-axis
+                            showarrow: false,
+                            xanchor: 'left',
+                            yanchor: 'top',
+                            font: { size: 12, color: 'gray' }
+                        }
+                    ]
                 }
             });
 
@@ -440,7 +464,7 @@ function hide_box_hovers(data) {
 const layout = {
     title: {
         text: '',
-        x: 0.14,
+        x: 0.03,
         font: {
             size: 20
         },
@@ -451,6 +475,7 @@ const layout = {
             }
         }
     },
+    barmode: 'stack',
     font: {
         family: 'Georgia'
     },
@@ -464,6 +489,7 @@ const layout = {
     },
     yaxis: {
         showgrid: false,
+        showline: false,
         showticklabels: false,
         ticktext: 'text',
         tickfont: {
@@ -477,7 +503,7 @@ const layout = {
     showlegend: false,
     margin: {
         l: 25,
-        r: 300
+        r: 200
     }
 };
 
@@ -545,23 +571,24 @@ const colorbook = {
 var data;
 
 async function init() {
-    window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-    };
+    // window.onbeforeunload = function () {
+    //     window.scrollTo(0, 0);
+    // };
     // hideChart((all = true));
 
-    fs = await fetchData('financial-statement-2023.json');
-    console.log(fs);
+    statements = await fetchData('financial-statement-2023.json');
+    console.log(statements);
 
     sec = await fetchData('sec-sectors-2025.json');
     console.log(sec);
 
-    // we will edit this plot throughout the whole article
     createNewSection(
         'what-is-it',
-        fs,
+        statements,
         (variable = 'fund_type'),
         (prev_var = 'Top'),
+        (title = 'Fund types'),
+        (caption = 'Source: UChicago financial statements'),
         (offset = '70%')
     );
     // showChart();
@@ -585,7 +612,7 @@ async function init() {
             if (direction == 'down') {
                 Plotly.newPlot(
                     'chart-div',
-                    processData(fs, (variable = 'recategorized')),
+                    processData(statements, (variable = 'recategorized')),
                     layout,
                     config
                 );
@@ -604,13 +631,13 @@ async function init() {
                     {
                         layout: {
                             xaxis: {
-                                showticklabels: true,
-                                range: [0, 100]
-                            },
-                            margin: {
-                                l: 50,
-                                r: 0
+                                showticklabels: true
+                                // range: [0, 100]
                             }
+                            // margin: {
+                            //     l: 50,
+                            //     r: 0
+                            // }
                         }
                     },
                     {
@@ -627,11 +654,11 @@ async function init() {
                         layout: {
                             xaxis: {
                                 showticklabels: false
-                            },
-                            margin: {
-                                l: 25,
-                                r: 300
                             }
+                            // margin: {
+                            //     l: 25,
+                            //     r: 300
+                            // }
                         }
                     },
                     {
@@ -650,8 +677,12 @@ async function init() {
         sec,
         'sector',
         (prev_var = 'Top'),
+        (title = 'Industry sectors'),
+        (caption = 'Source: UChicago SEC 13-F'),
         (offset = '70%')
     );
+
+    // TODO: add title and caption
 
     new Waypoint({
         element: document.getElementById('control'),
