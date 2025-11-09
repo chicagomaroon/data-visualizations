@@ -253,7 +253,6 @@ sec["Year"] = sec["Date"].dt.year
 sec["ValueThousands"] = sec["Value"]
 sec["Issuer"] = sec["Issuer"].str.title()
 
-# TODO: why is this 10,000K more than later subset?
 print(sec.loc[sec.Year == 2025].ValueThousands.sum())
 
 # use both info of shares (purchases) and values (market value)
@@ -822,8 +821,12 @@ type_dict = {
     "International": "Public equities (stocks)",
     "Stocks": "Public equities (stocks)",  # TODO: actually this comprises public and private so maybe exclude pre 2000
     "Global public equities": "Public equities (stocks)",
+    "International public equities": "Public equities (stocks)",
+    "Domestic public equities": "Public equities (stocks)",
     "High yield": "Bonds",
+    "High yield bonds": "Bonds",
     "Cash equivalent": "Bonds",
+    "Cash equivalents": "Bonds",
     "Fixed income": "Bonds",
     "Absolute return": "Hedge funds",  # hedge funds may be public or private
     "Equity oriented": "Hedge funds",  # hedge funds may be public or private
@@ -866,13 +869,23 @@ data2023[
     lines=False,
 )
 
-# consolidate regrouped groups
-# fs = fs.groupby(["year", "type"]).agg({"percent": "sum"}).reset_index()
+# consolidate recategorized groups
+fs = fs.groupby(["year", "recategorized"]).agg({"percent": "sum"}).reset_index()
 # fs.to_csv("types.csv", index=False)
 
+fs["5year"] = np.round(fs["year"] / 5) * 5
+
+# fs = fs.groupby(["5year", "recategorized"]).agg({"percent": "mean"}).reset_index()
+fs["percent_5yr"] = (
+    fs.groupby("recategorized")["percent"]
+    .apply(lambda x: x.rolling(window=1, min_periods=1).mean())
+    .reset_index(drop=True)
+)
+
 (
-    ggplot(fs, aes(x="year", y="percent"))
-    + geom_line(aes(color="type", line_type="type"))
+    ggplot(fs[fs["year"] > 2000], aes(x="year", y="percent_5yr"))
+    + geom_line(aes(color="recategorized", line_type="recategorized"))
+    + xlab("5-year moving average")
 )
 
 
@@ -1064,12 +1077,20 @@ coi = pd.DataFrame(conflictsOfInterest)
 coi.loc[coi["NameOfInterested"] == "LAKE CAPITAL", "NameOfInterested"] = (
     "LAKE CAPITAL PARTNERS"
 )
+coi["NameOfInterested"] = coi["NameOfInterested"].str.replace("THE ", "")
 coi["TransactionAmt"] = coi["TransactionAmt"].fillna(0).astype(int)
 coi["Year"] = pd.to_datetime(coi["Year"]).dt.year
 coi = coi[coi["Endowment"] == True]
 coi = (
     coi.groupby(["NameOfInterested", "Year"])
-    .agg({"TransactionAmt": "sum", "NameOfInterested": "first", "Year": "first"})
+    .agg(
+        {
+            "TransactionAmt": "sum",
+            "NameOfInterested": "first",
+            "Year": "first",
+            "RelationshipDescriptionTxt": "first",
+        }
+    )
     .reset_index(drop=True)
 )
 (
