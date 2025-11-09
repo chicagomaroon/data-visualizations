@@ -1081,7 +1081,48 @@ coi = (
     + theme_minimal()
 )
 
+# NOTE: trian fund management no longer exists, may be accessible via LSEG
+preqin = pd.read_excel("Preqin UChicago.xlsx")
+preqin["firm_name"] = preqin["firm_name"].str.upper().str.replace("THE ", "")
+# idk how to handle overlapping industries so let's just take the first of each
+preqin["industry"] = preqin["industry"].str.split(";")
+
+# get 5 largest funds per firm
+top5 = (
+    preqin.sort_values(["firm_id", "final_size_usd"], ascending=False)
+    .groupby("firm_id")
+    .head(5)
+)
+top5["most_recent_size_millions"] = top5[
+    "final_size_usd"
+]  # cite: provided data dictionary
+# cannot fill in portfolio companies from pitchbook because private equity does not report portfolio
+# TODO: some of their own websites do provide specific information: check usage guidelines
+coi23 = coi[coi["Year"] == 2023].merge(
+    top5,
+    left_on="NameOfInterested",
+    right_on="firm_name",
+)
+coi23["region"] = [
+    row["fund_focus"] if not isinstance(row["region"], str) else row["region"]
+    for _, row in coi23.iterrows()
+]
+coi23["industry"] = [", ".join(x) for x in coi23["industry"]]
+coi23["region"] = coi23["region"].str.replace(";", ", ")
 coi.to_csv("conflicts-of-interest.csv", index=False)
+
+coi23[
+    [
+        "firm_name",
+        "fund_name",
+        # "most_recent_size_millions",
+        "industry",
+        # "fund_focus",
+        "region",
+    ]
+].to_json(
+    "../endowment-breakdown/data/conflicts-of-interest-2023.json", orient="records"
+)
 
 rename_bonds = {
     "CUSIPNum": "CUSIPNumber",
