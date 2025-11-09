@@ -340,6 +340,52 @@ function createWaypoint(div, offset = '80%') {
     });
 }
 
+function createTable(div, firm_name) {
+    new Waypoint({
+        element: document.getElementById(div),
+        handler: function (direction) {
+            if (direction == 'down') {
+                const filtered = coi.filter((d) => d.firm_name === firm_name);
+
+                const skip_first = filtered.map(
+                    ({ firm_name, ...rest }) => rest
+                );
+                const values = skip_first.map((obj) => Object.values(obj));
+
+                console.log(values);
+                var data = [
+                    {
+                        type: 'table',
+                        header: {
+                            values: [
+                                ['<b>Fund name</b>'],
+                                ['<b>Industries</b>'],
+                                ['<b>Regions</b>']
+                            ],
+                            align: 'center',
+                            line: { width: 1, color: 'black' },
+                            fill: { color: '#800000' },
+                            font: { size: 16, color: 'white' }
+                        },
+                        cells: {
+                            values: d3.transpose(values),
+                            align: 'center',
+                            line: { color: 'black', width: 1 },
+                            font: {
+                                size: 12,
+                                color: ['black']
+                            }
+                        }
+                    }
+                ];
+
+                Plotly.newPlot('chart-div', data);
+            }
+        },
+        offset: '70%'
+    });
+}
+
 /**
  * Waypoints (scroll interactions) for article body.
  * Cite:
@@ -681,6 +727,10 @@ async function init() {
         (caption = 'Source: UChicago SEC 13-F'),
         (offset = '70%')
     );
+
+    createTable('lake', 'LAKE CAPITAL PARTNERS');
+    createTable('pimco', 'PIMCO');
+    createTable('carlyle', 'CARLYLE GROUP');
 
     // TODO: add title and caption
 
