@@ -207,85 +207,61 @@ async function fetchData(path) {
     }
 }
 
-// Group and sum elements by type (cite: copilot)
-function groupAndSum(data, groupByKey) {
-    console.log('grouping by', groupByKey, data);
-    const groupedData = data.reduce((acc, curr) => {
-        const key = curr[groupByKey]; // Group by the specified key
-        if (!acc[key]) {
-            // If the group doesn't exist, initialize it with the current object
-            acc[key] = { ...curr, amount_thousands: 0 };
-        }
-        // Sum the values for the group
-        acc[key].amount_thousands += curr.amount_thousands;
-        return acc;
-    }, {});
-
-    // Convert the grouped object back into an array
-    const groupedArray = Object.values(groupedData);
-
-    // sort by value
-    groupedArray.sort((a, b) => b.amount_thousands - a.amount_thousands);
-
-    let total_thousands = 0;
-    groupedArray.forEach((d) => (total_thousands += d.amount_thousands));
-
-    // Make cumulative x position variable
-    let cumulativeSum = 0;
-    groupedArray.forEach((item) => {
-        item.x = cumulativeSum;
-        item.width = item.amount_thousands / total_thousands;
-        cumulativeSum += item.width;
-
-        item.label =
-            item[groupByKey] + ' (' + Math.round(item.width * 100) + '%)';
-
-        console.log(
-            `Category: ${item[groupByKey]}, x: ${item.x}, width: ${item.width}`
-        );
-    });
-
-    return groupedArray;
-}
-
 /**
  * Group data and define all traces
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
  * @param  {json} data Data loaded in a previous step
- * @param  {Array} name_vars Variable(s) to group by
+ * @param  {Array} variable Variable(s) to group by
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
 function processData(data, variable = 'fund_type') {
     console.log('processing', data);
-    const groupedData = groupAndSum(data, variable);
+    // cite: copilot
+    const total = data
+        .map((d) => d.amount_thousands)
+        .reduce((acc, curr) => acc + curr, 0);
+    console.log(total);
 
-    console.log('grouped', groupedData);
+    const valueSums = data.reduce((acc, obj) => {
+        acc[obj[variable]] =
+            (acc[obj[variable]] || 0) +
+            Math.round((obj['amount_thousands'] / total) * 100);
+        return acc;
+    }, {});
+
+    const groupedData = data.map((obj) => ({
+        ...obj,
+        x: valueSums[obj[variable]]
+    }));
+    const unique = [
+        ...new Map(groupedData.map((item) => [item[variable], item])).values()
+    ];
+
+    // console.log('grouped', groupedData);
+    traces = [];
+
     try {
-        traces = [];
-
         // construct plotly "dataframe"
-
-        traces.push({
-            type: 'bar',
-            x: groupedData.map((d) => d.y),
-            y: groupedData.map((d) => d.x),
-            width: groupedData.map((d) => d.width * 1.35),
-            name: groupedData.map((d) => d[variable]),
-            marker: {
-                color: groupedData.map((d) => colorbook[variable][d[variable]])
-            },
-            text: groupedData.map((d) => d.label),
-            orientation: 'h',
-            hoverinfo: 'text',
-            hoverlabel: {
-                // bgcolor: '#222', // background color
-                bordercolor: '#f1f1f1', // border color
-                font: {
-                    family: 'Playfair',
-                    size: 16,
-                    color: 'black' // text color
+        unique.forEach(function (val) {
+            traces.push({
+                type: 'bar',
+                x: ['Data'],
+                y: [val['x']],
+                name: [val[variable]],
+                marker: {
+                    color: colorbook[variable][val[variable]]
+                },
+                text: [val[variable] + ': ' + val['x'] + '%'],
+                hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+                hoverlabel: {
+                    bordercolor: '#f1f1f1', // border color
+                    font: {
+                        family: 'Playfair',
+                        size: 16,
+                        color: 'black' // text color
+                    }
                 }
-            }
+            });
         });
 
         if ('hoverinfo' in groupedData[0]) {
