@@ -12,7 +12,7 @@ Highcharts.setOptions({
 function sankeyChart() {
     // Node labels
     const labels = [
-        'Total assets<br>(excluding hospital)', // 0
+        'Total assets<br>(excluding<br>hospital)', // 0
         'Revenue with restrictions', // 1
         'Endowment payout with restrictions', // 2
         'Private gifts', // 3
@@ -32,7 +32,7 @@ function sankeyChart() {
     // Define links as [sourceName, targetName, value]
     const linksData = [
         [
-            'Total assets<br>(excluding hospital)',
+            'Total assets<br>(excluding<br>hospital)',
             'Revenue with restrictions',
             338.2
         ],
@@ -48,7 +48,7 @@ function sankeyChart() {
             136.9
         ],
         [
-            'Total assets<br>(excluding hospital)',
+            'Total assets<br>(excluding<br>hospital)',
             'Revenue<br>without restrictions<br>(excluding hospital)',
             3387.2
         ],
@@ -86,10 +86,10 @@ function sankeyChart() {
     // Manual x/y positions — tuned to avoid crossings
     const x = [
         0.0, // Total assets (source)
-        0.2, // Revenue with restrictions
+        0.16, // Revenue with restrictions
         0.9, // Endowment payout with restrictions
         0.9, // Private gifts
-        0.2, // Revenue without restrictions
+        0.16, // Revenue without restrictions
         0.4, // Total operating revenue
         0.4, // Total nonoperating revenue
         0.9, // Investment return without restrictions
@@ -216,6 +216,15 @@ async function fetchData(path) {
  */
 function processData(data, variable = 'fund_type') {
     console.log('processing', data);
+
+    // add hoverinfo
+    if (variable === 'recategorized') {
+        // cite: copilot
+        data.forEach(function (d) {
+            d['hoverinfo'] = helper_text[d['recategorized']];
+        });
+    }
+
     // cite: copilot
     const total = data
         .map((d) => d.amount_thousands)
@@ -265,9 +274,22 @@ function processData(data, variable = 'fund_type') {
         });
 
         if ('hoverinfo' in groupedData[0]) {
-            traces[0]['customdata'] = groupedData.map((d) => d.hoverinfo);
-            traces[0]['hovertemplate'] =
-                ' <br>    Sector: %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>'; // extra tag removes trace label; spaces needed for fake padding
+            traces.forEach(function (trace) {
+                trace['customdata'] = groupedData.map((d) => d.hoverinfo);
+            });
+        }
+
+        if (variable === 'sector') {
+            traces.forEach(function (trace) {
+                trace['hovertemplate'] =
+                    ' <br>    Sector: %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>'; // extra tag removes trace label; spaces needed for fake padding
+            });
+        }
+        if (variable === 'recategorized') {
+            traces.forEach(function (trace) {
+                trace['hovertemplate'] =
+                    ' <br>    Type: %{text}<br>%{customdata}<br> <extra></extra>'; // extra tag removes trace label; spaces needed for fake padding
+            });
         }
 
         console.log(traces);
@@ -304,172 +326,85 @@ function showChart(all = false) {
     }
 }
 
-/**
- * Waypoints (scroll interactions) for article body.
- * Cite:
- * @param  {str} Name of HTML div to attach waypoint to
- */
-function createWaypoint(div, offset = '80%') {
-    function handler(direction) {
-        myPlot = document.getElementById('chart-div');
-
-        // https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
-        let classList = document.getElementById(div).className;
-
-        if (direction == 'down') {
-            // go to next key
-            console.log(div);
-        } else if (div == 'palestine') {
-            console.log('first key');
-        } else if (!classList.match('first')) {
-            // go back to the previous key
-
-            let orderedKeys = [];
-
-            previousIndex = orderedKeys.indexOf(div) - 1;
-            previousKey = orderedKeys[previousIndex];
-
-            console.log('prev key');
-        }
-    }
-
-    new Waypoint({
-        element: document.getElementById(div),
-        handler: handler,
-        offset: offset
-    });
+function addLabels(title = '', caption = '') {
+    chart = document.getElementById('chart-div');
+    Plotly.animate(
+        chart,
+        {
+            layout: {
+                title: {
+                    text: title
+                },
+                annotations: [
+                    {
+                        text: caption,
+                        xref: 'paper',
+                        yref: 'paper',
+                        x: 0,
+                        y: -0.02, // move below the x-axis
+                        showarrow: false,
+                        xanchor: 'left',
+                        yanchor: 'top',
+                        font: { size: 12, color: 'gray' }
+                    }
+                ]
+            }
+        },
+        { transition: transition }
+    );
 }
 
-function createTable(div, firm_name) {
+function createTable(div, prev) {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
-            if (direction == 'down') {
-                const filtered = coi.filter((d) => d.firm_name === firm_name);
+            if ((prev === 'none') & (direction === 'up')) {
+                hideChart();
+                return;
+            }
+            showChart();
 
-                const skip_first = filtered.map(
-                    ({ firm_name, ...rest }) => rest
-                );
-                const values = skip_first.map((obj) => Object.values(obj));
+            // if scrolling up then use previous firm
+            const firm_name = direction == 'down' ? div : prev;
 
-                console.log(values);
-                var data = [
-                    {
-                        type: 'table',
-                        header: {
-                            values: [
-                                ['<b>Fund name</b>'],
-                                ['<b>Industries</b>'],
-                                ['<b>Regions</b>']
-                            ],
-                            align: 'center',
-                            line: { width: 1, color: 'black' },
-                            fill: { color: '#800000' },
-                            font: { size: 16, color: 'white' }
-                        },
-                        cells: {
-                            values: d3.transpose(values),
-                            align: 'center',
-                            line: { color: 'black', width: 1 },
-                            font: {
-                                size: 12,
-                                color: ['black']
-                            }
+            const filtered = coi.filter(
+                // first word when lowercased matches provided firm_name
+                (d) => d.firm_name.split(' ')[0].toLowerCase() === firm_name
+            );
+
+            const skip_first = filtered.map(({ firm_name, ...rest }) => rest);
+            const values = skip_first.map((obj) => Object.values(obj));
+
+            console.log(values);
+            var data = [
+                {
+                    type: 'table',
+                    header: {
+                        values: [
+                            ['<b>Fund name</b>'],
+                            ['<b>Industries</b>'],
+                            ['<b>Regions</b>']
+                        ],
+                        align: 'center',
+                        line: { width: 1, color: 'black' },
+                        fill: { color: '#800000' },
+                        font: { size: 16, color: 'white' }
+                    },
+                    cells: {
+                        values: d3.transpose(values),
+                        align: 'center',
+                        line: { color: 'black', width: 1 },
+                        font: {
+                            size: 14,
+                            color: ['black']
                         }
                     }
-                ];
+                }
+            ];
 
-                Plotly.newPlot('chart-div', data);
-            }
+            Plotly.newPlot('chart-div', data);
         },
         offset: '70%'
-    });
-}
-
-/**
- * Waypoints (scroll interactions) for article body.
- * Cite:
- * @param  {str} Name of HTML div to attach waypoint to
- */
-function createNewSection(
-    div,
-    data,
-    variable,
-    prev_var,
-    title = '',
-    caption = '',
-    offset = '80%'
-) {
-    new Waypoint({
-        element: document.getElementById(div),
-        handler: function (direction) {
-            var myPlot = document.getElementById('chart-div');
-
-            if (direction == 'down') {
-                showChart();
-
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(data, variable),
-                    layout,
-                    config
-                );
-
-                console.log('New section created at: ' + div);
-            } else if (prev_var == 'Top') {
-                // if going back to intro, hide chart
-                hideChart();
-            } else {
-                // go to last key of previous section
-
-                let orderedKeys = [];
-                for (var key in [prev_var]) {
-                    orderedKeys.push(key);
-                }
-
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(data, prev_var),
-                    layout,
-                    config
-                );
-
-                console.log('Going to previous section: ' + prev_var);
-            }
-
-            Plotly.animate(myPlot, {
-                layout: {
-                    xaxis: {
-                        showticklabels: false
-                    },
-                    margin: {
-                        // t: 0
-                        //     l: 25,
-                        //     r: 300
-                    },
-                    title: {
-                        text: title
-                    },
-                    annotations: [
-                        {
-                            text: caption,
-                            xref: 'paper',
-                            yref: 'paper',
-                            x: 0,
-                            y: -0.02, // move below the x-axis
-                            showarrow: false,
-                            xanchor: 'left',
-                            yanchor: 'top',
-                            font: { size: 12, color: 'gray' }
-                        }
-                    ]
-                }
-            });
-
-            myPlot.on('plotly_click', open_url);
-            myPlot.on('plotly_hover', hide_box_hovers);
-        },
-        offset: offset
     });
 }
 
@@ -484,21 +419,6 @@ function open_url(data) {
     // console.log(url[1])
 
     window.open(url[1], '_blank').focus();
-}
-
-/**
- * For plotly boxplots, hovering over the boxplot will show its summary statistics. Because I am using boxplots only for the built-in jitter function, keeping the points and hiding the box part, I need to disable the summary statistic hover.
- * Cite: GPT
- * @param {json} data Data sensed from plotly hover event
- */
-function hide_box_hovers(data) {
-    hoverLayer = document.querySelector('.hoverlayer');
-
-    if (data.points.length == 7) {
-        hoverLayer.style.display = 'none';
-    } else {
-        hoverLayer.style.display = 'block';
-    }
 }
 
 // ------- CONSTANTS ------
@@ -578,7 +498,6 @@ const colorbook = {
     recategorized: {
         'Public equities (stocks)': 'rgb(128, 0, 0)',
         'Private equities (stocks)': 'rgb(193, 102, 34)',
-
         Bonds: 'rgb(138, 144, 69)',
         'Hedge funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
@@ -613,6 +532,23 @@ const colorbook = {
     }
 };
 
+const helper_text = {
+    // 'Global public equities': '',
+    // 'Private equity': 'rgb(193, 102, 34)',
+    // 'Absolute return': 'rgb(143, 57, 49)',
+    // 'Fixed income': 'rgb(138, 144, 69)',
+    // 'Natural resources': 'rgb(88, 89, 63)',
+    // 'Real estate': 'rgb(21, 95, 131)',
+    // 'Private debt': 'rgb(53, 14, 32)',
+    // 'Cash equivalents': 'rgb(100, 100, 100)',
+    // 'Funds in trust': 'rgb(0, 0, 0)',
+    'Public equities (stocks)': 'DEFINITION',
+    'Private equities (stocks)': 'DEFINITION',
+    Bonds: 'DEFINITION',
+    'Hedge funds': 'DEFINITION',
+    Other: 'DEFINITION'
+};
+
 // -------- MAIN --------
 var data;
 
@@ -628,33 +564,35 @@ async function init() {
     sec = await fetchData('sec-sectors-2025.json');
     console.log(sec);
 
-    createNewSection(
-        'what-is-it',
-        statements,
-        (variable = 'fund_type'),
-        (prev_var = 'Top'),
-        (title = 'Fund types'),
-        (caption = 'Source: UChicago financial statements'),
-        (offset = '70%')
-    );
-    // showChart();
-
-    // createWaypoint('what-is-it');
+    coi = await fetchData('conflicts-of-interest-2023.json');
+    console.log(coi);
 
     new Waypoint({
-        element: document.getElementById('withdraw'),
+        element: document.getElementById('what-is-it'),
         handler: function (direction) {
             if (direction == 'down') {
-                sankeyChart();
+                showChart();
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(statements, (variable = 'fund_type')),
+                    layout,
+                    config
+                );
+                console.log('showing chart');
+                addLabels(
+                    (title = 'Fund types'),
+                    (caption = 'Source: UChicago financial statements')
+                );
+            } else {
+                hideChart();
             }
-        }
+        },
+        offset: '70%'
     });
 
     new Waypoint({
         element: document.getElementById('breakdown'),
         handler: function (direction) {
-            myPlot = document.getElementById('chart-div');
-
             if (direction == 'down') {
                 Plotly.newPlot(
                     'chart-div',
@@ -662,75 +600,99 @@ async function init() {
                     layout,
                     config
                 );
+                addLabels(
+                    (title = 'Fund types (simplified)'),
+                    (caption = 'Source: UChicago financial statements')
+                );
+            } else {
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(statements, (variable = 'fund_type')),
+                    layout,
+                    config
+                );
+                addLabels(
+                    (title = 'Fund types'),
+                    (caption = 'Source: UChicago financial statements')
+                );
             }
-        }
+        },
+        offset: '70%'
     });
 
     new Waypoint({
-        element: document.getElementById('categories'),
+        element: document.getElementById('withdraw'),
         handler: function (direction) {
-            myPlot = document.getElementById('chart-div');
-
             if (direction == 'down') {
-                Plotly.animate(
-                    myPlot,
-                    {
-                        layout: {
-                            xaxis: {
-                                showticklabels: true
-                                // range: [0, 100]
-                            }
-                            // margin: {
-                            //     l: 50,
-                            //     r: 0
-                            // }
-                        }
-                    },
-                    {
-                        transition: {
-                            duration: 1000, // Increase duration for smoother transition
-                            easing: 'cubic-in-out' // Use a smoother easing function
-                        }
-                    }
-                );
+                showChart();
+                sankeyChart();
             } else {
-                Plotly.animate(
-                    myPlot,
-                    {
-                        layout: {
-                            xaxis: {
-                                showticklabels: false
-                            }
-                            // margin: {
-                            //     l: 25,
-                            //     r: 300
-                            // }
-                        }
-                    },
-                    {
-                        transition: {
-                            duration: 1000, // Increase duration for smoother transition
-                            easing: 'cubic-in-out' // Use a smoother easing function
-                        }
-                    }
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(statements, (variable = 'recategorized')),
+                    layout,
+                    config
+                );
+                addLabels(
+                    (title = 'Fund types (simplified)'),
+                    (caption = 'Source: UChicago financial statements')
                 );
             }
-        }
+        },
+        offset: '70%'
     });
 
-    createNewSection(
-        'irs',
-        sec,
-        'sector',
-        (prev_var = 'Top'),
-        (title = 'Industry sectors'),
-        (caption = 'Source: UChicago SEC 13-F'),
-        (offset = '70%')
-    );
+    new Waypoint({
+        element: document.getElementById('sec'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                showChart();
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(sec, (variable = 'sector')),
+                    layout,
+                    config
+                );
+                addLabels(
+                    (title = 'Industry sectors'),
+                    (caption = 'Source: UChicago SEC 13-F')
+                );
+                chart = document.getElementById('chart-div');
+                Plotly.animate(
+                    chart,
+                    {
+                        layout: {
+                            margin: {
+                                l: 15,
+                                r: 350
+                            }
+                        }
+                    },
+                    { transition: transition }
+                );
+            } else {
+                sankeyChart();
+            }
+        },
+        offset: '70%'
+    });
 
-    createTable('lake', 'LAKE CAPITAL PARTNERS');
-    createTable('pimco', 'PIMCO');
-    createTable('carlyle', 'CARLYLE GROUP');
+    createTable('lake', (prev = 'none'));
+
+    // addLabels(
+    //     (title = 'Associated funds'),
+    //     (caption = 'Sources: Pitchbook, UChicago Form 990 filing')
+    // );
+    createTable('pimco', (prev = 'lake'));
+    // addLabels(
+    //     (title = 'Associated funds'),
+    //     (caption = 'Sources: Pitchbook, UChicago Form 990 filing')
+    // );
+    createTable('carlyle', (prev = 'pimco'));
+    // addLabels(
+    //     (title = 'Top 10 of 387 associated funds'),
+    //     (caption = 'Sources: Pitchbook, UChicago Form 990 filing')
+    // );
 
     // TODO: add title and caption
 
@@ -749,7 +711,7 @@ async function init() {
                 d3.selectAll('#flowchart').style('display', 'none');
             }
         },
-        offset: '90%'
+        offset: '70%'
     });
 
     new Waypoint({
