@@ -614,7 +614,7 @@ async function init() {
     });
 
     new Waypoint({
-        element: document.getElementById('withdraw'),
+        element: document.getElementById('tuition'),
         handler: function (direction) {
             if (direction == 'down') {
                 showChart();
