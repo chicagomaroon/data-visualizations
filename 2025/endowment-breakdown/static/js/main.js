@@ -260,6 +260,10 @@ function processData(data, variable = 'fund_type') {
                 marker: {
                     color: colorbook[variable][val[variable]]
                 },
+                customdata:
+                    'hoverinfo' in groupedData[0]
+                        ? [val['hoverinfo']]
+                        : ['none'],
                 text: [val[variable] + ': ' + val['x'] + '%'],
                 hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
                 hoverlabel: {
@@ -269,28 +273,10 @@ function processData(data, variable = 'fund_type') {
                         size: 16,
                         color: 'black' // text color
                     }
-                }
+                },
+                hovertemplate: hovertemplates[variable]
             });
         });
-
-        if ('hoverinfo' in groupedData[0]) {
-            traces.forEach(function (trace) {
-                trace['customdata'] = groupedData.map((d) => d.hoverinfo);
-            });
-        }
-
-        if (variable === 'sector') {
-            traces.forEach(function (trace) {
-                trace['hovertemplate'] =
-                    ' <br>    Sector: %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>'; // extra tag removes trace label; spaces needed for fake padding
-            });
-        }
-        if (variable === 'recategorized') {
-            traces.forEach(function (trace) {
-                trace['hovertemplate'] =
-                    ' <br>    Type: %{text}<br>%{customdata}<br> <extra></extra>'; // extra tag removes trace label; spaces needed for fake padding
-            });
-        }
 
         console.log(traces);
         return traces;
@@ -481,6 +467,13 @@ const config = {
 const transition = {
     duration: 400,
     easing: 'linear'
+};
+
+const hovertemplates = {
+    fund_type: 'none',
+    recategorized:
+        ' <br>    Type: %{text}<br>%{customdata}<br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
+    sector: ' <br>    Sector: %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>' // extra tag removes trace label; spaces needed for fake padding
 };
 
 const colorbook = {
