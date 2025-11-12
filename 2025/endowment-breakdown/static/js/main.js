@@ -9,7 +9,8 @@ Highcharts.setOptions({
 });
 
 // cite: translated from highcharts with chatgpt
-function sankeyChart() {
+function sankeyChart(div) {
+    console.log(div);
     // Node labels
     const labels = [
         'Total assets<br>(excluding<br>hospital)', // 0
@@ -139,24 +140,7 @@ function sankeyChart() {
             thickness: 20,
             line: { color: 'black', width: 0.5 },
             hoverinfo: 'none',
-            color: [
-                // color the endowment related ones and leave the rest
-                '#800000',
-                '#800000',
-                '#d51d1dff',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#d51d1dff',
-                '#800000',
-                '#800000',
-                '#800000'
-            ]
+            color: highlights[div]
         },
         link: {
             source: sources,
@@ -507,22 +491,61 @@ const colorbook = {
         Utilities: 'rgb(0, 0, 0)',
         'Basic Materials': 'rgb(128, 0, 0)',
         'Real Estate': 'rgb(193, 102, 34)'
-    },
-    'Admin Response': {
-        Arrest: 'rgb(128, 0, 0)',
-        'Disciplinary action': 'rgb(88, 89, 63)',
-        Negotiation: 'rgb(193, 102, 34)',
-        'Public response': 'rgb(143, 57, 49)',
-        'Non-<br>divestment<br>support': 'rgb(138, 144, 69)'
-    },
-    Administration: {
-        Alivisatos: 'rgb(128, 0, 0)',
-        Zimmer: 'rgb(193, 102, 34)',
-        Randel: 'rgb(143, 57, 49)',
-        Gray: 'rgb(138, 144, 69)',
-        Wilson: 'rgb(88, 89, 63)',
-        Beadle: 'rgb(21, 95, 131)'
     }
+};
+
+const highlights = {
+    tuition: [
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#d51d1dff',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000'
+    ],
+    endowment: [
+        '#800000',
+        '#800000',
+        '#d51d1dff',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#d51d1dff',
+        '#800000',
+        '#800000',
+        '#800000'
+    ],
+    restricted: [
+        '#800000',
+        '#d51d1dff',
+        '#d51d1dff',
+        '#d51d1dff',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#d51d1dff',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000',
+        '#800000'
+    ]
 };
 
 const helper_text = {
@@ -561,6 +584,43 @@ async function init() {
     console.log(coi);
 
     new Waypoint({
+        element: document.getElementById('tuition'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                showChart();
+                sankeyChart('tuition');
+            } else {
+                hideChart();
+            }
+        },
+        offset: '70%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('endowment'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                sankeyChart('endowment');
+            } else {
+                sankeyChart('tuition');
+            }
+        },
+        offset: '70%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('restricted'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                sankeyChart('restricted');
+            } else {
+                sankeyChart('endowment');
+            }
+        },
+        offset: '70%'
+    });
+
+    new Waypoint({
         element: document.getElementById('what-is-it'),
         handler: function (direction) {
             if (direction == 'down') {
@@ -577,7 +637,7 @@ async function init() {
                     (caption = 'Source: UChicago financial statements')
                 );
             } else {
-                hideChart();
+                sankeyChart('restricted');
             }
         },
         offset: '70%'
@@ -606,28 +666,6 @@ async function init() {
                 );
                 addLabels(
                     (title = 'Fund types'),
-                    (caption = 'Source: UChicago financial statements')
-                );
-            }
-        },
-        offset: '70%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('tuition'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                showChart();
-                sankeyChart();
-            } else {
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(statements, (variable = 'recategorized')),
-                    layout,
-                    config
-                );
-                addLabels(
-                    (title = 'Fund types (simplified)'),
                     (caption = 'Source: UChicago financial statements')
                 );
             }
