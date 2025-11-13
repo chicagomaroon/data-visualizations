@@ -10,7 +10,6 @@ Highcharts.setOptions({
 
 // cite: translated from highcharts with chatgpt
 function sankeyChart(div) {
-    console.log(div);
     // Node labels
     const labels = [
         'Total assets<br>(excluding<br>hospital)', // 0
@@ -213,7 +212,6 @@ function processData(data, variable = 'fund_type') {
     const total = data
         .map((d) => d.amount_thousands)
         .reduce((acc, curr) => acc + curr, 0);
-    console.log(total);
 
     const valueSums = data.reduce((acc, obj) => {
         acc[obj[variable]] =
@@ -262,7 +260,7 @@ function processData(data, variable = 'fund_type') {
             });
         });
 
-        console.log(traces);
+        // console.log(traces);
         return traces;
     } catch (error) {
         console.error('Error processing data: ', error);
@@ -324,6 +322,7 @@ function addLabels(title = '', caption = '') {
     );
 }
 
+// cite: copilot
 function createTable(div, prev) {
     new Waypoint({
         element: document.getElementById(div),
@@ -342,37 +341,89 @@ function createTable(div, prev) {
                 (d) => d.firm_name.split(' ')[0].toLowerCase() === firm_name
             );
 
-            const skip_first = filtered.map(({ firm_name, ...rest }) => rest);
-            const values = skip_first.map((obj) => Object.values(obj));
+            const skip_first_col = filtered.map(
+                ({ firm_name, ...rest }) => rest
+            );
 
-            console.log(values);
-            var data = [
-                {
-                    type: 'table',
-                    header: {
-                        values: [
-                            ['<b>Fund name</b>'],
-                            ['<b>Industries</b>'],
-                            ['<b>Regions</b>']
-                        ],
-                        align: 'center',
-                        line: { width: 1, color: 'black' },
-                        fill: { color: '#800000' },
-                        font: { size: 16, color: 'white' }
-                    },
-                    cells: {
-                        values: d3.transpose(values),
-                        align: 'center',
-                        line: { color: 'black', width: 1 },
-                        font: {
-                            size: 14,
-                            color: ['black']
-                        }
-                    }
-                }
-            ];
+            // Get column headers and values
+            // const headers = Object.keys(skip_first_col[0]);
+            const rows = skip_first_col.map((obj) => Object.values(obj));
+            const full_name = filtered[0]['firm_name'];
 
-            Plotly.newPlot('chart-div', data);
+            // Generate the HTML table
+            chartDiv = document.getElementById('chart-div');
+            chartDiv.innerHTML = '';
+
+            d3.select('#chart-div')
+                .append('div')
+                .style('display', 'flex')
+                .style('justify-content', 'center')
+                .style('align-items', 'center')
+                .style('height', '100%')
+                .style('margin', '30px')
+                .attr('id', 'table-div');
+
+            // table title
+            d3.select('#table-div')
+                .style('display', 'flex') // Use flexbox for layout
+                .style('flex-direction', 'column') // Stack children vertically
+                .append('h3')
+                .text(
+                    firm_name === 'carlyle'
+                        ? `Top ${rows.length} out of ??? funds managed by ${full_name}`
+                        : `Funds managed by ${full_name}`
+                )
+                .style('text-align', 'center')
+                .style('font-family', 'Georgia, serif')
+                .style('margin-bottom', '20px');
+
+            // table
+            const table = d3
+                .select('#table-div')
+                .append('table')
+                .style('width', '100%')
+                .style('border-collapse', 'collapse')
+                .attr('border', 1);
+
+            // table header
+            const thead = table.append('thead');
+            const headerRow = thead.append('tr');
+            headerRow
+                .selectAll('th')
+                .data(['Fund name', 'Industry', 'Regions'])
+                .enter()
+                .append('th')
+                .text((d) => d);
+
+            // table body
+            const tbody = table.append('tbody');
+            rows.forEach((row) => {
+                const tr = tbody.append('tr');
+                tr.selectAll('td')
+                    .data(row)
+                    .enter()
+                    .append('td')
+                    .text((d) => d);
+            });
+
+            // Select the first column and give it a class
+            d3.select('#table-div')
+                .selectAll('tr') // Select all rows
+                .select('td:first-child') // Select the first <td> in each row
+                .attr('class', 'first-column'); // Add the class "first-column"
+
+            // table footnote
+            d3.select('#table-div')
+                .append('figcaption')
+                .text(
+                    'Source: Pitchbook, 2023 UChicago Form 990 Filing Schedule L'
+                )
+                .style('width', '100%')
+                .style('margin-top', '15px')
+                .attr('class', 'caption');
+
+            // Insert the table into the specified div
+            // d3.select('#table-div').append(tableHTML);
         },
         offset: '70%'
     });
@@ -575,13 +626,13 @@ async function init() {
     // hideChart((all = true));
 
     statements = await fetchData('financial-statement-2023.json');
-    console.log(statements);
+    // console.log(statements);
 
     sec = await fetchData('sec-sectors-2025.json');
-    console.log(sec);
+    // console.log(sec);
 
     coi = await fetchData('conflicts-of-interest-2023.json');
-    console.log(coi);
+    // console.log(coi);
 
     new Waypoint({
         element: document.getElementById('tuition'),
@@ -633,7 +684,8 @@ async function init() {
                 );
                 console.log('showing chart');
                 addLabels(
-                    (title = 'Fund types'),
+                    (title =
+                        "Types of investments making up UChicago's endowment"),
                     (caption = 'Source: UChicago financial statements')
                 );
             } else {
@@ -665,7 +717,8 @@ async function init() {
                     config
                 );
                 addLabels(
-                    (title = 'Fund types'),
+                    (title =
+                        "Types of investments making up UChicago's endowment"),
                     (caption = 'Source: UChicago financial statements')
                 );
             }

@@ -11,6 +11,37 @@ body {
 
 /* text */
 
+table {
+    border-radius: 5px;
+}
+
+td {
+    padding: 20px;
+    background-color: white;
+    text-align: left;
+    border-bottom: none;
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5em;
+}
+
+tr {
+    border: none;
+}
+
+th {
+    background-color: #800000;
+    color: white;
+    padding: 20px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.first-column {
+    font-size: 16px;
+    color:black;
+}
+
 .fa {
     text-align: center;
     font-size: 50px;
@@ -92,6 +123,10 @@ hr {
     justify-content: space-between;
     align-items: center;
 }
+.hoverlayer .hoverlabel rect {
+  transform: scale(1.05); /* increase by 5% */
+  transform-origin: center;
+}
 
 .year {
     font-size: 40px;
@@ -113,8 +148,9 @@ hr {
 
 #background {
     /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-        url('../../images/collage.png');
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
+        url('../../images/collage.png'); */
+    background-color: #800000;
     background-size: cover;
     background-position: center;
     height: 100vh;
