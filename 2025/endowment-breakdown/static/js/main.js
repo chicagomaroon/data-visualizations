@@ -1,12 +1,162 @@
-// For API and chart documentation please look here:
-// https://www.highcharts.com/demo
-Highcharts.setOptions({
-    chart: {
-        style: {
-            fontFamily: 'Georgia, serif'
-        }
+// ------------------ DATA ------------------
+
+/**
+ * Load data from external URL location
+ * @return {json} jsonData Data to be cleaned in a later step
+ */
+async function fetchData(path) {
+    try {
+        // get data from external source (github)
+        var response = await fetch('data/' + path);
+        var jsonData = await response.json();
+
+        // console.log(jsonData)
+        return jsonData;
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
     }
-});
+}
+
+/**
+ * Group data and define all traces
+ * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
+ * @param  {json} data Data loaded in a previous step
+ * @param  {Array} variable Variable(s) to group by
+ * @return {Array} traces List of traces (data) as input to a plotly graph
+ */
+function processData(data, variable = 'fund_type') {
+    console.log('processing', data);
+
+    // add hoverinfo
+    if (variable === 'recategorized') {
+        // cite: copilot
+        data.forEach(function (d) {
+            d['hoverinfo'] = helper_text[d['recategorized']];
+        });
+    }
+
+    // cite: copilot
+    const total = data
+        .map((d) => d.amount_thousands)
+        .reduce((acc, curr) => acc + curr, 0);
+
+    const valueSums = data.reduce((acc, obj) => {
+        acc[obj[variable]] =
+            (acc[obj[variable]] || 0) + obj['amount_thousands'];
+        return acc;
+    }, {});
+
+    const groupedData = data.map((obj) => ({
+        ...obj,
+        x: valueSums[obj[variable]]
+    }));
+    const unique = [
+        ...new Map(groupedData.map((item) => [item[variable], item])).values()
+    ];
+
+    // console.log('grouped', groupedData);
+    traces = [];
+    console.log(unique.map((d) => colorbook[variable][d[variable]]));
+
+    try {
+        // construct plotly "dataframe"
+
+        const formatThousands = d3.format(',.0f');
+
+        if (variable === 'sector') {
+            unique.forEach(function (val) {
+                traces.push({
+                    type: 'bar',
+                    x: ['Data'],
+                    y: [val['x']],
+                    name: [val[variable]],
+                    marker: {
+                        color: colorbook[variable][val[variable]]
+                    },
+                    text: [
+                        `${val[variable]}: \$${formatThousands(
+                            val['x'] * 1000
+                        )}`
+                    ],
+                    customdata:
+                        'hoverinfo' in groupedData[0]
+                            ? [val['hoverinfo']]
+                            : ['none'],
+                    hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+                    hoverlabel: hoverlabel,
+                    hovertemplate: hovertemplates[variable]
+                });
+            });
+        } else {
+            traces.push({
+                type: 'pie',
+                hole: 0.5,
+                values: unique.map((d) => Math.round((d.x / total) * 100)),
+                labels: unique.map((d) => d[variable]),
+                marker: {
+                    colors: unique.map((d) => colorbook[variable][d[variable]])
+                },
+                text: unique.map((d) => d[variable]),
+                customdata:
+                    'hoverinfo' in groupedData[0]
+                        ? unique.map((d) => d['hoverinfo'])
+                        : unique.map(() => ''),
+                hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+                hoverlabel: hoverlabel,
+                hovertemplate: hovertemplates[variable]
+            });
+        }
+
+        // console.log(traces);
+        return traces;
+    } catch (error) {
+        console.error('Error processing data: ', error);
+    }
+}
+
+// PLOTS
+
+function barChart(data) {
+    const trace = {
+        type: 'bar',
+        orientation: 'h',
+        y: data.map((d) => d.school),
+        x: data.map((d) => d.endowment_dollars),
+        name: data.map((d) => d.school),
+        text: data.map((d) => d.school),
+        // pad: 15,
+        // thickness: 20,
+        // line: { color: 'black', width: 0.5 },
+        // hoverinfo: 'none',
+        marker: {
+            color: [
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#800000',
+                '#d51d1dff',
+                '#800000'
+            ]
+        }
+    };
+
+    console.log(trace);
+    return [trace];
+}
 
 // cite: translated from highcharts with chatgpt
 function sankeyChart(div) {
@@ -135,9 +285,9 @@ function sankeyChart(div) {
             x: x,
             y: y,
             label: labels,
-            pad: 15,
+            // pad: 15,
             thickness: 20,
-            line: { color: 'black', width: 0.5 },
+            // line: { color: 'black', width: 0.5 },
             hoverinfo: 'none',
             color: highlights[div]
         },
@@ -145,6 +295,7 @@ function sankeyChart(div) {
             source: sources,
             target: targets,
             value: values,
+            color: 'rgba(0,0,0,0.1)',
             hovertemplate: '%{target.label}: $%{value:.00f}M<extra></extra>'
         }
     };
@@ -155,7 +306,7 @@ function sankeyChart(div) {
         },
         annotations: [
             {
-                text: 'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="">UChicago financial statement 2023</a>',
+                text: 'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>',
                 xref: 'paper',
                 yref: 'paper',
                 x: 0,
@@ -168,103 +319,7 @@ function sankeyChart(div) {
         font: { size: 12, color: 'black' }
     };
 
-    Plotly.newPlot('chart-div', [data], layout);
-}
-
-// ------------------ DATA ------------------
-
-/**
- * Load data from external URL location
- * @return {json} jsonData Data to be cleaned in a later step
- */
-async function fetchData(path) {
-    try {
-        // get data from external source (github)
-        var response = await fetch('data/' + path);
-        var jsonData = await response.json();
-
-        // console.log(jsonData)
-        return jsonData;
-    } catch (error) {
-        console.error('Error fetching JSON:', error);
-    }
-}
-
-/**
- * Group data and define all traces
- * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
- * @param  {json} data Data loaded in a previous step
- * @param  {Array} variable Variable(s) to group by
- * @return {Array} traces List of traces (data) as input to a plotly graph
- */
-function processData(data, variable = 'fund_type') {
-    console.log('processing', data);
-
-    // add hoverinfo
-    if (variable === 'recategorized') {
-        // cite: copilot
-        data.forEach(function (d) {
-            d['hoverinfo'] = helper_text[d['recategorized']];
-        });
-    }
-
-    // cite: copilot
-    const total = data
-        .map((d) => d.amount_thousands)
-        .reduce((acc, curr) => acc + curr, 0);
-
-    const valueSums = data.reduce((acc, obj) => {
-        acc[obj[variable]] =
-            (acc[obj[variable]] || 0) +
-            Math.round((obj['amount_thousands'] / total) * 100);
-        return acc;
-    }, {});
-
-    const groupedData = data.map((obj) => ({
-        ...obj,
-        x: valueSums[obj[variable]]
-    }));
-    const unique = [
-        ...new Map(groupedData.map((item) => [item[variable], item])).values()
-    ];
-
-    // console.log('grouped', groupedData);
-    traces = [];
-
-    try {
-        // construct plotly "dataframe"
-        unique.forEach(function (val) {
-            traces.push({
-                type: 'bar',
-                x: ['Data'],
-                y: [val['x']],
-                name: [val[variable]],
-                marker: {
-                    color: colorbook[variable][val[variable]]
-                },
-                customdata:
-                    'hoverinfo' in groupedData[0]
-                        ? [val['hoverinfo']]
-                        : ['none'],
-                text: [val[variable] + ': ' + val['x'] + '%'],
-                hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
-                hoverlabel: {
-                    bordercolor: '#f1f1f1', // border color
-                    font: {
-                        family: 'Playfair',
-                        size: 16,
-                        color: 'black' // text color
-                    }
-                },
-                hovertemplate: hovertemplates[variable]
-            });
-        });
-
-        // console.log(traces);
-        return traces;
-    } catch (error) {
-        console.error('Error processing data: ', error);
-    }
+    Plotly.newPlot('chart-div', [data], layout, config);
 }
 
 function hideChart(all = false) {
@@ -490,7 +545,27 @@ const layout = {
     showlegend: false,
     margin: {
         l: 25,
-        r: 200
+        r: 100
+    }
+};
+
+// TODO: hover define the sankey terms
+// TODO: run through colorblind checker
+// TODO: recategorized should match colors of before
+// TODO: try to see if you can have the arrow label thing for stacked bar small bars
+// TODO: indicate where stacked bar fits in the pie chart (could be in the text: this is $X of the $Y endowment or Z%)
+// TODO: Top 5 companies that UChicago owns shares in,
+// TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
+// TODO: sourceS, specify which comes from where
+// TODO: diversified -> unspecified or information not available
+// TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
+
+const hoverlabel = {
+    bordercolor: '#f1f1f1', // border color
+    font: {
+        family: 'Playfair',
+        size: 16,
+        color: 'black' // text color
     }
 };
 
@@ -507,8 +582,8 @@ const transition = {
 const hovertemplates = {
     fund_type: 'none',
     recategorized:
-        ' <br>    Type: %{text}<br>%{customdata}<br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
-    sector: ' <br>    Sector: %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>' // extra tag removes trace label; spaces needed for fake padding
+        ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
+    sector: ' <br>    %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>' // extra tag removes trace label; spaces needed for fake padding
 };
 
 const colorbook = {
@@ -634,6 +709,22 @@ async function init() {
     coi = await fetchData('conflicts-of-interest-2023.json');
     // console.log(coi);
 
+    endowments = await fetchData('largest-endowments-2023.json');
+    console.log(endowments);
+
+    new Waypoint({
+        element: document.getElementById('what-is-endowment'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                showChart();
+                sankeyChart('tuition');
+            } else {
+                hideChart();
+            }
+        },
+        offset: '70%'
+    });
+
     new Waypoint({
         element: document.getElementById('tuition'),
         handler: function (direction) {
@@ -686,7 +777,8 @@ async function init() {
                 addLabels(
                     (title =
                         "Types of investments making up UChicago's endowment"),
-                    (caption = 'Source: UChicago financial statements')
+                    (caption =
+                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
                 );
             } else {
                 sankeyChart('restricted');
@@ -707,7 +799,8 @@ async function init() {
                 );
                 addLabels(
                     (title = 'Fund types (simplified)'),
-                    (caption = 'Source: UChicago financial statements')
+                    (caption =
+                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
                 );
             } else {
                 Plotly.newPlot(
@@ -719,7 +812,42 @@ async function init() {
                 addLabels(
                     (title =
                         "Types of investments making up UChicago's endowment"),
-                    (caption = 'Source: UChicago financial statements')
+                    (caption =
+                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
+                );
+            }
+        },
+        offset: '70%'
+    });
+
+    new Waypoint({
+        element: document.getElementById('compare-schools'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                Plotly.newPlot(
+                    'chart-div',
+                    barChart(endowments),
+                    layout,
+                    config
+                );
+                addLabels(
+                    (title =
+                        '20 largest college endowments in the U.S., Fiscal Year 2023'),
+                    (caption =
+                        'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>')
+                );
+            } else {
+                Plotly.newPlot(
+                    'chart-div',
+                    processData(statements, (variable = 'fund_type')),
+                    layout,
+                    config
+                );
+                addLabels(
+                    (title =
+                        "Types of investments making up UChicago's endowment"),
+                    (caption =
+                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
                 );
             }
         },
@@ -762,23 +890,8 @@ async function init() {
     });
 
     createTable('lake', (prev = 'none'));
-
-    // addLabels(
-    //     (title = 'Associated funds'),
-    //     (caption = 'Sources: Pitchbook, UChicago Form 990 filing')
-    // );
     createTable('pimco', (prev = 'lake'));
-    // addLabels(
-    //     (title = 'Associated funds'),
-    //     (caption = 'Sources: Pitchbook, UChicago Form 990 filing')
-    // );
     createTable('carlyle', (prev = 'pimco'));
-    // addLabels(
-    //     (title = 'Top 10 of 387 associated funds'),
-    //     (caption = 'Sources: Pitchbook, UChicago Form 990 filing')
-    // );
-
-    // TODO: add title and caption
 
     new Waypoint({
         element: document.getElementById('control'),
