@@ -116,7 +116,7 @@ function processData(data, variable = 'fund_type') {
 
 // ------------------ PLOTS ------------------
 
-function createWaypoint(div) {
+function createWaypoint(div, offset = '70%') {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
@@ -138,8 +138,74 @@ function createWaypoint(div) {
                 upHandler();
             }
         },
-        offset: '70%'
+        offset: offset
     });
+}
+
+/**
+ * layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
+ * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
+ */
+function createLayout(title = '', caption = '', margin_r = 0) {
+    return {
+        title: {
+            text: title,
+            x: 0.03,
+            // font: {
+            //     size: 20
+            // },
+            subtitle: {
+                text: subtitle,
+                font: {
+                    size: 14
+                }
+            }
+        },
+        annotations: [
+            {
+                text: caption,
+                xref: 'paper',
+                yref: 'paper',
+                x: 0,
+                y: -0.02, // move below the x-axis
+                showarrow: false,
+                xanchor: 'left',
+                yanchor: 'top',
+                font: { size: 12, color: 'gray' },
+                align: 'right'
+            }
+        ],
+        barmode: 'stack',
+        font: {
+            family: 'Georgia'
+        },
+        xaxis: {
+            showgrid: false,
+            showline: false,
+            showticklabels: false,
+            tickfont: {
+                size: 14
+            }
+        },
+        yaxis: {
+            showgrid: false,
+            showline: false,
+            showticklabels: false,
+            ticktext: 'text',
+            tickfont: {
+                size: 14
+            }
+        },
+        hovermode: 'closest',
+        hoverlabel: {
+            bgcolor: 'white'
+        },
+        showlegend: false,
+        margin: {
+            l: 25,
+            r: margin_r
+        }
+    };
 }
 
 function barChart(data) {
@@ -289,7 +355,7 @@ function sankeyChart(div) {
     const targets = linksData.map((d) => nodeIndex[d[1]]);
     const values = linksData.map((d) => d[2]);
 
-    const data = {
+    const trace = {
         type: 'sankey',
         orientation: 'h',
         node: {
@@ -310,82 +376,20 @@ function sankeyChart(div) {
             hovertemplate: '%{target.label}: $%{value:.00f}M<extra></extra>'
         }
     };
-
-    const layout = {
-        title: {
-            text: 'Revenue, Fiscal Year 2024'
-        },
-        annotations: [
-            {
-                text: 'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>',
-                xref: 'paper',
-                yref: 'paper',
-                x: 0,
-                y: -0.05,
-                showarrow: false,
-                font: { size: 12, color: 'gray' },
-                align: 'left'
-            }
-        ],
-        font: { size: 12, color: 'black' }
-    };
-
-    Plotly.newPlot('chart-div', [data], layout, config);
+    return [trace];
 }
 
-function hideChart(all = false) {
-    d3.selectAll('#chart-div')
+function hideChart(div = '#chart-div') {
+    d3.select(div)
         .transition()
         .duration(300)
         .style('opacity', 0)
         .style('display', 'none');
-    if (all) {
-        d3.selectAll('#flowchart')
-            .transition()
-            .duration(300)
-            .style('opacity', 0)
-            .style('display', 'none');
-    }
 }
 
-function showChart(all = false) {
-    d3.selectAll('#chart-div').style('display', 'block');
-    d3.selectAll('#chart-div').transition().duration(300).style('opacity', 1);
-    if (all) {
-        d3.selectAll('#flowchart').style('display', 'block');
-        d3.selectAll('#flowchart')
-            .transition()
-            .duration(300)
-            .style('opacity', 1);
-    }
-}
-
-function addLabels(title = '', caption = '') {
-    chart = document.getElementById('chart-div');
-    Plotly.animate(
-        chart,
-        {
-            layout: {
-                title: {
-                    text: title
-                },
-                annotations: [
-                    {
-                        text: caption,
-                        xref: 'paper',
-                        yref: 'paper',
-                        x: 0,
-                        y: -0.02, // move below the x-axis
-                        showarrow: false,
-                        xanchor: 'left',
-                        yanchor: 'top',
-                        font: { size: 12, color: 'gray' }
-                    }
-                ]
-            }
-        },
-        { transition: transition }
-    );
+function showChart(div = '#chart-div') {
+    d3.selectAll(div).style('display', 'block');
+    d3.selectAll(div).transition().duration(300).style('opacity', 1);
 }
 
 // cite: copilot
@@ -394,7 +398,7 @@ function createTable(div, prev) {
         element: document.getElementById(div),
         handler: function (direction) {
             if ((prev === 'none') & (direction === 'up')) {
-                hideChart();
+                hideChart('#chart-div');
                 return;
             }
             showChart();
@@ -481,8 +485,8 @@ function createTable(div, prev) {
             // table footnote
             d3.select('#table-div')
                 .append('figcaption')
-                .text(
-                    'Source: Pitchbook, 2023 UChicago Form 990 Filing Schedule L'
+                .html(
+                    'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">Tax Form 990 filing</a> for fiscal year 2023, Schedule L; Pitchbook'
                 )
                 .style('width', '100%')
                 .style('margin-top', '15px')
@@ -509,56 +513,6 @@ function open_url(data) {
 }
 
 // ------- CONSTANTS ------
-
-/**
- * layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
- * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
- */
-const layout = {
-    title: {
-        text: '',
-        x: 0.03,
-        font: {
-            size: 20
-        },
-        subtitle: {
-            text: '',
-            font: {
-                size: 14
-            }
-        }
-    },
-    barmode: 'stack',
-    font: {
-        family: 'Georgia'
-    },
-    xaxis: {
-        showgrid: false,
-        showline: false,
-        showticklabels: false,
-        tickfont: {
-            size: 14
-        }
-    },
-    yaxis: {
-        showgrid: false,
-        showline: false,
-        showticklabels: false,
-        ticktext: 'text',
-        tickfont: {
-            size: 14
-        }
-    },
-    hovermode: 'closest',
-    hoverlabel: {
-        bgcolor: 'white'
-    },
-    showlegend: false,
-    margin: {
-        l: 25,
-        r: 100
-    }
-};
 
 // TODO: hover define the sankey terms
 // TODO: run through colorblind checker
@@ -702,92 +656,101 @@ const helper_text = {
     Other: 'DEFINITION'
 };
 
+const sankeyTitle = 'Revenue, Fiscal Year 2024';
+const sankeyCaption =
+    'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2023</a>';
+const statementCaption =
+    'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2023</a>';
+
 // ------------------ SEQUENCE OF ACTIONS ------------------
 
 // this defines the sequence of actions in order
 // calling createWaypoint will call each action depending on whether user is scrolling down (next action) or up (previous action)
 const sequence = {
-    first: hideChart,
+    first: function () {
+        hideChart('#chart-div');
+    },
     'what-is-endowment': function () {
-        showChart();
-        sankeyChart('tuition');
+        showChart('#chart-div');
+
+        Plotly.newPlot(
+            'chart-div',
+            sankeyChart('tuition'),
+            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
+            config
+        );
     },
     endowment: function () {
-        sankeyChart('endowment');
+        Plotly.newPlot(
+            'chart-div',
+            sankeyChart('tuition'),
+            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
+            config
+        );
     },
     restricted: function () {
-        sankeyChart('restricted');
+        Plotly.newPlot(
+            'chart-div',
+            sankeyChart('restricted'),
+            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
+            config
+        );
     },
     'what-is-it': function () {
-        showChart();
         Plotly.newPlot(
             'chart-div',
             processData(statements, (variable = 'fund_type')),
-            layout,
+            createLayout(
+                (title = "Types of investments making up UChicago's endowment"),
+                (caption = statementCaption)
+            ),
             config
-        );
-        addLabels(
-            (title = "Types of investments making up UChicago's endowment"),
-            (caption =
-                'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
         );
     },
     breakdown: function () {
         Plotly.newPlot(
             'chart-div',
             processData(statements, (variable = 'recategorized')),
-            layout,
+            createLayout(
+                (title = 'Fund types (simplified)'),
+                (caption = statementCaption)
+            ),
             config
-        );
-        addLabels(
-            (title = 'Fund types (simplified)'),
-            (caption =
-                'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
         );
     },
     'compare-schools': function () {
-        Plotly.newPlot('chart-div', barChart(endowments), layout, config);
-        addLabels(
-            (title =
-                '20 largest college endowments in the U.S., Fiscal Year 2023'),
-            (caption =
-                'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>')
+        Plotly.newPlot(
+            'chart-div',
+            barChart(endowments),
+            createLayout(
+                (title =
+                    '20 largest college endowments in the U.S., Fiscal Year 2023'),
+                (caption =
+                    'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>')
+            ),
+            config
         );
     },
     sec: function () {
-        showChart();
+        showChart('#chart-div');
         Plotly.newPlot(
             'chart-div',
             processData(sec, (variable = 'sector')),
-            layout,
+            createLayout(
+                (title = 'Industry sectors'),
+                (caption =
+                    'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025'),
+                (margin_r = 400)
+            ),
             config
         );
-        addLabels(
-            (title = 'Industry sectors'),
-            (caption = 'Source: UChicago SEC 13-F')
-        );
-        chart = document.getElementById('chart-div');
-        Plotly.animate(
-            chart,
-            {
-                layout: {
-                    margin: {
-                        l: 15,
-                        r: 350
-                    }
-                }
-            },
-            { transition: transition }
-        );
 
-        console.log('Hiding flow chart');
         d3.selectAll('#flowchart').style('display', 'none');
     },
+    // TODO: add title and source
     control: function () {
-        console.log('Showing flow chart');
-        hideChart();
-
-        d3.selectAll('#flowchart').style('display', 'block');
+        hideChart('#chart-div');
+        showChart('#flowchart');
 
         d3.select('#flowchart-trustees').style('fill', '#800000');
         d3.select('#flowchart-graduate').style('fill', '#800000');
@@ -821,14 +784,14 @@ const sequence = {
         d3.select('#flowchart-donors').style('fill', '#800000');
     },
     donors: function () {
-        d3.selectAll('#flowchart').style('display', 'block');
+        showChart('#flowchart');
 
         d3.select('#flowchart-donors').style('fill', '#d51d1dff');
 
         d3.select('#flowchart-president').style('fill', '#800000');
     },
     conclusion: function () {
-        d3.selectAll('#flowchart').style('display', 'none');
+        hideChart('#flowchart');
     }
 };
 
@@ -882,7 +845,7 @@ async function init() {
 
     createWaypoint('donors');
 
-    createWaypoint('conclusion');
+    createWaypoint('conclusion', (offset = '90%'));
 }
 
 // when page is loaded, define custom JS
