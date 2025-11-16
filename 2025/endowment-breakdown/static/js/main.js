@@ -393,110 +393,89 @@ function showChart(div = '#chart-div') {
 }
 
 // cite: copilot
-function createTable(div, prev) {
-    new Waypoint({
-        element: document.getElementById(div),
-        handler: function (direction) {
-            if ((prev === 'none') & (direction === 'up')) {
-                hideChart('#chart-div');
-                return;
-            }
-            showChart();
+function createTable(firm_name) {
+    const filtered = coi.filter(
+        // first word when lowercased matches provided firm_name
+        (d) => d.firm_name.split(' ')[0].toLowerCase() === firm_name
+    );
 
-            // if scrolling up then use previous firm
-            const firm_name = direction == 'down' ? div : prev;
+    const skip_first_col = filtered.map(({ firm_name, ...rest }) => rest);
 
-            const filtered = coi.filter(
-                // first word when lowercased matches provided firm_name
-                (d) => d.firm_name.split(' ')[0].toLowerCase() === firm_name
-            );
+    // Get column headers and values
+    const rows = skip_first_col.map((obj) => Object.values(obj));
+    const full_name = filtered[0]['firm_name'];
 
-            const skip_first_col = filtered.map(
-                ({ firm_name, ...rest }) => rest
-            );
+    // Generate the HTML table
+    chartDiv = document.getElementById('chart-div');
+    chartDiv.innerHTML = '';
 
-            // Get column headers and values
-            // const headers = Object.keys(skip_first_col[0]);
-            const rows = skip_first_col.map((obj) => Object.values(obj));
-            const full_name = filtered[0]['firm_name'];
+    d3.select('#chart-div')
+        .append('div')
+        .style('display', 'flex')
+        .style('justify-content', 'center')
+        .style('align-items', 'center')
+        .style('height', '100%')
+        .style('margin', '30px')
+        .attr('id', 'table-div');
 
-            // Generate the HTML table
-            chartDiv = document.getElementById('chart-div');
-            chartDiv.innerHTML = '';
+    // table title
+    d3.select('#table-div')
+        .style('display', 'flex') // Use flexbox for layout
+        .style('flex-direction', 'column') // Stack children vertically
+        .append('h3')
+        .text(
+            firm_name === 'carlyle'
+                ? `Top ${rows.length} out of ??? funds managed by ${full_name}`
+                : `Funds managed by ${full_name}`
+        )
+        .style('text-align', 'center')
+        .style('font-family', 'Georgia, serif')
+        .style('margin-bottom', '20px');
 
-            d3.select('#chart-div')
-                .append('div')
-                .style('display', 'flex')
-                .style('justify-content', 'center')
-                .style('align-items', 'center')
-                .style('height', '100%')
-                .style('margin', '30px')
-                .attr('id', 'table-div');
+    // table
+    const table = d3
+        .select('#table-div')
+        .append('table')
+        .style('width', '100%')
+        .style('border-collapse', 'collapse')
+        .attr('border', 1);
 
-            // table title
-            d3.select('#table-div')
-                .style('display', 'flex') // Use flexbox for layout
-                .style('flex-direction', 'column') // Stack children vertically
-                .append('h3')
-                .text(
-                    firm_name === 'carlyle'
-                        ? `Top ${rows.length} out of ??? funds managed by ${full_name}`
-                        : `Funds managed by ${full_name}`
-                )
-                .style('text-align', 'center')
-                .style('font-family', 'Georgia, serif')
-                .style('margin-bottom', '20px');
+    // table header
+    const thead = table.append('thead');
+    const headerRow = thead.append('tr');
+    headerRow
+        .selectAll('th')
+        .data(['Fund name', 'Industry', 'Regions'])
+        .enter()
+        .append('th')
+        .text((d) => d);
 
-            // table
-            const table = d3
-                .select('#table-div')
-                .append('table')
-                .style('width', '100%')
-                .style('border-collapse', 'collapse')
-                .attr('border', 1);
-
-            // table header
-            const thead = table.append('thead');
-            const headerRow = thead.append('tr');
-            headerRow
-                .selectAll('th')
-                .data(['Fund name', 'Industry', 'Regions'])
-                .enter()
-                .append('th')
-                .text((d) => d);
-
-            // table body
-            const tbody = table.append('tbody');
-            rows.forEach((row) => {
-                const tr = tbody.append('tr');
-                tr.selectAll('td')
-                    .data(row)
-                    .enter()
-                    .append('td')
-                    .text((d) => d);
-            });
-
-            // Select the first column and give it a class
-            d3.select('#table-div')
-                .selectAll('tr') // Select all rows
-                .select('td:first-child') // Select the first <td> in each row
-                .attr('class', 'first-column'); // Add the class "first-column"
-
-            // table footnote
-            d3.select('#table-div')
-                .append('figcaption')
-                .html(
-                    'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">Tax Form 990 filing</a> for fiscal year 2023, Schedule L; Pitchbook'
-                )
-                .style('width', '100%')
-                .style('margin-top', '15px')
-                .attr('class', 'caption');
-
-            // Insert the table into the specified div
-            // d3.select('#table-div').append(tableHTML);
-        },
-        offset: '70%'
+    // table body
+    const tbody = table.append('tbody');
+    rows.forEach((row) => {
+        const tr = tbody.append('tr');
+        tr.selectAll('td')
+            .data(row)
+            .enter()
+            .append('td')
+            .text((d) => d);
     });
+
+    // Select the first column and give it a class
+    d3.select('#table-div')
+        .selectAll('tr') // Select all rows
+        .select('td:first-child') // Select the first <td> in each row
+        .attr('class', 'first-column'); // Add the class "first-column"
+
+    // table footnote
+    d3.select('#table-div')
+        .append('figcaption')
+        .html(
+            'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">Tax Form 990 filing</a> for fiscal year 2023, Schedule L; Pitchbook'
+        )
+        .style('width', '100%')
+        .style('margin-top', '15px')
+        .attr('class', 'caption');
 }
 
 /**
@@ -732,7 +711,6 @@ const sequence = {
         );
     },
     sec: function () {
-        showChart('#chart-div');
         Plotly.newPlot(
             'chart-div',
             processData(sec, (variable = 'sector')),
@@ -744,8 +722,18 @@ const sequence = {
             ),
             config
         );
+    },
+    lake: function () {
+        createTable('lake');
+    },
+    pimco: function () {
+        createTable('pimco');
+    },
+    carlyle: function () {
+        hideChart('#flowchart');
+        showChart('#chart-div');
 
-        d3.selectAll('#flowchart').style('display', 'none');
+        createTable('carlyle');
     },
     // TODO: add title and source
     control: function () {
@@ -820,9 +808,7 @@ async function init() {
     createWaypoint('what-is-endowment');
 
     createWaypoint('endowment');
-
     createWaypoint('restricted');
-
     createWaypoint('what-is-it');
 
     createWaypoint('breakdown');
@@ -830,19 +816,14 @@ async function init() {
     createWaypoint('compare-schools');
 
     createWaypoint('sec');
-
-    createTable('lake', (prev = 'none'));
-    createTable('pimco', (prev = 'lake'));
-    createTable('carlyle', (prev = 'pimco'));
+    createWaypoint('lake');
+    createWaypoint('pimco');
+    createWaypoint('carlyle');
 
     createWaypoint('control');
-
     createWaypoint('board-of-trustees');
-
     createWaypoint('office-of-investments');
-
     createWaypoint('president');
-
     createWaypoint('donors');
 
     createWaypoint('conclusion', (offset = '90%'));
