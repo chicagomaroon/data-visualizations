@@ -84,7 +84,24 @@ function createWaypoint(div, offset = '70%') {
  * layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
  */
-function createLayout(title = '', caption = '', margin_r = 0) {
+function createLayout(
+    title = '',
+    caption = '',
+    margin = {
+        l: 25,
+        r: 0,
+        b: 100
+    },
+    showlegend = false,
+    xaxis = {
+        showgrid: false,
+        showline: false,
+        showticklabels: false,
+        tickfont: {
+            size: 14
+        }
+    }
+) {
     return {
         title: {
             text: title,
@@ -105,7 +122,7 @@ function createLayout(title = '', caption = '', margin_r = 0) {
                 xref: 'paper',
                 yref: 'paper',
                 x: 0,
-                y: -0.02, // move below the x-axis
+                y: 0 - margin['b'] / 2000, // move below the x-axis
                 showarrow: false,
                 xanchor: 'left',
                 yanchor: 'top',
@@ -117,14 +134,7 @@ function createLayout(title = '', caption = '', margin_r = 0) {
         font: {
             family: 'Georgia'
         },
-        xaxis: {
-            showgrid: false,
-            showline: false,
-            showticklabels: false,
-            tickfont: {
-                size: 14
-            }
-        },
+        xaxis: xaxis,
         yaxis: {
             showgrid: false,
             showline: false,
@@ -138,11 +148,14 @@ function createLayout(title = '', caption = '', margin_r = 0) {
         hoverlabel: {
             bgcolor: 'white'
         },
-        showlegend: false,
-        margin: {
-            l: 25,
-            r: margin_r
-        }
+        showlegend: showlegend,
+        legend: {
+            x: 0.9, // Position the legend inside the graph (horizontal position)
+            y: 0.9, // Position the legend inside the graph (vertical position)
+            xanchor: 'center', // Anchor the legend horizontally at its center
+            yanchor: 'top' // Anchor the legend vertically at the top
+        },
+        margin: margin
     };
 }
 
@@ -166,8 +179,8 @@ function donutChart(data, variable) {
         customdata:
             'hoverinfo' in groupedData[0]
                 ? groupedData.map((d) => d['hoverinfo'])
-                : groupedData.map(() => ''),
-        hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+                : groupedData.map((d) => '$' + formatThousands(d['x'] * 1000)),
+        hoverinfo: 'text',
         hoverlabel: hoverlabel,
         hovertemplate: hovertemplates[variable]
     };
@@ -200,28 +213,32 @@ function stackedBarChart(data, variable) {
 }
 
 function barChart(data) {
-    const trace = {
-        type: 'bar',
-        orientation: 'h',
-        y: data.map((d) => d.school),
-        x: data.map((d) => d.endowment_dollars),
-        name: data.map((d) => d.school),
-        text: data.map((d) => d.school),
-        // pad: 15,
-        // thickness: 20,
-        // hoverinfo: 'none',
-        marker: {
-            color: data.map((d) =>
-                d.school === 'University of Chicago'
-                    ? '#d51d1dff'
-                    : d.private === true
-                    ? '#800000'
-                    : 'rgb(193, 102, 34)'
-            )
-        }
-    };
+    // cite: copilot because groupby transform is not working for some reason
+    const privateData = data.filter((d) => d.private);
+    const publicData = data.filter((d) => !d.private);
+    const allSchools = data.map((d) => d.school);
+    const allData = { Private: privateData, Public: publicData };
 
-    return [trace];
+    const traces = [];
+    Object.entries(allData).forEach(([key, dataset]) => {
+        traces.push({
+            type: 'bar',
+            orientation: 'h',
+            text: allSchools,
+            y: allSchools,
+            x: allSchools.map((school) => {
+                const entry = dataset.find((d) => d.school === school);
+                return entry ? entry.endowment_dollars : 0; // Use 0 if no data for this school
+            }),
+            name: key,
+            marker: { color: key === 'Private' ? '#800000' : '#d51d1dff' },
+            hoverlabel: hoverlabel,
+            hovertemplate:
+                '<br /> <br />    %{y} endowment:    <br />    $%{x:,.0f}    <br /> <br /><extra></extra>'
+        });
+    });
+
+    return traces;
 }
 
 // cite: translated from highcharts with chatgpt
@@ -252,7 +269,9 @@ function sankeyChart(div) {
             target: targets,
             value: values,
             color: 'rgba(0,0,0,0.1)',
-            hovertemplate: '%{target.label}: $%{value:.00f}M<extra></extra>'
+            hovertemplate:
+                '<br /> <br />    %{target.label}: $%{value:,.00f}M    <br /> <br /><extra></extra>',
+            hoverlabel: hoverlabel
         }
     };
     return [trace];
@@ -393,9 +412,12 @@ const formatThousands = d3.format(',.0f');
 
 const hoverlabel = {
     bordercolor: '#f1f1f1', // border color
+    bgcolor: 'white',
+    opacity: 1,
+    alpha: 1,
     font: {
         family: 'Playfair',
-        size: 16,
+        size: 14,
         color: 'black' // text color
     }
 };
@@ -411,7 +433,8 @@ const transition = {
 };
 
 const hovertemplates = {
-    fund_type: 'none',
+    fund_type:
+        ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
     recategorized:
         ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
     sector: ' <br>    %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>' // extra tag removes trace label; spaces needed for fake padding
@@ -690,7 +713,26 @@ const sequence = {
                 (title =
                     '20 largest college endowments in the U.S., Fiscal Year 2023'),
                 (caption =
-                    'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>')
+                    'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
+                (margin = {
+                    l: 25,
+                    r: 0,
+                    b: 150
+                }),
+                (showlegend = true),
+                (xaxis = {
+                    showgrid: true,
+                    showline: true,
+                    showticklabels: true,
+                    tickfont: {
+                        size: 14
+                    },
+                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
+                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
+                    title: {
+                        text: 'Endowment size (in billions USD)'
+                    }
+                })
             ),
             config
         );
@@ -703,7 +745,11 @@ const sequence = {
                 (title = 'Industry sectors'),
                 (caption =
                     'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025'),
-                (margin_r = 400)
+                (margin = {
+                    l: 25,
+                    r: 400,
+                    b: 75
+                })
             ),
             config
         );
