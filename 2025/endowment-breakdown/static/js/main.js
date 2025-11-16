@@ -18,13 +18,13 @@ async function fetchData(path) {
 }
 
 /**
- * Group data and define all traces
+ * Group data and define all traces for categorical plot (pie or bar)
  * Cite: https://stackoverflow.com/questions/65044430/plotly-create-a-scatter-with-categorical-x-axis-jitter-and-multi-level-axis
  * @param  {json} data Data loaded in a previous step
  * @param  {Array} variable Variable(s) to group by
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
-function processData(data, variable = 'fund_type') {
+function groupData(data, variable) {
     console.log('processing', data);
 
     // add hoverinfo
@@ -34,11 +34,6 @@ function processData(data, variable = 'fund_type') {
             d['hoverinfo'] = helper_text[d['recategorized']];
         });
     }
-
-    // cite: copilot
-    const total = data
-        .map((d) => d.amount_thousands)
-        .reduce((acc, curr) => acc + curr, 0);
 
     const valueSums = data.reduce((acc, obj) => {
         acc[obj[variable]] =
@@ -54,64 +49,7 @@ function processData(data, variable = 'fund_type') {
         ...new Map(groupedData.map((item) => [item[variable], item])).values()
     ];
 
-    // console.log('grouped', groupedData);
-    traces = [];
-    console.log(unique.map((d) => colorbook[variable][d[variable]]));
-
-    try {
-        // construct plotly "dataframe"
-
-        const formatThousands = d3.format(',.0f');
-
-        if (variable === 'sector') {
-            unique.forEach(function (val) {
-                traces.push({
-                    type: 'bar',
-                    x: ['Data'],
-                    y: [val['x']],
-                    name: [val[variable]],
-                    marker: {
-                        color: colorbook[variable][val[variable]]
-                    },
-                    text: [
-                        `${val[variable]}: \$${formatThousands(
-                            val['x'] * 1000
-                        )}`
-                    ],
-                    customdata:
-                        'hoverinfo' in groupedData[0]
-                            ? [val['hoverinfo']]
-                            : ['none'],
-                    hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
-                    hoverlabel: hoverlabel,
-                    hovertemplate: hovertemplates[variable]
-                });
-            });
-        } else {
-            traces.push({
-                type: 'pie',
-                hole: 0.5,
-                values: unique.map((d) => Math.round((d.x / total) * 100)),
-                labels: unique.map((d) => d[variable]),
-                marker: {
-                    colors: unique.map((d) => colorbook[variable][d[variable]])
-                },
-                text: unique.map((d) => d[variable]),
-                customdata:
-                    'hoverinfo' in groupedData[0]
-                        ? unique.map((d) => d['hoverinfo'])
-                        : unique.map(() => ''),
-                hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
-                hoverlabel: hoverlabel,
-                hovertemplate: hovertemplates[variable]
-            });
-        }
-
-        // console.log(traces);
-        return traces;
-    } catch (error) {
-        console.error('Error processing data: ', error);
-    }
+    return unique;
 }
 
 // ------------------ PLOTS ------------------
@@ -208,6 +146,59 @@ function createLayout(title = '', caption = '', margin_r = 0) {
     };
 }
 
+function donutChart(data, variable) {
+    groupedData = groupData(data, variable);
+
+    // cite: copilot
+    const total = groupedData
+        .map((d) => d.amount_thousands)
+        .reduce((acc, curr) => acc + curr, 0);
+
+    trace = {
+        type: 'pie',
+        hole: 0.5,
+        values: groupedData.map((d) => Math.round((d.x / total) * 100)),
+        labels: groupedData.map((d) => d[variable]),
+        marker: {
+            colors: groupedData.map((d) => colorbook[variable][d[variable]])
+        },
+        text: groupedData.map((d) => d[variable]),
+        customdata:
+            'hoverinfo' in groupedData[0]
+                ? groupedData.map((d) => d['hoverinfo'])
+                : groupedData.map(() => ''),
+        hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+        hoverlabel: hoverlabel,
+        hovertemplate: hovertemplates[variable]
+    };
+
+    return [trace];
+}
+
+function stackedBarChart(data, variable) {
+    groupedData = groupData(data, variable);
+
+    traces = [];
+    groupedData.forEach(function (val) {
+        traces.push({
+            type: 'bar',
+            x: ['Data'],
+            y: [val['x']],
+            name: [val[variable]],
+            marker: {
+                color: colorbook[variable][val[variable]]
+            },
+            text: [`${val[variable]}: \$${formatThousands(val['x'] * 1000)}`],
+            customdata:
+                'hoverinfo' in groupedData[0] ? [val['hoverinfo']] : ['none'],
+            hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+            hoverlabel: hoverlabel,
+            hovertemplate: hovertemplates[variable]
+        });
+    });
+    return traces;
+}
+
 function barChart(data) {
     const trace = {
         type: 'bar',
@@ -220,14 +211,12 @@ function barChart(data) {
         // thickness: 20,
         // hoverinfo: 'none',
         marker: {
-            line: {
-                color: '#d51d1dff',
-                width: data.map((d) =>
-                    d.school === 'University of Chicago' ? 5 : 0
-                )
-            },
             color: data.map((d) =>
-                d.private === true ? '#800000' : 'rgb(193, 102, 34)'
+                d.school === 'University of Chicago'
+                    ? '#d51d1dff'
+                    : d.private === true
+                    ? '#800000'
+                    : 'rgb(193, 102, 34)'
             )
         }
     };
@@ -237,116 +226,6 @@ function barChart(data) {
 
 // cite: translated from highcharts with chatgpt
 function sankeyChart(div) {
-    // Node labels
-    const labels = [
-        'Total assets<br>(excluding<br>hospital)', // 0
-        'Revenue with restrictions', // 1
-        'Endowment payout with restrictions', // 2
-        'Private gifts', // 3
-        'Revenue<br>without restrictions<br>(excluding hospital)', // 4
-        'Total operating revenue', // 5
-        'Total nonoperating revenue', // 6
-        'Investment return without restrictions', // 7
-        'Other nonoperating revenue', // 8
-        'Investment return with restrictions', // 9
-        'Net tuition', // 10
-        'Endowment payout<br>without restrictions', // 11
-        'Government grants and contracts', // 12
-        'Private gifts, grants, and contracts', // 13
-        'Other operating revenue' // 14
-    ];
-
-    // Define links as [sourceName, targetName, value]
-    const linksData = [
-        [
-            'Total assets<br>(excluding<br>hospital)',
-            'Revenue with restrictions',
-            338.2
-        ],
-        [
-            'Revenue with restrictions',
-            'Endowment payout with restrictions',
-            0.9
-        ],
-        ['Revenue with restrictions', 'Private gifts', 406.4],
-        [
-            'Revenue with restrictions',
-            'Investment return with restrictions',
-            136.9
-        ],
-        [
-            'Total assets<br>(excluding<br>hospital)',
-            'Revenue<br>without restrictions<br>(excluding hospital)',
-            3387.2
-        ],
-        [
-            'Revenue<br>without restrictions<br>(excluding hospital)',
-            'Total operating revenue',
-            3285.9
-        ],
-        [
-            'Revenue<br>without restrictions<br>(excluding hospital)',
-            'Total nonoperating revenue',
-            101.4
-        ],
-        [
-            'Total nonoperating revenue',
-            'Investment return without restrictions',
-            66.0
-        ],
-        ['Total nonoperating revenue', 'Other nonoperating revenue', 35.4],
-        ['Total operating revenue', 'Net tuition', 611.3],
-        ['Total operating revenue', 'Government grants and contracts', 561.3],
-        [
-            'Total operating revenue',
-            'Private gifts, grants, and contracts',
-            293.2
-        ],
-        [
-            'Total operating revenue',
-            'Endowment payout<br>without restrictions',
-            565.7
-        ],
-        ['Total operating revenue', 'Other operating revenue', 1254.4]
-    ];
-
-    // Manual x/y positions — tuned to avoid crossings
-    const x = [
-        0.0, // Total assets (source)
-        0.16, // Revenue with restrictions
-        0.9, // Endowment payout with restrictions
-        0.9, // Private gifts
-        0.16, // Revenue without restrictions
-        0.4, // Total operating revenue
-        0.4, // Total nonoperating revenue
-        0.9, // Investment return without restrictions
-        0.9, // Other nonoperating revenue
-        0.9, // Investment return with restrictions
-        0.9, // Net tuition
-        0.9, // Endowment payout (unrestricted)
-        0.9, // Government grants
-        0.9, // Private gifts, grants, and contracts
-        0.9 // Other operating revenue
-    ];
-
-    const y = [
-        0.5, // Total assets
-        0.8, // Revenue with restrictions
-        0.96, // Endowment payout (restricted)
-        0.85, // Private gifts (restricted)
-        0.3, // Revenue without restrictions
-        0.29, // Total operating revenue
-        0.65, // Total nonoperating revenue
-        0.72, // Investment return (unrestricted)
-        0.75, // Other nonoperating revenue
-        0.92, // Investment return (restricted)
-        0.25, // Net tuition
-        0.38, // Endowment payout (unrestricted)
-        0.51, // Government grants
-        0.61, // Private gifts, grants, and contracts
-        0.05 // Other operating revenue
-    ];
-
     // Map node names to indices
     const nodeIndex = {};
     labels.forEach((label, i) => (nodeIndex[label] = i));
@@ -471,7 +350,7 @@ function createTable(firm_name) {
     d3.select('#table-div')
         .append('figcaption')
         .html(
-            'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">Tax Form 990 filing</a> for fiscal year 2023, Schedule L; Pitchbook'
+            'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">IRS Form 990 filing</a> for fiscal year 2023, Schedule L; Pitchbook'
         )
         .style('width', '100%')
         .style('margin-top', '15px')
@@ -491,8 +370,16 @@ function open_url(data) {
     window.open(url[1], '_blank').focus();
 }
 
+const formatThousands = d3.format(',.0f');
+
 // ------- CONSTANTS ------
 
+// TODO: stacked area for percent over time
+// TODO: x axis and legend for comparing schools
+// TODO: round amounts for sector graph (approximate amounts)
+// TODO: line break for long captions?
+// TODO: add links for flowchart
+// TODO: cover image to left for accessibility
 // TODO: hover define the sankey terms
 // TODO: run through colorblind checker
 // TODO: recategorized should match colors of before
@@ -563,6 +450,104 @@ const colorbook = {
         'Real Estate': 'rgb(193, 102, 34)'
     }
 };
+
+// Node labels
+const labels = [
+    'Total assets<br>(excluding<br>hospital)', // 0
+    'Revenue with restrictions', // 1
+    'Endowment payout with restrictions', // 2
+    'Private gifts', // 3
+    'Revenue<br>without restrictions<br>(excluding hospital)', // 4
+    'Total operating revenue', // 5
+    'Total nonoperating revenue', // 6
+    'Investment return without restrictions', // 7
+    'Other nonoperating revenue', // 8
+    'Investment return with restrictions', // 9
+    'Net tuition', // 10
+    'Endowment payout<br>without restrictions', // 11
+    'Government grants and contracts', // 12
+    'Private gifts, grants, and contracts', // 13
+    'Other operating revenue' // 14
+];
+
+// Define links as [sourceName, targetName, value]
+const linksData = [
+    [
+        'Total assets<br>(excluding<br>hospital)',
+        'Revenue with restrictions',
+        338.2
+    ],
+    ['Revenue with restrictions', 'Endowment payout with restrictions', 0.9],
+    ['Revenue with restrictions', 'Private gifts', 406.4],
+    ['Revenue with restrictions', 'Investment return with restrictions', 136.9],
+    [
+        'Total assets<br>(excluding<br>hospital)',
+        'Revenue<br>without restrictions<br>(excluding hospital)',
+        3387.2
+    ],
+    [
+        'Revenue<br>without restrictions<br>(excluding hospital)',
+        'Total operating revenue',
+        3285.9
+    ],
+    [
+        'Revenue<br>without restrictions<br>(excluding hospital)',
+        'Total nonoperating revenue',
+        101.4
+    ],
+    [
+        'Total nonoperating revenue',
+        'Investment return without restrictions',
+        66.0
+    ],
+    ['Total nonoperating revenue', 'Other nonoperating revenue', 35.4],
+    ['Total operating revenue', 'Net tuition', 611.3],
+    ['Total operating revenue', 'Government grants and contracts', 561.3],
+    ['Total operating revenue', 'Private gifts, grants, and contracts', 293.2],
+    [
+        'Total operating revenue',
+        'Endowment payout<br>without restrictions',
+        565.7
+    ],
+    ['Total operating revenue', 'Other operating revenue', 1254.4]
+];
+
+// Manual x/y positions — tuned to avoid crossings
+const x = [
+    0.0, // Total assets (source)
+    0.16, // Revenue with restrictions
+    0.9, // Endowment payout with restrictions
+    0.9, // Private gifts
+    0.16, // Revenue without restrictions
+    0.4, // Total operating revenue
+    0.4, // Total nonoperating revenue
+    0.9, // Investment return without restrictions
+    0.9, // Other nonoperating revenue
+    0.9, // Investment return with restrictions
+    0.9, // Net tuition
+    0.9, // Endowment payout (unrestricted)
+    0.9, // Government grants
+    0.9, // Private gifts, grants, and contracts
+    0.9 // Other operating revenue
+];
+
+const y = [
+    0.5, // Total assets
+    0.8, // Revenue with restrictions
+    0.96, // Endowment payout (restricted)
+    0.85, // Private gifts (restricted)
+    0.3, // Revenue without restrictions
+    0.29, // Total operating revenue
+    0.65, // Total nonoperating revenue
+    0.72, // Investment return (unrestricted)
+    0.75, // Other nonoperating revenue
+    0.92, // Investment return (restricted)
+    0.25, // Net tuition
+    0.38, // Endowment payout (unrestricted)
+    0.51, // Government grants
+    0.61, // Private gifts, grants, and contracts
+    0.05 // Other operating revenue
+];
 
 const highlights = {
     tuition: [
@@ -678,7 +663,7 @@ const sequence = {
     'what-is-it': function () {
         Plotly.newPlot(
             'chart-div',
-            processData(statements, (variable = 'fund_type')),
+            donutChart(statements, 'fund_type'),
             createLayout(
                 (title = "Types of investments making up UChicago's endowment"),
                 (caption = statementCaption)
@@ -689,7 +674,7 @@ const sequence = {
     breakdown: function () {
         Plotly.newPlot(
             'chart-div',
-            processData(statements, (variable = 'recategorized')),
+            donutChart(statements, 'recategorized'),
             createLayout(
                 (title = 'Fund types (simplified)'),
                 (caption = statementCaption)
@@ -713,7 +698,7 @@ const sequence = {
     sec: function () {
         Plotly.newPlot(
             'chart-div',
-            processData(sec, (variable = 'sector')),
+            stackedBarChart(sec, 'sector'),
             createLayout(
                 (title = 'Industry sectors'),
                 (caption =
