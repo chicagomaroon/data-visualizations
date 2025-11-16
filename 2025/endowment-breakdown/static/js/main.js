@@ -114,7 +114,33 @@ function processData(data, variable = 'fund_type') {
     }
 }
 
-// PLOTS
+// ------------------ PLOTS ------------------
+
+function createWaypoint(div) {
+    new Waypoint({
+        element: document.getElementById(div),
+        handler: function (direction) {
+            if (direction === 'down') {
+                // scrolling down, so call next action in sequence
+                downHandler = sequence[div];
+                downHandler();
+            } else {
+                // scrolling up, so call previous action in sequence
+                let orderedKeys = [];
+                for (var key in sequence) {
+                    orderedKeys.push(key);
+                }
+
+                previousIndex = orderedKeys.indexOf(div) - 1;
+                previousKey = orderedKeys[previousIndex];
+
+                upHandler = sequence[previousKey];
+                upHandler();
+            }
+        },
+        offset: '70%'
+    });
+}
 
 function barChart(data) {
     const trace = {
@@ -126,35 +152,20 @@ function barChart(data) {
         text: data.map((d) => d.school),
         // pad: 15,
         // thickness: 20,
-        // line: { color: 'black', width: 0.5 },
         // hoverinfo: 'none',
         marker: {
-            color: [
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#800000',
-                '#d51d1dff',
-                '#800000'
-            ]
+            line: {
+                color: '#d51d1dff',
+                width: data.map((d) =>
+                    d.school === 'University of Chicago' ? 5 : 0
+                )
+            },
+            color: data.map((d) =>
+                d.private === true ? '#800000' : 'rgb(193, 102, 34)'
+            )
         }
     };
 
-    console.log(trace);
     return [trace];
 }
 
@@ -691,6 +702,136 @@ const helper_text = {
     Other: 'DEFINITION'
 };
 
+// ------------------ SEQUENCE OF ACTIONS ------------------
+
+// this defines the sequence of actions in order
+// calling createWaypoint will call each action depending on whether user is scrolling down (next action) or up (previous action)
+const sequence = {
+    first: hideChart,
+    'what-is-endowment': function () {
+        showChart();
+        sankeyChart('tuition');
+    },
+    endowment: function () {
+        sankeyChart('endowment');
+    },
+    restricted: function () {
+        sankeyChart('restricted');
+    },
+    'what-is-it': function () {
+        showChart();
+        Plotly.newPlot(
+            'chart-div',
+            processData(statements, (variable = 'fund_type')),
+            layout,
+            config
+        );
+        addLabels(
+            (title = "Types of investments making up UChicago's endowment"),
+            (caption =
+                'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
+        );
+    },
+    breakdown: function () {
+        Plotly.newPlot(
+            'chart-div',
+            processData(statements, (variable = 'recategorized')),
+            layout,
+            config
+        );
+        addLabels(
+            (title = 'Fund types (simplified)'),
+            (caption =
+                'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
+        );
+    },
+    'compare-schools': function () {
+        Plotly.newPlot('chart-div', barChart(endowments), layout, config);
+        addLabels(
+            (title =
+                '20 largest college endowments in the U.S., Fiscal Year 2023'),
+            (caption =
+                'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>')
+        );
+    },
+    sec: function () {
+        showChart();
+        Plotly.newPlot(
+            'chart-div',
+            processData(sec, (variable = 'sector')),
+            layout,
+            config
+        );
+        addLabels(
+            (title = 'Industry sectors'),
+            (caption = 'Source: UChicago SEC 13-F')
+        );
+        chart = document.getElementById('chart-div');
+        Plotly.animate(
+            chart,
+            {
+                layout: {
+                    margin: {
+                        l: 15,
+                        r: 350
+                    }
+                }
+            },
+            { transition: transition }
+        );
+
+        console.log('Hiding flow chart');
+        d3.selectAll('#flowchart').style('display', 'none');
+    },
+    control: function () {
+        console.log('Showing flow chart');
+        hideChart();
+
+        d3.selectAll('#flowchart').style('display', 'block');
+
+        d3.select('#flowchart-trustees').style('fill', '#800000');
+        d3.select('#flowchart-graduate').style('fill', '#800000');
+        d3.select('#flowchart-faculty').style('fill', '#800000');
+        d3.select('#flowchart-advisory').style('fill', '#800000');
+    },
+    'board-of-trustees': function () {
+        d3.select('#flowchart-trustees').style('fill', '#d51d1dff');
+        d3.select('#flowchart-graduate').style('fill', '#d51d1dff');
+        d3.select('#flowchart-faculty').style('fill', '#d51d1dff');
+        d3.select('#flowchart-advisory').style('fill', '#d51d1dff');
+
+        d3.select('#flowchart-office').style('fill', '#800000');
+        d3.select('#flowchart-firm').style('fill', '#800000');
+    },
+    'office-of-investments': function () {
+        d3.select('#flowchart-office').style('fill', '#d51d1dff');
+        d3.select('#flowchart-firm').style('fill', '#d51d1dff');
+
+        d3.select('#flowchart-trustees').style('fill', '#800000');
+        d3.select('#flowchart-graduate').style('fill', '#800000');
+        d3.select('#flowchart-faculty').style('fill', '#800000');
+        d3.select('#flowchart-advisory').style('fill', '#800000');
+        d3.select('#flowchart-president').style('fill', '#800000');
+    },
+    president: function () {
+        d3.select('#flowchart-president').style('fill', '#d51d1dff');
+
+        d3.select('#flowchart-office').style('fill', '#800000');
+        d3.select('#flowchart-firm').style('fill', '#800000');
+        d3.select('#flowchart-donors').style('fill', '#800000');
+    },
+    donors: function () {
+        d3.selectAll('#flowchart').style('display', 'block');
+
+        d3.select('#flowchart-donors').style('fill', '#d51d1dff');
+
+        d3.select('#flowchart-president').style('fill', '#800000');
+    },
+    conclusion: function () {
+        d3.selectAll('#flowchart').style('display', 'none');
+    }
+};
+
 // -------- MAIN --------
 var data;
 
@@ -712,281 +853,36 @@ async function init() {
     endowments = await fetchData('largest-endowments-2023.json');
     console.log(endowments);
 
-    new Waypoint({
-        element: document.getElementById('what-is-endowment'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                showChart();
-                sankeyChart('tuition');
-            } else {
-                hideChart();
-            }
-        },
-        offset: '70%'
-    });
+    // TODO: another one for endowment size over time
+    createWaypoint('what-is-endowment');
 
-    new Waypoint({
-        element: document.getElementById('tuition'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                showChart();
-                sankeyChart('tuition');
-            } else {
-                hideChart();
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('endowment');
 
-    new Waypoint({
-        element: document.getElementById('endowment'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                sankeyChart('endowment');
-            } else {
-                sankeyChart('tuition');
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('restricted');
 
-    new Waypoint({
-        element: document.getElementById('restricted'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                sankeyChart('restricted');
-            } else {
-                sankeyChart('endowment');
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('what-is-it');
 
-    new Waypoint({
-        element: document.getElementById('what-is-it'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                showChart();
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(statements, (variable = 'fund_type')),
-                    layout,
-                    config
-                );
-                console.log('showing chart');
-                addLabels(
-                    (title =
-                        "Types of investments making up UChicago's endowment"),
-                    (caption =
-                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
-                );
-            } else {
-                sankeyChart('restricted');
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('breakdown');
 
-    new Waypoint({
-        element: document.getElementById('breakdown'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(statements, (variable = 'recategorized')),
-                    layout,
-                    config
-                );
-                addLabels(
-                    (title = 'Fund types (simplified)'),
-                    (caption =
-                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
-                );
-            } else {
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(statements, (variable = 'fund_type')),
-                    layout,
-                    config
-                );
-                addLabels(
-                    (title =
-                        "Types of investments making up UChicago's endowment"),
-                    (caption =
-                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
-                );
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('compare-schools');
 
-    new Waypoint({
-        element: document.getElementById('compare-schools'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                Plotly.newPlot(
-                    'chart-div',
-                    barChart(endowments),
-                    layout,
-                    config
-                );
-                addLabels(
-                    (title =
-                        '20 largest college endowments in the U.S., Fiscal Year 2023'),
-                    (caption =
-                        'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>')
-                );
-            } else {
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(statements, (variable = 'fund_type')),
-                    layout,
-                    config
-                );
-                addLabels(
-                    (title =
-                        "Types of investments making up UChicago's endowment"),
-                    (caption =
-                        'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement 2023</a>')
-                );
-            }
-        },
-        offset: '70%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('sec'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                showChart();
-                Plotly.newPlot(
-                    'chart-div',
-                    processData(sec, (variable = 'sector')),
-                    layout,
-                    config
-                );
-                addLabels(
-                    (title = 'Industry sectors'),
-                    (caption = 'Source: UChicago SEC 13-F')
-                );
-                chart = document.getElementById('chart-div');
-                Plotly.animate(
-                    chart,
-                    {
-                        layout: {
-                            margin: {
-                                l: 15,
-                                r: 350
-                            }
-                        }
-                    },
-                    { transition: transition }
-                );
-            } else {
-                sankeyChart();
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('sec');
 
     createTable('lake', (prev = 'none'));
     createTable('pimco', (prev = 'lake'));
     createTable('carlyle', (prev = 'pimco'));
 
-    new Waypoint({
-        element: document.getElementById('control'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                console.log('Showing flow chart');
-                hideChart();
+    createWaypoint('control');
 
-                d3.selectAll('#flowchart').style('display', 'block');
-            } else {
-                console.log('Hiding flow chart');
-                showChart();
+    createWaypoint('board-of-trustees');
 
-                d3.selectAll('#flowchart').style('display', 'none');
-            }
-        },
-        offset: '70%'
-    });
+    createWaypoint('office-of-investments');
 
-    new Waypoint({
-        element: document.getElementById('board-of-trustees'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                d3.select('#flowchart-trustees').style('fill', '#d51d1dff');
-                d3.select('#flowchart-graduate').style('fill', '#d51d1dff');
-                d3.select('#flowchart-faculty').style('fill', '#d51d1dff');
-                d3.select('#flowchart-advisory').style('fill', '#d51d1dff');
-            } else {
-                d3.select('#flowchart-trustees').style('fill', '#800000');
-                d3.select('#flowchart-graduate').style('fill', '#800000');
-                d3.select('#flowchart-faculty').style('fill', '#800000');
-                d3.select('#flowchart-advisory').style('fill', '#800000');
-            }
-        },
-        offset: '90%'
-    });
+    createWaypoint('president');
 
-    new Waypoint({
-        element: document.getElementById('office-of-investments'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                d3.select('#flowchart-office').style('fill', '#d51d1dff');
-                d3.select('#flowchart-firm').style('fill', '#d51d1dff');
-                d3.select('#flowchart-trustees').style('fill', '#800000');
-                d3.select('#flowchart-graduate').style('fill', '#800000');
-                d3.select('#flowchart-faculty').style('fill', '#800000');
-                d3.select('#flowchart-advisory').style('fill', '#800000');
-            } else {
-                d3.select('#flowchart-office').style('fill', '#800000');
-                d3.select('#flowchart-firm').style('fill', '#800000');
-            }
-        },
-        offset: '90%'
-    });
+    createWaypoint('donors');
 
-    new Waypoint({
-        element: document.getElementById('president'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                d3.select('#flowchart-president').style('fill', '#d51d1dff');
-                d3.select('#flowchart-office').style('fill', '#800000');
-                d3.select('#flowchart-firm').style('fill', '#800000');
-            } else {
-                d3.select('#flowchart-president').style('fill', '#800000');
-            }
-        },
-        offset: '90%'
-    });
-
-    new Waypoint({
-        element: document.getElementById('donors'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                d3.select('#flowchart-donors').style('fill', '#d51d1dff');
-                d3.select('#flowchart-president').style('fill', '#800000');
-            } else {
-                d3.select('#flowchart-donors').style('fill', '#800000');
-            }
-        },
-        offset: '90%'
-    });
-
-    finalWP = new Waypoint({
-        element: document.getElementById('conclusion'),
-        handler: function (direction) {
-            if (direction == 'down') {
-                d3.selectAll('#flowchart').style('display', 'none');
-                console.log('Hiding chart div');
-            } else {
-                d3.selectAll('#flowchart').style('display', 'block');
-                console.log('Showing chart div');
-            }
-        },
-        offset: '90%'
-    });
+    createWaypoint('conclusion');
 }
 
 // when page is loaded, define custom JS
