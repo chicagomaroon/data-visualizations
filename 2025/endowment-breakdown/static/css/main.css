@@ -11,6 +11,13 @@ body {
 
 /* text */
 
+.flowchart {
+    fill: #ffffff;
+    font-family: 'Open Sans';
+    font-size: 16;
+    font-weight: 800;
+}
+
 table {
     border-radius: 5px;
 }
@@ -39,7 +46,8 @@ th {
 
 .first-column {
     font-size: 16px;
-    color:black;
+    color: black;
+    line-height: 1.2em;
 }
 
 .fa {
@@ -55,6 +63,7 @@ a:active,
 a:visited,
 a:focus {
     color: #800000;
+    display: inline; /* Ensure it doesn't affect layout */
 }
 
 h1 {
@@ -124,8 +133,8 @@ hr {
     align-items: center;
 }
 .hoverlayer .hoverlabel rect {
-  transform: scale(1.05); /* increase by 5% */
-  transform-origin: center;
+    transform: scale(1.05); /* increase by 5% */
+    transform-origin: center;
 }
 
 .year {
@@ -285,9 +294,10 @@ blockquote {
     font-family: 'Georgia', serif;
 }
 
-#chart-div, #flowchart {
+#chart-div,
+#flowchart {
     position: fixed;
-    height: 100vh; 
+    height: 100vh;
     width: 60vw;
     top: 0;
     z-index: 1;
@@ -442,7 +452,8 @@ figure {
 
     /* chart */
 
-    #chart-div, #flowchart {
+    #chart-div,
+    #flowchart {
         height: 40vh !important;
     }
 
