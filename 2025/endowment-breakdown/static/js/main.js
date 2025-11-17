@@ -25,7 +25,7 @@ async function fetchData(path) {
  * @return {Array} traces List of traces (data) as input to a plotly graph
  */
 function groupData(data, variable) {
-    console.log('processing', data);
+    // console.log('processing', data);
 
     // add hoverinfo
     if (variable === 'recategorized') {
@@ -186,6 +186,91 @@ function donutChart(data, variable) {
     };
 
     return [trace];
+}
+
+function stackedAreaChart(data) {
+    const traces = [];
+    const annotations = [];
+
+    // console.log(data);
+
+    const types = new Set(data.map((d) => d.recategorized));
+    console.log(types);
+
+    types.forEach(function (type) {
+        console.log('type', type);
+        const filtered = data.filter((d) => d.recategorized === type);
+        console.log(filtered);
+
+        traces.push({
+            stackgroup: 'one',
+            groupnorm: 'percent',
+            x: filtered.map((d) => d.year),
+            y: filtered.map((d) => d.amount_thousands),
+            fillcolor: colorbook['recategorized'][type],
+            marker: {
+                color: colorbook['recategorized'][type]
+            },
+            text: type,
+            hoverinfo: 'text',
+            hoverlabel: hoverlabel
+            // hovertemplate: hovertemplates[variable]
+        });
+
+        const midpoint = filtered.filter((d) => d.year == 2010);
+        console.log('midpoint', midpoint);
+        // Add annotation for the type at the midpoint of the area
+        annotations.push({
+            x: 0.5,
+            y: midpoint.map((d) => d.cumulative)[0] * 1.1 - 0.2,
+            text: type,
+            showarrow: false,
+            font: {
+                size: 12,
+                color: 'white'
+            },
+            xanchor: 'center',
+            yanchor: 'top',
+            xref: 'paper',
+            yref: 'paper'
+        });
+
+        const startpoint = filtered.filter((d) => d.year === 2000);
+        // Add annotation for the percentage at the beginning of the area
+        annotations.push({
+            x: 0.01,
+            y: startpoint.map((d) => d.cumulative)[0] * 0.92,
+            text: `${startpoint.map((d) => d.percent)[0]}%`,
+            showarrow: false,
+            font: {
+                size: 12,
+                color: 'white'
+            },
+            xanchor: 'left',
+            yanchor: 'top',
+            xref: 'paper',
+            yref: 'paper'
+        });
+
+        const endpoint = filtered.filter((d) => d.year === 2023);
+        // Add annotation for the percentage at the end of the area
+        annotations.push({
+            x: 0.95,
+            y: endpoint.map((d) => d.cumulative)[0] * 0.8,
+            text: `${endpoint.map((d) => d.percent)[0]}%`,
+            showarrow: false,
+            font: {
+                size: 12,
+                color: 'white'
+            },
+            xanchor: 'left',
+            yanchor: 'top',
+            xref: 'paper',
+            yref: 'paper'
+        });
+    });
+    console.log('stackedarea', traces);
+    return { traces, annotations };
 }
 
 function stackedBarChart(data, variable) {
@@ -406,7 +491,6 @@ const formatThousands = d3.format(',.0f');
 // TODO: indicate where stacked bar fits in the pie chart (could be in the text: this is $X of the $Y endowment or Z%)
 // TODO: Top 5 companies that UChicago owns shares in,
 // TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
-// TODO: sourceS, specify which comes from where
 // TODO: diversified -> unspecified or information not available
 // TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
 
@@ -694,6 +778,41 @@ const sequence = {
             config
         );
     },
+    amnesty: function () {
+        const { traces, annotations } = stackedAreaChart(types_time);
+        console.log(annotations);
+        layout = createLayout(
+            (title = 'Fund types over time'),
+            (caption =
+                'Source: University of Chicago <a href="https://example.com">Financial Data</a>'),
+            (margin = {
+                l: 25,
+                r: 0,
+                b: 100
+            }),
+            (showlegend = false),
+            (xaxis = {
+                showgrid: true,
+                showline: true,
+                showticklabels: true,
+                tickfont: {
+                    size: 14
+                },
+                title: {
+                    text: 'Year'
+                }
+            })
+        );
+        Plotly.newPlot(
+            'chart-div',
+            traces,
+            {
+                ...layout,
+                annotations: annotations
+            },
+            config
+        );
+    },
     breakdown: function () {
         Plotly.newPlot(
             'chart-div',
@@ -833,7 +952,9 @@ async function init() {
     // console.log(coi);
 
     endowments = await fetchData('largest-endowments-2023.json');
-    console.log(endowments);
+
+    types_time = await fetchData('types-over-time.json');
+    // console.log('types over time', types_time);
 
     // TODO: another one for endowment size over time
     createWaypoint('what-is-endowment');
@@ -843,6 +964,7 @@ async function init() {
     createWaypoint('what-is-it');
 
     createWaypoint('breakdown');
+    createWaypoint('amnesty');
 
     createWaypoint('compare-schools');
 
