@@ -338,7 +338,7 @@ h2.section-header {
 }
 
 .body_font {
-    line-height: 1.6em;
+    line-height: 1.4em;
     font-size: 19px;
     font-family: 'Georgia', serif;
     margin-bottom: 20px;
@@ -365,10 +365,11 @@ h2.section-header {
 @media screen and (max-width: 1000px) {
     .body_container {
         width: 99%;
+        
     }
 
     .body_font {
-        font-size: 15px;
+        font-size: 17px !important;
     }
 
     .pre_body_container {
@@ -520,6 +521,7 @@ h2.section-header {
 
 .scroll_font {
     color: black;
+    font-size: 18px;
 }
 
 @media screen and (max-width: 750px) {

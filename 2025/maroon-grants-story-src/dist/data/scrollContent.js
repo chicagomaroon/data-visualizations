@@ -14,7 +14,7 @@ export const scrollOne = [
 
 export const bodyOne = [
     'The University received $543 million total in federal grant money in fiscal year 2024, amounting to 18 percent of total operating revenue, <a href="https://emma.msrb.org/P21940311-P21481599-P21932516.pdf">according</a> to July bond issuance documents.',
-    'During the data collection process for this article, at least two previously canceled grants were reinstated: a large, multiyear study of chronic conditions in minority populations on the South Side and a syphilis prevention study, which are valued at $18.8 million and $457,300, respectively.',
+    'During the data collection process, at least two previously canceled grants were reinstated: a large, multiyear study of chronic conditions in minority populations on the South Side and a syphilis prevention study, which are valued at $18.8 million and $457,300, respectively.',
     'These two grants would have added roughly $4.8 million to total losses, after accounting for outlays.',
     'The <i>Maroon</i> asked four researchers who lost funding how the cuts have affected them, their projects, and the populations that they were studying—and what their plans are for moving forward in the aftermath.'
 ];
@@ -51,7 +51,7 @@ export const scrollThree = [
 export const bodyThree = [
     'Like Blattman, Pape was receiving funding through the MRI.',
 
-    'Pape was inspired to study the topic due to the “prominent role” that veterans have played in political violence, including the attack on the U.S. Capitol on January 6, 2020.',
+    'Pape was inspired to study the topic due to the “prominent role” that veterans have played in political violence, including the attack on the U.S. Capitol on January 6, 2021.',
 
     'Roughly 20 percent, or 1 in 5, of the defendants who have been <a href="https://www.npr.org/2021/01/21/958915267/nearly-one-in-five-defendants-in-capitol-riot-cases-served-in-the-military">prosecuted</a> for January 6 were U.S. military veterans.',
 
@@ -175,7 +175,7 @@ export const bodyNine = [
 
     '“Unfortunately, there was no willingness to try to legislate this… that I’m aware of,” Blattman said. “I think this University has a strategy to keep our heads down and try not to attract attention.”',
 
-    'This spring, University President Paul Alivisatos <a href="https://chicagomaroon.com/47238/news/uchicago-absent-from-aacu-letter-criticizing-government-intervention-in-higher-education/">did not join</a> peer institutions in signing an American Association of College and Universities letter publicly denouncing the initial flurry of federal policy changes targeting higher education, and some faculty members <a href="https://chicagomaroon.com/47267/news/faculty-urge-alivisatos-to-join-peers-in-publicly-defending-university-values-amid-government-crackdown-on-higher-ed/">criticized</a> the University’s relatively quiet response. In justifying its restraint, the University has often cited its commitment to institutional neutrality.',
+    'This spring, University President Paul Alivisatos <a href="https://chicagomaroon.com/47238/news/uchicago-absent-from-aacu-letter-criticizing-government-intervention-in-higher-education/">did not join</a> peer institutions in signing an American Association of Colleges and Universities letter publicly denouncing the initial flurry of federal policy changes targeting higher education, and some faculty members <a href="https://chicagomaroon.com/47267/news/faculty-urge-alivisatos-to-join-peers-in-publicly-defending-university-values-amid-government-crackdown-on-higher-ed/">criticized</a> the University’s relatively quiet response. In justifying its restraint, the University has often cited its commitment to institutional neutrality.',
 
     'That strategy has its advantages, according to Blattman. “They’ve been doing very well compared to others,” he said, referencing how Trump has <a href="https://apnews.com/article/harvard-penn-mit-president-congress-intifada-193a1c81e9ebcc15c5dd68b71b4c6b71">singled out</a> presidents at universities such as MIT, Harvard, and Columbia.',
 
@@ -183,7 +183,7 @@ export const bodyNine = [
 
     'Atkinson said his project was a new kind of opportunity for humanities research—one he worries now may be lost.',
 
-    '“This is the biggest grant I’d ever won—$350,000 is a lot for a humanities-based project,” he said. “The grant is helping you establish a whole team effort, which is kind of a novel thing for humanities research.… That kind of collaboration over long periods of time across institutions is really in jeopardy in ways that the University of Chicago itself, in the humanities, cannot fund.”',
+    '“This is the biggest grant I’d ever won—$350,000 is a lot for a humanities-based project,” he said. “The grant is helping you establish a whole team effort, which is kind of a novel thing for humanities research… That kind of collaboration over long periods of time across institutions is really in jeopardy in ways that the University of Chicago itself, in the humanities, cannot fund.”',
 
     "“It's going to mean that there's just not the same kind of innovation tackling problems like poverty and violence,” Blattman said. Still, he is optimistic in the long run and will find other routes forward."
 ];
