@@ -365,8 +365,8 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
                         return matchingCategory
                             ? matchingCategory[1] + 10
                             : d.x1 - d.x0 < 60
-                              ? d.x0 + 4
-                              : d.x0 + 8;
+                            ? d.x0 + 4
+                            : d.x0 + 8;
                     })
                     .attr('y', (d) => {
                         const matchingCategory = bottomCategories
@@ -375,8 +375,8 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
                         return matchingCategory
                             ? 694 + matchingCategory[2] * 50
                             : d.y1 - d.y0 < 30
-                              ? d.y0 + 9
-                              : d.y0 + 16;
+                            ? d.y0 + 9
+                            : d.y0 + 16;
                     })
                     .text((d) => {
                         return (d.data.Grant_Amount / 1000000).toFixed(2) + 'M';
@@ -410,8 +410,8 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
                         return matchingCategory
                             ? matchingCategory[1]
                             : d.x1 - d.x0 < 60
-                              ? d.x0 + 4
-                              : d.x0 + 8;
+                            ? d.x0 + 4
+                            : d.x0 + 8;
                     })
                     .attr('y', (d) => {
                         const matchingCategory = bottomCategories
@@ -420,8 +420,8 @@ const D3Visualization = ({ currentStepIndex, direction, highlighted }) => {
                         return matchingCategory
                             ? matchingCategory[2] * 50 + 690
                             : d.y1 - d.y0 < 30
-                              ? d.y0 + 9
-                              : d.y0 + 16;
+                            ? d.y0 + 9
+                            : d.y0 + 16;
                     })
                     .text((d) => {
                         const width = d.x1 - d.x0;
