@@ -15,7 +15,7 @@ body {
     fill: #ffffff;
     font-family: 'Open Sans';
     font-size: 16;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 table {
@@ -89,7 +89,7 @@ hr {
 #subtitle {
     font-size: 28;
     text-align: center;
-    width: 50%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -99,30 +99,9 @@ hr {
 
 /* intro */
 
-#pre-intro {
-    background: black;
-    color: white;
-    font-size: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    height: 100vh;
-}
-
-#intro-quotes {
+#background {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    padding: 0 4em;
-}
-
-.intro-quote {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: -1em 0;
+    flex-direction: row;
 }
 
 .intro {
@@ -132,65 +111,19 @@ hr {
     justify-content: space-between;
     align-items: center;
 }
+
+#background img {
+    width: 50%;
+    object-fit: cover;
+}
+
 .hoverlayer .hoverlabel rect {
     transform: scale(1.05); /* increase by 5% */
     transform-origin: center;
 }
 
-.year {
-    font-size: 40px;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    font-style: normal;
-    line-height: 1em;
-}
-
-.intro {
-    z-index: 1000;
-    position: relative;
-    color: white;
-}
-
 .intro a {
-    color: white;
-}
-
-#background {
-    /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-        url('../../images/cover.jpg');
-    background-color: #800000;
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    z-index: 1000;
-    position: relative;
-}
-
-.quote p {
-    margin: 0;
-}
-
-.quote {
-    text-align: justify;
-    width: 50vw;
-    line-height: 1.2em;
-}
-
-.admin .attribution {
-    text-align: right;
-}
-
-.attribution {
-    margin: 0;
-    opacity: 0;
-    font-style: italic;
-    width: 50%;
-    line-height: 1em;
-}
-
-.attribution a {
-    color: white;
+    color: black;
 }
 
 #bylines {
@@ -198,17 +131,8 @@ hr {
     text-align: center;
 }
 
-.byline a,
-.attribution a {
+.byline a {
     text-decoration: underline;
-}
-
-.admin {
-    align-items: flex-end;
-}
-
-.admin p {
-    display: block;
 }
 
 /* chapters */
@@ -347,45 +271,24 @@ figure {
 
     /* intro */
 
-    #pre-intro {
-        padding: 0;
-        font-size: 15px;
-        height: 100vh;
-    }
-
-    #intro-quotes {
-        padding: 0;
-        font-size: 14px;
-    }
-
-    .quote {
-        width: 80vw;
-    }
-
-    .intro p {
-        margin-top: 5vh !important;
-    }
-
     .intro {
         width: 90%;
         margin: auto;
     }
 
-    .intro-quote {
-        width: 90%;
-        margin: 0;
-    }
-
-    #intro-text {
-        margin: 10vh auto;
-    }
-
-    .attribution {
-        width: 90%;
-    }
-
-    .year {
-        font-size: 28px;
+    #background {
+        /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
+        background-image: linear-gradient(
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.6)
+            ),
+            url('../../images/cover.jpg');
+        background-color: #800000;
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        z-index: 1000;
+        position: relative;
     }
 
     /* chapters */
