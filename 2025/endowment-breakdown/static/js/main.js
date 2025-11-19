@@ -211,10 +211,11 @@ function stackedAreaChart(data) {
             marker: {
                 color: colorbook['recategorized'][type]
             },
+            customdata: filtered.map(() => type),
             text: type,
             hoverinfo: 'text',
-            hoverlabel: hoverlabel
-            // hovertemplate: hovertemplates[variable]
+            hoverlabel: hoverlabel,
+            hovertemplate: hovertemplates['stackedArea']
         });
 
         const midpoint = filtered.filter((d) => d.year == 2010);
@@ -521,7 +522,9 @@ const hovertemplates = {
         ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
     recategorized:
         ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
-    sector: ' <br>    %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>' // extra tag removes trace label; spaces needed for fake padding
+    sector: ' <br>    %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding
+    stackedArea:
+        ' <br>    %{y:.0f}% of endowment    <br>    categorized as %{customdata}    <br>    in %{x}    <br>    <extra></extra>' // extra tag removes
 };
 
 const colorbook = {
@@ -792,8 +795,11 @@ const sequence = {
             }),
             (showlegend = false),
             (xaxis = {
-                showgrid: true,
-                showline: true,
+                tickvals: [2000, 2005, 2010, 2015, 2020, 2023],
+                ticks: 'outside',
+                tickwidth: 2,
+                showgrid: false,
+                showline: false,
                 showticklabels: true,
                 tickfont: {
                     size: 14
