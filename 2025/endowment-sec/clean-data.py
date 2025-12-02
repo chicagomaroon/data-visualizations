@@ -36,6 +36,7 @@ from polars import String, Int64, Date, ShapeError, ComputeError
 from plotnine import (
     ggplot,
     geom_line,
+    geom_area,
     geom_point,
     geom_col,
     aes,
@@ -815,6 +816,10 @@ print(plot_df["TopWords"][7])
 
 fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
 
+fs.groupby("year")["amount_thousands"].sum().to_json(
+    "../endowment-breakdown/data/uchicago-endowment-by-year.json", orient="records"
+)
+
 # categorize types into broader categories
 type_dict = {
     "Domestic": "Public equities (stocks)",
@@ -840,6 +845,7 @@ type_dict = {
     "Private debt": "Other",
     "Real assets": "Other",
     "Real estate": "Other",
+    "Receivable for investments sold": "Other",  # TODO: how to categorize
 }
 
 fs["fund_type"] = fs["type"]
@@ -848,15 +854,14 @@ fs["percent"] = fs["amount_thousands"] / fs["total_thousands"]
 fs["label"] = [
     f"{x['fund_type']} ({round(x['percent'] * 100)}%)" for _, x in fs.iterrows()
 ]
-data2023 = fs[fs["year"] == 2023].sort_values("percent", ascending=True)
-# data2023["width"] = data2023["percent"]
-# data2023["x"] = np.cumsum(data2023["width"]).round(2)
-data2023["y"] = 100
+data2025 = fs[fs["year"] == 2025].sort_values("percent", ascending=True)
+# data2025["width"] = data2025["percent"]
+# data2025["x"] = np.cumsum(data2025["width"]).round(2)
+data2025["y"] = 100
 
-data2023[
+data2025[
     [
         # "x",
-        "y",
         "fund_type",
         # "width",
         "recategorized",
@@ -864,28 +869,63 @@ data2023[
         # "hoverinfo",
     ]
 ].to_json(
-    "../endowment-breakdown/data/financial-statement-2023.json",
+    "../endowment-breakdown/data/financial-statement-2025.json",
     orient="records",
     lines=False,
 )
 
 # consolidate recategorized groups
-fs = fs.groupby(["year", "recategorized"]).agg({"percent": "sum"}).reset_index()
-# fs.to_csv("types.csv", index=False)
+fs = (
+    fs.groupby(["year", "recategorized"])
+    .agg({"percent": "sum", "fund_type": "first", "amount_thousands": "sum"})
+    .reset_index()
+)
+fs["percent"] = round(fs["percent"] * 100)
+fs["cumulative"] = (
+    fs.sort_values(["year", "recategorized"])  # Ensure data is sorted by year and type
+    .groupby("year")["percent"]  # Group by year
+    .cumsum()  # Calculate cumulative sum of percent
+) / 100
 
-fs["5year"] = np.round(fs["year"] / 5) * 5
+
+fs[fs["year"] >= 2000][
+    [
+        # "x",
+        "year",
+        "fund_type",
+        "percent",
+        "cumulative",
+        # "width",
+        "recategorized",
+        "amount_thousands",
+        # "hoverinfo",
+    ]
+].sort_values("recategorized").to_json(
+    "../endowment-breakdown/data/types-over-time.json",
+    orient="records",
+    lines=False,
+)
+# fs["5year"] = np.round(fs["year"] / 5) * 5
 
 # fs = fs.groupby(["5year", "recategorized"]).agg({"percent": "mean"}).reset_index()
-fs["percent_5yr"] = (
-    fs.groupby("recategorized")["percent"]
-    .apply(lambda x: x.rolling(window=1, min_periods=1).mean())
-    .reset_index(drop=True)
-)
+# fs["percent_5yr"] = (
+#     fs.groupby("recategorized")["percent"]
+#     .apply(lambda x: x.rolling(window=1, min_periods=1).mean())
+#     .reset_index(drop=True)
+# )
+
+fs["alpha"] = np.where(fs["recategorized"] == "Private equities (stocks)", 1, 0.8)
 
 (
-    ggplot(fs[fs["year"] > 2000], aes(x="year", y="percent_5yr"))
-    + geom_line(aes(color="recategorized", line_type="recategorized"))
-    + xlab("5-year moving average")
+    ggplot(fs[fs["year"] >= 2000], aes(x="year", y="percent"))
+    + geom_area(
+        aes(
+            fill="recategorized",
+            # line_type="recategorized",
+            # alpha="alpha"
+        )
+    )
+    + xlab("percent")
 )
 
 
@@ -985,9 +1025,10 @@ def get_schedule_l(ret):
     L = L.get("BusTrInvolveInterestedPrsnGrp", L.get("", {}))
     for x in L:
         x["Year"] = year
-        x["NameOfInterested"] = x["NameOfInterested"].get("BusinessName") or x[
-            "NameOfInterested"
-        ].get("PersonNm")
+        if isinstance(x["NameOfInterested"], dict):
+            x["NameOfInterested"] = x["NameOfInterested"].get("BusinessName") or x[
+                "NameOfInterested"
+            ].get("PersonNm")
         if isinstance(x["NameOfInterested"], dict):
             x["NameOfInterested"] = x["NameOfInterested"].get("BusinessNameLine1") or x[
                 "NameOfInterested"
@@ -1119,20 +1160,20 @@ top5["most_recent_size_millions"] = top5[
 ]  # cite: provided data dictionary
 # cannot fill in portfolio companies from pitchbook because private equity does not report portfolio
 # TODO: some of their own websites do provide specific information: check usage guidelines
-coi23 = coi[coi["Year"] == 2023].merge(
+coi24 = coi[coi["Year"] == 2024].merge(
     top5,
     left_on="NameOfInterested",
     right_on="firm_name",
 )
-coi23["region"] = [
+coi24["region"] = [
     row["fund_focus"] if not isinstance(row["region"], str) else row["region"]
-    for _, row in coi23.iterrows()
+    for _, row in coi24.iterrows()
 ]
-coi23["industry"] = [", ".join(x) for x in coi23["industry"]]
-coi23["region"] = coi23["region"].str.replace(";", ", ")
+coi24["industry"] = [", ".join(x) for x in coi24["industry"]]
+coi24["region"] = coi24["region"].str.replace(";", ", ")
 coi.to_csv("conflicts-of-interest.csv", index=False)
 
-coi23[
+coi24[
     [
         "firm_name",
         "fund_name",
@@ -1142,7 +1183,7 @@ coi23[
         "region",
     ]
 ].to_json(
-    "../endowment-breakdown/data/conflicts-of-interest-2023.json", orient="records"
+    "../endowment-breakdown/data/conflicts-of-interest-2024.json", orient="records"
 )
 
 rename_bonds = {

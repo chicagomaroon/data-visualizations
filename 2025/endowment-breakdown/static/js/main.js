@@ -253,7 +253,7 @@ function stackedAreaChart(data) {
             yref: 'paper'
         });
 
-        const endpoint = filtered.filter((d) => d.year === 2023);
+        const endpoint = filtered.filter((d) => d.year === 2024);
         // Add annotation for the percentage at the end of the area
         annotations.push({
             x: 0.95,
@@ -455,7 +455,7 @@ function createTable(firm_name) {
     d3.select('#table-div')
         .append('figcaption')
         .html(
-            'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">IRS Form 990 filing</a> for fiscal year 2023, Schedule L; Pitchbook'
+            'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">IRS Form 990 filing</a> for fiscal year 2024, Schedule L; Pitchbook'
         )
         .style('width', '100%')
         .style('margin-top', '15px')
@@ -479,12 +479,13 @@ const formatThousands = d3.format(',.0f');
 
 // ------- CONSTANTS ------
 
-// TODO: stacked area for percent over time
-// TODO: x axis and legend for comparing schools
+// TODO: add animation
+// TODO: why are sankey hovers transparent
+// TODO: MOBILE ACCESSIBILITY
+// TODO: data editor style review
+// TODO: finish writingg
 // TODO: round amounts for sector graph (approximate amounts)
 // TODO: line break for long captions?
-// TODO: add links for flowchart
-// TODO: cover image to left for accessibility
 // TODO: hover define the sankey terms
 // TODO: run through colorblind checker
 // TODO: recategorized should match colors of before
@@ -533,11 +534,13 @@ const colorbook = {
         'Private equity': 'rgb(193, 102, 34)',
         'Absolute return': 'rgb(143, 57, 49)',
         'Fixed income': 'rgb(138, 144, 69)',
-        'Natural resources': 'rgb(88, 89, 63)',
+        'Equity oriented': 'rgb(88, 89, 63)',
         'Real estate': 'rgb(21, 95, 131)',
-        'Private debt': 'rgb(53, 14, 32)',
+        'Real assets': 'rgb(53, 14, 32)',
         'Cash equivalents': 'rgb(100, 100, 100)',
-        'Funds in trust': 'rgb(0, 0, 0)'
+        'Funds in trust': 'rgb(0, 0, 0)',
+        'Receivable for investments sold': 'rgb(0, 0, 0)',
+        Diversifying: 'rgb(0, 0, 0)'
     },
     recategorized: {
         'Public equities (stocks)': 'rgb(128, 0, 0)',
@@ -732,9 +735,9 @@ const helper_text = {
 
 const sankeyTitle = 'Revenue, Fiscal Year 2024';
 const sankeyCaption =
-    'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2023</a>';
+    'For clarity, assets from hospital services ($4.2 billion) are excluded. Net assets (total assets minus total liabilities) for FY24 were $245.9 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 const statementCaption =
-    'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2022-2023-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2023</a>';
+    'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 
 // ------------------ SEQUENCE OF ACTIONS ------------------
 
@@ -744,9 +747,18 @@ const sequence = {
     first: function () {
         hideChart('#chart-div');
     },
-    'what-is-endowment': function () {
-        showChart('#chart-div');
+    // 'what-is-endowment': function () {
+    //     showChart('#chart-div');
 
+    //     Plotly.newPlot(
+    //         'chart-div',
+    //         lineChart(),
+    //         createLayout((title = sankeyTitle), (caption = sankeyCaption)),
+    //         config
+    //     );
+    // },
+    tuition: function () {
+        showChart('#chart-div');
         Plotly.newPlot(
             'chart-div',
             sankeyChart('tuition'),
@@ -757,7 +769,7 @@ const sequence = {
     endowment: function () {
         Plotly.newPlot(
             'chart-div',
-            sankeyChart('tuition'),
+            sankeyChart('endowment'),
             createLayout((title = sankeyTitle), (caption = sankeyCaption)),
             config
         );
@@ -795,7 +807,7 @@ const sequence = {
             }),
             (showlegend = false),
             (xaxis = {
-                tickvals: [2000, 2005, 2010, 2015, 2020, 2023],
+                tickvals: [2000, 2005, 2010, 2015, 2020, 2023, 2024],
                 ticks: 'outside',
                 tickwidth: 2,
                 showgrid: false,
@@ -879,6 +891,7 @@ const sequence = {
             config
         );
     },
+    // TODO: let's do a summary instead of just 1 year?
     lake: function () {
         createTable('lake');
     },
@@ -891,7 +904,6 @@ const sequence = {
 
         createTable('carlyle');
     },
-    // TODO: add title and source
     control: function () {
         hideChart('#chart-div');
         showChart('#flowchart');
@@ -948,13 +960,13 @@ async function init() {
     // };
     // hideChart((all = true));
 
-    statements = await fetchData('financial-statement-2023.json');
+    statements = await fetchData('financial-statement-2025.json');
     // console.log(statements);
 
     sec = await fetchData('sec-sectors-2025.json');
     // console.log(sec);
 
-    coi = await fetchData('conflicts-of-interest-2023.json');
+    coi = await fetchData('conflicts-of-interest-2024.json');
     // console.log(coi);
 
     endowments = await fetchData('largest-endowments-2023.json');
@@ -963,8 +975,9 @@ async function init() {
     // console.log('types over time', types_time);
 
     // TODO: another one for endowment size over time
-    createWaypoint('what-is-endowment');
+    // createWaypoint('what-is-endowment');
 
+    createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
     createWaypoint('what-is-it');
