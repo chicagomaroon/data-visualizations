@@ -572,19 +572,6 @@ const hovertemplates = {
 };
 
 const colorbook = {
-    fund_type: {
-        'Global public equities': 'rgb(128, 0, 0)',
-        'Private equity': 'rgb(193, 102, 34)',
-        'Absolute return': 'rgb(143, 57, 49)',
-        'Fixed income': 'rgb(138, 144, 69)',
-        'Equity oriented': 'rgb(88, 89, 63)',
-        'Real estate': 'rgb(21, 95, 131)',
-        'Real assets': 'rgb(53, 14, 32)',
-        'Cash equivalents': 'rgb(100, 100, 100)',
-        'Funds in trust': 'rgb(0, 0, 0)',
-        'Receivable for investments sold': 'rgb(0, 0, 0)',
-        Diversifying: 'rgb(0, 0, 0)'
-    },
     recategorized: {
         'Public equities (stocks)': 'rgb(128, 0, 0)',
         'Private equities (stocks)': 'rgb(193, 102, 34)',
@@ -795,12 +782,12 @@ const sequence = {
             config
         );
     },
-    'what-is-it': function () {
+    breakdown: function () {
         Plotly.newPlot(
             'chart-div',
-            donutChart(statements, 'fund_type'),
+            donutChart(statements, 'recategorized'),
             createLayout(
-                (title = "Types of investments making up UChicago's endowment"),
+                (title = 'Fund types (simplified)'),
                 (caption = statementCaption)
             ),
             config
@@ -982,11 +969,8 @@ async function init() {
     createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
-    createWaypoint('what-is-it');
 
     createWaypoint('breakdown');
-    createWaypoint('amnesty');
-
     createWaypoint('compare-schools');
     createWaypoint('amnesty');
 
