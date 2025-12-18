@@ -106,9 +106,9 @@ function createLayout(
         title: {
             text: title,
             x: 0.03,
-            // font: {
-            //     size: 20
-            // },
+            font: {
+                size: 20
+            },
             subtitle: {
                 text: subtitle,
                 font: {
@@ -274,27 +274,63 @@ function stackedAreaChart(data) {
     return { traces, annotations };
 }
 
-function stackedBarChart(data, variable) {
-    groupedData = groupData(data, variable);
+function circleChart(data, variable) {
+    const groupedData = groupData(data, variable);
 
-    traces = [];
-    groupedData.forEach(function (val) {
-        traces.push({
-            type: 'bar',
-            x: ['Data'],
-            y: [val['x']],
-            name: [val[variable]],
+    // cite: d3 and copilot
+    // Features of the forces applied to the nodes:
+    // Create a force simulation
+
+    groupedData.forEach((d) => {
+        d.x = d.amount_thousands + 10 * Math.random();
+        d.y = d.amount_thousands + 10 * Math.random();
+    });
+
+    width = 2000;
+    height = 1000;
+    const simulation = d3
+        .forceSimulation(groupedData)
+        .force('charge', d3.forceManyBody().strength(1)) // Repulsion between nodes
+        .force(
+            'collide',
+            d3.forceCollide().radius((d) => d.amount_thousands) // Avoid overlapping nodes
+        );
+
+    // Run the simulation synchronously - otherwise weird thing with rendering order
+    for (let i = 0; i < 5; i++) {
+        simulation.tick();
+    }
+    traces = [
+        {
+            type: 'scatter',
+            mode: 'markers+text',
+            x: groupedData.map((val) => Math.tanh(val.x * 0.00001)),
+            y: groupedData.map((val) => Math.tanh(val.y * 0.00001)),
+            name: groupedData.map((val) => val[variable]),
             marker: {
-                color: colorbook[variable][val[variable]]
+                size: groupedData.map((val) => val.amount_thousands ** 0.56),
+                color: groupedData.map(
+                    (val) => colorbook[variable][val[variable]]
+                ),
+                opacity: 1
             },
-            text: [`${val[variable]}: \$${formatThousands(val['x'] * 1000)}`],
-            customdata:
-                'hoverinfo' in groupedData[0] ? [val['hoverinfo']] : ['none'],
-            hoverinfo: 'hoverinfo' in groupedData[0] ? 'text' : 'none',
+            font: {
+                size: 12,
+                color: 'white'
+            },
+            text: groupedData.map(
+                (val) =>
+                    `${val[variable]}:<br>\$${formatThousands(
+                        val.amount_thousands * 1000
+                    )}`
+            ),
+            customdata: groupedData.map((val) => val.hoverinfo),
+            hoverinfo: 'text',
             hoverlabel: hoverlabel,
             hovertemplate: hovertemplates[variable]
-        });
-    });
+        }
+    ];
+    console.log('circle traces', traces);
     return traces;
 }
 
@@ -365,12 +401,8 @@ function sankeyChart(div) {
             value: values,
             hoverinfo: 'none',
             color: x.map((node) =>
-                node == 0.9 ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.08)'
+                node == 1 ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.08)'
             ) // Hide rightmost nodes initially
-
-            // hovertemplate:
-            //     '<br /> <br />    %{target.label}: $%{value:,.00f}M    <br /> <br /><extra></extra>',
-            // hoverlabel: hoverlabel
         }
     };
     return [trace];
@@ -532,8 +564,6 @@ const transition = {
 };
 
 const hovertemplates = {
-    fund_type:
-        ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
     recategorized:
         ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
     sector: ' <br>    %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding
@@ -776,6 +806,38 @@ const sequence = {
             config
         );
     },
+    'compare-schools': function () {
+        Plotly.newPlot(
+            'chart-div',
+            barChart(endowments),
+            createLayout(
+                (title =
+                    '20 largest college endowments in the U.S., Fiscal Year 2023'),
+                (caption =
+                    'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
+                (margin = {
+                    l: 25,
+                    r: 0,
+                    b: 150
+                }),
+                (showlegend = true),
+                (xaxis = {
+                    showgrid: true,
+                    showline: true,
+                    showticklabels: true,
+                    tickfont: {
+                        size: 14
+                    },
+                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
+                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
+                    title: {
+                        text: 'Endowment size (in billions USD)'
+                    }
+                })
+            ),
+            config
+        );
+    },
     amnesty: function () {
         const { traces, annotations } = stackedAreaChart(types_time);
         console.log(annotations);
@@ -814,60 +876,17 @@ const sequence = {
             config
         );
     },
-    breakdown: function () {
-        Plotly.newPlot(
-            'chart-div',
-            donutChart(statements, 'recategorized'),
-            createLayout(
-                (title = 'Fund types (simplified)'),
-                (caption = statementCaption)
-            ),
-            config
-        );
-    },
-    'compare-schools': function () {
-        Plotly.newPlot(
-            'chart-div',
-            barChart(endowments),
-            createLayout(
-                (title =
-                    '20 largest college endowments in the U.S., Fiscal Year 2023'),
-                (caption =
-                    'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
-                (margin = {
-                    l: 25,
-                    r: 0,
-                    b: 150
-                }),
-                (showlegend = true),
-                (xaxis = {
-                    showgrid: true,
-                    showline: true,
-                    showticklabels: true,
-                    tickfont: {
-                        size: 14
-                    },
-                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
-                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
-                    title: {
-                        text: 'Endowment size (in billions USD)'
-                    }
-                })
-            ),
-            config
-        );
-    },
     sec: function () {
         Plotly.newPlot(
             'chart-div',
-            stackedBarChart(sec, 'sector'),
+            circleChart(sec, 'sector'),
             createLayout(
                 (title = 'Industry sectors'),
                 (caption =
                     'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025'),
                 (margin = {
                     l: 25,
-                    r: 400,
+                    r: 25,
                     b: 75
                 })
             ),
@@ -969,6 +988,7 @@ async function init() {
     createWaypoint('amnesty');
 
     createWaypoint('compare-schools');
+    createWaypoint('amnesty');
 
     createWaypoint('sec');
     createWaypoint('lake');
