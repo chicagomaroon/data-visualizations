@@ -331,7 +331,12 @@ function barChart(data) {
 function sankeyChart(div) {
     // Map node names to indices
     const nodeIndex = {};
+    let labels = linksData.map((d) => d[1]);
     labels.forEach((label, i) => (nodeIndex[label] = i));
+    labels = linksData.map((d) => d[1] + '<br>$' + d[2] + 'M');
+
+    const x = linksData.map((d) => d[4]);
+    const y = linksData.map((d) => d[3]);
 
     const sources = linksData.map((d) => nodeIndex[d[0]]);
     const targets = linksData.map((d) => nodeIndex[d[1]]);
@@ -344,9 +349,13 @@ function sankeyChart(div) {
             x: x,
             y: y,
             label: labels,
-            // pad: 15,
+            pad: 15,
             thickness: 20,
-            // line: { color: 'black', width: 0.5 },
+            font: {
+                size: 20,
+                color: 'white'
+            },
+            line: { width: 0 },
             hoverinfo: 'none',
             color: highlights[div]
         },
@@ -354,10 +363,14 @@ function sankeyChart(div) {
             source: sources,
             target: targets,
             value: values,
-            color: 'rgba(0,0,0,0.1)',
-            hovertemplate:
-                '<br /> <br />    %{target.label}: $%{value:,.00f}M    <br /> <br /><extra></extra>',
-            hoverlabel: hoverlabel
+            hoverinfo: 'none',
+            color: x.map((node) =>
+                node == 0.9 ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.08)'
+            ) // Hide rightmost nodes initially
+
+            // hovertemplate:
+            //     '<br /> <br />    %{target.label}: $%{value:,.00f}M    <br /> <br /><extra></extra>',
+            // hoverlabel: hoverlabel
         }
     };
     return [trace];
@@ -564,102 +577,72 @@ const colorbook = {
     }
 };
 
-// Node labels
-const labels = [
-    'Total assets<br>(excluding<br>hospital)', // 0
-    'Revenue with restrictions', // 1
-    'Endowment payout with restrictions', // 2
-    'Private gifts', // 3
-    'Revenue<br>without restrictions<br>(excluding hospital)', // 4
-    'Total operating revenue', // 5
-    'Total nonoperating revenue', // 6
-    'Investment return without restrictions', // 7
-    'Other nonoperating revenue', // 8
-    'Investment return with restrictions', // 9
-    'Net tuition', // 10
-    'Endowment payout<br>without restrictions', // 11
-    'Government grants and contracts', // 12
-    'Private gifts, grants, and contracts', // 13
-    'Other operating revenue' // 14
-];
-
-// Define links as [sourceName, targetName, value]
+// Define links as [sourceName, targetName, value, x, y]
+// Manual x/y positions — tuned to avoid crossings
 const linksData = [
+    [' ', 'Total assets', 3725.4, 0.3, 0],
+    ['Total assets', 'Revenue with restrictions', 338.2, 0.85, 0.25],
     [
-        'Total assets<br>(excluding<br>hospital)',
         'Revenue with restrictions',
-        338.2
+        'Endowment payout with restrictions',
+        0.9,
+        0.97,
+        1
     ],
-    ['Revenue with restrictions', 'Endowment payout with restrictions', 0.9],
-    ['Revenue with restrictions', 'Private gifts', 406.4],
-    ['Revenue with restrictions', 'Investment return with restrictions', 136.9],
+    ['Revenue with restrictions', 'Private gifts', 406.4, 0.9, 1],
     [
-        'Total assets<br>(excluding<br>hospital)',
-        'Revenue<br>without restrictions<br>(excluding hospital)',
-        3387.2
+        'Revenue with restrictions',
+        'Investment return with restrictions',
+        136.9,
+        0.82,
+        1
     ],
+    ['Total assets', 'Revenue<br>without restrictions', 3387.2, 0.42, 0.25],
     [
-        'Revenue<br>without restrictions<br>(excluding hospital)',
+        'Revenue<br>without restrictions',
         'Total operating revenue',
-        3285.9
+        3285.9,
+        0.38,
+        0.5
     ],
     [
-        'Revenue<br>without restrictions<br>(excluding hospital)',
+        'Revenue<br>without restrictions',
         'Total nonoperating revenue',
-        101.4
+        101.4,
+        0.74,
+        0.5
     ],
     [
         'Total nonoperating revenue',
         'Investment return without restrictions',
-        66.0
+        66.0,
+        0.68,
+        1
     ],
-    ['Total nonoperating revenue', 'Other nonoperating revenue', 35.4],
-    ['Total operating revenue', 'Net tuition', 611.3],
-    ['Total operating revenue', 'Government grants and contracts', 561.3],
-    ['Total operating revenue', 'Private gifts, grants, and contracts', 293.2],
+    ['Total nonoperating revenue', 'Other nonoperating revenue', 35.4, 0.73, 1],
+    ['Total operating revenue', 'Net tuition', 611.3, 0.2, 1],
+    [
+        'Total operating revenue',
+        'Government grants and contracts',
+        561.3,
+        0.33,
+        1
+    ],
+    [
+        'Total operating revenue',
+        'Private gifts, grants, and contracts',
+        293.2,
+        0.43,
+        1
+    ],
     [
         'Total operating revenue',
         'Endowment payout<br>without restrictions',
-        565.7
+        565.7,
+        0.53,
+        1
     ],
-    ['Total operating revenue', 'Other operating revenue', 1254.4]
-];
-
-// Manual x/y positions — tuned to avoid crossings
-const x = [
-    0.0, // Total assets (source)
-    0.16, // Revenue with restrictions
-    0.9, // Endowment payout with restrictions
-    0.9, // Private gifts
-    0.16, // Revenue without restrictions
-    0.4, // Total operating revenue
-    0.4, // Total nonoperating revenue
-    0.9, // Investment return without restrictions
-    0.9, // Other nonoperating revenue
-    0.9, // Investment return with restrictions
-    0.9, // Net tuition
-    0.9, // Endowment payout (unrestricted)
-    0.9, // Government grants
-    0.9, // Private gifts, grants, and contracts
-    0.9 // Other operating revenue
-];
-
-const y = [
-    0.5, // Total assets
-    0.8, // Revenue with restrictions
-    0.96, // Endowment payout (restricted)
-    0.85, // Private gifts (restricted)
-    0.3, // Revenue without restrictions
-    0.29, // Total operating revenue
-    0.65, // Total nonoperating revenue
-    0.72, // Investment return (unrestricted)
-    0.75, // Other nonoperating revenue
-    0.92, // Investment return (restricted)
-    0.25, // Net tuition
-    0.38, // Endowment payout (unrestricted)
-    0.51, // Government grants
-    0.61, // Private gifts, grants, and contracts
-    0.05 // Other operating revenue
+    ['Total operating revenue', 'Other operating revenue', 1254.4, 0.001, 1]
 ];
 
 const highlights = {
