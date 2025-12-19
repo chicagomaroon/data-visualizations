@@ -100,6 +100,15 @@ function createLayout(
         tickfont: {
             size: 14
         }
+    },
+    yaxis = {
+        showgrid: false,
+        showline: false,
+        showticklabels: false,
+        ticktext: 'text',
+        tickfont: {
+            size: 14
+        }
     }
 ) {
     return {
@@ -135,15 +144,7 @@ function createLayout(
             family: 'Georgia'
         },
         xaxis: xaxis,
-        yaxis: {
-            showgrid: false,
-            showline: false,
-            showticklabels: false,
-            ticktext: 'text',
-            tickfont: {
-                size: 14
-            }
-        },
+        yaxis: yaxis,
         hovermode: 'closest',
         hoverlabel: {
             bgcolor: 'white'
@@ -173,7 +174,14 @@ function donutChart(data, variable) {
         values: groupedData.map((d) => Math.round((d.x / total) * 100)),
         labels: groupedData.map((d) => d[variable]),
         marker: {
-            colors: groupedData.map((d) => colorbook[variable][d[variable]])
+            colors: groupedData.map((d) => colorbook[variable][d[variable]]),
+            line: {
+                color: 'white',
+                width: 1
+            }
+        },
+        textfont: {
+            size: 14
         },
         text: groupedData.map((d) => d[variable]),
         customdata:
@@ -188,90 +196,40 @@ function donutChart(data, variable) {
     return [trace];
 }
 
-function stackedAreaChart(data) {
+function lollipopChart(data) {
     const traces = [];
-    const annotations = [];
 
-    // console.log(data);
+    for (const year of [2025, 2002]) {
+        console.log(year);
+        let subset = data.filter((d) => d.year === year);
 
-    const types = new Set(data.map((d) => d.recategorized));
-    console.log(types);
+        // Sort the subset by amount_thousands in descending order
+        subset = subset.sort((a, b) => a.amount_thousands - b.amount_thousands);
 
-    types.forEach(function (type) {
-        console.log('type', type);
-        const filtered = data.filter((d) => d.recategorized === type);
-        console.log(filtered);
-
+        const total = subset.reduce(
+            (acc, curr) => acc + curr.amount_thousands,
+            0
+        );
         traces.push({
-            stackgroup: 'one',
-            groupnorm: 'percent',
-            x: filtered.map((d) => d.year),
-            y: filtered.map((d) => d.amount_thousands),
-            fillcolor: colorbook['recategorized'][type],
+            type: 'scatter',
+            x: subset.map((d) => d.amount_thousands / total), // proportion
+            y: subset.map((d) => d.recategorized),
+            mode: 'markers',
+            name: year,
             marker: {
-                color: colorbook['recategorized'][type]
+                color: year > 2010 ? '#800000' : '#d51d1dff',
+                opacity: year > 2010 ? 1 : 0.5,
+                size: 15
             },
-            customdata: filtered.map(() => type),
-            text: type,
+            customdata: subset.map((d) => d.year),
+            text: subset.map((d) => d.recategorized),
             hoverinfo: 'text',
             hoverlabel: hoverlabel,
-            hovertemplate: hovertemplates['stackedArea']
+            hovertemplate: hovertemplates['lollipopChart']
         });
+    }
 
-        const midpoint = filtered.filter((d) => d.year == 2010);
-        console.log('midpoint', midpoint);
-        // Add annotation for the type at the midpoint of the area
-        annotations.push({
-            x: 0.5,
-            y: midpoint.map((d) => d.cumulative)[0] * 1.1 - 0.2,
-            text: type,
-            showarrow: false,
-            font: {
-                size: 12,
-                color: 'white'
-            },
-            xanchor: 'center',
-            yanchor: 'top',
-            xref: 'paper',
-            yref: 'paper'
-        });
-
-        const startpoint = filtered.filter((d) => d.year === 2000);
-        // Add annotation for the percentage at the beginning of the area
-        annotations.push({
-            x: 0.01,
-            y: startpoint.map((d) => d.cumulative)[0] * 0.92,
-            text: `${startpoint.map((d) => d.percent)[0]}%`,
-            showarrow: false,
-            font: {
-                size: 12,
-                color: 'white'
-            },
-            xanchor: 'left',
-            yanchor: 'top',
-            xref: 'paper',
-            yref: 'paper'
-        });
-
-        const endpoint = filtered.filter((d) => d.year === 2024);
-        // Add annotation for the percentage at the end of the area
-        annotations.push({
-            x: 0.95,
-            y: endpoint.map((d) => d.cumulative)[0] * 0.8,
-            text: `${endpoint.map((d) => d.percent)[0]}%`,
-            showarrow: false,
-            font: {
-                size: 12,
-                color: 'white'
-            },
-            xanchor: 'left',
-            yanchor: 'top',
-            xref: 'paper',
-            yref: 'paper'
-        });
-    });
-    console.log('stackedarea', traces);
-    return { traces, annotations };
+    return traces;
 }
 
 function circleChart(data, variable) {
@@ -282,15 +240,13 @@ function circleChart(data, variable) {
     // Create a force simulation
 
     groupedData.forEach((d) => {
-        d.x = d.amount_thousands + 10 * Math.random();
-        d.y = d.amount_thousands + 10 * Math.random();
+        d.x = 1000000;
+        d.y = 1000000;
     });
 
-    width = 2000;
-    height = 1000;
     const simulation = d3
         .forceSimulation(groupedData)
-        .force('charge', d3.forceManyBody().strength(1)) // Repulsion between nodes
+        .force('charge', d3.forceManyBody().strength(-100)) // Repulsion between nodes
         .force(
             'collide',
             d3.forceCollide().radius((d) => d.amount_thousands) // Avoid overlapping nodes
@@ -304,33 +260,39 @@ function circleChart(data, variable) {
         {
             type: 'scatter',
             mode: 'markers+text',
-            x: groupedData.map((val) => Math.tanh(val.x * 0.00001)),
-            y: groupedData.map((val) => Math.tanh(val.y * 0.00001)),
+            x: groupedData.map((val) => val.x),
+            y: groupedData.map((val) => val.y),
             name: groupedData.map((val) => val[variable]),
             marker: {
-                size: groupedData.map((val) => val.amount_thousands ** 0.56),
+                size: groupedData.map((val) => val.amount_thousands / 50),
                 color: groupedData.map(
                     (val) => colorbook[variable][val[variable]]
                 ),
                 opacity: 1
             },
-            font: {
-                size: 12,
-                color: 'white'
-            },
+            paper_bgcolor: 'rgba(187, 13, 13,1)',
+            textfont: { color: 'white', line: { color: 'black' } },
             text: groupedData.map(
                 (val) =>
-                    `${val[variable]}:<br>\$${formatThousands(
-                        val.amount_thousands * 1000
-                    )}`
+                    `${val[variable]}<br>\$${d3.format(',.1f')(
+                        val.amount_thousands / 1000
+                    )}M`
             ),
-            customdata: groupedData.map((val) => val.hoverinfo),
+            customdata: groupedData.map(
+                (val) =>
+                    ' <br>    ' +
+                    val[variable] +
+                    ': $' +
+                    `${formatThousands(val.amount_thousands)}<br>` +
+                    '<b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>' +
+                    val.hoverinfo +
+                    '<br> <extra></extra>'
+            ), // extra tag removes trace label; spaces needed for fake padding
             hoverinfo: 'text',
             hoverlabel: hoverlabel,
-            hovertemplate: hovertemplates[variable]
+            hovertemplate: '%{customdata}'
         }
     ];
-    console.log('circle traces', traces);
     return traces;
 }
 
@@ -566,9 +528,8 @@ const transition = {
 const hovertemplates = {
     recategorized:
         ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
-    sector: ' <br>    %{text}<br>    <b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>%{customdata}<br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding
-    stackedArea:
-        ' <br>    %{y:.0f}% of endowment    <br>    categorized as %{customdata}    <br>    in %{x}    <br>    <extra></extra>' // extra tag removes
+    lollipopChart:
+        ' <br>    %{x:.0%} of endowment    <br>    categorized as %{y} in %{customdata}    <br>    <extra></extra>' // extra tag removes
 };
 
 const colorbook = {
@@ -783,13 +744,24 @@ const sequence = {
         );
     },
     breakdown: function () {
+        layout = createLayout((title = ''), (caption = statementCaption));
         Plotly.newPlot(
             'chart-div',
             donutChart(statements, 'recategorized'),
-            createLayout(
-                (title = 'Fund types (simplified)'),
-                (caption = statementCaption)
-            ),
+            {
+                ...layout,
+                annotations: [
+                    {
+                        font: {
+                            size: 20
+                        },
+                        showarrow: false,
+                        text: 'Total in endowment<br>$11 billion',
+                        x: 0.5,
+                        y: 0.5
+                    }
+                ]
+            },
             config
         );
     },
@@ -826,57 +798,59 @@ const sequence = {
         );
     },
     amnesty: function () {
-        const { traces, annotations } = stackedAreaChart(types_time);
-        console.log(annotations);
-        layout = createLayout(
-            (title = 'Fund types over time'),
-            (caption =
-                'Source: University of Chicago <a href="https://example.com">Financial Data</a>'),
-            (margin = {
-                l: 25,
-                r: 0,
-                b: 100
-            }),
-            (showlegend = false),
-            (xaxis = {
-                tickvals: [2000, 2005, 2010, 2015, 2020, 2023, 2024],
-                ticks: 'outside',
-                tickwidth: 2,
-                showgrid: false,
-                showline: false,
-                showticklabels: true,
-                tickfont: {
-                    size: 14
-                },
-                title: {
-                    text: 'Year'
-                }
-            })
-        );
         Plotly.newPlot(
             'chart-div',
-            traces,
-            {
-                ...layout,
-                annotations: annotations
-            },
+            lollipopChart(types_time),
+            createLayout(
+                (title =
+                    'Change in fund types in the endowment from 2001 to 2025'),
+                (caption =
+                    'Source: University of Chicago <a href="https://example.com">Financial Data</a>'),
+                (margin = {
+                    l: 150,
+                    r: 0,
+                    b: 100
+                }),
+                (showlegend = false),
+                (xaxis = {
+                    range: [0.01, 1],
+                    tickformat: '.0%',
+                    ticks: 'outside',
+                    tickwidth: 2,
+                    showgrid: false,
+                    showline: true,
+                    showticklabels: true,
+                    tickfont: {
+                        size: 14
+                    },
+                    title: {
+                        text: ''
+                    }
+                }),
+                (yaxis = {
+                    showgrid: true,
+                    showline: false,
+                    showticklabels: true
+                })
+            ),
             config
         );
     },
     sec: function () {
+        layout = createLayout(
+            (title = 'Industry sectors'),
+            (caption =
+                'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025'),
+            (margin = {
+                l: 25,
+                r: 25,
+                b: 75
+            })
+        );
         Plotly.newPlot(
             'chart-div',
             circleChart(sec, 'sector'),
-            createLayout(
-                (title = 'Industry sectors'),
-                (caption =
-                    'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025'),
-                (margin = {
-                    l: 25,
-                    r: 25,
-                    b: 75
-                })
-            ),
+            { ...layout, plot_bgcolor: 'rgba(187, 13, 13,1)' },
             config
         );
     },
