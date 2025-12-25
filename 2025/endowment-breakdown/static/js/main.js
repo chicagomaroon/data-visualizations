@@ -141,7 +141,8 @@ function createLayout(
         ],
         barmode: 'stack',
         font: {
-            family: 'Georgia'
+            family: 'Georgia',
+            size: 16
         },
         xaxis: xaxis,
         yaxis: yaxis,
