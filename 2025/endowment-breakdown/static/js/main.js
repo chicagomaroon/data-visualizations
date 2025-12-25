@@ -130,10 +130,10 @@ function createLayout(
                 text: caption,
                 xref: 'paper',
                 yref: 'paper',
-                x: 0,
+                x: 1, // right align
                 y: 0 - margin['b'] / 2000, // move below the x-axis
                 showarrow: false,
-                xanchor: 'left',
+                xanchor: 'right',
                 yanchor: 'top',
                 font: { size: 12, color: 'gray' },
                 align: 'right'
