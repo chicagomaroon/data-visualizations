@@ -853,10 +853,9 @@ async function init() {
     endowments = await fetchData('largest-endowments-2023.json');
 
     types_time = await fetchData('types-over-time.json');
-    // console.log('types over time', types_time);
 
-    // TODO: another one for endowment size over time
-    // createWaypoint('what-is-endowment');
+    sankey_data = await fetchData('sankey.json');
+    // console.log('types over time', types_time);
 
     createWaypoint('tuition');
     createWaypoint('endowment');
