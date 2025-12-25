@@ -284,8 +284,8 @@ function circleChart(data, variable) {
                     ' <br>    ' +
                     val[variable] +
                     ': $' +
-                    `${formatThousands(val.amount_thousands)}<br>` +
-                    '<b>Top five companies by<br>    UChicago-owned shares<br>    March 2025:</b> <br>' +
+                    `${formatThousands(val.amount_thousands)}    <br>` +
+                    '<b>    Top five companies by    <br>    UChicago-owned shares    <br>    March 2025:</b>    <br>' +
                     val.hoverinfo +
                     '<br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
@@ -584,15 +584,14 @@ const colorbook = {
     sector: {
         Technology: 'rgb(128, 0, 0)',
         'Financial Services': 'rgb(193, 102, 34)',
-        'Consumer Cyclical': 'rgb(143, 57, 49)',
-        Healthcare: 'rgb(138, 144, 69)',
-        'Communication Services': 'rgb(88, 89, 63)',
+        Healthcare: 'rgb(19,48,28)',
+        'Communication Services': 'rgb(89,49,95)',
         Industrials: 'rgb(21, 95, 131)',
         'Consumer Defensive': 'rgb(53, 14, 32)',
-        Energy: 'rgb(100, 100, 100)',
-        Utilities: 'rgb(0, 0, 0)',
-        'Basic Materials': 'rgb(128, 0, 0)',
-        'Real Estate': 'rgb(193, 102, 34)'
+        Energy: 'rgb(120,157,74)',
+        Utilities: 'rgb(143, 57, 49)',
+        'Basic Materials': 'rgb(0,115,150)',
+        'Real Estate': 'rgb(164,52,58)'
     }
 };
 
@@ -769,7 +768,7 @@ const sequence = {
         Plotly.newPlot(
             'chart-div',
             circleChart(sec, 'sector'),
-            { ...layout, plot_bgcolor: 'rgba(187, 13, 13,1)' },
+            { ...layout, plot_bgcolor: '#555555' },
             config
         );
     },
