@@ -625,18 +625,16 @@ const sequence = {
     first: function () {
         hideChart('#chart-div');
     },
-    // 'what-is-endowment': function () {
-    //     showChart('#chart-div');
-
-    //     Plotly.newPlot(
-    //         'chart-div',
-    //         lineChart(),
-    //         createLayout((title = sankeyTitle), (caption = sankeyCaption)),
-    //         config
-    //     );
-    // },
-    tuition: function () {
+    'what-is-endowment': function () {
         showChart('#chart-div');
+        Plotly.newPlot(
+            'chart-div',
+            sankeyChart('what-is-endowment'),
+            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
+            config
+        );
+    },
+    tuition: function () {
         Plotly.newPlot(
             'chart-div',
             sankeyChart('tuition'),
