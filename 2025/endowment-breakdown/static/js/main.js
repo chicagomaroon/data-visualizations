@@ -298,28 +298,31 @@ function circleChart(data, variable) {
 
 function barChart(data) {
     // cite: copilot because groupby transform is not working for some reason
-    const privateData = data.filter((d) => d.private);
-    const publicData = data.filter((d) => !d.private);
-    const allSchools = data.map((d) => d.school);
-    const allData = { Private: privateData, Public: publicData };
+    // const privateData = data.filter((d) => d.private);
+    // const publicData = data.filter((d) => !d.private);
+    // const allSchools = data.map((d) => d.school);
+    // const allData = { Private: privateData, Public: publicData };
+
+    data = data.sort((a, b) => a.endowment_dollars - b.endowment_dollars);
 
     const traces = [];
-    Object.entries(allData).forEach(([key, dataset]) => {
-        traces.push({
-            type: 'bar',
-            orientation: 'h',
-            text: allSchools,
-            y: allSchools,
-            x: allSchools.map((school) => {
-                const entry = dataset.find((d) => d.school === school);
-                return entry ? entry.endowment_dollars : 0; // Use 0 if no data for this school
-            }),
-            name: key,
-            marker: { color: key === 'Private' ? '#800000' : '#d51d1dff' },
-            hoverlabel: hoverlabel,
-            hovertemplate:
-                '<br /> <br />    %{y} endowment:    <br />    $%{x:,.0f}    <br /> <br /><extra></extra>'
-        });
+
+    traces.push({
+        type: 'bar',
+        orientation: 'h',
+        text: data.map((d) => d.school),
+        y: data.map((d) => d.school),
+        x: data.map((d) => d.endowment_dollars),
+        // name: key,
+        // marker: { color: key === 'Private' ? '#800000' : '#B46A55' },
+        marker: {
+            color: data.map((d) =>
+                d.school === 'University of Chicago' ? '#800000' : '#B46A55'
+            )
+        },
+        hoverlabel: hoverlabel,
+        hovertemplate:
+            '<br /> <br />    %{y} endowment:    <br />    $%{x:,.0f}    <br /> <br /><extra></extra>'
     });
 
     return traces;
@@ -686,7 +689,7 @@ const sequence = {
             barChart(endowments),
             createLayout(
                 (title =
-                    '20 largest college endowments in the U.S., Fiscal Year 2023'),
+                    'Top 20 largest college endowments in the U.S., Fiscal Year 2023'),
                 (caption =
                     'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
                 (margin = {
@@ -694,7 +697,7 @@ const sequence = {
                     r: 0,
                     b: 150
                 }),
-                (showlegend = true),
+                (showlegend = false),
                 (xaxis = {
                     showgrid: true,
                     showline: true,
@@ -705,7 +708,7 @@ const sequence = {
                     tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
                     ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
                     title: {
-                        text: 'Endowment size (in billions USD)'
+                        text: ''
                     }
                 })
             ),
