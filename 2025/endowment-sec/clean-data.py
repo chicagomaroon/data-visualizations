@@ -662,11 +662,27 @@ sec_2025.to_csv(fp, index=False)
 
 # %% analyze by sector
 
+
+def format_amount(value):
+    """
+    Format a numeric value as K, M, or B depending on its magnitude.
+    """
+    if value >= 1_000_000_000:
+        return f"{value / 1_000_000_000:.1f}B"
+    elif value >= 1_000_000:
+        return f"{value / 1_000_000:.1f}M"
+    elif value >= 1_000:
+        return f"{value / 1_000:.0f}K"
+    else:
+        return f"{value:.0f}"
+
+
 sec_2025["Industry"] = sec_2025["Industry"].replace("missing", None)
 sec_2025["Sector"] = sec_2025["Sector"].replace("missing", None)
 sec_2025["Summary"] = sec_2025["Summary"].replace("missing", None)
 # duplicate column for individual company info
 sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
+sec_2025["ValueDollars"] = sec_2025["ValueDollars"].apply(format_amount)
 sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
 sec_2025["Summary"] = sec_2025["Summary"].fillna("").str.replace("\\d+", "", regex=True)
 
@@ -687,9 +703,9 @@ plot_df = (
     .groupby("Sector")
     .agg(
         {
-            "ValueThousands": "sum",
+            "ValueThousands": lambda x: round(sum(x)),
             # round to the nearest thousand dollars (to indicate uncertainty)
-            "ValueDollars": lambda x: [f"${round(i):,}" for i in x[:5]],
+            "ValueDollars": lambda x: [f"${i}" for i in x[:5]],
             "Summary": lambda x: ",".join(x),
             "Issuer": lambda x: list(x)[:5],
         }
@@ -767,6 +783,9 @@ print(top_words)
 plot_df["TopWords"] = top_words
 plot_df["TopWords"] = [", ".join(x) for x in plot_df["TopWords"]]
 
+
+# add top 5 companies per sector for hover info
+plot_df["AmountLabels"] = (plot_df["ValueThousands"] * 1000).apply(format_amount)
 plot_df["Top5"] = [
     list(zip(row["Issuer"], row["ValueDollars"])) for _, row in plot_df.iterrows()
 ]
@@ -775,26 +794,27 @@ plot_df["Top5"] = ["<br>".join(x) for x in plot_df["Top5"]]
 # plot_df["Top5"] = [f"{row['Sector']}<br>{row['Top5']}" for _, row in plot_df.iterrows()]
 plot_df["y"] = 100
 
-plot_df[["Sector", "ValueThousands", "Top5", "TopWords", "y"]].rename(
+plot_df[["Sector", "ValueThousands", "Top5", "TopWords", "y", "AmountLabels"]].rename(
     columns={
         "Sector": "sector",
         "Top5": "hoverinfo",
         "ValueThousands": "amount_thousands",
         "TopWords": "keywords",
+        "AmountLabels": "amount_display",
     }
 ).to_json("../endowment-breakdown/data/sec-sectors-2025.json", orient="records")
 
 # of each of these top sectors, what are the individual companies and keywords
 
 
-(
-    ggplot(
-        plot_df[plot_df["ValueThousands"] > 1],
-        aes("reorder(Sector, ValueThousands)", "ValueThousands"),
-    )
-    + geom_col()
-    + coord_flip()
-)
+# (
+#     ggplot(
+#         plot_df[plot_df["ValueThousands"] > 1],
+#         aes("reorder(Sector, ValueThousands)", "ValueThousands"),
+#     )
+#     + geom_col()
+#     + coord_flip()
+# )
 
 print(plot_df["TopWords"])
 print(plot_df["TopWords"][7])
