@@ -190,7 +190,12 @@ function donutChart(data, variable) {
                 : groupedData.map((d) => '$' + formatThousands(d['x'] * 1000)),
         hoverinfo: 'text',
         hoverlabel: hoverlabel,
-        hovertemplate: hovertemplates[variable]
+        hovertemplate: groupedData.map(
+            (d) =>
+                '    <br>    ' +
+                helper_text[d[variable]] +
+                '    <br>    <extra></extra>'
+        )
     };
 
     return [trace];
@@ -564,13 +569,6 @@ const config = {
 const transition = {
     duration: 400,
     easing: 'linear'
-};
-
-const hovertemplates = {
-    recategorized:
-        ' <br>    %{text}    <br>    %{customdata}    <br> <extra></extra>', // extra tag removes trace label; spaces needed for fake padding,
-    lollipopChart:
-        ' <br>    %{x:.0%} of endowment    <br>    categorized as %{y} in %{customdata}    <br>    <extra></extra>' // extra tag removes
 };
 
 const colorbook = {
