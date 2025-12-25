@@ -669,6 +669,7 @@ const sequence = {
             {
                 ...layout,
                 annotations: [
+                    layout['annotations'][0], // keep caption
                     {
                         font: {
                             size: 20
@@ -677,7 +678,7 @@ const sequence = {
                         text: 'Total in endowment<br>$11 billion',
                         x: 0.5,
                         y: 0.5
-                    }
+                    } // add title in center
                 ]
             },
             config
