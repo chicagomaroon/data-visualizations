@@ -855,6 +855,7 @@ async function init() {
     sankey_data = await fetchData('sankey.json');
     // console.log('types over time', types_time);
 
+    createWaypoint('what-is-endowment');
     createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
