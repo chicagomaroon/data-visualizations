@@ -1,0 +1,17 @@
+[
+    {"from": " ", "to": "Total assets", "amount": 3725.4, "y": 0.3, "x": 0},
+    {"from": "Total assets", "to": "Restricted<br>revenue", "amount": 338.2, "y": 0.85, "x": 0.2},
+    {"from": "Restricted<br>revenue", "to": "Restricted endowment payout", "amount": 0.9, "y": 0.97, "x": 1},
+    {"from": "Restricted<br>revenue", "to": "Private gifts", "amount": 406.4, "y": 0.9, "x": 1},
+    {"from": "Restricted<br>revenue", "to": "Restricted investment return", "amount": 136.9, "y": 0.82, "x": 1},
+    {"from": "Total assets", "to": "Unrestricted<br>revenue", "amount": 3387.2, "y": 0.42, "x": 0.2},
+    {"from": "Unrestricted<br>revenue", "to": "Total<br>operating revenue", "amount": 3285.9, "y": 0.38, "x": 0.4},
+    {"from": "Unrestricted<br>revenue", "to": "Total<br>nonoperating revenue", "amount": 101.4, "y": 0.74, "x": 0.4},
+    {"from": "Total<br>nonoperating revenue", "to": "Unrestricted investment return", "amount": 66.0, "y": 0.68, "x": 1},
+    {"from": "Total<br>nonoperating revenue", "to": "Other nonoperating revenue", "amount": 35.4, "y": 0.73, "x": 1},
+    {"from": "Total<br>operating revenue", "to": "Net tuition", "amount": 611.3, "y": 0.2, "x": 1},
+    {"from": "Total<br>operating revenue", "to": "Government grants and contracts", "amount": 561.3, "y": 0.33, "x": 1},
+    {"from": "Total<br>operating revenue", "to": "Private gifts, grants, and contracts", "amount": 293.2, "y": 0.43, "x": 1},
+    {"from": "Total<br>operating revenue", "to": "Unrestricted<br>endowment payout", "amount": 565.7, "y": 0.53, "x": 1},
+    {"from": "Total<br>operating revenue","to":  "Other operating revenue", "amount":1254.4,  "y": 0.001, "x": 1}
+]

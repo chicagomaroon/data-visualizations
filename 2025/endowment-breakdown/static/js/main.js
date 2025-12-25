@@ -327,18 +327,60 @@ function barChart(data) {
 
 // cite: translated from highcharts with chatgpt
 function sankeyChart(div) {
+    let sankey_data_filtered = sankey_data;
+    // if (div === 'what-is-endowment') {
+    //     sankey_data_filtered = sankey_data.filter((d) => d.x < 0.9);
+    // }
+
     // Map node names to indices
     const nodeIndex = {};
-    let labels = linksData.map((d) => d[1]);
+    let labels = sankey_data_filtered.map((d) => d.to);
     labels.forEach((label, i) => (nodeIndex[label] = i));
-    labels = linksData.map((d) => d[1] + '<br>$' + d[2] + 'M');
+    labels = sankey_data_filtered.map(
+        (d) => '<b>' + d.to + '</b><br>$' + d.amount + 'M'
+    );
 
-    const x = linksData.map((d) => d[4]);
-    const y = linksData.map((d) => d[3]);
+    const x = sankey_data_filtered.map((d) =>
+        div === 'what-is-endowment1' ? d.x * 2.5 : d.x
+    );
+    const y = sankey_data_filtered.map((d) => d.y);
 
-    const sources = linksData.map((d) => nodeIndex[d[0]]);
-    const targets = linksData.map((d) => nodeIndex[d[1]]);
-    const values = linksData.map((d) => d[2]);
+    // Define colors for nodes based on the div and node content
+    const nodes_color_map = {
+        'what-is-endowment': x.map(() => '#B46A55'),
+        tuition: sankey_data_filtered.map((d) =>
+            d.to.includes('tuition') ? '#800000' : '#B46A55'
+        ),
+        endowment: sankey_data_filtered.map((d) =>
+            d.to.includes('endowment') ? '#800000' : '#B46A55'
+        ),
+        restricted: sankey_data_filtered.map((d) =>
+            d.to.includes('Restricted') || d.to == 'Private gifts'
+                ? '#800000'
+                : '#B46A55'
+        )
+    };
+
+    const links_color_map = {
+        'what-is-endowment': x.map(() => '#EEEEEE'),
+        tuition: sankey_data_filtered.map((d) =>
+            d.to.includes('tuition') ? '#CCCCCC' : '#EEEEEE'
+        ),
+        endowment: sankey_data_filtered.map((d) =>
+            d.to.includes('endowment') ? '#CCCCCC' : '#EEEEEE'
+        ),
+        restricted: sankey_data_filtered.map((d) =>
+            d.to.includes('Restricted') || d.to == 'Private gifts'
+                ? '#CCCCCC'
+                : '#EEEEEE'
+        )
+    };
+
+    // console.log(
+    //     labels.map((label) =>
+    //         label.includes('endowment') ? label + '#DDDDDD' : '#EEEEEE'
+    //     )
+    // );
 
     const trace = {
         type: 'sankey',
@@ -349,24 +391,19 @@ function sankeyChart(div) {
             label: labels,
             pad: 15,
             thickness: 20,
-            font: {
-                size: 20,
-                color: 'white'
-            },
             line: { width: 0 },
             hoverinfo: 'none',
-            color: highlights[div]
+            color: nodes_color_map[div]
         },
         link: {
-            source: sources,
-            target: targets,
-            value: values,
+            source: sankey_data_filtered.map((d) => nodeIndex[d.from]),
+            target: sankey_data_filtered.map((d) => nodeIndex[d.to]),
+            value: sankey_data_filtered.map((d) => d.amount),
             hoverinfo: 'none',
-            color: x.map((node) =>
-                node == 1 ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.08)'
-            ) // Hide rightmost nodes initially
+            color: links_color_map[div]
         }
     };
+
     return [trace];
 }
 
@@ -553,128 +590,6 @@ const colorbook = {
         'Basic Materials': 'rgb(128, 0, 0)',
         'Real Estate': 'rgb(193, 102, 34)'
     }
-};
-
-// Define links as [sourceName, targetName, value, x, y]
-// Manual x/y positions — tuned to avoid crossings
-const linksData = [
-    [' ', 'Total assets', 3725.4, 0.3, 0],
-    ['Total assets', 'Revenue with restrictions', 338.2, 0.85, 0.25],
-    [
-        'Revenue with restrictions',
-        'Endowment payout with restrictions',
-        0.9,
-        0.97,
-        1
-    ],
-    ['Revenue with restrictions', 'Private gifts', 406.4, 0.9, 1],
-    [
-        'Revenue with restrictions',
-        'Investment return with restrictions',
-        136.9,
-        0.82,
-        1
-    ],
-    ['Total assets', 'Revenue<br>without restrictions', 3387.2, 0.42, 0.25],
-    [
-        'Revenue<br>without restrictions',
-        'Total operating revenue',
-        3285.9,
-        0.38,
-        0.5
-    ],
-    [
-        'Revenue<br>without restrictions',
-        'Total nonoperating revenue',
-        101.4,
-        0.74,
-        0.5
-    ],
-    [
-        'Total nonoperating revenue',
-        'Investment return without restrictions',
-        66.0,
-        0.68,
-        1
-    ],
-    ['Total nonoperating revenue', 'Other nonoperating revenue', 35.4, 0.73, 1],
-    ['Total operating revenue', 'Net tuition', 611.3, 0.2, 1],
-    [
-        'Total operating revenue',
-        'Government grants and contracts',
-        561.3,
-        0.33,
-        1
-    ],
-    [
-        'Total operating revenue',
-        'Private gifts, grants, and contracts',
-        293.2,
-        0.43,
-        1
-    ],
-    [
-        'Total operating revenue',
-        'Endowment payout<br>without restrictions',
-        565.7,
-        0.53,
-        1
-    ],
-    ['Total operating revenue', 'Other operating revenue', 1254.4, 0.001, 1]
-];
-
-const highlights = {
-    tuition: [
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#d51d1dff',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000'
-    ],
-    endowment: [
-        '#800000',
-        '#800000',
-        '#d51d1dff',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#d51d1dff',
-        '#800000',
-        '#800000',
-        '#800000'
-    ],
-    restricted: [
-        '#800000',
-        '#d51d1dff',
-        '#d51d1dff',
-        '#d51d1dff',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#d51d1dff',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000',
-        '#800000'
-    ]
 };
 
 const helper_text = {
