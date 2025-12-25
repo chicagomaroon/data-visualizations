@@ -199,7 +199,7 @@ function donutChart(data, variable) {
 function lollipopChart(data) {
     const traces = [];
 
-    for (const year of [2025, 2002]) {
+    for (const year of [2025, 2005]) {
         console.log(year);
         let subset = data.filter((d) => d.year === year);
 
@@ -225,7 +225,8 @@ function lollipopChart(data) {
             text: subset.map((d) => d.recategorized),
             hoverinfo: 'text',
             hoverlabel: hoverlabel,
-            hovertemplate: hovertemplates['lollipopChart']
+            hovertemplate:
+                ' <br>    %{x:.0%} of endowment    <br>    categorized as %{y} in %{customdata}    <br>    <extra></extra>' // extra tag removes
         });
     }
 
@@ -721,15 +722,15 @@ const sequence = {
             lollipopChart(types_time),
             createLayout(
                 (title =
-                    'Change in fund types in the endowment from 2001 to 2025'),
+                    'Change in fund types in the endowment in the last 20 years'),
                 (caption =
-                    'Source: University of Chicago <a href="https://example.com">Financial Data</a>'),
+                    'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
                 (margin = {
-                    l: 150,
+                    l: 200,
                     r: 0,
                     b: 100
                 }),
-                (showlegend = false),
+                (showlegend = true),
                 (xaxis = {
                     range: [0.01, 1],
                     tickformat: '.0%',
