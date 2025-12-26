@@ -1,12 +1,14 @@
 <svg
     width="1000"
-    height="90vh"
-    viewBox="0 0 1000 2000"
+    height="95vh"
+    viewBox="10 625 1000 1230"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    id="coi-flowchart"
+    style="position:absolute; top:0; left: 0; display: none;"
 >
     <style>
-        text {
+        #coi-flowchart text {
             fill: black;
             font-family: 'Open Sans', sans-serif;
             font-weight: bold;
@@ -14,19 +16,19 @@
             letter-spacing: -0.011em;
             white-space: pre;
         }
-        rect {
+        #coi-flowchart rect {
             rx: 300;
         }
-        rect text {
+        #coi-flowchart rect text {
             fill: white;
         }
     </style>
     <a
         target="_blank"
         href="https://projects.propublica.org/nonprofits/organizations/362177139"
-        id="individual-firms"
     >
-        <rect x="247" y="1521" width="330" height="330" fill="#800000" />
+        <rect x="247" y="1521" width="330" height="330" fill="#800000" 
+        id="flowchart-individual-firms"/>
         <text>
             <tspan x="388" y="1556" fill="white">Asset</tspan>
             <tspan x="338" y="1576" fill="white">management firms</tspan>
@@ -54,9 +56,9 @@
     <a
         target="_blank"
         href="https://projects.propublica.org/nonprofits/organizations/362177139"
-        id="individual-trustees"
     >
-        <rect x="247" y="748" width="330" height="330" fill="#800000" />
+        <rect x="247" y="748" width="330" height="330" fill="#800000"
+        id="flowchart-individual-trustees" />
         <text>
             <tspan x="342" y="793" fill="white">Board of Trustees</tspan>
         </text>
