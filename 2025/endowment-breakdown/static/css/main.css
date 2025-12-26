@@ -11,13 +11,6 @@ body {
 
 /* text */
 
-.flowchart {
-    fill: #ffffff;
-    font-family: 'Open Sans';
-    font-size: 16;
-    font-weight: 600;
-}
-
 table {
     border-radius: 5px;
 }
