@@ -161,8 +161,8 @@ function createLayout(
     };
 }
 
-function donutChart(data, variable) {
-    groupedData = groupData(data, variable);
+function donutChart(data) {
+    groupedData = groupData(data, 'recategorized');
 
     // cite: copilot
     const total = groupedData
@@ -173,28 +173,22 @@ function donutChart(data, variable) {
         type: 'pie',
         hole: 0.5,
         values: groupedData.map((d) => Math.round((d.x / total) * 100)),
-        labels: groupedData.map((d) => d[variable]),
+        text: groupedData.map((d) => d.recategorized),
         marker: {
-            colors: groupedData.map((d) => colorbook[variable][d[variable]]),
+            colors: groupedData.map(
+                (d) => colorbook['recategorized'][d.recategorized]
+            ),
             line: {
                 color: 'white',
                 width: 1
             }
         },
-        textfont: {
-            size: 14
-        },
-        text: groupedData.map((d) => d[variable]),
-        customdata:
-            'hoverinfo' in groupedData[0]
-                ? groupedData.map((d) => d['hoverinfo'])
-                : groupedData.map((d) => '$' + formatThousands(d['x'] * 1000)),
         hoverinfo: 'text',
         hoverlabel: hoverlabel,
         hovertemplate: groupedData.map(
             (d) =>
                 '    <br>    ' +
-                helper_text[d[variable]] +
+                helper_text[d.recategorized] +
                 '    <br>    <extra></extra>'
         )
     };
@@ -279,18 +273,17 @@ function circleChart(data, variable) {
             },
             paper_bgcolor: 'rgba(187, 13, 13,1)',
             textfont: { color: 'white', line: { color: 'black' } },
-            text: groupedData.map(
-                (val) =>
-                    `${val[variable]}<br>\$${d3.format(',.1f')(
-                        val.amount_thousands / 1000
-                    )}M`
+            text: groupedData.map((val) =>
+                val.amount_thousands < 3000
+                    ? val[variable]
+                    : `${val[variable]}<br>\$${val.amount_display}`
             ),
             customdata: groupedData.map(
                 (val) =>
                     ' <br>    ' +
                     val[variable] +
                     ': $' +
-                    `${formatThousands(val.amount_thousands)}    <br>` +
+                    `${val.amount_display}    <br>` +
                     '<b>    Top five companies by    <br>    UChicago-owned shares    <br>    March 2025:</b>    <br>' +
                     val.hoverinfo +
                     '<br> <extra></extra>'
@@ -516,8 +509,8 @@ const transition = {
 
 const colorbook = {
     recategorized: {
-        'Public equities (stocks)': 'rgb(128, 0, 0)',
-        'Private equities (stocks)': 'rgb(193, 102, 34)',
+        'Public equities<br>(stocks)': 'rgb(128, 0, 0)',
+        'Private equities<br>(stocks)': 'rgb(193, 102, 34)',
         Bonds: 'rgb(138, 144, 69)',
         'Hedge funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
@@ -583,12 +576,48 @@ const sequence = {
             createLayout((title = sankeyTitle), (caption = sankeyCaption)),
             config
         );
+
+        // // Animate the last layer of nodes
+        // const lastLayerIndices = sankey_data
+        //     .map((d, i) => (d.x === 1 ? i : null))
+        //     .filter((i) => i !== null);
+
+        // const animationFrames = [];
+        // for (let step = 0; step <= 10; step++) {
+        //     const newX = x.map((val, i) =>
+        //         lastLayerIndices.includes(i) ? val + step * 0.05 : val
+        //     );
+        //     animationFrames.push({
+        //         data: [
+        //             {
+        //                 node: {
+        //                     x: newX
+        //                 }
+        //             }
+        //         ]
+        //     });
+        // }
+
+        // Plotly.animate('chart-div', animationFrames, {
+        //     frame: { duration: 500, redraw: true },
+        //     transition: { duration: 300 }
+        // });
     },
     endowment: function () {
+        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
         Plotly.newPlot(
             'chart-div',
             sankeyChart('endowment'),
-            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
+            {
+                ...layout,
+                font: {
+                    size: 16,
+                    family: 'Georgia',
+                    color: sankey_data.map((d) =>
+                        d.to.includes('endowment') ? '#000000' : '#DDDDDD'
+                    )
+                }
+            },
             config
         );
     },
@@ -604,7 +633,7 @@ const sequence = {
         layout = createLayout((title = ''), (caption = statementCaption));
         Plotly.newPlot(
             'chart-div',
-            donutChart(statements, 'recategorized'),
+            donutChart(statements),
             {
                 ...layout,
                 annotations: [
@@ -695,6 +724,7 @@ const sequence = {
         );
     },
     sec: function () {
+        d3.select('#chart-div').html(''); // clear previous chart
         layout = createLayout(
             (title = 'Industry sectors'),
             (caption =
