@@ -775,7 +775,7 @@ const sequence = {
         drawFlowchart((show = ['coi']), (hide = ['screen', 'arrows']));
     },
     pimco: function () {
-        drawFlowchart((show = ['screen', 'arrows']));
+        drawFlowchart((show = ['control', 'coi', 'screen', 'arrows']));
     },
     conclusion: function () {
         d3.select('#chart-div').html(''); // clear previous chart
