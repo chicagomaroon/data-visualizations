@@ -32,14 +32,14 @@
     <rect x="145" width="822" height="822" style="fill: #e3bfb5" />
     <text x="625" y="222">University of Chicago</text>
     <a target="_blank" href="" id="office-of-investments">
-        <rect x="343" y="615" width="138" height="138" fill="#800000" />
+        <rect x="343" y="615" width="138" height="138"/>
         <text fill="white">
             <tspan x="378" y="681">Office of</tspan>
             <tspan x="362" y="699">Investments</tspan>
         </text>
     </a>
     <a target="_blank" href="" id="university-president">
-        <rect x="225" y="433" width="138" height="138" fill="#800000" />
+        <rect x="225" y="433" width="138" height="138"/>
         <text fill="white">
             <tspan x="251" y="499">University</tspan>
             <tspan x="256" y="517">President</tspan>
@@ -50,7 +50,7 @@
         href="https://sof.uchicago.edu/council-of-the-university-senate/"
         id="faculty-senate"
     >
-        <rect x="608" y="433" width="138" height="138" fill="#800000" />
+        <rect x="608" y="433" width="138" height="138"/>
         <text fill="white">
             <tspan x="646" y="499">Faculty</tspan>
             <tspan x="650" y="517">Senate</tspan>
@@ -61,20 +61,20 @@
         href="https://gc.uchicago.edu/student-perspectives-series"
         id="graduate-council"
     >
-        <rect x="755" y="433" width="138" height="138" fill="#800000" />
+        <rect x="755" y="433" width="138" height="138"/>
         <text fill="white">
             <tspan x="785" y="499">Graduate</tspan>
             <tspan x="794" y="517">Council</tspan>
         </text>
     </a>
     <a target="_blank" href="" id="donors">
-        <rect y="234" width="138" height="138" fill="#800000" />
+        <rect y="234" width="138" height="138"/>
         <text fill="white">
             <tspan x="40" y="309">Donors</tspan>
         </text>
     </a>
     <a target="_blank" href="http://ac.uchicago.edu" id="advisory-councils">
-        <rect x="461" y="433" width="138" height="138" fill="#800000" />
+        <rect x="461" y="433" width="138" height="138"/>
         <text fill="white">
             <tspan x="493" y="499">Advisory</tspan>
             <tspan x="497" y="517">Councils</tspan>
@@ -85,14 +85,14 @@
         href="https://chicagomaroon.com/13695/news/the-view-from-the-top-at-the-u-of-c/"
         id="board-of-trustees"
     >
-        <rect x="341" y="234" width="138" height="138" fill="#800000" />
+        <rect x="341" y="234" width="138" height="138"/>
         <text fill="white">
             <tspan x="374" y="300">Board of</tspan>
             <tspan x="376" y="318">Trustees</tspan>
         </text>
     </a>
     <a target="_blank" href="" id="asset-management-firms">
-        <rect x="343" y="824" width="138" height="138" fill="#800000" />
+        <rect x="343" y="824" width="138" height="138"/>
         <text fill="white">
             <tspan x="390" y="881">Asset</tspan>
             <tspan x="359" y="899">management</tspan>
