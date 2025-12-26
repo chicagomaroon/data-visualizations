@@ -1,9 +1,10 @@
 <svg
     width="967"
-    height="1152"
+    height="90vh"
     viewBox="0 0 967 1152"
-    fill="none"
+    fill="white"
     xmlns="http://www.w3.org/2000/svg"
+    style="margin-top: 10vh;"
 >
     <style>
         text {
@@ -29,55 +30,83 @@
         }
     </style>
     <rect x="145" width="822" height="822" style="fill: #e3bfb5" />
-    <text x="625" y="222" xml:space="preserve">University of Chicago</text>
-    <rect x="343" y="615" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="378" y="681">Office of</tspan>
-        <tspan x="362" y="699">Investments</tspan>
-    </text>
-    <rect x="225" y="433" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="251" y="499">University</tspan>
-        <tspan x="256" y="517">President</tspan>
-    </text>
-    <rect x="608" y="433" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="646" y="499">Faculty</tspan>
-        <tspan x="650" y="517">Senate</tspan>
-    </text>
-    <rect x="755" y="433" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="785" y="499">Graduate</tspan>
-        <tspan x="794" y="517">Council</tspan>
-    </text>
-    <rect y="234" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="40" y="309">Donors</tspan>
-    </text>
-    <rect x="461" y="433" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="493" y="499">Advisory</tspan>
-        <tspan x="497" y="517">Councils</tspan>
-    </text>
-    <rect x="341" y="234" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="374" y="300">Board of</tspan>
-        <tspan x="376" y="318">Trustees</tspan>
-    </text>
-    <rect x="343" y="824" width="138" height="138" fill="#800000" />
-    <text fill="white" xml:space="preserve">
-        <tspan x="390" y="881">Asset</tspan>
-        <tspan x="359" y="899">management</tspan>
-        <tspan x="391" y="917">firms</tspan>
-    </text>
+    <text x="625" y="222">University of Chicago</text>
+    <a target="_blank" href="" id="office-of-investments">
+        <rect x="343" y="615" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="378" y="681">Office of</tspan>
+            <tspan x="362" y="699">Investments</tspan>
+        </text>
+    </a>
+    <a target="_blank" href="" id="university-president">
+        <rect x="225" y="433" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="251" y="499">University</tspan>
+            <tspan x="256" y="517">President</tspan>
+        </text>
+    </a>
+    <a
+        target="_blank"
+        href="https://sof.uchicago.edu/council-of-the-university-senate/"
+        id="faculty-senate"
+    >
+        <rect x="608" y="433" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="646" y="499">Faculty</tspan>
+            <tspan x="650" y="517">Senate</tspan>
+        </text>
+    </a>
+    <a
+        target="_blank"
+        href="https://gc.uchicago.edu/student-perspectives-series"
+        id="graduate-council"
+    >
+        <rect x="755" y="433" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="785" y="499">Graduate</tspan>
+            <tspan x="794" y="517">Council</tspan>
+        </text>
+    </a>
+    <a target="_blank" href="" id="donors">
+        <rect y="234" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="40" y="309">Donors</tspan>
+        </text>
+    </a>
+    <a target="_blank" href="http://ac.uchicago.edu" id="advisory-councils">
+        <rect x="461" y="433" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="493" y="499">Advisory</tspan>
+            <tspan x="497" y="517">Councils</tspan>
+        </text>
+    </a>
+    <a
+        target="_blank"
+        href="https://chicagomaroon.com/13695/news/the-view-from-the-top-at-the-u-of-c/"
+        id="board-of-trustees"
+    >
+        <rect x="341" y="234" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="374" y="300">Board of</tspan>
+            <tspan x="376" y="318">Trustees</tspan>
+        </text>
+    </a>
+    <a target="_blank" href="" id="asset-management-firms">
+        <rect x="343" y="824" width="138" height="138" fill="#800000" />
+        <text fill="white">
+            <tspan x="390" y="881">Asset</tspan>
+            <tspan x="359" y="899">management</tspan>
+            <tspan x="391" y="917">firms</tspan>
+        </text>
+    </a>
     <path
         d="M295 574.5C295 573 294 573 294 573.5C293 573 293 573 293 574.5H294H295ZM318 594C319 594 319 593 319 593C319 592 319 592 318 592V593V594ZM387 592C386 592 386 592 386 593C386 593 386 594 387 594V593V592ZM411 612.207C411 612 412 612 412 612.207L419 605.843C419 605 419 604 419 604.429C418 604 418 604 417 604.429L412 610.086L406 604.429C405 604 405 604 404 604.429C404 604 404 605 404 605.843L411 612.207ZM312 593V594H318.5V593V592H312.5V593ZM387 593V594H393.5V593V592H387.5V593ZM393 593V594C403 594 411 601 411 611.5H412H413C413 600 404 592 393 592V593ZM294 574.5H293C293 585 301 594 312 594V593V592C302 592 295 584 295 574.5H294Z"
     />
-    <text x="326" y="598" xml:space="preserve">directs</text>
+    <text x="326" y="598">directs</text>
     <path
         d="M70 375.5C70 374 69 374 69 374.5C68 374 68 374 68 375.5H69H70ZM68 510.25C68 510 68 511 69 511.25C69 511 70 510 70 510.25H69H68ZM70 549.25C70 548 69 548 69 548.25C68 548 68 548 68 549.25H69H70ZM340 684.707C340 684 340 683 340 683.293L333 676.929C333 676 332 676 332 676.929C332 677 332 677 332 678.343L338 684L332 689.657C332 690 332 690 332 691.071C332 691 333 691 333 691.071L340 684.707ZM69 375.5H68V510.25H69H70V375.5H69ZM69 549.25H68V660H69H70V549.25H69ZM93 684V685H339.5V684V683H93V684ZM69 660H68C68 673 79 685 93 685V684V683C80 683 70 672 70 660H69Z"
     />
-    <text x="36" y="535" xml:space="preserve">restricts</text>
+    <text x="36" y="535">restricts</text>
     <path
         d="M411 375.5C411 374 410 374 410 374.5C409 374 409 374 409 375.5H410H411ZM414 403.5C415 403 415 403 415 402.5C415 401 415 401 414 401.5V402.5V403.5ZM513 401.5C513 401 512 401 512 402.5C512 403 513 403 513 403.5V402.5V401.5ZM823 430.207C823 430 824 430 824 430.207L831 423.843C831 423 831 422 831 422.429C830 422 830 422 829 422.429L824 428.086L818 422.429C817 422 817 422 816 422.429C816 422 816 423 816 423.843L823 430.207ZM410 375.5H409V397.933H410H411V375.5H410ZM513 402.5V403.5H800V402.5V401.5H513.567V402.5ZM824 426.5H823V429.5H824H825V426.5H824ZM800 402.5V403.5C812 403 823 413 823 426.5H824H825C825 412 813 401 800 401.5V402.5ZM410 397.933H409C409 401 411 403 414 403.5V402.5V401.5C412 401 411 399 411 397.933H410Z"
     />
@@ -87,15 +116,15 @@
     <path
         d="M411 375.5C411 374 410 374 410 374.5C409 374 409 374 409 375.5H410H411ZM402 401.5C401 401 401 401 401 402.5C401 403 401 403 402 403.5V402.5V401.5ZM301 403.5C302 403 302 403 302 402.5C302 401 302 401 301 401.5V402.5V403.5ZM293 430.207C293 430 294 430 294 430.207L301 423.843C301 423 301 422 301 422.429C300 422 300 422 299 422.429L294 428.086L288 422.429C287 422 287 422 286 422.429C286 422 286 423 286 423.843L293 430.207ZM410 375.5H409V395H410H411V375.5H410ZM294 410H293V429.5H294H295V410H294ZM301 402.5V401.5C296 401 293 405 293 410H294H295C295 406 297 403 301 403.5V402.5ZM410 395H409C409 398 406 401 402 401.5V402.5V403.5C407 403 411 399 411 395H410Z"
     />
-    <text x="309" y="408" xml:space="preserve">supervises</text>
+    <text x="309" y="408">supervises</text>
     <path
         d="M411 375.5C411 374 410 374 410 374.5C409 374 409 374 409 375.5H410H411ZM409 491.348C409 491 409 492 410 492.348C410 492 411 491 411 491.348H410H409ZM413 530.348C413 529 412 529 412 529.348C411 529 411 529 411 530.348H412H413ZM411 612.207C411 612 412 612 412 612.207L419 605.843C419 605 419 604 419 604.429C418 604 418 604 417 604.429L412 610.086L406 604.429C405 604 405 604 404 604.429C404 604 404 605 404 605.843L411 612.207ZM410 375.5H409V491.348H410H411V375.5H410ZM412 530.348H411V611.5H412H413V530.348H412Z"
     />
-    <text x="385" y="516" xml:space="preserve">directs</text>
+    <text x="385" y="516">directs</text>
     <path
         d="M411 375.5C411 374 410 374 410 374.5C409 374 409 374 409 375.5H410H411ZM414 403.5C415 403 415 403 415 402.5C415 401 415 401 414 401.5V402.5V403.5ZM513 401.5C513 401 512 401 512 402.5C512 403 513 403 513 403.5V402.5V401.5ZM529 430.207C529 430 530 430 530 430.207L537 423.843C537 423 537 422 537 422.429C536 422 536 422 535 422.429L530 428.086L524 422.429C523 422 523 422 522 422.429C522 422 522 423 522 423.843L529 430.207ZM410 375.5H409V397.933H410H411V375.5H410ZM530 418.933H529V429.5H530H531V418.933H530ZM513 402.5V403.5C522 403 529 410 529 418.933H530H531C531 409 523 401 513 401.5V402.5ZM410 397.933H409C409 401 411 403 414 403.5V402.5V401.5C412 401 411 399 411 397.933H410Z"
     />
-    <text x="422" y="408" xml:space="preserve">advised by</text>
+    <text x="422" y="408">advised by</text>
     <path
         d="M413 756.5C413 755 412 755 412 755.5C411 755 411 755 411 756.5H412H413ZM411 821.207C411 821 412 821 412 821.207L419 814.843C419 814 419 813 419 813.429C418 813 418 813 417 813.429L412 819.086L406 813.429C405 813 405 813 404 813.429C404 813 404 814 404 814.843L411 821.207ZM412 756.5H411V820.5H412H413V756.5H412Z"
     />
