@@ -430,92 +430,6 @@ function showChart(div = '#chart-div') {
     d3.selectAll(div).transition().duration(300).style('opacity', 1);
 }
 
-// cite: copilot
-function createTable(firm_name) {
-    const filtered = coi.filter(
-        // first word when lowercased matches provided firm_name
-        (d) => d.firm_name.split(' ')[0].toLowerCase() === firm_name
-    );
-
-    const skip_first_col = filtered.map(({ firm_name, ...rest }) => rest);
-
-    // Get column headers and values
-    const rows = skip_first_col.map((obj) => Object.values(obj));
-    const full_name = filtered[0]['firm_name'];
-
-    // Generate the HTML table
-    chartDiv = document.getElementById('chart-div');
-    chartDiv.innerHTML = '';
-
-    d3.select('#chart-div')
-        .append('div')
-        .style('display', 'flex')
-        .style('justify-content', 'center')
-        .style('align-items', 'center')
-        .style('height', '100%')
-        .style('margin', '30px')
-        .attr('id', 'table-div');
-
-    // table title
-    d3.select('#table-div')
-        .style('display', 'flex') // Use flexbox for layout
-        .style('flex-direction', 'column') // Stack children vertically
-        .append('h3')
-        .text(
-            firm_name === 'carlyle'
-                ? `Top ${rows.length} out of ??? funds managed by ${full_name}`
-                : `Funds managed by ${full_name}`
-        )
-        .style('text-align', 'center')
-        .style('font-family', 'Georgia, serif')
-        .style('margin-bottom', '20px');
-
-    // table
-    const table = d3
-        .select('#table-div')
-        .append('table')
-        .style('width', '100%')
-        .style('border-collapse', 'collapse')
-        .attr('border', 1);
-
-    // table header
-    const thead = table.append('thead');
-    const headerRow = thead.append('tr');
-    headerRow
-        .selectAll('th')
-        .data(['Fund name', 'Industry', 'Regions'])
-        .enter()
-        .append('th')
-        .text((d) => d);
-
-    // table body
-    const tbody = table.append('tbody');
-    rows.forEach((row) => {
-        const tr = tbody.append('tr');
-        tr.selectAll('td')
-            .data(row)
-            .enter()
-            .append('td')
-            .text((d) => d);
-    });
-
-    // Select the first column and give it a class
-    d3.select('#table-div')
-        .selectAll('tr') // Select all rows
-        .select('td:first-child') // Select the first <td> in each row
-        .attr('class', 'first-column'); // Add the class "first-column"
-
-    // table footnote
-    d3.select('#table-div')
-        .append('figcaption')
-        .html(
-            'Sources: University of Chicago <a href="https://projects.propublica.org/nonprofits/download-xml?object_id=202421349349306107">IRS Form 990 filing</a> for fiscal year 2024, Schedule L; Pitchbook'
-        )
-        .style('width', '100%')
-        .style('margin-top', '15px')
-        .attr('class', 'caption');
-}
-
 /**
  * When you click on a data point, it should open the URL linked in the hover text in a new tab.
  * Cite: GPT
@@ -527,6 +441,34 @@ function open_url(data) {
     // console.log(url[1])
 
     window.open(url[1], '_blank').focus();
+}
+
+function drawFlowchart(show = [], hide = []) {
+    // make sure everything loads before returning
+    Promise.all([
+        d3.xml('static/chart.svg'),
+        d3.xml('static/screen.svg'),
+        d3.xml('static/coi.svg'),
+        d3.xml('static/arrows.svg')
+    ]).then(([controlChart, screenChart, coiChart, arrowChart]) => {
+        // check that we don't already have the chart up
+        if (d3.select('#control-flowchart').empty()) {
+            d3.select('#chart-div').html(''); // clear previous chart
+
+            d3.select('#chart-div').node().append(controlChart.documentElement);
+            d3.select('#chart-div').node().append(screenChart.documentElement);
+            d3.select('#chart-div').node().append(coiChart.documentElement);
+            d3.select('#chart-div').node().append(arrowChart.documentElement);
+        }
+
+        show.forEach(function (id) {
+            d3.select('#' + id + '-flowchart').style('display', 'block');
+        });
+
+        hide.forEach(function (id) {
+            d3.select('#' + id + '-flowchart').style('display', 'none');
+        });
+    });
 }
 
 const formatThousands = d3.format(',.0f');
@@ -770,79 +712,43 @@ const sequence = {
             config
         );
     },
-    // TODO: let's do a summary instead of just 1 year?
-    // lake: function () {
-    //     createTable('lake');
-    // },
-    // pimco: function () {
-    //     createTable('pimco');
-    // },
-    // carlyle: function () {
-    //     hideChart('#flowchart');
-    //     showChart('#chart-div');
-
-    //     createTable('carlyle');
-    // },
     control: function () {
-        d3.select('#chart-div').html(''); // clear previous chart
-        d3.xml('static/chart.svg')
-            .then((data) => {
-                // Select the placeholder and append the SVG
-                d3.select('#chart-div').node().append(data.documentElement);
-
-                // Load the second SVG (e.g., overlay.svg)
-                return d3.xml('static/coi.svg');
-            })
-            .then((overlayData) => {
-                // Append the second SVG on top of the first one
-                // d3.select('#chart-div')
-                //     .node()
-                //     .append(overlayData.documentElement);
-            })
-            .catch((error) => {
-                console.error('Error loading SVG:', error);
-            });
-
-        d3.select('#flowchart-trustees').style('fill', '#800000');
-        d3.select('#flowchart-graduate').style('fill', '#800000');
-        d3.select('#flowchart-faculty').style('fill', '#800000');
-        d3.select('#flowchart-advisory').style('fill', '#800000');
+        drawFlowchart((show = ['control']));
+        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
     },
     'board-of-trustees': function () {
-        d3.select('#flowchart-trustees').style('fill', '#d51d1dff');
-        d3.select('#flowchart-graduate').style('fill', '#d51d1dff');
-        d3.select('#flowchart-faculty').style('fill', '#d51d1dff');
-        d3.select('#flowchart-advisory').style('fill', '#d51d1dff');
-
-        d3.select('#flowchart-office').style('fill', '#800000');
-        d3.select('#flowchart-firm').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll(
+            '#flowchart-board-of-trustees, #flowchart-graduate-council, #flowchart-faculty-senate,#flowchart-advisory-councils'
+        ).style('fill', '#643335');
     },
     'office-of-investments': function () {
-        d3.select('#flowchart-office').style('fill', '#d51d1dff');
-        d3.select('#flowchart-firm').style('fill', '#d51d1dff');
-
-        d3.select('#flowchart-trustees').style('fill', '#800000');
-        d3.select('#flowchart-graduate').style('fill', '#800000');
-        d3.select('#flowchart-faculty').style('fill', '#800000');
-        d3.select('#flowchart-advisory').style('fill', '#800000');
-        d3.select('#flowchart-president').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll(
+            '#flowchart-office-of-investments, #flowchart-asset-management-firms'
+        ).style('fill', '#643335');
     },
     president: function () {
-        d3.select('#flowchart-president').style('fill', '#d51d1dff');
-
-        d3.select('#flowchart-office').style('fill', '#800000');
-        d3.select('#flowchart-firm').style('fill', '#800000');
-        d3.select('#flowchart-donors').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll('#flowchart-university-president').style(
+            'fill',
+            '#643335'
+        );
     },
     donors: function () {
-        showChart('#flowchart');
-
-        d3.select('#flowchart-donors').style('fill', '#d51d1dff');
-
-        d3.select('#flowchart-president').style('fill', '#800000');
+        drawFlowchart((show = ['control']), (hide = ['coi']));
+        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll('#flowchart-donors').style('fill', '#643335');
+    },
+    conflicts: function () {
+        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        drawFlowchart((show = ['coi']), (hide = ['screen', 'arrows']));
+    },
+    pimco: function () {
+        drawFlowchart((show = ['screen', 'arrows']));
     },
     conclusion: function () {
-        hideChart('#flowchart');
+        d3.select('#chart-div').html(''); // clear previous chart
     }
 };
 
@@ -881,15 +787,15 @@ async function init() {
     createWaypoint('amnesty');
 
     createWaypoint('sec');
-    // createWaypoint('lake');
-    // createWaypoint('pimco');
-    // createWaypoint('carlyle');
 
     createWaypoint('control');
     createWaypoint('board-of-trustees');
     createWaypoint('office-of-investments');
     createWaypoint('president');
     createWaypoint('donors');
+    createWaypoint('conflicts');
+    createWaypoint('pimco');
+    // createWaypoint('carlyle');
 
     createWaypoint('conclusion', (offset = '90%'));
 }
