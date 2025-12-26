@@ -1,0 +1,84 @@
+<svg
+    width="1000"
+    height="90vh"
+    viewBox="0 0 1000 2000"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <style>
+        text {
+            fill: black;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: -0.011em;
+            white-space: pre;
+        }
+        rect {
+            rx: 300;
+        }
+        rect text {
+            fill: white;
+        }
+    </style>
+    <a
+        target="_blank"
+        href="https://projects.propublica.org/nonprofits/organizations/362177139"
+        id="individual-firms"
+    >
+        <rect x="247" y="1521" width="330" height="330" fill="#800000" />
+        <text>
+            <tspan x="388" y="1556" fill="white">Asset</tspan>
+            <tspan x="338" y="1576" fill="white">management firms</tspan>
+        </text>
+        <rect x="292" y="1709" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="324" y="1764">Carlyle</tspan>
+            <tspan x="327" y="1784">Group</tspan>
+        </text>
+        <rect x="412" y="1709" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="452" y="1764">Lake</tspan>
+            <tspan x="443" y="1784">Capital</tspan>
+        </text>
+        <rect x="292" y="1589" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="327" y="1654">Pimco</tspan>
+        </text>
+        <rect x="412" y="1589" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="451" y="1644">Trian</tspan>
+            <tspan x="437" y="1664">Partners</tspan>
+        </text>
+    </a>
+    <a
+        target="_blank"
+        href="https://projects.propublica.org/nonprofits/organizations/362177139"
+        id="individual-trustees"
+    >
+        <rect x="247" y="748" width="330" height="330" fill="#800000" />
+        <text>
+            <tspan x="342" y="793" fill="white">Board of Trustees</tspan>
+        </text>
+        <rect x="293" y="804" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="329" y="849">David</tspan>
+            <tspan x="324" y="869">Ruben-</tspan>
+            <tspan x="332" y="889">stein</tspan>
+        </text>
+        <rect x="413" y="804" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="454" y="859">Paul</tspan>
+            <tspan x="436" y="879">Yovovich</tspan>
+        </text>
+        <rect x="293" y="924" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="309" y="979">Emmanuel</tspan>
+            <tspan x="324" y="999">Roman</tspan>
+        </text>
+        <rect x="413" y="924" width="118" height="118" fill="white" />
+        <text>
+            <tspan x="432" y="989">Peter May</tspan>
+        </text>
+    </a>
+</svg>

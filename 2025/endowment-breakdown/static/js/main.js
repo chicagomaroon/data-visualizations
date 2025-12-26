@@ -771,21 +771,37 @@ const sequence = {
         );
     },
     // TODO: let's do a summary instead of just 1 year?
-    lake: function () {
-        createTable('lake');
-    },
-    pimco: function () {
-        createTable('pimco');
-    },
-    carlyle: function () {
-        hideChart('#flowchart');
-        showChart('#chart-div');
+    // lake: function () {
+    //     createTable('lake');
+    // },
+    // pimco: function () {
+    //     createTable('pimco');
+    // },
+    // carlyle: function () {
+    //     hideChart('#flowchart');
+    //     showChart('#chart-div');
 
-        createTable('carlyle');
-    },
+    //     createTable('carlyle');
+    // },
     control: function () {
-        hideChart('#chart-div');
-        showChart('#flowchart');
+        d3.select('#chart-div').html(''); // clear previous chart
+        d3.xml('static/chart.svg')
+            .then((data) => {
+                // Select the placeholder and append the SVG
+                d3.select('#chart-div').node().append(data.documentElement);
+
+                // Load the second SVG (e.g., overlay.svg)
+                return d3.xml('static/coi.svg');
+            })
+            .then((overlayData) => {
+                // Append the second SVG on top of the first one
+                // d3.select('#chart-div')
+                //     .node()
+                //     .append(overlayData.documentElement);
+            })
+            .catch((error) => {
+                console.error('Error loading SVG:', error);
+            });
 
         d3.select('#flowchart-trustees').style('fill', '#800000');
         d3.select('#flowchart-graduate').style('fill', '#800000');
@@ -865,9 +881,9 @@ async function init() {
     createWaypoint('amnesty');
 
     createWaypoint('sec');
-    createWaypoint('lake');
-    createWaypoint('pimco');
-    createWaypoint('carlyle');
+    // createWaypoint('lake');
+    // createWaypoint('pimco');
+    // createWaypoint('carlyle');
 
     createWaypoint('control');
     createWaypoint('board-of-trustees');
