@@ -2,12 +2,13 @@
     width="967"
     height="90vh"
     viewBox="0 0 967 1152"
-    fill="white"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    style="margin-top: 10vh;"
+    style="margin-top: 5vh; position:absolute; top:0; left: 0; display: none;"
+    id="control-flowchart"
 >
     <style>
-        text {
+        #control-flowchart text {
             fill: black;
             font-family: 'Open Sans', sans-serif;
             font-weight: bold;
@@ -15,31 +16,33 @@
             letter-spacing: -0.011em;
             white-space: pre;
         }
-        tspan {
+        #control-flowchart tspan {
             fill: white;
         }
-        rect {
-            fill: #800000;
+        #control-flowchart rect {
             rx: 1000;
         }
-        rect text {
+        #control-flowchart a rect {
+            fill: #800000;
+        }
+        #control-flowchart rect text {
             fill: white;
         }
-        path {
+        #control-flowchart path {
             fill: black;
         }
     </style>
-    <rect x="145" width="822" height="822" style="fill: #e3bfb5" />
+    <rect x="145" width="822" height="822" style="fill: #e3bfb5" id="flowchart-background"/>
     <text x="625" y="222">University of Chicago</text>
-    <a target="_blank" href="" id="office-of-investments">
-        <rect x="343" y="615" width="138" height="138"/>
+    <a target="_blank" href="">
+        <rect x="343" y="615" width="138" height="138" id="flowchart-office-of-investments"/>
         <text fill="white">
             <tspan x="378" y="681">Office of</tspan>
             <tspan x="362" y="699">Investments</tspan>
         </text>
     </a>
-    <a target="_blank" href="" id="university-president">
-        <rect x="225" y="433" width="138" height="138"/>
+    <a target="_blank" href="">
+        <rect x="225" y="433" width="138" height="138" id="flowchart-university-president"/>
         <text fill="white">
             <tspan x="251" y="499">University</tspan>
             <tspan x="256" y="517">President</tspan>
@@ -48,9 +51,9 @@
     <a
         target="_blank"
         href="https://sof.uchicago.edu/council-of-the-university-senate/"
-        id="faculty-senate"
     >
-        <rect x="608" y="433" width="138" height="138"/>
+        <rect x="608" y="433" width="138" height="138"
+        id="flowchart-faculty-senate"/>
         <text fill="white">
             <tspan x="646" y="499">Faculty</tspan>
             <tspan x="650" y="517">Senate</tspan>
@@ -59,22 +62,22 @@
     <a
         target="_blank"
         href="https://gc.uchicago.edu/student-perspectives-series"
-        id="graduate-council"
     >
-        <rect x="755" y="433" width="138" height="138"/>
+        <rect x="755" y="433" width="138" height="138"
+        id="flowchart-graduate-council"/>
         <text fill="white">
             <tspan x="785" y="499">Graduate</tspan>
             <tspan x="794" y="517">Council</tspan>
         </text>
     </a>
-    <a target="_blank" href="" id="donors">
-        <rect y="234" width="138" height="138"/>
+    <a target="_blank" href="">
+        <rect y="234" width="138" height="138" id="flowchart-donors"/>
         <text fill="white">
             <tspan x="40" y="309">Donors</tspan>
         </text>
     </a>
-    <a target="_blank" href="http://ac.uchicago.edu" id="advisory-councils">
-        <rect x="461" y="433" width="138" height="138"/>
+    <a target="_blank" href="http://ac.uchicago.edu">
+        <rect x="461" y="433" width="138" height="138" id="flowchart-advisory-councils"/>
         <text fill="white">
             <tspan x="493" y="499">Advisory</tspan>
             <tspan x="497" y="517">Councils</tspan>
@@ -83,16 +86,16 @@
     <a
         target="_blank"
         href="https://chicagomaroon.com/13695/news/the-view-from-the-top-at-the-u-of-c/"
-        id="board-of-trustees"
     >
-        <rect x="341" y="234" width="138" height="138"/>
+        <rect x="341" y="234" width="138" height="138"
+        id="flowchart-board-of-trustees"/>
         <text fill="white">
             <tspan x="374" y="300">Board of</tspan>
             <tspan x="376" y="318">Trustees</tspan>
         </text>
     </a>
-    <a target="_blank" href="" id="asset-management-firms">
-        <rect x="343" y="824" width="138" height="138"/>
+    <a target="_blank" href="" >
+        <rect x="343" y="824" width="138" height="138" id="flowchart-asset-management-firms"/>
         <text fill="white">
             <tspan x="390" y="881">Asset</tspan>
             <tspan x="359" y="899">management</tspan>
