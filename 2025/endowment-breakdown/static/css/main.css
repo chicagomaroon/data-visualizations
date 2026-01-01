@@ -97,7 +97,7 @@ hr {
     flex-direction: row;
 }
 
-.intro {
+#intro {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -115,7 +115,7 @@ hr {
     transform-origin: center;
 }
 
-.intro a {
+#intro a {
     color: black;
 }
 
@@ -264,31 +264,22 @@ figure {
 
     /* intro */
 
-    .intro {
-        width: 90%;
-        margin: auto;
+    #background {
+        flex-direction: column;
     }
 
-    #background {
-        /* https://stackoverflow.com/questions/15765550/darkening-an-image-with-css-in-any-shape */
-        background-image: linear-gradient(
-                rgba(0, 0, 0, 0.7),
-                rgba(0, 0, 0, 0.6)
-            ),
-            url('../../images/cover.jpg');
-        background-color: #800000;
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        z-index: 1000;
-        position: relative;
+    #background img {
+        width: 100%;
+        height: auto;
+    }
+
+    #intro {
+        height: 50vh;
     }
 
     /* chapters */
 
     #chart-div,
-    #flowchart,
-    #intro-quotes,
     #background,
     #content,
     #chapters {
@@ -348,36 +339,10 @@ figure {
 
     /* chart */
 
-    #chart-div,
-    #flowchart {
-        height: 40vh !important;
+    #chart-div {
+        height: 45vh;
+        width: auto;
     }
 
-    .plotly {
-        position: absolute;
-        left: 0;
-        margin-top: -15px !important;
-    }
-
-    /* .main-svg {
-        height: 330px !important;
-    } */
-
-    text.gtitle {
-        font-size: 16px !important;
-        x: 20;
-    }
-
-    text.gtitle-subtitle {
-        font-size: 12px !important;
-        x: 20;
-    }
-
-    text.annotation-text {
-        font-size: 6px !important;
-    }
-
-    .ytick text {
-        font-size: 12px !important;
     }
 }
