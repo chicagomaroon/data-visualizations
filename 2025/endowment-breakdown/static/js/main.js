@@ -116,12 +116,12 @@ function createLayout(
             text: title,
             x: 0.03,
             font: {
-                size: 20
+                size: titleFontSize
             },
             subtitle: {
                 text: subtitle,
                 font: {
-                    size: 14
+                    size: subtitleFontSize
                 }
             }
         },
@@ -135,7 +135,7 @@ function createLayout(
                 showarrow: false,
                 xanchor: 'right',
                 yanchor: 'top',
-                font: { size: 12, color: 'gray' },
+                font: { size: annotationFontSize, color: 'gray' },
                 align: 'right'
             }
         ],
@@ -219,7 +219,7 @@ function lollipopChart(data) {
             marker: {
                 color: year > 2010 ? '#800000' : '#d51d1dff',
                 opacity: year > 2010 ? 1 : 0.5,
-                size: 15
+                size: axisFontSize + 2
             },
             customdata: subset.map((d) => d.year),
             text: subset.map((d) => d.recategorized),
@@ -492,7 +492,7 @@ const hoverlabel = {
     alpha: 1,
     font: {
         family: 'Playfair',
-        size: 14,
+        size: axisFontSize,
         color: 'black' // text color
     }
 };
@@ -611,7 +611,7 @@ const sequence = {
             {
                 ...layout,
                 font: {
-                    size: 16,
+                    size: bodyFontSize,
                     family: 'Georgia',
                     color: sankey_data.map((d) =>
                         d.to.includes('endowment') ? '#000000' : '#DDDDDD'
@@ -640,7 +640,7 @@ const sequence = {
                     layout['annotations'][0], // keep caption
                     {
                         font: {
-                            size: 20
+                            size: annotationFontSize
                         },
                         showarrow: false,
                         text: 'Total in endowment<br>$11 billion',
@@ -672,7 +672,7 @@ const sequence = {
                     showline: true,
                     showticklabels: true,
                     tickfont: {
-                        size: 14
+                        size: axisFontSize
                     },
                     tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
                     ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
@@ -708,7 +708,7 @@ const sequence = {
                     showline: true,
                     showticklabels: true,
                     tickfont: {
-                        size: 14
+                        size: axisFontSize
                     },
                     title: {
                         text: ''
@@ -783,7 +783,21 @@ const sequence = {
 };
 
 // -------- MAIN --------
-var data;
+var statements, sec, coi, endowments, types_time, sankey_data;
+
+var isMobileLike = false;
+var annotationFontSize,
+    axisFontSize,
+    bodyFontSize,
+    subtitleFontSize,
+    titleFontSize;
+
+function detectMobile() {
+    return (
+        window.matchMedia('(max-width: 768px)').matches &&
+        navigator.maxTouchPoints > 0
+    );
+}
 
 async function init() {
     // window.onbeforeunload = function () {
@@ -794,8 +808,11 @@ async function init() {
     statements = await fetchData('financial-statement-2025.json');
     // console.log(statements);
 
-    sec = await fetchData('sec-sectors-2025.json');
-    // console.log(sec);
+    annotationFontSize = isMobileLike ? 8 : 12;
+    axisFontSize = isMobileLike ? 9 : 14;
+    bodyFontSize = isMobileLike ? 10 : 16;
+    subtitleFontSize = isMobileLike ? 11 : 18;
+    titleFontSize = isMobileLike ? 12 : 20;
 
     coi = await fetchData('conflicts-of-interest-2024.json');
     // console.log(coi);
