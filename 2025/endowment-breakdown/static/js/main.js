@@ -84,33 +84,7 @@ function createWaypoint(div, offset = '70%') {
  * layout used for all plots. As opposed to the data object, this should contain parameters that are constant across the entire graph, not variable across traces or groups
  * Cite: https://community.plotly.com/t/date-tick-formatting/11081/5
  */
-function createLayout(
-    title = '',
-    caption = '',
-    margin = {
-        l: 25,
-        r: 0,
-        b: 100
-    },
-    showlegend = false,
-    xaxis = {
-        showgrid: false,
-        showline: false,
-        showticklabels: false,
-        tickfont: {
-            size: 14
-        }
-    },
-    yaxis = {
-        showgrid: false,
-        showline: false,
-        showticklabels: false,
-        ticktext: 'text',
-        tickfont: {
-            size: 14
-        }
-    }
-) {
+function createLayout(title = '', caption = '', showlegend = false) {
     return {
         title: {
             text: title,
@@ -131,7 +105,7 @@ function createLayout(
                 xref: 'paper',
                 yref: 'paper',
                 x: 1, // right align
-                y: 0 - margin['b'] / 2000, // move below the x-axis
+                y: -0.05 - isMobileLike * 0.07, // move below the x-axis
                 showarrow: false,
                 xanchor: 'right',
                 yanchor: 'top',
@@ -142,10 +116,24 @@ function createLayout(
         barmode: 'stack',
         font: {
             family: 'Georgia',
-            size: 16
+            size: bodyFontSize
         },
-        xaxis: xaxis,
-        yaxis: yaxis,
+        xaxis: {
+            showgrid: false,
+            showline: false,
+            showticklabels: false,
+            tickfont: {
+                size: axisFontSize
+            }
+        },
+        yaxis: {
+            showgrid: false,
+            showline: false,
+            showticklabels: false,
+            tickfont: {
+                size: axisFontSize
+            }
+        },
         hovermode: 'closest',
         hoverlabel: {
             bgcolor: 'white'
@@ -157,7 +145,13 @@ function createLayout(
             xanchor: 'center', // Anchor the legend horizontally at its center
             yanchor: 'top' // Anchor the legend vertically at the top
         },
-        margin: margin
+        margin: {
+            t: 30,
+            l: 25,
+            r: isMobileLike ? 25 : 0,
+            b: isMobileLike ? 70 : 100,
+            pad: isMobileLike ? 0 : 4
+        }
     };
 }
 
@@ -561,20 +555,34 @@ const sequence = {
         hideChart('#chart-div');
     },
     'what-is-endowment': function () {
-        showChart('#chart-div');
+        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
+        showChart();
         Plotly.newPlot(
             'chart-div',
             sankeyChart('what-is-endowment'),
-            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
-            config
+            {
+                ...layout,
+                width: isMobileLike ? 1000 : 700
+            },
+            {
+                ...config,
+                responsive: false
+            }
         );
     },
     tuition: function () {
+        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
         Plotly.newPlot(
             'chart-div',
             sankeyChart('tuition'),
-            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
-            config
+            {
+                ...layout,
+                width: isMobileLike ? 1000 : 700
+            },
+            {
+                ...config,
+                responsive: false
+            }
         );
 
         // // Animate the last layer of nodes
@@ -625,8 +633,14 @@ const sequence = {
         Plotly.newPlot(
             'chart-div',
             sankeyChart('restricted'),
-            createLayout((title = sankeyTitle), (caption = sankeyCaption)),
-            config
+            {
+                ...layout,
+                width: isMobileLike ? 1000 : 700
+            },
+            {
+                ...config,
+                responsive: false
+            }
         );
     },
     breakdown: function () {
@@ -636,6 +650,11 @@ const sequence = {
             donutChart(statements),
             {
                 ...layout,
+                margin: {
+                    l: 0,
+                    r: 20,
+                    b: isMobileLike ? 50 : 100
+                },
                 annotations: [
                     layout['annotations'][0], // keep caption
                     {
@@ -653,53 +672,59 @@ const sequence = {
         );
     },
     'compare-schools': function () {
+        layout = createLayout(
+            (title =
+                'Top 20 largest college endowments in the U.S., Fiscal Year 2023'),
+            (caption =
+                'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
+            (showlegend = false)
+        );
         Plotly.newPlot(
             'chart-div',
             barChart(endowments),
-            createLayout(
-                (title =
-                    'Top 20 largest college endowments in the U.S., Fiscal Year 2023'),
-                (caption =
-                    'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
-                (margin = {
+            {
+                ...layout,
+                margin: {
                     l: 25,
-                    r: 0,
-                    b: 150
-                }),
-                (showlegend = false),
-                (xaxis = {
+                    r: isMobileLike ? 25 : 0,
+                    b: isMobileLike ? 50 : 150
+                },
+                xaxis: {
                     showgrid: true,
                     showline: true,
                     showticklabels: true,
                     tickfont: {
                         size: axisFontSize
                     },
-                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
-                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
+                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9, 60e9],
+                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B', '$60B'],
                     title: {
                         text: ''
                     }
-                })
-            ),
+                }
+            },
             config
         );
     },
     amnesty: function () {
+        layout = createLayout(
+            (title =
+                'Change in fund types in the endowment in the last 20 years'),
+            (caption =
+                'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
+            (showlegend = true)
+        );
         Plotly.newPlot(
             'chart-div',
             lollipopChart(types_time),
-            createLayout(
-                (title =
-                    'Change in fund types in the endowment in the last 20 years'),
-                (caption =
-                    'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
-                (margin = {
-                    l: 200,
-                    r: 0,
+            {
+                ...layout,
+                margin: {
+                    l: isMobileLike ? 110 : 200,
+                    r: isMobileLike ? 25 : 0,
                     b: 100
-                }),
-                (showlegend = true),
-                (xaxis = {
+                },
+                xaxis: {
                     range: [0.01, 1],
                     tickformat: '.0%',
                     ticks: 'outside',
@@ -713,13 +738,16 @@ const sequence = {
                     title: {
                         text: ''
                     }
-                }),
-                (yaxis = {
+                },
+                yaxis: {
                     showgrid: true,
                     showline: false,
-                    showticklabels: true
-                })
-            ),
+                    showticklabels: true,
+                    tickfont: {
+                        size: axisFontSize
+                    }
+                }
+            },
             config
         );
     },
@@ -728,17 +756,20 @@ const sequence = {
         layout = createLayout(
             (title = 'Industry sectors'),
             (caption =
-                'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025'),
-            (margin = {
-                l: 25,
-                r: 25,
-                b: 75
-            })
+                'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025')
         );
         Plotly.newPlot(
             'chart-div',
             circleChart(sec, 'sector'),
-            { ...layout, plot_bgcolor: '#555555' },
+            {
+                ...layout,
+                margin: {
+                    l: 25,
+                    r: isMobileLike ? 50 : 25,
+                    b: 75
+                },
+                plot_bgcolor: '#555555'
+            },
             config
         );
     },
