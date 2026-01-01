@@ -457,6 +457,12 @@ function drawFlowchart(show = [], hide = []) {
         hide.forEach(function (id) {
             d3.select('#' + id + '-flowchart').style('display', 'none');
         });
+
+        if (isMobileLike) {
+            d3.selectAll('#chart-div svg')
+                .attr('width', '100%')
+                .attr('height', '40vh');
+        }
     });
 }
 
@@ -627,6 +633,7 @@ const sequence = {
             sankeyChart('endowment'),
             {
                 ...layout,
+                width: isMobileLike ? 1000 : 700,
                 font: {
                     size: bodyFontSize,
                     family: 'Georgia',
@@ -635,7 +642,10 @@ const sequence = {
                     )
                 }
             },
-            config
+            {
+                ...config,
+                responsive: false
+            }
         );
     },
     restricted: function () {
