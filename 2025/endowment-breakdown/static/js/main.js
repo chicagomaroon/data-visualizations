@@ -404,17 +404,19 @@ function sankeyChart(div) {
     return [trace];
 }
 
-function hideChart(div = '#chart-div') {
-    d3.select(div)
+function hideChart() {
+    d3.select('#chart-div')
         .transition()
         .duration(300)
         .style('opacity', 0)
         .style('display', 'none');
 }
 
-function showChart(div = '#chart-div') {
-    d3.selectAll(div).style('display', 'block');
-    d3.selectAll(div).transition().duration(300).style('opacity', 1);
+function showChart() {
+    d3.select('#chart-div').style('display', 'block');
+    d3.select('#chart-div').transition().duration(300).style('opacity', 1);
+}
+
 }
 
 /**
@@ -456,6 +458,13 @@ function drawFlowchart(show = [], hide = []) {
             d3.select('#' + id + '-flowchart').style('display', 'none');
         });
     });
+}
+
+function detectMobile() {
+    return (
+        window.matchMedia('(max-width: 768px)').matches &&
+        navigator.maxTouchPoints > 0
+    );
 }
 
 const formatThousands = d3.format(',.0f');
@@ -552,7 +561,7 @@ const statementCaption =
 // calling createWaypoint will call each action depending on whether user is scrolling down (next action) or up (previous action)
 const sequence = {
     first: function () {
-        hideChart('#chart-div');
+        hideChart();
     },
     'what-is-endowment': function () {
         layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
@@ -823,18 +832,11 @@ var annotationFontSize,
     subtitleFontSize,
     titleFontSize;
 
-function detectMobile() {
-    return (
-        window.matchMedia('(max-width: 768px)').matches &&
-        navigator.maxTouchPoints > 0
-    );
-}
-
 async function init() {
     // window.onbeforeunload = function () {
     //     window.scrollTo(0, 0);
     // };
-    // hideChart((all = true));
+    // hideChart();
 
     statements = await fetchData('financial-statement-2025.json');
     // console.log(statements);
