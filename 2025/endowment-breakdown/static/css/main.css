@@ -212,12 +212,16 @@ blockquote {
 }
 
 #chart-div,
-#flowchart {
-    position: fixed;
+#chart-container {
     height: 100vh;
     width: 60vw;
     top: 0;
     z-index: 1;
+}
+
+#chart-container {
+    position: fixed;
+    overflow-x: scroll;
 }
 
 #flowchart {
@@ -344,5 +348,8 @@ figure {
         width: auto;
     }
 
+    #chart-container {
+        width: 100vw;
+        height: 45vh;
     }
 }
