@@ -6,7 +6,7 @@
     xmlns="http://www.w3.org/2000/svg"
     id="coi-flowchart"
     class="flowchart"
-    style="position:absolute; top:0; left: 0; display: none;"
+    style="position:absolute; top:-30; left: 0; display: none;"
 >
     <style>
         #coi-flowchart text {
@@ -30,8 +30,8 @@
     >
         <rect x="247" y="1521" width="330" height="330" fill="#800000" 
         id="flowchart-individual-firms"/>
-        <text x="388" y="1556" style="fill: white !important">Asset</text>
-        <text x="338" y="1576" style="fill: white !important">management firms</text>
+        <text x="388" y="1556" style="fill: white !important" class="top-line">Asset</text>
+        <text x="338" y="1576" style="fill: white !important" class="left-line">management firms</text>
         <rect x="292" y="1709" width="118" height="118" fill="white" />
         <text x="324" y="1764" class="top-line">Carlyle</text>
         <text x="327" y="1784">Group</text>
@@ -50,7 +50,7 @@
     >
         <rect x="247" y="748" width="330" height="330" fill="#800000"
         id="flowchart-individual-trustees" />
-        <text x="342" y="793" style="fill: white !important">Board of Trustees</text>
+        <text x="342" y="793" style="fill: white !important" class="left-line">Board of Trustees</text>
         <rect x="293" y="804" width="118" height="118" fill="white" />
         <text x="329" y="849" class="top-line">David</text>
         <text x="324" y="869">Ruben-</text>

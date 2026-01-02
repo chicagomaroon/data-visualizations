@@ -463,7 +463,11 @@ function drawFlowchart(show = [], hide = []) {
         if (isMobileLike) {
             d3.selectAll('#chart-div svg')
                 .attr('width', '100%')
-                .attr('height', '40vh');
+                .attr('height', '45vh');
+            d3.selectAll('#arrows-flowchart')
+                .attr('width', '100%')
+                .attr('height', '43vh')
+                .style('margin-top', '-2vh');
         }
     });
 }
