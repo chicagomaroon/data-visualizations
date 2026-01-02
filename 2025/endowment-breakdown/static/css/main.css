@@ -82,7 +82,6 @@ hr {
 #subtitle {
     font-size: 28;
     text-align: center;
-    width: 80%;
     margin: 0 auto;
 }
 
@@ -103,6 +102,8 @@ hr {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(77, 0, 0);
+    color: white;
 }
 
 #background img {
@@ -115,8 +116,15 @@ hr {
     transform-origin: center;
 }
 
+#intro h1,
+#subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
 #intro a {
-    color: black;
+    color: white;
 }
 
 #bylines {
@@ -217,11 +225,12 @@ blockquote {
     width: 60vw;
     top: 0;
     z-index: 1;
+    background-color: white;
 }
 
 #chart-container {
     position: fixed;
-    overflow-x: scroll;
+    overflow: clip;
 }
 
 #flowchart {
@@ -268,7 +277,7 @@ g.sankey {
 
     #subtitle {
         font-size: 20px;
-        width: 80%;
+        line-height: 22px;
     }
 
     hr {
@@ -287,8 +296,23 @@ g.sankey {
         height: auto;
     }
 
+    #intro a img {
+        height: 30px;
+    }
+
     #intro {
-        height: 50vh;
+        height: 60vh;
+    }
+
+    #intro h1,
+    #subtitle {
+        width: 90%;
+    }
+
+    .byline,
+    #bylines {
+        font-size: 14px;
+        line-height: 24px;
     }
 
     /* chapters */
@@ -361,6 +385,7 @@ g.sankey {
     #chart-container {
         width: 100vw;
         height: 45vh;
+        overflow-x: scroll;
     }
 
     .flowchart text {

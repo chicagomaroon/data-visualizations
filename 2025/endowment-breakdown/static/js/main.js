@@ -650,6 +650,8 @@ const sequence = {
         );
     },
     breakdown: function () {
+        layout = createLayout((title = null), (caption = statementCaption));
+        d3.select('.plotly').style('margin-top', '-90px');
         Plotly.newPlot(
             'chart-div',
             donutChart(statements),
