@@ -407,7 +407,7 @@ function sankeyChart(div) {
 }
 
 function hideChart() {
-    d3.select('#chart-div')
+    d3.select('#chart-container')
         .transition()
         .duration(300)
         .style('opacity', 0)
@@ -415,10 +415,11 @@ function hideChart() {
 }
 
 function showChart() {
-    d3.select('#chart-div').style('display', 'block');
-    d3.select('#chart-div').transition().duration(300).style('opacity', 1);
-}
-
+    d3.select('#chart-container').style('display', 'block');
+    d3.select('#chart-container')
+        .transition()
+        .duration(300)
+        .style('opacity', 1);
 }
 
 /**
