@@ -2,9 +2,17 @@
     width="65vw"
     height="90vh"
     viewBox="0 0 967 1152"
-    fill="none"
+    fill="white"
     xmlns="http://www.w3.org/2000/svg"
-    style="margin-top: 5vh; position:absolute; top:0; left: 0; display: none;"
+    class="flowchart"
+    style="
+        padding-top: 2vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        background-color: white;
+    "
     id="control-flowchart"
 >
     <style>
@@ -16,91 +24,122 @@
             letter-spacing: -0.011em;
             white-space: pre;
         }
-        #control-flowchart tspan {
-            fill: white;
-        }
         #control-flowchart rect {
             rx: 1000;
         }
         #control-flowchart a rect {
             fill: #800000;
         }
-        #control-flowchart rect text {
+        #control-flowchart a text {
             fill: white;
         }
         #control-flowchart path {
             fill: black;
         }
     </style>
-    <rect x="145" width="822" height="822" style="fill: #e3bfb5" id="flowchart-background"/>
+    <rect
+        x="145"
+        width="822"
+        height="822"
+        style="fill: #e3bfb5"
+        id="flowchart-background"
+    />
     <text x="625" y="222">University of Chicago</text>
     <a target="_blank" href="">
-        <rect x="343" y="615" width="138" height="138" id="flowchart-office-of-investments"/>
-        <text fill="white">
-            <tspan x="378" y="681">Office of</tspan>
-            <tspan x="362" y="699">Investments</tspan>
-        </text>
+    <rect
+        x="343"
+        y="615"
+        width="138"
+        height="138"
+        id="flowchart-office-of-investments"
+    />
+        <text x="378" y="681" class="top-line">Office of</text>
+        <text x="362" y="699">Investments</text>
     </a>
     <a target="_blank" href="">
-        <rect x="225" y="433" width="138" height="138" id="flowchart-university-president"/>
-        <text fill="white">
-            <tspan x="251" y="499">University</tspan>
-            <tspan x="256" y="517">President</tspan>
-        </text>
+    <rect
+        x="225"
+        y="433"
+        width="138"
+        height="138"
+        id="flowchart-university-president"
+    />
+        <text x="251" y="499" class="top-line">University</text>
+        <text x="256" y="517">President</text>
     </a>
     <a
         target="_blank"
         href="https://sof.uchicago.edu/council-of-the-university-senate/"
     >
-        <rect x="608" y="433" width="138" height="138"
-        id="flowchart-faculty-senate"/>
-        <text fill="white">
-            <tspan x="646" y="499">Faculty</tspan>
-            <tspan x="650" y="517">Senate</tspan>
-        </text>
+        <rect
+            x="608"
+            y="433"
+            width="138"
+            height="138"
+                id="flowchart-faculty-senate"
+        />
+        <text x="646" y="499" class="top-line">Faculty</text>
+        <text x="650" y="517">Senate</text>
     </a>
     <a
         target="_blank"
         href="https://gc.uchicago.edu/student-perspectives-series"
     >
-        <rect x="755" y="433" width="138" height="138"
-        id="flowchart-graduate-council"/>
-        <text fill="white">
-            <tspan x="785" y="499">Graduate</tspan>
-            <tspan x="794" y="517">Council</tspan>
-        </text>
+        <rect
+            x="755"
+            y="433"
+            width="138"
+            height="138"
+                id="flowchart-graduate-council"
+        />
+        <text x="785" y="499" class="top-line">Graduate</text>
+        <text x="794" y="517">Council</text>
     </a>
     <a target="_blank" href="">
-        <rect y="234" width="138" height="138" id="flowchart-donors"/>
-        <text fill="white">
-            <tspan x="40" y="309">Donors</tspan>
-        </text>
+        <rect
+            y="234"
+            width="138"
+            height="138"
+            id="flowchart-donors"
+            />
+        <text x="40" y="309">Donors</text>
     </a>
     <a target="_blank" href="http://ac.uchicago.edu">
-        <rect x="461" y="433" width="138" height="138" id="flowchart-advisory-councils"/>
-        <text fill="white">
-            <tspan x="493" y="499">Advisory</tspan>
-            <tspan x="497" y="517">Councils</tspan>
-        </text>
+        <rect
+            x="461"
+            y="433"
+            width="138"
+            height="138"
+                id="flowchart-advisory-councils"
+        />
+        <text x="493" y="499" class="top-line">Advisory</text>
+        <text x="497" y="517">Councils</text>
     </a>
     <a
         target="_blank"
         href="https://chicagomaroon.com/13695/news/the-view-from-the-top-at-the-u-of-c/"
     >
-        <rect x="341" y="234" width="138" height="138"
-        id="flowchart-board-of-trustees"/>
-        <text fill="white">
-            <tspan x="374" y="300">Board of</tspan>
-            <tspan x="376" y="318">Trustees</tspan>
-        </text>
+        <rect
+            x="341"
+            y="234"
+            width="138"
+            height="138"
+                id="flowchart-board-of-trustees"
+        />
+        <text x="374" y="300" class="top-line">Board of</text>
+        <text x="376" y="318">Trustees</text>
     </a>
-    <a target="_blank" href="" >
-        <rect x="343" y="824" width="138" height="138" id="flowchart-asset-management-firms"/>
-        <text fill="white">
-            <tspan x="390" y="881">Asset</tspan>
-            <tspan x="359" y="899">management</tspan>
-            <tspan x="391" y="917">firms</tspan>
-        </text>
+    <a target="_blank" href="">
+        <rect
+            x="343"
+            y="824"
+            width="138"
+            height="138"
+            id="flowchart-asset-management-firms"
+        />
+        <text x="390" y="881" class="top-line">Asset</text>
+        <text x="359" y="899">management</text>
+        <text x="391" y="917" class="bottom-line">firms</text>
     </a>
     <path
         d="M295 574.5C295 573 294 573 294 573.5C293 573 293 573 293 574.5H294H295ZM318 594C319 594 319 593 319 593C319 592 319 592 318 592V593V594ZM387 592C386 592 386 592 386 593C386 593 386 594 387 594V593V592ZM411 612.207C411 612 412 612 412 612.207L419 605.843C419 605 419 604 419 604.429C418 604 418 604 417 604.429L412 610.086L406 604.429C405 604 405 604 404 604.429C404 604 404 605 404 605.843L411 612.207ZM312 593V594H318.5V593V592H312.5V593ZM387 593V594H393.5V593V592H387.5V593ZM393 593V594C403 594 411 601 411 611.5H412H413C413 600 404 592 393 592V593ZM294 574.5H293C293 585 301 594 312 594V593V592C302 592 295 584 295 574.5H294Z"
@@ -119,7 +158,7 @@
     <path
         d="M411 375.5C411 374 410 374 410 374.5C409 374 409 374 409 375.5H410H411ZM402 401.5C401 401 401 401 401 402.5C401 403 401 403 402 403.5V402.5V401.5ZM301 403.5C302 403 302 403 302 402.5C302 401 302 401 301 401.5V402.5V403.5ZM293 430.207C293 430 294 430 294 430.207L301 423.843C301 423 301 422 301 422.429C300 422 300 422 299 422.429L294 428.086L288 422.429C287 422 287 422 286 422.429C286 422 286 423 286 423.843L293 430.207ZM410 375.5H409V395H410H411V375.5H410ZM294 410H293V429.5H294H295V410H294ZM301 402.5V401.5C296 401 293 405 293 410H294H295C295 406 297 403 301 403.5V402.5ZM410 395H409C409 398 406 401 402 401.5V402.5V403.5C407 403 411 399 411 395H410Z"
     />
-    <text x="309" y="408">supervises</text>
+    <text x="309" y="408" class="left-line">supervises</text>
     <path
         d="M411 375.5C411 374 410 374 410 374.5C409 374 409 374 409 375.5H410H411ZM409 491.348C409 491 409 492 410 492.348C410 492 411 491 411 491.348H410H409ZM413 530.348C413 529 412 529 412 529.348C411 529 411 529 411 530.348H412H413ZM411 612.207C411 612 412 612 412 612.207L419 605.843C419 605 419 604 419 604.429C418 604 418 604 417 604.429L412 610.086L406 604.429C405 604 405 604 404 604.429C404 604 404 605 404 605.843L411 612.207ZM410 375.5H409V491.348H410H411V375.5H410ZM412 530.348H411V611.5H412H413V530.348H412Z"
     />

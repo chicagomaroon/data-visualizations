@@ -1,11 +1,12 @@
 <svg
     width="65vw"
     height="90vh"
-    viewBox="500 625 800 1230"
+    viewBox="400 625 800 1230"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     id="screen-flowchart"
-    style="margin-top: 5vh; position:absolute; top:0; left: 0; display: none;"
+    class="flowchart"
+    style="margin-top: 0; position:absolute; top:0; left: 0; display: none;"
 >    
     <rect width="1500" height="1852" fill="white" fill-opacity="0.9" />
 </svg>

@@ -331,7 +331,7 @@ figure {
         font-size: 16px;
     }
 
-    #what-next {
+    #conclusion {
         width: 90%;
         margin-bottom: 0;
     }
@@ -351,5 +351,22 @@ figure {
     #chart-container {
         width: 100vw;
         height: 45vh;
+    }
+
+    .flowchart text {
+        font-size: 26px !important;
+        transform: translate(-18px, 4px); /* shifts left and down */
+    }
+
+    .flowchart text.top-line {
+        transform: translate(-18px, -4px); /* shifts left and up */
+    }
+
+    .flowchart text.bottom-line {
+        transform: translate(-18px, 12px); /* shifts left and down */
+    }
+
+    .flowchart text.left-line {
+        transform: translateX(-50px); /* shifts left and down */
     }
 }

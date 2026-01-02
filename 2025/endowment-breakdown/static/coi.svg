@@ -5,6 +5,7 @@
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     id="coi-flowchart"
+    class="flowchart"
     style="position:absolute; top:0; left: 0; display: none;"
 >
     <style>
@@ -29,29 +30,19 @@
     >
         <rect x="247" y="1521" width="330" height="330" fill="#800000" 
         id="flowchart-individual-firms"/>
-        <text>
-            <tspan x="388" y="1556" fill="white">Asset</tspan>
-            <tspan x="338" y="1576" fill="white">management firms</tspan>
-        </text>
+        <text x="388" y="1556" style="fill: white !important">Asset</text>
+        <text x="338" y="1576" style="fill: white !important">management firms</text>
         <rect x="292" y="1709" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="324" y="1764">Carlyle</tspan>
-            <tspan x="327" y="1784">Group</tspan>
-        </text>
+        <text x="324" y="1764" class="top-line">Carlyle</text>
+        <text x="327" y="1784">Group</text>
         <rect x="412" y="1709" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="452" y="1764">Lake</tspan>
-            <tspan x="443" y="1784">Capital</tspan>
-        </text>
+        <text x="452" y="1764" class="top-line">Lake</text>
+        <text x="443" y="1784">Capital</text>
         <rect x="292" y="1589" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="327" y="1654">Pimco</tspan>
-        </text>
+        <text x="327" y="1654">Pimco</text>
         <rect x="412" y="1589" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="451" y="1644">Trian</tspan>
-            <tspan x="437" y="1664">Partners</tspan>
-        </text>
+        <text x="451" y="1644" class="top-line">Trian</text>
+        <text x="437" y="1664">Partners</text>
     </a>
     <a
         target="_blank"
@@ -59,28 +50,18 @@
     >
         <rect x="247" y="748" width="330" height="330" fill="#800000"
         id="flowchart-individual-trustees" />
-        <text>
-            <tspan x="342" y="793" fill="white">Board of Trustees</tspan>
-        </text>
+        <text x="342" y="793" style="fill: white !important">Board of Trustees</text>
         <rect x="293" y="804" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="329" y="849">David</tspan>
-            <tspan x="324" y="869">Ruben-</tspan>
-            <tspan x="332" y="889">stein</tspan>
-        </text>
+        <text x="329" y="849" class="top-line">David</text>
+        <text x="324" y="869">Ruben-</text>
+        <text x="332" y="889" class="bottom-line">stein</text>
         <rect x="413" y="804" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="454" y="859">Paul</tspan>
-            <tspan x="436" y="879">Yovovich</tspan>
-        </text>
+        <text x="454" y="859">Paul</text>
+        <text x="436" y="879" class="bottom-line">Yovovich</text>
         <rect x="293" y="924" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="309" y="979">Emmanuel</tspan>
-            <tspan x="324" y="999">Roman</tspan>
-        </text>
+        <text x="309" y="979">Emmanuel</text>
+        <text x="324" y="999" class="bottom-line">Roman</text>
         <rect x="413" y="924" width="118" height="118" fill="white" />
-        <text>
-            <tspan x="432" y="989">Peter May</tspan>
-        </text>
+        <text x="432" y="989">Peter May</text>
     </a>
 </svg>
