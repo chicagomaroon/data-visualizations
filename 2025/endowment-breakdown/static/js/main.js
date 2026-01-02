@@ -197,7 +197,6 @@ function lollipopChart(data) {
     const traces = [];
 
     for (const year of [2025, 2005]) {
-        console.log(year);
         let subset = data.filter((d) => d.year === year);
 
         // Sort the subset by amount_thousands in descending order
@@ -234,14 +233,7 @@ function circleChart(data, variable) {
     const groupedData = groupData(data, variable);
 
     // cite: d3 and copilot
-    // Features of the forces applied to the nodes:
     // Create a force simulation
-
-    groupedData.forEach((d) => {
-        d.x = 1000000;
-        d.y = 1000000;
-    });
-
     const simulation = d3
         .forceSimulation(groupedData)
         .force('charge', d3.forceManyBody().strength(-100)) // Repulsion between nodes
@@ -495,16 +487,11 @@ const formatThousands = d3.format(',.0f');
 // ------- CONSTANTS ------
 
 // TODO: add animation
-// TODO: why are sankey hovers transparent
 // TODO: MOBILE ACCESSIBILITY
 // TODO: data editor style review
 // TODO: finish writingg
-// TODO: round amounts for sector graph (approximate amounts)
-// TODO: line break for long captions?
 // TODO: hover define the sankey terms
 // TODO: run through colorblind checker
-// TODO: recategorized should match colors of before
-// TODO: try to see if you can have the arrow label thing for stacked bar small bars
 // TODO: indicate where stacked bar fits in the pie chart (could be in the text: this is $X of the $Y endowment or Z%)
 // TODO: Top 5 companies that UChicago owns shares in,
 // TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
@@ -866,6 +853,7 @@ const sequence = {
 };
 
 // -------- MAIN --------
+
 var statements, sec, coi, endowments, types_time, sankey_data;
 
 var isMobileLike = false;
@@ -889,15 +877,12 @@ async function init() {
     subtitleFontSize = isMobileLike ? 11 : 18;
     titleFontSize = isMobileLike ? 12 : 20;
 
+    statements = await fetchData('financial-statement-2025.json');
+    sec = await fetchData('sec-sectors-2025.json');
     coi = await fetchData('conflicts-of-interest-2024.json');
-    // console.log(coi);
-
     endowments = await fetchData('largest-endowments-2023.json');
-
     types_time = await fetchData('types-over-time.json');
-
     sankey_data = await fetchData('sankey.json');
-    // console.log('types over time', types_time);
 
     createWaypoint('what-is-endowment');
     createWaypoint('tuition');
@@ -917,7 +902,6 @@ async function init() {
     createWaypoint('donors');
     createWaypoint('conflicts');
     createWaypoint('pimco');
-    // createWaypoint('carlyle');
 
     createWaypoint('conclusion', (offset = '90%'));
 }
