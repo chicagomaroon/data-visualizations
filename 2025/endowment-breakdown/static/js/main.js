@@ -307,8 +307,7 @@ function barChart(data) {
         text: data.map((d) => d.school),
         y: data.map((d) => d.school),
         x: data.map((d) => d.endowment_dollars),
-        // name: key,
-        // marker: { color: key === 'Private' ? '#800000' : '#B46A55' },
+        textposition: isMobileLike ? 'outside' : 'inside',
         marker: {
             color: data.map((d) =>
                 d.school === 'University of Chicago' ? '#800000' : '#B46A55'
