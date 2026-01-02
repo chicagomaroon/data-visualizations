@@ -258,27 +258,34 @@ function circleChart(data, variable) {
         {
             type: 'scatter',
             mode: 'markers+text',
-            x: groupedData.map((val) => val.x),
-            y: groupedData.map((val) => val.y),
+            x: groupedData.map((val) => val.x + 100000),
+            y: groupedData.map((val) => val.y + 100000),
             name: groupedData.map((val) => val[variable]),
             marker: {
-                size: groupedData.map((val) => val.amount_thousands / 50),
-                color: groupedData.map(
-                    (val) => colorbook[variable][val[variable]]
+                size: groupedData.map(
+                    (val) => val.amount_thousands / (isMobileLike ? 150 : 50)
                 ),
+                color: '#800000',
                 opacity: 1
             },
-            paper_bgcolor: 'rgba(187, 13, 13,1)',
-            textfont: { color: 'white', line: { color: 'black' } },
+            textfont: {
+                color: groupedData.map((val) =>
+                    val.amount_thousands < 3000 ? 'black' : 'white'
+                ),
+                line: { color: 'black' }
+            },
             text: groupedData.map((val) =>
                 val.amount_thousands < 3000
                     ? val[variable]
                     : `${val[variable]}<br>\$${val.amount_display}`
             ),
+            textposition: groupedData.map((val) =>
+                val.amount_thousands < 3000 ? 'top center' : 'center center'
+            ),
             customdata: groupedData.map(
                 (val) =>
                     ' <br>    ' +
-                    val[variable] +
+                    val[variable].replace('<br>', ' ').replace('- ', '') +
                     ': $' +
                     `${val.amount_display}    <br>` +
                     '<b>    Top five companies by    <br>    UChicago-owned shares    <br>    March 2025:</b>    <br>' +
@@ -535,31 +542,10 @@ const colorbook = {
         Bonds: 'rgb(138, 144, 69)',
         'Hedge funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
-    },
-    sector: {
-        Technology: 'rgb(128, 0, 0)',
-        'Financial Services': 'rgb(193, 102, 34)',
-        Healthcare: 'rgb(19,48,28)',
-        'Communication Services': 'rgb(89,49,95)',
-        Industrials: 'rgb(21, 95, 131)',
-        'Consumer Defensive': 'rgb(53, 14, 32)',
-        Energy: 'rgb(120,157,74)',
-        Utilities: 'rgb(143, 57, 49)',
-        'Basic Materials': 'rgb(0,115,150)',
-        'Real Estate': 'rgb(164,52,58)'
     }
 };
 
 const helper_text = {
-    // 'Global public equities': '',
-    // 'Private equity': 'rgb(193, 102, 34)',
-    // 'Absolute return': 'rgb(143, 57, 49)',
-    // 'Fixed income': 'rgb(138, 144, 69)',
-    // 'Natural resources': 'rgb(88, 89, 63)',
-    // 'Real estate': 'rgb(21, 95, 131)',
-    // 'Private debt': 'rgb(53, 14, 32)',
-    // 'Cash equivalents': 'rgb(100, 100, 100)',
-    // 'Funds in trust': 'rgb(0, 0, 0)',
     'Public equities (stocks)': 'DEFINITION',
     'Private equities (stocks)': 'DEFINITION',
     Bonds: 'DEFINITION',
@@ -794,17 +780,47 @@ const sequence = {
             (caption =
                 'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025')
         );
+        annotations = layout['annotations'];
         Plotly.newPlot(
             'chart-div',
             circleChart(sec, 'sector'),
             {
                 ...layout,
                 margin: {
-                    l: 25,
-                    r: isMobileLike ? 50 : 25,
-                    b: 75
+                    l: isMobileLike ? 0 : 25,
+                    r: isMobileLike ? 0 : 25,
+                    b: isMobileLike ? 50 : 75
                 },
-                plot_bgcolor: '#555555'
+                xaxis: {
+                    scaleanchor: 'y',
+                    scaleratio: 1,
+                    showgrid: false,
+                    showticks: false,
+                    showticklabels: false,
+                    fixedrange: true
+                },
+                yaxis: {
+                    scaleanchor: 'x',
+                    scaleratio: 1,
+                    showgrid: false,
+                    showticks: false,
+                    showticklabels: false,
+                    fixedrange: true
+                },
+                plot_bgcolor: '#e3bfb5',
+                annotations: [
+                    layout['annotations'][0], // keep caption
+                    {
+                        font: {
+                            size: bodyFontSize,
+                            color: 'black'
+                        },
+                        showarrow: false,
+                        text: '  Total in endowment<br>$11B',
+                        x: 50000,
+                        y: 70000
+                    } // add additional annotation
+                ]
             },
             config
         );
