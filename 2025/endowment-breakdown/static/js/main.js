@@ -853,10 +853,12 @@ const sequence = {
         drawFlowchart((show = ['coi']), (hide = ['screen', 'arrows']));
     },
     pimco: function () {
+        showChart();
         drawFlowchart((show = ['control', 'coi', 'screen', 'arrows']));
     },
     conclusion: function () {
         d3.select('#chart-div').html(''); // clear previous chart
+        hideChart();
     }
 };
 
