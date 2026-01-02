@@ -556,6 +556,7 @@ const statementCaption =
 const sequence = {
     first: function () {
         hideChart();
+        d3.select('#chart-div').html(''); // clear previous chart
     },
     'what-is-endowment': function () {
         layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
