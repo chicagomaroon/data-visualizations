@@ -20,8 +20,9 @@
         #coi-flowchart rect {
             rx: 300;
         }
-        #coi-flowchart rect text {
-            fill: white;
+        #coi-flowchart a text {
+            fill: black;
+            font-size: 20px;
         }
     </style>
     <a
@@ -30,19 +31,19 @@
     >
         <rect x="247" y="1521" width="330" height="330" fill="#800000" 
         id="flowchart-individual-firms"/>
-        <text x="388" y="1556" style="fill: white !important" class="top-line">Asset</text>
-        <text x="338" y="1576" style="fill: white !important" class="left-line">management firms</text>
+        <text x="378" y="1556" style="fill: white !important" class="top-line">Asset</text>
+        <text x="323" y="1576" style="fill: white !important" class="left-line">management firms</text>
         <rect x="292" y="1709" width="118" height="118" fill="white" />
-        <text x="324" y="1764" class="top-line">Carlyle</text>
-        <text x="327" y="1784">Group</text>
+        <text x="316" y="1764" class="top-line">Carlyle</text>
+        <text x="319" y="1786">Group</text>
         <rect x="412" y="1709" width="118" height="118" fill="white" />
-        <text x="452" y="1764" class="top-line">Lake</text>
-        <text x="443" y="1784">Capital</text>
+        <text x="446" y="1764" class="top-line">Lake</text>
+        <text x="435" y="1786">Capital</text>
         <rect x="292" y="1589" width="118" height="118" fill="white" />
-        <text x="327" y="1654">Pimco</text>
+        <text x="319" y="1654">Pimco</text>
         <rect x="412" y="1589" width="118" height="118" fill="white" />
-        <text x="451" y="1644" class="top-line">Trian</text>
-        <text x="437" y="1664">Partners</text>
+        <text x="443" y="1644" class="top-line">Trian</text>
+        <text x="427" y="1666">Partners</text>
     </a>
     <a
         target="_blank"
@@ -50,18 +51,18 @@
     >
         <rect x="247" y="748" width="330" height="330" fill="#800000"
         id="flowchart-individual-trustees" />
-        <text x="342" y="793" style="fill: white !important" class="left-line">Board of Trustees</text>
+        <text x="330" y="793" style="fill: white !important" class="left-line">Board of Trustees</text>
         <rect x="293" y="804" width="118" height="118" fill="white" />
-        <text x="329" y="849" class="top-line">David</text>
-        <text x="324" y="869">Ruben-</text>
-        <text x="332" y="889" class="bottom-line">stein</text>
+        <text x="321" y="849" class="top-line">David</text>
+        <text x="316" y="871">Ruben-</text>
+        <text x="324" y="893" class="bottom-line">stein</text>
         <rect x="413" y="804" width="118" height="118" fill="white" />
-        <text x="454" y="859">Paul</text>
-        <text x="436" y="879" class="bottom-line">Yovovich</text>
+        <text x="446" y="859">Paul</text>
+        <text x="428" y="881" class="bottom-line">Yovovich</text>
         <rect x="293" y="924" width="118" height="118" fill="white" />
-        <text x="309" y="979">Emmanuel</text>
-        <text x="324" y="999" class="bottom-line">Roman</text>
+        <text x="299" y="979">Emmanuel</text>
+        <text x="314" y="1001" class="bottom-line">Roman</text>
         <rect x="413" y="924" width="118" height="118" fill="white" />
-        <text x="432" y="989">Peter May</text>
+        <text x="422" y="989">Peter May</text>
     </a>
 </svg>

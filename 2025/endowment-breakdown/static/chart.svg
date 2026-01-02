@@ -32,7 +32,8 @@
         }
         #control-flowchart a text {
             fill: white;
-        }
+            font-size: 20px;
+      }
         #control-flowchart path {
             fill: black;
         }
@@ -44,7 +45,7 @@
         style="fill: #e3bfb5"
         id="flowchart-background"
     />
-    <text x="625" y="222">University of Chicago</text>
+    <text x="625" y="222" style="font-size: 20px">University of Chicago</text>
     <a target="_blank" href="">
     <rect
         x="343"
@@ -53,8 +54,8 @@
         height="138"
         id="flowchart-office-of-investments"
     />
-        <text x="378" y="681" class="top-line">Office of</text>
-        <text x="362" y="699">Investments</text>
+        <text x="368" y="679" class="top-line">Office of</text>
+        <text x="352" y="701">Investments</text>
     </a>
     <a target="_blank" href="">
     <rect
@@ -64,8 +65,8 @@
         height="138"
         id="flowchart-university-president"
     />
-        <text x="251" y="499" class="top-line">University</text>
-        <text x="256" y="517">President</text>
+        <text x="241" y="497" class="top-line">University</text>
+        <text x="246" y="519">President</text>
     </a>
     <a
         target="_blank"
@@ -78,8 +79,8 @@
             height="138"
                 id="flowchart-faculty-senate"
         />
-        <text x="646" y="499" class="top-line">Faculty</text>
-        <text x="650" y="517">Senate</text>
+        <text x="640" y="497" class="top-line">Faculty</text>
+        <text x="642" y="519">Senate</text>
     </a>
     <a
         target="_blank"
@@ -92,8 +93,8 @@
             height="138"
                 id="flowchart-graduate-council"
         />
-        <text x="785" y="499" class="top-line">Graduate</text>
-        <text x="794" y="517">Council</text>
+        <text x="777" y="497" class="top-line">Graduate</text>
+        <text x="786" y="519">Council</text>
     </a>
     <a target="_blank" href="">
         <rect
@@ -102,7 +103,7 @@
             height="138"
             id="flowchart-donors"
             />
-        <text x="40" y="309">Donors</text>
+        <text x="30" y="309">Donors</text>
     </a>
     <a target="_blank" href="http://ac.uchicago.edu">
         <rect
@@ -112,8 +113,8 @@
             height="138"
                 id="flowchart-advisory-councils"
         />
-        <text x="493" y="499" class="top-line">Advisory</text>
-        <text x="497" y="517">Councils</text>
+        <text x="485" y="497" class="top-line">Advisory</text>
+        <text x="487" y="519">Councils</text>
     </a>
     <a
         target="_blank"
@@ -126,8 +127,8 @@
             height="138"
                 id="flowchart-board-of-trustees"
         />
-        <text x="374" y="300" class="top-line">Board of</text>
-        <text x="376" y="318">Trustees</text>
+        <text x="364" y="296" class="top-line">Board of</text>
+        <text x="366" y="318">Trustees</text>
     </a>
     <a target="_blank" href="">
         <rect
@@ -137,9 +138,9 @@
             height="138"
             id="flowchart-asset-management-firms"
         />
-        <text x="390" y="881" class="top-line">Asset</text>
-        <text x="359" y="899">management</text>
-        <text x="391" y="917" class="bottom-line">firms</text>
+        <text x="382" y="877" class="top-line">Asset</text>
+        <text x="348" y="899">management</text>
+        <text x="383" y="924" class="bottom-line">firms</text>
     </a>
     <path
         d="M295 574.5C295 573 294 573 294 573.5C293 573 293 573 293 574.5H294H295ZM318 594C319 594 319 593 319 593C319 592 319 592 318 592V593V594ZM387 592C386 592 386 592 386 593C386 593 386 594 387 594V593V592ZM411 612.207C411 612 412 612 412 612.207L419 605.843C419 605 419 604 419 604.429C418 604 418 604 417 604.429L412 610.086L406 604.429C405 604 405 604 404 604.429C404 604 404 605 404 605.843L411 612.207ZM312 593V594H318.5V593V592H312.5V593ZM387 593V594H393.5V593V592H387.5V593ZM393 593V594C403 594 411 601 411 611.5H412H413C413 600 404 592 393 592V593ZM294 574.5H293C293 585 301 594 312 594V593V592C302 592 295 584 295 574.5H294Z"

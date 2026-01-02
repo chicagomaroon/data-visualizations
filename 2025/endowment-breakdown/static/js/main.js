@@ -148,11 +148,9 @@ function createLayout(title = '', caption = '', showlegend = false) {
             yanchor: 'top' // Anchor the legend vertically at the top
         },
         margin: {
-            t: 30,
             l: 25,
             r: isMobileLike ? 25 : 0,
-            b: isMobileLike ? 70 : 100,
-            pad: isMobileLike ? -50 : 4
+            b: isMobileLike ? 70 : 100
         },
         dragmode: 'pan'
     };
@@ -466,11 +464,16 @@ function drawFlowchart(show = [], hide = []) {
         if (isMobileLike) {
             d3.selectAll('#chart-div svg')
                 .attr('width', '100%')
-                .attr('height', '45vh');
+                .attr('height', '43vh');
             d3.selectAll('#arrows-flowchart')
                 .attr('width', '100%')
-                .attr('height', '43vh')
-                .style('margin-top', '-2vh');
+                .attr('height', '41vh')
+                .style('margin-top', '0');
+
+            d3.selectAll('#coi-flowchart')
+                .attr('width', '100%')
+                .attr('height', '45vh')
+                .style('margin-top', '3vh');
         }
     });
 }
@@ -577,7 +580,7 @@ const sequence = {
             sankeyChart('tuition'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : 700
+                width: isMobileLike ? 1000 : null
             },
             {
                 ...config,
@@ -618,7 +621,7 @@ const sequence = {
             sankeyChart('endowment'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : 700,
+                width: isMobileLike ? 1000 : null,
                 font: {
                     size: bodyFontSize,
                     family: 'Georgia',
@@ -641,7 +644,7 @@ const sequence = {
             sankeyChart('restricted'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : 700
+                width: isMobileLike ? 1000 : null
             },
             {
                 ...config,
@@ -658,9 +661,10 @@ const sequence = {
             {
                 ...layout,
                 margin: {
+                    t: isMobileLike ? 0 : 150,
                     l: 0,
                     r: 20,
-                    b: isMobileLike ? 60 : 100
+                    b: isMobileLike ? 60 : 60
                 },
                 autosize: isMobileLike ? false : true,
                 width: isMobileLike ? 390 : null,
