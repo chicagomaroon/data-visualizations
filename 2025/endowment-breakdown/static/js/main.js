@@ -505,7 +505,7 @@ const hoverlabel = {
     alpha: 1,
     font: {
         family: 'Playfair',
-        size: axisFontSize,
+        size: bodyFontSize,
         color: 'black' // text color
     }
 };
@@ -562,7 +562,7 @@ const sequence = {
             sankeyChart('what-is-endowment'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : 700
+                width: isMobileLike ? 1000 : null
             },
             {
                 ...config,
@@ -635,6 +635,7 @@ const sequence = {
     },
     restricted: function () {
         layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
+        d3.select('.plotly').style('margin-top', '0');
         Plotly.newPlot(
             'chart-div',
             sankeyChart('restricted'),
@@ -649,7 +650,6 @@ const sequence = {
         );
     },
     breakdown: function () {
-        layout = createLayout((title = ''), (caption = statementCaption));
         Plotly.newPlot(
             'chart-div',
             donutChart(statements),
@@ -658,13 +658,15 @@ const sequence = {
                 margin: {
                     l: 0,
                     r: 20,
-                    b: isMobileLike ? 50 : 100
+                    b: isMobileLike ? 60 : 100
                 },
+                autosize: isMobileLike ? false : true,
+                width: isMobileLike ? 390 : null,
                 annotations: [
                     layout['annotations'][0], // keep caption
                     {
                         font: {
-                            size: annotationFontSize
+                            size: titleFontSize
                         },
                         showarrow: false,
                         text: 'Total in endowment<br>$11 billion',
