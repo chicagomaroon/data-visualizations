@@ -314,6 +314,9 @@ function barChart(data) {
                 d.school === 'University of Chicago' ? '#800000' : '#B46A55'
             )
         },
+        textfont: {
+            size: axisFontSize
+        },
         hoverlabel: hoverlabel,
         hovertemplate:
             '<br /> <br />    %{y} endowment:    <br />    $%{x:,.0f}    <br /> <br /><extra></extra>'
@@ -649,6 +652,7 @@ const sequence = {
         );
     },
     restricted: function () {
+        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
         Plotly.newPlot(
             'chart-div',
             sankeyChart('restricted'),
@@ -741,7 +745,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 110 : 200,
                     r: isMobileLike ? 25 : 0,
-                    b: 100
+                    b: isMobileLike ? 50 : 100
                 },
                 xaxis: {
                     range: [0.01, 1],
@@ -848,8 +852,7 @@ async function init() {
     // };
     // hideChart();
 
-    statements = await fetchData('financial-statement-2025.json');
-    // console.log(statements);
+    isMobileLike = detectMobile();
 
     annotationFontSize = isMobileLike ? 8 : 12;
     axisFontSize = isMobileLike ? 9 : 14;
