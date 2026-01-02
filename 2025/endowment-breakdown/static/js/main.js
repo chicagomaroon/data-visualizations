@@ -124,7 +124,8 @@ function createLayout(title = '', caption = '', showlegend = false) {
             showticklabels: false,
             tickfont: {
                 size: axisFontSize
-            }
+            },
+            fixedrange: true
         },
         yaxis: {
             showgrid: false,
@@ -132,7 +133,8 @@ function createLayout(title = '', caption = '', showlegend = false) {
             showticklabels: false,
             tickfont: {
                 size: axisFontSize
-            }
+            },
+            fixedrange: true
         },
         hovermode: 'closest',
         hoverlabel: {
@@ -150,8 +152,9 @@ function createLayout(title = '', caption = '', showlegend = false) {
             l: 25,
             r: isMobileLike ? 25 : 0,
             b: isMobileLike ? 70 : 100,
-            pad: isMobileLike ? 0 : 4
-        }
+            pad: isMobileLike ? -50 : 4
+        },
+        dragmode: 'pan'
     };
 }
 
@@ -515,7 +518,9 @@ const hoverlabel = {
 
 const config = {
     displayModeBar: false,
-    responsive: true
+    responsive: true,
+    scrollZoom: false,
+    doubleClick: false
 };
 
 const transition = {
@@ -699,6 +704,7 @@ const sequence = {
         );
     },
     'compare-schools': function () {
+        d3.select('.plotly').style('margin-top', '0');
         layout = createLayout(
             (title =
                 'Top 20 largest college endowments in the U.S., Fiscal Year 2023'),
@@ -720,6 +726,7 @@ const sequence = {
                     showgrid: true,
                     showline: true,
                     showticklabels: true,
+                    fixedrange: true,
                     tickfont: {
                         size: axisFontSize
                     },
@@ -759,6 +766,7 @@ const sequence = {
                     showgrid: false,
                     showline: true,
                     showticklabels: true,
+                    fixedrange: true,
                     tickfont: {
                         size: axisFontSize
                     },
@@ -770,6 +778,7 @@ const sequence = {
                     showgrid: true,
                     showline: false,
                     showticklabels: true,
+                    fixedrange: true,
                     tickfont: {
                         size: axisFontSize
                     }
