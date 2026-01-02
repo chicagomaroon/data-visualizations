@@ -390,18 +390,18 @@ g.sankey {
 
     .flowchart text {
         font-size: 26px !important;
-        transform: translate(-18px, 4px); /* shifts left and down */
+        transform: translate(-10px, 4px); /* shifts left and down */
     }
 
     .flowchart text.top-line {
-        transform: translate(-18px, -4px); /* shifts left and up */
+        transform: translate(-10px, -4px); /* shifts left and up */
     }
 
     .flowchart text.bottom-line {
-        transform: translate(-18px, 12px); /* shifts left and down */
+        transform: translate(-10px, 12px); /* shifts left and down */
     }
 
     .flowchart text.left-line {
-        transform: translateX(-50px); /* shifts left and down */
+        transform: translateX(-40px); /* shifts left and down */
     }
 }
