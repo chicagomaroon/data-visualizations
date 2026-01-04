@@ -331,18 +331,41 @@ def parse_sec(investment):
 
             raise e
 
-    # if 2021 or later, divide value by 1000 (we will report all data in thousands)
+    # if 2021 or later, 2003-2005, 2000, or 1999, divide value by 1000 (we will report all data in thousands)
     # cover pages state that reports past this date are reported in dollars instead of thousands
     # note that official SEC documentation lists data format change date as 1/3/2023 but I do not see this reflected in the data https://www.sec.gov/files/form_13f_readme.pdf
     # https://www.sec.gov/Archives/edgar/data/314957/000110465924034451/xslForm13F_X02/primary_doc.xml
-    if date >= datetime(2020, 12, 1).date():
+    if (
+        (date >= datetime(2020, 12, 1).date())
+        or (
+            date <= datetime(2005, 6, 1).date() and date >= datetime(2003, 12, 1).date()
+        )
+        or (
+            date <= datetime(2000, 12, 1).date() and date >= datetime(2000, 8, 1).date()
+        )
+        or (date <= datetime(1999, 4, 1).date())
+    ):
         df = df.with_columns((pl.col("Value") / 1000).cast(Int64).alias("Value"))
 
     # add date column
     df = df.with_columns(pl.lit(date).alias("Date"))
     df = df.rename({"Value": "ValueThousands"})
 
+    # check that sum is in billions
+    print(
+        "Total for date",
+        date,
+        ": ",
+        df["ValueThousands"].sum() / 1000000,
+        "B",
+    )
+    if (df["ValueThousands"].sum() < 1000) or (df["ValueThousands"].sum() > 1000000):
+        raise ValueError("ERROR AMOUNT IS WRONG")
+
     return df
+
+
+parse_sec(investments[75])
 
 
 def get_holdings(company, ticker, pages=51):
@@ -527,7 +550,7 @@ sec.write_csv("13F-HR.csv")
 
 sec = pd.read_csv("13F-HR.csv")
 
-# clean data
+# clean data after reading using pandas
 sec["Date"] = pd.to_datetime(sec["Date"])
 sec["Year"] = sec["Date"].dt.year
 sec["Issuer"] = sec["Issuer"].str.title()
