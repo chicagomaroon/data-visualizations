@@ -653,38 +653,6 @@ const sequence = {
             }
         );
     },
-    breakdown: function () {
-        layout = createLayout((title = null), (caption = statementCaption));
-        d3.select('.plotly').style('margin-top', '-90px');
-        Plotly.newPlot(
-            'chart-div',
-            donutChart(statements),
-            {
-                ...layout,
-                margin: {
-                    t: isMobileLike ? 0 : 150,
-                    l: 0,
-                    r: 20,
-                    b: isMobileLike ? 60 : 60
-                },
-                autosize: isMobileLike ? false : true,
-                width: isMobileLike ? 390 : null,
-                annotations: [
-                    layout['annotations'][0], // keep caption
-                    {
-                        font: {
-                            size: titleFontSize
-                        },
-                        showarrow: false,
-                        text: 'Total in endowment<br>$11 billion',
-                        x: 0.5,
-                        y: 0.5
-                    } // add title in center
-                ]
-            },
-            config
-        );
-    },
     'compare-schools': function () {
         d3.select('.plotly').style('margin-top', '0');
         layout = createLayout(
@@ -722,7 +690,39 @@ const sequence = {
             config
         );
     },
-    amnesty: function () {
+    breakdown: function () {
+        layout = createLayout((title = null), (caption = statementCaption));
+        d3.select('.plotly').style('margin-top', '-90px');
+        Plotly.newPlot(
+            'chart-div',
+            donutChart(statements),
+            {
+                ...layout,
+                margin: {
+                    t: isMobileLike ? 80 : 150,
+                    l: isMobileLike ? 40 : 0,
+                    r: 20,
+                    b: isMobileLike ? 20 : 60
+                },
+                autosize: isMobileLike ? false : true,
+                width: isMobileLike ? 390 : null,
+                annotations: [
+                    layout['annotations'][0], // keep caption
+                    {
+                        font: {
+                            size: titleFontSize
+                        },
+                        showarrow: false,
+                        text: 'Total in endowment<br>$11 billion',
+                        x: 0.5,
+                        y: 0.5
+                    } // add title in center
+                ]
+            },
+            config
+        );
+    },
+    'private-equities': function () {
         layout = createLayout(
             (title =
                 'Change in fund types in the endowment in the last 20 years'),
@@ -853,7 +853,7 @@ const sequence = {
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
         drawFlowchart((show = ['coi']), (hide = ['screen', 'arrows']));
     },
-    pimco: function () {
+    arrows: function () {
         showChart();
         drawFlowchart((show = ['control', 'coi', 'screen', 'arrows']));
     },
@@ -899,10 +899,10 @@ async function init() {
     createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
+    createWaypoint('compare-schools');
 
     createWaypoint('breakdown');
-    createWaypoint('compare-schools');
-    createWaypoint('amnesty');
+    createWaypoint('private-equities');
 
     createWaypoint('sec');
 
@@ -912,7 +912,7 @@ async function init() {
     createWaypoint('president');
     createWaypoint('donors');
     createWaypoint('conflicts');
-    createWaypoint('pimco');
+    createWaypoint('arrows');
 
     createWaypoint('conclusion', (offset = '90%'));
 }
