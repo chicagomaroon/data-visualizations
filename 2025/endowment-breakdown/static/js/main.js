@@ -138,7 +138,15 @@ function createLayout(title = '', caption = '', showlegend = false) {
         },
         hovermode: 'closest',
         hoverlabel: {
-            bgcolor: 'white'
+            bordercolor: '#dddddd', // border color
+            bgcolor: 'white',
+            opacity: 1,
+            alpha: 1,
+            font: {
+                family: 'Playfair',
+                size: subtitleFontSize,
+                color: 'black' // text color
+            }
         },
         showlegend: showlegend,
         legend: {
@@ -179,7 +187,6 @@ function donutChart(data) {
             }
         },
         hoverinfo: 'text',
-        hoverlabel: hoverlabel,
         hovertemplate: groupedData.map(
             (d) =>
                 '    <br>    ' +
@@ -218,7 +225,6 @@ function lollipopChart(data) {
             customdata: subset.map((d) => d.year),
             text: subset.map((d) => d.recategorized),
             hoverinfo: 'text',
-            hoverlabel: hoverlabel,
             hovertemplate:
                 ' <br>    %{x:.0%} of endowment    <br>    categorized as %{y} in %{customdata}    <br>    <extra></extra>' // extra tag removes
         });
@@ -262,7 +268,7 @@ function circleChart(data, variable) {
                 color: groupedData.map((val) =>
                     val.amount_thousands < 3000 ? 'black' : 'white'
                 ),
-                line: { color: 'black' }
+                size: bodyFontSize
             },
             text: groupedData.map((val) =>
                 val.amount_thousands < 3000
@@ -283,7 +289,6 @@ function circleChart(data, variable) {
                     '<br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
             hoverinfo: 'text',
-            hoverlabel: hoverlabel,
             hovertemplate: '%{customdata}'
         }
     ];
@@ -316,7 +321,6 @@ function barChart(data) {
         textfont: {
             size: axisFontSize
         },
-        hoverlabel: hoverlabel,
         hovertemplate:
             '<br /> <br />    %{y} endowment:    <br />    $%{x:,.0f}    <br /> <br /><extra></extra>'
     });
@@ -500,18 +504,6 @@ const formatThousands = d3.format(',.0f');
 // TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
 // TODO: diversified -> unspecified or information not available
 // TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
-
-const hoverlabel = {
-    bordercolor: '#f1f1f1', // border color
-    bgcolor: 'white',
-    opacity: 1,
-    alpha: 1,
-    font: {
-        family: 'Playfair',
-        size: bodyFontSize,
-        color: 'black' // text color
-    }
-};
 
 const config = {
     displayModeBar: false,
