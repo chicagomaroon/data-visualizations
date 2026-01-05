@@ -714,53 +714,6 @@ const sequence = {
             config
         );
     },
-    'private-equities': function () {
-        layout = createLayout(
-            (title =
-                'Change in fund types in the endowment in the last 20 years'),
-            (caption =
-                'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
-            (showlegend = true)
-        );
-        Plotly.newPlot(
-            'chart-div',
-            lollipopChart(types_time),
-            {
-                ...layout,
-                margin: {
-                    l: isMobileLike ? 110 : 200,
-                    r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 50 : 100
-                },
-                xaxis: {
-                    range: [0.01, 1],
-                    tickformat: '.0%',
-                    ticks: 'outside',
-                    tickwidth: 2,
-                    showgrid: false,
-                    showline: true,
-                    showticklabels: true,
-                    fixedrange: true,
-                    tickfont: {
-                        size: axisFontSize
-                    },
-                    title: {
-                        text: ''
-                    }
-                },
-                yaxis: {
-                    showgrid: true,
-                    showline: false,
-                    showticklabels: true,
-                    fixedrange: true,
-                    tickfont: {
-                        size: axisFontSize
-                    }
-                }
-            },
-            config
-        );
-    },
     sec: function () {
         d3.select('#chart-div').html(''); // clear previous chart
         layout = createLayout(
@@ -809,6 +762,54 @@ const sequence = {
                         y: 70000
                     } // add additional annotation
                 ]
+            },
+            config
+        );
+    },
+    'private-equities': function () {
+        layout = createLayout(
+            (title =
+                'Change in fund types in the endowment in the last 20 years'),
+            (caption =
+                'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
+            (showlegend = true)
+        );
+        Plotly.newPlot(
+            'chart-div',
+            lollipopChart(types_time),
+            {
+                ...layout,
+                margin: {
+                    l: isMobileLike ? 110 : 200,
+                    r: isMobileLike ? 25 : 0,
+                    b: isMobileLike ? 50 : 100,
+                    t: isMobileLike ? 50 : 100
+                },
+                xaxis: {
+                    range: [0.01, 1],
+                    tickformat: '.0%',
+                    ticks: 'outside',
+                    tickwidth: 2,
+                    showgrid: false,
+                    showline: true,
+                    showticklabels: true,
+                    fixedrange: true,
+                    tickfont: {
+                        size: axisFontSize
+                    },
+                    title: {
+                        text: ''
+                    }
+                },
+                yaxis: {
+                    showgrid: true,
+                    showline: false,
+                    showticklabels: true,
+                    fixedrange: true,
+                    tickfont: {
+                        size: axisFontSize
+                    }
+                }
             },
             config
         );
@@ -887,17 +888,19 @@ async function init() {
     types_time = await fetchData('types-over-time.json');
     sankey_data = await fetchData('sankey.json');
 
+    // part I
     createWaypoint('what-is-endowment');
     createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
     createWaypoint('compare-schools');
 
+    // part II
     createWaypoint('breakdown');
+    createWaypoint('sec');
     createWaypoint('private-equities');
 
-    createWaypoint('sec');
-
+    // part III
     createWaypoint('control');
     createWaypoint('board-of-trustees');
     createWaypoint('office-of-investments');
