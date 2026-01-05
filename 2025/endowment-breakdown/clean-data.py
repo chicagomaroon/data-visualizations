@@ -33,20 +33,20 @@ from polars import String, Int64, Date, ShapeError, ComputeError
 # %% functions
 
 
-def get_sec(email="YOUR_EMAIL@uchicago.edu"):
+def get_sec(email="YOUR_EMAIL@uchicago.edu", school_id="0000314957"):
     """
-    Docstring for get_sec
+    Get all SEC 13-HR filings for the University of Chicago using edgartools Python package.
 
     cite: https://pypi.org/project/edgartools/
     alternative: https://github.com/zpetan/sec-13f-portfolio-python
 
-    :param email: Description
+    :param email: Email used to identify user requesting the files
     """
     # Tell the SEC who you are (required by SEC regulations)
     set_identity(email)
 
     # Find University of Chicago by its CIK number
-    company = Company("0000314957")
+    company = Company(school_id)
 
     # Get company filings
     filings = company.get_filings()
@@ -100,20 +100,15 @@ schemas = {
     ],
 }
 
-split_line_patterns = {
-    "Cusip": "(\\d[\\dA-Z]{0,8})",
-    "Value": "(\\d{2,7})",
-    "SharesPrnAmount": "(\\d{2,7})",
-    "Type": "([SH]{2})",
-    "InvestmentDiscretion": "([OtherSoleOTHERSOLE]{4,6})",
-    "Ticker": "(\\d{1,2})",
-    "SoleVoting": "(\\d{1,2})",
-    "SharedVoting": "(\\d{1,6})",
-    "NonVoting": "(\\d{1,6})",
-}
-
 
 def split_from_right(line, cells=10):
+    """
+    Splits a line of raw text from a SEC 13-HR filing using whitespace as a delimiter, from right to left. Any remaining whitespace-delimited text on the left side is stored as a single cell once all cells to the right have been filled.
+
+    :param line: String of raw text
+    :param cells: Number of cells that should be in output
+    """
+
     parts = re.split(r"\s+", line.strip())
 
     if len(parts) <= cells:
@@ -130,6 +125,26 @@ def split_with_patterns(
     schema,
     cls_pattern="(NLGO 03|CV C|Non Cum Perp|Ishares Mid Val (FD)?|SUB Vtg|(Cl |CL )?(A )?(B )?(Com|COM|BEN|ADR|CAP|PFD|PLC|RTS|REIT|INT)( Biosurgery| Molec Onc)?( EXCH)?|A|B)$",
 ):
+    """
+    Split a non-delimited line of raw text from right to left using regex to determine where data starts and ends in a SEC 13-HR file. Contains a dict of patterns that can be used to match particular columns that exist in particular time periods.
+
+    :param line: String of raw text
+    :param schema: Column names and types expected in output
+    :param cls_pattern: Regex pattern used to differentiate data associated with the CLASS column from that associated with the ISSUER column
+    """
+
+    split_line_patterns = {
+        "Cusip": "(\\d[\\dA-Z]{0,8})",
+        "Value": "(\\d{2,7})",
+        "SharesPrnAmount": "(\\d{2,7})",
+        "Type": "([SH]{2})",
+        "InvestmentDiscretion": "([OtherSoleOTHERSOLE]{4,6})",
+        "Ticker": "(\\d{1,2})",
+        "SoleVoting": "(\\d{1,2})",
+        "SharedVoting": "(\\d{1,6})",
+        "NonVoting": "(\\d{1,6})",
+    }
+
     orig_line = line
 
     # remove redundant whitespace
@@ -170,11 +185,11 @@ def split_with_patterns(
 
 def sec_parse_1999(filing):
     """
-    Use line of dashes ----- to indicate where headers end and data starts
+    Use line of dashes ----- to indicate where headers end and data starts for a SEC 13-HR filing. Uses the regex approach to detect cells from right to left.
 
     Cite: Copilot
 
-    :param table: Description
+    :param table: Raw 13-HR file
     """
 
     table = re.split("------+\\s*\\n", filing)[-1]
@@ -216,8 +231,7 @@ def sec_parse_1999(filing):
 
 def sec_parse_2007(filing):
     """
-    Use header string "SHARED NONE" to indicate end of headers and beginning of data
-    No fixed length or separator for data
+    Use header string "SHARED NONE" to indicate end of headers and beginning of data for a SEC 13-HR filing. Uses the regex approach to detect cells from right to left.
 
     :param table: Raw 13-HR file
     """
@@ -247,8 +261,7 @@ def sec_parse_2007(filing):
 
 def sec_parse_2008(filing):
     """
-    Use the header string "SHARED NONE" to locate end of headers and beginning of data
-    Fixed length of 10 characters per cell
+    Use the header string "SHARED NONE" to locate end of headers and beginning of data for a SEC 13-HR filing. Uses the regex approach to detect cells from right to left.
 
     Cite: Copilot
 
@@ -274,12 +287,11 @@ def sec_parse_2008(filing):
 
 def parse_sec(investment):
     """
-    Docstring for parse_sec
+    Parse a filing from the SEC 13-HR archives. Archives may be parsed in many different ways using the edgartools Python package, including full text or, if we're lucky, a machine-readable HTML file. Otherwise, we have to detect data from the non-delimited original full text.
 
     Cite: Copilot for some of the more complex logic
 
-    :param investment: Description
-    :param sec: Description
+    :param investment: A file obtained from the SEC archives
 
     :example: parse_sec(investments[74])
     """
@@ -365,20 +377,18 @@ def parse_sec(investment):
     return df
 
 
-parse_sec(investments[75])
-
-
 def get_holdings(company, ticker, pages=51):
     """
-    Docstring for get_holdings
+    Scrape a company's website for the holdings in a specific portfolio. Only scrapes the top 51 pages, due to practical limitations such as rate limiting.
 
-    :param company: Description
-    :param ticker: Description
-    :param pages: Description
+    NOTE: this is JUST for 1 quarter in 2025, for now
+
+    :param company: Option to select one of two pre-defined companies, Vanguard or Ishare
+    :param ticker: Three-to-four letter ticker for a portfolio
+    :param pages: Number of pages to scrape
     """
-    # TODO: cleanup and document this code
-    # # note: this is JUST 1 quarter in 2025, for now
 
+    # define options
     sites = {
         "vanguard": f"https://investor.vanguard.com/investment-products/etfs/profile/{ticker.lower()}#portfolio-composition",
         "ishares": f"https://www.ishares.com/us/products/239726/{ticker.lower()}",
@@ -396,13 +406,20 @@ def get_holdings(company, ticker, pages=51):
         "ishares": "h2",
     }
 
+    # open a browser, in this case Firefox but you can change to your browser
     driver = webdriver.Firefox()
 
     driver.get(sites[company])
+
+    # zoom so that we can get the relevant parts of the page in view
     driver.execute_script("document.body.style.zoom='15%'")
     driver.maximize_window()
+
+    # skip to the relevant part of the page
     elem = driver.find_element(By.XPATH, f"//*[text()='{tabs[company]}']")
     elem.send_keys(Keys.RETURN)
+
+    # zoom again
     driver.execute_script("document.body.style.zoom='15%'")
 
     data = []
@@ -423,6 +440,7 @@ def get_holdings(company, ticker, pages=51):
             # Find the first <div> following this <h5>
             div_elem = h5_elem.find_element(By.XPATH, "following-sibling::div[1]")
 
+            # Find the table within the div element
             table = div_elem.find_elements(By.TAG_NAME, "table")
             if len(table[0].text):
                 t = 0
@@ -439,6 +457,14 @@ def get_holdings(company, ticker, pages=51):
 
 
 def process_holdings(data, company, ticker):
+    """
+    Once you have the raw data scraped from a website, process it into a data frame, similar to how SEC 13-HR data is processed.
+
+    :param data: A list of table rows
+    :param company: A company from a pre-defined list, Vanguard or Ishares
+    :param ticker: A three-to-four letter ticker for a portfolio
+    """
+
     percents_col = {
         "vanguard": r"(\d+\.\d+) %",
         "ishares": r"\d+\.\d\d",
@@ -450,31 +476,41 @@ def process_holdings(data, company, ticker):
     for row in data:
         for cell in row:
             if "Ticker" not in cell:
+                # extract ticker for a specific stock
                 try:
                     ticker_i = re.search(r"^[A-Z\.\d]+", cell.strip("— "))[0]
                     tickers.append(ticker_i)
                 except Exception as e:
                     print(f"Error parsing ticker: {cell} - {e}")
-                    continue
+                    tickers.append(
+                        cell
+                    )  # add the whole thing so we can re-parse later if needed (avoid data loss)
 
+                # extract percent makeup (of portfolio)
                 percents.append(re.search(percents_col[company], cell)[0].strip(" %"))
 
+                # extract company name
                 try:
                     companies.append(
                         re.sub(r"\d{5,}.*", "", cell).strip(ticker_i).strip()
                     )
                 except Exception as e:
                     print(f"Error parsing company: {cell} - {e}")
-                    continue
+                    companies.append(
+                        cell
+                    )  # add the whole thing so we can re-parse later if needed (avoid data loss)
 
+    # combine all extracted columns
     df = pd.DataFrame({"ticker": tickers, "percent": percents, "company": companies})
+
+    # calculate how much UChicago invested in each individual holding as a function of percent of a known invested portfolio stock
+    # eg, we know UChicago invested $X in VOO; if APPL is .1% of VOO, then how many dollars is UChicago invested in APPL?
     uc_invested_dollars = (
         sec.sort_values("Date", ascending=False)
         .loc[(sec["Ticker"] == ticker), "Value"]
         .values[0]
         * 1000
     )
-
     df["amt"] = df["percent"].astype(float) / 100 * uc_invested_dollars
     df.to_csv(f"third-party/holdings-{ticker}.csv", index=False)
 
@@ -607,7 +643,7 @@ sec.sort_values(["Issuer", "Date"])[
     ]
 ]
 
-# %% scrape holdings of index funds
+# %% scrape holdings of index funds identified in 3/31/25 13-HR filing
 
 # TODO: deal with companies that had errors processing
 
