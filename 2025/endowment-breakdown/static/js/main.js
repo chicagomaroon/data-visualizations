@@ -350,7 +350,7 @@ function sankeyChart(div) {
         (d) =>
             '<b>' +
             d.to +
-            '</b><br>$' +
+            '</b> $' +
             formatThousands(d.amount_millions * 1000000)
     );
 
