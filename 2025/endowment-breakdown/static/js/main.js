@@ -340,7 +340,11 @@ function sankeyChart(div) {
     let labels = sankey_data_filtered.map((d) => d.to);
     labels.forEach((label, i) => (nodeIndex[label] = i));
     labels = sankey_data_filtered.map(
-        (d) => '<b>' + d.to + '</b><br>$' + d.amount + 'M'
+        (d) =>
+            '<b>' +
+            d.to +
+            '</b><br>$' +
+            formatThousands(d.amount_millions * 1000000)
     );
 
     const x = sankey_data_filtered.map((d) =>
@@ -401,7 +405,7 @@ function sankeyChart(div) {
         link: {
             source: sankey_data_filtered.map((d) => nodeIndex[d.from]),
             target: sankey_data_filtered.map((d) => nodeIndex[d.to]),
-            value: sankey_data_filtered.map((d) => d.amount),
+            value: sankey_data_filtered.map((d) => d.amount_millions),
             hoverinfo: 'none',
             color: links_color_map[div]
         }
