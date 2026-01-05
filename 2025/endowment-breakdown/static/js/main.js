@@ -493,7 +493,8 @@ function detectMobile() {
     );
 }
 
-const formatThousands = d3.format(',.0f');
+// cite: Copilot
+const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 
 // ------- CONSTANTS ------
 
