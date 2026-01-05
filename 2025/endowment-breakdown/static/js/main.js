@@ -321,8 +321,15 @@ function barChart(data) {
         textfont: {
             size: axisFontSize
         },
-        hovertemplate:
-            '<br /> <br />    %{y} endowment:    <br />    $%{x:,.0f}    <br /> <br /><extra></extra>'
+        customdata: data.map(
+            (d) =>
+                '<br /> <br />    ' +
+                d.school +
+                ' endowment: $' +
+                formatThousands(d.endowment_dollars) +
+                '    <br /> <br /><extra></extra>'
+        ),
+        hovertemplate: '%{customdata}'
     });
 
     return traces;
