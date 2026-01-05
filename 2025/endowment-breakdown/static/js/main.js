@@ -284,7 +284,7 @@ function circleChart(data, variable) {
                     val[variable].replace('<br>', ' ').replace('- ', '') +
                     ': $' +
                     `${val.amount_display}    <br>` +
-                    '<b>    Top five companies by    <br>    UChicago-owned shares    <br>    March 2025:</b>    <br>' +
+                    '<b>    UChicago owned the most shares    <br>    in the following stocks in Mar. 2025:</b>    <br>' +
                     val.hoverinfo +
                     '<br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
@@ -728,7 +728,8 @@ const sequence = {
     },
     sec: function () {
         layout = createLayout(
-            (title = 'Industry sectors'),
+            (title =
+                'Industries invested in by the University, with known amounts'),
             (caption =
                 'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025')
         );
