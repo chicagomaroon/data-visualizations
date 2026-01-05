@@ -727,7 +727,6 @@ const sequence = {
         );
     },
     sec: function () {
-        d3.select('#chart-div').html(''); // clear previous chart
         layout = createLayout(
             (title = 'Industry sectors'),
             (caption =
@@ -779,6 +778,8 @@ const sequence = {
         );
     },
     'private-equities': function () {
+        d3.select('#chart-div').html(''); // clear previous chart
+
         layout = createLayout(
             (title =
                 'Change in fund types in the endowment in the last 20 years'),
