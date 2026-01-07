@@ -378,8 +378,9 @@ g.sankey {
     /* chart */
 
     #chart-div {
-        height: 45vh;
+        height: 50vh;
         width: auto;
+        margin-top: -60px;
     }
 
     #chart-container {
