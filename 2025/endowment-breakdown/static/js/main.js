@@ -661,9 +661,9 @@ const sequence = {
         d3.select('.plotly').style('margin-top', '0');
         layout = createLayout(
             (title =
-                'Top 20 largest college endowments in the U.S., Fiscal Year 2023'),
+                'Top 20 largest college endowments in the U.S., Fiscal Year 2024'),
             (caption =
-                'Source: <a href="https://www.usnews.com/education/best-colleges/the-short-list-college/articles/universities-with-the-biggest-endowments">2025 U.S. News Best Colleges</a>'),
+                'University systems consisting of multiple schools are excluded.<br>Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
             (showlegend = false)
         );
         Plotly.newPlot(
