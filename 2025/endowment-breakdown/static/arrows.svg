@@ -18,7 +18,7 @@
             fill: black;
             font-family: 'Open Sans', sans-serif;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 18px;
             letter-spacing: -0.011em;
             white-space: pre;
         }
