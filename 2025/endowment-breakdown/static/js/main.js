@@ -533,10 +533,10 @@ const transition = {
 
 const colorbook = {
     recategorized: {
-        'Public equities<br>(stocks)': 'rgb(128, 0, 0)',
-        'Private equities<br>(stocks)': 'rgb(193, 102, 34)',
+        'Public<br>equities<br>(stocks)': 'rgb(128, 0, 0)',
+        'Private<br>equities<br>(stocks)': 'rgb(193, 102, 34)',
         Bonds: 'rgb(138, 144, 69)',
-        'Hedge funds': 'rgb(53, 14, 32)',
+        'Hedge<br>funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
     }
 };
