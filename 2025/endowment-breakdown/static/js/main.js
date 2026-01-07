@@ -731,7 +731,7 @@ const sequence = {
             (title =
                 'Industries invested in by the University, with known amounts'),
             (caption =
-                'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925045961/xslForm13F_X02/primary_doc.xml">SEC 13-F filing</a> for quarter ending March 2025')
+                'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025')
         );
         annotations = layout['annotations'];
         Plotly.newPlot(
