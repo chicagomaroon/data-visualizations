@@ -727,6 +727,7 @@ const sequence = {
         );
     },
     sec: function () {
+        d3.select('.plotly').style('margin-top', '0px');
         layout = createLayout(
             (title =
                 'Industries invested in by the University, with known amounts'),
