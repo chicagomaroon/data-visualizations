@@ -751,6 +751,7 @@ const sequence = {
                     showgrid: false,
                     showticks: false,
                     showticklabels: false,
+                    zeroline: false,
                     fixedrange: true
                 },
                 yaxis: {
@@ -759,6 +760,7 @@ const sequence = {
                     showgrid: false,
                     showticks: false,
                     showticklabels: false,
+                    zeroline: false,
                     fixedrange: true
                 },
                 plot_bgcolor: '#e3bfb5',
