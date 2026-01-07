@@ -254,37 +254,39 @@ function circleChart(data, variable) {
         {
             type: 'scatter',
             mode: 'markers+text',
-            x: groupedData.map((val) => val.x + 100000),
-            y: groupedData.map((val) => val.y + 100000),
+            x: groupedData.map((val) => val.x),
+            y: groupedData.map((val) => val.y),
             name: groupedData.map((val) => val[variable]),
             marker: {
                 size: groupedData.map(
-                    (val) => val.amount_thousands / (isMobileLike ? 150 : 50)
+                    (val) => val.amount_thousands / (isMobileLike ? 280 : 170)
                 ),
                 color: '#800000',
                 opacity: 1
             },
             textfont: {
                 color: groupedData.map((val) =>
-                    val.amount_thousands < 3000 ? 'black' : 'white'
+                    val.amount_thousands < 10000 ? 'black' : 'white'
                 ),
                 size: bodyFontSize
             },
             text: groupedData.map((val) =>
-                val.amount_thousands < 3000
+                val.amount_thousands < 10000
                     ? val[variable]
-                    : `${val[variable]}<br>\$${val.amount_display}`
+                    : `${val[variable]}<br>\$${formatThousands(
+                          val.amount_thousands * 1000
+                      )}`
             ),
             textposition: groupedData.map((val) =>
-                val.amount_thousands < 3000 ? 'top center' : 'center center'
+                val.amount_thousands < 10000 ? 'top center' : 'center center'
             ),
             customdata: groupedData.map(
                 (val) =>
                     ' <br>    ' +
                     val[variable].replace('<br>', ' ').replace('- ', '') +
                     ': $' +
-                    `${val.amount_display}    <br>` +
-                    '<b>    UChicago owned the most shares    <br>    in the following stocks in Mar. 2025:</b>    <br>' +
+                    `${formatThousands(val.amount_thousands * 1000)}    <br>` +
+                    '<b>    UChicago owned the most shares    <br>    in the following stocks in Sep. 2025:</b>    <br>' +
                     val.hoverinfo +
                     '<br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
@@ -514,7 +516,6 @@ const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 // TODO: indicate where stacked bar fits in the pie chart (could be in the text: this is $X of the $Y endowment or Z%)
 // TODO: Top 5 companies that UChicago owns shares in,
 // TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
-// TODO: diversified -> unspecified or information not available
 // TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
 
 const config = {
@@ -773,8 +774,8 @@ const sequence = {
                         },
                         showarrow: false,
                         text: '  Total in endowment<br>$11B',
-                        x: 50000,
-                        y: 70000
+                        x: -160000,
+                        y: -80000
                     } // add additional annotation
                 ]
             },
