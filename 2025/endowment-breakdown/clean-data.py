@@ -2,6 +2,7 @@
 - Use SEC API to download all UChicago SEC filings since 1994
 - Use Yahoo Finance as well as company-specific sites to identify holdings and sector information for each holding
 - Compile financial statements
+- Prepare data for each chart
 """
 
 # %% imports
@@ -760,7 +761,7 @@ print("Columns:", sec_0925.columns)
 print("Missing:", sec_0925.Industry.isna().sum())
 
 
-# %% analyze by sector
+# %% circle chart: analyze by sector
 
 sec_0925 = pd.read_csv("sec-industries.csv")
 
@@ -846,11 +847,11 @@ summary_df[["Sector", "ValueThousands", "Top5"]].rename(
 
 fs = pd.read_csv("financial-statements.csv")
 
-# categorize types into broader categories
+# categorize types into broader categories for easier comprehension
 type_dict = {
     "Domestic": "Public equities (stocks)",
     "International": "Public equities (stocks)",
-    "Stocks": "Public equities (stocks)",  # TODO: actually this comprises public and private so maybe exclude pre 2000
+    # "Stocks": "Public equities (stocks)",  # TODO: actually this comprises public and private so maybe exclude pre 2000
     "Global public equities": "Public equities (stocks)",
     "International public equities": "Public equities (stocks)",
     "Domestic public equities": "Public equities (stocks)",
@@ -863,7 +864,6 @@ type_dict = {
     "Equity oriented": "Hedge funds",  # hedge funds may be public or private
     "Diversifying": "Hedge funds",  # hedge funds may be public or private
     "Private equity": "Private equities (stocks)",
-    # "Assets held by trustee": "Funds in trust",
     # for now, to simplify graph, class most as other
     "Assets held by trustee": "Other",
     "Funds in trust": "Other",
@@ -874,15 +874,17 @@ type_dict = {
     "Receivable for investments sold": "Other",  # TODO: how to categorize
 }
 
+# clean data
 fs["fund_type"] = fs["type"]
-fs["recategorized"] = fs["fund_type"].replace(type_dict)
+fs["recategorized"] = fs["fund_type"].replace(type_dict).str.replace(" ", "<br>")
 fs["percent"] = fs["amount_thousands"] / fs["total_thousands"]
 fs["label"] = [
     f"{x['fund_type']} ({round(x['percent'] * 100)}%)" for _, x in fs.iterrows()
 ]
-data2025 = fs[fs["year"] == 2025].sort_values("percent", ascending=True)
-data2025["y"] = 100
 
+# %% donut chart: get 2025 data
+
+data2025 = fs[fs["year"] == 2025].sort_values("percent", ascending=True)
 data2025[
     [
         "fund_type",
@@ -890,39 +892,31 @@ data2025[
         "amount_thousands",
     ]
 ].to_json(
-    "../endowment-breakdown/data/financial-statement-2025.json",
+    "data/financial-statement-2025.json",
     orient="records",
     lines=False,
 )
 
-# consolidate recategorized groups
+# %% lollipop chart
+
+# consolidate recategorized groups by year
 fs = (
     fs.groupby(["year", "recategorized"])
     .agg({"percent": "sum", "fund_type": "first", "amount_thousands": "sum"})
     .reset_index()
 )
 fs["percent"] = round(fs["percent"] * 100)
-fs["cumulative"] = (
-    fs.sort_values(["year", "recategorized"])  # Ensure data is sorted by year and type
-    .groupby("year")["percent"]  # Group by year
-    .cumsum()  # Calculate cumulative sum of percent
-) / 100
-
 
 fs[fs["year"] >= 2000][
     [
-        # "x",
         "year",
         "fund_type",
         "percent",
-        "cumulative",
-        # "width",
         "recategorized",
         "amount_thousands",
-        # "hoverinfo",
     ]
 ].sort_values("recategorized").to_json(
-    "../endowment-breakdown/data/types-over-time.json",
+    "data/types-over-time.json",
     orient="records",
     lines=False,
 )
@@ -930,14 +924,10 @@ fs[fs["year"] >= 2000][
 
 # %% parse 990 data
 
-foreignInvestments = []
-administrativeExpenses = []
-bonds = []
 conflictsOfInterest = []
-# TODO: still dont have pre 2013 non xml data
-# TODO: 2010 is partly missing: schedule L is required as missing but data cuts off at schedule I
+# TODO: still dont have pre 2013 non xml data, which for now is only 2009 so I left it off
+# TODO: 2010 is partly missing: schedule L is required but data cuts off at schedule I
 # TODO: when did schedule L get invented - I don't see any data before 2009 or in 2010
-
 
 schedule_l = {}
 for file in os.listdir("990"):
@@ -995,13 +985,16 @@ for file in os.listdir("990"):
         if len(L):
             conflictsOfInterest += L
 
-
-# %% save 990 data
-def rename_keys(d, rename_map):
-    return {rename_map.get(k, k): v for k, v in d.items()}
-
-
 coi = pd.DataFrame(conflictsOfInterest)
+coi.to_csv("conflicts-of-interest.csv", index=False)
+
+# %% flowchart: save 990 conflict of interest data
+# unlike the other data, this one is used to create a chart in Figma, which is then exported to SVG
+# so this has no Python/JSON output, just visual inspection
+
+coi = pd.read_csv("conflicts-of-interest.csv")
+
+# clean data
 coi.loc[coi["NameOfInterested"] == "LAKE CAPITAL", "NameOfInterested"] = (
     "LAKE CAPITAL PARTNERS"
 )
@@ -1009,6 +1002,8 @@ coi["NameOfInterested"] = coi["NameOfInterested"].str.replace("THE ", "")
 coi["TransactionAmt"] = coi["TransactionAmt"].fillna(0).astype(int)
 coi["Year"] = pd.to_datetime(coi["Year"]).dt.year
 coi = coi[coi["Endowment"] == True]
+
+# group by name and year
 coi = (
     coi.groupby(["NameOfInterested", "Year"])
     .agg(
@@ -1023,7 +1018,8 @@ coi = (
 )
 
 # NOTE: trian fund management no longer exists, may be accessible via LSEG
-preqin = pd.read_excel("Preqin UChicago.xlsx")
+# read in data from preqin database search
+preqin = pd.read_excel("preqin-uchicago.xlsx")
 preqin["firm_name"] = preqin["firm_name"].str.upper().str.replace("THE ", "")
 # idk how to handle overlapping industries so let's just take the first of each
 preqin["industry"] = preqin["industry"].str.split(";")
@@ -1039,26 +1035,5 @@ top5["most_recent_size_millions"] = top5[
 ]  # cite: provided data dictionary
 # cannot fill in portfolio companies from pitchbook because private equity does not report portfolio
 # TODO: some of their own websites do provide specific information: check usage guidelines
-coi24 = coi[coi["Year"] == 2024].merge(
-    top5,
-    left_on="NameOfInterested",
-    right_on="firm_name",
-)
-coi24["region"] = [
-    row["fund_focus"] if not isinstance(row["region"], str) else row["region"]
-    for _, row in coi24.iterrows()
-]
-coi24["industry"] = [", ".join(x) for x in coi24["industry"]]
-coi24["region"] = coi24["region"].str.replace(";", ", ")
-coi.to_csv("conflicts-of-interest.csv", index=False)
 
-coi24[
-    [
-        "firm_name",
-        "fund_name",
-        "industry",
-        "region",
-    ]
-].to_json(
-    "../endowment-breakdown/data/conflicts-of-interest-2024.json", orient="records"
-)
+print(top5)
