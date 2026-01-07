@@ -1,7 +1,7 @@
 """
 - Use SEC API to download all UChicago SEC filings since 1994
-- Use Yahoo Finance as well as company-specific sites to - identify holdings and sector information for each holding
-Compile financial statements
+- Use Yahoo Finance as well as company-specific sites to identify holdings and sector information for each holding
+- Compile financial statements
 """
 
 # %% imports
@@ -23,10 +23,11 @@ import os
 from datetime import datetime
 import xmltodict
 import yfinance as yf
+from yfinance.exceptions import YFRateLimitError
 import numpy as np
 import pandas as pd
 import polars as pl
-from polars import String, Int64, Date, ShapeError, ComputeError
+from polars import String, Int64, ShapeError, ComputeError
 
 # NOTE: did not use 990T filings from IRS via ProPublica API because data is not very detailed projects.propublica.org/nonprofits/api/v2
 
@@ -397,14 +398,8 @@ def get_holdings(company, ticker, pages=51):
         "vanguard": "Portfolio composition",
         "ishares": "Holdings",
     }
-    headings = {
-        "vanguard": "Holding details",
-        "ishares": "Holdings",
-    }
-    headingtypes = {
-        "vanguard": "h5",
-        "ishares": "h2",
-    }
+    headings = {"vanguard": "Holding details", "ishares": "Holdings"}
+    headings_types = {"vanguard": "h5", "ishares": "h2"}
 
     # open a browser, in this case Firefox but you can change to your browser
     driver = webdriver.Firefox()
@@ -425,20 +420,27 @@ def get_holdings(company, ticker, pages=51):
     data = []
     for i in tqdm(range(pages)):
         time.sleep(1)  # wait for the page to load
+
+        # turn the page
         try:
             turn_page = driver.find_element(By.TAG_NAME, "select")
 
             # Select the nth option (e.g., 3rd option, index starts at 0)
             Select(turn_page).select_by_index(i)  # 2 for the 3rd option
+        except:
+            turn_page = driver.find_element(By.CSS_SELECTOR, "#allHoldingsTable_next")
+            turn_page.send_keys(Keys.RETURN)
 
-            # Find the first <h5> with text "Holding details"
-            h5_elem = driver.find_element(
+        # get the table info
+        try:
+            # Find the first <h*> with text "Holding details"
+            h_elem = driver.find_element(
                 By.XPATH,
-                f"//{headingtypes[company]}[contains(text(), '{headings[company]}')]",
+                f"//{headings_types[company]}[contains(text(), '{headings[company]}')]",
             )
 
             # Find the first <div> following this <h5>
-            div_elem = h5_elem.find_element(By.XPATH, "following-sibling::div[1]")
+            div_elem = h_elem.find_element(By.XPATH, "following-sibling::div[1]")
 
             # Find the table within the div element
             table = div_elem.find_elements(By.TAG_NAME, "table")
@@ -467,7 +469,7 @@ def process_holdings(data, company, ticker):
 
     percents_col = {
         "vanguard": r"(\d+\.\d+) %",
-        "ishares": r"\d+\.\d\d",
+        "ishares": r" \d+\.\d\d ",
     }
 
     tickers = []
@@ -489,6 +491,7 @@ def process_holdings(data, company, ticker):
                 # extract percent makeup (of portfolio)
                 percents.append(re.search(percents_col[company], cell)[0].strip(" %"))
 
+                # TODO: some company names are being extracted incorrectly
                 # extract company name
                 try:
                     companies.append(
@@ -507,11 +510,15 @@ def process_holdings(data, company, ticker):
     # eg, we know UChicago invested $X in VOO; if APPL is .1% of VOO, then how many dollars is UChicago invested in APPL?
     uc_invested_dollars = (
         sec.sort_values("Date", ascending=False)
-        .loc[(sec["Ticker"] == ticker), "Value"]
+        .loc[(sec["Ticker"] == ticker), "ValueThousands"]
         .values[0]
         * 1000
     )
     df["amt"] = df["percent"].astype(float) / 100 * uc_invested_dollars
+
+    # save output
+    if not os.path.exists("third-party"):
+        os.mkdir("third-party")
     df.to_csv(f"third-party/holdings-{ticker}.csv", index=False)
 
 
@@ -522,6 +529,20 @@ def clean_names(x):
     x = x.replace(" Corp.", "")
     x = x.replace(" Ltd.", "")
     return x
+
+
+def format_amount(value):
+    """
+    Format a numeric value as K, M, or B depending on its magnitude.
+    """
+    if value >= 1_000_000_000:
+        return f"{value / 1_000_000_000:.1f}B"
+    elif value >= 1_000_000:
+        return f"{value / 1_000_000:.1f}M"
+    elif value >= 1_000:
+        return f"{value / 1_000:.0f}K"
+    else:
+        return f"{value:.0f}"
 
 
 def get_schedule_l(ret):
@@ -565,129 +586,87 @@ def get_schedule_l(ret):
     return L
 
 
-# %% get and parse sec filings
+# %% get and parse SEC filings
 
-investments = get_sec("YOUR_EMAIL@uchicago.edu")
+if not os.path.exists("data"):
+    os.mkdir("data")
 
-sec = pl.DataFrame()
+if not os.path.exists("data/13F-HR.csv"):
+    investments = get_sec("YOUR_EMAIL@uchicago.edu")
 
-for i, investment in enumerate(investments):
-    df = parse_sec(investment)
-    if len(df):
-        sec = pl.concat(
-            [sec, df],
-            how="diagonal",
-        )
+    sec = pl.DataFrame()
 
-print("DONE!")
-sec.write_csv("13F-HR.csv")
+    for i, investment in enumerate(investments):
+        df = parse_sec(investment)
+        if len(df):
+            sec = pl.concat(
+                [sec, df],
+                how="diagonal",
+            )
 
-# %% read in downloaded sec data
+    print("DONE!")
+    sec.write_csv("13F-HR.csv")
 
-sec = pd.read_csv("13F-HR.csv")
+# %% read in downloaded SEC data
+
+sec = pd.read_csv("data/13F-HR.csv")
 
 # clean data after reading using pandas
 sec["Date"] = pd.to_datetime(sec["Date"])
 sec["Year"] = sec["Date"].dt.year
 sec["Issuer"] = sec["Issuer"].str.title()
 
-print(sec.loc[sec.Year == 2025].ValueThousands.sum())
-
-# use both info of shares (purchases) and values (market value)
-
-# initialize a dummy first date for everyone at value 0
-unique_companies = sec.drop_duplicates("Ticker").sort_values("Ticker")
-sec = pd.concat(
-    [
-        sec,
-        pd.DataFrame(
-            {
-                "Issuer": unique_companies["Issuer"],
-                "Ticker": unique_companies["Ticker"],
-                "Date": [datetime(1950, 1, 1)] * len(unique_companies),
-                "SharesPrnAmount": [0] * len(unique_companies),
-                "ValueThousands": [0] * len(unique_companies),
-            }
-        ),
-    ]
-).reset_index(drop=True)
-
-# use lag to get differences over time
-sec["LaggedShares"] = (
-    sec.sort_values("Date").groupby("Issuer")["SharesPrnAmount"].shift(1)
-)
-sec["LaggedShares"] = sec["LaggedShares"].fillna(0)
-sec["SharesDiff"] = sec["SharesPrnAmount"] - sec["LaggedShares"]
-sec["ShareValue"] = sec["ValueThousands"] / sec["SharesPrnAmount"]
-# TODO: very interesting that there are overall more sells than purchases. how is this possible to sell more shares than you have?
-sec["SharePurchases"] = [x if x > 0 else np.nan for x in sec["SharesDiff"]]
-sec["SharePurchaseValueThousands"] = round(sec["SharePurchases"] * sec["ShareValue"], 2)
-
-# inspect share value to ensure reasonable values
-print(round(sec["ShareValue"].describe(), 5) * 1000)
-# does the max value stock make sense?
-print(sec.iloc[sec["ShareValue"].idxmax()])
-
-# remove dummy rows
-sec = sec[sec["Date"] > datetime(1950, 1, 1)]
-
-sec.sort_values(["Issuer", "Date"])[
-    [
-        "Issuer",
-        "Ticker",
-        "Date",
-        "ShareValue",
-        "SharesDiff",
-        "SharesPrnAmount",
-        "LaggedShares",
-    ]
-]
+sec.groupby("Year")["ValueThousands"].sum() / 1000
 
 # %% scrape holdings of index funds identified in 3/31/25 13-HR filing
 
-# TODO: deal with companies that had errors processing
+# TODO: check legality
 
-for hold in ["VT", "VOO", "VCLTBND"]:
+# scrape Vanguard website
+for hold in [
+    "VT",
+    "VOO",
+]:
+    if os.path.exists(f"third-party/holdings-{hold}.csv"):
+        print("File for", hold, "already exists")
+        continue
+
     data = get_holdings(
         company="vanguard",
         ticker=hold,
     )
     process_holdings(data, company="vanguard", ticker=hold)
 
-# ishares
-for hold in ["IVV", "IEFAIEMG"]:
+# scrape Ishares website
+for hold in [
+    "IVV",
+]:
+    if os.path.exists(f"third-party/holdings-{hold}.csv"):
+        print("File for", hold, "already exists")
+        continue
+
     data = get_holdings(
         company="ishares",
         ticker=hold,
     )
     process_holdings(data, company="ishares", ticker=hold)
 
-# NOT USED: individual stocks, not portfolios
-# gulf canada no longer exists, was oil
-# AMR corp no longer exists, was airlines
-for hold in ["NLY", "LQDNKGN"]:
-    data = get_holdings(
-        company="",
-        ticker=hold,
-    )
-    process_holdings(data, company="", ticker=hold)
 
-# TODO: switch to yfinance for top holdings (it's nice to see all holdings but not practical for all funds)
-# yf.Ticker("VT").funds_data.top_holdings
-
-# %% read in third party sources holdings data
+# %% read in scraped index funds holdings data and combine with SEC data
 
 
 voo = pd.read_csv("third-party/holdings-VOO.csv")
 voo["source"] = "VOO"
 vt = pd.read_csv("third-party/holdings-VT.csv")
 vt["source"] = "VT"
+ivv = pd.read_csv("third-party/holdings-IVV.csv")
+ivv["source"] = "IVV"
+
 all_holdings = (
-    pd.concat([voo, vt])
+    pd.concat([voo, vt, ivv])
     .rename(
         columns={
             "amt": "ValueThousands",
-            # "source": "Ticker",
             "company": "Issuer",
             "ticker": "Ticker",
         }
@@ -696,36 +675,31 @@ all_holdings = (
     .reset_index(drop=True)
 )
 all_holdings["ValueThousands"] = all_holdings["ValueThousands"] / 1000
+print("Percent from each index fund:", all_holdings.groupby("source")["percent"].sum())
 
-
-# %% merge stocks with 500 industry info
-
-# TODO: need to match rough percentage of each industry to portfolios
-# then group by year and report percentage of each industry per year
-# but I only have makeup of holdings for 2 funds for 1 year, so can't compare over time
-
-# all holdings including generic index funds
-sec_2025 = sec[
+# get all holdings from most recent quarter including generic index funds
+sec_0925 = sec[
     # take the most recent filing, idk how to aggregate over time as idk if new or total holdings
-    sec["Year"] == 2025
+    sec["Date"] == datetime(2025, 9, 30)
 ]
-print(len(sec_2025))
+print("Rows before combining:", len(sec_0925))
 
-sec_2025 = pd.concat(
+# bind with third-party website data
+sec_0925 = pd.concat(
     [
         # excluding generic index funds VOO/VT
-        sec_2025[~sec_2025["Ticker"].isin(["VOO", "VT"])],
+        sec_0925[~sec_0925["Ticker"].isin(["VOO", "VT"])],
         # add in specific holdings for VOO/VT funds
         all_holdings,
     ],
     axis=0,
     ignore_index=True,
 )
-sec_2025["Issuer"] = sec_2025["Issuer"].str.replace(" Inc.", "")
+sec_0925["Issuer"] = sec_0925["Issuer"].str.replace(" Inc.", "")
 
-# there are overlapping stocks across funds
-sec_2025 = (
-    sec_2025.groupby(["Ticker"])
+# there are overlapping stocks across funds, so group and sum
+sec_0925 = (
+    sec_0925.groupby(["Ticker"])
     .agg(
         {
             # not using lagged purchase value because this is a snapshot
@@ -735,106 +709,96 @@ sec_2025 = (
     )
     .reset_index()
 )[["Issuer", "Ticker", "ValueThousands"]]
-print(len(sec_2025))
+print("Rows after combining:", len(sec_0925))
 
-# %% read additional data if needed
+# %% read sector data from yahoo finance
 
-prior_fp = "sec-industries-2025-41.csv"
-fp = "sec-industries-2025-5.csv"
-if os.path.exists(fp):
-    sec_2025 = pd.read_csv(fp)
-    prior = pd.read_csv(prior_fp)
+# read previous results if exists to avoid having to re-scrape data
+if os.path.exists("sec-industries.csv"):
+    print("Using existing sectors file")
+    sec_0925 = pd.read_csv("sec-industries.csv")
 
-    sec_2025 = pd.concat(
-        [
-            sec_2025[~sec_2025.Ticker.isin(prior.loc[prior.Industry.notna()].Ticker)],
-            prior,
-        ]
-    )
-print(len(sec_2025))
-print(sec_2025.columns)
-print(sec_2025.Industry.isna().sum())
+if "Industry" not in sec_0925.columns:
+    sec_0925["Industry"] = None
+if "Sector" not in sec_0925.columns:
+    sec_0925["Sector"] = None
+if "Summary" not in sec_0925.columns:
+    sec_0925["Summary"] = None
 
-if "Industry" not in sec_2025.columns:
-    sec_2025["Industry"] = None
-if "Sector" not in sec_2025.columns:
-    sec_2025["Sector"] = None
-if "Summary" not in sec_2025.columns:
-    sec_2025["Summary"] = None
-
-tickers = sec_2025["Ticker"]
+tickers = sec_0925["Ticker"]
 for ticker in sorted(list(set(tickers.unique()) - set([None, np.nan]))):
-    # note that we use the NA string to indicate missing data so that we don't try to re-fetch
+    try:
+        # note that we use the NA string to indicate missing data so that we don't try to re-fetch
+        if sec_0925.loc[tickers == ticker, "Industry"].notna().values[0]:
+            print("Skipping", ticker, "existing info")
+            continue
 
-    if sec_2025.loc[tickers == ticker, "Industry"].notna().values[0]:
-        print("Skipping", ticker, "existing info")
-        continue
+        if len(yf.Ticker(ticker).info.keys()) < 2:
+            sec_0925.loc[tickers == ticker, "Industry"] = "missing"
+            sec_0925.loc[tickers == ticker, "Sector"] = "missing"
+            sec_0925.loc[tickers == ticker, "Summary"] = "missing"
+            continue
 
-    if len(yf.Ticker(ticker).info.keys()) < 2:
-        sec_2025.loc[tickers == ticker, "Industry"] = "missing"
-        sec_2025.loc[tickers == ticker, "Sector"] = "missing"
-        sec_2025.loc[tickers == ticker, "Summary"] = "missing"
-        continue
+        print("Getting info for", ticker)
+        sec_0925.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
+            "industry", "missing"
+        )
+        sec_0925.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
+            "sector", "missing"
+        )
+        sec_0925.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
+            "longBusinessSummary", "missing"
+        )
+    except YFRateLimitError as e:
+        print("Try again in 2 minutes: ", e)
+        sec_0925.to_csv("sec-industries.csv", index=None)
+        break
 
-    print("Getting info for", ticker)
-    sec_2025.loc[tickers == ticker, "Industry"] = yf.Ticker(ticker).info.get(
-        "industry", "missing"
-    )
-    sec_2025.loc[tickers == ticker, "Sector"] = yf.Ticker(ticker).info.get(
-        "sector", "missing"
-    )
-    sec_2025.loc[tickers == ticker, "Summary"] = yf.Ticker(ticker).info.get(
-        "longBusinessSummary", "missing"
-    )
+
+print("Rows:", len(sec_0925))
+print("Columns:", sec_0925.columns)
+print("Missing:", sec_0925.Industry.isna().sum())
+
 
 # %% analyze by sector
 
+sec_0925 = pd.read_csv("sec-industries.csv")
 
-def format_amount(value):
-    """
-    Format a numeric value as K, M, or B depending on its magnitude.
-    """
-    if value >= 1_000_000_000:
-        return f"{value / 1_000_000_000:.1f}B"
-    elif value >= 1_000_000:
-        return f"{value / 1_000_000:.1f}M"
-    elif value >= 1_000:
-        return f"{value / 1_000:.0f}K"
-    else:
-        return f"{value:.0f}"
+# clean data
+sec_0925 = sec_0925.replace("missing", None)  # recode missings
+sec_0925["ValueDollars"] = (sec_0925["ValueThousands"] * 1000).apply(
+    format_amount
+)  # create column to be used for individual company info
+sec_0925["Issuer"] = sec_0925["Issuer"].str.title().str.replace(" +", " ", regex=True)
 
+# fill in some incorrectly read companies
+sec_0925.loc[sec_0925["Ticker"] == "SHW", "Issuer"] = "Sherwin-Williams Co."
+sec_0925.loc[sec_0925["Ticker"] == "FCX", "Issuer"] = "Freeport-McMoRan Inc."
+sec_0925.loc[sec_0925["Ticker"] == "KO", "Issuer"] = "Coca-Cola Co."
 
-sec_2025["Industry"] = sec_2025["Industry"].replace("missing", None)
-sec_2025["Sector"] = sec_2025["Sector"].replace("missing", None)
-sec_2025["Summary"] = sec_2025["Summary"].replace("missing", None)
-# duplicate column for individual company info
-sec_2025["ValueDollars"] = sec_2025["ValueThousands"] * 1000
-sec_2025["ValueDollars"] = sec_2025["ValueDollars"].apply(format_amount)
-sec_2025["Issuer"] = sec_2025["Issuer"].str.title()
-sec_2025["Summary"] = sec_2025["Summary"].fillna("").str.replace("\\d+", "", regex=True)
-
+# check: if this percentage is high, did you run the previous section until you reached tickers starting with Z?
 print(
     round(
-        sec_2025.loc[sec_2025.Sector.isna()].ValueThousands.sum()
-        / sec_2025.ValueThousands.sum()
+        sec_0925.loc[sec_0925.Sector.isna()].ValueThousands.sum()
+        / sec_0925.ValueThousands.sum()
         * 100
     ),
     "% of holdings (in terms of dollar amount) have no sector info",
 )
 
-plot_df = (
-    sec_2025[sec_2025.Summary.str.len() > 5]
+# summarize the top 5 stocks per sector
+summary_df = (
+    sec_0925[sec_0925.Summary.str.len() > 5]
     .dropna(how="any")
-    # make sure that the biggest companies get listed first
-    .sort_values("ValueThousands", ascending=False)
+    .sort_values("ValueThousands", ascending=False)  # biggest stocks are listed first
     .groupby("Sector")
     .agg(
         {
-            "ValueThousands": lambda x: round(sum(x)),
-            # round to the nearest thousand dollars (to indicate uncertainty)
-            "ValueDollars": lambda x: [f"${i}" for i in x[:5]],
-            "Summary": lambda x: ",".join(x),
-            "Issuer": lambda x: list(x)[:5],
+            "ValueThousands": lambda x: round(
+                sum(x)
+            ),  # round to the nearest thousand dollars (to indicate uncertainty)
+            "ValueDollars": lambda x: [f"${i}" for i in x[:5]],  # top 5 stocks
+            "Issuer": lambda x: list(x)[:5],  # top 5 stocks
         }
     )
     .reset_index()
@@ -842,32 +806,45 @@ plot_df = (
 )
 
 # add top 5 companies per sector for hover info
-plot_df["AmountLabels"] = (plot_df["ValueThousands"] * 1000).apply(format_amount)
-plot_df["Top5"] = [
-    list(zip(row["Issuer"], row["ValueDollars"])) for _, row in plot_df.iterrows()
+summary_df["Top5"] = [
+    list(zip(row["Issuer"], row["ValueDollars"])) for _, row in summary_df.iterrows()
 ]
-plot_df["Top5"] = [[f"    {i[0]}: {i[1]}    " for i in x] for x in plot_df["Top5"]]
-plot_df["Top5"] = ["<br>".join(x) for x in plot_df["Top5"]]
+# format as Company: $X
+summary_df["Top5"] = [
+    [f"    {i[0]}: {i[1]}    " for i in x] for x in summary_df["Top5"]
+]
+# flatten list so that each company is on its own line
+summary_df["Top5"] = ["<br>".join(x) for x in summary_df["Top5"]]
 
-plot_df[["Sector", "ValueThousands", "Top5", "TopWords", "y", "AmountLabels"]].rename(
+# add line breaks for larger bubbles
+summary_df.loc[summary_df["ValueThousands"] > 10000, "Sector"] = summary_df.loc[
+    summary_df["ValueThousands"] > 10000, "Sector"
+].str.replace(" ", "<br>")
+
+# inspect
+for _, row in summary_df.iterrows():
+    print(
+        row["Sector"],
+        ":",
+        row["ValueThousands"],
+        "\n",
+        row["Top5"].replace("<br>", "\n"),
+    )
+
+# save out to final export location
+summary_df[["Sector", "ValueThousands", "Top5"]].rename(
     columns={
         "Sector": "sector",
         "Top5": "hoverinfo",
         "ValueThousands": "amount_thousands",
-        "TopWords": "keywords",
-        "AmountLabels": "amount_display",
     }
-).to_json("../endowment-breakdown/data/sec-sectors-2025.json", orient="records")
+).to_json("data/sec-sectors-2025.json", orient="records")
 
 # %% get all statements: manual copying was easier than camelot parsing
 
 # %% get parsed financial statements
 
-fs = pd.read_csv("../endowment-breakdown/financial-statements.csv")
-
-fs.groupby("year")["amount_thousands"].sum().to_json(
-    "../endowment-breakdown/data/uchicago-endowment-by-year.json", orient="records"
-)
+fs = pd.read_csv("financial-statements.csv")
 
 # categorize types into broader categories
 type_dict = {
