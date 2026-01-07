@@ -88,7 +88,8 @@ function createLayout(title = '', caption = '', showlegend = false) {
     return {
         title: {
             text: title,
-            x: 0.03,
+            x: isMobileLike ? 0.035 : 0.025,
+            y: isMobileLike ? 0.82 : 0.93, // vertical position (1 = top, 0 = bottom)
             font: {
                 size: titleFontSize
             },
@@ -105,7 +106,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
                 xref: 'paper',
                 yref: 'paper',
                 x: 1, // right align
-                y: -0.05 - isMobileLike * 0.07, // move below the x-axis
+                y: -0.05 - isMobileLike * 0.03, // move below the x-axis
                 showarrow: false,
                 xanchor: 'right',
                 yanchor: 'top',
@@ -158,7 +159,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
         margin: {
             l: 25,
             r: isMobileLike ? 25 : 0,
-            b: isMobileLike ? 70 : 100
+            b: isMobileLike ? 50 : 100
         },
         dragmode: 'pan'
     };
@@ -259,7 +260,7 @@ function circleChart(data, variable) {
             name: groupedData.map((val) => val[variable]),
             marker: {
                 size: groupedData.map(
-                    (val) => val.amount_thousands / (isMobileLike ? 280 : 170)
+                    (val) => val.amount_thousands / (isMobileLike ? 400 : 170)
                 ),
                 color: '#800000',
                 opacity: 1
@@ -571,7 +572,7 @@ const sequence = {
             sankeyChart('what-is-endowment'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : null
+                width: isMobileLike ? 700 : null
             },
             {
                 ...config,
@@ -586,7 +587,7 @@ const sequence = {
             sankeyChart('tuition'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : null
+                width: isMobileLike ? 700 : null
             },
             {
                 ...config,
@@ -627,7 +628,7 @@ const sequence = {
             sankeyChart('endowment'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : null,
+                width: isMobileLike ? 700 : null,
                 font: {
                     size: bodyFontSize,
                     family: 'Georgia',
@@ -644,13 +645,12 @@ const sequence = {
     },
     restricted: function () {
         layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
-        d3.select('.plotly').style('margin-top', '0');
         Plotly.newPlot(
             'chart-div',
             sankeyChart('restricted'),
             {
                 ...layout,
-                width: isMobileLike ? 1000 : null
+                width: isMobileLike ? 700 : null
             },
             {
                 ...config,
@@ -659,7 +659,6 @@ const sequence = {
         );
     },
     'compare-schools': function () {
-        d3.select('.plotly').style('margin-top', '0');
         layout = createLayout(
             (title =
                 'Top 20 largest college endowments in the U.S., Fiscal Year 2024'),
@@ -685,11 +684,12 @@ const sequence = {
                     tickfont: {
                         size: axisFontSize
                     },
-                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9, 60e9],
-                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B', '$60B'],
+                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
+                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
                     title: {
                         text: ''
-                    }
+                    },
+                    range: [0, 60e9]
                 }
             },
             config
@@ -697,17 +697,16 @@ const sequence = {
     },
     breakdown: function () {
         layout = createLayout((title = null), (caption = statementCaption));
-        d3.select('.plotly').style('margin-top', '-90px');
         Plotly.newPlot(
             'chart-div',
             donutChart(statements),
             {
                 ...layout,
                 margin: {
-                    t: isMobileLike ? 80 : 150,
-                    l: isMobileLike ? 40 : 0,
-                    r: 20,
-                    b: isMobileLike ? 20 : 60
+                    t: isMobileLike ? 80 : 40,
+                    l: isMobileLike ? 20 : 0,
+                    r: isMobileLike ? 0 : 20,
+                    b: isMobileLike ? 45 : 85
                 },
                 autosize: isMobileLike ? false : true,
                 width: isMobileLike ? 390 : null,
@@ -731,7 +730,7 @@ const sequence = {
         d3.select('.plotly').style('margin-top', '0px');
         layout = createLayout(
             (title =
-                'Industries invested in by the University, with known amounts'),
+                'Domestic industries invested in by the University, with known amounts'),
             (caption =
                 'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025')
         );
@@ -742,9 +741,9 @@ const sequence = {
             {
                 ...layout,
                 margin: {
-                    l: isMobileLike ? 0 : 25,
-                    r: isMobileLike ? 0 : 25,
-                    b: isMobileLike ? 50 : 75
+                    l: isMobileLike ? 15 : 25,
+                    r: isMobileLike ? 20 : 25,
+                    b: isMobileLike ? 40 : 75
                 },
                 xaxis: {
                     scaleanchor: 'y',
@@ -800,8 +799,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 110 : 200,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 50 : 100,
-                    t: isMobileLike ? 50 : 100
+                    b: isMobileLike ? 40 : 100
                 },
                 xaxis: {
                     range: [0.01, 1],
@@ -896,7 +894,7 @@ async function init() {
     annotationFontSize = isMobileLike ? 8 : 12;
     axisFontSize = isMobileLike ? 9 : 14;
     bodyFontSize = isMobileLike ? 10 : 16;
-    subtitleFontSize = isMobileLike ? 11 : 18;
+    subtitleFontSize = isMobileLike ? 11 : 17;
     titleFontSize = isMobileLike ? 12 : 20;
 
     statements = await fetchData('financial-statement-2025.json');
