@@ -874,7 +874,7 @@ const sequence = {
 
 // -------- MAIN --------
 
-var statements, sec, coi, endowments, types_time, sankey_data;
+var statements, sec, endowments, types_time, sankey_data;
 
 var isMobileLike = false;
 var annotationFontSize,
@@ -899,7 +899,6 @@ async function init() {
 
     statements = await fetchData('financial-statement-2025.json');
     sec = await fetchData('sec-sectors-2025.json');
-    coi = await fetchData('conflicts-of-interest-2024.json');
     endowments = await fetchData('largest-endowments-2023.json');
     types_time = await fetchData('types-over-time.json');
     sankey_data = await fetchData('sankey.json');
