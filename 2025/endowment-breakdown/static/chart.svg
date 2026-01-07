@@ -36,7 +36,6 @@
       }
         #control-flowchart path {
             fill: black;
-            stroke-width: 15;
         }
     </style>
     <rect
