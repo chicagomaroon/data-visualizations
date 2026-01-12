@@ -858,7 +858,7 @@ type_dict = {
     "High yield": "Bonds",
     "High yield bonds": "Bonds",
     "Cash equivalent": "Bonds",
-    "Cash equivalents": "Bonds",
+    "Cash equivalents": "Other",
     "Fixed income": "Bonds",
     "Absolute return": "Hedge funds",  # hedge funds may be public or private
     "Equity oriented": "Hedge funds",  # hedge funds may be public or private
@@ -867,10 +867,10 @@ type_dict = {
     # for now, to simplify graph, class most as other
     "Assets held by trustee": "Other",
     "Funds in trust": "Other",
-    "Natural resources": "Other",
-    "Private debt": "Other",
-    "Real assets": "Other",
-    "Real estate": "Other",
+    "Natural resources": "Private equities (stocks)",
+    "Private debt": "Private equities (stocks)",
+    "Real assets": "Private equities (stocks)",
+    "Real estate": "Private equities (stocks)",
     "Receivable for investments sold": "Other",  # TODO: how to categorize
 }
 
