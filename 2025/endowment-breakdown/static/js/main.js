@@ -168,17 +168,10 @@ function createLayout(title = '', caption = '', showlegend = false) {
 function donutChart(data) {
     groupedData = groupData(data, 'recategorized');
 
-    // cite: copilot
-    const total = groupedData
-        .map((d) => d.x)
-        .reduce((acc, curr) => acc + curr, 0);
-
     trace = {
         type: 'pie',
         hole: 0.5,
-        values: groupedData.map((d) =>
-            Math.round((d.x / total).toFixed(3) * 100)
-        ),
+        values: groupedData.map((d) => d.x),
         text: groupedData.map((d) => d.recategorized),
         texttemplate: '%{text}<br>%{percent:.1%}', // Format percentage to 1 decimal place
         marker: {
