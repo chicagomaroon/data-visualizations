@@ -170,14 +170,17 @@ function donutChart(data) {
 
     // cite: copilot
     const total = groupedData
-        .map((d) => d.amount_thousands)
+        .map((d) => d.x)
         .reduce((acc, curr) => acc + curr, 0);
 
     trace = {
         type: 'pie',
         hole: 0.5,
-        values: groupedData.map((d) => Math.round((d.x / total) * 100)),
+        values: groupedData.map((d) =>
+            Math.round((d.x / total).toFixed(3) * 100)
+        ),
         text: groupedData.map((d) => d.recategorized),
+        texttemplate: '%{text}<br>%{percent:.1%}', // Format percentage to 1 decimal place
         marker: {
             colors: groupedData.map(
                 (d) => colorbook['recategorized'][d.recategorized]
