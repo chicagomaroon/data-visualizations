@@ -199,31 +199,37 @@ function lollipopChart(data) {
     const traces = [];
 
     for (const year of [2025, 2005]) {
-        let subset = data.filter((d) => d.year === year);
-
-        // Sort the subset by amount_thousands in descending order
-        subset = subset.sort((a, b) => a.amount_thousands - b.amount_thousands);
-
-        const total = subset.reduce(
-            (acc, curr) => acc + curr.amount_thousands,
-            0
-        );
         traces.push({
             type: 'scatter',
-            x: subset.map((d) => d.amount_thousands / total), // proportion
-            y: subset.map((d) => d.recategorized),
+            x: data.map((d) => d[year]),
+            y: data.map((d) =>
+                isMobileLike
+                    ? d.recategorized
+                    : d.recategorized.replaceAll('<br>', ' ')
+            ),
             mode: 'markers',
             name: year,
             marker: {
-                color: year > 2010 ? '#800000' : '#d51d1dff',
-                opacity: year > 2010 ? 1 : 0.5,
-                size: axisFontSize + 2
+                color: '#800000',
+                size: axisFontSize + 1,
+                line: {
+                    color: year > 2010 ? '#800000' : 'white',
+                    width: 5
+                }
             },
-            customdata: subset.map((d) => d.year),
-            text: subset.map((d) => d.recategorized),
+            customdata: data.map(
+                (d) =>
+                    '    <br>    ' +
+                    Math.round(d[year] * 100) +
+                    '% of endowment    <br>    categorized as ' +
+                    d.recategorized.replaceAll('<br>', ' ') +
+                    '    <br>    in ' +
+                    year +
+                    '   <br>    '
+            ),
+            text: data.map((d) => d.recategorized),
             hoverinfo: 'text',
-            hovertemplate:
-                ' <br>    %{x:.0%} of endowment    <br>    categorized as %{y} in %{customdata}    <br>    <extra></extra>' // extra tag removes
+            hovertemplate: '%{customdata}<extra></extra>' // extra tag removes
         });
     }
 
@@ -314,7 +320,7 @@ function barChart(data) {
         textposition: isMobileLike ? 'outside' : 'inside',
         marker: {
             color: data.map((d) =>
-                d.school === 'University of Chicago' ? '#800000' : '#B46A55'
+                d.school === 'University of Chicago' ? '#800000' : '#e3bfb5'
             )
         },
         textfont: {
@@ -405,8 +411,10 @@ function sankeyChart(div) {
             pad: 15,
             thickness: 20,
             line: { width: 0 },
-            hoverinfo: 'none',
-            color: nodes_color_map[div]
+            hoverinfo: 'text',
+            color: nodes_color_map[div],
+            customdata: sankey_data_filtered.map((d) => d.hover),
+            hovertemplate: '%customdata'
         },
         link: {
             source: sankey_data_filtered.map((d) => nodeIndex[d.from]),
@@ -504,13 +512,17 @@ const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 
 // ------- CONSTANTS ------
 
-// TODO: add animation
-// TODO: MOBILE ACCESSIBILITY
-// TODO: data editor style review
-// TODO: finish writingg
+// TODO: get definitions
+// TODO: cite admin arguments
+// TODO: cite moral responsibility section
+// TODO: finish editing text and transfer to code
+// TODO: get quote permissions
+// TODO: get copyedits and transfor to code
+// TODO: add animation between graphs maybe and on sankey
 // TODO: hover define the sankey terms
+// TODO: redo all analyses with real estate/assets as private, and cash equivalent as other
+// TODO: funds in trust + private categories are listed as externally managed
 // TODO: run through colorblind checker
-// TODO: indicate where stacked bar fits in the pie chart (could be in the text: this is $X of the $Y endowment or Z%)
 // TODO: Top 5 companies that UChicago owns shares in,
 // TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
 // TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
@@ -561,7 +573,10 @@ const sequence = {
         d3.select('#chart-div').html(''); // clear previous chart
     },
     'what-is-endowment': function () {
-        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
+        const layout = createLayout(
+            (title = sankeyTitle),
+            (caption = sankeyCaption)
+        );
         showChart();
         Plotly.newPlot(
             'chart-div',
@@ -577,7 +592,10 @@ const sequence = {
         );
     },
     tuition: function () {
-        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
+        const layout = createLayout(
+            (title = sankeyTitle),
+            (caption = sankeyCaption)
+        );
         Plotly.newPlot(
             'chart-div',
             sankeyChart('tuition'),
@@ -618,7 +636,10 @@ const sequence = {
         // });
     },
     endowment: function () {
-        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
+        const layout = createLayout(
+            (title = sankeyTitle),
+            (caption = sankeyCaption)
+        );
         Plotly.newPlot(
             'chart-div',
             sankeyChart('endowment'),
@@ -640,7 +661,10 @@ const sequence = {
         );
     },
     restricted: function () {
-        layout = createLayout((title = sankeyTitle), (caption = sankeyCaption));
+        const layout = createLayout(
+            (title = sankeyTitle),
+            (caption = sankeyCaption)
+        );
         Plotly.newPlot(
             'chart-div',
             sankeyChart('restricted'),
@@ -655,11 +679,11 @@ const sequence = {
         );
     },
     'compare-schools': function () {
-        layout = createLayout(
+        const layout = createLayout(
             (title =
                 'Top 20 largest college endowments in the U.S., Fiscal Year 2024'),
             (caption =
-                'University systems consisting of multiple schools are excluded.<br>Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
+                'University systems consisting of multiple schools are excluded. Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
             (showlegend = false)
         );
         Plotly.newPlot(
@@ -692,7 +716,10 @@ const sequence = {
         );
     },
     breakdown: function () {
-        layout = createLayout((title = null), (caption = statementCaption));
+        const layout = createLayout(
+            (title = null),
+            (caption = statementCaption)
+        );
         Plotly.newPlot(
             'chart-div',
             donutChart(statements),
@@ -713,7 +740,7 @@ const sequence = {
                             size: titleFontSize
                         },
                         showarrow: false,
-                        text: 'Total in endowment<br>$11 billion',
+                        text: 'Total in endowment<br>$10.9 billion',
                         x: 0.5,
                         y: 0.5
                     } // add title in center
@@ -724,7 +751,7 @@ const sequence = {
     },
     sec: function () {
         d3.select('.plotly').style('margin-top', '0px');
-        layout = createLayout(
+        const layout = createLayout(
             (title =
                 'Domestic industries invested in by the University, with known amounts'),
             (caption =
@@ -768,7 +795,7 @@ const sequence = {
                             color: 'black'
                         },
                         showarrow: false,
-                        text: '  Total in endowment<br>$11B',
+                        text: '  Total in endowment<br>$10.9B',
                         x: -160000,
                         y: -80000
                     } // add additional annotation
@@ -780,13 +807,39 @@ const sequence = {
     'private-equities': function () {
         d3.select('#chart-div').html(''); // clear previous chart
 
-        layout = createLayout(
+        // Add arrows corresponding to each change
+        const arrowAnnotations = types_time.map((d) => ({
+            x: d['2025'],
+            y: isMobileLike
+                ? d.recategorized
+                : d.recategorized.replaceAll('<br>', ' '),
+            ax: d['2005'],
+            ay: isMobileLike
+                ? d.recategorized
+                : d.recategorized.replaceAll('<br>', ' '),
+            xref: 'x',
+            yref: 'y',
+            axref: 'x',
+            ayref: 'y',
+            arrowhead: 4,
+            arrowsize: 1.5,
+            arrowwidth: 1,
+            arrowcolor: '#800000',
+            standoff: 15
+        }));
+
+        var layout = createLayout(
             (title =
-                'Change in fund types in the endowment in the last 20 years'),
+                'Change in proportion of endowment by asset type, 2005-2025'),
             (caption =
                 'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
             (showlegend = true)
         );
+
+        layout.annotations = (layout.annotations || []).concat(
+            arrowAnnotations
+        );
+
         Plotly.newPlot(
             'chart-div',
             lollipopChart(types_time),

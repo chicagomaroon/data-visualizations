@@ -885,6 +885,7 @@ fs["label"] = [
 # %% donut chart: get 2025 data
 
 data2025 = fs[fs["year"] == 2025].sort_values("percent", ascending=True)
+
 data2025[
     [
         "fund_type",
@@ -897,30 +898,32 @@ data2025[
     lines=False,
 )
 
-# %% lollipop chart
+# %% lollipop chart: get 2005 and 2025 data only
 
 # consolidate recategorized groups by year
-fs = (
+lolli = (
     fs.groupby(["year", "recategorized"])
-    .agg({"percent": "sum", "fund_type": "first", "amount_thousands": "sum"})
+    .agg(
+        {
+            "percent": lambda x: x.sum().round(3),
+            "fund_type": "first",
+            "amount_thousands": "sum",
+        }
+    )
     .reset_index()
 )
-fs["percent"] = round(fs["percent"] * 100)
 
-fs[fs["year"] >= 2000][
-    [
-        "year",
-        "fund_type",
-        "percent",
-        "recategorized",
-        "amount_thousands",
-    ]
-].sort_values("recategorized").to_json(
+lolli = lolli[lolli["year"].isin([2005, 2025])].pivot(
+    index="recategorized", columns="year", values=["percent"]
+)
+
+lolli.columns = lolli.columns.droplevel(0)
+
+lolli.sort_values(2025, ascending=True).reset_index().to_json(
     "data/types-over-time.json",
     orient="records",
     lines=False,
 )
-
 
 # %% parse 990 data
 
