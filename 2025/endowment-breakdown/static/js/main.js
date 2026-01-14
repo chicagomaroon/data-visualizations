@@ -139,7 +139,8 @@ function createLayout(title = '', caption = '', showlegend = false) {
                 family: 'Playfair',
                 size: subtitleFontSize,
                 color: 'black' // text color
-            }
+            },
+            align: 'left'
         },
         showlegend: showlegend,
         legend: {
