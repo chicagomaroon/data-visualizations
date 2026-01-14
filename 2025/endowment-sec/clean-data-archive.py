@@ -789,9 +789,8 @@ plot_df["AmountLabels"] = (plot_df["ValueThousands"] * 1000).apply(format_amount
 plot_df["Top5"] = [
     list(zip(row["Issuer"], row["ValueDollars"])) for _, row in plot_df.iterrows()
 ]
-plot_df["Top5"] = [[f"    {i[0]}: {i[1]}    " for i in x] for x in plot_df["Top5"]]
+plot_df["Top5"] = [[f"    {i[1]} in {i[0]}    " for i in x] for x in plot_df["Top5"]]
 plot_df["Top5"] = ["<br>".join(x) for x in plot_df["Top5"]]
-# plot_df["Top5"] = [f"{row['Sector']}<br>{row['Top5']}" for _, row in plot_df.iterrows()]
 plot_df["y"] = 100
 
 plot_df[["Sector", "ValueThousands", "Top5", "TopWords", "y", "AmountLabels"]].rename(
