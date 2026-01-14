@@ -27,14 +27,6 @@ async function fetchData(path) {
 function groupData(data, variable) {
     // console.log('processing', data);
 
-    // add hoverinfo
-    if (variable === 'recategorized') {
-        // cite: copilot
-        data.forEach(function (d) {
-            d['hoverinfo'] = helper_text[d['recategorized']];
-        });
-    }
-
     const valueSums = data.reduce((acc, obj) => {
         acc[obj[variable]] =
             (acc[obj[variable]] || 0) + obj['amount_thousands'];
@@ -187,7 +179,7 @@ function donutChart(data) {
         hovertemplate: groupedData.map(
             (d) =>
                 '    <br>    ' +
-                helper_text[d.recategorized] +
+                helper_text[d.recategorized.replaceAll('<br>', ' ')] +
                 '    <br>    <extra></extra>'
         )
     };
@@ -547,14 +539,6 @@ const colorbook = {
         'Hedge<br>funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
     }
-};
-
-const helper_text = {
-    'Public equities (stocks)': 'DEFINITION',
-    'Private equities (stocks)': 'DEFINITION',
-    Bonds: 'DEFINITION',
-    'Hedge funds': 'DEFINITION',
-    Other: 'DEFINITION'
 };
 
 const sankeyTitle = 'Revenue, Fiscal Year 2025';
@@ -923,7 +907,7 @@ const sequence = {
 
 // -------- MAIN --------
 
-var statements, sec, endowments, types_time, sankey_data;
+var statements, sec, endowments, types_time, sankey_data, helper_text;
 
 var isMobileLike = false;
 var annotationFontSize,
@@ -951,6 +935,7 @@ async function init() {
     endowments = await fetchData('largest-endowments-2023.json');
     types_time = await fetchData('types-over-time.json');
     sankey_data = await fetchData('sankey.json');
+    helper_text = await fetchData('definitions.json');
 
     // part I
     createWaypoint('what-is-endowment');
