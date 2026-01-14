@@ -812,7 +812,7 @@ summary_df["Top5"] = [
 ]
 # format as Company: $X
 summary_df["Top5"] = [
-    [f"    {i[0]}: {i[1]}    " for i in x] for x in summary_df["Top5"]
+    [f"    {i[1]} in {i[0]}    " for i in x] for x in summary_df["Top5"]
 ]
 # flatten list so that each company is on its own line
 summary_df["Top5"] = ["<br>".join(x) for x in summary_df["Top5"]]

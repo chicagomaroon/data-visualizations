@@ -277,11 +277,11 @@ function circleChart(data, variable) {
             ),
             customdata: groupedData.map(
                 (val) =>
-                    ' <br>    ' +
-                    val[variable].replace('<br>', ' ').replace('- ', '') +
-                    ': $' +
+                    ' <br>    UChicago invested at least $' +
                     `${formatThousands(val.amount_thousands * 1000)}    <br>` +
-                    '<b>    UChicago owned the most shares    <br>    in the following stocks in Sep. 2025:</b>    <br>' +
+                    '    in the <b>' +
+                    val[variable].replace('<br>', ' ').replace('- ', '') +
+                    '</b> sector    <br>    as of September 2025, including:    <br>    <br>' +
                     val.hoverinfo +
                     '<br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
