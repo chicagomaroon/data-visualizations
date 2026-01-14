@@ -166,6 +166,9 @@ function donutChart(data) {
         hole: 0.5,
         values: groupedData.map((d) => d.x),
         text: groupedData.map((d) => d.recategorized),
+        textfont: {
+            color: 'white'
+        },
         texttemplate: '%{text}<br>%{percent:.1%}', // Format percentage to 1 decimal place
         marker: {
             colors: groupedData.map(
@@ -203,12 +206,8 @@ function lollipopChart(data) {
             mode: 'markers',
             name: year,
             marker: {
-                color: '#800000',
-                size: axisFontSize + 1,
-                line: {
-                    color: year > 2010 ? '#800000' : 'white',
-                    width: 5
-                }
+                color: year > 2010 ? '#800000' : '#BB7663',
+                size: axisFontSize + 1
             },
             customdata: data.map(
                 (d) =>
@@ -313,11 +312,12 @@ function barChart(data) {
         textposition: isMobileLike ? 'outside' : 'inside',
         marker: {
             color: data.map((d) =>
-                d.school === 'University of Chicago' ? '#800000' : '#e3bfb5'
+                d.school === 'University of Chicago' ? '#800000' : '#BB7663'
             )
         },
         textfont: {
-            size: axisFontSize
+            size: axisFontSize,
+            color: 'white'
         },
         customdata: data.map(
             (d) =>
@@ -359,17 +359,17 @@ function sankeyChart(div) {
 
     // Define colors for nodes based on the div and node content
     const nodes_color_map = {
-        'what-is-endowment': x.map(() => '#B46A55'),
+        'what-is-endowment': x.map(() => '#BB7663'),
         tuition: sankey_data_filtered.map((d) =>
-            d.to.includes('tuition') ? '#800000' : '#B46A55'
+            d.to.includes('tuition') ? '#800000' : '#BB7663'
         ),
         endowment: sankey_data_filtered.map((d) =>
-            d.to.includes('endowment') ? '#800000' : '#B46A55'
+            d.to.includes('endowment') ? '#800000' : '#BB7663'
         ),
         restricted: sankey_data_filtered.map((d) =>
             d.to.includes('Restricted') || d.to == 'Private gifts'
                 ? '#800000'
-                : '#B46A55'
+                : '#BB7663'
         )
     };
 
@@ -505,7 +505,6 @@ const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 
 // ------- CONSTANTS ------
 
-// TODO: get definitions
 // TODO: cite admin arguments
 // TODO: cite moral responsibility section
 // TODO: finish editing text and transfer to code
@@ -513,9 +512,7 @@ const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 // TODO: get copyedits and transfor to code
 // TODO: add animation between graphs maybe and on sankey
 // TODO: hover define the sankey terms
-// TODO: redo all analyses with real estate/assets as private, and cash equivalent as other
 // TODO: funds in trust + private categories are listed as externally managed
-// TODO: run through colorblind checker
 // TODO: Top 5 companies that UChicago owns shares in,
 // TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
 // TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
@@ -535,8 +532,8 @@ const transition = {
 const colorbook = {
     recategorized: {
         'Public<br>equities<br>(stocks)': 'rgb(128, 0, 0)',
-        'Private<br>equities<br>(stocks)': 'rgb(193, 102, 34)',
-        Bonds: 'rgb(138, 144, 69)',
+        'Private<br>equities<br>(stocks)': 'rgb(169, 67, 30)',
+        Bonds: 'rgb(19, 48, 28)',
         'Hedge<br>funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
     }
@@ -809,7 +806,7 @@ const sequence = {
             arrowhead: 4,
             arrowsize: 1.5,
             arrowwidth: 1,
-            arrowcolor: '#800000',
+            arrowcolor: '#BB7663',
             standoff: 15
         }));
 
@@ -872,25 +869,25 @@ const sequence = {
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
         d3.selectAll(
             '#flowchart-board-of-trustees, #flowchart-graduate-council, #flowchart-faculty-senate,#flowchart-advisory-councils'
-        ).style('fill', '#643335');
+        ).style('fill', '#800000');
     },
     'office-of-investments': function () {
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
         d3.selectAll(
             '#flowchart-office-of-investments, #flowchart-asset-management-firms'
-        ).style('fill', '#643335');
+        ).style('fill', '#800000');
     },
     president: function () {
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
         d3.selectAll('#flowchart-university-president').style(
             'fill',
-            '#643335'
+            '#800000'
         );
     },
     donors: function () {
         drawFlowchart((show = ['control']), (hide = ['coi']));
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
-        d3.selectAll('#flowchart-donors').style('fill', '#643335');
+        d3.selectAll('#flowchart-donors').style('fill', '#800000');
     },
     conflicts: function () {
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
