@@ -300,6 +300,8 @@ function facetChart(data) {
     uniqueGroups.forEach((group) => {
         const subset = data.filter((d) => d.NameOfInterested === group);
 
+        const markerSize = isMobileLike ? 40 : 20;
+
         traces.push({
             type: 'scatter',
             mode: 'markers',
@@ -309,8 +311,8 @@ function facetChart(data) {
             marker: {
                 size: subset.map((d) =>
                     d.TransactionDollars > 0
-                        ? Math.sqrt(d.TransactionDollars) / 20
-                        : 10
+                        ? Math.sqrt(d.TransactionDollars) / markerSize
+                        : bodyFontSize
                 ),
                 color: subset.map((d) =>
                     d.TransactionDollars > 0 ? '#800000' : '#BBBBBB'
@@ -370,7 +372,7 @@ function barChart(data) {
         },
         textfont: {
             size: axisFontSize,
-            color: 'white'
+            color: isMobileLike ? 'black' : 'white'
         },
         customdata: data.map(
             (d) =>
@@ -712,7 +714,7 @@ const sequence = {
             (title =
                 'Top 20 largest college endowments in the U.S., Fiscal Year 2024'),
             (caption =
-                'University systems consisting of multiple schools are excluded. Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
+                'University systems consisting of multiple schools are excluded.<br>Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
             (showlegend = false)
         );
         Plotly.newPlot(
@@ -758,7 +760,7 @@ const sequence = {
                     t: isMobileLike ? 80 : 40,
                     l: isMobileLike ? 20 : 0,
                     r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 45 : 85
+                    b: isMobileLike ? 55 : 85
                 },
                 autosize: isMobileLike ? false : true,
                 width: isMobileLike ? 390 : null,
@@ -875,7 +877,7 @@ const sequence = {
             {
                 ...layout,
                 margin: {
-                    l: isMobileLike ? 110 : 200,
+                    l: isMobileLike ? 50 : 200,
                     r: isMobileLike ? 25 : 0,
                     b: isMobileLike ? 40 : 100
                 },
@@ -943,7 +945,6 @@ const sequence = {
         showChart();
         d3.select('#chart-div').html(''); // clear previous chart
         traces = facetChart(coi_data);
-        console.log(traces);
         layout = createLayout(
             (title =
                 'Payments to investment managers with conflicts of interest'),
@@ -955,12 +956,6 @@ const sequence = {
             traces,
             {
                 ...layout,
-                // grid: {
-                //     rows: traces.length,
-                //     columns: 1,
-                //     pattern: 'independent',
-                //     roworder: 'bottom to top'
-                // },
                 xaxis: {
                     showgrid: false,
                     showline: true,
@@ -978,8 +973,9 @@ const sequence = {
                     }
                 },
                 margin: {
-                    l: isMobileLike ? 50 : 200,
-                    r: isMobileLike ? 25 : 0
+                    l: isMobileLike ? 100 : 200,
+                    r: isMobileLike ? 25 : 0,
+                    b: isMobileLike ? 40 : 100
                 }
             },
             config
