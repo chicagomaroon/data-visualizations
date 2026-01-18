@@ -228,41 +228,46 @@ function lollipopChart(data) {
     return traces;
 }
 
+/**
+Cite: copilot
+*/
 function circleChart(data, variable) {
-    const groupedData = groupData(data, variable);
+    var groupedData = groupData(data, variable);
 
-    // cite: d3 and copilot
-    // Create a force simulation
-    const simulation = d3
-        .forceSimulation(groupedData)
-        .force('charge', d3.forceManyBody().strength(-100)) // Repulsion between nodes
-        .force(
-            'collide',
-            d3.forceCollide().radius((d) => d.amount_thousands) // Avoid overlapping nodes
-        );
+    // Create a hierarchy for d3.pack
+    const pack_root = d3
+        .hierarchy({ children: groupedData })
+        .sum((d) => d.amount_thousands); // Use the amount_thousands as the value for packing
 
-    // Run the simulation synchronously - otherwise weird thing with rendering order
-    for (let i = 0; i < 5; i++) {
-        simulation.tick();
-    }
+    // Create the pack layout
+    const pack = d3
+        .pack()
+        .size([400, 400]) // size of packing area
+        .padding(2);
+
+    // Apply the pack layout to the hierarchy
+    const packedData = pack(pack_root);
+
+    // Extract the packed circles
+    const nodes = packedData.leaves();
+
     traces = [
         {
             type: 'scatter',
             mode: 'markers+text',
-            x: groupedData.map((val) => val.x),
-            y: groupedData.map((val) => val.y),
+            x: nodes.map((val) => val.x),
+            y: nodes.map((val) => val.y),
             name: groupedData.map((val) => val[variable]),
             marker: {
                 size: groupedData.map(
-                    (val) => val.amount_thousands / (isMobileLike ? 400 : 200)
+                    (val) =>
+                        Math.sqrt(val.amount_thousands) / (isMobileLike ? 5 : 1) // scale by square root for proportionality of area (instead of radius)
                 ),
                 color: '#800000',
                 opacity: 1
             },
             textfont: {
-                color: groupedData.map((val) =>
-                    val.amount_thousands < 10000 ? 'black' : 'white'
-                ),
+                color: 'white',
                 size: bodyFontSize
             },
             text: groupedData.map((val) =>
@@ -271,9 +276,6 @@ function circleChart(data, variable) {
                     : `${val[variable]}<br>\$${formatThousands(
                           val.amount_thousands * 1000
                       )}`
-            ),
-            textposition: groupedData.map((val) =>
-                val.amount_thousands < 10000 ? 'top center' : 'center center'
             ),
             customdata: groupedData.map(
                 (val) =>
@@ -827,8 +829,8 @@ const sequence = {
                         },
                         showarrow: false,
                         text: '  Total in endowment<br>$10.9B',
-                        x: -160000,
-                        y: -80000
+                        x: -30,
+                        y: 200
                     } // add additional annotation
                 ]
             },

@@ -817,10 +817,8 @@ summary_df["Top5"] = [
 # flatten list so that each company is on its own line
 summary_df["Top5"] = ["<br>".join(x) for x in summary_df["Top5"]]
 
-# add line breaks for larger bubbles
-summary_df.loc[summary_df["ValueThousands"] > 10000, "Sector"] = summary_df.loc[
-    summary_df["ValueThousands"] > 10000, "Sector"
-].str.replace(" ", "<br>")
+# add line breaks
+summary_df["Sector"] = summary_df["Sector"].str.replace(" ", "<br>")
 
 # inspect
 for _, row in summary_df.iterrows():
