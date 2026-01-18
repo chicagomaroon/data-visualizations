@@ -862,14 +862,14 @@ type_dict = {
     "Absolute return": "Hedge funds",  # hedge funds may be public or private
     "Equity oriented": "Hedge funds",  # hedge funds may be public or private
     "Diversifying": "Hedge funds",  # hedge funds may be public or private
-    "Private equity": "Private equities (stocks)",
+    "Private equity": "Private equities",
     # for now, to simplify graph, class most as other
     "Assets held by trustee": "Other",
     "Funds in trust": "Other",
-    "Natural resources": "Private equities (stocks)",
-    "Private debt": "Private equities (stocks)",
-    "Real assets": "Private equities (stocks)",
-    "Real estate": "Private equities (stocks)",
+    "Natural resources": "Private equities",
+    "Private debt": "Private equities",
+    "Real assets": "Private equities",
+    "Real estate": "Private equities",
     "Receivable for investments sold": "Other",  # TODO: how to categorize
 }
 

@@ -350,12 +350,6 @@ function facetChart(data) {
 }
 
 function barChart(data) {
-    // cite: copilot because groupby transform is not working for some reason
-    // const privateData = data.filter((d) => d.private);
-    // const publicData = data.filter((d) => !d.private);
-    // const allSchools = data.map((d) => d.school);
-    // const allData = { Private: privateData, Public: publicData };
-
     data = data.sort((a, b) => a.endowment_dollars - b.endowment_dollars);
 
     const traces = [];
@@ -583,7 +577,7 @@ const transition = {
 const colorbook = {
     recategorized: {
         'Public<br>equities<br>(stocks)': 'rgb(128, 0, 0)',
-        'Private<br>equities<br>(stocks)': 'rgb(169, 67, 30)',
+        'Private<br>equities': 'rgb(169, 67, 30)',
         Bonds: 'rgb(19, 48, 28)',
         'Hedge<br>funds': 'rgb(53, 14, 32)',
         Other: 'rgb(21, 95, 131)'
