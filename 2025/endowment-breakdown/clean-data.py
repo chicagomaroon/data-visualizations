@@ -760,6 +760,7 @@ print("Rows:", len(sec_0925))
 print("Columns:", sec_0925.columns)
 print("Missing:", sec_0925.Industry.isna().sum())
 
+sec_0925.to_csv("sec-industries.csv", index=None)
 
 # %% circle chart: analyze by sector
 
@@ -917,6 +918,8 @@ lolli = lolli[lolli["year"].isin([2005, 2025])].pivot(
 
 lolli.columns = lolli.columns.droplevel(0)
 
+lolli["difference"] = lolli[2025] - lolli[2005]
+
 lolli.sort_values(2025, ascending=True).reset_index().to_json(
     "data/types-over-time.json",
     orient="records",
@@ -931,12 +934,11 @@ conflictsOfInterest = []
 # TODO: when did schedule L get invented - I don't see any data before 2009 or in 2010
 
 schedule_l = {}
-for file in os.listdir("990"):
+for file in os.listdir("../endowment-sec/990"):
     if file.endswith(".pdf") and (
         "T" not in file
     ):  # pre 2013 format for 990s, not 990-Ts
-        pages = convert_from_path(os.path.join("990", file))
-
+        pages = convert_from_path(os.path.join("../endowment-sec/990", file))
         schedule_l["file"] = file
         schedule_l["pages"] = []
         schedule_l["text"] = []
@@ -989,52 +991,80 @@ for file in os.listdir("990"):
 coi = pd.DataFrame(conflictsOfInterest)
 coi.to_csv("conflicts-of-interest.csv", index=False)
 
-# %% flowchart: save 990 conflict of interest data
+# %% flowchart: get 990 conflict of interest data
 # unlike the other data, this one is used to create a chart in Figma, which is then exported to SVG
 # so this has no Python/JSON output, just visual inspection
 
 coi = pd.read_csv("conflicts-of-interest.csv")
 
+# filter to only endowment-related conflicts
+coi["Endowment"] = coi["RelationshipDescriptionTxt"].str.contains(
+    "university's investment", case=False, na=False
+)
+coi = coi[coi["Endowment"] == True]
+
 # clean data
 coi.loc[coi["NameOfInterested"] == "LAKE CAPITAL", "NameOfInterested"] = (
     "LAKE CAPITAL PARTNERS"
 )
-coi["NameOfInterested"] = coi["NameOfInterested"].str.replace("THE ", "")
-coi["TransactionAmt"] = coi["TransactionAmt"].fillna(0).astype(int)
-coi["Year"] = pd.to_datetime(coi["Year"]).dt.year
-coi = coi[coi["Endowment"] == True]
-
-# group by name and year
-coi = (
-    coi.groupby(["NameOfInterested", "Year"])
-    .agg(
-        {
-            "TransactionAmt": "sum",
-            "NameOfInterested": "first",
-            "Year": "first",
-            "RelationshipDescriptionTxt": "first",
-        }
-    )
-    .reset_index(drop=True)
+coi["NameOfInterested"] = (
+    coi["NameOfInterested"]
+    .str.title()
+    .str.strip()
+    .str.replace("The ", "")
+    .str.replace(" Plc", "")
+    .str.replace("Pimco", "Pacific Investment<br>Management Company")
 )
 
-# NOTE: trian fund management no longer exists, may be accessible via LSEG
-# read in data from preqin database search
-preqin = pd.read_excel("preqin-uchicago.xlsx")
-preqin["firm_name"] = preqin["firm_name"].str.upper().str.replace("THE ", "")
-# idk how to handle overlapping industries so let's just take the first of each
-preqin["industry"] = preqin["industry"].str.split(";")
-
-# get 5 largest funds per firm
-top5 = (
-    preqin.sort_values(["firm_id", "final_size_usd"], ascending=False)
-    .groupby("firm_id")
-    .head(5)
+# extract transaction amount from description text
+coi["TransactionDollars"] = coi["RelationshipDescriptionTxt"].str.extract(
+    r"\$ ?([\d,]+)"
 )
-top5["most_recent_size_millions"] = top5[
-    "final_size_usd"
-]  # cite: provided data dictionary
-# cannot fill in portfolio companies from pitchbook because private equity does not report portfolio
-# TODO: some of their own websites do provide specific information: check usage guidelines
+coi["TransactionDollars"] = (
+    coi["TransactionDollars"].str.replace(",", "").fillna(-99).astype(int)
+)
 
-print(top5)
+# extract trustee name from description text
+coi["Person"] = coi["RelationshipDescriptionTxt"].str.extract(r"^([A-Z\. ]+),")
+coi["Person"] = (
+    coi["Person"].str.title().str.replace(r".\. ", "", regex=True)
+)  # remove initials and format title case
+
+# extract relationship from description text
+coi["Relationship"] = coi["RelationshipDescriptionTxt"].str.extract(
+    r"IS ([A-Z\-, ]+) OF [A-Z\-\. ]+, "
+)
+coi["Relationship"] = (
+    coi["Relationship"]
+    .str.replace("A ", "")
+    .str.replace("THE ", "")
+    .str.lower()
+    .str.replace("ceo", "chief executive officer")
+)
+coi["Relationship"] = coi.groupby("NameOfInterested")["Relationship"].transform("last")
+
+coi["TotalTransactionDollars"] = (
+    coi.groupby("NameOfInterested")["TransactionDollars"]
+    .transform("sum")
+    .round(0)
+    .astype(int)
+)
+
+coi.sort_values("TotalTransactionDollars")[
+    ["NameOfInterested", "Year", "Person", "Relationship", "TransactionDollars"]
+].to_json("data/conflicts-of-interest.json", orient="records")
+
+coi
+
+# %% add pitchbook data
+
+pitchbook = pd.read_csv("pitchbook-firms.csv")
+
+pitchbook["Totals"] = pitchbook.groupby("Company")["Deals"].transform("sum")
+
+pitchbook["Percent"] = round(pitchbook["Deals"] / pitchbook["Totals"], 3)
+pitchbook[["Company", "Industry", "Percent"]].to_json(
+    "data/conflicts-of-interest-2024.json",
+)
+
+# %%
