@@ -254,7 +254,7 @@ function circleChart(data, variable) {
             name: groupedData.map((val) => val[variable]),
             marker: {
                 size: groupedData.map(
-                    (val) => val.amount_thousands / (isMobileLike ? 400 : 170)
+                    (val) => val.amount_thousands / (isMobileLike ? 400 : 200)
                 ),
                 color: '#800000',
                 opacity: 1
@@ -292,6 +292,59 @@ function circleChart(data, variable) {
     return traces;
 }
 
+function facetChart(data) {
+    traces = [];
+
+    uniqueGroups = [...new Set(data.map((d) => d.NameOfInterested))];
+
+    uniqueGroups.forEach((group) => {
+        const subset = data.filter((d) => d.NameOfInterested === group);
+
+        traces.push({
+            type: 'scatter',
+            mode: 'markers',
+            x: subset.map((d) => d.Year),
+            y: subset.map((d) => d.NameOfInterested),
+            name: subset.map((d) => d.Person),
+            marker: {
+                size: subset.map((d) =>
+                    d.TransactionDollars > 0
+                        ? Math.sqrt(d.TransactionDollars) / 20
+                        : 10
+                ),
+                color: subset.map((d) =>
+                    d.TransactionDollars > 0 ? '#800000' : '#BBBBBB'
+                ),
+                opacity: 1
+            },
+            textfont: {
+                size: bodyFontSize
+            },
+            customdata: subset.map(
+                (d) =>
+                    ' <br>    UChicago paid ' +
+                    `${
+                        d.TransactionDollars > 0
+                            ? '$' + formatThousands(d.TransactionDollars)
+                            : 'an undisclosed amount'
+                    }    <br>` +
+                    '    to <b>' +
+                    d.NameOfInterested.replace('<br>', '<br>    ') +
+                    '</b>,    <br>    of which Trustee ' +
+                    d.Person +
+                    ' was    <br>    ' +
+                    d.Relationship +
+                    ',    <br>    to manage its endowment in ' +
+                    d.Year +
+                    '    <br> <extra></extra>'
+            ), // extra tag removes trace label; spaces needed for fake padding
+            hoverinfo: 'text',
+            hovertemplate: '%{customdata}'
+        });
+    });
+    return traces;
+}
+
 function barChart(data) {
     // cite: copilot because groupby transform is not working for some reason
     // const privateData = data.filter((d) => d.private);
@@ -322,7 +375,7 @@ function barChart(data) {
         customdata: data.map(
             (d) =>
                 '<br /> <br />    ' +
-                d.school +
+                d.school.replace('Univ.', 'University') +
                 ' endowment: $' +
                 formatThousands(d.endowment_dollars) +
                 '    <br /> <br /><extra></extra>'
@@ -421,6 +474,42 @@ function sankeyChart(div) {
     return [trace];
 }
 
+function drawFlowchart(show = [], hide = []) {
+    // make sure everything loads before returning
+    Promise.all([d3.xml('static/chart.svg'), d3.xml('static/coi.svg')]).then(
+        ([controlChart, coiChart]) => {
+            // check that we don't already have the chart up
+            if (d3.select('#control-flowchart').empty()) {
+                d3.select('#chart-div').html(''); // clear previous chart
+
+                d3.select('#chart-div')
+                    .node()
+                    .append(controlChart.documentElement);
+                d3.select('#chart-div').node().append(coiChart.documentElement);
+            }
+
+            show.forEach(function (id) {
+                d3.select('#' + id + '-flowchart').style('display', 'block');
+            });
+
+            hide.forEach(function (id) {
+                d3.select('#' + id + '-flowchart').style('display', 'none');
+            });
+
+            if (isMobileLike) {
+                d3.selectAll('#chart-div svg')
+                    .attr('width', '100%')
+                    .attr('height', '43vh');
+
+                d3.selectAll('#coi-flowchart')
+                    .attr('width', '100%')
+                    .attr('height', '45vh')
+                    .style('margin-top', '3vh');
+            }
+        }
+    );
+}
+
 function hideChart() {
     d3.select('#chart-container')
         .transition()
@@ -450,49 +539,6 @@ function open_url(data) {
     window.open(url[1], '_blank').focus();
 }
 
-function drawFlowchart(show = [], hide = []) {
-    // make sure everything loads before returning
-    Promise.all([
-        d3.xml('static/chart.svg'),
-        d3.xml('static/screen.svg'),
-        d3.xml('static/coi.svg'),
-        d3.xml('static/arrows.svg')
-    ]).then(([controlChart, screenChart, coiChart, arrowChart]) => {
-        // check that we don't already have the chart up
-        if (d3.select('#control-flowchart').empty()) {
-            d3.select('#chart-div').html(''); // clear previous chart
-
-            d3.select('#chart-div').node().append(controlChart.documentElement);
-            d3.select('#chart-div').node().append(screenChart.documentElement);
-            d3.select('#chart-div').node().append(coiChart.documentElement);
-            d3.select('#chart-div').node().append(arrowChart.documentElement);
-        }
-
-        show.forEach(function (id) {
-            d3.select('#' + id + '-flowchart').style('display', 'block');
-        });
-
-        hide.forEach(function (id) {
-            d3.select('#' + id + '-flowchart').style('display', 'none');
-        });
-
-        if (isMobileLike) {
-            d3.selectAll('#chart-div svg')
-                .attr('width', '100%')
-                .attr('height', '43vh');
-            d3.selectAll('#arrows-flowchart')
-                .attr('width', '100%')
-                .attr('height', '41vh')
-                .style('margin-top', '0');
-
-            d3.selectAll('#coi-flowchart')
-                .attr('width', '100%')
-                .attr('height', '45vh')
-                .style('margin-top', '3vh');
-        }
-    });
-}
-
 function detectMobile() {
     return (
         window.matchMedia('(max-width: 768px)').matches &&
@@ -505,6 +551,7 @@ const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 
 // ------- CONSTANTS ------
 
+// TODO: add legend to facet graph
 // TODO: cite admin arguments
 // TODO: cite moral responsibility section
 // TODO: finish editing text and transfer to code
@@ -891,11 +938,53 @@ const sequence = {
     },
     conflicts: function () {
         d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
-        drawFlowchart((show = ['coi']), (hide = ['screen', 'arrows']));
+        drawFlowchart((show = ['control', 'coi']));
     },
-    arrows: function () {
+    'conflicts-detail': function () {
         showChart();
-        drawFlowchart((show = ['control', 'coi', 'screen', 'arrows']));
+        d3.select('#chart-div').html(''); // clear previous chart
+        traces = facetChart(coi_data);
+        console.log(traces);
+        layout = createLayout(
+            (title =
+                'Payments to investment managers with conflicts of interest'),
+            (caption =
+                'Source: University of Chicago <a href="https://projects.propublica.org/nonprofits/organizations/362177139">IRS Form 990</a> filings')
+        );
+        Plotly.newPlot(
+            'chart-div',
+            traces,
+            {
+                ...layout,
+                // grid: {
+                //     rows: traces.length,
+                //     columns: 1,
+                //     pattern: 'independent',
+                //     roworder: 'bottom to top'
+                // },
+                xaxis: {
+                    showgrid: false,
+                    showline: true,
+                    showticklabels: true,
+                    tickfont: {
+                        size: axisFontSize
+                    }
+                },
+                yaxis: {
+                    showgrid: true,
+                    showline: false,
+                    showticklabels: true,
+                    tickfont: {
+                        size: axisFontSize
+                    }
+                },
+                margin: {
+                    l: isMobileLike ? 50 : 200,
+                    r: isMobileLike ? 25 : 0
+                }
+            },
+            config
+        );
     },
     conclusion: function () {
         d3.select('#chart-div').html(''); // clear previous chart
@@ -934,6 +1023,7 @@ async function init() {
     types_time = await fetchData('types-over-time.json');
     sankey_data = await fetchData('sankey.json');
     helper_text = await fetchData('definitions.json');
+    coi_data = await fetchData('conflicts-of-interest.json');
 
     // part I
     createWaypoint('what-is-endowment');
@@ -954,7 +1044,7 @@ async function init() {
     createWaypoint('president');
     createWaypoint('donors');
     createWaypoint('conflicts');
-    createWaypoint('arrows');
+    createWaypoint('conflicts-detail');
 
     createWaypoint('conclusion', (offset = '90%'));
 }

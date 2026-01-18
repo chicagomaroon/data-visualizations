@@ -40,7 +40,8 @@
         <text x="446" y="1764" class="top-line">Lake</text>
         <text x="435" y="1786">Capital</text>
         <rect x="292" y="1589" width="118" height="118" fill="white" />
-        <text x="319" y="1654">Pimco</text>
+        <text x="317" y="1644" class="top-line">PIMCO</text>
+        <text x="309" y="1667">and Man</text>
         <rect x="412" y="1589" width="118" height="118" fill="white" />
         <text x="443" y="1644" class="top-line">Trian</text>
         <text x="427" y="1666">Partners</text>
