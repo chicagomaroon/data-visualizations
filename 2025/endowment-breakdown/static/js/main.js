@@ -705,6 +705,40 @@ const sequence = {
             }
         );
     },
+    breakdown: function () {
+        const layout = createLayout(
+            (title = null),
+            (caption = statementCaption)
+        );
+        Plotly.newPlot(
+            'chart-div',
+            donutChart(statements),
+            {
+                ...layout,
+                margin: {
+                    t: isMobileLike ? 80 : 40,
+                    l: isMobileLike ? 20 : 0,
+                    r: isMobileLike ? 0 : 20,
+                    b: isMobileLike ? 55 : 85
+                },
+                autosize: isMobileLike ? false : true,
+                width: isMobileLike ? 390 : null,
+                annotations: [
+                    layout['annotations'][0], // keep caption
+                    {
+                        font: {
+                            size: titleFontSize
+                        },
+                        showarrow: false,
+                        text: 'Total in endowment<br>$10.9 billion',
+                        x: 0.5,
+                        y: 0.5
+                    } // add title in center
+                ]
+            },
+            config
+        );
+    },
     'compare-schools': function () {
         const layout = createLayout(
             (title =
@@ -738,40 +772,6 @@ const sequence = {
                     },
                     range: [0, 60e9]
                 }
-            },
-            config
-        );
-    },
-    breakdown: function () {
-        const layout = createLayout(
-            (title = null),
-            (caption = statementCaption)
-        );
-        Plotly.newPlot(
-            'chart-div',
-            donutChart(statements),
-            {
-                ...layout,
-                margin: {
-                    t: isMobileLike ? 80 : 40,
-                    l: isMobileLike ? 20 : 0,
-                    r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 55 : 85
-                },
-                autosize: isMobileLike ? false : true,
-                width: isMobileLike ? 390 : null,
-                annotations: [
-                    layout['annotations'][0], // keep caption
-                    {
-                        font: {
-                            size: titleFontSize
-                        },
-                        showarrow: false,
-                        text: 'Total in endowment<br>$10.9 billion',
-                        x: 0.5,
-                        y: 0.5
-                    } // add title in center
-                ]
             },
             config
         );
