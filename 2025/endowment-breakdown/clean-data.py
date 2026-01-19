@@ -1056,15 +1056,4 @@ coi.sort_values("TotalTransactionDollars")[
 
 coi
 
-# %% add pitchbook data
-
-pitchbook = pd.read_csv("pitchbook-firms.csv")
-
-pitchbook["Totals"] = pitchbook.groupby("Company")["Deals"].transform("sum")
-
-pitchbook["Percent"] = round(pitchbook["Deals"] / pitchbook["Totals"], 3)
-pitchbook[["Company", "Industry", "Percent"]].to_json(
-    "data/conflicts-of-interest-2024.json",
-)
-
 # %%
