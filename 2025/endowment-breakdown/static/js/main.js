@@ -261,7 +261,8 @@ function circleChart(data, variable) {
             marker: {
                 size: groupedData.map(
                     (val) =>
-                        Math.sqrt(val.amount_thousands) / (isMobileLike ? 5 : 1) // scale by square root for proportionality of area (instead of radius)
+                        Math.sqrt(val.amount_thousands) /
+                        (isMobileLike ? 2.2 : 1) // scale by square root for proportionality of area (instead of radius)
                 ),
                 color: '#800000',
                 opacity: 1
@@ -439,12 +440,6 @@ function sankeyChart(div) {
         )
     };
 
-    // console.log(
-    //     labels.map((label) =>
-    //         label.includes('endowment') ? label + '#DDDDDD' : '#EEEEEE'
-    //     )
-    // );
-
     const trace = {
         type: 'sankey',
         orientation: 'h',
@@ -550,17 +545,11 @@ const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 // ------- CONSTANTS ------
 
 // TODO: add legend to facet graph
-// TODO: cite admin arguments
-// TODO: cite moral responsibility section
-// TODO: finish editing text and transfer to code
 // TODO: get quote permissions
 // TODO: get copyedits and transfor to code
-// TODO: add animation between graphs maybe and on sankey
-// TODO: hover define the sankey terms
+// TODO: (nice to have) add animation between graphs maybe and on sankey
+// TODO: (nice to have) hover define the sankey terms
 // TODO: funds in trust + private categories are listed as externally managed
-// TODO: Top 5 companies that UChicago owns shares in,
-// TODO: contextualize 990T is only a vague image because we dont have better information. explain what a management firm is and relationship to the funds as investment portfolios of unknown companies and unknown uchicago endowment distribution/amounts
-// TODO: translate table bullets to sentences. add information about PIMCO: X company based in Y, history, trustee info such as when they joined UChicago and when they joined the company
 
 const config = {
     displayModeBar: false,
@@ -793,7 +782,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
-                    b: isMobileLike ? 40 : 75
+                    b: isMobileLike ? 35 : 75
                 },
                 xaxis: {
                     scaleanchor: 'y',
@@ -945,7 +934,7 @@ const sequence = {
             (title =
                 'Payments to investment managers with conflicts of interest'),
             (caption =
-                'Source: University of Chicago <a href="https://projects.propublica.org/nonprofits/organizations/362177139">IRS Form 990</a> filings')
+                'Data on conflicts of interest was not required to be reported before <a href="https://www.irs.gov/pub/irs-prior/i990sl--2013.pdf">2013</a>.<br>Source: University of Chicago <a href="https://projects.propublica.org/nonprofits/organizations/362177139">IRS Form 990</a> filings')
         );
         Plotly.newPlot(
             'chart-div',
@@ -1021,10 +1010,10 @@ async function init() {
     createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
-    createWaypoint('compare-schools');
+    createWaypoint('breakdown');
 
     // part II
-    createWaypoint('breakdown');
+    createWaypoint('compare-schools');
     createWaypoint('sec');
     createWaypoint('private-equities');
 
