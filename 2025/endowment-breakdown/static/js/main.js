@@ -298,6 +298,41 @@ function circleChart(data, variable) {
 function facetChart(data) {
     traces = [];
 
+    // Add a white line trace to cover the last gridline - cite: copilot
+    const whiteLineTrace = {
+        type: 'scatter',
+        mode: 'lines',
+        x: [2012, 2025], // Adjust based on your x-axis range
+        y: ['', ''], // Position at the last gridline
+        line: {
+            color: 'white', // White line to cover the gridline
+            width: 20 // Adjust the width to fully cover the gridline
+        },
+        hoverinfo: 'none' // Disable hover for this trace
+    };
+
+    // Add size legend - cite: copilot
+    const sizeLegendValues = [100000, 100000, 500000, 1000000];
+    const sizeLegendTrace = {
+        type: 'scatter',
+        mode: 'markers+text',
+        x: [2018, 2020.2, 2022, 2024],
+        y: sizeLegendValues.map(() => ''),
+        marker: {
+            size: sizeLegendValues.map(
+                (val) => Math.sqrt(val) / (isMobileLike ? 40 : 20)
+            ),
+            color: ['#BBBBBB', '#800000', '#800000', '#800000'],
+            opacity: 1
+        },
+        text: ['undisclosed', '$100K', '$500K', '$1M'],
+        textposition: 'right',
+        hoverinfo: 'none'
+    };
+
+    traces.push(whiteLineTrace);
+    traces.push(sizeLegendTrace);
+
     uniqueGroups = [...new Set(data.map((d) => d.NameOfInterested))];
 
     uniqueGroups.forEach((group) => {
