@@ -999,7 +999,7 @@ async function init() {
 
     statements = await fetchData('financial-statement-2025.json');
     sec = await fetchData('sec-sectors-2025.json');
-    endowments = await fetchData('largest-endowments-2023.json');
+    endowments = await fetchData('largest-endowments-2024.json');
     types_time = await fetchData('types-over-time.json');
     sankey_data = await fetchData('sankey.json');
     helper_text = await fetchData('definitions.json');
