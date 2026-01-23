@@ -1,15 +1,106 @@
 [
-    {"from": " ", "to": "Total revenue", "amount_millions": 4410.4, "y": 0.2, "x": 0,"hover": "Total cash flow into the University"},
-    {"from": "Total revenue", "to": "Restricted revenue", "amount_millions": 733.5, "y": 0.85, "x": 0.3, "hover": "Resources that the University cannot spend however it wants due to donor specifications."},
-    {"from": "Restricted revenue", "to": "Private gifts", "amount_millions": 476.4, "y": 0.83, "x": 1, "hover": "Private gifts that come with strings attached: for example, specifying that funds must be used for a particular program."},
-    {"from": "Restricted revenue", "to": "Restricted investment return", "amount_millions": 246.0, "y": 0.91, "x": 1, "hover": "Profit gained from investing the endowment that must be used in ways pre-specified by donors."},
-    {"from": "Restricted revenue", "to": "Restricted endowment payout", "amount_millions": 0.9, "y": 0.96, "x": 1, "hover": "An amount withdrawn from the endowment that must be used in ways pre-specified by donors."},
-    {"from": "Restricted revenue", "to": "Other restricted revenue", "amount_millions": 10.2, "y": 1, "x": 1, "hover": "The financial statement does not specify what this category includes."},
-    {"from": "Total revenue", "to": "Unrestricted revenue", "amount_millions": 3676.9, "y": 0.4, "x": 0.3, "hover": "Resources that the University can spend however it wants."},
-    {"from": "Unrestricted revenue", "to": "Net tuition", "amount_millions": 686.0, "y": 0.001, "x": 1, "hover": "All revenue from student tuition after financial aid is subtracted."},
-    {"from": "Unrestricted revenue", "to": "Government grants/contracts", "amount_millions": 530.7, "y": 0.13, "x": 1, "hover": "Grants and contracts for research and other activities from local, state, and/or federal government."},
-    {"from": "Unrestricted revenue", "to": "Private gifts/grants/contracts", "amount_millions": 316.8, "y": 0.23, "x": 1, "hover": "Private gifts that do not come with strings attached, in addition to grants and contracts from private organizations."},
-    {"from": "Unrestricted revenue", "to": "Unrestricted investment return", "amount_millions": 119.2, "y": 0.29, "x": 1, "hover": "Profit gained from investing the endowment that can be used in any way the University wishes."},
-    {"from": "Unrestricted revenue", "to": "Unrestricted endowment payout", "amount_millions": 621.7, "y": 0.38, "x": 1, "hover": "An amount withdrawn from the endowment that can be used in any way the University wishes."},
-    {"from": "Unrestricted revenue","to":  "Other unrestricted revenue", "amount_millions": 1402.6,  "y": 0.58, "x": 1, "hover": "Includes auxiliaries, other income, and net assets released from restrictions."}
+    {
+        "from": " ",
+        "to": "Total revenue",
+        "amount_millions": 4410.4,
+        "y": 0.2,
+        "x": 0,
+        "hover": "Total cash flow into the University"
+    },
+    {
+        "from": "Total revenue",
+        "to": "Restricted revenue",
+        "amount_millions": 733.5,
+        "y": 0.85,
+        "x": 0.3,
+        "hover": "Resources that the University cannot spend however it wants due to donor specifications."
+    },
+    {
+        "from": "Restricted revenue",
+        "to": "Private gifts",
+        "amount_millions": 476.4,
+        "y": 0.83,
+        "x": 1,
+        "hover": "Private gifts that come with strings attached: for example, specifying that funds must be used for a particular program."
+    },
+    {
+        "from": "Restricted revenue",
+        "to": "Restricted investment return",
+        "amount_millions": 246.0,
+        "y": 0.91,
+        "x": 1,
+        "hover": "Profit gained from investing the endowment that must be used in ways pre-specified by donors."
+    },
+    {
+        "from": "Restricted revenue",
+        "to": "Restricted endowment payout",
+        "amount_millions": 0.9,
+        "y": 0.96,
+        "x": 1,
+        "hover": "An amount withdrawn from the endowment that must be used in ways pre-specified by donors."
+    },
+    {
+        "from": "Restricted revenue",
+        "to": "Other restricted revenue",
+        "amount_millions": 10.2,
+        "y": 1,
+        "x": 1,
+        "hover": "The financial statement does not specify what this category includes."
+    },
+    {
+        "from": "Total revenue",
+        "to": "Unrestricted revenue",
+        "amount_millions": 3676.9,
+        "y": 0.4,
+        "x": 0.3,
+        "hover": "Resources that the University can spend however it wants."
+    },
+    {
+        "from": "Unrestricted revenue",
+        "to": "Net tuition",
+        "amount_millions": 686.0,
+        "y": 0.001,
+        "x": 1,
+        "hover": "All revenue from student tuition after financial aid is subtracted."
+    },
+    {
+        "from": "Unrestricted revenue",
+        "to": "Government grants/contracts",
+        "amount_millions": 530.7,
+        "y": 0.13,
+        "x": 1,
+        "hover": "Grants and contracts for research and other activities from local, state, and/or federal government."
+    },
+    {
+        "from": "Unrestricted revenue",
+        "to": "Private gifts/grants/contracts",
+        "amount_millions": 316.8,
+        "y": 0.23,
+        "x": 1,
+        "hover": "Private gifts that do not come with strings attached, in addition to grants and contracts from private organizations."
+    },
+    {
+        "from": "Unrestricted revenue",
+        "to": "Unrestricted investment return",
+        "amount_millions": 119.2,
+        "y": 0.29,
+        "x": 1,
+        "hover": "Profit gained from investing the endowment that can be used in any way the University wishes."
+    },
+    {
+        "from": "Unrestricted revenue",
+        "to": "Unrestricted endowment payout",
+        "amount_millions": 621.7,
+        "y": 0.38,
+        "x": 1,
+        "hover": "An amount withdrawn from the endowment that can be used in any way the University wishes."
+    },
+    {
+        "from": "Unrestricted revenue",
+        "to": "Other unrestricted revenue",
+        "amount_millions": 1402.6,
+        "y": 0.58,
+        "x": 1,
+        "hover": "Includes auxiliaries, other income, and net assets released from restrictions."
+    }
 ]
