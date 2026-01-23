@@ -382,6 +382,7 @@ function facetChart(data) {
             hovertemplate: '%{customdata}'
         });
     });
+
     return traces;
 }
 

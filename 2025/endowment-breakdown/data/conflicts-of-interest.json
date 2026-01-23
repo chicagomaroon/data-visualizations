@@ -1,1 +1,247 @@
-[{"NameOfInterested":"Lake Capital Partners","Year":2016,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":192000},{"NameOfInterested":"Lake Capital Partners","Year":2017,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":150000},{"NameOfInterested":"Lake Capital Partners","Year":2018,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":61000},{"NameOfInterested":"Lake Capital Partners","Year":2019,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":147688},{"NameOfInterested":"Lake Capital Partners","Year":2014,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":220192},{"NameOfInterested":"Lake Capital Partners","Year":2022,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":134756},{"NameOfInterested":"Lake Capital Partners","Year":2021,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":141811},{"NameOfInterested":"Lake Capital Partners","Year":2020,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":145719},{"NameOfInterested":"Lake Capital Partners","Year":2023,"Person":"Paul Yovovich","Relationship":"president, principal, and co-founder","TransactionDollars":132345},{"NameOfInterested":"Man Group","Year":2017,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":948000},{"NameOfInterested":"Man Group","Year":2016,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":943000},{"NameOfInterested":"Man Group","Year":2015,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":992000},{"NameOfInterested":"Carlyle Group","Year":2021,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":260795},{"NameOfInterested":"Carlyle Group","Year":2014,"Person":"David Rubinstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":348383},{"NameOfInterested":"Carlyle Group","Year":2016,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":358000},{"NameOfInterested":"Carlyle Group","Year":2015,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":885690},{"NameOfInterested":"Carlyle Group","Year":2023,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":162908},{"NameOfInterested":"Carlyle Group","Year":2022,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":149545},{"NameOfInterested":"Carlyle Group","Year":2024,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":-99},{"NameOfInterested":"Carlyle Group","Year":2017,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":328000},{"NameOfInterested":"Carlyle Group","Year":2018,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":216000},{"NameOfInterested":"Carlyle Group","Year":2019,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":251201},{"NameOfInterested":"Carlyle Group","Year":2020,"Person":"David Rubenstein","Relationship":"co-founder and co-chief executive officer","TransactionDollars":354753},{"NameOfInterested":"Trian Partners","Year":2014,"Person":"Peter May","Relationship":"president and founding partner","TransactionDollars":2145729},{"NameOfInterested":"Trian Partners","Year":2015,"Person":"Peter May","Relationship":"president and founding partner","TransactionDollars":1158900},{"NameOfInterested":"Trian Partners","Year":2018,"Person":"Peter May","Relationship":"president and founding partner","TransactionDollars":620000},{"NameOfInterested":"Trian Partners","Year":2017,"Person":"Peter May","Relationship":"president and founding partner","TransactionDollars":635000},{"NameOfInterested":"Trian Partners","Year":2016,"Person":"Peter May","Relationship":"president and founding partner","TransactionDollars":848500},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2022,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":1783878},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2018,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":349500},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2019,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":262242},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2020,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":1477706},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2023,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":780626},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2024,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":-99},{"NameOfInterested":"Pacific Investment<br>Management Company","Year":2021,"Person":"Emmanuel Roman","Relationship":"chief executive officer","TransactionDollars":1595205}]
+[
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2016,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 192000
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2017,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 150000
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2018,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 61000
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2019,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 147688
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2014,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 220192
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2022,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 134756
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2021,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 141811
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2020,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 145719
+    },
+    {
+        "NameOfInterested": "Lake Capital Partners",
+        "Year": 2023,
+        "Person": "Paul Yovovich",
+        "Relationship": "president, principal, and co-founder",
+        "TransactionDollars": 132345
+    },
+    {
+        "NameOfInterested": "Man Group",
+        "Year": 2017,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 948000
+    },
+    {
+        "NameOfInterested": "Man Group",
+        "Year": 2016,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 943000
+    },
+    {
+        "NameOfInterested": "Man Group",
+        "Year": 2015,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 992000
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2021,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 260795
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2014,
+        "Person": "David Rubinstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 348383
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2016,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 358000
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2015,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 885690
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2023,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 162908
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2022,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 149545
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2024,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": -99
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2017,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 328000
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2018,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 216000
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2019,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 251201
+    },
+    {
+        "NameOfInterested": "Carlyle Group",
+        "Year": 2020,
+        "Person": "David Rubenstein",
+        "Relationship": "co-founder and co-chief executive officer",
+        "TransactionDollars": 354753
+    },
+    {
+        "NameOfInterested": "Trian Partners",
+        "Year": 2014,
+        "Person": "Peter May",
+        "Relationship": "president and founding partner",
+        "TransactionDollars": 2145729
+    },
+    {
+        "NameOfInterested": "Trian Partners",
+        "Year": 2015,
+        "Person": "Peter May",
+        "Relationship": "president and founding partner",
+        "TransactionDollars": 1158900
+    },
+    {
+        "NameOfInterested": "Trian Partners",
+        "Year": 2018,
+        "Person": "Peter May",
+        "Relationship": "president and founding partner",
+        "TransactionDollars": 620000
+    },
+    {
+        "NameOfInterested": "Trian Partners",
+        "Year": 2017,
+        "Person": "Peter May",
+        "Relationship": "president and founding partner",
+        "TransactionDollars": 635000
+    },
+    {
+        "NameOfInterested": "Trian Partners",
+        "Year": 2016,
+        "Person": "Peter May",
+        "Relationship": "president and founding partner",
+        "TransactionDollars": 848500
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2022,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 1783878
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2018,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 349500
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2019,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 262242
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2020,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 1477706
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2023,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 780626
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2024,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": -99
+    },
+    {
+        "NameOfInterested": "Pacific Investment<br>Management Company",
+        "Year": 2021,
+        "Person": "Emmanuel Roman",
+        "Relationship": "chief executive officer",
+        "TransactionDollars": 1595205
+    }
+]
