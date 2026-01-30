@@ -46,7 +46,7 @@
         id="flowchart-background"
     />
     <text x="625" y="222" style="font-size: 20px">University of Chicago</text>
-    <a target="_blank" href="">
+    <a target="_blank" href="https://investments.uchicago.edu/">
     <rect
         x="343"
         y="615"
@@ -57,7 +57,7 @@
         <text x="368" y="679" class="top-line">Office of</text>
         <text x="352" y="701">Investments</text>
     </a>
-    <a target="_blank" href="">
+    <a target="_blank" href="https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/d/1262/files/2017/01/UniversityOfChicagoGoverningDocuments-2-25-2021-v2.pdf">
     <rect
         x="225"
         y="433"
@@ -96,7 +96,7 @@
         <text x="777" y="497" class="top-line">Graduate</text>
         <text x="786" y="519">Council</text>
     </a>
-    <a target="_blank" href="">
+    <a target="_blank" href="https://news.uchicago.edu/story/uchicago-endowment-ended-fy25-109-billion#:~:text=donors">
         <rect
             y="234"
             width="138"
@@ -130,7 +130,7 @@
         <text x="364" y="296" class="top-line">Board of</text>
         <text x="366" y="318">Trustees</text>
     </a>
-    <a target="_blank" href="">
+    <a target="_blank" href="https://voices.uchicago.edu/annualreport2019/the-endowment/#:~:text=external">
         <rect
             x="343"
             y="824"
