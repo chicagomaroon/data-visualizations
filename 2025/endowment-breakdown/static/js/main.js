@@ -933,33 +933,33 @@ const sequence = {
     },
     control: function () {
         drawFlowchart((show = ['control']));
-        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
     },
     'board-of-trustees': function () {
         console.log('board of trustees');
-        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
         d3.selectAll(
             '#flowchart-board-of-trustees, #flowchart-graduate-council, #flowchart-faculty-senate,#flowchart-advisory-councils'
-        ).style('fill', '#643335');
+        ).style('fill', '#800000');
     },
     'office-of-investments': function () {
         console.log('office of investments');
-        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
         d3.selectAll(
             '#flowchart-office-of-investments, #flowchart-asset-management-firms'
-        ).style('fill', '#643335');
+        ).style('fill', '#800000');
     },
     president: function () {
-        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
-        d3.select('#flowchart-university-president').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.select('#flowchart-university-president').style('fill', '#800000');
     },
     donors: function () {
         drawFlowchart((show = ['control']), (hide = ['coi']));
-        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
-        d3.selectAll('#flowchart-donors').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#flowchart-donors').style('fill', '#800000');
     },
     conflicts: function () {
-        d3.selectAll('#control-flowchart a rect').style('fill', '#800000');
+        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
         drawFlowchart((show = ['control', 'coi']));
     },
     'conflicts-detail': function () {
