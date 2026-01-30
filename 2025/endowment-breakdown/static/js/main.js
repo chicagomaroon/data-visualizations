@@ -297,6 +297,7 @@ function circleChart(data, variable) {
 
 function facetChart(data) {
     traces = [];
+    const markerSize = isMobileLike ? 40 : 20;
 
     // Add a white line trace to cover the last gridline - cite: copilot
     const whiteLineTrace = {
@@ -316,12 +317,12 @@ function facetChart(data) {
     const sizeLegendTrace = {
         type: 'scatter',
         mode: 'markers+text',
-        x: [2018, 2020.2, 2022, 2024],
+        x: isMobileLike
+            ? [2010, 2014.5, 2018, 2022]
+            : [2018, 2020.2, 2022, 2024],
         y: sizeLegendValues.map(() => ''),
         marker: {
-            size: sizeLegendValues.map(
-                (val) => Math.sqrt(val) / (isMobileLike ? 40 : 20)
-            ),
+            size: sizeLegendValues.map((val) => Math.sqrt(val) / markerSize),
             color: ['#BBBBBB', '#800000', '#800000', '#800000'],
             opacity: 1
         },
@@ -330,15 +331,10 @@ function facetChart(data) {
         hoverinfo: 'none'
     };
 
-    traces.push(whiteLineTrace);
-    traces.push(sizeLegendTrace);
-
     uniqueGroups = [...new Set(data.map((d) => d.NameOfInterested))];
 
     uniqueGroups.forEach((group) => {
         const subset = data.filter((d) => d.NameOfInterested === group);
-
-        const markerSize = isMobileLike ? 40 : 20;
 
         traces.push({
             type: 'scatter',
@@ -382,6 +378,9 @@ function facetChart(data) {
             hovertemplate: '%{customdata}'
         });
     });
+
+    traces.push(whiteLineTrace);
+    traces.push(sizeLegendTrace);
 
     return traces;
 }
@@ -744,7 +743,7 @@ const sequence = {
                     t: isMobileLike ? 80 : 40,
                     l: isMobileLike ? 20 : 0,
                     r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 55 : 85
+                    b: isMobileLike ? 75 : 85
                 },
                 autosize: isMobileLike ? false : true,
                 width: isMobileLike ? 390 : null,
@@ -805,9 +804,13 @@ const sequence = {
         d3.select('.plotly').style('margin-top', '0px');
         const layout = createLayout(
             (title =
-                'Industries invested in by the University as of 2025, with approximate known amounts'),
+                'Industries invested in by the University as of 2025,' +
+                (isMobileLike ? '<br>' : ' ') +
+                'with approximate known amounts'),
             (caption =
-                'Sources: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025; <a href="https://investor.vanguard.com/investment-products">Vanguard</a> fund holdings')
+                'Sources: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025;' +
+                (isMobileLike ? '<br>' : ' ') +
+                '<a href="https://investor.vanguard.com/investment-products">Vanguard</a> fund holdings')
         );
         annotations = layout['annotations'];
         Plotly.newPlot(
@@ -818,7 +821,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
-                    b: isMobileLike ? 35 : 75
+                    b: isMobileLike ? 50 : 75
                 },
                 xaxis: {
                     scaleanchor: 'y',
@@ -926,6 +929,10 @@ const sequence = {
                     tickfont: {
                         size: axisFontSize
                     }
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.13 : 0.18
                 }
             },
             config
@@ -996,7 +1003,12 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 100 : 200,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 40 : 100
+                    b: isMobileLike ? 60 : 100
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.08 : 0.18,
+                    y: isMobileLike ? 0.78 : 0.9 // vertical position (1 = top, 0 = bottom)
                 }
             },
             config
