@@ -28,7 +28,7 @@
             rx: 1000;
         }
         #control-flowchart a rect {
-            fill: #800000;
+            fill: #643335;
         }
         #control-flowchart a text {
             fill: white;
