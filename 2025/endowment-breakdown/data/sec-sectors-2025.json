@@ -2,17 +2,17 @@
     {
         "sector": "Technology",
         "amount_thousands": 64197,
-        "hoverinfo": "    $13.8M in Nvidia Corp.    <br>    $11.8M in Apple    <br>    $11.2M in Microsoft Corp.    <br>    $4.9M in Broadcom    <br>    $1.3M in Palo Alto Networks Inc    "
+        "hoverinfo": "    $13.8M in NVIDIA Corp.    <br>    $11.8M in Apple    <br>    $11.2M in Microsoft Corp.    <br>    $4.9M in Broadcom    <br>    $1.3M in Palo Alto Networks Inc    "
     },
     {
         "sector": "Financial<br>Services",
         "amount_thousands": 23034,
-        "hoverinfo": "    $2.8M in Jpmorgan Chase & Co.    <br>    $1.9M in Visa Class A    <br>    $1.5M in S&P Global Inc    <br>    $1.5M in Mastercard Class A    <br>    $1.1M in Bank Of America Corp.    "
+        "hoverinfo": "    $2.8M in JPMorgan Chase & Co.    <br>    $1.9M in Visa Class A    <br>    $1.5M in S&P Global Inc    <br>    $1.5M in Mastercard Class A    <br>    $1.1M in Bank of America Corp.    "
     },
     {
         "sector": "Consumer<br>Cyclical",
         "amount_thousands": 22387,
-        "hoverinfo": "    $6.9M in Amazon.Com    <br>    $3.7M in Tesla    <br>    $1.7M in Booking Hldgs Inc    <br>    $1.1M in Home Depot    <br>    $1.1M in Ferrari N V New F    "
+        "hoverinfo": "    $6.9M in Amazon.com    <br>    $3.7M in Tesla    <br>    $1.7M in Booking HLDGS Inc    <br>    $1.1M in Home Depot    <br>    $1.1M in Ferrari N v New F    "
     },
     {
         "sector": "Communication<br>Services",
@@ -22,12 +22,12 @@
     {
         "sector": "Healthcare",
         "amount_thousands": 17852,
-        "hoverinfo": "    $2.4M in Eli Lilly & Co.    <br>    $1.4M in Johnson & Johnson    <br>    $1.2M in Unitedhealth Group Inc    <br>    $1.2M in Abbvie    <br>    $783K in Merck & Co.    "
+        "hoverinfo": "    $2.4M in Eli Lilly & Co.    <br>    $1.4M in Johnson & Johnson    <br>    $1.2M in Unitedhealth Group Inc    <br>    $1.2M in AbbVie    <br>    $783K in Merck & Co.    "
     },
     {
         "sector": "Industrials",
         "amount_thousands": 15037,
-        "hoverinfo": "    $1.0M in General Electric Co.    <br>    $823K in Caterpillar    <br>    $796K in Old Dominion Freight Lin    <br>    $751K in Rtx Corp.    <br>    $543K in Ge Vernova Llc    "
+        "hoverinfo": "    $1.0M in General Electric Co.    <br>    $823K in Caterpillar    <br>    $796K in Old Dominion Freight Lin    <br>    $751K in RTX Corp.    <br>    $543K in GE Vernova LLC    "
     },
     {
         "sector": "Consumer<br>Defensive",
@@ -37,17 +37,17 @@
     {
         "sector": "Energy",
         "amount_thousands": 5677,
-        "hoverinfo": "    $1.6M in Exxon Mobil Corp.    <br>    $926K in Chevron Corp.    <br>    $383K in Conocophillips    <br>    $243K in Williams Cos.    <br>    $189K in Schlumberger Ltd.    "
+        "hoverinfo": "    $1.6M in Exxon Mobil Corp.    <br>    $926K in Chevron Corp.    <br>    $383K in ConocoPhillips    <br>    $243K in Williams Cos.    <br>    $189K in Schlumberger Ltd.    "
     },
     {
         "sector": "Utilities",
         "amount_thousands": 4185,
-        "hoverinfo": "    $513K in Nextera Energy    <br>    $341K in Constellation Energy Corp.    <br>    $302K in Southern Co.    <br>    $279K in Duke Energy Corp.    <br>    $185K in American Electric Power Co.    "
+        "hoverinfo": "    $513K in NextEra Energy    <br>    $341K in Constellation Energy Corp.    <br>    $302K in Southern Co.    <br>    $279K in Duke Energy Corp.    <br>    $185K in American Electric Power Co.    "
     },
     {
         "sector": "Basic<br>Materials",
         "amount_thousands": 3986,
-        "hoverinfo": "    $659K in Eagle Matls Inc    <br>    $648K in Linde Plc    <br>    $319K in Newmont Goldcorp Corp.    <br>    $243K in Sherwin-Williams Co.    <br>    $224K in Freeport-McMoRan Inc.    "
+        "hoverinfo": "    $659K in Eagle Matls Inc    <br>    $648K in Linde PLC    <br>    $319K in Newmont Goldcorp Corp.    <br>    $243K in Sherwin-Williams Co.    <br>    $224K in Freeport-McMoRan Inc.    "
     },
     {
         "sector": "Real<br>Estate",

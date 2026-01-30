@@ -29,6 +29,7 @@ import numpy as np
 import pandas as pd
 import polars as pl
 from polars import String, Int64, ShapeError, ComputeError
+from titlecase import titlecase
 
 # NOTE: did not use 990T filings from IRS via ProPublica API because data is not very detailed projects.propublica.org/nonprofits/api/v2
 
@@ -771,7 +772,9 @@ sec_0925 = sec_0925.replace("missing", None)  # recode missings
 sec_0925["ValueDollars"] = (sec_0925["ValueThousands"] * 1000).apply(
     format_amount
 )  # create column to be used for individual company info
-sec_0925["Issuer"] = sec_0925["Issuer"].str.title().str.replace(" +", " ", regex=True)
+sec_0925["Issuer"] = (
+    sec_0925["Issuer"].fillna("").apply(titlecase).str.replace(" +", " ", regex=True)
+)
 
 # fill in some incorrectly read companies
 sec_0925.loc[sec_0925["Ticker"] == "SHW", "Issuer"] = "Sherwin-Williams Co."
