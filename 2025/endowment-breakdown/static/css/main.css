@@ -154,6 +154,7 @@ hr {
     width: 33vw;
     padding: 0 15px;
     margin-left: 62vw;
+    margin-top: 70vh;
     position: relative;
     overflow-x: hidden;
 }
@@ -161,10 +162,6 @@ hr {
 #content,
 #intro-text {
     margin-top: 30vh;
-}
-
-#chapters {
-    margin-top: 10vh;
 }
 
 .scroller {
@@ -273,6 +270,7 @@ g.sankey {
 
     h1 {
         font-size: 32px;
+        padding-top: 2vh;
     }
 
     #subtitle {
@@ -304,6 +302,11 @@ g.sankey {
         height: 60vh;
     }
 
+    .non-scroller,
+    #intro-text {
+        margin: 10vh auto;
+    }
+
     #intro h1,
     #subtitle {
         width: 90%;
@@ -328,14 +331,11 @@ g.sankey {
     #chapters {
         padding: 0;
         background: #eeeeee;
-    }
-
-    .scroller,
-    h2 {
-        width: 80%;
+        margin-top: 0;
     }
 
     .scroller {
+        width: 80%;
         margin: 25vh auto;
         background: white;
     }
@@ -357,8 +357,17 @@ g.sankey {
 
     .non-scroller,
     .section-header {
-        width: 90vw;
-        margin: 50vh auto;
+        width: 90%;
+    }
+
+    .section-header {
+        margin: 30vh auto;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 24px;
+        width: 100%;
     }
 
     blockquote {
@@ -380,7 +389,7 @@ g.sankey {
     #chart-div {
         height: 50vh;
         width: auto;
-        margin-top: -60px;
+        margin-top: -50px;
     }
 
     #chart-container {
