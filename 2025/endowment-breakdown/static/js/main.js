@@ -1054,7 +1054,7 @@ async function init() {
     coi_data = await fetchData('conflicts-of-interest.json');
 
     // part I
-    createWaypoint('what-is-endowment');
+    createWaypoint('what-is-endowment', (offset = '90%'));
     createWaypoint('tuition');
     createWaypoint('endowment');
     createWaypoint('restricted');
