@@ -805,9 +805,9 @@ const sequence = {
         d3.select('.plotly').style('margin-top', '0px');
         const layout = createLayout(
             (title =
-                'Domestic industries invested in by the University, with known amounts'),
+                'Industries invested in by the University as of 2025, with approximate known amounts'),
             (caption =
-                'Source: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025')
+                'Sources: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025; <a href="https://investor.vanguard.com/investment-products">Vanguard</a> fund holdings')
         );
         annotations = layout['annotations'];
         Plotly.newPlot(
