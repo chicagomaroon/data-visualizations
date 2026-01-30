@@ -29,7 +29,7 @@
         target="_blank"
         href="https://projects.propublica.org/nonprofits/organizations/362177139"
     >
-        <rect x="247" y="1521" width="330" height="330" fill="#800000" 
+        <rect x="247" y="1521" width="330" height="330" fill="#643335" 
         id="flowchart-individual-firms"/>
         <text x="378" y="1556" style="fill: white !important" class="top-line">Asset</text>
         <text x="323" y="1576" style="fill: white !important" class="left-line">management firms</text>
@@ -50,7 +50,7 @@
         target="_blank"
         href="https://projects.propublica.org/nonprofits/organizations/362177139"
     >
-        <rect x="247" y="748" width="330" height="330" fill="#800000"
+        <rect x="247" y="748" width="330" height="330" fill="#643335"
         id="flowchart-individual-trustees" />
         <text x="330" y="793" style="fill: white !important" class="left-line">Board of Trustees</text>
         <rect x="293" y="804" width="118" height="118" fill="white" />
