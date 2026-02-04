@@ -72,7 +72,6 @@ const AnimationContainerOne = ({ currentStepIndex, direction, scrollY }) => {
 };
 
 const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
-    console.log('currentStepIndex', currentStepIndex);
     return (
         <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]">
             <img
@@ -87,7 +86,11 @@ const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
                 alt="image2"
                 className={`absolute w-[95dvw] h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex >= 10 && currentStepIndex <= 12 ? 'opacity-100' : 'opacity-0'}`}
+                    ${
+                        currentStepIndex >= 10 && currentStepIndex <= 12
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                    }`}
             />
             <img
                 src="kitchen.jpg"
@@ -108,7 +111,6 @@ const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
 };
 
 const AnimationContainerThree = ({ currentStepIndex, direction, scrollY }) => {
-    console.log('currentStepIndex', currentStepIndex);
     return (
         <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[30vh]">
             <img
@@ -172,28 +174,44 @@ const AnimationContainerFour = ({ currentStepIndex, direction, scrollY }) => {
                 alt="image1"
                 className={`absolute max-h-screen max-w-[95dvw] w-auto h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex == 24 || currentStepIndex == 22 ? 'opacity-100' : 'opacity-0'}`}
+                    ${
+                        currentStepIndex == 24 || currentStepIndex == 22
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                    }`}
             />
             <img
                 src="cover-window.jpg"
                 alt="image1"
                 className={`absolute max-h-screen max-w-[95dvw] w-auto h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex == 25 || currentStepIndex == 26 ? 'opacity-100' : 'opacity-0'}`}
+                    ${
+                        currentStepIndex == 25 || currentStepIndex == 26
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                    }`}
             />
             <img
                 src="side.jpg"
                 alt="image1"
                 className={`absolute max-h-screen max-w-[95dvw] w-auto h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex == 27 || currentStepIndex >= 30 ? 'opacity-100' : 'opacity-0'}`}
+                    ${
+                        currentStepIndex == 27 || currentStepIndex >= 30
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                    }`}
             />
             <img
                 src="woman.jpg"
                 alt="image1"
                 className={`absolute max-h-screen max-w-[95dvw] w-auto h-auto object-cover
                     transition-opacity duration-[1500ms]
-                    ${currentStepIndex == 28 || currentStepIndex == 29 ? 'opacity-100' : 'opacity-0'}`}
+                    ${
+                        currentStepIndex == 28 || currentStepIndex == 29
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                    }`}
             />
         </div>
     );
@@ -218,7 +236,11 @@ const VideoContainer = ({ currentStepIndex, direction, scrollY }) => {
                 ref={videoRef}
                 src="protests.mp4"
                 className={`absolute w-auto h-screen transition-opacity duration-[1500ms]
-                    ${currentStepIndex <= 3 || currentStepIndex >= 5 ? 'opacity-100' : 'opacity-0'}`}
+                    ${
+                        currentStepIndex <= 3 || currentStepIndex >= 5
+                            ? 'opacity-100'
+                            : 'opacity-0'
+                    }`}
                 loop
                 muted
                 playsInline
