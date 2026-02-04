@@ -23,7 +23,6 @@ const MaroonLogo = () => {
 };
 
 const Headline = ({ windowWidth }) => {
-    console.log('test', windowWidth);
     return (
         <div
             className="w-10/12 md:w-1/2 mx-auto absolute"

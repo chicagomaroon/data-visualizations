@@ -13719,8 +13719,7 @@ const L0 =
             className: 'w-[300px] md:w-[400px] absolute top-[20px]',
             src: 'maroon_logo_white.svg'
         }),
-    Z0 = ({ windowWidth: e }) => (
-        console.log('test', e),
+    Z0 = ({ windowWidth: e }) =>
         k.jsx('div', {
             className: 'w-10/12 md:w-1/2 mx-auto absolute',
             style: {
@@ -13733,8 +13732,7 @@ const L0 =
                 bg-[#B9A28B]/[0.8] rounded-lg`,
                 children: L0
             })
-        })
-    ),
+        }),
     J0 = ({ windowWidth: e }) =>
         k.jsx('div', {
             className: `px-5 mx-auto absolute text-[white]
@@ -14305,8 +14303,7 @@ const Gn = (e) => {
                 })
             ]
         }),
-    E1 = ({ currentStepIndex: e, direction: t, scrollY: n }) => (
-        console.log('currentStepIndex', e),
+    E1 = ({ currentStepIndex: e, direction: t, scrollY: n }) =>
         k.jsxs('div', {
             className:
                 'sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]',
@@ -14340,10 +14337,8 @@ const Gn = (e) => {
                     ${e >= 14 ? 'opacity-100' : 'opacity-0'}`
                 })
             ]
-        })
-    ),
-    C1 = ({ currentStepIndex: e, direction: t, scrollY: n }) => (
-        console.log('currentStepIndex', e),
+        }),
+    C1 = ({ currentStepIndex: e, direction: t, scrollY: n }) =>
         k.jsxs('div', {
             className:
                 'sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[30vh]',
@@ -14384,8 +14379,7 @@ const Gn = (e) => {
                     ${e >= 19 ? 'opacity-100' : 'opacity-0'}`
                 })
             ]
-        })
-    ),
+        }),
     _1 = ({ currentStepIndex: e, direction: t, scrollY: n }) =>
         k.jsxs('div', {
             className:
@@ -14714,7 +14708,7 @@ function j1() {
                             'Find the code for this interactive on',
                             ' ',
                             k.jsx('a', {
-                                href: 'https://github.com/chicagomaroon/data-visualizations/tree/main/2025/maroon-grants-story-src',
+                                href: 'https://github.com/chicagomaroon/data-visualizations/tree/main/2026/zoya-cherkassky-nnadi-src/',
                                 children: 'GitHub'
                             }),
                             '.'

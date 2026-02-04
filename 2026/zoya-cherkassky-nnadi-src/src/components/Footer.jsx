@@ -13,7 +13,7 @@ export default function Credits() {
                 </p>
                 <p className="text-[16px]">
                     Find the code for this interactive on{' '}
-                    <a href="https://github.com/chicagomaroon/data-visualizations/tree/main/2025/maroon-grants-story-src">
+                    <a href="https://github.com/chicagomaroon/data-visualizations/tree/main/2026/zoya-cherkassky-nnadi-src/">
                         GitHub
                     </a>
                     .

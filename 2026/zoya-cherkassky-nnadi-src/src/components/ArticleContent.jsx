@@ -72,7 +72,6 @@ const AnimationContainerOne = ({ currentStepIndex, direction, scrollY }) => {
 };
 
 const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
-    console.log('currentStepIndex', currentStepIndex);
     return (
         <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]">
             <img
@@ -108,7 +107,6 @@ const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
 };
 
 const AnimationContainerThree = ({ currentStepIndex, direction, scrollY }) => {
-    console.log('currentStepIndex', currentStepIndex);
     return (
         <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[30vh]">
             <img

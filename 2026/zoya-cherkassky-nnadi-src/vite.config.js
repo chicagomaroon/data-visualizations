@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [react()],
-    base: '/zoya-cherkassky-nnadi/'
+    base: '/data-visualizations/2026/zoya-cherkassky-nnadi/'
 });
