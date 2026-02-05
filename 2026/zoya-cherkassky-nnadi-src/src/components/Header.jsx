@@ -23,6 +23,7 @@ const MaroonLogo = () => {
 };
 
 const Headline = ({ windowWidth }) => {
+    console.log('test', windowWidth);
     return (
         <div
             className="w-10/12 md:w-1/2 mx-auto absolute"
@@ -116,9 +117,9 @@ const Arrow = () => {
     );
 };
 
-const Header = ({ windowWidth }) => {
+const Header = ({ windowWidth, windowHeight }) => {
     return (
-        <div className="w-full h-screen relative">
+        <div className="w-full h-[100vh] relative">
             <CoverImage />
             <div
                 className="absolute inset-0 flex flex-col 

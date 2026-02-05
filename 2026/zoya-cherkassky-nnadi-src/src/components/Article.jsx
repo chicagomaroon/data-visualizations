@@ -9,9 +9,16 @@ export default function Article() {
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
     useEffect(() => {
+        let lastWidth = window.innerWidth;
+
         function handleResize() {
-            setWindowWidth(window.innerWidth);
-            setWindowHeight(window.innerHeight);
+            const newWidth = window.innerWidth;
+
+            if (newWidth !== lastWidth) {
+                setWindowWidth(newWidth);
+                setWindowHeight(window.innerHeight);
+                lastWidth = newWidth;
+            }
         }
         window.addEventListener('resize', handleResize);
         return () => {
@@ -20,12 +27,9 @@ export default function Article() {
     }, []);
 
     return (
-        <div className="[overflow-x:clip]">
-            <Header windowWidth={windowWidth} />
-            <ArticleContent
-                windowWidth={windowWidth}
-                windowHeight={windowHeight}
-            />
+        <div>
+            <Header windowWidth={windowWidth} windowHeight={windowHeight} />
+            <ArticleContent windowHeight={windowHeight} />
             <Credits />
         </div>
     );
