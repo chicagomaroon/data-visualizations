@@ -4,7 +4,7 @@ import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Credits() {
     return (
-        <div className="w-[80%] md:w-[60%] mx-auto">
+        <div className="w-[80%] md:w-[80%] mx-auto">
             <div className="w-full h-[3px] bg-black rounded-md"></div>
             <div className="py-5">
                 <p className="text-[16px] mb-2">

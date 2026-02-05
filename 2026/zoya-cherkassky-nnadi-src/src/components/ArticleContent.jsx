@@ -32,7 +32,7 @@ const ScrollContainer = (props) => {
                         <div
                             className="relative p-2
                             border border-[#800000] rounded-[10px]
-                            bg-white z-20 w-[300px] md:w-[350px] mx-auto"
+                            bg-white z-20 max-w-[300px] md:w-[350px] mx-auto"
                             style={{ marginBottom: 0.9 * height + 'px' }}
                         >
                             <p
@@ -50,9 +50,9 @@ const ScrollContainer = (props) => {
     );
 };
 
-const AnimationContainerOne = ({ currentStepIndex, direction, scrollY }) => {
+const AnimationContainerOne = ({ currentStepIndex }) => {
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[13vh]">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
             <img
                 src="love.jpg"
                 alt="image1"
@@ -71,9 +71,9 @@ const AnimationContainerOne = ({ currentStepIndex, direction, scrollY }) => {
     );
 };
 
-const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
+const AnimationContainerTwo = ({ currentStepIndex }) => {
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
             <img
                 src="global.jpg"
                 alt="image1"
@@ -110,9 +110,9 @@ const AnimationContainerTwo = ({ currentStepIndex, direction, scrollY }) => {
     );
 };
 
-const AnimationContainerThree = ({ currentStepIndex, direction, scrollY }) => {
+const AnimationContainerThree = ({ currentStepIndex }) => {
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[30vh]">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
             <img
                 src="table.jpg"
                 alt="image1"
@@ -152,9 +152,9 @@ const AnimationContainerThree = ({ currentStepIndex, direction, scrollY }) => {
     );
 };
 
-const AnimationContainerFour = ({ currentStepIndex, direction, scrollY }) => {
+const AnimationContainerFour = ({ currentStepIndex }) => {
     return (
-        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[20vh]">
+        <div className="sticky top-0 h-screen w-full relative flex items-center justify-center">
             <img
                 src="cover.jpg"
                 alt="image1"
@@ -217,7 +217,7 @@ const AnimationContainerFour = ({ currentStepIndex, direction, scrollY }) => {
     );
 };
 
-const VideoContainer = ({ currentStepIndex, direction, scrollY }) => {
+const VideoContainer = ({ currentStepIndex }) => {
     const videoRef = React.useRef(null);
 
     useEffect(() => {
@@ -232,10 +232,21 @@ const VideoContainer = ({ currentStepIndex, direction, scrollY }) => {
 
     return (
         <div className="sticky top-0 h-screen w-full relative flex items-center justify-center max-[440px]:-mt-[8vh]">
+            <img
+                src="protests.jpg"
+                alt="Protests at the Jewish Museum"
+                className={`absolute max-h-screen w-auto h-auto
+                transition-opacity duration-[1500ms] z-2
+                ${
+                    currentStepIndex <= 3 || currentStepIndex >= 5
+                        ? 'opacity-100'
+                        : 'opacity-0'
+                }`}
+            />
             <video
                 ref={videoRef}
                 src="protests.mp4"
-                className={`absolute w-auto h-screen transition-opacity duration-[1500ms]
+                className={`absolute z-10 w-auto h-screen transition-opacity duration-[1500ms]
                     ${
                         currentStepIndex <= 3 || currentStepIndex >= 5
                             ? 'opacity-100'
@@ -256,7 +267,7 @@ const VideoContainer = ({ currentStepIndex, direction, scrollY }) => {
     );
 };
 
-export default function ArticleContent({ windowWidth, windowHeight }) {
+export default function ArticleContent({ windowHeight }) {
     const spacing = 1.1;
     const height = windowHeight * spacing;
 
@@ -268,10 +279,6 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
     const [currentStepIndex, setCurrentStepIndex] = useState(() => {
         const saved = localStorage.getItem('currentStepIndex');
         return saved !== null && scrollY > 2000 ? parseInt(saved) : 0;
-    });
-    const [direction, setDirection] = useState(() => {
-        const saved = localStorage.getItem('direction');
-        return saved !== null ? saved : 'down';
     });
 
     useEffect(() => {
@@ -302,13 +309,10 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
     };
 
     const onStepExit = ({ data, direction }) => {
-        setCurrentStepIndex(data);
         if (direction === 'up') {
-            setCurrentStepIndex(data - 1); // move back a step
-            setDirection('up');
+            setCurrentStepIndex(data - 1);
         } else if (direction === 'down') {
-            setCurrentStepIndex(data); // move forward
-            setDirection('down');
+            setCurrentStepIndex(data);
         }
     };
 
@@ -328,11 +332,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <AnimationContainerOne
-                    currentStepIndex={currentStepIndex}
-                    direction={direction}
-                    scrollY={scrollY}
-                />
+                <AnimationContainerOne currentStepIndex={currentStepIndex} />
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}
@@ -341,7 +341,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto max-[440px]:-mt-[17vh] md:py-10 flex flex-col items-center">
+            <div className="w-[95dvw] mx-auto md:py-10 flex flex-col items-center">
                 {p2.map((text, index) => (
                     <p
                         className="mb-[20px] px-[2%] lg:px-[20%]"
@@ -349,11 +349,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <VideoContainer
-                    currentStepIndex={currentStepIndex}
-                    direction={direction}
-                    scrollY={scrollY}
-                />
+                <VideoContainer currentStepIndex={currentStepIndex} />
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}
@@ -367,7 +363,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                 <br />
                 Painting courtesy of the artist and Fort Gansevoort, New York.
             </p>
-            <div className="w-[95dvw] mx-auto mt-[5vh] md:py-10 flex flex-col items-center">
+            <div className="w-[95dvw] mx-auto mt-10 md:py-10 flex flex-col items-center">
                 {p3.map((text, index) => (
                     <p
                         className="mb-[20px] px-[2%] lg:px-[20%]"
@@ -375,11 +371,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <AnimationContainerTwo
-                    currentStepIndex={currentStepIndex}
-                    direction={direction}
-                    scrollY={scrollY}
-                />
+                <AnimationContainerTwo currentStepIndex={currentStepIndex} />
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}
@@ -388,7 +380,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col max-[440px]:-mt-[30vh]">
+            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col">
                 {p4.map((text, index) => (
                     <p
                         className="mb-[20px] px-[2%] lg:px-[20%]"
@@ -396,11 +388,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <AnimationContainerThree
-                    currentStepIndex={currentStepIndex}
-                    direction={direction}
-                    scrollY={scrollY}
-                />
+                <AnimationContainerThree currentStepIndex={currentStepIndex} />
 
                 <ScrollContainer
                     onStepEnter={onStepEnter}
@@ -410,7 +398,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col max-[440px]:-mt-[27vh]">
+            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col">
                 {p5.map((text, index) => (
                     <p
                         className="mb-[20px] px-[2%] lg:px-[20%]"
@@ -418,11 +406,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <AnimationContainerFour
-                    currentStepIndex={currentStepIndex}
-                    direction={direction}
-                    scrollY={scrollY}
-                />
+                <AnimationContainerFour currentStepIndex={currentStepIndex} />
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}
@@ -431,7 +415,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                     height={height}
                 />
             </div>
-            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col max-[440px]:-mt-[60vw]">
+            <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col">
                 {p6.map((text, index) => (
                     <p
                         className="mb-[20px] px-[2%] lg:px-[20%]"
@@ -439,11 +423,7 @@ export default function ArticleContent({ windowWidth, windowHeight }) {
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
-                <p className="mb-[20px] px-[2%] lg:px-[20%]">
-                    {p7}
-                    {/* <img src="maroon_logo_m_black.svg" alt="M"
-                    className="w-[20px] inline-block align-baseline ml-[7px]" /> */}
-                </p>
+                <p className="mb-[20px] px-[2%] lg:px-[20%]">{p7}</p>
                 <p
                     className="mb-[20px] px-[2%] lg:px-[20%]"
                     dangerouslySetInnerHTML={{ __html: showing }}
