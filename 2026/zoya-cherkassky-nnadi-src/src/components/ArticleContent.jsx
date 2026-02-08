@@ -327,7 +327,7 @@ export default function ArticleContent({ windowHeight }) {
             <div className="w-[95dvw] mx-auto py-10 md:py-10 flex flex-col items-center">
                 {p1.map((text, index) => (
                     <p
-                        className="mb-[20px] px-[2%] lg:px-[20%]"
+                        className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                         key={index}
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -344,7 +344,7 @@ export default function ArticleContent({ windowHeight }) {
             <div className="w-[95dvw] mx-auto md:py-10 flex flex-col items-center">
                 {p2.map((text, index) => (
                     <p
-                        className="mb-[20px] px-[2%] lg:px-[20%]"
+                        className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                         key={index}
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -366,7 +366,7 @@ export default function ArticleContent({ windowHeight }) {
             <div className="w-[95dvw] mx-auto mt-10 md:py-10 flex flex-col items-center">
                 {p3.map((text, index) => (
                     <p
-                        className="mb-[20px] px-[2%] lg:px-[20%]"
+                        className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                         key={index}
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -383,7 +383,7 @@ export default function ArticleContent({ windowHeight }) {
             <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col">
                 {p4.map((text, index) => (
                     <p
-                        className="mb-[20px] px-[2%] lg:px-[20%]"
+                        className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                         key={index}
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -401,7 +401,7 @@ export default function ArticleContent({ windowHeight }) {
             <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col">
                 {p5.map((text, index) => (
                     <p
-                        className="mb-[20px] px-[2%] lg:px-[20%]"
+                        className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                         key={index}
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
@@ -418,14 +418,14 @@ export default function ArticleContent({ windowHeight }) {
             <div className="w-[95dvw] mx-auto py-1 md:py-10 flex flex-col">
                 {p6.map((text, index) => (
                     <p
-                        className="mb-[20px] px-[2%] lg:px-[20%]"
+                        className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                         key={index}
                         dangerouslySetInnerHTML={{ __html: text }}
                     />
                 ))}
                 <p className="mb-[20px] px-[2%] lg:px-[20%]">{p7}</p>
                 <p
-                    className="mb-[20px] px-[2%] lg:px-[20%]"
+                    className="mb-[20px] px-[2%] lg:px-[20%] z-[20]"
                     dangerouslySetInnerHTML={{ __html: showing }}
                 ></p>
             </div>
