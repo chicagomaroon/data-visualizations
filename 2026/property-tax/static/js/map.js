@@ -15,9 +15,9 @@
 
 Promise.all([
     // all university-owned properties
-    d3.json("../data/clean_uni_prop_gdf.json"),
+    d3.json("../../data/clean_uni_prop_gdf.json"),
     // tax-exempt properties
-    d3.json("../data/parcels.json")
+    d3.json("../../data/parcels.json")
     ]).then(([parcelData, exemptData]) => { 
 
     map.on("load", async () => {
