@@ -2,7 +2,7 @@
 
 To do:
  - Externalize text in `index.html` to some other file so it's easier to find/change
- - Make `style.css` more readable
+ - Make `style.css` more readable - CEV: working on highlighting the important parts of file
  - Try to figure out a way to make annotations less manual (i.e. not requiring as much tinkering in the console)
- - Comment everything thoroughly - CEV: working on config.js showing were comments are used.
+ - Comment everything thoroughly - CEV: worked on config.js showing were comments are used - Pending review.
  - Write instructions on how to use this template in this file
