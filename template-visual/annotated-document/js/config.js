@@ -1,3 +1,18 @@
+/**
+ * This file controls the annotation text that appears in the
+ * sticky annotation card as the reader scrolls through the document.
+ *
+ * How the file works:
+ * - Each numbered key corresponds to a highlighted section in the document.
+ * - The number must match the id of a highlight div in index.html
+ * - When that highlight becomes active on scroll, its text is displayed in the annotation card.
+ *
+ * Important:
+ * - Editors should only edit the text inside (` `).
+ * - Do not change the numbers unless you also change the highlights in index.html.
+ * - HTML is allowed inside the strings (links, italics, line breaks).
+ */
+
 config = {
     1: `“Each moment we find ourselves in will call for a slightly different reading of the report,” Jamie Kalven said.<br><br>“But the report is now often enforced through ‘administrative fiat.’ It can quickly harden into a creed.”`,
     2: `Jamie Kalven both began and ended our conversation with this phrase, emphasizing the report's invitation for ongoing discussion: “I think it’s really clear that they were staking out a point of departure, and that they were quite explicitly acknowledging that there were questions and tensions between competing values… in the report that they were bequeathing to the future. They were expecting a kind of ongoing deliberative process.”<br><br>Kalven added: “When I urge people to argue from the report, as opposed to against it, I'm suggesting going back to that point of departure and reclaiming the logic of the report.”`,
