@@ -50,6 +50,8 @@ function createWaypoint(div, offset = '70%') {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
+            var myPlot = document.getElementById('chart-div');
+
             if (direction === 'down') {
                 // scrolling down, so call next action in sequence
                 downHandler = sequence[div];
@@ -67,6 +69,8 @@ function createWaypoint(div, offset = '70%') {
                 upHandler = sequence[previousKey];
                 upHandler();
             }
+
+            myPlot.on('plotly_click', open_url);
         },
         offset: offset
     });
@@ -159,7 +163,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
 }
 
 function donutChart(data) {
-    groupedData = groupData(data, 'recategorized');
+    const groupedData = groupData(data, 'recategorized');
 
     trace = {
         type: 'pie',
@@ -179,13 +183,14 @@ function donutChart(data) {
                 width: 1
             }
         },
-        hoverinfo: 'text',
-        hovertemplate: groupedData.map(
+        customdata: groupedData.map(
             (d) =>
                 '    <br>    ' +
                 helper_text[d.recategorized.replaceAll('<br>', ' ')] +
-                '    <br>    <extra></extra>'
-        )
+                '    <br>    '
+        ),
+        hoverinfo: 'text',
+        hovertemplate: '%{customdata}<extra></extra>'
     };
 
     return [trace];
@@ -282,14 +287,16 @@ function circleChart(data, variable) {
                 (val) =>
                     ' <br>    UChicago invested at least $' +
                     `${formatThousands(val.amount_thousands * 1000)}    <br>` +
-                    '    in the <b>' +
+                    '    in the <a href="https://finance.yahoo.com/sectors/' +
+                    val[variable].replace('<br>', '-') +
+                    '">' +
                     val[variable].replace('<br>', ' ').replace('- ', '') +
-                    '</b> sector    <br>    as of September 2025, including:    <br>    <br>' +
+                    '</a> sector    <br>    as of September 2025, including:    <br>    <br>' +
                     val.hoverinfo +
-                    '<br> <extra></extra>'
+                    '<br>    '
             ), // extra tag removes trace label; spaces needed for fake padding
             hoverinfo: 'text',
-            hovertemplate: '%{customdata}'
+            hovertemplate: '%{customdata}<extra></extra>'
         }
     ];
     return traces;
@@ -375,7 +382,7 @@ function facetChart(data) {
                     '    <br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
             hoverinfo: 'text',
-            hovertemplate: '%{customdata}'
+            hovertemplate: '%{customdata}<extra></extra>'
         });
     });
 
@@ -412,9 +419,9 @@ function barChart(data) {
                 d.school.replace('Univ.', 'University') +
                 ' endowment: $' +
                 formatThousands(d.endowment_dollars) +
-                '    <br /> <br /><extra></extra>'
+                '    <br /> <br />'
         ),
-        hovertemplate: '%{customdata}'
+        hovertemplate: '%{customdata}<extra></extra>'
     });
 
     return traces;
@@ -488,7 +495,7 @@ function sankeyChart(div) {
             hoverinfo: 'text',
             color: nodes_color_map[div],
             customdata: sankey_data_filtered.map((d) => d.hover),
-            hovertemplate: '%customdata'
+            hovertemplate: '%{customdata}<extra></extra>'
         },
         link: {
             source: sankey_data_filtered.map((d) => nodeIndex[d.from]),
@@ -561,8 +568,13 @@ function showChart() {
  */
 function open_url(data) {
     var info = data.points[0];
-    var url = info.text.match(/href="(.*)" /);
-    // console.log(url[1])
+    if (Array.isArray(info.customdata)) {
+        info.customdata = info.customdata[0];
+    }
+    console.log(info.customdata);
+
+    var url = info.customdata.match(/href="(.*?)"/);
+    console.log(url);
 
     window.open(url[1], '_blank').focus();
 }
