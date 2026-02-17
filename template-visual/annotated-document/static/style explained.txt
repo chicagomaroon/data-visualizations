@@ -1,0 +1,101 @@
+style.css controls how the article looks and where things are on the page.
+
+CSS is doing 3 things:
+
+# 1. Designing the article header + intro text (title, subtitle, etc).
+# 2. Building the annotated-document layout:
+    the document pages / images
+    the overlay highlights / yellow boxes
+    the sticky annotation card / right side on desktop
+# 3. Rearranging for mobile.
+
+At the top it loads Google Fonts:
+    - Montserrat
+    - Open Sans
+    - Playfair Display
+
+Then the named colors are used later (avoiding repeating hex codes).
+:root {
+  --main-bg-color: #4d0000;
+  --maroon_color: #800000;
+}
+
+Then making layouts predictable and removing default browser spacing:￼
+# This affects everything #
+* { box-sizing: border-box; }
+body { margin:0; padding:0; font-family:'Georgia'; width:100%; }
+
+
+
+FIRST PART: Header section (the big split screen at the top):
+
+
+
+This part creates the “two-column hero”:
+left: maroon background with title text
+right: cover image
+
+More explanation needed for:
+    .header-container is display:flex and height:100vh (full screen).
+    .header-title-container and .header-img each get flex: 1 (half/half).
+    #title and #subtitle style typography (size, color, spacing).
+
+
+
+SECOND PART: Intro section (the “article text” before the document):
+
+
+#intro-text { width: 50%; margin: auto; } - Centers the intro column on desktop.  ￼
+.article-text - Sets font size and line height  ￼
+link styles - Maroon color for hyperlinks inside intro.  ￼
+
+# #intro-text and .article-text — they control readability. #
+
+
+
+THIRD PART: The annotated document layout
+
+This is for absolute positioning used later (for the annotation panel):
+#content-container {
+  position: relative;
+}
+
+This is how the scanned pages are positioned on desktop:
+Important to highlight: left:-200px — this is a “layout hack” that future maintainers need to know exists.
+#doc-container {
+  position: relative;
+  max-width: 800px;
+  left: -200px;
+}
+
+max width controls how big the doc images appear
+left:-200px shifts the doc left to make room for the annotation card
+
+# left:-200px — “layout hack” ###
+
+each page is:
+    .page { position: relative; }
+    inside it a .page-image img (the scan)
+    and a .page-highlights overlay on top
+
+FOURTH PART: Highlights (the yellow boxes over the document)
+
+Making the highlights layer match the image exactly.
+.page-highlights {
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+}
+
+The default is pale yellow, brighter with a border:
+.highlight { background-color: #ffff1033; }
+.highlight.active { border: 3px solid #ffe300; }
+
+Per-highlight positioning
+Example:
+#highlight-1 { left:10%; top:17%; width:78%; height:2.5%; }
+These are the “coordinates” for each highlight box, relative to the image
+
+# Most important part of the document #
+Each new article will need new highlight coordinates
+if someone changes the page image size/aspect ratio it will break
