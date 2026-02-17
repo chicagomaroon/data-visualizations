@@ -13,7 +13,7 @@
  * - HTML is allowed inside the strings (links, italics, line breaks).
  */
 
-config = {
+annotations = {
     1: `“Each moment we find ourselves in will call for a slightly different reading of the report,” Jamie Kalven said.<br><br>“But the report is now often enforced through ‘administrative fiat.’ It can quickly harden into a creed.”`,
     2: `Jamie Kalven both began and ended our conversation with this phrase, emphasizing the report's invitation for ongoing discussion: “I think it’s really clear that they were staking out a point of departure, and that they were quite explicitly acknowledging that there were questions and tensions between competing values… in the report that they were bequeathing to the future. They were expecting a kind of ongoing deliberative process.”<br><br>Kalven added: “When I urge people to argue from the report, as opposed to against it, I'm suggesting going back to that point of departure and reclaiming the logic of the report.”`,
     3: `Despite its academic mission, the University has interests as a corporate entity. “There's just a bunch of housekeeping stuff that the University has to do. They have to balance the books, they have to clean the dorms,” Jamie Kalven said. “If you think about the University's role in urban renewal, which was in fairly recent history when the Kalven Report was written, I think that's, again, a kind of underlying context for those passages about the University as a corporate entity. I think there's something deeply unresolved there,” he said.`,
@@ -33,4 +33,89 @@ config = {
     17: `This letter is one that Harry Kalven Jr. sent to members of the Committee on the Role of the University in Political and Social Action.<br><br>“This document should be read alongside the report,” Jamie Kalven told the <i>Maroon</i>. “You have a quite explicit expression of the drafters’ intentions. If we were a court interpreting a law, this would say a lot about legislative intent.”`,
 };
 
-sessionStorage.setItem('config', JSON.stringify(config));
+content = {
+    'title': `“Living Tradition” or “Administrative Fiat”?:<br />Annotating the Kalven Report`,
+    'subtitle': `Drawing upon an interview with journalist Jamie Kalven, son of Harry Kalven Jr. of the Kalven Report, the <i>Maroon</i> annotates this oft-cited but little read document.`,
+    'authors': `Written by
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/anu-vashist/"
+                            >Anushree Vashist</a
+                        >
+                        and
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/celeste-alcalay/"
+                            >Celeste Alcalay</a
+                        >`,
+    'developers': `Design and Development by
+                        <a
+                            class="byline-link"
+                            href="https://chicagomaroon.com/staff_name/austin-steinhart/"
+                            >Austin Steinhart</a
+                        >`,
+    'article-text': `<p>
+                        In 1967, University President George Beadle appointed a
+                        faculty committee—chaired by First Amendment scholar
+                        Harry Kalven Jr.—to prepare “a statement on the
+                        University’s role in political and social action.” The
+                        resulting report articulates the University’s commitment
+                        to institutional neutrality. By abstaining from speech
+                        about political and social issues, the report says, the
+                        University allows its individual members the fullest
+                        freedom of expression.
+                    </p>
+                    <p>
+                        Journalist Jamie Kalven, Harry Kalven Jr.’s son, sat
+                        down with the <i>Maroon</i> to walk through the Kalven
+                        Report. In the 14 years he spent editing his father’s
+                        manuscript on the First Amendment and the American
+                        tradition of freedom of speech, Jamie Kalven reviewed
+                        hundreds of Harry Kalven Jr.’s papers to
+                        <a
+                            href="https://chicagomaroon.com/7464/viewpoints/op-ed/unfinished-business-of-the-kalven-report/"
+                            >familiarize</a
+                        >
+                        himself with his father’s thinking.
+                    </p>
+                    <p>
+                        Providing context on his father’s writing, Jamie Kalven
+                        argues that we, now in a moment of attacks on academic
+                        freedom and higher education, should return to “the
+                        point of departure” the document provides.
+                    </p>
+                    Reading from a letter addressed to the members of the
+                    drafting committee, which you’ll find publicly available for
+                    the first time on the <i>Maroon</i>’s website, Jamie Kalven
+                    discusses where his father decided to “spend the emphasis”
+                    in the report. Harry Kalven Jr. concluded that, in 1967,
+                    stating the general principle against collective action was
+                    more important than foregrounding the exceptional cases in
+                    which collective action may have been appropriate.
+                    <p>
+                        Still, there will be exceptions, moments when the “very
+                        mission of the University and its values of free
+                        inquiry” are under threat.
+                    </p>
+                    <p>
+                        Jamie Kalven
+                        <a
+                            href="https://chicagomaroon.com/7464/viewpoints/op-ed/unfinished-business-of-the-kalven-report/"
+                            >believes</a
+                        >
+                        that, today, we find ourselves in one such moment.
+                    </p>
+                    <p>
+                        <i
+                            >Listen to the Maroon’s conversation with Jamie
+                            Kalven
+                            <a
+                                href="https://chicagomaroon.com/46642/podcast/special-episode-administrative-fiat-or-living-tradition-annotating-the-kalven-report/"
+                                >here</a
+                            >.</i
+                        >
+                    </p>`
+};
+
+sessionStorage.setItem('annotations', JSON.stringify(annotations));
+sessionStorage.setItem('content', JSON.stringify(content));

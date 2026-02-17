@@ -3,7 +3,7 @@
 // -------------- constants --------------
 let active_highlight = document.querySelector('.highlight.active');
 let next_highlight;
-let config;
+let annotations;
 let currentHighlightIndex = 1;
 let isMobile = window.innerWidth < 1075;
 let mobileOffset = isMobile ? 30 : 0;
@@ -31,7 +31,7 @@ function createWaypoint() {
                         activateNextHighlight(next_highlight);
                         currentHighlightIndex = parseInt(i);
 
-                        updateAnnotationCard(config[i]);
+                        updateAnnotationCard(annotations[i]);
                     }
                 } else {
                     if (i == 1) {
@@ -47,7 +47,7 @@ function createWaypoint() {
                         );
                         activateNextHighlight(next_highlight);
 
-                        updateAnnotationCard(config[i - 1]);
+                        updateAnnotationCard(annotations[i - 1]);
                     }
                 }
             },
@@ -113,14 +113,14 @@ function addEventListeners() {
                 `#highlight-${currentHighlightIndex}`
             );
             activateNextHighlight(nextHighlight);
-            updateAnnotationCard(config[currentHighlightIndex]);
+            updateAnnotationCard(annotations[currentHighlightIndex]);
         } else if (event.key === 'ArrowLeft') {
             currentHighlightIndex--;
             const prevHighlight = document.querySelector(
                 `#highlight-${currentHighlightIndex}`
             );
             activateNextHighlight(prevHighlight);
-            updateAnnotationCard(config[currentHighlightIndex]);
+            updateAnnotationCard(annotations[currentHighlightIndex]);
         }
     });
 }
@@ -128,8 +128,16 @@ function addEventListeners() {
 // ------- init --------
 
 function init() {
-    config = JSON.parse(sessionStorage.getItem('config'));
-    document.querySelector('.annotation-card-text').innerHTML = config[1];
+    content = JSON.parse(sessionStorage.getItem('content'));
+    for (const key in content) {
+        if (content[key] != null) {
+            console.log('Setting ' + key);
+            document.getElementById(key).innerHTML = content[key];
+        }
+    }
+
+    annotations = JSON.parse(sessionStorage.getItem('annotations'));
+    document.querySelector('.annotation-card-text').innerHTML = annotations[1];
     createWaypoint();
     addEventListeners();
 }
