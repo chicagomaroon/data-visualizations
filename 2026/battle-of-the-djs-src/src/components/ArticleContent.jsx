@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { AnimationBox } from "./Interactives.jsx"
+import { AnimationBox } from './Interactives.jsx';
 import { sections, p7 } from '../../public/content.js';
 
-
 export default function ArticleContent({ windowHeight, windowWidth }) {
-    const spacing = .2;
+    const spacing = 0.2;
     const height = windowHeight * spacing;
 
     const [scrollY, setScrollY] = useState(() => {
@@ -33,7 +32,6 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-
     useEffect(() => {
         if (scrollY <= 100) {
             setCurrentStepIndex(0);
@@ -57,13 +55,14 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
         windowWidth,
         onStepEnter,
         onStepExit,
-        height,
+        height
     };
 
     return (
         <div className="[overflow-x:clip]">
             <p className="text-right mr-3 md:mr-5 text-sm">
-            The student-run coffee shop became a dance club for Battle of the DJ’s. Courtesy of Taylor Pate.
+                The student-run coffee shop became a dance club for Battle of
+                the DJ’s. Courtesy of Taylor Pate.
             </p>
             {sections.map((section, index) => (
                 <AnimationBox
@@ -79,7 +78,9 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <div className="w-[100dvw] mx-auto py-10 md:py-10 flex flex-col">
                 {p7.map((p, index) => (
                     <p
-                        className={`${index === p7.length - 1 ? '' : 'mb-[20px]'} px-[2%] md:px-[20%] z-[20] content`}
+                        className={`${
+                            index === p7.length - 1 ? '' : 'mb-[20px]'
+                        } px-[2%] md:px-[20%] z-[20] content`}
                         key={index}
                         dangerouslySetInnerHTML={{ __html: p }}
                     />
@@ -93,7 +94,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                 />
                 <p className="text-right w-[40rem] max-w-full text-sm mb-5 mr-3 md:mr-5">
                     The gate to the party.{' '}
-                    <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">Nolan Shaffer</a>.
+                    <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">
+                        Nolan Shaffer
+                    </a>
+                    .
                 </p>
             </div>
         </div>

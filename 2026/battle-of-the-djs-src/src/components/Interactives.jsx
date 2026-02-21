@@ -1,23 +1,23 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from "motion/react"
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Scrollama, Step } from 'react-scrollama';
-
 
 const ScrollBar = ({ scrollYProgress }) => {
     return (
         <div className="absolute left-0 right-0 z-10 top-0 flex justify-center">
-            <div className="relative w-full max-w-xl h-[8px]
+            <div
+                className="relative w-full max-w-xl h-[8px]
              bg-gray-500 overflow-hidden
-            lg:max-w-none lg:h-[8px]">
+            lg:max-w-none lg:h-[8px]"
+            >
                 <motion.div
                     className="absolute inset-0 rounded-full bg-[#800000] origin-left"
-                    style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+                    style={{ scaleX: scrollYProgress, transformOrigin: 'left' }}
                 />
             </div>
         </div>
-    )
-}
-
+    );
+};
 
 const ScrollContainer = (props) => {
     const { start, onStepEnter, onStepExit, textArray, height } = props;
@@ -34,9 +34,7 @@ const ScrollContainer = (props) => {
                             className="relative w-[100px] h-[100px]"
                             style={{ marginBottom: 0.9 * height + 'px' }}
                         >
-                            <p
-                                className="scroll_font text-center"
-                            ></p>
+                            <p className="scroll_font text-center"></p>
                         </div>
                     </Step>
                 ))}
@@ -45,62 +43,84 @@ const ScrollContainer = (props) => {
     );
 };
 
-
 const AnimationContainer = (props) => {
-    const { currentStepIndex, textArray, 
-        scrollYProgress, barLength, imageArray } = props;
+    const {
+        currentStepIndex,
+        textArray,
+        scrollYProgress,
+        barLength,
+        imageArray
+    } = props;
 
     // console.log(scrollYProgress)
-    const barProgress = useTransform(
-        scrollYProgress,
-        [0, barLength],
-        [0, 1]
-    )
+    const barProgress = useTransform(scrollYProgress, [0, barLength], [0, 1]);
 
     return (
         <div className="sticky bg-black top-0 h-screen w-full relative flex justify-center">
             <ScrollBar scrollYProgress={barProgress} />
             {imageArray.map((el, index) => (
-                <div key={index} className={`absolute top-0 left-1/2 -translate-x-1/2
+                <div
+                    key={index}
+                    className={`absolute top-0 left-1/2 -translate-x-1/2
                 max-w-xl w-full max-h-screen
                 lg:flex lg:items-center lg:justify-center lg:h-screen
                 lg:p-6 lg:gap-5 lg:max-w-6xl lg:w-full
-                ${el[2] <= currentStepIndex && currentStepIndex <= el[3] ? 'z-30 pointer-events-auto' : 'z-0 pointer-events-none'}`}>
+                ${
+                    el[2] <= currentStepIndex && currentStepIndex <= el[3]
+                        ? 'z-30 pointer-events-auto'
+                        : 'z-0 pointer-events-none'
+                }`}
+                >
                     <div className="flex flex-col items-center lg:flex-[2] lg:min-w-0 pointer-events-auto">
                         <img
                             src={el[0]}
                             alt={el[1]}
                             className={`mt-[20px] top-0 w-full h-auto object-contain lg:mt-0 lg:max-w-5xl lg:w-full
                                 transition-opacity duration-[1500ms]
-                                ${el[2] <= currentStepIndex && currentStepIndex <= el[3] ? 'opacity-100' : 'opacity-0'}`}
+                                ${
+                                    el[2] <= currentStepIndex &&
+                                    currentStepIndex <= el[3]
+                                        ? 'opacity-100'
+                                        : 'opacity-0'
+                                }`}
                         />
                         <p
                             className={`text-gray-400 mt-3 lg:mt-5 text-sm italic
                                 text-left w-full relative z-10 ml-5
                                 transition-opacity duration-[500ms]
-                            ${el[2] <= currentStepIndex &&
-                                currentStepIndex <= el[3] ?
-                                'opacity-100' :
-                                'opacity-0 pointer-events-none'}`}
+                            ${
+                                el[2] <= currentStepIndex &&
+                                currentStepIndex <= el[3]
+                                    ? 'opacity-100'
+                                    : 'opacity-0 pointer-events-none'
+                            }`}
                             dangerouslySetInnerHTML={{ __html: el[1] }}
                         />
                     </div>
-                    <div className="z-[25] absolute left-0 right-0
+                    <div
+                        className="z-[25] absolute left-0 right-0
                         flex justify-center top-[120%] sm:top-[110%]
                         lg:relative lg:top-0 lg:left-0 lg:right-0 lg:flex-1
-                        lg:min-w-0 lg:flex lg:items-center lg:justify-center">
+                        lg:min-w-0 lg:flex lg:items-center lg:justify-center"
+                    >
                         <p
-                        className={`absolute text-white content lg:relative lg:text-left 
-                        ${el[2] <= currentStepIndex && currentStepIndex <= el[3] ? 'opacity-100' : 'opacity-0'}`}
-                        dangerouslySetInnerHTML={{ __html: textArray[index] }}
+                            className={`absolute text-white content lg:relative lg:text-left 
+                        ${
+                            el[2] <= currentStepIndex &&
+                            currentStepIndex <= el[3]
+                                ? 'opacity-100'
+                                : 'opacity-0'
+                        }`}
+                            dangerouslySetInnerHTML={{
+                                __html: textArray[index]
+                            }}
                         />
                     </div>
                 </div>
-        ))}
+            ))}
         </div>
     );
 };
-
 
 export const AnimationBox = (props) => {
     const {
@@ -113,12 +133,12 @@ export const AnimationBox = (props) => {
         onStepEnter,
         onStepExit,
         height,
-        start,
+        start
     } = props;
     const stepsContainerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: stepsContainerRef,
-        offset: ["start end", "end start"],
+        offset: ['start end', 'end start']
     });
 
     return (
@@ -151,4 +171,4 @@ export const AnimationBox = (props) => {
             </div>
         </div>
     );
-}
+};

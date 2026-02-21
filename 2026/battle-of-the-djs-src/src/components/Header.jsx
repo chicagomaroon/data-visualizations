@@ -78,7 +78,7 @@ const Byline = ({ windowWidth }) => {
                     className="text-md sm:text-xl text-center"
                     dangerouslySetInnerHTML={{ __html: text }}
                 ></p>
-                ))}
+            ))}
         </div>
     );
 };

@@ -10,7 +10,8 @@ export default function Credits() {
                 <p className="text-[16px] mb-2">
                     <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">
                         Nolan Shaffer
-                    </a>{' '}contributed additional reporting.
+                    </a>{' '}
+                    contributed additional reporting.
                 </p>
                 <p className="text-[16px]">
                     Find the code for this interactive on{' '}
