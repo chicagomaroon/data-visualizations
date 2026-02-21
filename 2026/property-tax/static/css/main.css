@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 /* ---------------- GENERAL ---------------- */
-html, body, main {
+html,
+body,
+main {
     height: 100%;
     margin: 0;
     line-height: 1.6em;
@@ -164,7 +166,7 @@ th {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;        
+    width: 100vw;
     height: 100vh;
 }
 
@@ -174,25 +176,24 @@ article {
     padding: 1rem;
     max-width: 27rem;
     margin: 0;
-    gap: 6vh;    
+    gap: 6vh;
 }
 
 /* Each step */
 .step {
-   margin: 0 auto 2rem auto;  
-   margin-bottom: 30vh; 
-   background: white;
-   box-shadow: 0 0 1em #dedede;
+    margin: 0 auto 2rem auto;
+    margin-bottom: 30vh;
+    background: white;
+    box-shadow: 0 0 1em #dedede;
 }
 
 .step a {
     color: black;
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 .step:first-child {
     margin-top: 0;
 }
-
 
 .step:last-child {
     margin-bottom: 20rem;
@@ -213,12 +214,12 @@ article {
     max-width: 100%;
     margin: 1rem 0;
     margin-top: 1rem;
-    object-fit: contain;   
+    object-fit: contain;
 }
 
-.step[data-step="8"].is-active a {
-  color: white !important;
-  text-decoration: underline; 
+.step[data-step='8'].is-active a {
+    color: white !important;
+    text-decoration: underline;
 }
 
 .step.is-active p {
@@ -259,7 +260,7 @@ article {
     margin-top: 2em;
     width: 100%;
     height: auto;
-    max-width: 600px;  
+    max-width: 600px;
     max-height: 100%;
 }
 
@@ -282,10 +283,10 @@ article {
 }
 
 .wide-container {
-  width: 100%;
-  margin: 2em auto;
-  justify-content: center;
-  display: flex;
+    width: 100%;
+    margin: 2em auto;
+    justify-content: center;
+    display: flex;
 }
 
 .wide-container figure {
@@ -301,15 +302,15 @@ article {
 }
 
 #property-graph {
-  width: 100%;
-  max-width: 1000px;   
-  margin: 2em auto;  
-  position: relative;
-  margin-bottom: 0;
+    width: 100%;
+    max-width: 1000px;
+    margin: 2em auto;
+    position: relative;
+    margin-bottom: 0;
 }
 
 #outro {
-  height: 640px;
+    height: 640px;
 }
 
 /* mobile */
@@ -379,7 +380,7 @@ article {
         font-size: 14px;
     }
 
-    .img { 
+    .img {
         display: block;
         width: auto;
         height: auto;
@@ -391,56 +392,52 @@ article {
         background: #ffffff;
         color: #484646;
         font-size: 0.8rem;
-}
+    }
 
     #methodology {
         font-size: 12px;
         line-height: 1.5em;
     }
-
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  background: #f3f3f3;
-  padding: 1rem;
-  padding-right: 5rem;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background: #f3f3f3;
+    padding: 1rem;
+    padding-right: 5rem;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .nav__examples {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin-top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 .nav__examples > * {
-  margin-right: 0.5rem;
+    margin-right: 0.5rem;
 }
-
 
 /* Main fixed map */
 
-
-
 @media (min-width: 840px) {
-  .nav__examples {
-    margin-top: 0;
-    margin-left: 2rem;
-  }
+    .nav__examples {
+        margin-top: 0;
+        margin-left: 2rem;
+    }
 }
