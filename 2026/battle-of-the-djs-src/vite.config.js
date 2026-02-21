@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [react()],
-    base: '/battle-of-the-djs/'
+    base: '/data-visualizations/2026/battle-of-the-djs/'
 });
