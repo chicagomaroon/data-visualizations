@@ -15,10 +15,16 @@ const CoverImage = () => {
 
 const MaroonLogo = () => {
     return (
-        <img
+        <a
+            href="https://chicagomaroon.com/"
             className="w-[300px] md:w-[400px] absolute top-[20px]"
-            src="maroon_logo_white.svg"
-        />
+        >
+            <img
+                className="w-[300px] md:w-[400px] absolute top-[20px]"
+                src="maroon_logo_white.svg"
+                alt="The Chicago Maroon"
+            />
+        </a>
     );
 };
 
