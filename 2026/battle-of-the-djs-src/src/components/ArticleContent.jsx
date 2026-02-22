@@ -3,7 +3,7 @@ import { AnimationBox } from './Interactives.jsx';
 import { sections, p7 } from '../../public/content.js';
 
 export default function ArticleContent({ windowHeight, windowWidth }) {
-    const spacing = 0.2;
+    const spacing = 0.4;
     const height = windowHeight * spacing;
 
     const [scrollY, setScrollY] = useState(() => {

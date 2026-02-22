@@ -52,8 +52,9 @@ const AnimationContainer = (props) => {
         imageArray
     } = props;
 
-    // console.log(scrollYProgress)
     const barProgress = useTransform(scrollYProgress, [0, barLength], [0, 1]);
+
+    console.log(scrollYProgress.current);
 
     return (
         <div className="sticky bg-black top-0 h-screen w-full relative flex justify-center">

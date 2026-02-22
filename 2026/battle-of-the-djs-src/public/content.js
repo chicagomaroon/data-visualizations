@@ -4,7 +4,7 @@ export const subhead =
     'Five DJs transformed the coffee shop into a late-night rave hosted by the Major Activities Board. Interactive.';
 export const byline = [
     "Written by <a href='https://chicagomaroon.com/staff_name/polly-wang' style='color: #FE5434;'>Polly Wang</a>.",
-    "Developed by <a href='https://chicagomaroon.com/staff_name/nolan-shaffer' style='color: #FE5434;'>Nolan Shaffer</a>.",
+    "Designed by <a href='https://chicagomaroon.com/staff_name/nolan-shaffer' style='color: #FE5434;'>Nolan Shaffer</a>.",
     'February 21, 2026'
 ];
 
@@ -71,12 +71,11 @@ const s6 = [
     'The extremity was the point. Each shift pushed the room toward a new edge, never settling long enough to get comfortable. The sounds hinted at immense possibilities, possibilities that could only grow with more opportunities to perform, where DJs can become comfortable with the equipment and the ever-changing crowds.',
     '“It went by so fucking fast. I felt like I was playing for five minutes that I got a five-minute warning. I was like, ‘Oh, bro, fuck.’ So I was like, ‘Whatever, whatever, you gotta roll with it.’”',
     'Onabanjo’s set introduced unexpected textures and unconventional transitions, leaning into experimentation. Individual sounds stood out, sometimes strikingly so, though the shifts between them were abrupt. The result was less about building sustained tension and more about exploration, a reminder that the Battle of the DJs is as much a learning space as it is a competition.',
-    'Anton Balyuk nearly skipped his economics problem set to submit his mixing audition. “It came in very close. It ended at 5:59,” he said, laughing before his set. He closed out the evening with a sound rooted in the Eastern European club scene. The rhythms were sharper and more percussive, driving kicks and tightly wound builds that shifted the room’s energy into something harder and more kinetic.'
+    '<p>Anton Balyuk nearly skipped his economics problem set to submit his mixing audition. “It came in very close. It ended at 5:59,” he said, laughing before his set. He closed out the evening with a sound rooted in the Eastern European club scene. The rhythms were sharper and more percussive, driving kicks and tightly wound builds that shifted the room’s energy into something harder and more kinetic.<p><br /><p>As the clock pushed toward one, the crowd gradually thinned.</p>'
 ];
 
 export const p7 = [
-    'Winter jackets resurfaced and attendees slipped back into the falling snow. The event proved a success and a clear response to students’ emerging need for a space like this that moves beyond casual socializing. At its core, the Battle of the DJs was not about winning. It was about learning how to stay with the music, with uncertainty, with one another. As MAB crew member Kevin McDermott put it, the event is a place “let loose and be yourself.” But what that meant was more radical than it sounded. In the press of bodies and the repetition of bass, dancers ignored social standards, stopped managing appearances, and let rhythm dictate the body. At one point, the basement seemed to dissolve—bodies, sound, the classrooms above, and the century-old Gothic building’s history blurring together—leaving one with the sensation of having briefly stepped outside of oneself, carried instead by a shared pulse.',
-    'As the clock pushed toward one, the crowd gradually thinned.'
+    'Winter jackets resurfaced and attendees slipped back into the falling snow. The event proved a success and a clear response to students’ emerging need for a space like this that moves beyond casual socializing. At its core, the Battle of the DJs was not about winning. It was about learning how to stay with the music, with uncertainty, with one another. As MAB crew member Kevin McDermott put it, the event is a place “let loose and be yourself.” But what that meant was more radical than it sounded. In the press of bodies and the repetition of bass, dancers ignored social standards, stopped managing appearances, and let rhythm dictate the body. At one point, the basement seemed to dissolve—bodies, sound, the classrooms above, and the century-old Gothic building’s history blurring together—leaving one with the sensation of having briefly stepped outside of oneself, carried instead by a shared pulse.'
 ];
 
 const i1 = [
@@ -186,42 +185,42 @@ export const sections = [
         scrollText: s1,
         paragraphText: p1,
         imageArray: i1,
-        barLength: 0.4,
+        barLength: 0.49,
         start: 0
     },
     {
         scrollText: s2,
         paragraphText: p2,
         imageArray: i2,
-        barLength: 0.38,
+        barLength: 0.49,
         start: 2
     },
     {
         scrollText: s3,
         paragraphText: p3,
         imageArray: i3,
-        barLength: 0.47,
+        barLength: 0.59,
         start: 4
     },
     {
         scrollText: s4,
         paragraphText: p4,
         imageArray: i4,
-        barLength: 0.48,
+        barLength: 0.59,
         start: 7
     },
     {
         scrollText: s5,
         paragraphText: p5,
         imageArray: i5,
-        barLength: 0.38,
+        barLength: 0.49,
         start: 10
     },
     {
         scrollText: s6,
         paragraphText: p6,
         imageArray: i6,
-        barLength: 0.68,
+        barLength: 0.77,
         start: 12
     }
 ];
