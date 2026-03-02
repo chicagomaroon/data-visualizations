@@ -3,7 +3,10 @@
         <title>Inside UChicago's Property Tax Exemption</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:title" content="Inside UChicago's Property Tax Exemption" />
+        <meta
+            property="og:title"
+            content="Inside UChicago's Property Tax Exemption"
+        />
         <meta property="og:image" content="images/divestment-history.gif" />
         <meta property="og:site_name" content="The Chicago Maroon" />
         <meta
@@ -24,10 +27,12 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
         <link rel="stylesheet" href="static/css/main.css" />
-        <link rel='stylesheet' href='https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.css' />
-        <script src='https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.js'></script> 
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.css"
+        />
+        <script src="https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.js"></script>
         <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
-        
     </head>
 
     <body>
@@ -58,16 +63,33 @@
                                 >Jinny Kim</a
                             >
                         </div>
-                        <div class="byline" id="byline">
-                            Data and development by
-                            <a
-                                class="byline-link"
-                                href="https://chicagomaroon.com/staff_name/jinny-kim/"
-                                >Jinny Kim</a
-                            >
+                        <hr style="width: 25vw" />
+                        <div id="bylines" style="margin-top: 2em">
+                            <div class="byline" id="byline">
+                                Written by
+                                <a
+                                    class="byline-link"
+                                    href="https://chicagomaroon.com/staff_name/jinny-kim/"
+                                    >Jinny Kim</a
+                                >
+                            </div>
+                            <div class="byline" id="byline">
+                                Data and development by
+                                <a
+                                    class="byline-link"
+                                    href="https://chicagomaroon.com/staff_name/jinny-kim/"
+                                    >Jinny Kim</a
+                                >
+                            </div>
+                            February 1, 2026
                         </div>
                         February 28, 2026
                     </div>
+                    <i
+                        class="fa fa-angle-double-down"
+                        style="margin-bottom: 1em"
+                        aria-hidden="true"
+                    ></i>
                 </div>
                 <i
                     class="fa fa-angle-double-down"
@@ -129,7 +151,7 @@
                 <p
                         style="
                             text-align: center;
-                            margin-top:10em;
+                            margin-top: 10em;
                             margin-bottom: 0;
                             font-size: 0.8em;
                         "
@@ -146,7 +168,7 @@
                         "
                         id="scroll-down-arrow"
                     >
-                    <i
+                        <i
                             class="fa fa-angle-double-down"
                             aria-hidden="true"
                     ></i>
@@ -660,8 +682,5 @@
         <script src="static/js/scrollama.min.js"></script>
         <script src="static/js/map.js"></script>
         <script src="static/js/scrollama.js"></script>
-        
-
-    </body>     
-
+    </body>
 </html>

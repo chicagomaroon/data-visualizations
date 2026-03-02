@@ -1,10 +1,10 @@
 /* scrollama set-up */
 
-var main = d3.select("main");
-var scrolly = main.select("#scrolly");
-var figure = scrolly.select("figure");
-var article = scrolly.select("article");
-var step = article.selectAll(".step");
+var main = d3.select('main');
+var scrolly = main.select('#scrolly');
+var figure = scrolly.select('figure');
+var article = scrolly.select('article');
+var step = article.selectAll('.step');
 
 var scroller = scrollama();
 
@@ -33,31 +33,29 @@ var stepLocations = {
 };
 
 function setupStickyfill() {
-    d3.selectAll(".sticky").each(function() {
+    d3.selectAll('.sticky').each(function () {
         Stickyfill.add(this);
     });
 }
 
 // resize handler
 function handleResize() {
-    
     var figureHeight = window.innerHeight;
     var figureMarginTop = 0;
 
     figure
-        .style("height", figureHeight + "px")
-        .style("top", figureMarginTop + "px");
+        .style('height', figureHeight + 'px')
+        .style('top', figureMarginTop + 'px');
 
     scroller.resize();
 }
 
 // enter handlers
 function handleStepEnter(response) {
-
-    step.classed("is-active", function(d, i) {
+    step.classed('is-active', function (d, i) {
         return i === response.index;
     });
-    
+
     // fly map to the step’s coordinates
     const loc = stepLocations[response.index];
     if (loc) {
@@ -141,34 +139,28 @@ function handleStepEnter(response) {
             true,
             false
         ]);
-
     } else {
-        map.setPaintProperty("property-parcels", "fill-opacity", 0.9);
-        map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
-        map.setFilter("property-highlight", ["==", "Name", ""]);
+        map.setPaintProperty('property-parcels', 'fill-opacity', 0.9);
+        map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
+        map.setFilter('property-highlight', ['==', 'Name', '']);
     }
 }
 
 // -------------------------------------------------------
 /* initialize all Scrollama instances */
 function init() {
-    
-   setupStickyfill(); 
+    setupStickyfill();
 
-   handleResize();
+    handleResize();
 
-  // Main scrolly
-  scroller
-    .setup({step: "#scrolly article .step",
-            offset: 0.5,
-            debug: false })
-    .onStepEnter(handleStepEnter);
+    // Main scrolly
+    scroller
+        .setup({ step: '#scrolly article .step', offset: 0.5, debug: false })
+        .onStepEnter(handleStepEnter);
 
-
-  // Window resize
-  window.addEventListener("load", handleResize);
-  window.addEventListener("resize", handleResize);
+    // Window resize
+    window.addEventListener('load', handleResize);
+    window.addEventListener('resize', handleResize);
 }
 
 init();
-
