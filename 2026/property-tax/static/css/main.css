@@ -11,7 +11,7 @@ main {
     font-family: 'Georgia', serif;
 }
 
-body :not(.step) a {
+a {
     color: #800000;
     text-decoration: none;
 }
@@ -187,6 +187,14 @@ article {
     box-shadow: 0 0 1em #dedede;
 }
 
+.step-middle {
+    width: 70vw;
+    max-width: 900px;
+    margin: 50vh auto;
+    position: relative;
+    left: 100%;
+}
+
 .step a {
     color: black;
     text-decoration: underline;
@@ -222,8 +230,13 @@ article {
     text-decoration: underline;
 }
 
+.step.is-active a {
+    color: white;
+    text-decoration: underline;
+}
+
 .step.is-active p {
-    background-color: #800000;
+    background-color: #800000ce;
     color: white;
 }
 

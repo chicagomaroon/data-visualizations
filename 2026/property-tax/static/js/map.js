@@ -1,14 +1,13 @@
 /* map set-up */
 
 // add main map
-var map = new maplibregl.Map({
-    container: 'map',
-    style: 'https://tiles.openfreemap.org/styles/positron',
-    /*center: [-87.6245, 41.8535], */
-    center: [-87.6494, 41.8542],
-    zoom: 11.5,
-    interactive: false
-});
+    var map = new maplibregl.Map({
+        container: 'map',  
+        style: 'https://tiles.openfreemap.org/styles/positron',
+        center: [-87.6086, 41.7942],  
+        zoom: 13,
+        interactive: false
+    });
 
 // -------------------------------------------------------
 // load data for the main map
@@ -55,30 +54,21 @@ Promise.all([
             }
         });
 
-        // tax-exempt properties
-        map.addLayer({
-            id: 'exempt-parcels',
-            type: 'fill',
-            source: 'tax-exempt',
-            paint: {
-                'fill-color': [
-                    'match',
-                    ['get', 'owner_name'],
-                    'University of Chicago',
-                    '#A52519',
-                    'DePaul University',
-                    '#003DA5',
-                    'Loyola University',
-                    '#BE9112',
-                    'Northwestern University',
-                    '#833FE8',
-                    'University of Illinois',
-                    '#FF5F05',
-                    '#99999901'
-                ],
-                'fill-opacity': 0
-            }
-        });
+            // tax-exempt properties
+            map.addLayer({
+                id: "exempt-parcels",
+                type: "fill",
+                source: "tax-exempt",
+                paint: {
+                    "fill-color": [
+                        "match",
+                        ["get","owner_name"],
+                        "University of Chicago","#A52519",
+                        "#99999901"
+                    ],
+                    "fill-opacity": 0
+                }
+             });
 
         // highlight tax-exempt properties
         map.addLayer({
