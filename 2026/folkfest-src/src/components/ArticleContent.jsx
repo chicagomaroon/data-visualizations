@@ -6,7 +6,11 @@ import {
 } from './Interactives.jsx';
 import { sections } from '../../public/content.js';
 
-export default function ArticleContent({ windowHeight, windowWidth, isMobile }) {
+export default function ArticleContent({
+    windowHeight,
+    windowWidth,
+    isMobile
+}) {
     const spacing = 0.5;
     const height = windowHeight * spacing;
 

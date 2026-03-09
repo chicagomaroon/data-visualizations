@@ -21,10 +21,11 @@ const ScrollBar = ({ scrollYProgress }) => {
 };
 
 export const ScrollContainer = (props) => {
-    const { start, onStepEnter, onStepExit, textArray, height, isMobile } = props;
+    const { start, onStepEnter, onStepExit, textArray, height, isMobile } =
+        props;
     const buffer = isMobile.any() ? 3 : 0.9;
     return (
-       <div className="relative px-5 py-5 z-10 mx-auto">
+        <div className="relative px-5 py-5 z-10 mx-auto">
             <Scrollama
                 onStepEnter={onStepEnter}
                 onStepExit={onStepExit}
@@ -34,7 +35,7 @@ export const ScrollContainer = (props) => {
                     <Step data={start + index} key={start + index}>
                         <div
                             className="relative w-[100px] h-[100px]"
-                            style={{ marginBottom : buffer * height + 'px' }}
+                            style={{ marginBottom: buffer * height + 'px' }}
                         >
                             <p className="scroll_font text-center"></p>
                         </div>
@@ -234,7 +235,6 @@ const AnimationContainerTwo = (props) => {
         [0, 1]
     );
 
-    
     return (
         <div className="sticky top-0 h-[100dvh] w-full relative flex justify-center bg-black">
             <ScrollBar scrollYProgress={barProgress} />
