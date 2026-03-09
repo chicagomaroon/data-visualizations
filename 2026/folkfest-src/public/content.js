@@ -12,7 +12,7 @@ export const byline = [
 ];
 
 export const s1 = [
-    'The halls of Ida Noyes were no stranger to the spirited sounds of fiddling that rang through them last weekend.',
+    'The halls of Ida Noyes were no stranger to the spirited sounds of fiddling that rang through them on February 20.',
     'They’ve hosted the Folk Festival’s workshops for 66 years now.',
     '',
     '',

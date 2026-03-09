@@ -127,7 +127,7 @@ const Header = ({ windowWidth, windowHeight }) => {
                 className="text-right mr-3 md:mr-5 text-sm z-[6] 
             sm:hidden relative top-[50vh]"
             >
-                One of the many jam circles that formed during the workshop.{' '}
+                One of the many jam circles that formed during the workshops.{' '}
                 <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">
                     Nolan Shaffer
                 </a>
@@ -153,7 +153,7 @@ const Header = ({ windowWidth, windowHeight }) => {
                 className="text-left mr-3 md:mr-5 text-sm z-[6] 
             hidden sm:block relative top-[100vh] text-right"
             >
-                One of the many jam circles that formed during the workshop.{' '}
+                One of the many jam circles that formed during the workshops.{' '}
                 <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">
                     Nolan Shaffer
                 </a>
