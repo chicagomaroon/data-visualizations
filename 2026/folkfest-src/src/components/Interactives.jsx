@@ -21,7 +21,9 @@ const ScrollBar = ({ scrollYProgress }) => {
 };
 
 export const ScrollContainer = (props) => {
-    const { start, onStepEnter, onStepExit, textArray, height } = props;
+    const { start, onStepEnter, onStepExit, textArray, height, isMobile } =
+        props;
+    const buffer = isMobile.any() ? 3 : 0.9;
     return (
         <div className="relative px-5 py-5 z-10 mx-auto">
             <Scrollama
@@ -33,7 +35,7 @@ export const ScrollContainer = (props) => {
                     <Step data={start + index} key={start + index}>
                         <div
                             className="relative w-[100px] h-[100px]"
-                            style={{ marginBottom: 0.9 * height + 'px' }}
+                            style={{ marginBottom: buffer * height + 'px' }}
                         >
                             <p className="scroll_font text-center"></p>
                         </div>
@@ -108,8 +110,6 @@ const AnimationContainerOne = (props) => {
 
     const spacing = [50, 15, 50];
     const showMaroon = currentStepIndex === 2 || currentStepIndex === 3;
-
-    console.log(currentStepIndex);
 
     const barProgress = useTransform(
         scrollYProgress,
@@ -309,6 +309,7 @@ export const AnimationBoxOne = (props) => {
         scrollText,
         paragraphText,
         windowWidth,
+        isMobile,
         imageArray,
         barLength = 1,
         barStart = 0,
@@ -343,6 +344,7 @@ export const AnimationBoxOne = (props) => {
                     textArray={scrollText}
                     start={start}
                     height={height}
+                    isMobile={isMobile}
                 />
             </div>
         </div>
@@ -358,6 +360,7 @@ export const AnimationBoxTwo = (props) => {
         barLength = 1,
         onStepEnter,
         onStepExit,
+        isMobile,
         height,
         width,
         start
@@ -387,6 +390,7 @@ export const AnimationBoxTwo = (props) => {
                     textArray={scrollText}
                     start={start}
                     height={height}
+                    isMobile={isMobile}
                 />
             </div>
         </div>

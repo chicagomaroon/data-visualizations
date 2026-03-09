@@ -6,7 +6,11 @@ import {
 } from './Interactives.jsx';
 import { sections } from '../../public/content.js';
 
-export default function ArticleContent({ windowHeight, windowWidth }) {
+export default function ArticleContent({
+    windowHeight,
+    windowWidth,
+    isMobile
+}) {
     const spacing = 0.5;
     const height = windowHeight * spacing;
 
@@ -59,6 +63,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                 currentStepIndex={currentStepIndex}
                 scrollText={sections[0].scrollText}
                 paragraphText={sections[0].paragraphText}
+                isMobile={isMobile}
                 windowWidth={windowWidth}
                 imageArray={sections[0].imageArray}
                 onStepEnter={onStepEnter}
@@ -84,6 +89,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                         barStart={section.barStart}
                         onStepEnter={onStepEnter}
                         onStepExit={onStepExit}
+                        isMobile={isMobile}
                         height={windowHeight}
                         start={section.start}
                         width={windowWidth}

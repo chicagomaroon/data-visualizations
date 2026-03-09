@@ -16,7 +16,7 @@ export default function Credits() {
                 </p>
                 <p className="text-[16px]">
                     Find the code for this interactive on{' '}
-                    <a href="https://github.com/nshaff3r/folkfest-src">
+                    <a href="https://github.com/chicagomaroon/data-visualizations/tree/main/2026/folkfest-src">
                         GitHub
                     </a>
                     .
