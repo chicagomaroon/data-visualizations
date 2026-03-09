@@ -187,10 +187,10 @@ article {
 
 .step-container {
     display: flex;
-    justify-content: center; 
-    align-items: flex-start;    
-    height: 100vh; 
-    margin: 0;          
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
 }
 
 .step-not-middle {
@@ -218,9 +218,9 @@ article {
 }
 
 #scrolly article::after {
-    content: "";
+    content: '';
     display: block;
-    height: 10rem; 
+    height: 10rem;
 }
 
 .step p {
@@ -354,7 +354,6 @@ article {
 /* mobile */
 
 @media (width < 800px) {
-
     h1 {
         font-size: clamp(28px, 6vw, 40px);
         width: 90%;
@@ -400,9 +399,7 @@ article {
     #property-graph {
         width: 95vw;
     }
-
 }
-
 
 /* Main fixed map */
 

@@ -32,22 +32,24 @@ var map = new maplibregl.Map({
     //     }]
     // }
     style: {
-    version: 8,
-    sources: {
-        "satellite": {
-            type: "raster",
-            tiles: [
-                "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-            ],
-            tileSize: 256
-        }
-    },
-    layers: [{
-        id: "satellite",
-        type: "raster",
-        source: "satellite"
-    }]
-}
+        version: 8,
+        sources: {
+            satellite: {
+                type: 'raster',
+                tiles: [
+                    'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+                ],
+                tileSize: 256
+            }
+        },
+        layers: [
+            {
+                id: 'satellite',
+                type: 'raster',
+                source: 'satellite'
+            }
+        ]
+    }
 });
 
 // -------------------------------------------------------
@@ -70,66 +72,70 @@ Promise.all([
             data: exemptData
         });
 
-            // all properties
-            map.addLayer({
-                id: "property-parcels", 
-                type: "fill",
-                source: "properties", 
-                paint: {
-                    "fill-color": [
-                        "match", 
-                        ["get", "mailing_name"],
-                            'University of Chicago', "#A52519",  
-                            'DePaul University', '#003DA5',
-                            'Loyola University', "#BE9112",   
-                            'Northwestern University', "#833FE8",
-                            'University of Illinois', '#FF5F05',
-                                                    '#99999901'
-                    ], 
-                    "fill-opacity": 0
-                }
-            });
+        // all properties
+        map.addLayer({
+            id: 'property-parcels',
+            type: 'fill',
+            source: 'properties',
+            paint: {
+                'fill-color': [
+                    'match',
+                    ['get', 'mailing_name'],
+                    'University of Chicago',
+                    '#A52519',
+                    'DePaul University',
+                    '#003DA5',
+                    'Loyola University',
+                    '#BE9112',
+                    'Northwestern University',
+                    '#833FE8',
+                    'University of Illinois',
+                    '#FF5F05',
+                    '#99999901'
+                ],
+                'fill-opacity': 0
+            }
+        });
 
-            // tax-exempt properties
-            map.addLayer({
-                id: "exempt-parcels",
-                type: "fill",
-                source: "tax-exempt",
-                paint: {
-                    "fill-color": [
-                        "match",
-                        ["get","owner_name"],
-                        "University of Chicago","#A52519",
-                        "#99999901"
-                    ],
-                    "fill-opacity": 0
-                }
-             });
+        // tax-exempt properties
+        map.addLayer({
+            id: 'exempt-parcels',
+            type: 'fill',
+            source: 'tax-exempt',
+            paint: {
+                'fill-color': [
+                    'match',
+                    ['get', 'owner_name'],
+                    'University of Chicago',
+                    '#A52519',
+                    '#99999901'
+                ],
+                'fill-opacity': 0
+            }
+        });
 
-            // highlight tax-exempt properties
-            map.addLayer({
-                id: "property-highlight",
-                type: "fill", 
-                source: "tax-exempt", 
-                paint: {
-                    "fill-color": "#A52519",
-                    "fill-opacity": 0.9,
-                },
-                filter: ["==", "Name", ""]
-            });
+        // highlight tax-exempt properties
+        map.addLayer({
+            id: 'property-highlight',
+            type: 'fill',
+            source: 'tax-exempt',
+            paint: {
+                'fill-color': '#A52519',
+                'fill-opacity': 0.9
+            },
+            filter: ['==', 'Name', '']
+        });
 
-            // highlight non-exempt properties
-            map.addLayer({
-                id: "property-highlight-nonexempt",
-                type: "fill", 
-                source: "properties", 
-                paint: {
-                    "fill-color": "#A52519",
-                    "fill-opacity": 0.9,
-                },
-                filter: ["==", "Name", ""]
-            });
-
-    })
+        // highlight non-exempt properties
+        map.addLayer({
+            id: 'property-highlight-nonexempt',
+            type: 'fill',
+            source: 'properties',
+            paint: {
+                'fill-color': '#A52519',
+                'fill-opacity': 0.9
+            },
+            filter: ['==', 'Name', '']
+        });
     });
-
+});
