@@ -172,11 +172,9 @@ th {
 
 article {
     position: relative;
-    padding-top: 0vh;
-    padding: 1rem;
-    max-width: 27rem;
-    margin: 0;
-    gap: 6vh;
+    padding: 0;
+    max-width: none;
+    margin: 0 auto;
 }
 
 /* Each step */
@@ -187,12 +185,28 @@ article {
     box-shadow: 0 0 1em #dedede;
 }
 
+.step-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+}
+
+.step-not-middle {
+    max-width: 27rem;
+    margin-left: 2rem;
+}
+
 .step-middle {
     width: 70vw;
-    max-width: 900px;
-    margin: 50vh auto;
+    margin: 0rem 0rem;
+    padding: 0rem;
+    height: auto;
+    display: block;
     position: relative;
-    left: 100%;
+    align-items: center;
+    background: white;
 }
 
 .step a {
@@ -203,8 +217,10 @@ article {
     margin-top: 0;
 }
 
-.step:last-child {
-    margin-bottom: 20rem;
+#scrolly article::after {
+    content: '';
+    display: block;
+    height: 10rem;
 }
 
 .step p {
@@ -236,8 +252,17 @@ article {
 }
 
 .step.is-active p {
-    background-color: #800000ce;
+    background-color: #800000;
     color: white;
+}
+
+/* Make maroon fill entire step-middle box when active */
+.step-middle.is-active {
+    background-color: #800000;
+}
+
+.step-middle.is-active p {
+    background-color: transparent;
 }
 
 .legend-box {
@@ -329,121 +354,51 @@ article {
 /* mobile */
 
 @media (width < 800px) {
-    /* overall */
-
-    body {
-        margin: 0;
-    }
-
-    /* text */
-
     h1 {
-        font-size: 32px;
-        padding-top: 2vh;
+        font-size: clamp(28px, 6vw, 40px);
+        width: 90%;
     }
 
     #subtitle {
         font-size: 20px;
-        line-height: 22px;
-    }
-
-    hr {
-        width: 90% !important;
-        max-width: 100vw;
-    }
-
-    /* intro */
-
-    #background {
-        flex-direction: column;
-    }
-
-    #background img {
-        width: 100%;
-        height: auto;
-    }
-
-    #intro a img {
-        height: 30px;
-    }
-
-    #intro {
-        height: 60vh;
-    }
-
-    .non-scroller,
-    #intro-text {
-        margin: 10vh auto;
-    }
-
-    #intro h1,
-    #subtitle {
         width: 90%;
     }
 
-    .byline,
-    #bylines {
-        font-size: 14px;
-        line-height: 24px;
+    .non-scroller,
+    .section-header {
+        width: 90vw;
     }
 
-    /* chapters */
-
-    .non-scroller {
-        font-size: 14px;
+    .step-middle {
+        width: 90vw;
     }
 
-    .img {
-        display: block;
-        width: auto;
-        height: auto;
-        max-height: 100%;
-        max-width: 100%;
+    .step-not-middle {
+        max-width: 90vw;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .figcaption {
-        background: #ffffff;
-        color: #484646;
-        font-size: 0.8rem;
+    .step p {
+        font-size: 16px;
+        padding: 1.5rem;
     }
 
-    #methodology {
-        font-size: 12px;
-        line-height: 1.5em;
+    #map {
+        height: 70vh;
     }
-}
 
-nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: baseline;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    background: #f3f3f3;
-    padding: 1rem;
-    padding-right: 5rem;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
+    #scrolly figure {
+        height: 70vh;
+    }
 
-.nav__examples {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: baseline;
-    -ms-flex-align: baseline;
-    align-items: baseline;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-}
+    .step {
+        margin-bottom: 20vh;
+    }
 
-.nav__examples > * {
-    margin-right: 0.5rem;
+    #property-graph {
+        width: 95vw;
+    }
 }
 
 /* Main fixed map */
