@@ -79,7 +79,7 @@ const i1 = [
 const i2 = [
     [
         'ezra1.jpg',
-        10,
+        9,
         12,
         "Ezra Deutsch-Feldman, a former co-president of the UChicago Folklore Society. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
     ],
@@ -153,26 +153,23 @@ export const sections = [
         paragraphText: p2,
         imageArray: i2,
         start: 12,
-        barLength: 0.71,
-        barStart: 0.23,
-        size: 230
+        barLength: 0.66,
+        barStart: 0.15
     },
     {
         scrollText: s3,
         paragraphText: p3,
         imageArray: i3,
         start: 15,
-        barLength: 0.78,
-        barStart: 0.18,
-        size: 310
+        barLength: 0.7,
+        barStart: 0.12
     },
     {
         scrollText: s4,
         paragraphText: p4,
         imageArray: i4,
         start: 18,
-        barLength: 0.82,
-        barStart: 0.15,
-        size: 375
+        barLength: 0.73,
+        barStart: 0.15
     }
 ];
