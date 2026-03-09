@@ -110,8 +110,6 @@ const AnimationContainerOne = (props) => {
     const spacing = [50, 15, 50];
     const showMaroon = currentStepIndex === 2 || currentStepIndex === 3;
 
-    console.log(scrollYProgress.current);
-
     const barProgress = useTransform(
         scrollYProgress,
         [barStart, barLength],
@@ -236,7 +234,6 @@ const AnimationContainerTwo = (props) => {
         [0, 1]
     );
 
-    console.log(scrollYProgress.current);
     
     return (
         <div className="sticky top-0 h-[100dvh] w-full relative flex justify-center bg-black">
