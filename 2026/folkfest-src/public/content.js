@@ -81,13 +81,13 @@ const i2 = [
         'ezra1.jpg',
         9,
         12,
-        "Ezra Deutsch-Feldman, a former co-president of the UChicago Folklore Society. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        'Ezra Deutsch-Feldman, a former co-president of the UChicago Folklore Society.'
     ],
     [
         'ezra2.jpg',
         13,
         14,
-        "Deutsch-Feldman (second from left) playing in a jam circle. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        'Deutsch-Feldman (second from left) playing in a jam circle.'
     ]
 ];
 
@@ -96,19 +96,14 @@ const i3 = [
         'barndance-2.jpg',
         13,
         15,
-        "The barn dance involved dancing between aisles of people. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>"
+        'The barn dance involved dancing between aisles of people.'
     ],
-    [
-        'barndance-1.jpg',
-        16,
-        16,
-        "Meg Dedolph and Gap Civil. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
-    ],
+    ['barndance-1.jpg', 16, 16, 'Meg Dedolph and Gap Civil.'],
     [
         'barndance-3.jpg',
         17,
         18,
-        "The barn dance was lively and highly participatory.  <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        'The barn dance was lively and highly participatory.'
     ]
 ];
 
@@ -117,25 +112,25 @@ const i4 = [
         'shapesing-3.jpg',
         17,
         18,
-        "<i>The Sacred Harp</i> is the central book for shape note singing.  <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        '<i>The Sacred Harp</i> is the central book for shape note singing.'
     ],
     [
         'shapesing-1.jpg',
         19,
         19,
-        "Shaped staff notation tells participants the type of syllable to sing. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        'Shaped staff notation tells participants the type of syllable to sing.'
     ],
     [
         'shapesing-4.jpg',
         20,
         20,
-        "A member of the community leads part of the workshop. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        'A member of the community leads part of the workshop.'
     ],
     [
         'shapesing-2.jpg',
         21,
         22,
-        "A member of the community leads part of the workshop. <a href='https://chicagomaroon.com/staff_name/nolan-shaffer/'>Nolan Shaffer</a>."
+        'A member of the community leads part of the workshop.'
     ]
 ];
 
