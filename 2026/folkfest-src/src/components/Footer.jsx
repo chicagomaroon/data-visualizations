@@ -7,6 +7,13 @@ export default function Credits() {
         <div className="w-[90%] md:w-[80%] mx-auto">
             <div className="w-full h-[3px] bg-black rounded-md"></div>
             <div className="py-5">
+                <p className="text-[16px] mb-5">
+                    All photos by{' '}
+                    <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">
+                        Nolan Shaffer
+                    </a>
+                    .
+                </p>
                 <p className="text-[16px]">
                     Find the code for this interactive on{' '}
                     <a href="https://github.com/nshaff3r/folkfest-src">

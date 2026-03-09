@@ -40,6 +40,7 @@ export const ScrollContainer = (props) => {
                     </Step>
                 ))}
             </Scrollama>
+            <div className="h-[50dvh]"></div>
         </div>
     );
 };
@@ -80,7 +81,7 @@ const CENTERED_TEXT_CONFIG = [
     {
         textIndex: 5,
         stepMin: 7,
-        stepMax: 8,
+        stepMax: 7,
         classExtras: 'max-w-[500px] rounded-lg p-4',
         visibleOpacity: 'opacity-100'
     },
@@ -108,6 +109,8 @@ const AnimationContainerOne = (props) => {
     const spacing = [50, 15, 50];
     const showMaroon = currentStepIndex === 2 || currentStepIndex === 3;
 
+    console.log(currentStepIndex);
+
     const barProgress = useTransform(
         scrollYProgress,
         [barStart, barLength],
@@ -115,51 +118,47 @@ const AnimationContainerOne = (props) => {
     );
 
     return (
-        <div style={{ height: `${1.35 * textArray.length * height}px` }}>
-            <div className="sticky top-0 h-screen flex items-stretch">
-                <div className="relative flex flex-col w-screen h-full overflow-hidden">
-                    <ScrollBar scrollYProgress={barProgress} />
-                    {MAROON_IMAGES.map(({ src, positionClass }, index) => (
+        <div className="sticky top-0 h-screen flex items-stretch">
+            <div className="relative flex flex-col w-screen h-full overflow-hidden">
+                <ScrollBar scrollYProgress={barProgress} />
+                {MAROON_IMAGES.map(({ src, positionClass }, index) => (
+                    <img
+                        key={src}
+                        src={src}
+                        className={`absolute object-contain transition-opacity duration-[500ms] ${positionClass} ${
+                            showMaroon ? 'opacity-100' : 'opacity-0'
+                        }`}
+                    />
+                ))}
+                {imageArray.slice(0, 3).map((image, index) => (
+                    <img
+                        key={index}
+                        src={image}
+                        className={`w-full h-1/3 object-cover transition-opacity duration-[500ms] ${
+                            currentStepIndex >= 4 + index &&
+                            currentStepIndex <= 6
+                                ? 'opacity-100'
+                                : 'opacity-0'
+                        }`}
+                    />
+                ))}
+                {imageArray.slice(3, 6).map((image, index) => (
+                    <div key={index}>
                         <img
-                            key={src}
-                            src={src}
-                            className={`absolute object-contain transition-opacity duration-[500ms] ${positionClass} ${
-                                showMaroon ? 'opacity-100' : 'opacity-0'
-                            }`}
-                        />
-                    ))}
-                    {imageArray.slice(0, 3).map((image, index) => (
-                        <img
-                            key={index}
                             src={image}
-                            className={`w-full h-1/3 object-cover transition-opacity duration-[500ms] ${
-                                currentStepIndex >= 4 + index &&
-                                currentStepIndex <= 6
+                            className={`w-full h-1/3 object-cover transition-opacity duration-[500ms] absolute sm:w-1/3 sm:h-1/3 ${
+                                currentStepIndex >= 8 + index &&
+                                currentStepIndex <= 10
                                     ? 'opacity-100'
                                     : 'opacity-0'
                             }`}
+                            style={{
+                                top: `${index * 33.3333}%`,
+                                left: width < 640 ? '0' : `${index * 33.3333}%`
+                            }}
                         />
-                    ))}
-                    {imageArray.slice(3, 6).map((image, index) => (
-                        <div key={index}>
-                            <img
-                                src={image}
-                                className={`w-full h-1/3 object-cover transition-opacity duration-[500ms] absolute sm:w-1/3 sm:h-1/3 ${
-                                    currentStepIndex >= 8 + index &&
-                                    currentStepIndex <= 10
-                                        ? 'opacity-100'
-                                        : 'opacity-0'
-                                }`}
-                                style={{
-                                    top: `${index * 33.3333}%`,
-                                    left:
-                                        width < 640
-                                            ? '0'
-                                            : `${index * 33.3333}%`
-                                }}
-                            />
-                            <p
-                                className={`text-3xl font-bold absolute
+                        <p
+                            className={`text-3xl font-bold absolute
                                     top-1/2 left-1/2 -translate-x-1/2
                                     -translate-y-1/2 z-[5] p-[.3em]
                                     text-white sm:text-black transition-opacity
@@ -172,49 +171,48 @@ const AnimationContainerOne = (props) => {
                                             ? 'opacity-80'
                                             : 'opacity-0'
                                     }`}
-                                style={{
-                                    top:
-                                        width < 640
-                                            ? `${index * 33.3333 + 5}%`
-                                            : `${spacing[index]}%`,
-                                    left:
-                                        width < 640
-                                            ? '50%'
-                                            : `${index * 33.3333 + 17}%`
-                                }}
-                            >
-                                {textArray[6 + index]}
-                            </p>
-                        </div>
-                    ))}
-                    {CENTERED_TEXT_CONFIG.map(
-                        (
-                            {
-                                textIndex,
-                                stepMin,
-                                stepMax,
-                                classExtras,
-                                visibleOpacity
-                            },
-                            index
-                        ) => {
-                            const visible =
-                                currentStepIndex >= stepMin &&
-                                currentStepIndex <= stepMax;
-                            return (
-                                <p
-                                    key={index}
-                                    className={`text-2xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] transition-opacity duration-[500ms] bg-white
+                            style={{
+                                top:
+                                    width < 640
+                                        ? `${index * 33.3333 + 5}%`
+                                        : `${spacing[index]}%`,
+                                left:
+                                    width < 640
+                                        ? '50%'
+                                        : `${index * 33.3333 + 17}%`
+                            }}
+                        >
+                            {textArray[6 + index]}
+                        </p>
+                    </div>
+                ))}
+                {CENTERED_TEXT_CONFIG.map(
+                    (
+                        {
+                            textIndex,
+                            stepMin,
+                            stepMax,
+                            classExtras,
+                            visibleOpacity
+                        },
+                        index
+                    ) => {
+                        const visible =
+                            currentStepIndex >= stepMin &&
+                            currentStepIndex <= stepMax;
+                        return (
+                            <p
+                                key={index}
+                                className={`text-2xl font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] transition-opacity duration-[500ms] bg-white
                                     ${classExtras} ${
-                                        visible ? visibleOpacity : 'opacity-0'
-                                    }`}
-                                >
-                                    {textArray[textIndex]}
-                                </p>
-                            );
-                        }
-                    )}
-                </div>
+                                    visible ? visibleOpacity : 'opacity-0'
+                                }`}
+                            >
+                                {textArray[textIndex]}
+                            </p>
+                        );
+                    }
+                )}
             </div>
         </div>
     );
@@ -228,8 +226,7 @@ const AnimationContainerTwo = (props) => {
         barStart,
         barLength,
         imageArray,
-        height,
-        size
+        height
     } = props;
 
     const barProgress = useTransform(
@@ -239,13 +236,12 @@ const AnimationContainerTwo = (props) => {
     );
 
     return (
-        <div style={{ height: size + 'vh' }}>
-            <div className="sticky top-0 h-screen w-full relative flex justify-center">
-                <ScrollBar scrollYProgress={barProgress} />
-                {imageArray.map((el, index) => (
-                    <div
-                        key={index}
-                        className={`absolute top-0 left-1/2 -translate-x-1/2
+        <div className="sticky top-0 h-[100dvh] w-full relative flex justify-center bg-black">
+            <ScrollBar scrollYProgress={barProgress} />
+            {imageArray.map((el, index) => (
+                <div
+                    key={index}
+                    className={`absolute top-0 left-1/2 -translate-x-1/2
                 max-w-xl w-full max-h-screen
                 lg:flex lg:items-center lg:justify-center lg:h-screen
                 lg:p-6 lg:gap-10 lg:max-w-6xl lg:w-full
@@ -255,12 +251,12 @@ const AnimationContainerTwo = (props) => {
                         ? 'z-30 pointer-events-auto'
                         : 'z-0 pointer-events-none'
                 }`}
-                    >
-                        <div className="flex flex-col items-center lg:flex-[2] lg:min-w-0 pointer-events-auto">
-                            <img
-                                src={el[0]}
-                                className={`mt-[20px] top-0 w-full h-auto object-contain lg:mt-0 lg:max-w-5xl lg:w-full
-                                transition-opacity duration-[1500ms] max-h-[50vh] sm:max-h-[70vh]
+                >
+                    <div className="flex flex-col items-center lg:flex-[2] lg:min-w-0 pointer-events-auto">
+                        <img
+                            src={el[0]}
+                            className={`mt-[20px] top-0 w-full h-auto object-contain lg:mt-0 lg:max-w-5xl lg:w-full
+                                transition-opacity duration-[1500ms] max-h-[50vh] sm:max-h-[60vh]
                                 ${
                                     (el[1] <= currentStepIndex &&
                                         currentStepIndex <= el[2]) ||
@@ -268,9 +264,9 @@ const AnimationContainerTwo = (props) => {
                                         ? 'opacity-100'
                                         : 'opacity-0'
                                 }`}
-                            />
-                            <p
-                                className={`mt-[10px] lg:mt-[20px] top-0 w-full text-sm px-5 lg:px-0
+                        />
+                        <p
+                            className={`mt-[10px] lg:mt-[20px] top-0 w-full text-sm px-5 lg:px-0 text-white
                             ${
                                 (el[1] <= currentStepIndex &&
                                     currentStepIndex <= el[2]) ||
@@ -278,17 +274,17 @@ const AnimationContainerTwo = (props) => {
                                     ? 'opacity-100'
                                     : 'opacity-0'
                             }`}
-                                dangerouslySetInnerHTML={{ __html: el[3] }}
-                            ></p>
-                        </div>
-                        <div
-                            className="z-[25] absolute left-0 right-0
+                            dangerouslySetInnerHTML={{ __html: el[3] }}
+                        ></p>
+                    </div>
+                    <div
+                        className="z-[25] absolute left-0 right-0
                         flex justify-center top-[105%] sm:top-[110%]
                         lg:relative lg:top-0 lg:left-0 lg:right-0 lg:flex-1
                         lg:min-w-0 lg:flex lg:items-center lg:justify-center"
-                        >
-                            <p
-                                className={`absolute caption lg:relative lg:text-left p-5
+                    >
+                        <p
+                            className={`absolute caption lg:relative lg:text-left p-5 text-white
                         ${
                             (el[1] <= currentStepIndex &&
                                 currentStepIndex <= el[2]) ||
@@ -296,14 +292,13 @@ const AnimationContainerTwo = (props) => {
                                 ? 'opacity-100'
                                 : 'opacity-0'
                         }`}
-                                dangerouslySetInnerHTML={{
-                                    __html: textArray[index]
-                                }}
-                            />
-                        </div>
+                            dangerouslySetInnerHTML={{
+                                __html: textArray[index]
+                            }}
+                        />
                     </div>
-                ))}
-            </div>
+                </div>
+            ))}
         </div>
     );
 };
@@ -341,7 +336,7 @@ export const AnimationBoxOne = (props) => {
                 barLength={barLength}
                 barStart={barStart}
             />
-            <div ref={stepsContainerRef} className="absolute top-[50vh]">
+            <div ref={stepsContainerRef} className="relative">
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}
@@ -361,7 +356,6 @@ export const AnimationBoxTwo = (props) => {
         imageArray,
         barStart = 0,
         barLength = 1,
-        size = 1.2,
         onStepEnter,
         onStepExit,
         height,
@@ -385,9 +379,8 @@ export const AnimationBoxTwo = (props) => {
                 width={width}
                 barLength={barLength}
                 barStart={barStart}
-                size={size}
             />
-            <div ref={stepsContainerRef} className="absolute top-[50vh]">
+            <div ref={stepsContainerRef} className="relative">
                 <ScrollContainer
                     onStepEnter={onStepEnter}
                     onStepExit={onStepExit}

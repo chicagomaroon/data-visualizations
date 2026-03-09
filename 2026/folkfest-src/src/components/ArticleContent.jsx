@@ -85,7 +85,6 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                         onStepEnter={onStepEnter}
                         onStepExit={onStepExit}
                         height={windowHeight}
-                        size={section.size}
                         start={section.start}
                         width={windowWidth}
                     />
