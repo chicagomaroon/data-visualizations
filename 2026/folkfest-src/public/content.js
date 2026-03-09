@@ -145,31 +145,31 @@ export const sections = [
         paragraphText: p1,
         imageArray: i1,
         start: 1,
-        barLength: 0.93,
-        barStart: 0.07
+        barLength: 0.96,
+        barStart: 0
     },
     {
         scrollText: s2,
         paragraphText: p2,
         imageArray: i2,
         start: 12,
-        barLength: 0.66,
-        barStart: 0.15
+        barLength: 0.81,
+        barStart: 0
     },
     {
         scrollText: s3,
         paragraphText: p3,
         imageArray: i3,
         start: 15,
-        barLength: 0.7,
-        barStart: 0.12
+        barLength: 0.86,
+        barStart: 0
     },
     {
         scrollText: s4,
         paragraphText: p4,
         imageArray: i4,
         start: 18,
-        barLength: 0.73,
-        barStart: 0.15
+        barLength: 0.89,
+        barStart: 0
     }
 ];
