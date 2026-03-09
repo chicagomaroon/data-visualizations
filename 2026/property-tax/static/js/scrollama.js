@@ -27,9 +27,9 @@ var stepLocations = {
     14: { center: [-87.6018, 41.7898], zoom: 16, pitch: 0, bearing: 0 },
     15: { center: [-87.5890, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
     16: { center: [-87.5890, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
-    17: { center: [-87.8541, 41.6311], zoom: 16, pitch: 0, bearing: 0 },
-    18: { center: [-87.8541, 41.6311], zoom: 16, pitch: 0, bearing: 0 },
-    19: { center: [-87.8541, 41.6311], zoom: 16, pitch: 0, bearing: 0 },
+    17: { center: [-87.8567, 41.6312], zoom: 16, pitch: 0, bearing: 0 },
+    18: { center: [-87.8567, 41.6312], zoom: 16, pitch: 0, bearing: 0 },
+    19: { center: [-87.8567, 41.6312], zoom: 16, pitch: 0, bearing: 0 },
 };
 
 function setupStickyfill() {
@@ -64,7 +64,7 @@ function handleStepEnter(response) {
         zoom: loc.zoom,
         pitch: loc.pitch || 0,
         bearing: loc.bearing || 0,
-        speed: 0.5,
+        speed: 0.7,
         curve: 1,
         easing: t => 1 - (1-t)*(1-t) 
         });
@@ -73,8 +73,8 @@ function handleStepEnter(response) {
     if (response.index === 0)
     {
         // Show all property parcels, hide exempt parcels, clear any filters
-        map.setPaintProperty("property-parcels", "fill-opacity", 0.9);
-        map.setPaintProperty("property-parcels", "fill-color", "#DE7C00"); // Reset to maroon
+        map.setPaintProperty("property-parcels", "fill-opacity", 1);
+        map.setPaintProperty("property-parcels", "fill-color", "#A52519"); // Reset to maroon
         map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
         map.setFilter('property-highlight', ['==', 'Name', '']);
         map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
@@ -87,7 +87,7 @@ function handleStepEnter(response) {
     )
        {
         map.setPaintProperty("property-parcels", "fill-opacity", 0.9);
-        map.setPaintProperty("property-parcels", "fill-color", "#DE7C00"); 
+        map.setPaintProperty("property-parcels", "fill-color", "rgb(160, 105, 101)"); 
         map.setPaintProperty("exempt-parcels", "fill-opacity", 1);
         map.setPaintProperty("exempt-parcels", "fill-color", "#A52519"); 
         map.setFilter('property-highlight', ['==', 'Name', '']);
@@ -161,6 +161,16 @@ function handleStepEnter(response) {
     }
 }
 
+function handleStepExit(response) {
+    if (response.index === 0 && response.direction === 'up') {
+        map.setPaintProperty("property-parcels", "fill-opacity", 0);
+        map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
+        map.setFilter('property-highlight', ['==', 'Name', '']);
+        map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
+    }
+}
+    
+
 // -------------------------------------------------------
 /* initialize all Scrollama instances */
 function init() {
@@ -171,7 +181,8 @@ function init() {
     // Main scrolly
     scroller
         .setup({ step: '#scrolly article .step', offset: 0.5, debug: false })
-        .onStepEnter(handleStepEnter);
+        .onStepEnter(handleStepEnter)
+        .onStepExit(handleStepExit);
 
     // Window resize
     window.addEventListener('load', handleResize);
