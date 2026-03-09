@@ -1,1 +1,1 @@
-# Interactive piece for the Arts and Culture section of the *Maroon*.
+# Interactive piece for the Arts and Culture section of the _Maroon_.

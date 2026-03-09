@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { AnimationBoxOne, AnimationBoxTwo, ScrollContainer } from "./Interactives.jsx"
+import {
+    AnimationBoxOne,
+    AnimationBoxTwo,
+    ScrollContainer
+} from './Interactives.jsx';
 import { sections } from '../../public/content.js';
 
-
 export default function ArticleContent({ windowHeight, windowWidth }) {
-    const spacing = .5;
+    const spacing = 0.5;
     const height = windowHeight * spacing;
 
     const [scrollY, setScrollY] = useState(() => {
@@ -69,7 +72,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <p className="content mt-10 mb-10">
                 {sections[0].paragraphText[0]}
             </p>
-            { sections.slice(1, 4).map((section, index) => (
+            {sections.slice(1, 4).map((section, index) => (
                 <div key={index}>
                     <AnimationBoxTwo
                         currentStepIndex={currentStepIndex}
@@ -86,7 +89,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                         start={section.start}
                         width={windowWidth}
                     />
-                    { section.paragraphText.map((paragraph, index) => (
+                    {section.paragraphText.map((paragraph, index) => (
                         <p className="content mt-10 mb-10" key={index}>
                             {paragraph}
                         </p>

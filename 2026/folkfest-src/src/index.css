@@ -36,7 +36,6 @@ h1 {
     line-height: 1.4em;
 }
 
-
 @media (max-width: 768px) {
     p {
         font-size: 18px;
@@ -57,14 +56,13 @@ h1 {
     }
 }
 
-
 @layer utilities {
     .scrollbar-hide {
-      -ms-overflow-style: none;  /* IE + Edge */
-      scrollbar-width: none;     /* Firefox */
+        -ms-overflow-style: none; /* IE + Edge */
+        scrollbar-width: none; /* Firefox */
     }
-  
+
     .scrollbar-hide::-webkit-scrollbar {
-      display: none;             /* Chrome + Safari */
+        display: none; /* Chrome + Safari */
     }
-  }
+}

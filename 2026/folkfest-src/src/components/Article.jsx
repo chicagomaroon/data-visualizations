@@ -29,11 +29,13 @@ export default function Article() {
         };
     }, []);
 
-
     return (
         <div>
             <Header windowWidth={windowWidth} windowHeight={windowHeight} />
-            <ArticleContent windowHeight={windowHeight} windowWidth={windowWidth}/>
+            <ArticleContent
+                windowHeight={windowHeight}
+                windowWidth={windowWidth}
+            />
             <Credits />
         </div>
     );
