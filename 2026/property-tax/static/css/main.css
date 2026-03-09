@@ -172,11 +172,9 @@ th {
 
 article {
     position: relative;
-    padding-top: 0vh;
-    padding: 1rem;
-    max-width: 27rem;
-    margin: 0;
-    gap: 6vh;
+    padding: 0;
+    max-width: none;
+    margin: 0 auto;
 }
 
 /* Each step */
@@ -187,20 +185,28 @@ article {
     box-shadow: 0 0 1em #dedede;
 }
 
-.step-middle {
-    width: 70vw;
-    max-width: 900px;
-    margin: 50vh auto;
-    position: relative;
-    left: 100%;
+.step-container {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;    
+    height: 100vh; 
+    margin: 0;          
+}
+
+.step-not-middle {
+    max-width: 27rem;
+    margin-left: 2rem;
 }
 
 .step-middle {
     width: 70vw;
-    max-width: 900px;
-    margin: 50vh auto;
+    margin: 0rem 0rem;
+    padding: 0rem;
+    height: auto;
+    display: block;
     position: relative;
-    left: 100%;
+    align-items: center;
+    background: white;
 }
 
 .step a {
@@ -211,8 +217,10 @@ article {
     margin-top: 0;
 }
 
-.step:last-child {
-    margin-bottom: 20rem;
+#scrolly article::after {
+    content: "";
+    display: block;
+    height: 10rem; 
 }
 
 .step p {
@@ -243,14 +251,18 @@ article {
     text-decoration: underline;
 }
 
-.step.is-active a {
+.step.is-active p {
+    background-color: #800000;
     color: white;
-    text-decoration: underline;
 }
 
-.step.is-active p {
-    background-color: #800000ce;
-    color: white;
+/* Make maroon fill entire step-middle box when active */
+.step-middle.is-active {
+    background-color: #800000;
+}
+
+.step-middle.is-active p {
+    background-color: transparent;
 }
 
 .legend-box {
