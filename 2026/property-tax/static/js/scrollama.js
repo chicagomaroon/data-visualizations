@@ -10,25 +10,23 @@ var scroller = scrollama();
 
 // add steps 
 var stepLocations = {
-    0: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    1: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    0: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    1: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    2: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    3: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    4: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    5: { center: [-87.6086, 41.7942], zoom: 13, pitch: 0, bearing: 0 },
-    6: { center: [-87.6086, 41.7942], zoom: 12, pitch: 0, bearing: 0 },
-    7: { center: [-87.6086, 41.7942], zoom: 12, pitch: 0, bearing: 0 },
-    8: { center: [-87.6086, 41.7942], zoom: 12, pitch: 0, bearing: 0 },
-    9: { center: [-87.6086, 41.7942], zoom: 12, pitch: 0, bearing: 0 },
-    10: { center: [-87.6086, 41.7942], zoom: 14, pitch: 0, bearing: 0 },
-    11: { center: [-87.6005, 41.7950], zoom: 16, pitch: 0, bearing: 0 },
-    12: { center: [-87.6005, 41.7950], zoom: 16, pitch: 0, bearing: 0 },
-    13: { center: [-87.6005, 41.7950], zoom: 16, pitch: 0, bearing: 0 },
-    14: { center: [-87.5997, 41.7895], zoom: 16, pitch: 0, bearing: 0 },
-    15: { center: [-87.5872, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
-    16: { center: [-87.5872, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
+    0: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    1: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    2: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    3: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    4: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    5: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    6: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
+    7: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
+    8: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
+    9: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
+    10: { center: [-87.6086, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
+    11: { center: [-87.6012, 41.7944], zoom: 16, pitch: 0, bearing: 0 },
+    12: { center: [-87.6012, 41.7944], zoom: 16, pitch: 0, bearing: 0 },
+    13: { center: [-87.6012, 41.7944], zoom: 16, pitch: 0, bearing: 0 },
+    14: { center: [-87.6018, 41.7898], zoom: 16, pitch: 0, bearing: 0 },
+    15: { center: [-87.5890, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
+    16: { center: [-87.5890, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
     17: { center: [-87.8541, 41.6311], zoom: 16, pitch: 0, bearing: 0 },
     18: { center: [-87.8541, 41.6311], zoom: 16, pitch: 0, bearing: 0 },
     19: { center: [-87.8541, 41.6311], zoom: 16, pitch: 0, bearing: 0 },
@@ -72,19 +70,32 @@ function handleStepEnter(response) {
         });
     }
 
+    if (response.index === 0)
+    {
+        // Show all property parcels, hide exempt parcels, clear any filters
+        map.setPaintProperty("property-parcels", "fill-opacity", 0.9);
+        map.setPaintProperty("property-parcels", "fill-color", "#DE7C00"); // Reset to maroon
+        map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
+        map.setFilter('property-highlight', ['==', 'Name', '']);
+        map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
+
     // switch from full to tax-exempt properties
-    if(response.index === 1 || response.index === 2 || response.index === 3 ||
+    } else if(response.index === 1 || response.index === 2 || response.index === 3 ||
        response.index === 4 || response.index === 5 || response.index === 6 ||
-       response.index === 7 || response.index === 8 || response.index === 9 || 
+       response.index === 7 || response.index === 8 || response.index === 9 ||
        response.index === 10
     )
        {
-        map.setPaintProperty("property-parcels", "fill-opacity", 0.3);
+        map.setPaintProperty("property-parcels", "fill-opacity", 0.9);
+        map.setPaintProperty("property-parcels", "fill-color", "#DE7C00"); 
         map.setPaintProperty("exempt-parcels", "fill-opacity", 1);
+        map.setPaintProperty("exempt-parcels", "fill-color", "#A52519"); 
+        map.setFilter('property-highlight', ['==', 'Name', '']);
+        map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
 
     // highlight parcel with roux
-    } else if (response.index === 5 || response.index === 6 ||
-               response.index === 7 
+    } else if (response.index === 11 || response.index === 12 ||
+               response.index === 13 
     ) { 
         map.setPaintProperty("property-parcels", "fill-opacity", 0);
         map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
@@ -114,36 +125,6 @@ function handleStepEnter(response) {
             true,
             false
         ]);
-    
-    // highlight parcel with reynolds, saieh and uchicago bookstore
-    } else if (response.index === 14 
-    ) { 
-        map.setPaintProperty("property-parcels", "fill-opacity", 0);
-        map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
-
-        map.setFilter("property-highlight", [
-            "match",
-            ["get", "Name"],
-            ["20141160170000","20141150140000",
-            "20141110010000"],
-            true,
-            false
-        ]);
-    
-    // highlight parcel with reynolds, saieh and uchicago bookstore
-    } else if (response.index === 14 
-    ) { 
-        map.setPaintProperty("property-parcels", "fill-opacity", 0);
-        map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
-
-        map.setFilter("property-highlight", [
-            "match",
-            ["get", "Name"],
-            ["20141160170000","20141150140000",
-            "20141110010000"],
-            true,
-            false
-        ]);
 
     // highlight parcel with bright horizon
     } else if (response.index === 15 || response.index === 16 
@@ -161,7 +142,7 @@ function handleStepEnter(response) {
 
     // highlight uchicgo medicine orlando park
     } else if (response.index === 17 || response.index === 18 ||
-               response.index === 19 
+               response.index === 19
     ) { 
         map.setPaintProperty("property-parcels", "fill-opacity", 0);
         map.setPaintProperty("exempt-parcels", "fill-opacity", 0);
