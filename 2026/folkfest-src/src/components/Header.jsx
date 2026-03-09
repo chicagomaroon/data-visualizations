@@ -157,7 +157,6 @@ const Header = ({ windowWidth, windowHeight }) => {
                 <a href="https://chicagomaroon.com/staff_name/nolan-shaffer/">
                     Nolan Shaffer
                 </a>
-                .
             </p>
             <Byline windowWidth={windowWidth} />
         </div>
