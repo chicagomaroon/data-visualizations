@@ -259,6 +259,15 @@ article {
     background-color: transparent;
 }
 
+/* Make maroon fill entire step-middle box when active */
+.step-middle.is-active {
+    background-color: #800000;
+}
+
+.step-middle.is-active p {
+    background-color: transparent;
+}
+
 .legend-box {
     position: absolute;
     top: 5vh;
