@@ -181,7 +181,7 @@ article {
 .step {
     margin: 0 auto 2rem auto;
     margin-bottom: 30vh;
-    background: white;
+    background: rgba(255, 255, 255, 0.889);
     box-shadow: 0 0 1em #dedede;
 }
 
@@ -206,7 +206,7 @@ article {
     display: block;
     position: relative;
     align-items: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.889);
 }
 
 .step a {
@@ -241,19 +241,22 @@ article {
     object-fit: contain;
 }
 
-.step[data-step='8'].is-active a {
-    color: white !important;
-    text-decoration: underline;
-}
-
 .step.is-active a {
-    color: white;
+    color: #800000;
     text-decoration: underline;
 }
 
 .step.is-active p {
-    background-color: #800000;
-    color: white;
+    color: black;
+}
+
+/* Make maroon fill entire step-middle box when active */
+.step-middle.is-active {
+    background-color: rgba(255, 255, 255, 0.889);
+}
+
+.step-middle.is-active p {
+    background-color: transparent;
 }
 
 /* Make maroon fill entire step-middle box when active */
@@ -348,7 +351,7 @@ article {
 }
 
 #outro {
-    height: 640px;
+    height: 140px;
 }
 
 /* mobile */

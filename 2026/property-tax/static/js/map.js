@@ -1,36 +1,11 @@
 /* map set-up */
 
 // add main map
-// var map = new maplibregl.Map({
-//     container: 'map',
-//     style: 'https://tiles.openfreemap.org/styles/positron',
-//     center: [-87.6086, 41.7942],
-//     zoom: 13,
-//     interactive: false
-// });
-
 var map = new maplibregl.Map({
     container: 'map',
     center: [-87.6079, 41.7942],
     zoom: 13.5,
     interactive: false,
-    // style: {
-    //     version: 8,
-    //     sources: {
-    //         satellite: {
-    //             type: "raster",
-    //             tiles: [
-    //                 "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2020_3857/default/g/{z}/{y}/{x}.jpg"
-    //             ],
-    //             tileSize: 256
-    //         }
-    //     },
-    //     layers: [{
-    //         id: "satellite",
-    //         type: "raster",
-    //         source: "satellite"
-    //     }]
-    // }
     style: {
         version: 8,
         sources: {
@@ -121,7 +96,7 @@ Promise.all([
             source: 'tax-exempt',
             paint: {
                 'fill-color': '#A52519',
-                'fill-opacity': 0.9
+                'fill-opacity': 0.8
             },
             filter: ['==', 'Name', '']
         });
@@ -133,7 +108,7 @@ Promise.all([
             source: 'properties',
             paint: {
                 'fill-color': '#A52519',
-                'fill-opacity': 0.9
+                'fill-opacity': 0.8
             },
             filter: ['==', 'Name', '']
         });
