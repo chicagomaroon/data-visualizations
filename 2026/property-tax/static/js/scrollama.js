@@ -72,11 +72,13 @@ function handleStepEnter(response) {
 
     if (response.index === 0) {
         // Show all property parcels, hide exempt parcels, clear any filters
-        map.setPaintProperty('property-parcels', 'fill-opacity', 1);
-        map.setPaintProperty('property-parcels', 'fill-color', '#A52519'); // Reset to maroon
+        map.setPaintProperty('property-parcels', 'fill-opacity', 0.8);
+        map.setPaintProperty('property-parcels', 'fill-color', '#A52519'); 
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setFilter('property-highlight', ['==', 'Name', '']);
         map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
+
 
         // switch from full to tax-exempt properties
     } else if (
@@ -91,14 +93,13 @@ function handleStepEnter(response) {
         response.index === 9 ||
         response.index === 10
     ) {
-        map.setPaintProperty('property-parcels', 'fill-opacity', 0.9);
-        map.setPaintProperty(
-            'property-parcels',
-            'fill-color',
-            'rgb(160, 105, 101)'
-        );
-        map.setPaintProperty('exempt-parcels', 'fill-opacity', 1);
+        map.setPaintProperty('property-parcels', 'fill-opacity', 0);
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0.8);
+        map.setPaintProperty('non-exempt-parcels', 'fill-color', 'rgb(154, 154, 154)');
+
+        map.setPaintProperty('exempt-parcels', 'fill-opacity', 0.8);
         map.setPaintProperty('exempt-parcels', 'fill-color', '#A52519');
+
         map.setFilter('property-highlight', ['==', 'Name', '']);
         map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
 
@@ -108,6 +109,7 @@ function handleStepEnter(response) {
         response.index === 12 ||
         response.index === 13
     ) {
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
 
@@ -126,6 +128,7 @@ function handleStepEnter(response) {
 
         // highlight parcel with reynolds, saieh and uchicago bookstore
     } else if (response.index === 14) {
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
 
@@ -139,6 +142,7 @@ function handleStepEnter(response) {
 
         // highlight parcel with bright horizon
     } else if (response.index === 15 || response.index === 16) {
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
 
@@ -156,6 +160,7 @@ function handleStepEnter(response) {
         response.index === 18 ||
         response.index === 19
     ) {
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
 
@@ -167,7 +172,8 @@ function handleStepEnter(response) {
             false
         ]);
     } else {
-        map.setPaintProperty('property-parcels', 'fill-opacity', 0.9);
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
+        map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
         map.setFilter('property-highlight', ['==', 'Name', '']);
     }
@@ -175,6 +181,7 @@ function handleStepEnter(response) {
 
 function handleStepExit(response) {
     if (response.index === 0 && response.direction === 'up') {
+        map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
         map.setFilter('property-highlight', ['==', 'Name', '']);

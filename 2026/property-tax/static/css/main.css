@@ -13,7 +13,7 @@ main {
 
 a {
     color: #800000;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a:hover {
@@ -210,7 +210,7 @@ article {
 }
 
 .step a {
-    color: black;
+    color: #800000;
     text-decoration: underline;
 }
 .step:first-child {

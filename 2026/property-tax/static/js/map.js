@@ -1,6 +1,7 @@
 /* map set-up */
 
 // add main map
+
 var map = new maplibregl.Map({
     container: 'map',
     center: [-87.6079, 41.7942],
@@ -37,6 +38,7 @@ Promise.all([
     d3.json('data/parcels.json')
 ]).then(([parcelData, exemptData]) => {
     map.on('load', async () => {
+        
         map.addSource('properties', {
             type: 'geojson',
             data: parcelData
@@ -58,14 +60,6 @@ Promise.all([
                     ['get', 'mailing_name'],
                     'University of Chicago',
                     '#A52519',
-                    'DePaul University',
-                    '#003DA5',
-                    'Loyola University',
-                    '#BE9112',
-                    'Northwestern University',
-                    '#833FE8',
-                    'University of Illinois',
-                    '#FF5F05',
                     '#99999901'
                 ],
                 'fill-opacity': 0
@@ -83,6 +77,22 @@ Promise.all([
                     ['get', 'owner_name'],
                     'University of Chicago',
                     '#A52519',
+                    '#99999901'
+                ],
+                'fill-opacity': 0
+            }
+        });
+
+        map.addLayer({
+            id: 'non-exempt-parcels',
+            type: 'fill',
+            source: 'properties',
+            filter: ['!', ['in', ['get', 'Name'], ['literal', exemptData.features.map(f => f.properties.Name)]]],
+            paint: {
+                'fill-color': [
+                    'match',
+                    ['get', 'mailing_name'],
+                    'University of Chicago', '#A52519',
                     '#99999901'
                 ],
                 'fill-opacity': 0
