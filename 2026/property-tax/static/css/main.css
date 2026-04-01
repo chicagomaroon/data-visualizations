@@ -348,6 +348,15 @@ article {
 /* mobile */
 
 @media (width < 800px) {
+
+    #background img[src="images/uchicago_pic.JPG"] {
+        display: none;
+    }
+
+    .photo-credit {
+        display: none;
+    }
+
     h1 {
         font-size: clamp(28px, 6vw, 40px);
         width: 90%;
@@ -363,8 +372,13 @@ article {
         width: 90vw;
     }
 
+    .step-container {
+        height: auto;
+    }
+
     .step-middle {
         width: 90vw;
+        margin-bottom: 35vh;
     }
 
     .step-not-middle {
@@ -387,11 +401,11 @@ article {
     }
 
     .step {
-        margin-bottom: 35vh;
+        margin-bottom: 40vh;
     }
 
     .step:has(img) {
-    margin-bottom: 50vh;
+    margin-bottom: 60vh;
     }
 
     #property-graph {
