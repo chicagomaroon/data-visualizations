@@ -101,6 +101,8 @@ th {
 #background {
     display: flex;
     flex-direction: row;
+    align-items: stretch;
+    height: 100vh;
 }
 
 #intro {
@@ -116,6 +118,11 @@ th {
 
 #background img {
     width: 50%;
+    object-fit: cover;
+}
+
+#background img[src="images/uchicago_pic.JPG"] {
+    max-height: 100%;
     object-fit: cover;
 }
 
