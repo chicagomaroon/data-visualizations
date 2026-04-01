@@ -624,7 +624,7 @@ const sankeyTitle = 'Revenue, Fiscal Year 2025';
 const sankeyCaption =
     'For clarity, assets from hospital services ($4.7 billion) are excluded. Net assets (total assets minus total liabilities) for FY25 were $633.8 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 const statementCaption =
-    'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
+    'Total investments are more than the amount in the endowment, $10.6 billion as of November 2025.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 
 // ------------------ SEQUENCE OF ACTIONS ------------------
 
@@ -766,7 +766,7 @@ const sequence = {
                             size: titleFontSize
                         },
                         showarrow: false,
-                        text: 'Total in endowment<br>$10.9 billion',
+                        text: 'Total investments<br>$11.8 billion',
                         x: 0.5,
                         y: 0.5
                     } // add title in center
@@ -778,9 +778,9 @@ const sequence = {
     'compare-schools': function () {
         const layout = createLayout(
             (title =
-                'Top 20 largest college endowments in the U.S., Fiscal Year 2024'),
+                'College endowments in the U.S. valued at over $10 billion, Fiscal Year 2024'),
             (caption =
-                'University systems consisting of multiple schools are excluded.<br>Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
+                'Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
             (showlegend = false)
         );
         Plotly.newPlot(
@@ -897,7 +897,7 @@ const sequence = {
 
         var layout = createLayout(
             (title =
-                'Change in proportion of endowment by asset type, 2005-2025'),
+                'Change in proportion of endowment by asset type, 2005–2025'),
             (caption =
                 'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
             (showlegend = true)
