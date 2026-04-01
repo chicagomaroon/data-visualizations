@@ -379,20 +379,25 @@ article {
     }
 
     #map {
-        height: 70vh;
+        height: 100vh;
     }
 
     #scrolly figure {
-        height: 70vh;
+        height: 100vh;
     }
 
     .step {
-        margin-bottom: 20vh;
+        margin-bottom: 35vh;
+    }
+
+    .step:has(img) {
+    margin-bottom: 50vh;
     }
 
     #property-graph {
-        width: 95vw;
+        display: none;
     }
+
 }
 
 /* Main fixed map */
