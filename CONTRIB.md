@@ -31,7 +31,6 @@ Interested in writing a story with the Maroon Data Team? Follow the steps below.
         - learn more about VS Code [here](https://uchicago-capp30121-aut-2022.github.io/capp-camp/s1-linux/2-vs-code-layout.html)
 
 4. Download node which will allow you to run Javascript, the programming language we use to write our visualizations in:
-
     - [node.js](https://nodejs.org/en) `v20.9.0`
         - For Mac or Linux:
             1. Install [Node Version Manager](https://github.com/nvm-sh/nvm) with `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash`.

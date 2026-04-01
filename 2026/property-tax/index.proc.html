@@ -1,0 +1,898 @@
+<html lang="en">
+    <head>
+        <title>Inside UChicago's Property Tax Exemption</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            property="og:title"
+            content="Inside UChicago's Property Tax Exemption"
+        />
+        <meta property="og:image" content="images/cover.jpg" />
+        <meta property="og:site_name" content="The Chicago Maroon" />
+        <meta
+            property="og:description"
+            content="UChicago, like other universities, is exempt from most property taxes. Some say it shouldn’t be."
+        />
+        <meta
+            property="og:url"
+            content="https://chicagomaroon.github.io/data-visualizations/2026/property-tax/"
+        />
+        <meta property="og:type" content="article" />
+        <meta property="og:article:author" content="Jinny Kim" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="images/maroon_logo_m_white.svg"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link rel="stylesheet" href="static/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.css"
+        />
+        <script src="https://unpkg.com/maplibre-gl@5.13.0/dist/maplibre-gl.js"></script>
+        <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
+    </head>
+
+    <body>
+        <main>
+            <section id="background">
+                <img src="images/from_above.png" />
+                <div id="intro">
+                    <a href="https://chicagomaroon.com/">
+                        <img
+                            height="40"
+                            style="margin: 2em auto; width: 100%"
+                            alt="The Chicago Maroon"
+                            src="images/maroon_logo_white.svg"
+                        />
+                    </a>
+                    <div>
+                        <h1>Inside UChicago's Property Tax Exemption</h1>
+                        <div id="subtitle">
+                            UChicago, like other universities, is exempt from
+                            most property taxes. Some say it shouldn’t be.
+                        </div>
+                        <hr style="width: 25vw" />
+                        <div id="bylines" style="margin-top: 2em">
+                            <div class="byline" id="byline">
+                                Written by
+                                <a
+                                    class="byline-link"
+                                    href="https://chicagomaroon.com/staff_name/jinny-kim/"
+                                    >Jinny Kim</a
+                                >
+                                <br />
+                                Data and development by
+                                <a
+                                    class="byline-link"
+                                    href="https://chicagomaroon.com/staff_name/jinny-kim/"
+                                    >Jinny Kim</a
+                                >
+                                <br />
+                                March 9, 2026
+                            </div>
+                        </div>
+                    </div>
+                    <i
+                        class="fa fa-angle-double-down"
+                        style="margin-bottom: 1em"
+                        aria-hidden="true"
+                    ></i>
+                </div>
+            </section>
+
+            <section id="content">
+                <div class="non-scroller" id="intro-text">
+                    <p>
+                        For more than a century, universities have been exempt
+                        from paying taxes on most of their properties. In
+                        Illinois, the Department of Revenue decides whether to
+                        grant exemptions to various types of nonprofit
+                        organizations for properties used for school, religious
+                        or charitable purposes.
+                    </p>
+                    <p>
+                        However, debates continue on whether public benefits
+                        from universities justify their significant tax
+                        exemptions.
+                    </p>
+                    <p>
+                        “These entities serve the public good. But times have
+                        changed, and many have become giant profit centers and
+                        some of the wealthiest and most powerful landowners in
+                        the state,” Andy Shaw, the former CEO of Better
+                        Government Association, a local government
+                        accountability advocacy group,
+                        <a
+                            href="https://www.chicagotribune.com/2026/01/07/opinion-chicago-property-taxes-hospitals-universities-exemption/"
+                            >wrote</a
+                        >
+                        in an op-ed in the <i>Chicago Tribune.</i>
+                    </p>
+                    <p>
+                        “Northwestern University, the University of Chicago,
+                        Rush, Northwestern Medicine and others sit on billions
+                        of dollars in tax-exempt real estate while surrounding
+                        neighborhoods and local governments strain to fund basic
+                        services and the rest of us face ever bigger tax bills.”
+                    </p>
+                    <p>
+                        The Chicago Teachers Union has
+                        <a
+                            href="https://www.ctulocal1.org/posts/chicago-is-not-broke-millions-on-the-table-if-wealthy-pay-their-fair-share//"
+                            >demanded</a
+                        >
+                        that the city collect voluntary payments from
+                        universities for years, arguing that wealthy
+                        institutions aren’t contributing their fair share to
+                        fund the city and its schools.
+                    </p>
+                    <p>
+                        What does all of this mean for the University of
+                        Chicago? Which of its properties are tax-exempt, and how
+                        much would they pay if they weren't exempt? What are the
+                        discussions surrounding its tax exemption?
+                    </p>
+                    <p
+                        style="
+                            text-align: center;
+                            margin-top: 10em;
+                            margin-bottom: 0;
+                            font-size: 0.8em;
+                        "
+                    >
+                        Scroll to Continue
+                    </p>
+
+                    <p
+                        style="
+                            text-align: center;
+                            padding-bottom: 20px;
+                            font-size: 3em;
+                            margin: 0;
+                        "
+                        id="scroll-down-arrow"
+                    >
+                        <i
+                            class="fa fa-angle-double-down"
+                            aria-hidden="true"
+                        ></i>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Fourth section (Main map) -->
+            <section id="scrolly">
+                <figure>
+                    <div id="map"></div>
+                </figure>
+
+                <article>
+                    <div class="step step-not-middle" data-step="0">
+                        <p>
+                            The University of Chicago owns about 400 properties.
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="1">
+                        <p>
+                            About 80 percent of them are tax-exempt, according
+                            to a <i>Maroon</i> analysis of Cook County’s
+                            property tax and parcel data.
+                        </p>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="2">
+                            <p>
+                                Most of the University's tax-exempt properties
+                                are academic buildings, but they also include
+                                hospitals.
+                                <br /><br />
+                                In Illinois, hospitals
+                                <a
+                                    href="https://www.ilga.gov/Documents/legislation/ilcs/documents/003502000K15-86.htm"
+                                    >qualify</a
+                                >
+                                for tax exemption if the value of certain
+                                services or activities, such as charity care or
+                                health services to low-income and underserved
+                                individuals, amounts to their estimated property
+                                tax liability. <br /><br />
+                                For example, UChicago Medicine invested more
+                                than $715 million in community benefits in
+                                fiscal 2024, including $567 million in
+                                uncompensated care,
+                                <a
+                                    href="https://community.uchicagomedicine.org/2024/investment.html"
+                                    >according</a
+                                >
+                                to its Community Benefit Report.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="3">
+                            <p>
+                                University properties, however, do not have such
+                                <a
+                                    href="https://www.ilga.gov/legislation/ILCS/details?MajorTopic=&Chapter=&ActName=Property%20Tax%20Code.&ActID=596&ChapterID=8&ChapAct=35+ILCS+200%2F&SeqStart=38400000&SeqEnd=43899999"
+                                    >requirements</a
+                                >. They are eligible for exemption if used
+                                exclusively for school purposes, and not used
+                                with a view to profit. In Illinois, this
+                                includes housing for students, their spouses and
+                                children, and staff.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="4">
+                            <p>
+                                Universities receive tax exemptions because they
+                                are providing valuable services to the public,
+                                said Chris Berry, a professor at UChicago’s
+                                Harris School of Public Policy.
+                                <br /><br />
+                                “There's a rationale to it, which is that the
+                                city thinks the thing that they're doing is
+                                providing value unto itself,” Berry added. “I
+                                think in the case of certainly the University of
+                                Chicago, there's a lot of benefits that it
+                                creates for the city.”
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="5">
+                            <p>
+                                But understanding the extent of the University’s
+                                public benefits is a challenging task.
+                                <br /><br />
+                                “What are the benefits of providing these
+                                exemptions to colleges and universities? I'm
+                                guessing that pretty often you end up in an
+                                abstract place. You start talking about their
+                                value as job creators, their value as supporting
+                                business activity in your communities,” said
+                                Paula Worthington, a lecturer at Harris.
+                                <br /><br />
+                                “The reason those are sort of harder-to-evaluate
+                                claims is that if the University of Chicago was
+                                not in Hyde Park, doing whatever it does,
+                                something else would be happening on those
+                                properties. There'd be other jobs, they just
+                                wouldn't be jobs related to the University. So
+                                what the net impact is is not always easy to
+                                identify and articulate.”
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="6">
+                            <p>
+                                Some academics and community members also point
+                                out that universities have significant, and
+                                often unchecked,
+                                <a
+                                    href="https://chicagomaroon.github.io/data-visualizations/2025/uchicago-property/"
+                                    >influence</a
+                                >
+                                on the economic and social landscape of their
+                                surrounding neighborhood.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="7">
+                            <p>
+                                “Few understand higher education’s national role
+                                in the devastating history of demolition and
+                                displacement of stable communities during the
+                                Urban Renewal period," author and urban
+                                historian Davarian Baldwin wrote in his book
+                                <i>In the Shadow of the Ivory Tower</i>.
+                                <br /><br />
+                                “When neighborhoods are targeted for campus
+                                expansion, the people who live there face the
+                                enduring trauma of losing their homes and the
+                                physical disruption of their cultural ties."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="8">
+                            <p>
+                                Additionally, as university activities become
+                                more intricately linked to commercial interests,
+                                their tax-exempt status could become a sharper
+                                point of contention. <br /><br />
+                                “At some point, you are not just a
+                                university—you are also a hedge fund. You are
+                                also mobilizing billions of dollars that you are
+                                profiting off of,” said Wally Hilke, a professor
+                                at the Northwestern Pritzker School of Law.
+                                <br /><br />
+                                “When businesses or corporate interests are
+                                profiting, it is fair for the public to ask,
+                                ‘how much do we need to be subsidizing these
+                                private interests, and how much should we be
+                                making sure that, like any other project
+                                primarily for private benefit, the interests
+                                that are profiting should pay taxes back to the
+                                public?’”
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-container">
+                        <div class="step step-middle" data-step="9">
+                            <p>
+                                “No one is suggesting taxing classrooms or
+                                charity wards like luxury condos,” Shaw wrote in
+                                his op-ed. “But research labs, administrative
+                                towers, medical office buildings, parking
+                                garages and revenue-generating facilities are
+                                fair game for a serious reassessment.”
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="10">
+                        <p>
+                            UChicago’s tax-exempt properties include some
+                            <b>mixed-use units</b>. Typically, universities pay
+                            taxes on properties used for commercial purposes and
+                            pay proportional taxes on mixed-use units.
+                            <br /><br />
+                            But exemption
+                            <a
+                                href="https://usedulaw.com/125-tax-exemptions-for-colleges-and-universities.html"
+                                >eligibility</a
+                            >
+                            depends on the Department of Revenue and the courts’
+                            interpretation of the state law.
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="11">
+                        <p>
+                            On 55th St, Campus North Parking greets those
+                            entering campus. <br /><br />But this building is
+                            not only a 4-level parking garage. <br /><br />
+                            <img
+                                src="images/Parking_Garage.jpeg"
+                                alt="Campus North Parking garage"
+                            />
+                            <span
+                                style="
+                                    display: block;
+                                    font-style: italic;
+                                    font-size: 0.7em;
+                                    max-width: 90%;
+                                    margin: 0.3em auto 0 auto;
+                                    text-align: center;
+                                "
+                            >
+                                Photo taken by Damian Almeida
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="12">
+                        <p>
+                            It also houses Roux, a restaurant, and Seven Ten
+                            Social, a bar with a bowling alley. <br /><br />
+                            <img src="images/RouxInside.jpeg" />
+                            <span
+                                style="
+                                    display: block;
+                                    font-style: italic;
+                                    font-size: 0.7em;
+                                    max-width: 90%;
+                                    margin: 0.3em auto 0 auto;
+                                    text-align: center;
+                                "
+                            >
+                                Photo taken by Damian Almeida
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="13">
+                        <p>
+                            In an emailed response to the
+                            <i>Maroon’s</i> questions, a University spokesperson
+                            wrote that “this building is primarily used for
+                            parking and office space supporting the University’s
+                            educational mission.” <br /><br />
+                            The University is “assessing the background of this
+                            building’s exemption to maintain compliance,” the
+                            spokesperson wrote.
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="14">
+                        <p>
+                            Pret A Manger in Reynolds, Starbucks in Saieh Hall,
+                            and Chicago French Press in UChicago Bookstore are
+                            also examples of commercial activities in buildings
+                            that are tax-exempt. <br /><br />
+                            <img src="images/FrenchPressInside.jpeg" />
+                            <span
+                                style="
+                                    display: block;
+                                    font-style: italic;
+                                    font-size: 0.7em;
+                                    max-width: 90%;
+                                    margin: 0.3em auto 0 auto;
+                                    text-align: center;
+                                "
+                            >
+                                Photo taken by Damian Almeida
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="15">
+                        <p>
+                            The threshold for "exemption" is a question of state
+                            law and has been contested in the court by the
+                            University before.
+                            <br />
+                            <br />
+                            In tax year 2015, UChicago and Bright Horizons, a
+                            child care company, sought a property-tax exemption
+                            for two on-campus daycares. This was rejected by the
+                            Department of Revenue in 2016.
+                            <br /><br />
+                            <img src="images/Exterior3.jpeg" />
+                            <span
+                                style="
+                                    display: block;
+                                    font-style: italic;
+                                    font-size: 0.7em;
+                                    max-width: 90%;
+                                    margin: 0.3em auto 0 auto;
+                                    text-align: center;
+                                "
+                            >
+                                Photo taken by Damian Almeida
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="16">
+                        <p>
+                            In 2020, the state appellate court
+                            <a
+                                href="https://ilcourtsaudio.blob.core.windows.net/antilles-resources/resources/223929b2-51a2-4234-b1e7-8938008321c4/University%20of%20Chicago%20v.%20Department%20of%20Revenue,%202020%20IL%20App%20(1st)%20191195.pdf"
+                                >upheld</a
+                            >
+                            the Department's decision, finding that the
+                            properties were "used with a view to profit," as
+                            Bright Horizons had earned about $940,000 in profits
+                            from their operation.
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="17">
+                        <p>There's also the issue of unpaid property taxes.</p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="18">
+                        <p>
+                            UChicago Medicine in Orland Park, a suburb about 30
+                            miles away from Hyde Park, owes the county about
+                            $1.1 million of unpaid tax bills including interest
+                            from tax year 2022 to 2024.
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="19">
+                        <p>
+                            The University told the <i>Maroon</i> that the
+                            property is owned by the Village of Orland Park and
+                            leased by UChicago Medicine.
+                        </p>
+                    </div>
+
+                    <div class="step step-not-middle" data-step="20">
+                        <p>
+                            However, according to the Cook County Assessors
+                            Office, this property is under a leasehold
+                            agreement, meaning that the lessee is the
+                            responsible taxpayer.
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Fifth section (Static text) -->
+            <section id="second-content">
+                <div class="wide-container">
+                    <div id="property-graph"></div>
+                </div>
+
+                <script>
+                    function drawChart() {
+                        d3.select('#property-graph').select('svg').remove();
+                        d3.select('#property-graph').select('div').remove();
+
+                        const container =
+                            document.querySelector('#property-graph');
+                        const bounds = container.getBoundingClientRect();
+                        const width = Math.min(container.clientWidth, 1000);
+                        const height = 600;
+
+                        const margin = {
+                            top: 100,
+                            right: 70,
+                            bottom: 80,
+                            left: 70
+                        };
+                        const plot_height = height - margin.top - margin.bottom;
+                        const plot_width = width - margin.left - margin.right;
+
+                        let uni_value = [];
+
+                        let div_property = d3
+                            .select('#property-graph')
+                            .append('svg')
+                            .attr('width', width)
+                            .attr('height', height);
+
+                        const plot = div_property
+                            .append('g')
+                            .attr(
+                                'transform',
+                                `translate(${margin.left},${margin.top})`
+                            );
+
+                        d3.csv('data/land_value_estimate.csv').then((data) => {
+                            const scaleX = d3
+                                .scaleBand()
+                                .domain(data.map((d) => d.owner_name))
+                                .range([0, plot_width])
+                                .padding(0.4);
+
+                            const scaleY = d3
+                                .scaleLinear()
+                                .domain([
+                                    0,
+                                    d3.max(data, (d) => d.land_value_million)
+                                ])
+                                .range([plot_height, 0]);
+
+                            const colorScale = {
+                                'University of Chicago': '#A52519',
+                                'DePaul University': '#003DA5',
+                                'Loyola University': '#BE9112',
+                                'Northwestern University': '#833FE8',
+                                'University of Illinois': '#FF5F05'
+                            };
+
+                            const darkerColor = {
+                                'University of Chicago': '#7F1B13',
+                                'DePaul University': '#002F84',
+                                'Loyola University': '#98740F',
+                                'Northwestern University': '#652FCC',
+                                'University of Illinois': '#CC4C04'
+                            };
+
+                            plot.selectAll('rect')
+                                .data(data)
+                                .enter()
+                                .append('rect')
+                                .attr('x', (d) => scaleX(d.owner_name))
+                                .attr('y', (d) => scaleY(d.land_value_million))
+                                .attr('width', scaleX.bandwidth())
+                                .attr(
+                                    'height',
+                                    (d) =>
+                                        plot_height -
+                                        scaleY(d.land_value_million)
+                                )
+                                .attr('fill', (d) => colorScale[d.owner_name]);
+
+                            let tooltip = d3
+                                .select('#property-graph')
+                                .append('div')
+                                .style('position', 'absolute')
+                                .style('text-shadow', '1px 0 10px #000000')
+                                .style('color', 'white')
+                                .style('font-weight', 'bold')
+                                .style('visibility', 'hidden');
+
+                            plot.selectAll('rect')
+                                .on('mouseover', function (event, d) {
+                                    const [x, y] = d3.mouse(this);
+
+                                    d3.select(this).attr(
+                                        'fill',
+                                        (d) => darkerColor[d.owner_name]
+                                    );
+
+                                    tooltip
+                                        .style('visibility', 'visible')
+                                        .text(
+                                            '$' +
+                                                event.land_value_million +
+                                                ' million'
+                                        )
+                                        .style('font-size', '10px')
+                                        .style(
+                                            'left',
+                                            x + margin.left + 10 + 'px'
+                                        )
+                                        .style(
+                                            'top',
+                                            y + margin.top + 10 + 'px'
+                                        );
+                                })
+
+                                .on('mousemove', function (event, d) {
+                                    const [x, y] = d3.mouse(this);
+
+                                    tooltip
+                                        .style(
+                                            'left',
+                                            x + margin.left + 10 + 'px'
+                                        )
+                                        .style(
+                                            'top',
+                                            y + margin.top + 10 + 'px'
+                                        );
+                                })
+
+                                .on('mouseout', function (event, d) {
+                                    d3.select(this).attr(
+                                        'fill',
+                                        (d) => colorScale[d.owner_name]
+                                    );
+
+                                    tooltip.style('visibility', 'hidden');
+                                });
+
+                            plot.append('g')
+                                .attr(
+                                    'transform',
+                                    `translate(0, ${plot_height})`
+                                )
+                                .call(d3.axisBottom(scaleX))
+                                .selectAll('text')
+                                .style('text-anchor', 'middle')
+                                .style('font-size', '14px')
+                                .style('font-family', 'Georgia');
+
+                            plot.append('g')
+                                .call(d3.axisLeft(scaleY))
+                                .style('font-size', '14px')
+                                .style('font-family', 'Georgia');
+
+                            plot.append('text')
+                                .attr('class', 'y-axis-title')
+                                .attr('x', -plot_height / 2)
+                                .attr('y', -50)
+                                .attr('transform', 'rotate(-90)')
+                                .attr('text-anchor', 'middle')
+                                .style('font-size', '15px')
+                                .style('font-family', 'Georgia')
+                                .style('fill', 'black')
+                                .text('Market value estimate (million $)');
+
+                            div_property
+                                .append('text')
+                                .attr('x', width / 2)
+                                .attr('y', 40)
+                                .attr('text-anchor', 'middle')
+                                .style('font-size', '20px')
+                                .style('font-weight', '600')
+                                .style('font-family', 'Georgia')
+                                .style('fill', 'black')
+                                .text(
+                                    'Universities own about $2 billion worth of land in Cook County'
+                                );
+
+                            plot.append('text')
+                                .attr('x', 0)
+                                .attr('y', plot_height + 60)
+                                .attr('text-anchor', 'start')
+                                .style('font-size', '12px')
+                                .style('fill', '#555555')
+                                .text(
+                                    'Note: The University of Illinois is a public university unlike the other four institutions.'
+                                );
+                        });
+                    }
+
+                    drawChart();
+
+                    window.addEventListener('resize', drawChart);
+                </script>
+
+                <div class="non-scroller">
+                    <p>
+                        <br />
+                        If UChicago was a typical residential property owner, it
+                        would have paid about an additional $8 million in
+                        property taxes in fiscal 2024, according to land value
+                        estimates based on Cook County’s parcel data.
+                    </p>
+                    <p>
+                        For the five universities in Chicago, this would add up
+                        to about $30 million. Mayor Brandon Johnson’s Financial
+                        Future Task Force has
+                        <a
+                            href="https://cdn.prod.website-files.com/68bb0c7a3993328cb1f875a6/68c9742e20efecbd01ee5692_CFFTF_Interim%20Report_2025.pdf"
+                            >proposed</a
+                        >
+                        the city collect $20 million in annual voluntary
+                        payments from educational institutions as one way to
+                        address the city’s budget crisis.
+                        <br /><br />
+                    </p>
+                    <p>
+                        The $30 million figure is likely a significant
+                        underestimate, however, as land value figures do not
+                        incorporate building value.
+                        <br /><br />
+                        For example, the residential property at 5756 South
+                        Kimbark Avenue, next to the Booth School of Business,
+                        had a building value of $183,000 but a land value of
+                        about $28,000 in tax year 2024.
+                    </p>
+                    <p>
+                        It also is not easy to identify all the properties that
+                        the University owns, because it can
+                        <a
+                            href="https://www.wbez.org/housing/2025/09/05/chicago-landlords-renters-property-management-llc"
+                            >own</a
+                        >
+                        properties as limited liability companies, known as
+                        LLCs, which do not have to disclose the owners.
+                        <br /><br />
+                    </p>
+
+                    <figure style="text-align: center; margin: 2em 0">
+                        <img
+                            src="images/colleges-pilot.png"
+                            alt=""
+                            style="
+                                display: block;
+                                max-width: 90%;
+                                height: auto;
+                                margin: 0 auto;
+                            "
+                        />
+                        <figcaption
+                            style="
+                                font-style: italic;
+                                font-size: 0.7em;
+                                margin-top: 0.5em;
+                            "
+                        >
+                            Photo by Steve Klamkin, WPRO News
+                        </figcaption>
+                    </figure>
+
+                    <p>
+                        <br />
+                        In some cities, universities contribute through payment
+                        in lieu of taxes, which are voluntary payments to
+                        partially compensate local governments.
+                        <br /><br />
+                        In 2023, four colleges in Providence, including Brown
+                        University, struck an agreement with the city to pay
+                        more than $200 million over the next 20 years. Harvard
+                        University has paid the city of Cambridge $40 million in
+                        payment in lieu of taxes in the last 10 years.
+                        <br /><br />
+                        In Chicago, community organizations, such as ONE
+                        Northside, are advocating for universities in the city
+                        to also participate in the payments in lieu of taxes.
+                    </p>
+                    <p>
+                        “Now, more than ever, we need to see progressive revenue
+                        options, and we see the PILOT program as one of those
+                        ways of really achieving that,” said Jesse Hoyt,
+                        executive director of ONE Northside.
+                        <br /><br />
+                        <br /><br />
+                        Developing payment in lieu of taxes as a reliable source
+                        of revenue for a city requires trust over periods of
+                        time and clear articulation about the value of the
+                        relationships, Worthington said.
+                        <br /><br />
+                        “Building trust and using that trust to have meaningful
+                        conversations is about acknowledging that it's a two way
+                        relationship, that the university provides things that
+                        are special to the city and its residents, but the city
+                        also provides things that are special and crucial to the
+                        university,” Worthington said.
+                        <br /><br />
+                        “The university cannot erect a physical or virtual
+                        barrier boundary around itself and say, ‘We're kind of a
+                        standalone thing. We don't really have to care what's
+                        happening for the city as a whole.’”
+                    </p>
+                    <p>
+                        <br /><br />
+                        For now, the discussion remains open, and it is unclear
+                        how the city will move forward with voluntary payments
+                        from universities.
+                        <br /><br />
+                        “A good place to start would be by asking people who are
+                        most impacted by these exemptions which enable
+                        universities to grow bigger than they would otherwise,”
+                        Hilke said.
+                        <br /><br />
+                        “In the case of Chicago universities and colleges,
+                        that’s their neighbors. That’s whoever lives nearby and
+                        are impacted by the license of the college to grow the
+                        way it does without taxation.”
+                        <br /><br /><br />
+                    </p>
+                </div>
+
+                <div class="non-scroller" style="font-size: 13px">
+                    <hr width="100%" size="1" />
+                    <p>
+                        <b>Methodology</b>
+                        <br /><br />1. To identify properties owned by the
+                        universities, we analyzed datasets from Cook County's
+                        Assessor's Office. The analysis filtered for parcels
+                        owned by the universities based on names. We included
+                        properties owned by Lake Park Associates in UChicago’s
+                        holdings, as it is an
+                        <a
+                            href="https://www.causeiq.com/organizations/lake-park-associates,366111317/"
+                            >identified</a
+                        >
+                        subsidiary that acquires and manages property on behalf
+                        of the University. We used the parcel addresses dataset
+                        to identify parcels and the property tax-exempt parcels
+                        dataset to identify tax-exempt parcels.
+
+                        <br /><br />2. The analysis estimated the universities'
+                        property value by calculating the median land value per
+                        square footage in neighborhoods that the universities
+                        owned properties in from the assessed value dataset.
+                        Neighborhoods identified by the Assessor’s Office are
+                        intended to represent homogenous housing submarkets and
+                        are distinct from community areas. <br /><br />
+                        We excluded parcels that have Board of Review–certified
+                        land value less than $100 to remove unusually small
+                        parcels or anomalous records that could result in
+                        distorted estimates. We also limited the data to tax
+                        year 2024. We multiplied the assessed value by 10 to
+                        approximate the market value, an approach recommended by
+                        a property tax expert. We estimated property taxes at
+                        1.5 percent, Chicago’s 2022 effective tax rate on median
+                        valued residential properties, according to the Civic
+                        Federation.
+                    </p>
+                </div>
+            </section>
+
+            <section id="outro"></section>
+        </main>
+
+        <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+        <script src="https://unpkg.com/scrollama"></script>
+        <script src="static/js/stickyfill.min.js"></script>
+        <script src="static/js/scrollama.min.js"></script>
+        <script src="static/js/map.js"></script>
+        <script src="static/js/scrollama.js"></script>
+    </body>
+</html>

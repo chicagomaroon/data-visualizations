@@ -5,7 +5,12 @@ jquery*
 README.md
 .github
 *.min.html
+**/assets/**
+**/dist/**
+**/build/**
 
 # Directories and files to ignore
+node_modules/
 2015/dev-files/raw-data.json
 static_imports/
+2016/

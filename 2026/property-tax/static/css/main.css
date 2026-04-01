@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ---------------- GENERAL ---------------- */
+html,
+body,
+main {
+    height: 100%;
+    margin: 0;
+    line-height: 1.6em;
+    font-size: 16px;
+    font-family: 'Georgia', serif;
+}
+
+a {
+    color: #800000;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 0 auto;
+    width: 60%;
+    font-size: 50px;
+    line-height: 1em;
+    text-align: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    line-height: 1.2em;
+    width: 60%;
+}
+
+hr {
+    margin: 2em auto;
+}
+
+/* text */
+
+table {
+    border-radius: 5px;
+}
+
+td {
+    padding: 20px;
+    background-color: white;
+    text-align: left;
+    border-bottom: none;
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5em;
+}
+
+tr {
+    border: none;
+}
+
+th {
+    background-color: #800000;
+    color: white;
+    padding: 20px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.first-column {
+    font-size: 16px;
+    color: black;
+    line-height: 1.2em;
+}
+
+.fa {
+    text-align: center;
+    font-size: 50px;
+    color: rgb(225, 225, 225);
+    width: 100%;
+}
+
+#subtitle {
+    font-size: 28px;
+    line-height: 1.2em;
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.cursor-crosshair {
+    cursor: pointer !important;
+}
+
+/* ---------------- INTRO ---------------- */
+
+#background {
+    display: flex;
+    flex-direction: row;
+}
+
+#intro {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(77, 0, 0);
+    color: white;
+    text-align: center;
+}
+
+#background img {
+    width: 50%;
+    object-fit: cover;
+}
+
+.byline a {
+    text-decoration: underline !important;
+}
+
+.hoverlayer .hoverlabel rect {
+    transform: scale(1.05); /* increase by 5% */
+    transform-origin: center;
+}
+
+#intro a {
+    color: white;
+}
+
+#bylines {
+    font-size: 16px;
+    text-align: center;
+}
+
+.byline a {
+    text-decoration: underline;
+}
+
+/* ---------------- SCROLLAMA / MAP ---------------- */
+
+#scrolly {
+    position: relative;
+    padding: 0;
+    width: 100vw;
+}
+
+#scrolly figure {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    margin: 0;
+}
+
+#map {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+article {
+    position: relative;
+    padding: 0;
+    max-width: none;
+    margin: 0 auto;
+}
+
+/* Each step */
+.step {
+    margin: 0 auto 2rem auto;
+    margin-bottom: 30vh;
+    background: rgba(255, 255, 255, 0.889);
+    box-shadow: 0 0 1em #dedede;
+}
+
+.step-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+}
+
+.step-not-middle {
+    max-width: 27rem;
+    margin-left: 2rem;
+}
+
+.step-middle {
+    width: 70vw;
+    margin: 0rem 0rem;
+    padding: 0rem;
+    height: auto;
+    display: block;
+    position: relative;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.889);
+}
+
+.step a {
+    color: #800000;
+    text-decoration: underline;
+}
+.step:first-child {
+    margin-top: 0;
+}
+
+#scrolly article::after {
+    content: '';
+    display: block;
+    height: 10rem;
+}
+
+.step p {
+    text-align: left;
+    padding: 2rem;
+    font-size: 1.1rem;
+}
+
+.step p,
+.step img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    margin: 1rem 0;
+    margin-top: 1rem;
+    object-fit: contain;
+}
+
+.step.is-active a {
+    color: #800000;
+    text-decoration: underline;
+}
+
+.step.is-active p {
+    color: black;
+}
+
+/* Make maroon fill entire step-middle box when active */
+.step-middle.is-active {
+    background-color: rgba(255, 255, 255, 0.889);
+}
+
+.step-middle.is-active p {
+    background-color: transparent;
+}
+
+.legend-box {
+    position: absolute;
+    top: 5vh;
+    right: 2vw;
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 1em #dedede;
+    font-size: 12px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ---------------- CONTENT / TEXT ---------------- */
+
+.non-scroller,
+.section-header {
+    margin: auto;
+    width: max(600px, 50vw);
+}
+
+#second-content {
+    margin-top: 6vh;
+}
+
+#second-content img {
+    display: block;
+    margin-top: 2em;
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    max-height: 100%;
+}
+
+#second-content .figcaption {
+    background: #ffffff;
+    color: #484646;
+    font-size: 0.8rem;
+    margin-bottom: 2em;
+}
+
+#methodology {
+    font-size: 14px;
+    line-height: 1.2em;
+    margin: 4em auto;
+}
+
+#content,
+#intro-text {
+    margin-top: 10vh;
+}
+
+.wide-container {
+    width: 100%;
+    margin: 2em auto;
+    justify-content: center;
+    display: flex;
+}
+
+.wide-container figure {
+    margin: 0 auto;
+}
+
+.wide-container img {
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+#property-graph {
+    width: 100%;
+    max-width: 1000px;
+    margin: 2em auto;
+    position: relative;
+    margin-bottom: 0;
+}
+
+#outro {
+    height: 140px;
+}
+
+/* mobile */
+
+@media (width < 800px) {
+    h1 {
+        font-size: clamp(28px, 6vw, 40px);
+        width: 90%;
+    }
+
+    #subtitle {
+        font-size: 20px;
+        width: 90%;
+    }
+
+    .non-scroller,
+    .section-header {
+        width: 90vw;
+    }
+
+    .step-middle {
+        width: 90vw;
+    }
+
+    .step-not-middle {
+        max-width: 90vw;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .step p {
+        font-size: 16px;
+        padding: 1.5rem;
+    }
+
+    #map {
+        height: 70vh;
+    }
+
+    #scrolly figure {
+        height: 70vh;
+    }
+
+    .step {
+        margin-bottom: 20vh;
+    }
+
+    #property-graph {
+        width: 95vw;
+    }
+}
+
+/* Main fixed map */
+
+@media (min-width: 840px) {
+    .nav__examples {
+        margin-top: 0;
+        margin-left: 2rem;
+    }
+}

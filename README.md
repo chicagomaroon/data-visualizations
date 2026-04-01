@@ -11,7 +11,7 @@ for simple, interactive data visualization in a variety of formats. For map-base
 ## Interested in joining?
 
 The *Maroon*'s Data Team is an excellent place to learn new tools while developing extracurricular skills in data collection, analysis, and storytelling. Many of our team members join with little to no experience in any of these systems. We provide a flexible, low-stakes environment with ample support for new members to learn, grow, and publish a final product they can be proud of. If you are interested in joining our team, please fill out the *Maroon*'s [interest form](https://chicagomaroon.com/apply/) and we will reach out to get to know you and find a 
-meaningful project you would like to work on. If you have any further questions, feel free to reach out to one or both of the team's Lead Developers, [Nikhil Patel](nvp15@uchicago.edu) and [Austin Steinhart](asteinhart@uchicago.edu).
+meaningful project you would like to work on. If you have any further questions, feel free to reach out to one or both of the team's Lead Developers, [Nikhil Patel](nvp15@uchicago.edu) and [Jinny Kim](ekim1208@uchicago.edu).
 
 ## Interested in contributing?
 
