@@ -844,9 +844,8 @@ summary_df[["Sector", "ValueThousands", "Top5"]].rename(
     }
 ).to_json("data/sec-sectors-2025.json", orient="records")
 
-# %% get all statements: manual copying was easier than camelot parsing
-
 # %% get parsed financial statements
+# manual copying was easier than camelot parsing
 
 fs = pd.read_csv("financial-statements.csv")
 
@@ -995,9 +994,7 @@ for file in os.listdir("../endowment-sec/990"):
 coi = pd.DataFrame(conflictsOfInterest)
 coi.to_csv("conflicts-of-interest.csv", index=False)
 
-# %% flowchart: get 990 conflict of interest data
-# unlike the other data, this one is used to create a chart in Figma, which is then exported to SVG
-# so this has no Python/JSON output, just visual inspection
+# %% flowchart and facet chart: get 990 conflict of interest data
 
 coi = pd.read_csv("conflicts-of-interest.csv")
 
