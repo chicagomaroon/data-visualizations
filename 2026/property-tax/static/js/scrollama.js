@@ -5,31 +5,43 @@ var scrolly = main.select('#scrolly');
 var figure = scrolly.select('figure');
 var article = scrolly.select('article');
 var step = article.selectAll('.step');
-
 var scroller = scrollama();
+
+// detect mobile
+var isMobile = window.innerWidth < 800;
+
+// add mobile coordinates
+var group1 = { center: isMobile ? [-87.594196, 41.795186] : [-87.6079, 41.7942], 
+                zoom: isMobile ? 12.5 : 13.5, pitch: 0, bearing: 0 }
+var group2 = { center: isMobile ? [-87.594196, 41.795186] : [-87.6086, 41.7942], 
+                zoom: 12.5, pitch: 0, bearing: 0 }
+var group3 = { center: isMobile ? [-87.600578, 41.794210] : [-87.6012, 41.7944], 
+                zoom: isMobile ? 16 : 16, pitch: 0, bearing: 0 }
+var group4 = { center: isMobile ? [-87.587142, 41.789127] : [-87.589, 41.7896], 
+                zoom: isMobile ? 16 : 16, pitch: 0, bearing: 0 }
+var group5 = { center: isMobile ? [-87.854289, 41.631216] : [-87.8567, 41.6312], 
+                zoom: isMobile ? 16 : 16, pitch: 0, bearing: 0 }
+
+
+
 
 // add steps
 var stepLocations = {
-    0: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    1: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    2: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    3: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    4: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    5: { center: [-87.6079, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    6: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
-    7: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
-    8: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
-    9: { center: [-87.6086, 41.7942], zoom: 12.5, pitch: 0, bearing: 0 },
-    10: { center: [-87.6086, 41.7942], zoom: 13.5, pitch: 0, bearing: 0 },
-    11: { center: [-87.6012, 41.7944], zoom: 16, pitch: 0, bearing: 0 },
-    12: { center: [-87.6012, 41.7944], zoom: 16, pitch: 0, bearing: 0 },
-    13: { center: [-87.6012, 41.7944], zoom: 16, pitch: 0, bearing: 0 },
-    14: { center: [-87.6018, 41.7898], zoom: 16, pitch: 0, bearing: 0 },
-    15: { center: [-87.589, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
-    16: { center: [-87.589, 41.7896], zoom: 16, pitch: 0, bearing: 0 },
-    17: { center: [-87.8567, 41.6312], zoom: 16, pitch: 0, bearing: 0 },
-    18: { center: [-87.8567, 41.6312], zoom: 16, pitch: 0, bearing: 0 },
-    19: { center: [-87.8567, 41.6312], zoom: 16, pitch: 0, bearing: 0 }
+    0: group1, 1: group1, 2: group1, 3: group1, 4: group1, 5: group1,
+
+    6: group2, 7: group2, 8: group2, 9: group2,
+
+    10: { center: isMobile ? [-87.594196, 41.795186] : [-87.6086, 41.7942], 
+                zoom: isMobile ? 12.5 : 13.5, pitch: 0, bearing: 0 },
+
+    11: group3, 12: group3, 13: group3,
+
+    14: { center: isMobile ? [-87.599623, 41.789554] : [-87.6018, 41.7898], 
+                zoom: isMobile ? 15 : 16, pitch: 0, bearing: 0 },
+
+    15: group4, 16: group4,
+    
+    17: group5, 18: group5, 19: group5
 };
 
 function setupStickyfill() {
