@@ -84,7 +84,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
     return {
         title: {
             text: title,
-            x: isMobileLike ? 0.035 : 0.025,
+            x: 'center',
             y: isMobileLike ? 0.82 : 0.93, // vertical position (1 = top, 0 = bottom)
             font: {
                 size: titleFontSize
@@ -642,6 +642,10 @@ const sequence = {
                 width: isMobileLike ? 700 : null,
                 margin: {
                     b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
                 }
             },
             {
@@ -663,6 +667,10 @@ const sequence = {
                 width: isMobileLike ? 700 : null,
                 margin: {
                     b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
                 }
             },
             {
@@ -711,12 +719,9 @@ const sequence = {
                 margin: {
                     b: isMobileLike ? 60 : 120
                 },
-                font: {
-                    size: bodyFontSize,
-                    family: 'Georgia',
-                    color: sankey_data.map((d) =>
-                        d.to.includes('endowment') ? '#000000' : '#DDDDDD'
-                    )
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
                 }
             },
             {
@@ -738,6 +743,10 @@ const sequence = {
                 width: isMobileLike ? 700 : null,
                 margin: {
                     b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
                 }
             },
             {
@@ -948,10 +957,6 @@ const sequence = {
                     tickfont: {
                         size: axisFontSize
                     }
-                },
-                title: {
-                    ...layout.title,
-                    x: isMobileLike ? 0.13 : 0.18
                 }
             },
             config
