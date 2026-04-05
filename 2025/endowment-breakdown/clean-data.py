@@ -1,6 +1,6 @@
 """
 - Use SEC API to download all UChicago SEC filings since 1994
-- Use Yahoo Finance as well as company-specific sites to identify holdings and sector information for each holding
+- Use company-specific sites to identify holdings and sector information for each holding
 - Compile financial statements
 - Prepare data for each chart
 """
@@ -429,9 +429,10 @@ def get_holdings(company, ticker, pages=51):
 
             # Select the nth option (e.g., 3rd option, index starts at 0)
             Select(turn_page).select_by_index(i)  # 2 for the 3rd option
-        except:
+        except Exception as e:
             turn_page = driver.find_element(By.CSS_SELECTOR, "#allHoldingsTable_next")
             turn_page.send_keys(Keys.RETURN)
+            print(f"Error: {e}")
 
         # get the table info
         try:
@@ -510,18 +511,19 @@ def process_holdings(data, company, ticker):
 
     # calculate how much UChicago invested in each individual holding as a function of percent of a known invested portfolio stock
     # eg, we know UChicago invested $X in VOO; if APPL is .1% of VOO, then how many dollars is UChicago invested in APPL?
-    uc_invested_dollars = (
+    uc_invested_thousands = (
         sec.sort_values("Date", ascending=False)
         .loc[(sec["Ticker"] == ticker), "ValueThousands"]
         .values[0]
-        * 1000
     )
-    df["amt"] = df["percent"].astype(float) / 100 * uc_invested_dollars
+    df["ValueThousands"] = df["percent"].astype(float) / 100 * uc_invested_thousands
 
-    # save output
+    # save output and date of scrape
     if not os.path.exists("third-party"):
         os.mkdir("third-party")
-    df.to_csv(f"third-party/holdings-{ticker}.csv", index=False)
+    df.to_csv(
+        f"third-party/holdings-{ticker}-{datetime.today().date()}.csv", index=False
+    )
 
 
 def clean_names(x):
@@ -611,7 +613,7 @@ if not os.path.exists("data/13F-HR.csv"):
 
 # %% read in downloaded SEC data
 
-sec = pd.read_csv("data/13F-HR.csv")
+sec = pd.read_csv("13F-HR.csv")
 
 # clean data after reading using pandas
 sec["Date"] = pd.to_datetime(sec["Date"])
@@ -620,9 +622,8 @@ sec["Issuer"] = sec["Issuer"].str.title()
 
 sec.groupby("Year")["ValueThousands"].sum() / 1000
 
-# %% scrape holdings of index funds identified in 3/31/25 13-HR filing
-
-# TODO: check legality
+# %% scrape holdings of index funds identified in 9/30/25 13-HR filing
+# Invisible Institute advised that this is okay to do
 
 # scrape Vanguard website
 for hold in [
@@ -668,7 +669,6 @@ all_holdings = (
     pd.concat([voo, vt, ivv])
     .rename(
         columns={
-            "amt": "ValueThousands",
             "company": "Issuer",
             "ticker": "Ticker",
         }
@@ -676,7 +676,6 @@ all_holdings = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-all_holdings["ValueThousands"] = all_holdings["ValueThousands"] / 1000
 print("Percent from each index fund:", all_holdings.groupby("source")["percent"].sum())
 
 # get all holdings from most recent quarter including generic index funds
@@ -689,8 +688,8 @@ print("Rows before combining:", len(sec_0925))
 # bind with third-party website data
 sec_0925 = pd.concat(
     [
-        # excluding generic index funds VOO/VT
-        sec_0925[~sec_0925["Ticker"].isin(["VOO", "VT"])],
+        # excluding generic index funds VOO/VT/IVV
+        sec_0925[~sec_0925["Ticker"].isin(all_holdings["source"].unique())],
         # add in specific holdings for VOO/VT funds
         all_holdings,
     ],
@@ -766,6 +765,7 @@ sec_0925.to_csv("sec-industries.csv", index=None)
 # %% circle chart: analyze by sector
 
 sec_0925 = pd.read_csv("sec-industries.csv")
+sec_0925["Sector"] = sec_0925["Sector"].str.capitalize()
 
 # clean data
 sec_0925 = sec_0925.replace("missing", None)  # recode missings
@@ -793,7 +793,7 @@ print(
 
 # summarize the top 5 stocks per sector
 summary_df = (
-    sec_0925[sec_0925.Summary.str.len() > 5]
+    sec_0925[sec_0925["Sector"] != "Missing"]
     .dropna(how="any")
     .sort_values("ValueThousands", ascending=False)  # biggest stocks are listed first
     .groupby("Sector")
@@ -1058,5 +1058,3 @@ coi.sort_values("TotalTransactionDollars")[
 ].to_json("data/conflicts-of-interest.json", orient="records")
 
 coi
-
-# %%
