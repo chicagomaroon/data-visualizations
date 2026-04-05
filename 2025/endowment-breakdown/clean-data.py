@@ -7,29 +7,30 @@
 
 # %% imports
 
-from edgar import set_identity, Company
-import pytesseract
-from pdf2image import (
-    convert_from_path,
-)  # chose this because it is OCR-based and handles individual pages
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 import json
-from tqdm import tqdm
-from selenium.webdriver.support.ui import Select
-import time
-import re
 import os
+import re
+import time
 from datetime import datetime
-import xmltodict
-import yfinance as yf
-from yfinance.exceptions import YFRateLimitError
+
 import numpy as np
 import pandas as pd
 import polars as pl
-from polars import String, Int64, ShapeError, ComputeError
+import pytesseract
+import xmltodict
+import yfinance as yf
+from edgar import Company, set_identity
+from pdf2image import (
+    convert_from_path,
+)  # chose this because it is OCR-based and handles individual pages
+from polars import ComputeError, Int64, ShapeError, String
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 from titlecase import titlecase
+from tqdm import tqdm
+from yfinance.exceptions import YFRateLimitError
 
 # NOTE: did not use 990T filings from IRS via ProPublica API because data is not very detailed projects.propublica.org/nonprofits/api/v2
 
