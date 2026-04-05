@@ -141,7 +141,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
             alpha: 1,
             font: {
                 family: 'Playfair',
-                size: subtitleFontSize,
+                size: bodyFontSize,
                 color: 'black' // text color
             },
             align: 'left'
@@ -839,7 +839,7 @@ const sequence = {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
                     b: isMobileLike ? 40 : 75,
-                    t: isMobileLike ? 100 : 80
+                    t: isMobileLike ? 100 : 90
                 },
                 xaxis: {
                     scaleanchor: 'y',
