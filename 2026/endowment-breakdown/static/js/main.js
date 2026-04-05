@@ -678,32 +678,6 @@ const sequence = {
                 responsive: false
             }
         );
-
-        // // Animate the last layer of nodes
-        // const lastLayerIndices = sankey_data
-        //     .map((d, i) => (d.x === 1 ? i : null))
-        //     .filter((i) => i !== null);
-
-        // const animationFrames = [];
-        // for (let step = 0; step <= 10; step++) {
-        //     const newX = x.map((val, i) =>
-        //         lastLayerIndices.includes(i) ? val + step * 0.05 : val
-        //     );
-        //     animationFrames.push({
-        //         data: [
-        //             {
-        //                 node: {
-        //                     x: newX
-        //                 }
-        //             }
-        //         ]
-        //     });
-        // }
-
-        // Plotly.animate('chart-div', animationFrames, {
-        //     frame: { duration: 500, redraw: true },
-        //     transition: { duration: 300 }
-        // });
     },
     endowment: function () {
         const layout = createLayout(
@@ -1056,10 +1030,10 @@ var annotationFontSize,
     titleFontSize;
 
 async function init() {
-    // window.onbeforeunload = function () {
-    //     window.scrollTo(0, 0);
-    // };
-    // hideChart();
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
+    hideChart();
 
     isMobileLike = detectMobile();
 
