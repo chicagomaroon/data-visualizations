@@ -430,9 +430,6 @@ function barChart(data) {
 // cite: translated from highcharts with chatgpt
 function sankeyChart(div) {
     let sankey_data_filtered = sankey_data;
-    // if (div === 'what-is-endowment') {
-    //     sankey_data_filtered = sankey_data.filter((d) => d.x < 0.9);
-    // }
 
     // Map node names to indices
     const nodeIndex = {};
