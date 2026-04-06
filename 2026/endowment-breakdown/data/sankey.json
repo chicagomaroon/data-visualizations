@@ -49,14 +49,14 @@
     },
     {
         "from": "Total revenue",
-        "to": "Unrestricted <br>revenue",
+        "to": "Unrestricted<br>revenue",
         "amount_millions": 3676.9,
         "y": 0.4,
         "x": 0.3,
         "hover": "Resources that the University can spend however it wants."
     },
     {
-        "from": "Unrestricted <br>revenue",
+        "from": "Unrestricted<br>revenue",
         "to": "Net tuition",
         "amount_millions": 686.0,
         "y": 0.001,
@@ -64,7 +64,7 @@
         "hover": "All revenue from student tuition after financial aid is subtracted."
     },
     {
-        "from": "Unrestricted <br>revenue",
+        "from": "Unrestricted<br>revenue",
         "to": "Government grants/contracts",
         "amount_millions": 530.7,
         "y": 0.13,
@@ -72,7 +72,7 @@
         "hover": "Grants and contracts for research and other activities from local, state, and/or federal government."
     },
     {
-        "from": "Unrestricted <br>revenue",
+        "from": "Unrestricted<br>revenue",
         "to": "Private gifts/grants/contracts",
         "amount_millions": 316.8,
         "y": 0.23,
@@ -80,7 +80,7 @@
         "hover": "Private gifts that do not come with strings attached, in addition to grants and contracts from private organizations."
     },
     {
-        "from": "Unrestricted <br>revenue",
+        "from": "Unrestricted<br>revenue",
         "to": "Unrestricted investment return",
         "amount_millions": 119.2,
         "y": 0.29,
@@ -88,16 +88,16 @@
         "hover": "Profit gained from investing the endowment that can be used in any way the University wishes."
     },
     {
-        "from": "Unrestricted <br>revenue",
-        "to": "Unrestricted endowment payout",
+        "from": "Unrestricted<br>revenue",
+        "to": "Unrestricted endowment<br>payout",
         "amount_millions": 621.7,
         "y": 0.38,
         "x": 1,
         "hover": "An amount withdrawn from the endowment that can be used in any way the University wishes."
     },
     {
-        "from": "Unrestricted <br>revenue",
-        "to": "Other unrestricted revenue",
+        "from": "Unrestricted<br>revenue",
+        "to": "Other unrestricted<br>revenue",
         "amount_millions": 1402.6,
         "y": 0.58,
         "x": 1,
