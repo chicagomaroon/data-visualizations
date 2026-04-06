@@ -1,35 +1,36 @@
 """
 - Use SEC API to download all UChicago SEC filings since 1994
-- Use Yahoo Finance as well as company-specific sites to identify holdings and sector information for each holding
+- Use company-specific sites to identify holdings and sector information for each holding
 - Compile financial statements
 - Prepare data for each chart
 """
 
 # %% imports
 
-from edgar import set_identity, Company
-import pytesseract
-from pdf2image import (
-    convert_from_path,
-)  # chose this because it is OCR-based and handles individual pages
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
 import json
-from tqdm import tqdm
-from selenium.webdriver.support.ui import Select
-import time
-import re
 import os
+import re
+import time
 from datetime import datetime
-import xmltodict
-import yfinance as yf
-from yfinance.exceptions import YFRateLimitError
+
 import numpy as np
 import pandas as pd
 import polars as pl
-from polars import String, Int64, ShapeError, ComputeError
+import pytesseract
+import xmltodict
+import yfinance as yf
+from edgar import Company, set_identity
+from pdf2image import (
+    convert_from_path,
+)  # chose this because it is OCR-based and handles individual pages
+from polars import ComputeError, Int64, ShapeError, String
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
 from titlecase import titlecase
+from tqdm import tqdm
+from yfinance.exceptions import YFRateLimitError
 
 # NOTE: did not use 990T filings from IRS via ProPublica API because data is not very detailed projects.propublica.org/nonprofits/api/v2
 
@@ -429,9 +430,10 @@ def get_holdings(company, ticker, pages=51):
 
             # Select the nth option (e.g., 3rd option, index starts at 0)
             Select(turn_page).select_by_index(i)  # 2 for the 3rd option
-        except:
+        except Exception as e:
             turn_page = driver.find_element(By.CSS_SELECTOR, "#allHoldingsTable_next")
             turn_page.send_keys(Keys.RETURN)
+            print(f"Error: {e}")
 
         # get the table info
         try:
@@ -510,18 +512,19 @@ def process_holdings(data, company, ticker):
 
     # calculate how much UChicago invested in each individual holding as a function of percent of a known invested portfolio stock
     # eg, we know UChicago invested $X in VOO; if APPL is .1% of VOO, then how many dollars is UChicago invested in APPL?
-    uc_invested_dollars = (
+    uc_invested_thousands = (
         sec.sort_values("Date", ascending=False)
         .loc[(sec["Ticker"] == ticker), "ValueThousands"]
         .values[0]
-        * 1000
     )
-    df["amt"] = df["percent"].astype(float) / 100 * uc_invested_dollars
+    df["ValueThousands"] = df["percent"].astype(float) / 100 * uc_invested_thousands
 
-    # save output
+    # save output and date of scrape
     if not os.path.exists("third-party"):
         os.mkdir("third-party")
-    df.to_csv(f"third-party/holdings-{ticker}.csv", index=False)
+    df.to_csv(
+        f"third-party/holdings-{ticker}-{datetime.today().date()}.csv", index=False
+    )
 
 
 def clean_names(x):
@@ -611,7 +614,7 @@ if not os.path.exists("data/13F-HR.csv"):
 
 # %% read in downloaded SEC data
 
-sec = pd.read_csv("data/13F-HR.csv")
+sec = pd.read_csv("13F-HR.csv")
 
 # clean data after reading using pandas
 sec["Date"] = pd.to_datetime(sec["Date"])
@@ -620,9 +623,8 @@ sec["Issuer"] = sec["Issuer"].str.title()
 
 sec.groupby("Year")["ValueThousands"].sum() / 1000
 
-# %% scrape holdings of index funds identified in 3/31/25 13-HR filing
-
-# TODO: check legality
+# %% scrape holdings of index funds identified in 9/30/25 13-HR filing
+# Invisible Institute advised that this is okay to do
 
 # scrape Vanguard website
 for hold in [
@@ -668,7 +670,6 @@ all_holdings = (
     pd.concat([voo, vt, ivv])
     .rename(
         columns={
-            "amt": "ValueThousands",
             "company": "Issuer",
             "ticker": "Ticker",
         }
@@ -676,7 +677,6 @@ all_holdings = (
     .drop_duplicates()
     .reset_index(drop=True)
 )
-all_holdings["ValueThousands"] = all_holdings["ValueThousands"] / 1000
 print("Percent from each index fund:", all_holdings.groupby("source")["percent"].sum())
 
 # get all holdings from most recent quarter including generic index funds
@@ -689,8 +689,8 @@ print("Rows before combining:", len(sec_0925))
 # bind with third-party website data
 sec_0925 = pd.concat(
     [
-        # excluding generic index funds VOO/VT
-        sec_0925[~sec_0925["Ticker"].isin(["VOO", "VT"])],
+        # excluding generic index funds VOO/VT/IVV
+        sec_0925[~sec_0925["Ticker"].isin(all_holdings["source"].unique())],
         # add in specific holdings for VOO/VT funds
         all_holdings,
     ],
@@ -766,6 +766,7 @@ sec_0925.to_csv("sec-industries.csv", index=None)
 # %% circle chart: analyze by sector
 
 sec_0925 = pd.read_csv("sec-industries.csv")
+sec_0925["Sector"] = sec_0925["Sector"].str.capitalize()
 
 # clean data
 sec_0925 = sec_0925.replace("missing", None)  # recode missings
@@ -793,7 +794,7 @@ print(
 
 # summarize the top 5 stocks per sector
 summary_df = (
-    sec_0925[sec_0925.Summary.str.len() > 5]
+    sec_0925[sec_0925["Sector"] != "Missing"]
     .dropna(how="any")
     .sort_values("ValueThousands", ascending=False)  # biggest stocks are listed first
     .groupby("Sector")
@@ -843,9 +844,8 @@ summary_df[["Sector", "ValueThousands", "Top5"]].rename(
     }
 ).to_json("data/sec-sectors-2025.json", orient="records")
 
-# %% get all statements: manual copying was easier than camelot parsing
-
 # %% get parsed financial statements
+# manual copying was easier than camelot parsing
 
 fs = pd.read_csv("financial-statements.csv")
 
@@ -994,9 +994,7 @@ for file in os.listdir("../endowment-sec/990"):
 coi = pd.DataFrame(conflictsOfInterest)
 coi.to_csv("conflicts-of-interest.csv", index=False)
 
-# %% flowchart: get 990 conflict of interest data
-# unlike the other data, this one is used to create a chart in Figma, which is then exported to SVG
-# so this has no Python/JSON output, just visual inspection
+# %% flowchart and facet chart: get 990 conflict of interest data
 
 coi = pd.read_csv("conflicts-of-interest.csv")
 
@@ -1058,5 +1056,3 @@ coi.sort_values("TotalTransactionDollars")[
 ].to_json("data/conflicts-of-interest.json", orient="records")
 
 coi
-
-# %%

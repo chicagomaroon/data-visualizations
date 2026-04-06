@@ -50,6 +50,8 @@ function createWaypoint(div, offset = '70%') {
     new Waypoint({
         element: document.getElementById(div),
         handler: function (direction) {
+            var myPlot = document.getElementById('chart-div');
+
             if (direction === 'down') {
                 // scrolling down, so call next action in sequence
                 downHandler = sequence[div];
@@ -67,6 +69,8 @@ function createWaypoint(div, offset = '70%') {
                 upHandler = sequence[previousKey];
                 upHandler();
             }
+
+            myPlot.on('plotly_click', open_url);
         },
         offset: offset
     });
@@ -80,7 +84,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
     return {
         title: {
             text: title,
-            x: isMobileLike ? 0.035 : 0.025,
+            x: 'center',
             y: isMobileLike ? 0.82 : 0.93, // vertical position (1 = top, 0 = bottom)
             font: {
                 size: titleFontSize
@@ -98,7 +102,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
                 xref: 'paper',
                 yref: 'paper',
                 x: 1, // right align
-                y: -0.05 - isMobileLike * 0.03, // move below the x-axis
+                y: -0.08 - isMobileLike * 0.02, // move below the x-axis
                 showarrow: false,
                 xanchor: 'right',
                 yanchor: 'top',
@@ -137,7 +141,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
             alpha: 1,
             font: {
                 family: 'Playfair',
-                size: subtitleFontSize,
+                size: bodyFontSize,
                 color: 'black' // text color
             },
             align: 'left'
@@ -159,7 +163,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
 }
 
 function donutChart(data) {
-    groupedData = groupData(data, 'recategorized');
+    const groupedData = groupData(data, 'recategorized');
 
     trace = {
         type: 'pie',
@@ -179,13 +183,14 @@ function donutChart(data) {
                 width: 1
             }
         },
-        hoverinfo: 'text',
-        hovertemplate: groupedData.map(
+        customdata: groupedData.map(
             (d) =>
                 '    <br>    ' +
                 helper_text[d.recategorized.replaceAll('<br>', ' ')] +
-                '    <br>    <extra></extra>'
-        )
+                '    <br>    '
+        ),
+        hoverinfo: 'text',
+        hovertemplate: '%{customdata}<extra></extra>'
     };
 
     return [trace];
@@ -262,7 +267,7 @@ function circleChart(data, variable) {
                 size: groupedData.map(
                     (val) =>
                         Math.sqrt(val.amount_thousands) /
-                        (isMobileLike ? 2.2 : 1) // scale by square root for proportionality of area (instead of radius)
+                        (isMobileLike ? 2 : 0.85) // scale by square root for proportionality of area (instead of radius)
                 ),
                 color: '#800000',
                 opacity: 1
@@ -280,16 +285,18 @@ function circleChart(data, variable) {
             ),
             customdata: groupedData.map(
                 (val) =>
-                    ' <br>    UChicago invested at least $' +
+                    ' <br>    UChicago had invested at least $' +
                     `${formatThousands(val.amount_thousands * 1000)}    <br>` +
-                    '    in the <b>' +
+                    '    in the <a href="https://finance.yahoo.com/sectors/' +
+                    val[variable].replace('<br>', '-') +
+                    '">' +
                     val[variable].replace('<br>', ' ').replace('- ', '') +
-                    '</b> sector    <br>    as of September 2025, including:    <br>    <br>' +
+                    '</a> sector    <br>    as of September 2025, including:    <br>    <br>' +
                     val.hoverinfo +
-                    '<br> <extra></extra>'
+                    '<br>    '
             ), // extra tag removes trace label; spaces needed for fake padding
             hoverinfo: 'text',
-            hovertemplate: '%{customdata}'
+            hovertemplate: '%{customdata}<extra></extra>'
         }
     ];
     return traces;
@@ -319,7 +326,7 @@ function facetChart(data) {
         mode: 'markers+text',
         x: isMobileLike
             ? [2010, 2014.5, 2018, 2022]
-            : [2018, 2020.2, 2022, 2024],
+            : [2015.8, 2018.4, 2020.6, 2023],
         y: sizeLegendValues.map(() => ''),
         marker: {
             size: sizeLegendValues.map((val) => Math.sqrt(val) / markerSize),
@@ -375,7 +382,7 @@ function facetChart(data) {
                     '    <br> <extra></extra>'
             ), // extra tag removes trace label; spaces needed for fake padding
             hoverinfo: 'text',
-            hovertemplate: '%{customdata}'
+            hovertemplate: '%{customdata}<extra></extra>'
         });
     });
 
@@ -396,7 +403,7 @@ function barChart(data) {
         text: data.map((d) => d.school),
         y: data.map((d) => d.school),
         x: data.map((d) => d.endowment_dollars),
-        textposition: isMobileLike ? 'outside' : 'inside',
+        textposition: 'outside',
         marker: {
             color: data.map((d) =>
                 d.school === 'University of Chicago' ? '#800000' : '#BB7663'
@@ -404,7 +411,7 @@ function barChart(data) {
         },
         textfont: {
             size: axisFontSize,
-            color: isMobileLike ? 'black' : 'white'
+            color: 'black'
         },
         customdata: data.map(
             (d) =>
@@ -412,9 +419,9 @@ function barChart(data) {
                 d.school.replace('Univ.', 'University') +
                 ' endowment: $' +
                 formatThousands(d.endowment_dollars) +
-                '    <br /> <br /><extra></extra>'
+                '    <br /> <br />'
         ),
-        hovertemplate: '%{customdata}'
+        hovertemplate: '%{customdata}<extra></extra>'
     });
 
     return traces;
@@ -488,7 +495,7 @@ function sankeyChart(div) {
             hoverinfo: 'text',
             color: nodes_color_map[div],
             customdata: sankey_data_filtered.map((d) => d.hover),
-            hovertemplate: '%customdata'
+            hovertemplate: '%{customdata}<extra></extra>'
         },
         link: {
             source: sankey_data_filtered.map((d) => nodeIndex[d.from]),
@@ -561,8 +568,13 @@ function showChart() {
  */
 function open_url(data) {
     var info = data.points[0];
-    var url = info.text.match(/href="(.*)" /);
-    // console.log(url[1])
+    if (Array.isArray(info.customdata)) {
+        info.customdata = info.customdata[0];
+    }
+    console.log(info.customdata);
+
+    var url = info.customdata.match(/href="(.*?)"/);
+    console.log(url);
 
     window.open(url[1], '_blank').focus();
 }
@@ -578,13 +590,6 @@ function detectMobile() {
 const formatThousands = (d) => d3.format('.2s')(d).replace('G', 'B');
 
 // ------- CONSTANTS ------
-
-// TODO: add legend to facet graph
-// TODO: get quote permissions
-// TODO: get copyedits and transfor to code
-// TODO: (nice to have) add animation between graphs maybe and on sankey
-// TODO: (nice to have) hover define the sankey terms
-// TODO: funds in trust + private categories are listed as externally managed
 
 const config = {
     displayModeBar: false,
@@ -610,9 +615,9 @@ const colorbook = {
 
 const sankeyTitle = 'Revenue, Fiscal Year 2025';
 const sankeyCaption =
-    'For clarity, assets from hospital services ($4.7 billion) are excluded. Net assets (total assets minus total liabilities) for FY25 were $633.8 million.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
+    'Hospital services ($4.7B) are excluded. Net assets (total assets minus total liabilities) for FY25 were $633.8M.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 const statementCaption =
-    'Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
+    'Investments are more than the amount in the endowment, $10.6B as of November 2025.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 
 // ------------------ SEQUENCE OF ACTIONS ------------------
 
@@ -634,7 +639,14 @@ const sequence = {
             sankeyChart('what-is-endowment'),
             {
                 ...layout,
-                width: isMobileLike ? 700 : null
+                width: isMobileLike ? 700 : null,
+                margin: {
+                    b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
+                }
             },
             {
                 ...config,
@@ -652,39 +664,20 @@ const sequence = {
             sankeyChart('tuition'),
             {
                 ...layout,
-                width: isMobileLike ? 700 : null
+                width: isMobileLike ? 700 : null,
+                margin: {
+                    b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
+                }
             },
             {
                 ...config,
                 responsive: false
             }
         );
-
-        // // Animate the last layer of nodes
-        // const lastLayerIndices = sankey_data
-        //     .map((d, i) => (d.x === 1 ? i : null))
-        //     .filter((i) => i !== null);
-
-        // const animationFrames = [];
-        // for (let step = 0; step <= 10; step++) {
-        //     const newX = x.map((val, i) =>
-        //         lastLayerIndices.includes(i) ? val + step * 0.05 : val
-        //     );
-        //     animationFrames.push({
-        //         data: [
-        //             {
-        //                 node: {
-        //                     x: newX
-        //                 }
-        //             }
-        //         ]
-        //     });
-        // }
-
-        // Plotly.animate('chart-div', animationFrames, {
-        //     frame: { duration: 500, redraw: true },
-        //     transition: { duration: 300 }
-        // });
     },
     endowment: function () {
         const layout = createLayout(
@@ -697,12 +690,12 @@ const sequence = {
             {
                 ...layout,
                 width: isMobileLike ? 700 : null,
-                font: {
-                    size: bodyFontSize,
-                    family: 'Georgia',
-                    color: sankey_data.map((d) =>
-                        d.to.includes('endowment') ? '#000000' : '#DDDDDD'
-                    )
+                margin: {
+                    b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
                 }
             },
             {
@@ -721,7 +714,14 @@ const sequence = {
             sankeyChart('restricted'),
             {
                 ...layout,
-                width: isMobileLike ? 700 : null
+                width: isMobileLike ? 700 : null,
+                margin: {
+                    b: isMobileLike ? 60 : 120
+                },
+                title: {
+                    ...layout.title,
+                    x: isMobileLike ? 0.12 : 'center'
+                }
             },
             {
                 ...config,
@@ -741,12 +741,11 @@ const sequence = {
                 ...layout,
                 margin: {
                     t: isMobileLike ? 80 : 40,
-                    l: isMobileLike ? 20 : 0,
                     r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 75 : 85
+                    b: isMobileLike ? 80 : 140
                 },
                 autosize: isMobileLike ? false : true,
-                width: isMobileLike ? 390 : null,
+                width: isMobileLike ? 380 : null,
                 annotations: [
                     layout['annotations'][0], // keep caption
                     {
@@ -754,7 +753,7 @@ const sequence = {
                             size: titleFontSize
                         },
                         showarrow: false,
-                        text: 'Total in endowment<br>$10.9 billion',
+                        text: 'Total investments<br>$11.8 billion',
                         x: 0.5,
                         y: 0.5
                     } // add title in center
@@ -766,9 +765,9 @@ const sequence = {
     'compare-schools': function () {
         const layout = createLayout(
             (title =
-                'Top 20 largest college endowments in the U.S., Fiscal Year 2024'),
+                'U.S. college endowments valued at over $10 billion, Fiscal Year 2024'),
             (caption =
-                'University systems consisting of multiple schools are excluded.<br>Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
+                'Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
             (showlegend = false)
         );
         Plotly.newPlot(
@@ -779,7 +778,7 @@ const sequence = {
                 margin: {
                     l: 25,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 50 : 150
+                    b: isMobileLike ? 40 : 150
                 },
                 xaxis: {
                     showgrid: true,
@@ -789,12 +788,12 @@ const sequence = {
                     tickfont: {
                         size: axisFontSize
                     },
-                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9],
-                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B'],
+                    tickvals: [10e9, 20e9, 30e9, 40e9, 50e9, 60e9],
+                    ticktext: ['$10B', '$20B', '$30B', '$40B', '$50B', '$60B'],
                     title: {
                         text: ''
                     },
-                    range: [0, 60e9]
+                    range: [0, 70e9]
                 }
             },
             config
@@ -810,9 +809,10 @@ const sequence = {
             (caption =
                 'Sources: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025;' +
                 (isMobileLike ? '<br>' : ' ') +
-                '<a href="https://investor.vanguard.com/investment-products">Vanguard</a> fund holdings')
+                '<a href="https://investor.vanguard.com/investment-products">Vanguard</a> and <a href="https://www.ishares.com/us/products/239726/ivv">IShares</a> holdings')
         );
         annotations = layout['annotations'];
+        layout['annotations'][0]['y'] = -0.03; // move caption for this plot specifically
         Plotly.newPlot(
             'chart-div',
             circleChart(sec, 'sector'),
@@ -821,7 +821,8 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
-                    b: isMobileLike ? 50 : 75
+                    b: isMobileLike ? 40 : 75,
+                    t: isMobileLike ? 100 : 90
                 },
                 xaxis: {
                     scaleanchor: 'y',
@@ -839,7 +840,8 @@ const sequence = {
                     showticks: false,
                     showticklabels: false,
                     zeroline: false,
-                    fixedrange: true
+                    fixedrange: true,
+                    range: [0, 400]
                 },
                 plot_bgcolor: '#e3bfb5',
                 annotations: [
@@ -877,7 +879,7 @@ const sequence = {
             axref: 'x',
             ayref: 'y',
             arrowhead: 4,
-            arrowsize: 1.5,
+            arrowsize: 2,
             arrowwidth: 1,
             arrowcolor: '#BB7663',
             standoff: 15
@@ -885,7 +887,7 @@ const sequence = {
 
         var layout = createLayout(
             (title =
-                'Change in proportion of endowment by asset type, 2005-2025'),
+                'Change in proportion of endowment by asset type, 2005–2025'),
             (caption =
                 'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
             (showlegend = true)
@@ -901,9 +903,9 @@ const sequence = {
             {
                 ...layout,
                 margin: {
-                    l: isMobileLike ? 50 : 200,
+                    l: isMobileLike ? 50 : 220,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 40 : 100
+                    b: isMobileLike ? 60 : 100
                 },
                 xaxis: {
                     range: [0.01, 1],
@@ -929,10 +931,6 @@ const sequence = {
                     tickfont: {
                         size: axisFontSize
                     }
-                },
-                title: {
-                    ...layout.title,
-                    x: isMobileLike ? 0.13 : 0.18
                 }
             },
             config
@@ -1001,13 +999,13 @@ const sequence = {
                     }
                 },
                 margin: {
-                    l: isMobileLike ? 100 : 200,
+                    l: isMobileLike ? 120 : 230,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 : 100
+                    b: isMobileLike ? 60 : 110
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.08 : 0.18,
+                    x: isMobileLike ? 0.08 : 0.26,
                     y: isMobileLike ? 0.78 : 0.9 // vertical position (1 = top, 0 = bottom)
                 }
             },
@@ -1032,18 +1030,18 @@ var annotationFontSize,
     titleFontSize;
 
 async function init() {
-    // window.onbeforeunload = function () {
-    //     window.scrollTo(0, 0);
-    // };
-    // hideChart();
+    window.onbeforeunload = function () {
+        window.scrollTo(0, 0);
+    };
+    hideChart();
 
     isMobileLike = detectMobile();
 
-    annotationFontSize = isMobileLike ? 8 : 12;
-    axisFontSize = isMobileLike ? 9 : 14;
-    bodyFontSize = isMobileLike ? 10 : 16;
-    subtitleFontSize = isMobileLike ? 11 : 17;
-    titleFontSize = isMobileLike ? 12 : 20;
+    annotationFontSize = isMobileLike ? 9 : 16;
+    axisFontSize = isMobileLike ? 10 : 20;
+    bodyFontSize = isMobileLike ? 11 : 18;
+    subtitleFontSize = isMobileLike ? 12 : 22;
+    titleFontSize = isMobileLike ? 12 : 23;
 
     statements = await fetchData('financial-statement-2025.json');
     sec = await fetchData('sec-sectors-2025.json');

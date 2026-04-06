@@ -1,0 +1,57 @@
+[
+    {
+        "sector": "Technology",
+        "amount_thousands": 61546,
+        "hoverinfo": "    $13.5M in NVIDIA Corp.    <br>    $11.6M in Apple    <br>    $9.9M in Microsoft Corp.    <br>    $4.7M in Broadcom    <br>    $1.1M in Micron Technology    "
+    },
+    {
+        "sector": "Financial<br>services",
+        "amount_thousands": 20284,
+        "hoverinfo": "    $2.6M in JPMorgan Chase & Co.    <br>    $1.7M in Visa Class A    <br>    $1.4M in Mastercard Class A    <br>    $1.0M in Bank of America Corp.    <br>    $821K in Wells Fargo & Co.    "
+    },
+    {
+        "sector": "Consumer<br>cyclical",
+        "amount_thousands": 19063,
+        "hoverinfo": "    $6.7M in Amazon.com    <br>    $3.2M in Tesla    <br>    $1.1M in Home Depot    <br>    $886K in Booking HLDGS Inc    <br>    $707K in McDonald's Corp.    "
+    },
+    {
+        "sector": "Communication<br>services",
+        "amount_thousands": 18572,
+        "hoverinfo": "    $5.0M in Alphabet Class A    <br>    $4.4M in Facebook Class A    <br>    $4.0M in Alphabet Class C    <br>    $1.5M in Netflix    <br>    $656K in Verizon Communications    "
+    },
+    {
+        "sector": "Healthcare",
+        "amount_thousands": 17024,
+        "hoverinfo": "    $2.3M in Eli Lilly & Co.    <br>    $1.7M in Johnson & Johnson    <br>    $1.2M in AbbVie    <br>    $881K in Merck & Co.    <br>    $839K in UnitedHealth Group    "
+    },
+    {
+        "sector": "Industrials",
+        "amount_thousands": 15200,
+        "hoverinfo": "    $944K in Caterpillar    <br>    $935K in General Electric Co.    <br>    $796K in RTX Corp.    <br>    $697K in GE Vernova LLC    <br>    $526K in Boeing Co.    "
+    },
+    {
+        "sector": "Consumer<br>defensive",
+        "amount_thousands": 9436,
+        "hoverinfo": "    $1.7M in Walmart    <br>    $1.5M in Costco Wholesale Corp.    <br>    $1.1M in Procter & Gamble Co.    <br>    $948K in Coca-Cola Co.    <br>    $839K in Philip Morris International    "
+    },
+    {
+        "sector": "Energy",
+        "amount_thousands": 6694,
+        "hoverinfo": "    $2.0M in Exxon Mobil Corp.    <br>    $1.1M in Chevron Corp.    <br>    $475K in ConocoPhillips    <br>    $283K in Williams Cos.    <br>    $244K in EOG Resources    "
+    },
+    {
+        "sector": "Utilities",
+        "amount_thousands": 4410,
+        "hoverinfo": "    $579K in NextEra Energy    <br>    $341K in Southern Co.    <br>    $318K in Duke Energy Corp.    <br>    $288K in Constellation Energy Corp.    <br>    $224K in American Electric Power Co.    "
+    },
+    {
+        "sector": "Basic<br>materials",
+        "amount_thousands": 3553,
+        "hoverinfo": "    $756K in Linde PLC    <br>    $345K in Newmont Goldcorp Corp.    <br>    $247K in Freeport-McMoRan Inc.    <br>    $243K in Sherwin-Williams Co.    <br>    $233K in Eagle Matls Inc    "
+    },
+    {
+        "sector": "Real<br>estate",
+        "amount_thousands": 3463,
+        "hoverinfo": "    $416K in Welltower    <br>    $380K in Prologis    <br>    $296K in Equinix    <br>    $282K in American Tower Corp.    <br>    $189K in Simon Property Group    "
+    }
+]

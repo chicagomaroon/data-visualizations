@@ -9,14 +9,14 @@
     },
     {
         "from": "Total revenue",
-        "to": "Restricted revenue",
+        "to": "Restricted<br>revenue",
         "amount_millions": 733.5,
         "y": 0.85,
         "x": 0.3,
         "hover": "Resources that the University cannot spend however it wants due to donor specifications."
     },
     {
-        "from": "Restricted revenue",
+        "from": "Restricted<br>revenue",
         "to": "Private gifts",
         "amount_millions": 476.4,
         "y": 0.83,
@@ -24,7 +24,7 @@
         "hover": "Private gifts that come with strings attached: for example, specifying that funds must be used for a particular program."
     },
     {
-        "from": "Restricted revenue",
+        "from": "Restricted<br>revenue",
         "to": "Restricted investment return",
         "amount_millions": 246.0,
         "y": 0.91,
@@ -32,7 +32,7 @@
         "hover": "Profit gained from investing the endowment that must be used in ways pre-specified by donors."
     },
     {
-        "from": "Restricted revenue",
+        "from": "Restricted<br>revenue",
         "to": "Restricted endowment payout",
         "amount_millions": 0.9,
         "y": 0.96,
@@ -40,7 +40,7 @@
         "hover": "An amount withdrawn from the endowment that must be used in ways pre-specified by donors."
     },
     {
-        "from": "Restricted revenue",
+        "from": "Restricted<br>revenue",
         "to": "Other restricted revenue",
         "amount_millions": 10.2,
         "y": 1,
@@ -49,14 +49,14 @@
     },
     {
         "from": "Total revenue",
-        "to": "Unrestricted revenue",
+        "to": "Unrestricted <br>revenue",
         "amount_millions": 3676.9,
         "y": 0.4,
         "x": 0.3,
         "hover": "Resources that the University can spend however it wants."
     },
     {
-        "from": "Unrestricted revenue",
+        "from": "Unrestricted <br>revenue",
         "to": "Net tuition",
         "amount_millions": 686.0,
         "y": 0.001,
@@ -64,7 +64,7 @@
         "hover": "All revenue from student tuition after financial aid is subtracted."
     },
     {
-        "from": "Unrestricted revenue",
+        "from": "Unrestricted <br>revenue",
         "to": "Government grants/contracts",
         "amount_millions": 530.7,
         "y": 0.13,
@@ -72,7 +72,7 @@
         "hover": "Grants and contracts for research and other activities from local, state, and/or federal government."
     },
     {
-        "from": "Unrestricted revenue",
+        "from": "Unrestricted <br>revenue",
         "to": "Private gifts/grants/contracts",
         "amount_millions": 316.8,
         "y": 0.23,
@@ -80,7 +80,7 @@
         "hover": "Private gifts that do not come with strings attached, in addition to grants and contracts from private organizations."
     },
     {
-        "from": "Unrestricted revenue",
+        "from": "Unrestricted <br>revenue",
         "to": "Unrestricted investment return",
         "amount_millions": 119.2,
         "y": 0.29,
@@ -88,7 +88,7 @@
         "hover": "Profit gained from investing the endowment that can be used in any way the University wishes."
     },
     {
-        "from": "Unrestricted revenue",
+        "from": "Unrestricted <br>revenue",
         "to": "Unrestricted endowment payout",
         "amount_millions": 621.7,
         "y": 0.38,
@@ -96,7 +96,7 @@
         "hover": "An amount withdrawn from the endowment that can be used in any way the University wishes."
     },
     {
-        "from": "Unrestricted revenue",
+        "from": "Unrestricted <br>revenue",
         "to": "Other unrestricted revenue",
         "amount_millions": 1402.6,
         "y": 0.58,
