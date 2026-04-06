@@ -809,7 +809,7 @@ const sequence = {
             (caption =
                 'Sources: University of Chicago <a href="https://www.sec.gov/Archives/edgar/data/314957/000110465925107518/infotable.xml">SEC 13-F filing</a> for quarter ending September 30, 2025;' +
                 (isMobileLike ? '<br>' : ' ') +
-                '<a href="https://investor.vanguard.com/investment-products">Vanguard</a> fund holdings')
+                '<a href="https://investor.vanguard.com/investment-products">Vanguard</a> and <a href="https://www.ishares.com/us/products/239726/ivv">IShares</a> holdings')
         );
         annotations = layout['annotations'];
         layout['annotations'][0]['y'] = -0.03; // move caption for this plot specifically
