@@ -612,7 +612,7 @@ const colorbook = {
     }
 };
 
-const sankeyTitle = 'Revenue, Fiscal Year 2025';
+const sankeyTitle = 'Sources of Revenue, Fiscal Year 2025';
 const sankeyCaption =
     'Hospital services ($4.7B) are excluded. Net assets (total assets minus total liabilities) for FY25 were $633.8M.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 const statementCaption =
@@ -644,7 +644,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -669,7 +669,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -694,7 +694,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -719,7 +719,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
