@@ -24,10 +24,7 @@
             letter-spacing: -0.011em;
             white-space: pre;
         }
-        #control-flowchart rect {
-            rx: 1000;
-        }
-        #control-flowchart a rect {
+        #control-flowchart a circle {
             fill: #643335;
         }
         #control-flowchart a text {
@@ -38,31 +35,29 @@
             fill: black;
         }
     </style>
-    <rect
-        x="145"
-        width="822"
-        height="822"
+    <circle
+        cx="550"
+        cy="400"
+        r="400"
         style="fill: #e3bfb5"
         id="flowchart-background"
     />
     <text x="625" y="222" style="font-size: 20px">University of Chicago</text>
     <a target="_blank" href="https://investments.uchicago.edu/">
-    <rect
-        x="343"
-        y="615"
-        width="138"
-        height="138"
+    <circle
+        cx="410"
+        cy="686"
+        r="65"
         id="flowchart-office-of-investments"
     />
         <text x="368" y="679" class="top-line">Office of</text>
         <text x="352" y="701">Investments</text>
     </a>
     <a target="_blank" href="https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/d/1262/files/2017/01/UniversityOfChicagoGoverningDocuments-2-25-2021-v2.pdf">
-    <rect
-        x="225"
-        y="433"
-        width="138"
-        height="138"
+    <circle
+        cx="290"
+        cy="500"        
+        r="65"
         id="flowchart-university-president"
     />
         <text x="241" y="497" class="top-line">University</text>
@@ -72,12 +67,11 @@
         target="_blank"
         href="https://sof.uchicago.edu/council-of-the-university-senate/rules-of-procedure/#:~:text=requesting%20a%20meeting"
     >
-        <rect
-            x="608"
-            y="433"
-            width="138"
-            height="138"
-                id="flowchart-faculty-senate"
+        <circle
+            cx="675"
+            cy="500"
+            r="65"
+            id="flowchart-faculty-senate"
         />
         <text x="640" y="497" class="top-line">Faculty</text>
         <text x="642" y="519">Senate</text>
@@ -86,31 +80,29 @@
         target="_blank"
         href="https://gc.uchicago.edu/student-perspectives-series"
     >
-        <rect
-            x="755"
-            y="433"
-            width="138"
-            height="138"
+        <circle
+            cx="822"
+            cy="500"
+            r="65"
                 id="flowchart-graduate-council"
         />
         <text x="777" y="497" class="top-line">Graduate</text>
         <text x="786" y="519">Council</text>
     </a>
     <a target="_blank" href="https://news.uchicago.edu/story/uchicago-endowment-ended-fy25-109-billion#:~:text=donors">
-        <rect
-            y="234"
-            width="138"
-            height="138"
+        <circle
+            cx="65"
+            cy="300"
+            r="65"
             id="flowchart-donors"
             />
         <text x="30" y="309">Donors</text>
     </a>
     <a target="_blank" href="https://ac.uchicago.edu/roles-and-responsibilities/">
-        <rect
-            x="461"
-            y="433"
-            width="138"
-            height="138"
+        <circle
+            cx="528"
+            cy="500"
+            r="65"
                 id="flowchart-advisory-councils"
         />
         <text x="485" y="497" class="top-line">Advisory</text>
@@ -120,22 +112,20 @@
         target="_blank"
         href="https://chicagomaroon.com/13695/news/the-view-from-the-top-at-the-u-of-c/"
     >
-        <rect
-            x="341"
-            y="234"
-            width="138"
-            height="138"
+        <circle
+            cx="410"
+            cy="300"
+            r="65"
                 id="flowchart-board-of-trustees"
         />
-        <text x="364" y="296" class="top-line">Board of</text>
-        <text x="366" y="318">Trustees</text>
+        <text x="368" y="296" class="top-line">Board of</text>
+        <text x="368" y="318">Trustees</text>
     </a>
     <a target="_blank" href="https://voices.uchicago.edu/annualreport2019/the-endowment/#:~:text=external">
-        <rect
-            x="343"
-            y="824"
-            width="138"
-            height="138"
+        <circle
+            cx="410"
+            cy="890"
+            r="65"
             id="flowchart-asset-management-firms"
         />
         <text x="382" y="877" class="top-line">Asset</text>
