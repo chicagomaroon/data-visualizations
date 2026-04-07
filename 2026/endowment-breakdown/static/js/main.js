@@ -573,7 +573,9 @@ function open_url(data) {
     var url = info.customdata.match(/href="(.*?)"/);
     console.log(url);
 
-    window.open(url[1], '_blank').focus();
+    if (!isMobileLike) {
+        window.open(url[1], '_blank').focus();
+    }
 }
 
 function detectMobile() {
@@ -739,7 +741,7 @@ const sequence = {
                 margin: {
                     t: isMobileLike ? 80 : 40,
                     r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 80 : 140
+                    b: isMobileLike ? 90 : 140
                 },
                 autosize: isMobileLike ? false : true,
                 width: isMobileLike ? 380 : null,
@@ -800,7 +802,7 @@ const sequence = {
         d3.select('.plotly').style('margin-top', '0px');
         const layout = createLayout(
             (title =
-                'Industries invested in by the University as of 2025,' +
+                'Sectors invested in by the University as of 2025,' +
                 (isMobileLike ? '<br>' : ' ') +
                 'with approximate known amounts'),
             (caption =
@@ -850,7 +852,7 @@ const sequence = {
                         },
                         showarrow: false,
                         text: '  Total in endowment<br>$10.9B',
-                        x: -30,
+                        x: isMobileLike ? -60 : -30,
                         y: 200
                     } // add additional annotation
                 ]

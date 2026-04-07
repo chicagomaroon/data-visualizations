@@ -9,6 +9,11 @@ body {
     margin: 0;
 }
 
+#title-logo {
+    margin: 2em auto;
+    width: 100% !important;
+}
+
 /* text */
 
 table {
@@ -120,7 +125,7 @@ hr {
 #subtitle {
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 70%;
 }
 
 #intro a {
@@ -266,11 +271,15 @@ g.sankey {
         margin: 0;
     }
 
+    #title-logo {
+        width: 100px;
+    }
+
     /* text */
 
     h1 {
         font-size: 32px;
-        padding-top: 2vh;
+        padding-top: 0;
     }
 
     #subtitle {
@@ -281,6 +290,10 @@ g.sankey {
     hr {
         width: 90% !important;
         max-width: 100vw;
+    }
+
+    .non-scroller {
+        font-size: 20px;
     }
 
     /* intro */
