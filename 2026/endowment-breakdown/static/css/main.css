@@ -273,6 +273,8 @@ g.sankey {
 
     #title-logo {
         width: 100px;
+        max-width: 100px;
+        flex-shrink: 0;
     }
 
     /* text */
