@@ -26,7 +26,7 @@
         target="_blank"
         href="https://projects.propublica.org/nonprofits/organizations/362177139"
     >
-        <circle cx="410" cy="1690" r="165" fill="#643335" 
+        <circle cx="410" cy="1690" r="165" fill="#462425" 
         id="flowchart-individual-firms"/>
         <text x="378" y="1556" style="fill: white !important" class="top-line">Asset</text>
         <text x="323" y="1576" style="fill: white !important" class="left-line">management firms</text>
@@ -47,7 +47,7 @@
         target="_blank"
         href="https://projects.propublica.org/nonprofits/organizations/362177139"
     >
-        <circle cx="410" cy="905" r="165" fill="#643335"
+        <circle cx="410" cy="905" r="165" fill="#462425"
         id="flowchart-individual-trustees" />
         <text x="330" y="793" style="fill: white !important" class="left-line">Board of Trustees</text>
         <circle cx="350" cy="861" r="60" fill="white" />

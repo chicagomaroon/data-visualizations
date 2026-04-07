@@ -272,8 +272,8 @@ g.sankey {
     }
 
     #title-logo {
-        width: 100px;
-        max-width: 100px;
+        width: 250px;
+        max-width: 250px;
         flex-shrink: 0;
     }
 

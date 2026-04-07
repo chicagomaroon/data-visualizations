@@ -183,6 +183,9 @@ function donutChart(data) {
                 width: 1
             }
         },
+        textfont: {
+            size: isMobileLike ? 0.9 * bodyFontSize : bodyFontSize
+        },
         customdata: groupedData.map(
             (d) =>
                 '    <br>    ' +
@@ -605,6 +608,7 @@ const transition = {
 const colorbook = {
     recategorized: {
         'Public<br>equities<br>(stocks)': 'rgb(128, 0, 0)',
+        'Public<br>equities': 'rgb(128, 0, 0)',
         'Private<br>equities': 'rgb(169, 67, 30)',
         Bonds: 'rgb(19, 48, 28)',
         'Hedge<br>funds': 'rgb(53, 14, 32)',
@@ -640,11 +644,12 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120
+                    b: isMobileLike ? 60 : 120,
+                    l: isMobileLike ? 20 : 20
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 0.08
+                    x: isMobileLike ? 0.03 : 0.08
                 }
             },
             {
@@ -665,11 +670,12 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120
+                    b: isMobileLike ? 60 : 120,
+                    l: isMobileLike ? 20 : 20
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 0.08
+                    x: isMobileLike ? 0.03 : 0.08
                 }
             },
             {
@@ -690,11 +696,12 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120
+                    b: isMobileLike ? 60 : 120,
+                    l: isMobileLike ? 20 : 20
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 0.08
+                    x: isMobileLike ? 0.03 : 0.08
                 }
             },
             {
@@ -715,11 +722,12 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120
+                    b: isMobileLike ? 60 : 120,
+                    l: isMobileLike ? 20 : 20
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 0.08
+                    x: isMobileLike ? 0.03 : 0.08
                 }
             },
             {
@@ -739,12 +747,11 @@ const sequence = {
             {
                 ...layout,
                 margin: {
-                    t: isMobileLike ? 80 : 40,
+                    t: isMobileLike ? 60 : 40,
                     r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 90 : 140
+                    l: 0,
+                    b: isMobileLike ? 60 : 140
                 },
-                autosize: isMobileLike ? false : true,
-                width: isMobileLike ? 380 : null,
                 annotations: [
                     layout['annotations'][0], // keep caption
                     {
@@ -937,33 +944,33 @@ const sequence = {
     },
     control: function () {
         drawFlowchart((show = ['control']));
-        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a circle').style('fill', '#462425');
     },
     'board-of-trustees': function () {
         console.log('board of trustees');
-        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a circle').style('fill', '#462425');
         d3.selectAll(
             '#flowchart-board-of-trustees, #flowchart-graduate-council, #flowchart-faculty-senate,#flowchart-advisory-councils'
         ).style('fill', '#800000');
     },
     'office-of-investments': function () {
         console.log('office of investments');
-        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a circle').style('fill', '#462425');
         d3.selectAll(
             '#flowchart-office-of-investments, #flowchart-asset-management-firms'
         ).style('fill', '#800000');
     },
     president: function () {
-        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a circle').style('fill', '#462425');
         d3.select('#flowchart-university-president').style('fill', '#800000');
     },
     donors: function () {
         drawFlowchart((show = ['control']), (hide = ['coi']));
-        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a circle').style('fill', '#462425');
         d3.selectAll('#flowchart-donors').style('fill', '#800000');
     },
     conflicts: function () {
-        d3.selectAll('#control-flowchart a rect').style('fill', '#643335');
+        d3.selectAll('#control-flowchart a circle').style('fill', '#462425');
         drawFlowchart((show = ['control', 'coi']));
     },
     'conflicts-detail': function () {
