@@ -573,7 +573,9 @@ function open_url(data) {
     var url = info.customdata.match(/href="(.*?)"/);
     console.log(url);
 
-    window.open(url[1], '_blank').focus();
+    if (!isMobileLike) {
+        window.open(url[1], '_blank').focus();
+    }
 }
 
 function detectMobile() {
@@ -610,7 +612,7 @@ const colorbook = {
     }
 };
 
-const sankeyTitle = 'Revenue, Fiscal Year 2025';
+const sankeyTitle = 'Sources of Revenue, Fiscal Year 2025';
 const sankeyCaption =
     'Hospital services ($4.7B) are excluded. Net assets (total assets minus total liabilities) for FY25 were $633.8M.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
 const statementCaption =
@@ -642,7 +644,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -667,7 +669,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -692,7 +694,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -717,7 +719,7 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.12 : 'center'
+                    x: isMobileLike ? 0.12 : 0.08
                 }
             },
             {
@@ -739,7 +741,7 @@ const sequence = {
                 margin: {
                     t: isMobileLike ? 80 : 40,
                     r: isMobileLike ? 0 : 20,
-                    b: isMobileLike ? 80 : 140
+                    b: isMobileLike ? 90 : 140
                 },
                 autosize: isMobileLike ? false : true,
                 width: isMobileLike ? 380 : null,
@@ -800,7 +802,7 @@ const sequence = {
         d3.select('.plotly').style('margin-top', '0px');
         const layout = createLayout(
             (title =
-                'Industries invested in by the University as of 2025,' +
+                'Sectors invested in by the University as of 2025,' +
                 (isMobileLike ? '<br>' : ' ') +
                 'with approximate known amounts'),
             (caption =
@@ -850,7 +852,7 @@ const sequence = {
                         },
                         showarrow: false,
                         text: '  Total in endowment<br>$10.9B',
-                        x: -30,
+                        x: isMobileLike ? -60 : -30,
                         y: 200
                     } // add additional annotation
                 ]
