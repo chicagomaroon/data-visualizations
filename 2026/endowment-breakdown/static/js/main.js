@@ -660,7 +660,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
