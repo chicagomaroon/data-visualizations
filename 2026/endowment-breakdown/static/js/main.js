@@ -85,7 +85,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
         title: {
             text: title,
             x: 'center',
-            y: isMobileLike ? 0.82 : 0.93, // vertical position (1 = top, 0 = bottom)
+            y: isMobileLike ? 0.85 - ((1000 - screenHeight) / 1200) ** 2 : 0.93, // vertical position (1 = top, 0 = bottom)
             font: {
                 size: titleFontSize
             },
@@ -102,7 +102,7 @@ function createLayout(title = '', caption = '', showlegend = false) {
                 xref: 'paper',
                 yref: 'paper',
                 x: 1, // right align
-                y: -0.08 - isMobileLike * 0.02, // move below the x-axis
+                y: -0.08 - isMobileLike * 0.04, // move below the x-axis
                 showarrow: false,
                 xanchor: 'right',
                 yanchor: 'top',
@@ -270,14 +270,16 @@ function circleChart(data, variable) {
                 size: groupedData.map(
                     (val) =>
                         Math.sqrt(val.amount_thousands) /
-                        (isMobileLike ? 2 : 0.85) // scale by square root for proportionality of area (instead of radius)
+                        (isMobileLike
+                            ? 1.9 + ((1000 - screenHeight) / 350) ** 5
+                            : 0.85) // scale by square root for proportionality of area (instead of radius)
                 ),
                 color: '#800000',
                 opacity: 1
             },
             textfont: {
                 color: 'white',
-                size: bodyFontSize
+                size: isMobileLike ? bodyFontSize * 0.85 : bodyFontSize
             },
             text: groupedData.map((val) =>
                 val.amount_thousands < 10000
@@ -328,7 +330,7 @@ function facetChart(data) {
         type: 'scatter',
         mode: 'markers+text',
         x: isMobileLike
-            ? [2010, 2014.5, 2018, 2022]
+            ? [2008.5, 2014, 2017.8, 2022.5]
             : [2015.8, 2018.4, 2020.6, 2023],
         y: sizeLegendValues.map(() => ''),
         marker: {
@@ -581,6 +583,10 @@ function open_url(data) {
     }
 }
 
+function captionAdjust() {
+    return (screenHeight / 670) ** 10;
+}
+
 function detectMobile() {
     return (
         window.matchMedia('(max-width: 768px)').matches &&
@@ -616,6 +622,13 @@ const colorbook = {
     }
 };
 
+// Update on resize
+let screenHeight = window.innerHeight;
+
+window.addEventListener('resize', () => {
+    screenHeight = window.innerHeight;
+});
+
 const sankeyTitle = 'Sources of Revenue, Fiscal Year 2025';
 const sankeyCaption =
     'Hospital services ($4.7B) are excluded. Net assets (total assets minus total liabilities) for FY25 were $633.8M.<br>Source: <a href="https://mc-1b49d921-43a2-4264-88fd-647979-cdn-endpoint.azureedge.net/-/media/project/uchicago-tenant/intranet/fna/financial-services/accounting-and-treasury/audited-financial-statements/2024-2025-the-university-of-chicago-financial-statements.pdf?rev=b42148936ffe46d1a43b3c5f915e0edb&hash=F87C26EADBC74DC974DBB5A899324C1F">University of Chicago financial statement for fiscal year 2025</a>';
@@ -644,7 +657,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120,
+                    b: isMobileLike ? 60 + captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -670,7 +683,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120,
+                    b: isMobileLike ? 60 + captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -696,7 +709,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120,
+                    b: isMobileLike ? 60 + captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -722,7 +735,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 : 120,
+                    b: isMobileLike ? 60 + captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -750,7 +763,7 @@ const sequence = {
                     t: isMobileLike ? 60 : 40,
                     r: isMobileLike ? 0 : 20,
                     l: 0,
-                    b: isMobileLike ? 60 : 140
+                    b: isMobileLike ? 60 + captionAdjust() : 140
                 },
                 annotations: [
                     layout['annotations'][0], // keep caption
@@ -784,7 +797,7 @@ const sequence = {
                 margin: {
                     l: 25,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 40 : 150
+                    b: isMobileLike ? 45 + captionAdjust() : 150
                 },
                 xaxis: {
                     showgrid: true,
@@ -827,7 +840,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
-                    b: isMobileLike ? 40 : 75,
+                    b: isMobileLike ? 40 + captionAdjust() : 75,
                     t: isMobileLike ? 100 : 90
                 },
                 xaxis: {
@@ -858,8 +871,8 @@ const sequence = {
                             color: 'black'
                         },
                         showarrow: false,
-                        text: '  Total in endowment<br>$10.9B',
-                        x: isMobileLike ? -60 : -30,
+                        text: 'Total in endowment<br>$10.9B',
+                        x: isMobileLike ? -65 : -30,
                         y: 200
                     } // add additional annotation
                 ]
@@ -911,7 +924,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 50 : 220,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 : 100
+                    b: isMobileLike ? 60 + captionAdjust() : 100
                 },
                 xaxis: {
                     range: [0.01, 1],
@@ -1007,12 +1020,14 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 120 : 230,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 : 110
+                    b: isMobileLike ? 60 + captionAdjust() : 110
                 },
                 title: {
                     ...layout.title,
                     x: isMobileLike ? 0.08 : 0.26,
-                    y: isMobileLike ? 0.78 : 0.9 // vertical position (1 = top, 0 = bottom)
+                    y: isMobileLike
+                        ? 0.78 - ((1000 - screenHeight) / 1000) ** 2.5
+                        : 0.9 // vertical position (1 = top, 0 = bottom)
                 }
             },
             config
