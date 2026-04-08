@@ -587,6 +587,7 @@ function open_url(data) {
 }
 
 function captionAdjust() {
+    console.log(Math.log(screenHeight - 300) ** 2.2);
     return Math.log(screenHeight - 300) ** 2.2;
 }
 
@@ -1025,7 +1026,6 @@ const sequence = {
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.08 : 0.26,
                     y: isMobileLike
                         ? 0.78 - ((1000 - screenHeight) / 1000) ** 2.5
                         : 0.9 // vertical position (1 = top, 0 = bottom)
