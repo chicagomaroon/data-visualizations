@@ -274,8 +274,8 @@ g.sankey {
     }
 
     #title-logo {
-        width: 150px;
-        max-width: 150px;
+        width: 200px;
+        max-width: 200px;
         flex-shrink: 0;
         margin: 20px;
     }
@@ -284,7 +284,7 @@ g.sankey {
 
     #bylines .byline {
         font-size: 12px;
-        line-height: 14px;
+        line-height: 16px;
     }
 
     h1 {
@@ -331,12 +331,6 @@ g.sankey {
     #intro h1,
     #subtitle {
         width: 90%;
-    }
-
-    .byline,
-    #bylines {
-        font-size: 14px;
-        line-height: 24px;
     }
 
     /* chapters */

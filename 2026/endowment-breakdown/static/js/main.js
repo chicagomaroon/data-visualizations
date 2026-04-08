@@ -587,7 +587,7 @@ function open_url(data) {
 }
 
 function captionAdjust() {
-    return (screenHeight / 650) ** 10;
+    return Math.log(screenHeight - 300) ** 2.2;
 }
 
 function detectMobile() {
@@ -660,7 +660,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -686,7 +686,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -712,7 +712,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -738,7 +738,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -766,7 +766,7 @@ const sequence = {
                     t: isMobileLike ? 60 : 40,
                     r: isMobileLike ? 0 : 20,
                     l: 0,
-                    b: isMobileLike ? 60 + captionAdjust() : 140
+                    b: isMobileLike ? 1.5 * captionAdjust() : 140
                 },
                 annotations: [
                     layout['annotations'][0], // keep caption
@@ -800,7 +800,7 @@ const sequence = {
                 margin: {
                     l: 25,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 45 + captionAdjust() : 150
+                    b: isMobileLike ? 1.2 * captionAdjust() : 150
                 },
                 xaxis: {
                     showgrid: true,
@@ -843,7 +843,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
-                    b: isMobileLike ? 40 + captionAdjust() : 75,
+                    b: isMobileLike ? captionAdjust() : 75,
                     t: isMobileLike ? 100 : 90
                 },
                 xaxis: {
@@ -926,7 +926,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 50 : 220,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 + captionAdjust() : 100
+                    b: isMobileLike ? 1.2 * captionAdjust() : 100
                 },
                 xaxis: {
                     range: [0.01, 1],
@@ -1021,7 +1021,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 105 : 230,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 + captionAdjust() : 110
+                    b: isMobileLike ? 1.5 * captionAdjust() : 110
                 },
                 title: {
                     ...layout.title,
