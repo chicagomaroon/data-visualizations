@@ -269,29 +269,39 @@ g.sankey {
 
     body {
         margin: 0;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
     }
 
     #title-logo {
-        width: 250px;
-        max-width: 250px;
+        width: 200px;
+        max-width: 200px;
         flex-shrink: 0;
+        margin: 20px;
     }
 
     /* text */
 
+    #bylines .byline {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
     h1 {
-        font-size: 32px;
+        font-size: 30px;
         padding-top: 0;
+        margin-top: 0;
     }
 
     #subtitle {
-        font-size: 20px;
-        line-height: 22px;
+        font-size: 16px;
+        line-height: 20px;
     }
 
     hr {
         width: 90% !important;
         max-width: 100vw;
+        margin: 20px;
     }
 
     .non-scroller {
@@ -309,10 +319,6 @@ g.sankey {
         height: auto;
     }
 
-    #intro a img {
-        height: 30px;
-    }
-
     #intro {
         height: 60vh;
     }
@@ -325,12 +331,6 @@ g.sankey {
     #intro h1,
     #subtitle {
         width: 90%;
-    }
-
-    .byline,
-    #bylines {
-        font-size: 14px;
-        line-height: 24px;
     }
 
     /* chapters */

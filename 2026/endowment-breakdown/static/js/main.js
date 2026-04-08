@@ -184,7 +184,7 @@ function donutChart(data) {
             }
         },
         textfont: {
-            size: isMobileLike ? 0.9 * bodyFontSize : bodyFontSize
+            size: isMobileLike ? 0.8 * bodyFontSize : bodyFontSize
         },
         customdata: groupedData.map(
             (d) =>
@@ -279,7 +279,7 @@ function circleChart(data, variable) {
             },
             textfont: {
                 color: 'white',
-                size: isMobileLike ? bodyFontSize * 0.85 : bodyFontSize
+                size: isMobileLike ? bodyFontSize * 0.8 : bodyFontSize
             },
             text: groupedData.map((val) =>
                 val.amount_thousands < 10000
@@ -330,7 +330,7 @@ function facetChart(data) {
         type: 'scatter',
         mode: 'markers+text',
         x: isMobileLike
-            ? [2008.5, 2014, 2017.8, 2022.5]
+            ? [2012.5, 2016.5, 2019.3, 2022.6]
             : [2015.8, 2018.4, 2020.6, 2023],
         y: sizeLegendValues.map(() => ''),
         marker: {
@@ -339,6 +339,9 @@ function facetChart(data) {
             opacity: 1
         },
         text: ['undisclosed', '$100K', '$500K', '$1M'],
+        textfont: {
+            size: isMobileLike ? annotationFontSize : bodyFontSize
+        },
         textposition: 'right',
         hoverinfo: 'none'
     };
@@ -584,7 +587,8 @@ function open_url(data) {
 }
 
 function captionAdjust() {
-    return (screenHeight / 670) ** 10;
+    console.log(Math.log(screenHeight - 300) ** 2.2);
+    return Math.log(screenHeight - 300) ** 2.2;
 }
 
 function detectMobile() {
@@ -657,7 +661,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -683,7 +687,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -709,7 +713,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -735,7 +739,7 @@ const sequence = {
                 ...layout,
                 width: isMobileLike ? 700 : null,
                 margin: {
-                    b: isMobileLike ? 60 + captionAdjust() : 120,
+                    b: isMobileLike ? 1.5 * captionAdjust() : 120,
                     l: isMobileLike ? 20 : 20
                 },
                 title: {
@@ -763,13 +767,13 @@ const sequence = {
                     t: isMobileLike ? 60 : 40,
                     r: isMobileLike ? 0 : 20,
                     l: 0,
-                    b: isMobileLike ? 60 + captionAdjust() : 140
+                    b: isMobileLike ? 1.5 * captionAdjust() : 140
                 },
                 annotations: [
                     layout['annotations'][0], // keep caption
                     {
                         font: {
-                            size: titleFontSize
+                            size: isMobileLike ? bodyFontSize : titleFontSize
                         },
                         showarrow: false,
                         text: 'Total investments<br>$11.8 billion',
@@ -784,7 +788,7 @@ const sequence = {
     'compare-schools': function () {
         const layout = createLayout(
             (title =
-                'U.S. college endowments valued at over $10 billion, Fiscal Year 2024'),
+                'U.S. college endowments over $10 billion, Fiscal Year 2024'),
             (caption =
                 'Source: <a href="https://www.forbes.com/sites/michaeltnietzel/2025/02/12/college-endowments-saw-112-returns-in-fy-24-harvard-still-1/">College Endowments Saw 11.2% Return In FY 2024</a>'),
             (showlegend = false)
@@ -797,7 +801,7 @@ const sequence = {
                 margin: {
                     l: 25,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 45 + captionAdjust() : 150
+                    b: isMobileLike ? 1.2 * captionAdjust() : 150
                 },
                 xaxis: {
                     showgrid: true,
@@ -840,7 +844,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 15 : 25,
                     r: isMobileLike ? 20 : 25,
-                    b: isMobileLike ? 40 + captionAdjust() : 75,
+                    b: isMobileLike ? captionAdjust() : 75,
                     t: isMobileLike ? 100 : 90
                 },
                 xaxis: {
@@ -905,8 +909,7 @@ const sequence = {
         }));
 
         var layout = createLayout(
-            (title =
-                'Change in proportion of endowment by asset type, 2005–2025'),
+            (title = 'Change in endowment makeup by asset type, 2005–2025'),
             (caption =
                 'Source: <a href="https://intranet.uchicago.edu/tools-and-resources/financial-resources/accounting-and-financial-reporting/financial-statements">University of Chicago financial statements</a>'),
             (showlegend = true)
@@ -924,7 +927,7 @@ const sequence = {
                 margin: {
                     l: isMobileLike ? 50 : 220,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 + captionAdjust() : 100
+                    b: isMobileLike ? 1.2 * captionAdjust() : 100
                 },
                 xaxis: {
                     range: [0.01, 1],
@@ -991,8 +994,7 @@ const sequence = {
         d3.select('#chart-div').html(''); // clear previous chart
         traces = facetChart(coi_data);
         layout = createLayout(
-            (title =
-                'Payments to investment managers with conflicts of interest'),
+            (title = 'Payments to asset managers with conflicts of interest'),
             (caption =
                 'Data on conflicts of interest was not required to be reported before <a href="https://www.irs.gov/pub/irs-prior/i990sl--2013.pdf">2013</a>.<br>Source: University of Chicago <a href="https://projects.propublica.org/nonprofits/organizations/362177139">IRS Form 990</a> filings')
         );
@@ -1018,13 +1020,12 @@ const sequence = {
                     }
                 },
                 margin: {
-                    l: isMobileLike ? 120 : 230,
+                    l: isMobileLike ? 105 : 230,
                     r: isMobileLike ? 25 : 0,
-                    b: isMobileLike ? 60 + captionAdjust() : 110
+                    b: isMobileLike ? 1.5 * captionAdjust() : 110
                 },
                 title: {
                     ...layout.title,
-                    x: isMobileLike ? 0.08 : 0.26,
                     y: isMobileLike
                         ? 0.78 - ((1000 - screenHeight) / 1000) ** 2.5
                         : 0.9 // vertical position (1 = top, 0 = bottom)
@@ -1051,10 +1052,10 @@ var annotationFontSize,
     titleFontSize;
 
 async function init() {
-    window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-    };
-    hideChart();
+    // window.onbeforeunload = function () {
+    //     window.scrollTo(0, 0);
+    // };
+    // hideChart();
 
     isMobileLike = detectMobile();
 
