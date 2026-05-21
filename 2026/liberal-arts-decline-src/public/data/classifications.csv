@@ -1,0 +1,342 @@
+classification,cip_code,major_name
+Area and Cultural Studies,5.0101,African Studies
+Area and Cultural Studies,5.0102,American/United States Studies/Civilization
+Area and Cultural Studies,5.0103,Asian Studies/Civilization
+Area and Cultural Studies,5.0104,East Asian Studies
+Area and Cultural Studies,5.0105,"Russian, Central European, East European and Eurasian Studies"
+Area and Cultural Studies,5.0107,Latin American Studies
+Area and Cultural Studies,5.0108,Near and Middle Eastern Studies
+Area and Cultural Studies,5.011,Russian Studies
+Area and Cultural Studies,5.0112,South Asian Studies
+Area and Cultural Studies,5.0118,Slavic Studies
+Area and Cultural Studies,5.0119,Caribbean Studies
+Area and Cultural Studies,5.0122,"Regional Studies (U.S., Canadian, Foreign)"
+Area and Cultural Studies,5.0123,Chinese Studies
+Area and Cultural Studies,5.0124,French Studies
+Area and Cultural Studies,5.0125,German Studies
+Area and Cultural Studies,5.0126,Italian Studies
+Area and Cultural Studies,5.0127,Japanese Studies
+Area and Cultural Studies,5.013,Spanish and Iberian Studies
+Area and Cultural Studies,5.0134,Latin American and Caribbean Studies
+Area and Cultural Studies,5.0199,"Area Studies, Other"
+Area and Cultural Studies,5.02,Ethnic Studies
+Area and Cultural Studies,5.0201,African-American/Black Studies
+Area and Cultural Studies,5.0202,American Indian/Native American Studies
+Area and Cultural Studies,5.0203,"Hispanic-American, Puerto Rican, and Mexican-American/Chicano Studies"
+Area and Cultural Studies,5.0206,Asian-American Studies
+Area and Cultural Studies,5.0207,Women's Studies
+Area and Cultural Studies,5.0208,Gay/Lesbian Studies
+Area and Cultural Studies,5.0209,Folklore Studies
+Area and Cultural Studies,5.0299,"Ethnic, Cultural Minority, Gender, and Group Studies, Other"
+Area and Cultural Studies,5.9999,"Area, Ethnic, Cultural, and Gender Studies, Other. - Deleted (2010), report under 05.01, 05.02"
+Business and Economics,1.0101,"Agricultural Business and Management, General"
+Business and Economics,1.0102,Agribusiness/Agricultural Business Operations
+Business and Economics,1.0103,Agricultural Economics
+Business and Economics,1.0309,Viticulture And Enology
+Business and Economics,1.0701,International Agriculture
+Business and Economics,14.3701,Operations Research
+Business and Economics,30.3901,Economics and Computer Science
+Business and Economics,30.7104,Financial Analytics
+Business and Economics,45.0601,"Economics, General"
+Business and Economics,45.0603,Econometrics and Quantitative Economics
+Business and Economics,45.0604,Development Economics and International Development
+Business and Economics,45.0699,"Economics, Other"
+Business and Economics,52.0101,"Business/Commerce, General"
+Business and Economics,52.0201,"Business Administration and Management, General"
+Business and Economics,52.0205,Operations Management and Supervision
+Business and Economics,52.0206,Non-Profit/Public/Organizational Management
+Business and Economics,52.0208,E-Commerce/Electronic Commerce
+Business and Economics,52.0209,Transportation/Mobility Management
+Business and Economics,52.0301,Accounting
+Business and Economics,52.0501,"Business/Corporate Communications, General"
+Business and Economics,52.0601,Business/Managerial Economics
+Business and Economics,52.0701,Entrepreneurship/Entrepreneurial Studies
+Business and Economics,52.0801,"Finance, General"
+Business and Economics,52.0904,Hotel/Motel Administration/Management
+Business and Economics,52.1002,Labor and Industrial Relations
+Business and Economics,52.1003,Organizational Behavior Studies
+Business and Economics,52.1101,International Business/Trade/Commerce
+Business and Economics,52.1201,"Management Information Systems, General"
+Business and Economics,52.1301,Management Science
+Business and Economics,52.1399,"Management Sciences and Quantitative Methods, Other"
+Business and Economics,52.1401,"Marketing/Marketing Management, General"
+Business and Economics,52.1501,Real Estate
+Business and Economics,52.1701,Insurance
+Business and Economics,52.1801,"Sales, Distribution, and Marketing Operations, General"
+Business and Economics,52.1803,Retailing and Retail Operations
+Computer Science,11.0101,"Computer and Information Sciences, General"
+Computer Science,11.0102,Artificial Intelligence
+Computer Science,11.0103,Information Technology
+Computer Science,11.0199,"Computer and Information Sciences,  Other"
+Computer Science,11.0202,"Computer Programming, Specific Applications"
+Computer Science,11.0299,"Computer Programming, Other"
+Computer Science,11.0401,Information Science/Studies
+Computer Science,11.0701,Computer Science
+Computer Science,11.0803,Computer Graphics
+Computer Science,11.0899,"Computer Software and Media Applications, Other"
+Computer Science,11.0901,Computer Systems Networking and Telecommunications
+Computer Science,11.1003,Computer and Information Systems Security/Auditing/Information Assurance
+Computer Science,11.9999,"Computer and Information Sciences and Support Services, Other"
+Computer Science,30.7001,"Data Science, General"
+Humanities and Arts,4.0801,"Architectural History and Criticism, General"
+Humanities and Arts,9.01,"Communication, General"
+Humanities and Arts,9.0101,Speech Communication and Rhetoric
+Humanities and Arts,9.0102,Mass Communication/Media Studies
+Humanities and Arts,9.0199,"Communication and Media Studies, Other"
+Humanities and Arts,9.0499,"Journalism, Other"
+Humanities and Arts,9.0702,Digital Communication and Media/Multimedia
+Humanities and Arts,9.0904,Political Communication
+Humanities and Arts,16.0101,"Foreign Languages and Literatures, General"
+Humanities and Arts,16.0102,Linguistics
+Humanities and Arts,16.0104,Comparative Literature
+Humanities and Arts,16.0201,"African Languages, Literatures, and Linguistics"
+Humanities and Arts,16.03,"East Asian Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.0301,Chinese Language and Literature
+Humanities and Arts,16.0302,Japanese Language and Literature
+Humanities and Arts,16.0303,Korean Language and Literature
+Humanities and Arts,16.0399,"East Asian Languages, Literatures, and Linguistics, Other"
+Humanities and Arts,16.04,"Slavic Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.0402,Russian Language and Literature
+Humanities and Arts,16.0407,Polish Language and Literature
+Humanities and Arts,16.05,"Germanic Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.0501,German Language and Literature
+Humanities and Arts,16.0502,"Scandinavian Languages, Literatures, and Linguistics"
+Humanities and Arts,16.0506,Swedish Language and Literature
+Humanities and Arts,16.0599,"Germanic Languages, Literatures, and Linguistics, Other"
+Humanities and Arts,16.07,"South Asian Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.0702,"Sanskrit and Classical Indian Languages, Literatures, and Linguistics"
+Humanities and Arts,16.09,"Romance Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.0901,French Language and Literature
+Humanities and Arts,16.0902,Italian Language and Literature
+Humanities and Arts,16.0904,Portuguese Language and Literature
+Humanities and Arts,16.0905,Spanish Language and Literature
+Humanities and Arts,16.0906,Romanian Language and Literature
+Humanities and Arts,16.0908,"Hispanic and Latin American Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.0999,"Romance Languages, Literatures, and Linguistics, Other"
+Humanities and Arts,16.11,"Middle/Near Eastern and Semitic Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.1101,Arabic Language and Literature
+Humanities and Arts,16.1102,Hebrew Language and Literature
+Humanities and Arts,16.1103,"Ancient Near Eastern and Biblical Languages, Literatures, and Linguistics"
+Humanities and Arts,16.1199,"Middle/Near Eastern and Semitic Languages, Literatures, and Linguistics, Other"
+Humanities and Arts,16.12,"Classics and Classical Languages, Literatures, and Linguistics, General"
+Humanities and Arts,16.1202,Ancient/Classical Greek Language and Literature
+Humanities and Arts,16.1203,Latin Language and Literature
+Humanities and Arts,16.1299,"Classics and Classical Languages, Literatures, and Linguistics, Other"
+Humanities and Arts,16.1301,"Celtic Languages, Literatures, and Linguistics"
+Humanities and Arts,16.1501,Turkish Language and Literature
+Humanities and Arts,16.9999,"Foreign Languages, Literatures, and Linguistics, Other"
+Humanities and Arts,23.0101,"English Language and Literature, General"
+Humanities and Arts,23.1302,Creative Writing
+Humanities and Arts,23.1401,General Literature
+Humanities and Arts,23.1404,English Literature (British and Commonwealth)
+Humanities and Arts,23.9999,"English Language and Literature/Letters, Other"
+Humanities and Arts,24.0101,Liberal Arts and Sciences/Liberal Studies
+Humanities and Arts,24.0102,General Studies
+Humanities and Arts,24.0103,Humanities/Humanistic Studies
+Humanities and Arts,24.0199,"Liberal Arts and Sciences, General Studies and Humanities, Other"
+Humanities and Arts,30.1301,Medieval and Renaissance Studies
+Humanities and Arts,30.2201,Ancient Studies/Civilization
+Humanities and Arts,30.2202,"Classical, Ancient Mediterranean, and Near Eastern Studies and Archaeology"
+Humanities and Arts,30.2601,Cultural Studies/Critical Theory and Analysis
+Humanities and Arts,38.0101,Philosophy
+Humanities and Arts,38.0102,Logic
+Humanities and Arts,38.0199,"Philosophy, Other"
+Humanities and Arts,38.0201,Religion/Religious Studies
+Humanities and Arts,38.0205,Islamic Studies
+Humanities and Arts,38.0206,Jewish/Judaic Studies
+Humanities and Arts,38.0299,"Religion/Religious Studies, Other"
+Humanities and Arts,38.9999,"Philosophy and Religious Studies, Other"
+Humanities and Arts,50.0101,"Visual and Performing Arts, General"
+Humanities and Arts,50.0301,"Dance, General"
+Humanities and Arts,50.0401,"Design and Visual Communications, General"
+Humanities and Arts,50.0501,"Drama and Dramatics/Theatre Arts, General"
+Humanities and Arts,50.0507,Directing and Theatrical Production
+Humanities and Arts,50.0601,Film/Cinema/Media Studies
+Humanities and Arts,50.0701,"Art/Art Studies, General"
+Humanities and Arts,50.0702,"Fine/Studio Arts, General"
+Humanities and Arts,50.0703,"Art History, Criticism and Conservation"
+Humanities and Arts,50.0712,"Fiber, Textile and Weaving Arts"
+Humanities and Arts,50.0799,"Fine Arts and Art Studies, Other"
+Humanities and Arts,50.0901,"Music, General"
+Humanities and Arts,50.091,Jazz/Jazz Studies
+Humanities and Arts,50.0913,Music Technology
+Humanities and Arts,50.9999,"Visual and Performing Arts, Other"
+Humanities and Arts,51.3201,Bioethics/Medical Ethics
+Humanities and Arts,54.0101,"History, General"
+Humanities and Arts,54.0103,European History
+Humanities and Arts,54.0104,History and Philosophy of Science and Technology
+Humanities and Arts,54.0199,"History, Other"
+Math and Allied Fields,27.0101,"Mathematics, General"
+Math and Allied Fields,27.0199,"Mathematics, Other"
+Math and Allied Fields,27.0301,"Applied Mathematics, General"
+Math and Allied Fields,27.0303,Computational Mathematics
+Math and Allied Fields,27.0305,Financial Mathematics
+Math and Allied Fields,27.0399,"Applied Mathematics, Other"
+Math and Allied Fields,27.0501,"Statistics, General"
+Math and Allied Fields,27.0503,Mathematics and Statistics
+Math and Allied Fields,27.0601,"Applied Statistics, General"
+Math and Allied Fields,27.9999,"Mathematics and Statistics, Other"
+Math and Allied Fields,30.0801,Mathematics and Computer Science
+Other Social Sciences,22.9999,"Legal Professions and Studies, Other"
+Other Social Sciences,30.1701,Behavioral Sciences
+Other Social Sciences,30.2001,International/Globalization Studies
+Other Social Sciences,42.0101,"Psychology, General"
+Other Social Sciences,42.0301,NA
+Other Social Sciences,42.0601,NA
+Other Social Sciences,42.2701,Cognitive Psychology and Psycholinguistics
+Other Social Sciences,42.2704,Experimental Psychology
+Other Social Sciences,42.2799,"Research and Experimental Psychology, Other"
+Other Social Sciences,42.2803,Counseling Psychology
+Other Social Sciences,42.9999,"Psychology, Other"
+Other Social Sciences,44.0201,Community Organization and Advocacy
+Other Social Sciences,44.0501,"Public Policy Analysis, General"
+Other Social Sciences,44.0503,Health Policy Analysis
+Other Social Sciences,44.0504,International Policy Analysis
+Other Social Sciences,44.0599,"Public Policy Analysis, Other"
+Other Social Sciences,44.0701,Social Work
+Other Social Sciences,45.0101,"Social Sciences, General"
+Other Social Sciences,45.0102,Research Methodology and Quantitative Methods
+Other Social Sciences,45.0201,"Anthropology, General"
+Other Social Sciences,45.0202,Physical and Biological Anthropology
+Other Social Sciences,45.0299,"Anthropology, Other"
+Other Social Sciences,45.0301,Archeology
+Other Social Sciences,45.0401,Criminology
+Other Social Sciences,45.0701,Geography
+Other Social Sciences,45.0901,International Relations and Affairs
+Other Social Sciences,45.1001,"Political Science and Government, General"
+Other Social Sciences,45.1099,"Political Science and Government, Other"
+Other Social Sciences,45.1101,"Sociology, General"
+Other Social Sciences,45.1103,Rural Sociology
+Other Social Sciences,45.1201,Urban Studies/Affairs
+Other Social Sciences,45.9999,"Social Sciences, Other"
+STEM,14.0101,"Engineering, General"
+STEM,14.0201,"Aerospace, Aeronautical, and Astronautical/Space Engineering, General"
+STEM,14.0301,Agricultural Engineering
+STEM,14.0501,Bioengineering and Biomedical Engineering
+STEM,14.0701,Chemical Engineering
+STEM,14.0702,Chemical and Biomolecular Engineering
+STEM,14.0801,"Civil Engineering, General"
+STEM,14.0804,Transportation and Highway Engineering
+STEM,14.0899,"Civil Engineering, Other"
+STEM,14.0901,"Computer Engineering, General"
+STEM,14.1001,Electrical and Electronics Engineering
+STEM,14.1101,Engineering Mechanics
+STEM,14.1201,Engineering Physics/Applied Physics
+STEM,14.1301,Engineering Science
+STEM,14.1401,Environmental/Environmental Health Engineering
+STEM,14.1801,Materials Engineering
+STEM,14.1901,Mechanical Engineering
+STEM,14.2001,Metallurgical Engineering
+STEM,14.2101,Mining and Mineral Engineering
+STEM,14.2301,Nuclear Engineering
+STEM,14.2401,Ocean Engineering
+STEM,14.2501,Petroleum Engineering
+STEM,14.2701,Systems Engineering
+STEM,14.3101,Materials Sciences
+STEM,14.3501,Industrial Engineering
+STEM,14.4501,Biological/Biosystems Engineering
+STEM,14.4801,"Energy Systems Engineering, General"
+STEM,14.9999,"Engineering, Other"
+STEM,15.0507,Environmental/Environmental Engineering Technology/Technician
+STEM,15.1501,Engineering/Industrial Management
+STEM,26.0101,"Biology/Biological Sciences, General"
+STEM,26.0102,"Biomedical Sciences, General"
+STEM,26.0202,Biochemistry
+STEM,26.0203,Biophysics
+STEM,26.0204,Molecular Biology
+STEM,26.021,Biochemistry and Molecular Biology
+STEM,26.0401,Cell/Cellular Biology and Histology
+STEM,26.0403,Anatomy
+STEM,26.0404,Developmental Biology and Embryology
+STEM,26.0406,Cell/Cellular and Molecular Biology
+STEM,26.0599,"Microbiological Sciences and Immunology, Other"
+STEM,26.0702,Entomology
+STEM,26.0807,Genome Sciences/Genomics
+STEM,26.0906,Neurobiology And Anatomy
+STEM,26.091,Pathology/Experimental Pathology
+STEM,26.1101,Biometry/Biometrics
+STEM,26.1102,Biostatistics
+STEM,26.1103,Bioinformatics
+STEM,26.1104,Computational Biology
+STEM,26.1201,Biotechnology
+STEM,26.1301,Ecology
+STEM,26.1302,Marine Biology and Biological Oceanography
+STEM,26.1303,Evolutionary Biology
+STEM,26.1305,Environmental Biology
+STEM,26.131,Ecology and Evolutionary Biology
+STEM,26.1501,Neuroscience
+STEM,26.1503,Neurobiology and Anatomy
+STEM,26.9999,"Biological and Biomedical Sciences, Other"
+STEM,30.0101,Biological and Physical Sciences
+STEM,30.0601,Systems Science and Theory
+STEM,30.1501,"Science, Technology and Society"
+STEM,30.1801,Natural Sciences
+STEM,30.1901,Nutrition Sciences
+STEM,30.2401,Neuroscience
+STEM,30.2501,"Cognitive Science, General"
+STEM,30.2701,Human Biology
+STEM,30.3001,Computational Science
+STEM,30.4401,Geography and Environmental Studies
+STEM,40.0101,"Physical Sciences, General"
+STEM,40.0201,Astronomy
+STEM,40.0202,Astrophysics
+STEM,40.0299,"Astronomy and Astrophysics, Other"
+STEM,40.0401,"Atmospheric Sciences and Meteorology, General"
+STEM,40.0501,"Chemistry, General"
+STEM,40.0506,Physical Chemistry
+STEM,40.0508,Chemical Physics
+STEM,40.0599,"Chemistry, Other"
+STEM,40.0601,"Geology/Earth Science, General"
+STEM,40.0602,Geochemistry
+STEM,40.0603,Geophysics and Seismology
+STEM,40.0699,"Geological and Earth Sciences/Geosciences, Other"
+STEM,40.0801,"Physics, General"
+STEM,40.0802,Atomic/Molecular Physics
+STEM,40.081,Theoretical and Mathematical Physics
+STEM,40.0899,"Physics, Other"
+STEM,40.1001,Materials Science
+STEM,40.9999,"Physical Sciences, Other"
+STEM,41.9999,"Science Technologies/Technicians, Other"
+NA,1,"Agriculture, General"
+NA,1.0901,"Animal Sciences, General"
+NA,1.1001,Food Science
+NA,1.1004,Viticulture and Enology
+NA,1.1101,"Plant Sciences, General"
+NA,1.1102,Agronomy and Crop Science
+NA,3.0101,"Natural Resources/Conservation, General"
+NA,3.0103,Environmental Studies
+NA,3.0104,Environmental Science
+NA,4.0201,Architecture
+NA,4.0301,"City/Urban, Community, and Regional Planning"
+NA,4.0401,Environmental Design/Architecture
+NA,4.0601,Landscape Architecture
+NA,4.0902,Architectural and Building Sciences/Technology
+NA,12.0508,Institutional Food Workers
+NA,13.0101,"Education, General"
+NA,13.0701,International and Comparative Education
+NA,13.1202,Elementary Education and Teaching
+NA,13.1301,Agricultural Teacher Education
+NA,19.0501,"Foods, Nutrition, and Wellness Studies, General"
+NA,19.0701,"Human Development and Family Studies, General"
+NA,19.0901,"Apparel and Textiles, General"
+NA,19.0904,Textile Science
+NA,29.0202,Strategic Intelligence
+NA,30,"Multi-/Interdisciplinary Studies, General"
+NA,30.2502,Contemplative Studies/Inquiry
+NA,30.3301,Sustainability Studies
+NA,30.9999,"Multi-/Interdisciplinary Studies, Other"
+NA,39.0601,Theology/Theological Studies
+NA,40.0203,Planetary Astronomy and Science
+NA,51.0701,Health/Health Care Administration/Management
+NA,51.1102,Pre-Medicine/Pre-Medical Studies
+NA,51.1504,Community Health Services/Liaison/Counseling
+NA,51.1601,Registered Nursing/Registered Nurse
+NA,51.2201,"Public Health, General"
+NA,51.2208,Community Health and Preventive Medicine
+NA,51.221,International Public Health/International Health
+NA,51.2299,"Public Health, Other"
+NA,51.3801,Registered Nursing/Registered Nurse
+NA,51.3805,Family Practice Nurse/Nursing
+NA,51.3808,Nursing Science
+NA,51.3899,"Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing, Other"
+NA,52.1304,Actuarial Science
