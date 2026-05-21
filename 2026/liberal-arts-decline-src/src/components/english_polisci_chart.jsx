@@ -12,7 +12,11 @@ export default function AriChart({
     data,
     width = 700,
     height = 400,
+<<<<<<< HEAD
     margin = { top: 70, right: 100, bottom: 30, left: 50 }
+=======
+    margin = { top: 40, right: 100, bottom: 30, left: 50 }
+>>>>>>> origin/main
 }) {
     const svgRef = useRef();
     const windowWidth = useWindowWidth();
