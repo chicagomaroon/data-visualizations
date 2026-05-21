@@ -11,37 +11,75 @@ var scroller = scrollama();
 var isMobile = window.innerWidth < 800;
 
 // add mobile coordinates
-var group1 = { center: isMobile ? [-87.594196, 41.795186] : [-87.6079, 41.7942], 
-                zoom: isMobile ? 12.5 : 13.5, pitch: 0, bearing: 0 }
-var group2 = { center: isMobile ? [-87.594196, 41.795186] : [-87.6086, 41.7942], 
-                zoom: 12.5, pitch: 0, bearing: 0 }
-var group3 = { center: isMobile ? [-87.600578, 41.794210] : [-87.6012, 41.7944], 
-                zoom: isMobile ? 16 : 16, pitch: 0, bearing: 0 }
-var group4 = { center: isMobile ? [-87.587142, 41.789127] : [-87.589, 41.7896], 
-                zoom: isMobile ? 16 : 16, pitch: 0, bearing: 0 }
-var group5 = { center: isMobile ? [-87.854289, 41.631216] : [-87.8567, 41.6312], 
-                zoom: isMobile ? 16 : 16, pitch: 0, bearing: 0 }
-
-
-
+var group1 = {
+    center: isMobile ? [-87.594196, 41.795186] : [-87.6079, 41.7942],
+    zoom: isMobile ? 12.5 : 13.5,
+    pitch: 0,
+    bearing: 0
+};
+var group2 = {
+    center: isMobile ? [-87.594196, 41.795186] : [-87.6086, 41.7942],
+    zoom: 12.5,
+    pitch: 0,
+    bearing: 0
+};
+var group3 = {
+    center: isMobile ? [-87.600578, 41.79421] : [-87.6012, 41.7944],
+    zoom: isMobile ? 16 : 16,
+    pitch: 0,
+    bearing: 0
+};
+var group4 = {
+    center: isMobile ? [-87.587142, 41.789127] : [-87.589, 41.7896],
+    zoom: isMobile ? 16 : 16,
+    pitch: 0,
+    bearing: 0
+};
+var group5 = {
+    center: isMobile ? [-87.854289, 41.631216] : [-87.8567, 41.6312],
+    zoom: isMobile ? 16 : 16,
+    pitch: 0,
+    bearing: 0
+};
 
 // add steps
 var stepLocations = {
-    0: group1, 1: group1, 2: group1, 3: group1, 4: group1, 5: group1,
+    0: group1,
+    1: group1,
+    2: group1,
+    3: group1,
+    4: group1,
+    5: group1,
 
-    6: group2, 7: group2, 8: group2, 9: group2,
+    6: group2,
+    7: group2,
+    8: group2,
+    9: group2,
 
-    10: { center: isMobile ? [-87.594196, 41.795186] : [-87.6086, 41.7942], 
-                zoom: isMobile ? 12.5 : 13.5, pitch: 0, bearing: 0 },
+    10: {
+        center: isMobile ? [-87.594196, 41.795186] : [-87.6086, 41.7942],
+        zoom: isMobile ? 12.5 : 13.5,
+        pitch: 0,
+        bearing: 0
+    },
 
-    11: group3, 12: group3, 13: group3,
+    11: group3,
+    12: group3,
+    13: group3,
 
-    14: { center: isMobile ? [-87.599623, 41.789554] : [-87.6018, 41.7898], 
-                zoom: isMobile ? 15 : 16, pitch: 0, bearing: 0 },
+    14: {
+        center: isMobile ? [-87.599623, 41.789554] : [-87.6018, 41.7898],
+        zoom: isMobile ? 15 : 16,
+        pitch: 0,
+        bearing: 0
+    },
 
-    15: group4, 16: group4,
-    
-    17: group5, 18: group5, 19: group5
+    15: group4,
+    16: group4,
+
+    17: group5,
+    18: group5,
+    19: group5
 };
 
 function setupStickyfill() {
@@ -85,12 +123,11 @@ function handleStepEnter(response) {
     if (response.index === 0) {
         // Show all property parcels, hide exempt parcels, clear any filters
         map.setPaintProperty('property-parcels', 'fill-opacity', 0.8);
-        map.setPaintProperty('property-parcels', 'fill-color', '#A52519'); 
+        map.setPaintProperty('property-parcels', 'fill-color', '#A52519');
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0);
         map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0);
         map.setFilter('property-highlight', ['==', 'Name', '']);
         map.setFilter('property-highlight-nonexempt', ['==', 'Name', '']);
-
 
         // switch from full to tax-exempt properties
     } else if (
@@ -107,7 +144,11 @@ function handleStepEnter(response) {
     ) {
         map.setPaintProperty('property-parcels', 'fill-opacity', 0);
         map.setPaintProperty('non-exempt-parcels', 'fill-opacity', 0.8);
-        map.setPaintProperty('non-exempt-parcels', 'fill-color', 'rgb(154, 154, 154)');
+        map.setPaintProperty(
+            'non-exempt-parcels',
+            'fill-color',
+            'rgb(154, 154, 154)'
+        );
 
         map.setPaintProperty('exempt-parcels', 'fill-opacity', 0.8);
         map.setPaintProperty('exempt-parcels', 'fill-color', '#A52519');

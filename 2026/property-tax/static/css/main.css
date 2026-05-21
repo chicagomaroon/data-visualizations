@@ -121,7 +121,7 @@ th {
     object-fit: cover;
 }
 
-#background img[src="images/uchicago_pic.JPG"] {
+#background img[src='images/uchicago_pic.JPG'] {
     max-height: 100%;
     object-fit: cover;
 }
@@ -355,8 +355,7 @@ article {
 /* mobile */
 
 @media (width < 800px) {
-
-    #background img[src="images/uchicago_pic.JPG"] {
+    #background img[src='images/uchicago_pic.JPG'] {
         display: none;
     }
 
@@ -412,13 +411,12 @@ article {
     }
 
     .step:has(img) {
-    margin-bottom: 60vh;
+        margin-bottom: 60vh;
     }
 
     #property-graph {
         display: none;
     }
-
 }
 
 /* Main fixed map */

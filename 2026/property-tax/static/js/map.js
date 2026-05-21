@@ -38,7 +38,6 @@ Promise.all([
     d3.json('data/parcels.json')
 ]).then(([parcelData, exemptData]) => {
     map.on('load', async () => {
-        
         map.addSource('properties', {
             type: 'geojson',
             data: parcelData
@@ -87,12 +86,23 @@ Promise.all([
             id: 'non-exempt-parcels',
             type: 'fill',
             source: 'properties',
-            filter: ['!', ['in', ['get', 'Name'], ['literal', exemptData.features.map(f => f.properties.Name)]]],
+            filter: [
+                '!',
+                [
+                    'in',
+                    ['get', 'Name'],
+                    [
+                        'literal',
+                        exemptData.features.map((f) => f.properties.Name)
+                    ]
+                ]
+            ],
             paint: {
                 'fill-color': [
                     'match',
                     ['get', 'mailing_name'],
-                    'University of Chicago', '#A52519',
+                    'University of Chicago',
+                    '#A52519',
                     '#99999901'
                 ],
                 'fill-opacity': 0
