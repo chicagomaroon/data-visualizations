@@ -12,11 +12,7 @@ export default function PennChart({
     data,
     width = 750,
     height = 400,
-<<<<<<< HEAD
-    margin = { top: 80, right: 60, bottom: 30, left: 70 }
-=======
-    margin = { top: 80, right: 80, bottom: 30, left: 50 }
->>>>>>> origin/main
+    margin = { top: 80, right: 50, bottom: 30, left: 70 }
 }) {
     const svgRef = useRef();
     const windowWidth = useWindowWidth();
@@ -114,15 +110,10 @@ export default function PennChart({
         // Chart title
         setChartTitleLines(svg.append('text'), windowWidth, {
             x: margin.left,
-            y: margin.top - 90,
+            y: margin.top - 115,
             lines: [
-<<<<<<< HEAD
                 'Percentage of Students with Business,',
                 'Economics, or Finance Majors'
-=======
-                'Percentage of Students',
-                'with Business, Economics, or Finance Majors'
->>>>>>> origin/main
             ]
         });
 
