@@ -70,7 +70,11 @@ const Subhead = ({ windowWidth }) => {
             }}
         >
             <h1
+<<<<<<< HEAD
+                className="text-lg sm:text-2xl text-[black] sm:text-white"
+=======
                 className="text-lg sm:text-3xl text-[black] sm:text-white"
+>>>>>>> origin/main
                 style={{
                     textShadow:
                         windowWidth < 640
