@@ -68,7 +68,7 @@ const chartCredit = {
 const ArticleSection = ({ header, paragraphs }) => (
     <section className="max-w-2xl mx-auto px-4 my-12">
         {header && (
-            <h2 className="text-3xl font-light mb-6 font-serif">{header}</h2>
+            <h2 className="text-2xl font-bold mb-6 font-serif">{header}</h2>
         )}
         {paragraphs.map((paragraph, i) => (
             <p
@@ -176,7 +176,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <ArticleSection paragraphs={section1.slice(12)} />
 
             {/* Section 2: fiefdom in Saieh */}
-            <ArticleSection paragraphs={section2.slice(0, 6)} />
+            <ArticleSection
+                header={section2Header}
+                paragraphs={section2.slice(0, 6)}
+            />
 
             <figure className="my-16 flex flex-col items-start max-w-2xl mx-auto">
                 <img
@@ -233,7 +236,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <MajorExplorer />
 
             {/* Section 3: history of UChicago */}
-            <ArticleSection paragraphs={section3.slice(0, 3)} />
+            <ArticleSection
+                header={section3Header}
+                paragraphs={section3.slice(0, 3)}
+            />
 
             <figure className="my-16 flex flex-col items-start max-w-2xl mx-auto">
                 <img
@@ -262,7 +268,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <ArticleSection paragraphs={section3.slice(7)} />
 
             {/* Section 4: Newman & humanities decline */}
-            <ArticleSection paragraphs={section4.slice(0, 2)} />
+            <ArticleSection
+                header={section4Header}
+                paragraphs={section4.slice(0, 2)}
+            />
 
             {/* English/PoliSci chart */}
             <figure className="my-16 flex flex-col items-start max-w-3xl mx-auto px-2 sm:px-8">
@@ -270,7 +279,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                     <AriChartDemo />
                 </div>
                 <figcaption className="text-xs text-gray-600 italic mt-4 w-full text-left">
-                    In 2005, English and Political science accounted for 20
+                    In 2005, English and political science accounted for 20
                     percent of graduating students. Today, they make up just
                     over 7 percent of the Class of 2024. Their decline began
                     around 2012, the year that students entering college during
@@ -299,7 +308,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <ArticleSection paragraphs={section4.slice(8)} />
 
             {/* Section 5: humanities response */}
-            <ArticleSection paragraphs={section5.slice(0, 4)} />
+            <ArticleSection
+                header={section5Header}
+                paragraphs={section5.slice(0, 4)}
+            />
 
             <figure className="my-8 flex flex-col items-start max-w-2xl mx-auto">
                 <img
@@ -332,7 +344,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <ArticleSection paragraphs={section5.slice(12)} />
 
             {/* Section 6: conclusion */}
-            <ArticleSection paragraphs={section6.slice(0, -1)} />
+            <ArticleSection
+                header={section6Header}
+                paragraphs={section6.slice(0, -1)}
+            />
             <section className="max-w-2xl mx-auto px-4 my-12">
                 <p className="text-lg leading-relaxed mb-5 font-serif font-normal">
                     <span
@@ -356,9 +371,11 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                     <span className="italic">Maroon</span>.
                 </p>
                 <p className="text-sm mt-2">
-                    Editor’s note: The version of this article published in the
-                    May 20 print edition misstated the number of humanities
-                    majors that had not seen a decline in the past 20 years.
+                    The version of this article published in the May 20 print
+                    edition incorrectly stated that all but two humanities
+                    majors had seen declines in the share of students enrolling
+                    over the past 20 years. All but three had seen such
+                    declines.{' '}
                 </p>
             </section>
         </div>

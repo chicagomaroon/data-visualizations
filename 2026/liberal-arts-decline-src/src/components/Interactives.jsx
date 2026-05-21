@@ -647,7 +647,7 @@ export const MajorExplorer = () => {
             )}
 
             {/* Search input + dropdown */}
-            <div className="relative w-72 mb-8">
+            <div className="relative w-72 mb-16">
                 <input
                     type="text"
                     placeholder={
@@ -683,7 +683,7 @@ export const MajorExplorer = () => {
             {chartSeries.length > -1 ? (
                 <figure className="w-full flex flex-col ">
                     <MajorChart series={chartSeries} />
-                    <figcaption className="text-sm text-gray-600 italic mt-4 max-w-xl text-left px-5">
+                    <figcaption className="text-xs text-gray-600 italic mt-4 text-left px-4">
                         Share of UChicago graduates majoring in each selected
                         field, 2005–2024. Use the search above to add or remove
                         majors. UChicago-specific majors, such as LLSO, are

@@ -122,7 +122,7 @@ export default function SubstitutionChart({
 
         // Label above the line
         svg.append('text')
-            .attr('x', x(2014.25))
+            .attr('x', x(2013))
             .attr('y', margin.top + 18)
             .attr('text-anchor', 'middle')
             .attr('fill', '#666')
@@ -160,7 +160,7 @@ export default function SubstitutionChart({
 
         svg.append('text')
             .attr('x', x(2006.25))
-            .attr('y', y(lastMath.value - 1))
+            .attr('y', y(lastMath.value - 2))
             .attr('dy', '0.35em')
             .attr('fill', '#2a7f3e')
             .attr('font-size', getSeriesLabelFontSize(windowWidth))

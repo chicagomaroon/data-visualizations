@@ -13,7 +13,7 @@ export const subhead =
 export const byline = [
     "Data and Reporting by <a href='https://chicagomaroon.com/staff_name/ari-jacob' style='color: maroon;'>Ari Jacob</a>",
     "Graphics and Design by <a href='https://chicagomaroon.com/staff_name/ari-jacob' style='color: maroon;'>Ari Jacob</a> and <a href='https://chicagomaroon.com/staff_name/nolan-shaffer' style='color: maroon;'>Nolan Shaffer</a>",
-    'May 20, 2026'
+    'May 21, 2026'
 ];
 
 export const introScroll = [
