@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [react()],
-    base: '/liberal-arts-decline/'
+    base: '/data-visualizations/2026/liberal-arts-decline/'
 });
