@@ -112,7 +112,7 @@ export default function AriChart({
 
         // Chart title
         setChartTitleLines(svg.append('text'), windowWidth, {
-            x: margin.left,
+            x: (margin.left + width - margin.right) / 2,
             y: margin.top - 55,
             lines: [
                 'UChicago Students in Select',

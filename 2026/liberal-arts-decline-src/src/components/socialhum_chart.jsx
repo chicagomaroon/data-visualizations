@@ -117,7 +117,7 @@ export default function SocialHumChart({
 
         // Chart title
         setChartTitleLines(svg.append('text'), windowWidth, {
-            x: margin.left,
+            x: (margin.left + width - margin.right) / 2,
             y: margin.top - 45,
             lines: [title],
             fontSize: getSocialHumTitleFontSize

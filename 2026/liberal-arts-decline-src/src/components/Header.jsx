@@ -51,7 +51,8 @@ const Headline = ({ windowWidth, windowHeight }) => {
                                 ? '2.3em'
                                 : '2.8em'
                             : '3.2em',
-                    lineHeight: windowHeight < 800 ? '1.2em' : '1.1em'
+                    lineHeight: windowHeight < 800 ? '1.2em' : '1.1em',
+                    fontFamily: 'Georgia, serif'
                 }}
                 dangerouslySetInnerHTML={{
                     __html: windowWidth < 640 ? headlinesm : headlinelg
@@ -86,8 +87,8 @@ const Subhead = ({ windowWidth }) => {
 const Byline = ({ windowWidth }) => {
     return (
         <div
-            className="px-3 sm:px-12 mx-auto relative text-[black] w-[90vw]
-             top-[100vh] z-[20]"
+            className="mx-auto relative text-[black] w-[90vw]
+             top-[100vh] z-[20] text-center"
         >
             {byline.map((text, index) => (
                 <p

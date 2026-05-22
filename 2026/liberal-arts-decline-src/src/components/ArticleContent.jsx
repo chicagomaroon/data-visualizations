@@ -145,7 +145,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <ArticleSection paragraphs={section1.slice(0, 9)} />
 
             {/* Penn comparison chart (mentioned at end of section 1) */}
-            <figure className="my-16 flex flex-col items-start max-w-3xl mx-auto px-2 sm:px-8">
+            <figure className="mt-24 mb-16 flex flex-col items-start max-w-3xl mx-auto px-2 sm:px-8">
                 <div className="w-full">
                     <Penn />
                 </div>
@@ -291,7 +291,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
             <ArticleSection paragraphs={section4.slice(2, 8)} />
 
             {/* Share of students vs share of degrees chart */}
-            <figure className="my-4 flex flex-col items-start max-w-6xl mx-auto px-2 sm:px-8">
+            <figure className="my-16 flex flex-col items-start max-w-6xl mx-auto px-2 sm:px-8">
                 <div className="w-full">
                     <SocialSciencesHumanities />
                 </div>
@@ -348,7 +348,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                 header={section6Header}
                 paragraphs={section6.slice(0, -1)}
             />
-            <section className="max-w-2xl mx-auto px-4 my-12">
+            <section className="max-w-2xl mx-auto px-4 mb-12">
                 <p className="text-lg leading-relaxed mb-5 font-serif font-normal">
                     <span
                         dangerouslySetInnerHTML={{
@@ -358,7 +358,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                     <img
                         src="maroon_logo_m_black.svg"
                         alt=""
-                        className="inline h-[0.85em] w-auto ml-[1px] align-text-bottom"
+                        className="inline h-[0.85em] w-auto ml-2 align-text-bottom"
                     />
                 </p>
             </section>
@@ -368,7 +368,7 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                 <p className="text-sm">
                     Editor’s note: Elizabeth Eck previously served as an
                     associate Arts editor for the{' '}
-                    <span className="italic">Maroon</span>.
+                    <span className="not-italic">Maroon</span>.
                 </p>
                 <p className="text-sm mt-2">
                     The version of this article published in the May 20 print

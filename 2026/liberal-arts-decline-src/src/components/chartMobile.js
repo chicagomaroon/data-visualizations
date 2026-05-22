@@ -37,6 +37,7 @@ export const setChartTitleLines = (
         .attr('fill', 'black')
         .attr('font-family', 'Georgia, serif')
         .attr('font-size', fontSize(windowWidth))
+        .attr('text-anchor', 'middle')
         .text(null)
         .selectAll('tspan')
         .remove();
