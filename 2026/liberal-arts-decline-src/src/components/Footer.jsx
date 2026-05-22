@@ -21,7 +21,7 @@ export default function Credits() {
     const [showMethods, setShowMethods] = useState(false);
 
     return (
-        <div className="w-[90%] md:w-[80%] mx-auto">
+        <div className="max-w-2xl mx-auto px-4">
             <div className="w-full h-[3px] bg-black rounded-md" />
             <div className="py-5">
                 <p

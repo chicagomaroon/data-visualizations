@@ -2,10 +2,10 @@
 //  HEADLINES & BYLINE
 // =====================================================================
 
-export const headlinesm = 'The Decline of the Liberal Arts at Chicago';
+export const headlinesm = 'The Decline of the Liberal Arts at UChicago';
 
 export const headlinelg =
-    'The Decline of the Liberal Arts at Chicago, by the Numbers';
+    'The Decline of the Liberal Arts at UChicago, by the Numbers';
 
 export const subhead =
     'Over the past decade, the share of students majoring in the humanities and arts has declined while business economics has exploded—realizing long-standing fears about the pre-professionalization of the College.';
@@ -17,7 +17,7 @@ export const byline = [
 ];
 
 export const introScroll = [
-    `In twenty years, the economics major at UChicago has doubled in size...`,
+    `Over the past 20 years, the economics major at UChicago has doubled in size\u2026`,
     `...even though it has barely grown at peer institutions.`,
     `The primary driver of this growth? Business economics.`,
     `All the while, the humanities and arts have been steadily declining.`
@@ -182,7 +182,7 @@ export const section5 = [
 
     `For Eck, this lack of rigor contrasts with English classes that take authors and their works seriously. By her standards, this means either engaging with the Western canon or giving new works genuine consideration, rather than what she sees as cheapening them through references to popular culture. These are “serious classes that are about serious writers,” she said. Think of offerings like Shakespeare: Tragedies and Romances or American Literature: Fictions of National Identity, or just Poetry.`,
 
-    `Another approach to dealing with the decline of the humanities, not unlike something that could have been cooked up by economists in Saieh Hall, has been lowering the time for completion. This has taken many forms, including shrinking major requirements. <a href='http://collegecatalog.uchicago.edu/thecollege/archives/'>Archived</a> versions of the course catalog show that half of arts and humanities major pathways have decreased the number of required courses since 2005, compared with 10 percent of majors in the physical sciences division. The Department of History also created the colloquium track, which Heffington says has very few strict requirements and is designed for double majors.`,
+    `Another approach to dealing with the decline of the humanities, not unlike something that could have been cooked up by economists in Saieh Hall, has been lowering the time for completion. This has taken many forms, including shrinking major requirements. Archived versions of the course catalog <a href='http://collegecatalog.uchicago.edu/thecollege/archives/'>show</a> that half of arts and humanities major pathways have decreased the number of required courses since 2005, compared with 10 percent of majors in the physical sciences division. The Department of History also created the colloquium track, which Heffington says has very few strict requirements and is designed for double majors.`,
 
     `These reforms come at a time when double majoring has become increasingly popular and has partially buoyed the arts and humanities’ decline. “The thing saving us is the share of double majors,” Heffington said. When looking only at primary majors—students with multiple majors designate one as their primary field of study—the enrollment numbers for the arts and humanities at UChicago are much starker, having halved in size since 2005.`,
 

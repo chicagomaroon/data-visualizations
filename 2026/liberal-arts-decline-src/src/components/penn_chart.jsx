@@ -11,8 +11,8 @@ import {
 export default function PennChart({
     data,
     width = 750,
-    height = 400,
-    margin = { top: 80, right: 50, bottom: 30, left: 70 }
+    height = 420,
+    margin = { top: 100, right: 50, bottom: 30, left: 70 }
 }) {
     const svgRef = useRef();
     const windowWidth = useWindowWidth();
@@ -109,7 +109,7 @@ export default function PennChart({
 
         // Chart title
         setChartTitleLines(svg.append('text'), windowWidth, {
-            x: margin.left,
+            x: (margin.left + width - margin.right) / 2,
             y: margin.top - 115,
             lines: [
                 'Percentage of Students with Business,',

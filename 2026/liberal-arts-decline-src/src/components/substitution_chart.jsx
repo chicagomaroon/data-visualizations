@@ -132,7 +132,7 @@ export default function SubstitutionChart({
 
         // Chart title
         setChartTitleLines(svg.append('text'), windowWidth, {
-            x: margin.left,
+            x: (margin.left + width - margin.right) / 2,
             y: margin.top - 65,
             lines: ['Percentage of Students by', 'Field of Study at UChicago']
         });
