@@ -1,6 +1,6 @@
 # chicago_majors
 
-This is a repository for the Maroon article on major composition at UChicago and other schools. 
+This is a repository for the Maroon article on major composition at UChicago and other schools.
 
 ## Data
 
@@ -18,11 +18,11 @@ The primary cleaning script is `scripts/cleaning/clean_ipeds.R`, which cleans th
 
 The primary analysis scripts are:
 
-* `scripts/analysis/analyze_ipeds.R` performs the Ivy Plus level analysis
-* `scripts/analysis/analyze_uchicago.R` performs the Chicago specific major shares analysis
-* `scripts/analysis/student_outcomes_chicago.R` creates the student outcomes plot
-* `scripts/analysis/change_humanities_arts.R` analyzes the change for individual humanities and arts majors
-* `scripts/analysis/requirement_changes.R` summarises the change in requirements
+-   `scripts/analysis/analyze_ipeds.R` performs the Ivy Plus level analysis
+-   `scripts/analysis/analyze_uchicago.R` performs the Chicago specific major shares analysis
+-   `scripts/analysis/student_outcomes_chicago.R` creates the student outcomes plot
+-   `scripts/analysis/change_humanities_arts.R` analyzes the change for individual humanities and arts majors
+-   `scripts/analysis/requirement_changes.R` summarises the change in requirements
 
 ## Output
 

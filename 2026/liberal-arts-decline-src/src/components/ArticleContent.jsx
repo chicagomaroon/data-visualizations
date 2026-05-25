@@ -248,8 +248,9 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                     className="w-full h-auto"
                 />
                 <figcaption className="text-xs text-gray-600 italic mt-4 text-left px-4">
-                    The University shifted towards a more liberal arts approach to education with the New Plan in the 1930s. 
-                    Chicago Maroon Photographic Archive.
+                    The University shifted towards a more liberal arts approach
+                    to education with the New Plan in the 1930s. Chicago Maroon
+                    Photographic Archive.
                 </figcaption>
             </figure>
 
@@ -262,8 +263,9 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                     className="w-full h-auto"
                 />
                 <figcaption className="text-xs text-gray-600 italic mt-4 text-left px-4">
-                    Some students are beginning to view the Core as barrier, inhibiting their ability to pursue their goals. 
-                    Chicago Maroon Photographic Archive.
+                    Some students are beginning to view the Core as barrier,
+                    inhibiting their ability to pursue their goals. Chicago
+                    Maroon Photographic Archive.
                 </figcaption>
             </figure>
 
@@ -379,9 +381,10 @@ export default function ArticleContent({ windowHeight, windowWidth }) {
                     over the past 20 years. All but three had seen such
                     declines.{' '}
                 </p>
-                <p className="text-sm">
-                    Editor’s note, May 25, 12:17 a.m.: This article previously incorrectly
-                    stated that the public policy major does not require calculus.{' '}
+                <p className="text-sm mt-2">
+                    Editor’s note, May 25: This article previously incorrectly
+                    stated that the public policy major does not require
+                    calculus.{' '}
                 </p>
             </section>
         </div>
